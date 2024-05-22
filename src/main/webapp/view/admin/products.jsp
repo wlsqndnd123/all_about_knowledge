@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +29,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.jsp">
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                             <h1 class="tm-site-title mb-0">Dashboard</h1>
                         </a>
@@ -40,7 +41,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Dashboard
+                                    <a class="nav-link" href="index.jsp">Dashboard
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
@@ -56,11 +57,11 @@
                                     </div>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="products.jsp">Products</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="accounts.html">Accounts</a>
+                                    <a class="nav-link" href="accounts.jsp">Accounts</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -76,7 +77,7 @@
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="login.html">
+                                    <a class="nav-link d-flex" href="login.jsp">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -96,7 +97,7 @@
 
                             </div>
                             <div class="col-md-4 col-sm-12 text-right">
-                                <a href="add-product.html" class="btn btn-small btn-primary">Add New Product</a>
+                                <a href="add-product.jsp" class="btn btn-small btn-primary">Add New Product</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -284,7 +285,7 @@
     <script>
         $(function () {
             $('.tm-product-name').on('click', function () {
-                window.location.href = "edit-product.html";
+                window.location.href = "edit-product.jsp";
             });
         })
     </script>
