@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!doctype html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Clean Work HTML CSS Template</title>
+        <title>AAK - All About Knowledge</title>
 
-        <!-- CSS FILES -->        
+        <!-- CSS FILES -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+                
         <link rel="preconnect" href="https://fonts.googleapis.com">
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,53 +27,14 @@
 
         <link href="css/tooplate-clean-work.css" rel="stylesheet">
 
-<!--
-
-Tooplate 2132 Clean Work
-
-https://www.tooplate.com/view/2132-clean-work
-
-Free Bootstrap 5 HTML Template
-
--->
     </head>
     
     <body>
-
-        <header class="site-header">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-lg-12 col-12 d-flex flex-wrap">
-                        <p class="d-flex me-4 mb-0">
-                            <i class="bi-house-fill me-2"></i>
-                            One-Stop Cleaning Service
-                        </p>
-
-                        <p class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
-                            <i class="bi-clock-fill me-2"></i>
-                            <strong class="me-2">Mon - Fri</strong> 8:00 AM - 5:30 PM
-                        </p>
-
-                        <p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
-                            <i class="site-header-icon bi-whatsapp me-2"></i>
-
-                            <a href="tel: 110-220-9800" class="text-white">
-                                110 220 9800
-                            </a>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.jsp">
-                    <img src="images/bubbles.png" class="logo img-fluid" alt="">
-
-                    <span class="ms-2">Clean Work</span>
+                    <img src="/favicon.svg" class="logo img-fluid" alt="">
+                    <span class="ms-2"><img src="http://localhost/view/student/images/title.svg" style="width:200px; height:100px"></span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,7 +68,7 @@ Free Bootstrap 5 HTML Template
                         </li>
 
                         <li class="nav-item ms-3">
-                            <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">Get started</a>
+                            <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">로그인</a>
                         </li>
                     </ul>
                 </div>
@@ -120,12 +85,13 @@ Free Bootstrap 5 HTML Template
 
                         <div class="col-lg-7 col-12 text-center mx-auto">
                             <h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
-                                <span>We clean your</span>
+                                <span> 이것이 </span>
                                 <span class="cd-words-wrapper">
-                                    <b class="is-visible">House</b>
-                                    <b>Office</b>
-                                    <b>Kitchen</b>
+                                    <b class="is-visible"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java </b>
+                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C </b>
+                                    <b>&nbsp;JavaScript</b>
                                 </span>
+                                <span> 인가? </span>
                             </h1>
 
                             <a class="custom-btn btn button button--atlas smoothscroll me-3" href="#intro-section">
