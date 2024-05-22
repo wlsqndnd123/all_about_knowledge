@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +28,7 @@
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.jsp">
                         <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                         <h1 class="tm-site-title mb-0">Dashboard</h1>
                     </a>
@@ -39,23 +40,23 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Dashboard
+                                <a class="nav-link" href="index.jsp">Dashboard
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle" href="index.jsp" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
                                     Reports
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Daily Report</a>
                                     <a class="dropdown-item" href="#">Weekly Report</a>
-                                    <a class="dropdown-item" href="index.html">Yearly Report</a>
+                                    <a class="dropdown-item" href="index.jsp">Yearly Report</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="products.html">Products</a>
+                                <a class="nav-link" href="products.jsp">Products</a>
                             </li>
 
                             <li class="nav-item active">
@@ -75,7 +76,7 @@
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link d-flex" href="login.html">
+                                <a class="nav-link d-flex" href="login.jsp">
                                     <i class="far fa-user mr-2 tm-logout-icon"></i>
                                     <span>Logout</span>
                                 </a>

@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -7,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>About Us | Bootstrap 5 Theme</title>
+        <title>Under Construction | Bootstrap 5 Theme</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +65,7 @@ Free Bootstrap 5 HTML Template
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.jsp">
                     <img src="images/bubbles.png" class="logo img-fluid" alt="">
 
                     <span class="ms-2">Clean Work</span>
@@ -77,27 +78,27 @@ Free Bootstrap 5 HTML Template
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.jsp">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="about.html">About Us</a>
+                            <a class="nav-link" href="about.jsp">About Us</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="services.html">Our Services</a></li>
+                                <li><a class="dropdown-item" href="services.jsp">Our Services</a></li>
 
-                                <li><a class="dropdown-item" href="coming-soon.html">Coming Soon</a></li>
+                                <li><a class="dropdown-item active" href="coming-soon.jsp">Coming Soon</a></li>
 
-                                <li><a class="dropdown-item" href="page-404.html">Page 404</a></li>
+                                <li><a class="dropdown-item" href="page-404.jsp">Page 404</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.jsp">Contact</a>
                         </li>
 
                         <li class="nav-item ms-3">
@@ -117,15 +118,15 @@ Free Bootstrap 5 HTML Template
                     <div class="row">
 
                         <div class="col-lg-7 col-12">
-                            <h1 class="text-white mb-lg-0">About Us</h1>
+                            <h1 class="text-white mb-lg-0">Under Construction</h1>
                         </div>
 
                         <div class="col-lg-4 col-12 d-flex justify-content-lg-end align-items-center ms-auto">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Coming Soon</li>
                                 </ol>
                             </nav>
                         </div>
@@ -139,121 +140,33 @@ Free Bootstrap 5 HTML Template
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-lg-6 col-12">
-                            <img src="images/cleaning-concept-with-man-showing-business-card.jpg" class="featured-image img-fluid">
-                        </div>
+                        <div class="col-lg-8 col-12 text-center mx-auto">
+                            <ul class="countdown d-flex flex-wrap justify-content-center align-items-center">
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h3 class="countdown-title days">14</h3>
+                                    <span class="countdown-text">Days</span>
 
-                        <div class="col-lg-6 col-12">
-                            <div class="featured-block">
-                                <h2 class="mb-4">Cleaning Service Agency Since 2018</h2>
+                                    <div class="countdown-item-overlay"></div>
+                               </li>
 
-                                <p>Tooplate website provides a variety of latest HTML templates or Bootstrap 5 Themes for your <a href="#">business websites</a>.</p>
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h3 class="countdown-title hours">10</h3>
+                                    <span class="countdown-text">hours</span>
+                               </li>
 
-                                <p>Clean Work is a blue color theme HTML CSS template for your company website. You may use this template for any purpose.</p>
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h3 class="countdown-title minutes">15</h3>
+                                    <span class="countdown-text">minutes</span>
+                               </li>
 
-                                <a class="custom-btn btn button button--atlas mt-3" href="contact.html">
-                                    <span>Get in touch</span>
-    
-                                    <div class="marquee" aria-hidden="true">
-                                        <div class="marquee__inner">
-                                            <span>Get in touch</span>
-                                            <span>Get in touch</span>
-                                            <span>Get in touch</span>
-                                            <span>Get in touch</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
+                                    <h3 class="countdown-title seconds">34</h3>
+                                    <span class="countdown-text">seconds</span>
+                               </li>     
+                            </ul>
 
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="team-section section-padding section-bg">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12">
-                            <h2 class="mb-4">Meet People</h2>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 mb-lg-0 mb-md-5">
-                            <img src="images/teams/young-cleaning-man-wearing-casual-clothes.jpg" class="team-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 d-flex justify-content-lg-center mt-4 mt-lg-0 mt-md-0 mb-5 mb-lg-0">
-                            <div class="team-info mx-auto mx-lg-0">
-                                <h4 class="mb-2">Josh</h4>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing tempor incididunt dolore magna</p>
-
-                                <div class="border-top mt-3 pt-3">
-                                    <p class="d-flex mb-0">
-                                        <i class="bi-whatsapp me-2"></i>
-
-                                        <a href="tel: 110-220-9800">
-                                            110-220-9800
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <img src="images/teams/happy-young-woman-wiping-kitchen-counter-wearing-yellow-gloves.jpg" class="team-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12 d-flex justify-content-lg-center mt-4 mt-lg-0 mt-md-0">
-                            <div class="team-info mx-auto mx-lg-0">
-                                <h4 class="mb-2">Marie</h4>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing tempor incididunt dolore magna</p>
-
-                                <div class="border-top mt-3 pt-3">
-                                    <p class="d-flex mb-0">
-                                        <i class="bi-whatsapp me-2"></i>
-
-                                        <a href="tel: 110-220-9800">
-                                            110-220-9800
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="partners-section">
-                <div class="container">
-                    <div class="row justify-content-center align-items-center">
-
-                        <div class="col-lg-12 col-12">
-                            <h4 class="partners-section-title bg-white shadow-lg">Trusted by companies</h4>
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/toprak-leasing.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/glorix.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/woocommerce.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/rolf-leasing.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/unilabs.svg" class="partners-image img-fluid">
+                            <h2 class="">Our website is currently under construction</h2>
+                            <p>You can set the launch date time in init.js file.</p>
                         </div>
 
                     </div>
@@ -391,7 +304,7 @@ Free Bootstrap 5 HTML Template
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <p class="copyright-text mb-0">Copyright © 2036 Clean Work Co., Ltd.</p>
+                            <p class="copyright-text mb-0">Copyright Â© 2036 Clean Work Co., Ltd.</p>
                         </div>
                         
                         <div class="col-lg-6 col-12 text-end">

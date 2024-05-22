@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -66,7 +67,7 @@ Free Bootstrap 5 HTML Template
 
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.jsp">
                     <img src="images/bubbles.png" class="logo img-fluid" alt="">
 
                     <span class="ms-2">Clean Work</span>
@@ -79,27 +80,27 @@ Free Bootstrap 5 HTML Template
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.jsp">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About Us</a>
+                            <a class="nav-link" href="about.jsp">About Us</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="services.html">Our Services</a></li>
+                                <li><a class="dropdown-item" href="services.jsp">Our Services</a></li>
 
-                                <li><a class="dropdown-item" href="coming-soon.html">Coming Soon</a></li>
+                                <li><a class="dropdown-item" href="coming-soon.jsp">Coming Soon</a></li>
 
-                                <li><a class="dropdown-item" href="page-404.html">Page 404</a></li>
+                                <li><a class="dropdown-item" href="page-404.jsp">Page 404</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.jsp">Contact</a>
                         </li>
 
                         <li class="nav-item ms-3">
@@ -125,7 +126,7 @@ Free Bootstrap 5 HTML Template
                         <div class="col-lg-4 col-12 d-flex justify-content-lg-end align-items-center ms-auto">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 
                                     <li class="breadcrumb-item active" aria-current="page">Office Cleaning</li>
                                 </ol>
@@ -226,7 +227,7 @@ Free Bootstrap 5 HTML Template
                                 <div class="row">
                                     <div class="col-lg-5 col-md-5 col-12">
                                         <div class="services-image-wrap">
-                                            <a href="services-detail.html">
+                                            <a href="services-detail.jsp">
                                                 <img src="images/services/man-polishing-car-inside-car-service.jpg" class="services-image img-fluid" alt="">
                                                 <img src="images/services/man-polishing-car-inside.jpg" class="services-image services-image-hover img-fluid" alt="">
 
@@ -250,7 +251,7 @@ Free Bootstrap 5 HTML Template
                                     <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
                                         <div class="services-info mt-4 mt-lg-0 mt-md-0">
                                             <h4 class="services-title mb-1 mb-lg-2">
-                                                <a class="services-title-link" href="services-detail.html">Car Washing</a>
+                                                <a class="services-title-link" href="services-detail.jsp">Car Washing</a>
                                             </h4>
 
                                             <p>Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
@@ -264,7 +265,7 @@ Free Bootstrap 5 HTML Template
                                                     <i class="bi-star-fill"></i>
                                                 </div>
 
-                                                <a href="services-detail.html" class="custom-btn btn button button--atlas mt-2 ms-auto">
+                                                <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
                                                     <span>Learn More</span>
 
                                                     <div class="marquee" aria-hidden="true">
@@ -288,7 +289,7 @@ Free Bootstrap 5 HTML Template
                                 <div class="row">
                                     <div class="col-lg-5 col-md-5 col-12">
                                         <div class="services-image-wrap">
-                                            <a href="services-detail.html">
+                                            <a href="services-detail.jsp">
                                                 <img src="images/services/professional-industrial-cleaner-protective-uniform-cleaning-floor-food-processing-plant.jpg" class="services-image img-fluid" alt="">
                                                 <img src="images/services/close-up-mop-cleaning-industrial-plant-floor.jpg" class="services-image services-image-hover img-fluid" alt="">
 
@@ -312,7 +313,7 @@ Free Bootstrap 5 HTML Template
                                     <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
                                         <div class="services-info mt-4 mt-lg-0 mt-md-0">
                                             <h4 class="services-title mb-1 mb-lg-2">
-                                                <a class="services-title-link" href="services-detail.html">Factory Cleaning</a>
+                                                <a class="services-title-link" href="services-detail.jsp">Factory Cleaning</a>
                                             </h4>
 
                                             <p>Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
@@ -326,7 +327,7 @@ Free Bootstrap 5 HTML Template
                                                     <i class="bi-star"></i>
                                                 </div>
 
-                                                <a href="services-detail.html" class="custom-btn btn button button--atlas mt-2 ms-auto">
+                                                <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
                                                     <span>Learn More</span>
 
                                                     <div class="marquee" aria-hidden="true">
@@ -513,7 +514,7 @@ Free Bootstrap 5 HTML Template
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <p class="copyright-text mb-0">Copyright © 2036 Clean Work Co., Ltd.</p>
+                            <p class="copyright-text mb-0">Copyright Â© 2036 Clean Work Co., Ltd.</p>
                         </div>
                         
                         <div class="col-lg-6 col-12 text-end">
