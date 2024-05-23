@@ -589,6 +589,12 @@ strong {
   padding: 12px 25px;
 }
 
+a.nav-link.custom-btn.custom-border-btn.custom-btn-bg-white.btn {
+  margin-top: 18px;
+  padding: 0px 5px;
+  margin-left: 3px;
+}
+
 .custom-btn:hover {
   background: var(--custom-btn-bg-hover-color);
   color: var(--white-color);
