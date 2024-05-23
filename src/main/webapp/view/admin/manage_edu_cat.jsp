@@ -42,8 +42,8 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                <li class="nav-item dropdown active">
+                                    <a class="nav-link dropdown-toggle" href="manage_curriculum" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
                                         
                                     </a>
@@ -99,143 +99,89 @@
                     </nav>
                 </div>
             </div>
-            <!-- row -->
-            <div class="row tm-content-row tm-mt-big">
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Latest Hits</h2>
-                        <canvas id="lineChart"></canvas>
+            <div class="row tm-mt-big">
+            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+                <div class="bg-white tm-block">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Edit Product</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Performance</h2>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>
-                <div class="tm-col tm-col-small">
-                    <div class="bg-white tm-block h-100">
-                        <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
-                    </div>
-                </div>
-
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <div class="row">
-                            <div class="col-8">
-                                <h2 class="tm-block-title d-inline-block">Top Product List</h2>
-
-                            </div>
-                            <div class="col-4 text-right">
-                                <a href="products.jsp" class="tm-link-black">View All</a>
+                    <div class="row mt-4 tm-edit-product-row">
+                        <div class="col-xl-7 col-lg-7 col-md-12">
+                            <form action="" class="tm-edit-product-form">
+                                <div class="input-group mb-3">
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
+                                        Name
+                                    </label>
+                                    <input placeholder="Product name" value="In malesuada placerat" id="name" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Description</label>
+                                    <textarea class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" rows="3" placeholder="Product Description" required>Fusce finibus dui tellus, at viverra dui dignissim hendrerit. Sed a varius nulla. Donec auctor consectetur nulla.</textarea>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Category</label>
+                                    <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="category">
+                                        <option value="1" selected>Cras efficitur lacus</option>
+                                        <option value="2">Pellentesque molestie</option>
+                                        <option value="3">Sed feugiat nulla</option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Expire
+                                        Date
+                                    </label>
+                                    <input placeholder="Expire Date" value="2018-10-28" id="expire_date" name="expire_date" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        data-large-mode="true">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Units In
+                                        Stock
+                                    </label>
+                                    <input placeholder="Stock" value="255" id="stock" name="stock" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                        <button type="submit" class="btn btn-primary">Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
+                            <img src="img/product-image.jpg" alt="Profile Image" class="img-fluid mx-auto d-block">
+                            <div class="custom-file mt-3 mb-3">
+                                <input id="fileInput" type="file" style="display:none;" />
+                                <input type="button" class="btn btn-primary d-block mx-auto" value="Upload ..." onclick="document.getElementById('fileInput').click();"
+                                />
                             </div>
                         </div>
-                        <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
-                            <li class="tm-list-group-item">
-                                Donec eget libero
-                            </li>
-                            <li class="tm-list-group-item">
-                                Nunc luctus suscipit elementum
-                            </li>
-                            <li class="tm-list-group-item">
-                                Maecenas eu justo maximus
-                            </li>
-                            <li class="tm-list-group-item">
-                                Pellentesque auctor urna nunc
-                            </li>
-                            <li class="tm-list-group-item">
-                                Sit amet aliquam lorem efficitur
-                            </li>
-                            <li class="tm-list-group-item">
-                                Pellentesque auctor urna nunc
-                            </li>
-                            <li class="tm-list-group-item">
-                                Sit amet aliquam lorem efficitur
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Calendar</h2>
-                        <div id="calendar"></div>
-                        <div class="row mt-4">
-                            <div class="col-12 text-right">
-                                <a href="#" class="tm-link-black">View Schedules</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="tm-col tm-col-small">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Upcoming Tasks</h2>
-                        <ol class="tm-list-group">
-                            <li class="tm-list-group-item">List of tasks</li>
-                            <li class="tm-list-group-item">Lorem ipsum doloe</li>
-                            <li class="tm-list-group-item">Read reports</li>
-                            <li class="tm-list-group-item">Write email</li>
-                            
-                            <li class="tm-list-group-item">Call customers</li>
-                            <li class="tm-list-group-item">Go to meeting</li>
-                            <li class="tm-list-group-item">Weekly plan</li>
-                            <li class="tm-list-group-item">Ask for feedback</li>
-                            
-                            <li class="tm-list-group-item">Meet Supervisor</li>
-                            <li class="tm-list-group-item">Company trip</li>
-                        </ol>
                     </div>
                 </div>
             </div>
-            <footer class="row tm-mt-small">
-                <div class="col-12 font-weight-light">
-                    <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                        Copyright &copy; 2018 Admin Dashboard . Created by
-                        <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
-                    </p>
-                </div>
-            </footer>
         </div>
+        <footer class="row tm-mt-big">
+            <div class="col-12 font-weight-light">
+                <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+                    Copyright &copy; 2018 Admin Dashboard . Created by
+                    <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
+                </p>
+            </div>
+        </footer>
     </div>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
-    <script src="js/moment.min.js"></script>
-    <!-- https://momentjs.com/ -->
-    <script src="js/utils.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <!-- http://www.chartjs.org/docs/latest/ -->
-    <script src="js/fullcalendar.min.js"></script>
-    <!-- https://fullcalendar.io/ -->
+    <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <!-- https://jqueryui.com/download/ -->
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
-    <script src="js/tooplate-scripts.js"></script>
     <script>
-        let ctxLine,
-            ctxBar,
-            ctxPie,
-            optionsLine,
-            optionsBar,
-            optionsPie,
-            configLine,
-            configBar,
-            configPie,
-            lineChart;
-        barChart, pieChart;
-        // DOM is ready
         $(function () {
-            updateChartOptions();
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            drawPieChart(); // Pie Chart
-            drawCalendar(); // Calendar
-
-            $(window).resize(function () {
-                updateChartOptions();
-                updateLineChart();
-                updateBarChart();
-                reloadPage();
-            });
-        })
+            $('#expire_date').datepicker();
+        });
     </script>
 </body>
+
 </html>
