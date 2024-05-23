@@ -88,27 +88,29 @@
                                 <span> 이것이 </span>
                                 <span class="cd-words-wrapper">
                                     <b class="is-visible"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java </b>
-                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C </b>
+                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C </b>
                                     <b>&nbsp;JavaScript</b>
                                 </span>
-                                <span> 인가? </span>
+                                <span> &nbsp;&nbsp;인가? </span>
                             </h1>
 
                             <a class="custom-btn btn button button--atlas smoothscroll me-3" href="#intro-section">
-                                <span>Introduction</span>
+                                <span>강의소개</span>
 
                                 <div class="marquee" aria-hidden="true">
                                     <div class="marquee__inner">
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
-                                        <span>Introduction</span>
+                                        <span>이</span>
+                                        <span>것</span>
+                                        <span>이</span>
+                                        <span>개</span>
+                                        <span>인</span>
+                                        <span>가?</span>
                                     </div>
                                 </div>
                             </a>
 
                             <a class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll" href="#services-section">
-                                <span>Explore Services</span>
+                                <span>추천 강의</span>
                             </a>
                         </div>
 
