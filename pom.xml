@@ -6,7 +6,7 @@
   <packaging>war</packaging>
   
     <dependencies>
-	  <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 	<dependency>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis</artifactId>

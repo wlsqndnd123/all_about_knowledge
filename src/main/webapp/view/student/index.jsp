@@ -47,28 +47,48 @@
                             <a class="nav-link active" href="index.jsp">Home</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.jsp">About Us</a>
-                        </li>
-
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                            <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">나의 강의실</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="services.jsp">Our Services</a></li>
-
-                                <li><a class="dropdown-item" href="coming-soon.jsp">Coming Soon</a></li>
-
-                                <li><a class="dropdown-item" href="page-404.jsp">Page 404</a></li>
+                                <li><a class="dropdown-item" href="#">나의 강의</a></li>
+                                <li><a class="dropdown-item" href="#">관심 강의</a></li>
+                                <li><a class="dropdown-item" href="#">정보변경</a></li>
+                                <li><a class="dropdown-item" href="#">내 문의</a></li>
                             </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.jsp">Contact</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">개설강좌</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#"><strong>CS 이론</strong></a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><strong>프로그래밍언어</strong></a></li>
+                                <li><a class="dropdown-item" href="#">자바</a></li>
+                                <li><a class="dropdown-item" href="#">자바스크립트</a></li>
+                                <li><a class="dropdown-item" href="#">파이썬</a></li>
+                                <li><a class="dropdown-item" href="#">씨</a></li>
+                                <li><a class="dropdown-item" href="#">씨샵</a></li>
+                                <li><a class="dropdown-item" href="#">씨쁠쁠</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">이용안내</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">공지사항</a></li>
+                                <li><a class="dropdown-item" href="#">자주묻는질문</a></li>
+                                <li><a class="dropdown-item" href="#">이용약관</a></li>
+                                <li><a class="dropdown-item" href="#">개인정보처리방침</a></li>
+                            </ul>
                         </li>
 
                         <li class="nav-item ms-3">
                             <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">로그인</a>
+                            <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">회원가입</a>
+                            <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">ID/PW찾기</a>
                         </li>
                     </ul>
                 </div>
@@ -126,23 +146,26 @@
                     <div class="row justify-content-lg-center align-items-center">
 
                         <div class="col-lg-6 col-12">
-                            <h2 class="mb-4">Reliable &amp; Fast Cleaning <br> Service</h2>
+                            <h2 class="mb-4">시그니처 시리즈<br> 이것이 [프로그래밍] 인가?</h2>
 
-                            <p><a href="#">Clean Work</a> is a Bootstrap v.5.1.3 HTML CSS template for free download provided by Tooplate. You can use this layout for any purpose. Images are taken from <a rel="nofollow" href="https://www.freepik.com/" target="_blank">FreePik</a> and <a rel="nofollow" href="https://worldvectorlogo.com/" target="_blank">WorldVectorLogo</a> websites.</p>
-                            <p>You <strong>may not</strong> redistribute this template ZIP file on any other template collection website. Please <a href="https://www.tooplate.com/contact" target="_blank">contact us</a> for more info. Thank you.</p>
+                            <p>
+                            <a rel="nofollow" href="#" target="_blank">이것이 자바인가?</a> 그렇다 이것이 자바이다<br/>
+                            <a rel="nofollow" href="#" target="_blank">이것이 C인가?</a> 그렇다 이것이 C이다<br/>
+                            <a rel="nofollow" href="#" target="_blank">이것이 자바스크립트 인가?</a> 그렇다 이것이 C이다<br/></p>
+                            <p> 귀여운 <strong>진수현 유니버스</strong> 모든 강의의 시작과 끝은 진수현이다.</p>
                         </div>
 
                         <div class="col-lg-6 col-12 custom-block-wrap">
-                            <img src="images/male-wearing-apron-female-white-t-shirt-smiling-broadly-being-glad-clean.png" class="img-fluid">
+                            <img src="images/is_this.png" class="img-fluid">
 
                             <div class="custom-block d-flex flex-column">
-                                <h6 class="text-white mb-3">Need Help? <br> Please call us:</h6>
+                                <h6 class="text-white mb-3">디자인? <br> 도움!</h6>
 
                                 <p class="d-flex mb-0">
                                     <i class="bi-telephone-fill custom-icon me-2"></i>
 
-                                    <a href="tel: 110-220-9800">
-                                        110-220-9800
+                                    <a href="#">
+                                        진수현 전화번호 뭐니
                                     </a>
                                 </p>
                             </div>
@@ -158,7 +181,7 @@
                     <div class="row">
 
                         <div class="col-lg-12 col-12">
-                            <h2 class="mb-4">Our best offers</h2>
+                            <h2 class="mb-4">인기 강의</h2>
                         </div>
 
                         <div class="col-lg-6 col-12">
@@ -190,10 +213,10 @@
                                     <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
                                         <div class="services-info mt-4 mt-lg-0 mt-md-0">
                                             <h4 class="services-title mb-1 mb-lg-2">
-                                                <a class="services-title-link" href="services-detail.jsp">Office Cleaning</a>
+                                                <a class="services-title-link" href="#">이것이 디자인인가?</a>
                                             </h4>
 
-                                            <p>Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
+                                            <p>지금부터 시작하는 디자인강의. 제발... 진수현 김일신 필수 수강</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
                                                 <div class="reviews-icons">
@@ -205,14 +228,14 @@
                                                 </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
-                                                    <span>Learn More</span>
+                                                    <span>상세보기</span>
 
                                                     <div class="marquee" aria-hidden="true">
                                                         <div class="marquee__inner">
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -252,10 +275,10 @@
                                     <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
                                         <div class="services-info mt-4 mt-lg-0 mt-md-0">
                                             <h4 class="services-title mb-1 mb-lg-2">
-                                                <a class="services-title-link" href="services-detail.jsp">Kitchen Cleaning</a>
+                                                <a class="services-title-link" href="services-detail.jsp">이것이 자바인가?</a>
                                             </h4>
 
-                                            <p>Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
+                                            <p>자바는 이제 좀 많이 하지 않았니? 이제 자바는 가르쳐주지 않아도 하는 게 맞지 않나? 알아서 잘하자</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
                                                 <div class="reviews-icons">
@@ -267,14 +290,14 @@
                                                 </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
-                                                    <span>Learn More</span>
+                                                    <span>상세보기</span>
 
                                                     <div class="marquee" aria-hidden="true">
                                                         <div class="marquee__inner">
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -314,10 +337,10 @@
                                     <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
                                         <div class="services-info mt-4 mt-lg-0 mt-md-0">
                                             <h4 class="services-title mb-1 mb-lg-2">
-                                                <a class="services-title-link" href="services-detail.jsp">Car Washing</a>
+                                                <a class="services-title-link" href="services-detail.jsp">이것이 C언어 인가?</a>
                                             </h4>
 
-                                            <p>Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
+                                            <p>C언어는 정보처리기사 할 때 하지 않았나? 이제 안해도 되지</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
                                                 <div class="reviews-icons">
@@ -329,14 +352,14 @@
                                                 </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
-                                                    <span>Learn More</span>
+                                                    <span>상세보기</span>
 
                                                     <div class="marquee" aria-hidden="true">
                                                         <div class="marquee__inner">
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -376,10 +399,10 @@
                                     <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
                                         <div class="services-info mt-4 mt-lg-0 mt-md-0">
                                             <h4 class="services-title mb-1 mb-lg-2">
-                                                <a class="services-title-link" href="services-detail.jsp">Factory Cleaning</a>
+                                                <a class="services-title-link" href="services-detail.jsp">이것이 자바스크립트인가?</a>
                                             </h4>
 
-                                            <p>Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
+                                            <p>자바스크립트는 여전히 모르겠어요. 지금 하고 있는데 그래도 모르겠어요. 죽겠다ㅎㅎ</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
                                                 <div class="reviews-icons">
@@ -391,14 +414,14 @@
                                                 </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
-                                                    <span>Learn More</span>
+                                                    <span>상세보기</span>
 
                                                     <div class="marquee" aria-hidden="true">
                                                         <div class="marquee__inner">
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
-                                                            <span>Learn More</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
+                                                            <span>상세보기</span>
                                                         </div>
                                                     </div>
                                                 </a>
