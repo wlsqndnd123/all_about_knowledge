@@ -36,3 +36,4 @@ DB : Oracle
 ## 📌 주요 기능
 
 ## ✒️ API
+포트원 본인인증 (KG이니시스) : https://developers.portone.io/docs/ko/readme?v=v2
