@@ -19,6 +19,7 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 */target/*
+target/
 
 ### NetBeans ###
 /nbproject/private/

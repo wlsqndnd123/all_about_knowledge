@@ -455,13 +455,13 @@
                         <div class="featured-block">
                             <h5 class="text-white mb-3">고객센터</h5>
 
-                            <strong class="d-block text-white mb-1">Mon - Fri</strong>
+                            <strong class="d-block text-white mb-1">월 - 금</strong>
 
                             <p class="text-white mb-3">9:00 AM - 6:00 PM</p>
 
-                            <strong class="d-block text-white mb-1">Sat</strong>
+                            <strong class="d-block text-white mb-1">점심시간</strong>
 
-                            <p class="text-white mb-0">9:00 AM - 1:00 PM</p>
+                            <p class="text-white mb-0">12:00 PM - 1:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -477,7 +477,7 @@
                         
                         <div class="col-lg-6 col-12 text-end">
                             <p class="copyright-text mb-0">
-                            // Designed by <a href="#" target="_parent">sist</a> //</p>
+                            // Designed by <a href="#" target="_parent">TalkingPotato90</a> //</p>
                         </div>
                         
                     </div>
