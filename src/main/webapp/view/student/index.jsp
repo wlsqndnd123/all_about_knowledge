@@ -65,12 +65,12 @@
                                 <li><a class="dropdown-item" href="#"><strong>CS 이론</strong></a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#"><strong>프로그래밍언어</strong></a></li>
-                                <li><a class="dropdown-item" href="#">자바</a></li>
-                                <li><a class="dropdown-item" href="#">자바스크립트</a></li>
-                                <li><a class="dropdown-item" href="#">파이썬</a></li>
-                                <li><a class="dropdown-item" href="#">씨</a></li>
-                                <li><a class="dropdown-item" href="#">씨샵</a></li>
-                                <li><a class="dropdown-item" href="#">씨쁠쁠</a></li>
+                                <li><a class="dropdown-item" href="#">JAVA</a></li>
+                                <li><a class="dropdown-item" href="#">Java Script</a></li>
+                                <li><a class="dropdown-item" href="#">Python</a></li>
+                                <li><a class="dropdown-item" href="#">C</a></li>
+                                <li><a class="dropdown-item" href="#">C#</a></li>
+                                <li><a class="dropdown-item" href="#">C++</a></li>
                             </ul>
                         </li>
 
@@ -88,7 +88,6 @@
                         <li class="nav-item ms-3">
                             <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">로그인</a>
                             <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">회원가입</a>
-                            <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn" href="#">ID/PW찾기</a>
                         </li>
                     </ul>
                 </div>
@@ -108,7 +107,7 @@
                                 <span> 이것이 </span>
                                 <span class="cd-words-wrapper">
                                     <b class="is-visible"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java </b>
-                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C </b>
+                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C </b>
                                     <b>&nbsp;JavaScript</b>
                                 </span>
                                 <span> &nbsp;&nbsp;인가? </span>
@@ -152,7 +151,7 @@
                             <a rel="nofollow" href="#" target="_blank">이것이 자바인가?</a> 그렇다 이것이 자바이다<br/>
                             <a rel="nofollow" href="#" target="_blank">이것이 C인가?</a> 그렇다 이것이 C이다<br/>
                             <a rel="nofollow" href="#" target="_blank">이것이 자바스크립트 인가?</a> 그렇다 이것이 C이다<br/></p>
-                            <p> 귀여운 <strong>진수현 유니버스</strong> 모든 강의의 시작과 끝은 진수현이다.</p>
+                            <p> 이것은 <strong>진수현 유니버스</strong> 모든 강의의 시작과 끝은 진수현이다.</p>
                         </div>
 
                         <div class="col-lg-6 col-12 custom-block-wrap">
@@ -165,7 +164,7 @@
                                     <i class="bi-telephone-fill custom-icon me-2"></i>
 
                                     <a href="#">
-                                        진수현 전화번호 뭐니
+                                        02-1234-5678
                                     </a>
                                 </p>
                             </div>
@@ -190,19 +189,14 @@
                                     <div class="col-lg-5 col-md-5 col-12">
                                         <div class="services-image-wrap">
                                             <a href="services-detail.jsp">
-                                                <img src="images/services/people-taking-care-office-cleaning.jpg" class="services-image img-fluid" alt="">
+                                                <img src="images/services/ui.jpg" class="services-image img-fluid" alt="">
                                                 <img src="images/services/person-taking-care-office.jpg" class="services-image services-image-hover img-fluid" alt="">
 
                                                 <div class="services-icon-wrap">
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <p class="text-white mb-0">
-                                                            <i class="bi-cash me-2"></i>
-                                                            $820
-                                                        </p>
-
-                                                        <p class="text-white mb-0">
                                                             <i class="bi-clock-fill me-2"></i>
-                                                            5 hrs
+                                                            500 hrs
                                                         </p>
                                                     </div>                                                    
                                                 </div>
@@ -219,13 +213,6 @@
                                             <p>지금부터 시작하는 디자인강의. 제발... 진수현 김일신 필수 수강</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
-                                                <div class="reviews-icons">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star"></i>
-                                                    <i class="bi-star"></i>
-                                                </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
                                                     <span>상세보기</span>
@@ -252,19 +239,15 @@
                                     <div class="col-lg-5 col-md-5 col-12">
                                         <div class="services-image-wrap">
                                             <a href="services-detail.jsp">
-                                                <img src="images/services/young-smiling-woman-wearing-rubber-gloves-cleaning-stove.jpg" class="services-image img-fluid" alt="">
+                                                <img src="images/services/java.jpg" class="services-image img-fluid" alt="">
                                                 <img src="images/services/woman-holding-rag-detergent-cleaning-cooker.jpg" class="services-image services-image-hover img-fluid" alt="">
 
                                                 <div class="services-icon-wrap">
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="text-white mb-0">
-                                                            <i class="bi-cash me-2"></i>
-                                                            $640
-                                                        </p>
 
                                                         <p class="text-white mb-0">
                                                             <i class="bi-clock-fill me-2"></i>
-                                                            4 hrs
+                                                            40 hrs
                                                         </p>
                                                     </div>                                                    
                                                 </div>
@@ -278,16 +261,9 @@
                                                 <a class="services-title-link" href="services-detail.jsp">이것이 자바인가?</a>
                                             </h4>
 
-                                            <p>자바는 이제 좀 많이 하지 않았니? 이제 자바는 가르쳐주지 않아도 하는 게 맞지 않나? 알아서 잘하자</p>
+                                            <p>자바는 벌써 2년째 수업 중입니다. 하지만 아는 게 없다면 기초부터 다시 시작합시다.</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
-                                                <div class="reviews-icons">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
                                                     <span>상세보기</span>
@@ -314,15 +290,11 @@
                                     <div class="col-lg-5 col-md-5 col-12">
                                         <div class="services-image-wrap">
                                             <a href="services-detail.jsp">
-                                                <img src="images/services/man-polishing-car-inside-car-service.jpg" class="services-image img-fluid" alt="">
+                                                <img src="images/services/c.jpg" class="services-image img-fluid" alt="">
                                                 <img src="images/services/man-polishing-car-inside.jpg" class="services-image services-image-hover img-fluid" alt="">
 
                                                 <div class="services-icon-wrap">
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="text-white mb-0">
-                                                            <i class="bi-cash me-2"></i>
-                                                            $240
-                                                        </p>
 
                                                         <p class="text-white mb-0">
                                                             <i class="bi-clock-fill me-2"></i>
@@ -340,16 +312,9 @@
                                                 <a class="services-title-link" href="services-detail.jsp">이것이 C언어 인가?</a>
                                             </h4>
 
-                                            <p>C언어는 정보처리기사 할 때 하지 않았나? 이제 안해도 되지</p>
+                                            <p>C언어는 정보처리기사 할 때 열심히 했습니다. java를 틀리고 c를 다 맞은 것 같아요. 저런...</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
-                                                <div class="reviews-icons">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
                                                     <span>상세보기</span>
@@ -376,19 +341,15 @@
                                     <div class="col-lg-5 col-md-5 col-12">
                                         <div class="services-image-wrap">
                                             <a href="services-detail.jsp">
-                                                <img src="images/services/professional-industrial-cleaner-protective-uniform-cleaning-floor-food-processing-plant.jpg" class="services-image img-fluid" alt="">
+                                                <img src="images/services/js.jpg" class="services-image img-fluid" alt="">
                                                 <img src="images/services/close-up-mop-cleaning-industrial-plant-floor.jpg" class="services-image services-image-hover img-fluid" alt="">
 
                                                 <div class="services-icon-wrap">
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <p class="text-white mb-0">
-                                                            <i class="bi-cash me-2"></i>
-                                                            $6,800
-                                                        </p>
 
                                                         <p class="text-white mb-0">
                                                             <i class="bi-clock-fill me-2"></i>
-                                                            30 hrs
+                                                            300 hrs
                                                         </p>
                                                     </div>                                                    
                                                 </div>
@@ -402,16 +363,9 @@
                                                 <a class="services-title-link" href="services-detail.jsp">이것이 자바스크립트인가?</a>
                                             </h4>
 
-                                            <p>자바스크립트는 여전히 모르겠어요. 지금 하고 있는데 그래도 모르겠어요. 죽겠다ㅎㅎ</p>
+                                            <p>이것이 자바 스크립트인지는 전혀 모르겠고 이 페이지 스크립트 처리 어떻게 하죠?</p>
 
                                             <div class="d-flex flex-wrap align-items-center">
-                                                <div class="reviews-icons">
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star-fill"></i>
-                                                    <i class="bi-star"></i>
-                                                </div>
 
                                                 <a href="services-detail.jsp" class="custom-btn btn button button--atlas mt-2 ms-auto">
                                                     <span>상세보기</span>
@@ -436,179 +390,6 @@
                 </div>
             </section>
 
-
-            <section class="testimonial-section section-padding section-bg">
-                <div class="section-overlay"></div>
-
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-12 col-12 text-center">
-                            <h2 class="text-white mb-4">Happy Customers</h2>
-                        </div>
-
-                        <div class="col-lg-4 col-12">
-                            <div class="featured-block">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="images/avatar/happy-customer-01.jpg" class="avatar-image img-fluid">
-
-                                    <div class="ms-3">
-                                        <h4 class="mb-0">Marie</h4>
-
-                                        <div class="reviews-icons mb-1">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">Best Cleaning Service Provider Ipsum dolor sit consectetur kengan</p>
-                            </div>
-
-                            <div class="featured-block mb-lg-0">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="images/avatar/happy-customer-02.jpg" class="avatar-image img-fluid">
-
-                                    <div class="ms-3">
-                                        <h4 class="mb-0">Nana</h4>
-
-                                        <div class="reviews-icons mb-1">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-12">
-                            <div class="featured-block">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="images/avatar/happy-customer-03.jpg" class="avatar-image img-fluid">
-
-                                    <div class="ms-3">
-                                        <h4 class="mb-0">Elon</h4>
-
-                                        <div class="reviews-icons mb-1">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-
-                            <div class="featured-block mb-lg-0">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="images/avatar/happy-customer-04.jpg" class="avatar-image img-fluid">
-
-                                    <div class="ms-3">
-                                        <h4 class="mb-0">Josh</h4>
-
-                                        <div class="reviews-icons mb-1">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-12">
-                            <div class="featured-block">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="images/avatar/happy-customer-05.jpg" class="avatar-image img-fluid">
-
-                                    <div class="ms-3">
-                                        <h4 class="mb-0">Katie</h4>
-
-                                        <div class="reviews-icons mb-1">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                            </div>
-
-                            <div class="featured-block mb-lg-0">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="images/avatar/happy-customer-06.jpg" class="avatar-image img-fluid">
-
-                                    <div class="ms-3">
-                                        <h4 class="mb-0">Shai</h4>
-
-                                        <div class="reviews-icons mb-1">
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star-fill"></i>
-                                            <i class="bi-star"></i>
-                                            <i class="bi-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="partners-section">
-                <div class="container">
-                    <div class="row justify-content-center align-items-center">
-
-                        <div class="col-lg-12 col-12">
-                            <h4 class="partners-section-title bg-white shadow-lg">Trusted by companies</h4>
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/toprak-leasing.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/glorix.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/woocommerce.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/rolf-leasing.svg" class="partners-image img-fluid">
-                        </div>
-
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <img src="images/partners/unilabs.svg" class="partners-image img-fluid">
-                        </div>
-
-                    </div>
-                </div>
-            </section>
         </main>
 
 
@@ -617,121 +398,75 @@
                 <div class="row">
 
                     <div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
-                        <div>
-                            <img src="images/bubbles.png" class="logo img-fluid" alt="">
-                        </div>
-
-                        <ul class="footer-menu d-flex flex-wrap ms-5">
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">About Us</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Blog</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Reviews</a></li>
-
-                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
-                        </ul>
+		                <a class="navbar-brand" href="index.jsp">
+		                    <img src="/favicon.svg" class="logo img-fluid" alt="">
+		                    <span class="ms-2"><img src="http://localhost/view/student/images/title.svg" style="width:200px; height:100px"></span>
+		                </a>
                     </div>
 
                     <div class="col-lg-5 col-12 mb-4 mb-lg-0">
-                        <h5 class="site-footer-title mb-3">Our Services</h5>
+                        <h5 class="site-footer-title mb-3">AAK</h5>
 
                         <ul class="footer-menu">
                             <li class="footer-menu-item">
                                 <a href="#" class="footer-menu-link">
                                     <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                                    House Cleaning
+                                    공지사항
                                 </a>
                             </li>
 
                             <li class="footer-menu-item">
                                 <a href="#" class="footer-menu-link">
                                     <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                                    Car Washing
+                                    CS 강의
                                 </a>
                             </li>
 
                             <li class="footer-menu-item">
                                 <a href="#" class="footer-menu-link">
                                     <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                                    Laundry
-                                </a>
-                            </li>
-
-                            <li class="footer-menu-item">
-                                <a href="#" class="footer-menu-link">
-                                    <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                                    Office Cleaning
-                                </a>
-                            </li>
-
-                            <li class="footer-menu-item">
-                                <a href="#" class="footer-menu-link">
-                                    <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                                    Toilet Cleaning
+                                    프로그래밍 언어 강의
                                 </a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mb-md-0">
-                        <h5 class="site-footer-title mb-3">Office</h5>
+                        <h5 class="site-footer-title mb-3">회사소개</h5>
 
                         <p class="text-white d-flex mt-3 mb-2">
                             <i class="bi-geo-alt-fill me-2"></i>
-                            Akershusstranda 20, 0150 Oslo, Norway
+                            서울특별시 어딘가
                         </p>
 
                         <p class="text-white d-flex mb-2">
                             <i class="bi-telephone-fill me-2"></i>
 
-                            <a href="tel: 110-220-9800" class="site-footer-link">
-                                110-220-9800
+                            <a href="tel: 02-1234-5678" class="site-footer-link">
+                                02-1234-5678
                             </a>
                         </p>
 
                         <p class="text-white d-flex">
                             <i class="bi-envelope-fill me-2"></i>
 
-                            <a href="mailto:info@company.com" class="site-footer-link">
-                                info@company.com
+                            <a href="mailto:info@aak.sist.co.kr" class="site-footer-link">
+                                info@aak.sist.co.kr
                             </a>
                         </p>
-
-                        <ul class="social-icon mt-4">
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link button button--skoll">
-                                    <span></span>
-                                    <span class="bi-twitter"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link button button--skoll">
-                                    <span></span>
-                                    <span class="bi-facebook"></span>
-                                </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link button button--skoll">
-                                    <span></span>
-                                    <span class="bi-instagram"></span>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-6 mt-3 mt-lg-0 mt-md-0">
                         <div class="featured-block">
-                            <h5 class="text-white mb-3">Service Hours</h5>
+                            <h5 class="text-white mb-3">고객센터</h5>
 
                             <strong class="d-block text-white mb-1">Mon - Fri</strong>
 
-                            <p class="text-white mb-3">8:00 AM - 5:30 PM</p>
+                            <p class="text-white mb-3">9:00 AM - 6:00 PM</p>
 
                             <strong class="d-block text-white mb-1">Sat</strong>
 
-                            <p class="text-white mb-0">6:00 AM - 2:30 PM</p>
+                            <p class="text-white mb-0">9:00 AM - 1:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -742,12 +477,12 @@
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <p class="copyright-text mb-0">Copyright Â© 2036 Clean Work Co., Ltd.</p>
+                            <p class="copyright-text mb-0">Copyright Â© 2024 All About Knowledge Co., Ltd.</p>
                         </div>
                         
                         <div class="col-lg-6 col-12 text-end">
                             <p class="copyright-text mb-0">
-                            // Designed by <a href="https://www.tooplate.com" target="_parent">Tooplate</a> //</p>
+                            // Designed by <a href="#" target="_parent">sist</a> //</p>
                         </div>
                         
                     </div>

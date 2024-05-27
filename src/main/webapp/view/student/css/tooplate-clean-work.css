@@ -539,6 +539,10 @@ strong {
   padding: 35px;
 }
 
+.custom-block.d-flex.flex-column {
+    background-color: #7cb8ebe0;
+}
+
 .custom-block .custom-icon,
 .custom-block a {
   color: var(--white-color);
@@ -960,11 +964,6 @@ a.nav-link.custom-btn.custom-border-btn.custom-btn-bg-white.btn {
   border-radius: var(--border-radius-medium);
 }
 
-.featured-block {
-  padding: 20px;
-}
-
-
 /*---------------------------------------
   ABOUT              
 -----------------------------------------*/
@@ -1343,15 +1342,14 @@ a.nav-link.custom-btn.custom-border-btn.custom-btn-bg-white.btn {
 -----------------------------------------*/
 .site-footer {
   background-color: var(--primary-color);
-  padding-top: 50px;
 }
 
 .site-footer-bottom {
   border-top: 1px solid #7fbcf0;
   position: relative;
   z-index: 2;
-  margin-top: 50px;
-  padding-top: 25px;
+  margin-top: 5px;
+  padding-top: 5px;
   padding-bottom: 25px;
 }
 
