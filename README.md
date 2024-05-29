@@ -12,6 +12,10 @@
 ## 🧑‍🤝‍🧑 개발자 소개
 고한별 : 조장, PM, DB설계, UI 설계 및 구현 - 사용자(학생), 로그인 및 회원정보 기능 구현
 
+> https://github.com/Onestar90
+>
+> https://github.com/TalkingPotato90
+
 김도원 : 기능 구현 - 사용자(학생)
 
 김일신 : UI 설계 및 구현 - 관리자 , 기능 구현 - 관리자
