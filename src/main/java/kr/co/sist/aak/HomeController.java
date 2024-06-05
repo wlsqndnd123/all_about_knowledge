@@ -10,5 +10,8 @@ public class HomeController {
 	public String main(){
 		return "student/login_join";
 	}
-	
+	@GetMapping("/admin_index.do")
+	public String adminMain() {
+		return "/admin/login";
+	}
 }
