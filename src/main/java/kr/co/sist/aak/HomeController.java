@@ -8,7 +8,7 @@ public class HomeController {
 	
 	@GetMapping("/index.do")
 	public String main(){
-		return "student/login_join";
+		return "student/home";
 	}
 	@GetMapping("/admin_index.do")
 	public String adminMain() {
