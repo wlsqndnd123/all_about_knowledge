@@ -69,7 +69,7 @@
                                         aria-expanded="false">강사 관리
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_teacherlist.do">강사 리스트</a>
+                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
                                     </div>
                                 </li>
 
