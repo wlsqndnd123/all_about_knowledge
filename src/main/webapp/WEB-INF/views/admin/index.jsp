@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,15 +15,15 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <!-- https://fonts.google.com/specimen/Open+Sans -->
-    <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
+    <!-- https://fonts.google.com/specimen/Open+Sans -->
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/tooplate.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 </head>
 
 <body id="reportsPage">
@@ -197,18 +198,13 @@
             </footer>
         </div>
     </div>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="js/moment.min.js"></script>
-    <!-- https://momentjs.com/ -->
-    <script src="js/utils.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <!-- http://www.chartjs.org/docs/latest/ -->
-    <script src="js/fullcalendar.min.js"></script>
-    <!-- https://fullcalendar.io/ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
-    <script src="js/tooplate-scripts.js"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/moment.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/fullcalendar.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/tooplate-scripts.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/utils.js"/>"></script>
     <script>
         let ctxLine,
             ctxBar,
