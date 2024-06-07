@@ -1,4 +1,4 @@
-package kr.co.sist.aak.module.admin;
+package kr.co.sist.aak.module.admin.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +15,7 @@ public class NavController {
 		
 		return "/admin/manage_lecture";
 	}
-	@GetMapping("manage_teacherlist.do")
-	public String manageTeacherlist() {
-		
-		return "/admin/manage_teacherlist";
-	}
+	
 	@GetMapping("manage_memberlist.do")
 	public String manageMemberlist() {
 		
@@ -30,9 +26,5 @@ public class NavController {
 		
 		return "/admin/manage_qna";
 	}
-	@GetMapping("manage_notification.do")
-	public String manageNotification() {
-		
-		return "/admin/manage_notification";
-	}
+
 }
