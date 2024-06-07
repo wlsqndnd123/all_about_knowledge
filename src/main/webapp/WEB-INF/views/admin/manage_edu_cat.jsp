@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -14,15 +17,16 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <!-- https://fonts.google.com/specimen/Open+Sans -->
-    <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
+    <!-- https://fonts.google.com/specimen/Open+Sans -->
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/tooplate.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
+
 </head>
 
 <body id="reportsPage">
@@ -31,7 +35,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="index.jsp">
+                        <a class="navbar-brand" href="adminindex.do">
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                             <h1 class="tm-site-title mb-0">All About Knowledge</h1>
                         </a>
@@ -48,8 +52,8 @@
                                         
                                     </a>
                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_edu_cat.jsp">교육카테고리리스트</a>
-                                        <a class="dropdown-item" href="manage_lecture.jsp">강의신청리스트</a>
+                                        <a class="dropdown-item" href="manage_edu_cat.do">교육카테고리리스트</a>
+                                        <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -58,7 +62,7 @@
                                         회원 관리
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.jsp">회원 리스트</a>
+                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown" >
@@ -66,7 +70,7 @@
                                         aria-expanded="false">강사 관리
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_teacherlist.jsp">강사 리스트</a>
+                                        <a class="dropdown-item" href="manage_teacherlist.do">강사 리스트</a>
                                     </div>
                                 </li>
 
@@ -74,7 +78,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">문의 관리</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.jsp">문의 리스트</a>
+                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -83,13 +87,13 @@
                                         공지사항 관리
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.jsp">공지사항 리스트</a>
+                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
                                     </div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="login.jsp">
+                                    <a class="nav-link d-flex" href="admin_index.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -170,13 +174,11 @@
             </div>
         </footer>
     </div>
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-    <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
-    <!-- https://jqueryui.com/download/ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
+</div>
+  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+  <script type="text/javascript" src="<c:url value ="/resources/jquery-ui-datepicker/jquery-ui.min.js"/>"></script>
+  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+  
     <script>
         $(function () {
             $('#expire_date').datepicker();
