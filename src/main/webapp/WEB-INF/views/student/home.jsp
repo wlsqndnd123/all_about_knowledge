@@ -27,6 +27,18 @@
 			$("#frmGet")[0].action="test.do";
 			$("#frmGet").submit();
 		}); // click
+		$("#btnLecture").click(function() {
+			$("#frmGet")[0].action="lecture_list.do";
+			$("#frmGet").submit();
+		}); // click
+		$("#btnNotice").click(function() {
+			$("#frmGet")[0].action="site_notice.do";
+			$("#frmGet").submit();
+		}); // click
+		$("#btnQna").click(function() {
+			$("#frmGet")[0].action="site_qna.do";
+			$("#frmGet").submit();
+		}); // click
 	}); // ready
 </script>
 </head>
@@ -36,6 +48,9 @@
 	<form id="frmGet" method="get">
 		<input type="button" class="btn btn-sm btn-primary" value="로그인" id="btnLogin"><br>
 		<input type="button" class="btn btn-sm btn-info" value="semantic" id="btnSmt"><br>
+		<input type="button" class="btn btn-sm btn-info" value="lecture" id="btnLecture"><br>
+		<input type="button" class="btn btn-sm btn-info" value="notice" id="btnNotice"><br>
+		<input type="button" class="btn btn-sm btn-info" value="qna" id="btnQna"><br>
 	</form>
 	</div>
 </div>
