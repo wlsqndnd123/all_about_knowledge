@@ -47,6 +47,9 @@
   <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
   <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
 
+  <!-- Semantic UI CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  
   <style type="text/css">
   body {
     background-color: #FFFFFF;
@@ -64,6 +67,26 @@
     margin: 5em 0em 0em;
     padding: 5em 0em;
   }
+  .ui.fixed.menu {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ui.fixed.menu .item {
+    color: #000000 !important;
+  }
+  .ui.fixed.menu .item:hover {
+    background-color: #F0F0F0 !important;
+  }
+  .ui.vertical.footer.segment {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ui.vertical.footer.segment .header, .ui.vertical.footer.segment .item {
+    color: #000000 !important;
+  }
+  .ui.vertical.footer.segment .item:hover {
+    background-color: #F0F0F0 !important;
+  }
   .search-container {
     display: flex;
     justify-content: flex-end;
@@ -76,12 +99,18 @@
 	    // Semantic UI dropdown initialization
 	    $('.ui.dropdown').dropdown();
 	  });
+
+  /* //카드 클릭 이벤트 
+  $('.card').on('click', function() {
+    var lectureId = $(this).data('lecture-id');
+    window.location.href = 'lecture_detail.jsp?lectureId=' + lectureId;
+  }); */
 </script>
 
 </head>
 <body>
 
-  <div class="ui fixed inverted menu">
+  <div class="ui fixed menu">
     <div class="ui container">
       <a href="#" class="header item">
         <img class="logo" src="assets/images/logo.png">
@@ -143,9 +172,9 @@
 	  
 	  <div class="ui three stackable link cards">
 	  <div class="card">
-	    <div class="image">
+	    <a href="user_lecture_detail.do" class="image">
 	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
-	    </div>
+	    </a>
 	    <div class="content">
 	      <div class="header">이것이 C인가?</div>
 	      <div class="meta">
@@ -167,9 +196,9 @@
 	    </div>
 	  </div>
 	  <div class="card">
-	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
-	    </div>
+	    <a href="user_lecture_detail.do" class="image">
+	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	    </a>
 	    <div class="content">
 	      <div class="header">JAVA 초급 과정</div>
 	      <div class="meta">
@@ -192,9 +221,9 @@
 	    </div>
 	  </div>
 	  <div class="card">
-	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
-	    </div>
+	    <a href="user_lecture_detail.do" class="image">
+	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	    </a>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
 	      <div class="meta">
@@ -216,9 +245,9 @@
 	    </div>
 	  </div>
 	  <div class="card">
-	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
-	    </div>
+	    <a href="user_lecture_detail.do" class="image">
+	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	    </a>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
 	      <div class="meta">
@@ -360,7 +389,7 @@
   
   </div>
 
-  <div class="ui inverted vertical footer segment">
+  <div class="ui vertical footer segment">
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
         <div class="three wide column">
@@ -406,5 +435,8 @@
     </div>
   </div>
 </body>
-
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- Semantic UI JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 </html>

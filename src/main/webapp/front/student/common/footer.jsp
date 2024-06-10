@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="http://192.168.10.223/spring_mvc/common/favicon.ico"/>
 <!--bootstrap 시작-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!--bootstrap 끝-->
-
 <link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/main.css" type="text/css" media="all" />
 <link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/board.css" type="text/css" media="all" />
 
@@ -25,34 +25,11 @@
   crossorigin="anonymous"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 
- <style type="text/css">
-  body {
+<style type="text/css">
+	body {
     background-color: #FFFFFF;
   }
-  .ui.menu .item img.logo {
-    margin-right: 1.5em;
-  }
-  .main.container {
-    margin-top: 7em;
-  }
-  .wireframe {
-    margin-top: 2em;
-  }
-  .ui.footer.segment {
-    margin: 5em 0em 0em;
-    padding: 5em 0em;
-  }
-  .ui.fixed.menu {
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
-  }
-  .ui.fixed.menu .item {
-    color: #000000 !important;
-  }
-  .ui.fixed.menu .item:hover {
-    background-color: #F0F0F0 !important;
-  }
-  .ui.vertical.footer.segment {
+	.ui.vertical.footer.segment {
     background-color: #FFFFFF !important;
     color: #000000 !important;
   }
@@ -62,82 +39,15 @@
   .ui.vertical.footer.segment .item:hover {
     background-color: #F0F0F0 !important;
   }
-  .search-container {
-    display: flex;
-    justify-content: flex-end;
-  }
 </style>
-
+<script type="text/javascript">
+	$(function(){
+		
+	});//ready
+</script>
 </head>
 <body>
-
-  <div class="ui fixed menu">
-    <div class="ui container">
-      <a href="#" class="header item">
-        <img class="logo" src="assets/images/logo.png">
-        Project Name
-      </a>
-      <a href="#" class="item">Home</a>
-      <div class="ui simple dropdown item">
-        Dropdown <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="#">Link Item</a>
-          <a class="item" href="#">Link Item</a>
-          <div class="divider"></div>
-          <div class="header">Header Item</div>
-          <div class="item">
-            <i class="dropdown icon"></i>
-            Sub Menu
-            <div class="menu">
-              <a class="item" href="#">Link Item</a>
-              <a class="item" href="#">Link Item</a>
-            </div>
-          </div>
-          <a class="item" href="#">Link Item</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ui main container">
-    <h1 class="ui header">공지사항</h1>
-    
-    <div class="search-container">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search icon"></i>
-      </div>
-    </div>
-    
-    <table class="ui very basic table">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Title</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>공지사항 제목 1</td>
-          <td>2024-06-08</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>공지사항 제목 2</td>
-          <td>2024-06-07</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>공지사항 제목 3</td>
-          <td>2024-06-06</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="ui inverted vertical footer segment">
+<div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
         <div class="three wide column">
@@ -159,12 +69,10 @@
           </div>
         </div>
         <div class="three wide column">
-          <h4 class="ui inverted header">Group 3</h4>
+          <h4 class="ui inverted header">고객센터</h4>
           <div class="ui inverted link list">
-            <a href="#" class="item">Link One</a>
-            <a href="#" class="item">Link Two</a>
-            <a href="#" class="item">Link Three</a>
-            <a href="#" class="item">Link Four</a>
+            <a href="#" class="item">공지사항</a>
+            <a href="#" class="item">문의사항</a>
           </div>
         </div>
         <div class="seven wide column">
@@ -183,5 +91,4 @@
     </div>
   </div>
 </body>
-
 </html>
