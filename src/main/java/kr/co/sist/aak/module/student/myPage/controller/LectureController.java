@@ -10,6 +10,10 @@ public class LectureController {
 	public String test(){
 		return "student/my_page/semantic_test";
 	}
+	@GetMapping("/mypage_home.do")
+	public String myPageHome(){
+		return "student/my_page/mypage_home";
+	}
 	@GetMapping("/login.do")
 	public String login(){
 		return "student/login_join";
