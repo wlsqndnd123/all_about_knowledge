@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TestController {
 	
-	@GetMapping("test.do")
-	public String test() {
-		
-		return "/instructor/test";
-	}
+	//@GetMapping("test.do")
+//	public String test() {
+//		
+//		return "/instructor/test";
+//	}
 
 }
