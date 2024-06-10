@@ -30,17 +30,37 @@
     background-color: #FFFFFF;
   }
   .ui.menu .item img.logo {
-    margin-right: 80px;
+    margin-right: 1.5em;
   }
   .main.container {
-    margin-top: 160px;
+    margin-top: 7em;
   }
   .wireframe {
-    margin-top: 160px;
+    margin-top: 2em;
   }
   .ui.footer.segment {
-    margin: 80px 0px 0px;
-    padding: 80px 0px;
+    margin: 5em 0em 0em;
+    padding: 5em 0em;
+  }
+  .ui.fixed.menu {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ui.fixed.menu .item {
+    color: #000000 !important;
+  }
+  .ui.fixed.menu .item:hover {
+    background-color: #F0F0F0 !important;
+  }
+  .ui.vertical.footer.segment {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ui.vertical.footer.segment .header, .ui.vertical.footer.segment .item {
+    color: #000000 !important;
+  }
+  .ui.vertical.footer.segment .item:hover {
+    background-color: #F0F0F0 !important;
   }
   .search-container {
     display: flex;
@@ -51,7 +71,7 @@
 </head>
 <body>
 
-  <div class="ui fixed inverted menu">
+  <div class="ui fixed menu">
     <div class="ui container">
       <a href="#" class="header item">
         <img class="logo" src="assets/images/logo.png">
@@ -117,7 +137,7 @@
     </table>
   </div>
 
-  <div class="ui inverted vertical footer segment">
+  <div class="ui vertical footer segment">
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
         <div class="three wide column">
