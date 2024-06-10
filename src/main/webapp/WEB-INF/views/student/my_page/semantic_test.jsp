@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    info=""%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,7 @@
 </head>
 <body>
 <div>
-<button class="ui button">잘나와?</button>
+<button class="ui button">내가 문제네?</button>
 </div>
 </body>
 </html>
