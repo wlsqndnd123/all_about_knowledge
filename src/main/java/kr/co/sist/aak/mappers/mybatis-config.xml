@@ -7,6 +7,8 @@
 <typeAliases>
  <typeAlias type="kr.co.sist.aak.domain.admin.NoticeManagementDomain" alias="noticeManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.NoticeManagementVO" alias="noticeManagementVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.InstructorManagementDomain" alias="InstructorManagementDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.vo.InstructorManagementVO" alias="InstructorManagementVO"/>
 </typeAliases>
 
   <environments default="development">
@@ -21,7 +23,9 @@
     </environment>
   </environments>
   <mappers>
-  <!-- 각 Mapper에서 하는 일 주석으로 표시해두면 편함~ -->
+ <!-- NoticeMAnagement  -->
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper.xml"/>
+ <!-- Instructormanagement -->  
+    <mapper resource="kr/co/sist/aak/mappers/admin_mapper2.xml"/>
   </mappers>
 </configuration>
