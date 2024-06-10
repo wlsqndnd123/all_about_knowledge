@@ -108,6 +108,15 @@
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
+                
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">실험</h2>
+                        <canvas id="lineChart1"></canvas>
+                    </div>
+                </div>
+                
+                
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
                         <h2 class="tm-block-title">Performance</h2>
@@ -189,12 +198,7 @@
                 </div>
             </div>
             <footer class="row tm-mt-small">
-                <div class="col-12 font-weight-light">
-                    <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                        Copyright &copy; 2018 Admin Dashboard . Created by
-                        <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
-                    </p>
-                </div>
+               
             </footer>
         </div>
     </div>
