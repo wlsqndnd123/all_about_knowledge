@@ -8,9 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--bootstrap 시작-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 <!--bootstrap 끝-->
+
 <link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/main.css" type="text/css" media="all" />
 <link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/board.css" type="text/css" media="all" />
 
@@ -18,39 +19,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!--jQuery CDN 끝-->
 
-<style type="text/css">
-	
-	
-</style>
-<script type="text/javascript">
-	$(function(){
-		
-	});//ready
-</script>
-  <!-- Standard Meta -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 
-  <!-- Site Properties -->
-  <title>Fixed Menu Example - Semantic</title>
+<!-- Semantic UI CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+ <!--- Component CSS -->
+  <link rel="stylesheet" type="text/css" href="../../dist/components/menu.css">
 
-  <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
-
-  <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
-
-  <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/dropdown.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
-
-  <style type="text/css">
+ <style type="text/css">
   body {
     background-color: #FFFFFF;
   }
@@ -67,12 +47,47 @@
     margin: 5em 0em 0em;
     padding: 5em 0em;
   }
-  </style>
+  .ui.fixed.menu {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ui.fixed.menu .item {
+    color: #000000 !important;
+  }
+  .ui.fixed.menu .item:hover {
+    background-color: #F0F0F0 !important;
+  }
+  .ui.vertical.footer.segment {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .ui.vertical.footer.segment .header, .ui.vertical.footer.segment .item {
+    color: #000000 !important;
+  }
+  .ui.vertical.footer.segment .item:hover {
+    background-color: #F0F0F0 !important;
+  }
+  .search-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+</style>
+<script type="text/javascript">
+  $(document).ready(function(){
+	  
+	  });
+  $(document).ready(function(){
+	    $('.ui.menu a.item').on('click', function() {
+	      $('.ui.menu a.item').removeClass('active'); // 모든 아이템에서 active 클래스 제거
+	      $(this).addClass('active'); // 클릭한 아이템에 active 클래스 추가
+	    });
+	  });
 
+</script>
 </head>
 <body>
 
-  <div class="ui fixed inverted menu">
+  <div class="ui fixed menu">
     <div class="ui container">
       <a href="#" class="header item">
         <img class="logo" src="assets/images/logo.png">
@@ -100,17 +115,46 @@
     </div>
   </div>
 
-  <div class="ui main text container">
-    <h1 class="ui header">Semantic UI Fixed Template</h1>
-    <p>This is a basic fixed menu template using fixed size containers.</p>
-    <p>A text container is used for the main container, which is useful for single column layouts</p>
-    <img class="wireframe" src="assets/images/wireframe/media-paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
+  <div class="ui main container">
+    <h1 class="ui header"></h1>
+    <div class="ui breadcrumb">
+	  <a class="section">개발/프로그래밍</a>
+	  <i class="right angle icon divider"></i>
+	  <a class="section">C</a>
+	</div>
+	
+	<div class="ui segment">
+  <img class="ui small left floated image" src="${pageContext.request.contextPath}/front/student/img/java.png">
+  <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at.
+   Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in.
+    Vim dolorum definiebas an. Mei ex natum rebum iisque.Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at.
+   Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in.
+    Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+	</div>
+	
+	<div class="ui secondary pointing menu">
+	  <a class="item active">
+	    강의소개
+	  </a>
+	  <a class="item">
+	    강의목차
+	  </a>
+	  <a class="item">
+	    수료기준
+	  </a>
+	  <a class="item">
+	    강의공지
+	  </a>
+	  <a class="item">
+	    강의문의
+	  </a>
+	</div>
+	<!-- <div class="ui segment">
+	  <p></p>
+	</div> -->
+    
+    
+    
   </div>
 
   <div class="ui inverted vertical footer segment">
@@ -159,5 +203,8 @@
     </div>
   </div>
 </body>
-
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- Semantic UI JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 </html>
