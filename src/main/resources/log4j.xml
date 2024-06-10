@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<configuration status="trace">
+   <Properties>       
+       <property name="LOGS_PATH">c:/dev/workspace/all_about_knowledge/log</property>
+   </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd hh:mm:ss} %5p [%c] %m%n"/>
+        </Console>
+          <RollingFile name ="RollingFile">
+            <FileName>${LOGS_PATH}/mybatis.log</FileName>
+            <FilePattern>${LOGS_PATH}/mybatis.%d{yyyy-MM-dd}.%i.log.gz</FilePattern>
+            <PatternLayout>
+                <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%c][%5p] [%m][%n]</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            
+         <DefaultRolloverStrategy max="7" fileIndex="max" >
+              <Delete basePath="${LOGS_PATH}" maxDepth = "1">
+                 <!-- 3일이 경과한 로그파일은 자동 삭제 -->
+                 <IfLastModified age = "3d"/>
+              </Delete>
+         </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
 
-	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
-		</layout>
-	</appender>
-	
-	<!-- Application Loggers -->
-	<logger name="kr.co.sist">
-		<level value="info" />
-	</logger>
-	
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework.core">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.beans">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.context">
-		<level value="info" />
-	</logger>
+    <loggers>
+        <root level="trace" additivity="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="RollingFile" />
+        </root>
+    </loggers>
 
-	<logger name="org.springframework.web">
-		<level value="info" />
-	</logger>
-
-	<!-- Root Logger -->
-	<root>
-		<priority value="warn" />
-		<appender-ref ref="console" />
-	</root>
-	
-</log4j:configuration>
+</configuration>
