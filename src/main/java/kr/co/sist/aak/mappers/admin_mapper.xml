@@ -3,7 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.admin">
-	<select id="selectAllAdminNotice" resultType ="kr.co.sist.aak.domain.admin.NoticeManagementDomain">
+	
+	<select id="selectAllAdminNotice" resultType ="noticeManagementDomain">
 	select * from NOTICE
 	</select>
+	<select id="selectAdminNoticeMaxval" resultType ="String">
+	select max(NOTI_NO)
+	from   NOTICE
+	</select>
+	<select id="selectOneAdminNotice" parameterType="String" resultType ="noticeManagementDomain">
+	select * 
+	from NOTICE
+	where noti_no =#{noti_no}
+	</select>
+	<insert id="insertAdminNotice" parameterType="noticeManagementVO">
+	INSERT INTO NOTICE (NOTI_NO, TITLE, ID, CONTENT, STATUS) VALUES
+	(#{noti_no},#{title} ,#{id} ,#{content} ,#{status} )
+
+	</insert>
+	<update id="updateAdminNotice" parameterType="noticeManagementVO">
+	update NOTICE
+	set    STATUS = #{status}
+	where  NOTI_NO = #{noti_no}
+	</update>
+	
+	<update id="deleteAdminNotice" parameterType="String">
+	update NOTICE
+	set    STATUS = DELT
+	where  NOTI_NO = #{noti_no}
+	</update>
+	
 </mapper>

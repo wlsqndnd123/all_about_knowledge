@@ -5,6 +5,8 @@
 <configuration>
 <properties resource="kr/co/sist/aak/properties/database.properties"/>
 <typeAliases>
+ <typeAlias type="kr.co.sist.aak.domain.admin.NoticeManagementDomain" alias="noticeManagementDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.vo.NoticeManagementVO" alias="noticeManagementVO"/>
 </typeAliases>
 
   <environments default="development">
