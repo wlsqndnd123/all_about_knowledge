@@ -112,6 +112,16 @@
   	<button class="btn btn-light btn-sm me-md-2" type="button">강사 추가</button>
 </div>	
                     <div>
+                    <select class="form-select" aria-label="Default select example">
+                    <option selected>정렬조건</option>
+                    <option>강사명 오름차 순</option>
+                    <option>강사명 내림차 순</option>
+                    <option>진행중인 강의가 많은 순</option>
+                    <option>진행중인 강의가 적은 순</option>
+                    </select>
+                    </div>
+                    <div>
+                    
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
