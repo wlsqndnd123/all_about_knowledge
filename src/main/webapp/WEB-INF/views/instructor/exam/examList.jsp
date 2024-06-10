@@ -25,10 +25,10 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn-write").click(function(){
-			
+			<a href="exam_write.jsp"></a>		
 		});
 		$("#btn-update").click(function(){
-			
+			<a href="exam_update.jsp"></a>
 		});
 	
 	});
