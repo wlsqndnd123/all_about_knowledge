@@ -12,7 +12,7 @@ public class LectureController {
 	}
 	@GetMapping("/mypage_home.do")
 	public String myPageHome(){
-		return "student/my_page/mypage_home";
+		return "student/my_page/mypage_layout";
 	}
 	@GetMapping("/login.do")
 	public String login(){

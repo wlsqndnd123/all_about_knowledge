@@ -6,17 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/mypage.css">
+<title>마이페이지 - 홈</title>
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 <style type = "text/css">
-.column{
-border: 1px solid black;
-}
 </style>
 <script type = "text/javascript">
 	$(function() {
@@ -25,32 +21,22 @@ border: 1px solid black;
 </script>
 </head>
 <body>
-<!-- 사이드 네비게이션 영역 -->
-<div class="mypage_side_nav">
-  <div class="ui visible left vertical menu sidebar">
-    <a class="item">
-      사이드
-    </a>
-    <a class="item">
-      네비게이션
-    </a>
-    <a class="item">
-      영역
-    </a>
-  </div>
-</div>
+<!-- 사이드 네비게이션 바 -->
+<aside>
+사이드 네비게이션 바
+</aside>
+
+<!-- 탑 네비게이션 바 -->
+<nav>
+상단 네비게이션바
+</nav>
+
+<!-- 컨텐츠 영역 -->
+<article>
+content 영역
+</article>
 
 
-<!-- 마이페이지 컨텐츠 영역 -->  
-<div class="mypage_contents">
-	<!-- 상단 네비게이션 영역 -->
-	<div class ="ui top menu">
-		상단 네비게이션 바
-	</div>
 
-	<div class="mypage_contents_core">
-	마이페이지 내용
-	</div>
-</div>
 </body>
 </html>
