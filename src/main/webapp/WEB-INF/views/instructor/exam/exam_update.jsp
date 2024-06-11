@@ -20,13 +20,38 @@
 
 
 <style type="text/css">
- form {
-        max-width: 800px;
+    form {
+        max-width: 700px;
         margin: 0 auto;
         text-align: center;
     }
     .sub {
-        margin: 20px auto;
+        margin: 20px 0;
+        text-align: left; /* 과목을 왼쪽으로 정렬합니다. */
+    }
+    
+    .test-box {
+        background-color: #ccc;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        text-align: left; /* 텍스트 상자 내부의 텍스트를 왼쪽으로 정렬합니다. */
+    }
+    
+    textarea {
+        width: 550px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+    
+    .test-box input[type="text"] {
+        width: 550px;
+        margin-bottom: 5px;
+    }
+    
+    #btn-end {
+        margin-top: 20px;
     }
 </style>
 <script type="text/javascript">
@@ -57,12 +82,13 @@ $(function(){
 </script>
 </head>
 <body>
-
+<h3>시험 수정</h3>
 <div>
-<form>
 <thead>
         <div id="test">
         <td>과목:</td><input type="text" class="sub" id="sub" readonly/>
+          </div>
+<form>
             <div class="test-box">
                 문제 : <textarea></textarea> <br>
                 번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
@@ -70,7 +96,7 @@ $(function(){
                 번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
                 번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
             </div>
-        </div>
+      
         </thead>
         <tbody>
         <input type="button" id="btn-end" value="수정완료" class="btn btn-info btn-sm"/>
