@@ -9,6 +9,10 @@ public class NoticemanagementController {
 public String noticeDetail() {
 	return "/admin/manage_notifications/manage_notification_details";
 }
+	@GetMapping("manage_notification_write.do")
+	public String noticeWrite() {
+		return "/admin/manage_notifications/manage_notification_write";
+	}
 @GetMapping("manage_notification.do")
 public String searchNoticeList() {
 	

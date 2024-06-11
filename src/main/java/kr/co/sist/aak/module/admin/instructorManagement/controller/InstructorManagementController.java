@@ -9,6 +9,10 @@ public class InstructorManagementController {
 public String instructorDetail() {
 	return "/admin/manage_instructor/manage_instructor_details";
 }
+	@GetMapping("manage_instructor_addform.do")
+	public String instructorAdd() {
+		return "/admin/manage_instructor/manage_instructor_add";
+	}
 	@GetMapping("manage_instructor.do")
 	public String searchInstructorList() {
 		
