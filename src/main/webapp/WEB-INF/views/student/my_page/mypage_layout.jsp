@@ -22,8 +22,26 @@
 </head>
 <body class="mypage">
 <!-- 사이드 네비게이션 바 -->
-<aside class="side_nav">
-사이드 네비게이션 바
+<aside class="side_nav ui vertical menu">
+  <div class="item">
+    <div class="header">로고 넣을 자리</div>
+  </div>
+  <div class="item">
+    <div class="header">나의 강의실</div>
+    <div class="menu">
+      <a class="item"><img src="/all_about_knowledge/front/student/icon/dashboard.svg" class="nav_svg"/>대시보드</a>
+      <a class="item">나의강의</a>
+      <a class="item">관심강의</a>
+      <a class="item">나의문의</a>
+    </div>
+  </div>
+  <div class="item">
+    <div class="header">개인정보관리</div>
+    <div class="menu">
+      <a class="item">개인정보수정</a>
+      <a class="item">탈퇴</a>
+    </div>
+  </div>
 </aside>
 
 <!-- 탑 네비게이션 바 -->

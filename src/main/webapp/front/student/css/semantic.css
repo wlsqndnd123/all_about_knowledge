@@ -77,38 +77,17 @@ body {
   margin: 0;
 }
 
-.mypage{
-  display: flex;
-  margin: 0;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
 /**
  * Add the correct display in IE 9-.
  */
 
- article,
- aside,
- footer,
- header,
- nav,
- section {
-   display: block;
- }
-
-.top_nav {
-  width: 100vw;
-  height: 7vh;
-}
-
-.side_nav{
-  width: 260px;
-  height: 100vh;
-}
-
-.my_article{
-  height: 93vh;
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
 }
 
 /**
@@ -38778,3 +38757,34 @@ body.pushable > .pusher {
 /*******************************
          Site Overrides
 *******************************/
+
+/*******************************
+add
+*******************************/
+
+.mypage{
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.top_nav {
+  width: 100vw;
+  height: 7vh;
+}
+
+.side_nav{
+  width: 260px;
+  height: 100vh;
+}
+
+.my_article{
+  height: 93vh;
+}
+
+.nav_svg {
+  display: inline-block !important;
+  height: 18px;
+  margin-right: 5px !important;
+}
