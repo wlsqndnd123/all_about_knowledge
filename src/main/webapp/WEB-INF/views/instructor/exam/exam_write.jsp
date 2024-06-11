@@ -20,7 +20,8 @@
 
 
 <style type="text/css">
-	    form {
+    form {
+    
         max-width: 800px;
         margin-left: 20px;
     }
@@ -28,6 +29,7 @@
         margin: 20px 0;
     }
     .test-box {
+     background-color: #ccc;
         border: 1px solid #ccc;
         padding: 10px;
         margin-bottom: 10px;
@@ -40,6 +42,11 @@
     .test-box input[type="text"] {
         width: 600px;
     }
+    .test-box input[type="text"],
+.test-box input[type="radio"] {
+    margin-left: 20px;
+}
+    
 </style>
 <script type="text/javascript">
 $(function(){

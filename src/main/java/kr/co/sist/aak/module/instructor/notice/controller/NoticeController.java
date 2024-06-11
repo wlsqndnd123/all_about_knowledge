@@ -13,7 +13,16 @@ public class NoticeController {
 		
 	}
 	
+	@GetMapping("/notice_write.do")
+	public String notice_wirte() {
+		
+		return "instructor/notice/notice_wirte";
+	}
 	
+	@GetMapping("/notice_update.do")
+	public String notice_update() {
+		return "instructor/notice/notice_update";
+	}
 	
 
 }
