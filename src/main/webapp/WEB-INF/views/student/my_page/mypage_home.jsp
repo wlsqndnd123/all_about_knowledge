@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 - 홈</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -20,23 +20,21 @@
 	}); // ready
 </script>
 </head>
-<body>
+<body class="mypage">
 <!-- 사이드 네비게이션 바 -->
-<aside>
+<aside class="side_nav">
 사이드 네비게이션 바
 </aside>
 
 <!-- 탑 네비게이션 바 -->
-<nav>
+<nav class="top_nav">
 상단 네비게이션바
 </nav>
 
 <!-- 컨텐츠 영역 -->
-<article>
+<article class="my_article">
 content 영역
 </article>
-
-
 
 </body>
 </html>

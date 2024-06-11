@@ -74,6 +74,10 @@ html {
  */
 
 body {
+  margin: 0;
+}
+
+.mypage{
   display: flex;
   margin: 0;
   flex-direction: column;
@@ -84,23 +88,26 @@ body {
  * Add the correct display in IE 9-.
  */
 
-footer,
-header,
-section {
-  display: block;
-}
+ article,
+ aside,
+ footer,
+ header,
+ nav,
+ section {
+   display: block;
+ }
 
-nav {
+.top_nav {
   width: 100vw;
   height: 7vh;
 }
 
-aside{
+.side_nav{
   width: 260px;
   height: 100vh;
 }
 
-article{
+.my_article{
   height: 93vh;
 }
 
