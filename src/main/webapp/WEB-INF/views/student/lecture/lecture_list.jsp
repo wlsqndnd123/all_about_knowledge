@@ -173,7 +173,7 @@
 	  <div class="ui three stackable link cards">
 	  <div class="card">
 	    <a href="user_lecture_detail.do" class="image">
-	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	       <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </a>
 	    <div class="content">
 	      <div class="header">이것이 C인가?</div>
@@ -197,7 +197,7 @@
 	  </div>
 	  <div class="card">
 	    <a href="user_lecture_detail.do" class="image">
-	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	       <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </a>
 	    <div class="content">
 	      <div class="header">JAVA 초급 과정</div>
@@ -222,7 +222,7 @@
 	  </div>
 	  <div class="card">
 	    <a href="user_lecture_detail.do" class="image">
-	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	       <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </a>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
@@ -246,7 +246,7 @@
 	  </div>
 	  <div class="card">
 	    <a href="user_lecture_detail.do" class="image">
-	       <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	       <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </a>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
@@ -270,7 +270,7 @@
 	  </div>
 	  <div class="card">
 	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </div>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
@@ -294,7 +294,7 @@
 	  </div>
 	  <div class="card">
 	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </div>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
@@ -318,7 +318,7 @@
 	  </div>
 	  <div class="card">
 	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </div>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
@@ -341,7 +341,7 @@
 	  </div>
 	  <div class="card">
 	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </div>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>
@@ -364,7 +364,7 @@
 	  </div>
 	  <div class="card">
 	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/img/java.png">
+	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
 	    </div>
 	    <div class="content">
 	      <div class="header">파이썬 단기완성</div>

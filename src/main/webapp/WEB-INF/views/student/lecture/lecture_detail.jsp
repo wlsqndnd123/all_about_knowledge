@@ -6,29 +6,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<!--bootstrap 시작-->
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-<!--bootstrap 끝-->
-
-<link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/main.css" type="text/css" media="all" />
-<link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/board.css" type="text/css" media="all" />
-
-<!--jQuery CDN 시작-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!--jQuery CDN 끝-->
-
-<link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="/all_about_knowledge/front/student/js/semantic.js"></script>
+<title>강의 상세</title>
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
 <!-- Semantic UI CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
- <!--- Component CSS -->
-  <link rel="stylesheet" type="text/css" href="../../dist/components/menu.css">
+<!-- Semantic UI JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
+<script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 
  <style type="text/css">
   body {
@@ -71,18 +59,32 @@
     display: flex;
     justify-content: flex-end;
   }
+  .hidden {
+            display: none;
+        }
+ .box {
+    border: 1px solid #ccc; 
+    padding: 1em;
+    margin-bottom: 0em;
+    height: 200px; /* 박스의 높이 설정 (필요에 따라 조정) */
+  }     
+.custom-large-image {
+  width: 200px; 
+  height: auto; 
+}    
 </style>
-<script type="text/javascript">
-  $(document).ready(function(){
-	  
-	  });
-  $(document).ready(function(){
-	    $('.ui.menu a.item').on('click', function() {
-	      $('.ui.menu a.item').removeClass('active'); // 모든 아이템에서 active 클래스 제거
-	      $(this).addClass('active'); // 클릭한 아이템에 active 클래스 추가
-	    });
-	  });
 
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.ui.secondary.pointing.menu .item').on('click', function() {
+      $('.ui.secondary.pointing.menu .item').removeClass('active'); // 모든 아이템에서 active 클래스 제거
+      $(this).addClass('active'); // 클릭한 아이템에 active 클래스 추가
+
+      var targetContent = $(this).data('content'); // 클릭한 아이템의 data-content 값을 가져옴
+      $('.content').addClass('hidden'); // 모든 컨텐츠를 숨김
+      $('#' + targetContent).removeClass('hidden'); // 클릭한 메뉴에 해당하는 컨텐츠를 보여줌
+    });
+  });
 </script>
 </head>
 <body>
@@ -124,34 +126,71 @@
 	</div>
 	
 	<div class="ui segment">
-  <img class="ui small left floated image" src="${pageContext.request.contextPath}/front/student/img/java.png">
-  <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at.
-   Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in.
-    Vim dolorum definiebas an. Mei ex natum rebum iisque.Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at.
-   Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in.
-    Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+  <img class="left floated image custom-large-image" src="${pageContext.request.contextPath}/front/student/images/java.png">
+  <p>
+  <h2>이것이 C인가?</h2><br>
+  <h5>00명의 수강생</h5>
+  <h5>곽우신</h5>
+  </p>
 	</div>
 	
 	<div class="ui secondary pointing menu">
-	  <a class="item active">
-	    강의소개
-	  </a>
-	  <a class="item">
-	    강의목차
-	  </a>
-	  <a class="item">
-	    수료기준
-	  </a>
-	  <a class="item">
-	    강의공지
-	  </a>
-	  <a class="item">
-	    강의문의
-	  </a>
-	</div>
-	<!-- <div class="ui segment">
-	  <p></p>
-	</div> -->
+      <a class="item active" data-content="강의소개">
+        강의소개
+      </a>
+      <a class="item" data-content="강의목차">
+        강의목차
+      </a>
+      <a class="item" data-content="수료기준">
+        수료기준
+      </a>
+      <a class="item" data-content="강의공지">
+        강의공지
+      </a>
+      <a class="item" data-content="강의문의">
+        강의문의
+      </a>
+    </div>
+    
+    <div class="ui grid">
+        <div class="eleven wide column">
+		    <div id="강의소개" class="content">
+		      <p>강의 소개 내용</p>
+		    </div>
+		    <div id="강의목차" class="content hidden">
+		      <p>강의 목차 내용</p>
+		    </div>
+		    <div id="수료기준" class="content hidden">
+		      <p>수료 기준 내용</p>
+		    </div>
+		    <div id="강의공지" class="content hidden">
+		      <p>강의 공지 내용</p>
+		    </div>
+		    <div id="강의문의" class="content hidden">
+		      <p>강의 문의 내용</p>
+		    </div>
+		 </div>
+		     <div class="five wide column">
+            <div class="box inline">
+            <h3></h3>
+    <h3 class="ui center aligned header">무료강의</h3>
+    <div class="ui center aligned buttons" style="display: flex; flex-direction: column;">
+        <button class="positive ui button" style="margin-bottom: 10px;">수강 신청</button>
+        <button class="ui icon button">
+            <i class="heart icon"></i>
+            관심 강의
+        </button>
+    </div>
+</div>
+            <div class="box inline" style="height: 70px;">
+    <ul style="padding: 0; text-align: center; list-style-type: none; margin: 0;">
+        <li>● 총 00개의 수업 (10시간 30분)</li>
+        <li>● 0명이 관심강의로 선택했어요</li>
+    </ul>
+</div>
+        </div>
+    </div>
+</div>
     
     
     
