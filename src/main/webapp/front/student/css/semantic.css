@@ -38772,11 +38772,13 @@ add
 .top_nav {
   width: 100vw;
   height: 7vh;
+  margin: 0px !important;
 }
 
 .side_nav{
   width: 260px;
   height: 100vh;
+  margin-bottom: 0px !important;
 }
 
 .my_article{
@@ -38787,4 +38789,8 @@ add
   display: inline-block !important;
   height: 18px;
   margin-right: 5px !important;
+}
+
+.top_nav .right.menu {
+  margin-right: 260px;
 }
