@@ -12,7 +12,9 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
-
+<link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
+ <!-- Semantic UI CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
  <style type="text/css">
   body {
     background-color: #FFFFFF;
@@ -55,7 +57,13 @@
     justify-content: flex-end;
   }
 </style>
-
+<script type="text/javascript">
+  $(document).ready(function($) {
+    $(".clickable-row").click(function() {
+      window.location = $(this).data("href");
+    });
+  });
+</script>
 </head>
 <body>
 
@@ -87,7 +95,7 @@
     </div>
   </div>
 
-  <div class="ui main container">
+  <div class="ui main text container">
     <h1 class="ui header">공지사항</h1>
     
     <div class="search-container">
@@ -106,7 +114,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="clickable-row" data-href="site_notice_detail.do">
           <td>1</td>
           <td>공지사항 제목 1</td>
           <td>2024-06-08</td>

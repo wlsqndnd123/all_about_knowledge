@@ -25,7 +25,14 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-
+	<style>
+	.right {
+  		 text-align: right;
+		}
+	
+	
+	
+	</style>
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -72,14 +79,14 @@
                                     </div>
                                 </li>
 
-                                <li class="nav-item dropdown ">
+                                <li class="nav-item dropdown active">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">문의 관리</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown active">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         공지사항 관리
@@ -107,70 +114,56 @@
                 <div class="bg-white tm-block" style="width: 100%" >
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">강사 상세</h2>
-                            <div style="text-align: center; margin: auto;">
-                            <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                            <img src="http://localhost/all_about_knowledge/front/admin/img/profile-image.png"  class="card-img-top" alt="...">
-                            </div>
-                            </div>
-                            <div>
-                            <table class="table table-hover">
-                            <tr>
-                            <td>이름</td>
-                            <td>진수현</td>
-                            </tr>
-                            <tr>
-                            <td>강사아이디</td>
-                            <td>물?루?</td>
-                            </tr>
-                            <tr>
-                            <td>연락처</td>
-                            <td>0104568456</td>
-                            </tr>
-                            <tr>
-                            <td>이메일</td>
-                            <td>test@test.com</td>
-                            </tr>
-                            <tr>
-                            <td>강사 학력사항</td>
-                            <td>몰?류</td>
-                            </tr>
-                            <tr>
-                            <td>주력 과목</td>
-                            <td>몰?류</td>
-                            </tr>
-                            
-                            </table>
-                            </div>
-                            <div>
-<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
-</div>
+                            <h2 class="tm-block-title d-inline-block">문의 제목 : 한글이 안나와요</h2>
+                    <div class="mb-3">
+  						 <label for="staticEmail" class="col-sm-5 col-form-label">문의 코드 : 00001</label>
+   						 <label for="staticEmail" class="col-sm-5 col-form-label">아이디 : JIN1234</label>
+   						 
+   						 <div class="right">
+   						 <button class="btn btn-light btn-sm me-md-2 " type="button">삭제</button>
+   						 </div>
+					</div>
+					<div class="mb-3">
+ 						 <label for="exampleFormControlTextarea1" class="form-label">문의 사항 내용</label>
+  						<textarea class="form-control h-25"  readonly id="exampleFormControlTextarea1" rows="15">내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+  						내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+  						내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+  						내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+  						내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+  						내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+  						</textarea>
+					</div>
+					
+					<div class="mb-3">
+ 						 <label for="exampleFormControlTextarea1" class="form-label">문의 답변</label>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15">답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변
+  						답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변
+  						답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변
+  						답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변
+  						답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변
+  						</textarea>
+  						
+  						<div class="right">
+  						<button class="btn btn-light btn-sm me-md-2 " type="button">확인</button>
+  						<button class="btn btn-light btn-sm me-md-2" type="button">취소</button>
+  						</div>
+  						
+					</div>
+					
                         </div>
                     </div>
                 </div>
             </div>
             
         <footer class="row tm-mt-small" style="width: 90%;margin:auto;">
-            <div class="col-12 font-weight-light">
-                <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Copyright &copy; 2018 Admin Dashboard . Created by
-                    <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
-                </p>
-            </div>
+            
         </footer>
     </div>
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
-  $(function(){
-  $("#btnback").click(function(){
-	  history.back();
-  })
-	  
   
-	  
-  })
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>
