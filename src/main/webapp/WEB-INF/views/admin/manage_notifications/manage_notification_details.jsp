@@ -118,6 +118,9 @@
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"></textarea>
 </div>
+<div>
+<input type="button" class="btn btn-link" value="&lt; 뒤로"/>
+</div>
                         </div>
                     </div>
                 </div>

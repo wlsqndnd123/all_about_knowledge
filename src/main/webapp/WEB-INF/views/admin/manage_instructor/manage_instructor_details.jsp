@@ -108,15 +108,42 @@
                     <div class="row">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">강사 상세</h2>
-                    <div class="mb-3">
-  						 <label for="staticEmail" class="col-sm-2 col-form-label">공지사항 제목</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="걍하드코딩항">
-    </div>
-					</div>
-					<div class="mb-3">
- 						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
-  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"></textarea>
+                            <div style="text-align: center; margin: auto;">
+                            <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                            <img src="http://localhost/all_about_knowledge/front/admin/img/profile-image.png"  class="card-img-top" alt="...">
+                            </div>
+                            </div>
+                            <div>
+                            <table class="table table-hover">
+                            <tr>
+                            <td>이름</td>
+                            <td>진수현</td>
+                            </tr>
+                            <tr>
+                            <td>강사아이디</td>
+                            <td>물?루?</td>
+                            </tr>
+                            <tr>
+                            <td>연락처</td>
+                            <td>0104568456</td>
+                            </tr>
+                            <tr>
+                            <td>이메일</td>
+                            <td>test@test.com</td>
+                            </tr>
+                            <tr>
+                            <td>강사 학력사항</td>
+                            <td>몰?류</td>
+                            </tr>
+                            <tr>
+                            <td>주력 과목</td>
+                            <td>몰?류</td>
+                            </tr>
+                            
+                            </table>
+                            </div>
+                            <div>
+<input type="button" class="btn btn-link" value="&lt; 뒤로"/>
 </div>
                         </div>
                     </div>

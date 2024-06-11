@@ -111,7 +111,16 @@
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<button class="btn btn-light btn-sm me-md-2" type="button">공지사항 작성</button>
 </div>	
+				<div style="text-align: left;">
+				<select class="form-select" aria-label="Default select example">
+  		<option selected>--게시글 상태 --</option>
+  <option value="1">게시</option>
+  <option value="2">예약</option>
+  <option value="3">삭제</option>
+</select>
+				</div>
                     <div>
+                    
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
@@ -131,6 +140,11 @@
                     </tbody>
                     </table>
                     </div>
+                    <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
+  	
+  	<input type="text" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+</div>
                         </div>
                     </div>
                 </div>
