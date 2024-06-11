@@ -38770,20 +38770,20 @@ add
 }
 
 .top_nav {
-  width: 100vw;
+  width: calc(100vw - 15rem);
   height: 7vh;
   margin: 0px !important;
 }
 
 .side_nav{
-  width: 260px;
   height: 100vh;
   margin-bottom: 0px !important;
-  min-height: 430px !important;
+  min-height: 450px !important;
 }
 
 .my_article{
   height: 93vh;
+  width: calc(100vw - 15rem);
 }
 
 .nav_svg {
@@ -38792,14 +38792,38 @@ add
   margin-right: 5px !important;
 }
 
-.top_nav .right.menu {
-  margin-right: 260px;
-}
-
 .nav_font {
   font-size: 1.2em !important;
 }
 
 .nav_header_font {
   font-size: 1.5em !important;
+}
+
+.nav_logo_svg {
+  width: 100%;
+}
+
+.div_margin{
+  margin: 1em !important;
+}
+
+.trim_width{
+  min-width: calc(33.33333333% - 2em) !important;
+}
+
+.trim_margin{
+  margin: 0em 0em 1em 1em !important;
+}
+
+.lecture_status{
+  margin-left: auto;
+}
+
+.align_right{
+  float: right;
+}
+
+.header_align_top{
+  margin-top: 0.2em !important;
 }
