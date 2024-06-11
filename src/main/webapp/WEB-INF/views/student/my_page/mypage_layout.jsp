@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    info=""%>
+    info = "" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,31 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
+<style type = "text/css">
+</style>
+<script type = "text/javascript">
+	$(function() {
+
+	}); // ready
+</script>
 </head>
 <body>
-<div>
-<button class="ui button">내가 문제네?</button>
-</div>
+<!-- 사이드 네비게이션 바 -->
+<aside>
+사이드 네비게이션 바
+</aside>
+
+<!-- 탑 네비게이션 바 -->
+<nav>
+상단 네비게이션바
+</nav>
+
+<!-- 컨텐츠 영역 -->
+<article>
+content 영역
+</article>
+
+
+
 </body>
 </html>

@@ -39,6 +39,10 @@
 			$("#frmGet")[0].action="site_qna.do";
 			$("#frmGet").submit();
 		}); // click
+		$("#btnHome").click(function() {
+			$("#frmGet")[0].action="mypage_home.do";
+			$("#frmGet").submit();
+		}); // click
 	}); // ready
 </script>
 </head>
@@ -51,6 +55,7 @@
 		<input type="button" class="btn btn-sm btn-info" value="lecture" id="btnLecture"><br>
 		<input type="button" class="btn btn-sm btn-info" value="notice" id="btnNotice"><br>
 		<input type="button" class="btn btn-sm btn-info" value="qna" id="btnQna"><br>
+		<input type="button" class="btn btn-sm btn-success" value="home" id="btnHome"><br>
 	</form>
 	</div>
 </div>
