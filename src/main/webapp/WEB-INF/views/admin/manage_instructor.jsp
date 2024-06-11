@@ -108,9 +108,11 @@
                     <div class="row">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">강사 리스트</h2>
+                            <form action="manage_instructor_addform.do" id ="addInstForm">
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  	<button class="btn btn-light btn-sm me-md-2" type="button">강사 추가</button>
+  	<button class="btn btn-light btn-sm me-md-2" type="button" id ="addInst">강사 추가</button>
 </div>	
+                            </form>
                     <div>
                     <select class="form-select" aria-label="Default select example">
                     <option selected>정렬조건</option>
@@ -141,7 +143,7 @@
                     </div>
                      <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
   	
-  	<input type="text" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+  	<input type="text" class="form-control" placeholder="검색하실 강사의 이름을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
   <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
 </div>
                         </div>
@@ -161,7 +163,13 @@
 
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
- 
+ <script type="text/javascript">
+ $(function(){
+	 $("#addInst").click(function(){
+		$("#addInstForm").submit(); 
+	 })
+ })
+ </script>
 </body>
 
 </html>
