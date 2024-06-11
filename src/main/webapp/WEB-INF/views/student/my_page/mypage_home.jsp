@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지 - 홈</title>
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -22,18 +22,225 @@
 </head>
 <body class="mypage">
 <!-- 사이드 네비게이션 바 -->
-<aside class="side_nav">
-사이드 네비게이션 바
-</aside>
+<jsp:include page="mypage_side_nav.jsp"></jsp:include>
 
 <!-- 탑 네비게이션 바 -->
-<nav class="top_nav">
-상단 네비게이션바
-</nav>
+<jsp:include page="mypage_top_nav.jsp"></jsp:include>
 
 <!-- 컨텐츠 영역 -->
 <article class="my_article">
-content 영역
+
+<div class="ui large breadcrumb div_margin">
+  <a class="section">마이페이지</a>
+  <i class="right chevron icon divider"></i>
+  <div class="active section">대시보드</div>
+</div>
+
+<div class="ui three statistics div_margin">
+  <div class="statistic ui segment trim_margin trim_width">
+    <div class="label">
+      전체 수강 강의 수
+    </div>
+    <div class="value">
+      8
+    </div>
+  </div>
+  <div class="statistic ui segment trim_margin trim_width">
+    <div class="label">
+      진행 중인 강의 수
+    </div>
+    <div class="value">
+      3
+    </div>
+  </div>
+  <div class="statistic ui segment trim_margin trim_width">
+    <div class="label">
+      완료된 강의 수
+    </div>
+    <div class="value">
+      5
+    </div>
+  </div>
+</div>
+
+<div class="ui segment div_margin">
+<div class="ui three cards trim_width">
+  <div class="card">
+    <div class="content">
+  	<a class="ui red ribbon label">시험 응시가 필요한 강의</a>
+      <div class="header header_align_top">이것이 자바일까?
+      <div class="ui green label align_right">진행</div>
+      </div>
+      <div class="description">
+        시바수현
+      </div>
+    </div>
+    
+    <div class="content">
+    <table class="ui celled striped table">
+  <thead>
+  	<tr>
+  	<th class="collapsing">번호</th>
+  	<th>제목</th>
+	<th>날짜</th>
+	</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>뭐요</td>
+      <td class="right aligned collapsing">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>이것은</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>공지사항</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>테이블</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    
+    <div class="ui bottom attached button black">
+      <i class="angle double right icon"></i>
+      강의실 입장
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="content">
+    	<a class="ui gray ribbon label">마지막으로 수강한 강의</a>
+      <div class="header header_align_top">이것이 자바일까?
+      <div class="ui green label align_right">진행</div>
+      </div>
+      <div class="description">
+        시바수현
+      </div>
+    </div>
+    <div class="content">
+    <table class="ui celled striped table">
+  <thead>
+  	<tr>
+  	<th class="collapsing">번호</th>
+  	<th>제목</th>
+	<th>날짜</th>
+	</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>뭐요</td>
+      <td class="right aligned collapsing">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>이것은</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>공지사항</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>테이블</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    
+    <div class="ui bottom attached button black">
+      <i class="angle double right icon"></i>
+      강의실 입장
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="content">
+    	<a class="ui olive ribbon label">새로 업로드 된 강의</a>
+      <div class="header header_align_top">자바였던 것
+      <div class="ui ribon gray label align_right">완료</div>
+      </div>
+      <div class="description">
+        진시바
+      </div>
+    </div>
+    <div class="content">
+    <table class="ui celled striped table">
+  <thead>
+  	<tr>
+  	<th class="collapsing">번호</th>
+  	<th>제목</th>
+	<th>날짜</th>
+	</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>뭐요</td>
+      <td class="right aligned collapsing">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>이것은</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>공지사항</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>테이블</td>
+      <td class="right aligned">2024-06-12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    
+    <div class="ui bottom attached button black">
+      <i class="angle double right icon"></i>
+      강의실 입장
+    </div>
+  </div>
+</div>
+</div>
 </article>
 
 </body>
