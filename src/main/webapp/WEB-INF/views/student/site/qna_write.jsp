@@ -12,9 +12,15 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
-<link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
- <!-- Semantic UI CSS -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+<!--bootstrap 시작-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--bootstrap 끝-->
+<!-- summernote 시작 -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<!-- summernote 끝 -->
+
  <style type="text/css">
   body {
     background-color: #FFFFFF;
@@ -55,16 +61,35 @@
   .search-container {
     display: flex;
     justify-content: flex-end;
-    margin-top: 0.5em;
   }
+  
 </style>
+
 <script type="text/javascript">
   $(document).ready(function($) {
     $(".clickable-row").click(function() {
       window.location = $(this).data("href");
     });
+    
+    $('#content').summernote({
+        placeholder: '${ sessionScope.loginData.id }문의사항을 작성해 주세요.',
+        tabsize: 2,
+        width:700,
+        height: 200,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });//summernote
+    
   });
 </script>
+
 </head>
 <body>
 
@@ -98,48 +123,22 @@
 
   <div class="ui main text container">
     <h1 class="ui header">문의사항</h1>
-    <a href="site_qna_write.do">
-    <div style="text-align: right;">
-	  <button class="ui button">문의 작성</button>
-	</div>
-	</a>
-    <div class="search-container">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search icon"></i>
-      </div>
-    </div>
+    <hr>
     
-    <table class="ui very basic table">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>제목</th>
-          <th>작성일</th>
-          <th>답변</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="clickable-row" data-href="site_qna_detail.do">
-          <td>1</td>
-          <td>문의사항 제목 1</td>
-          <td>2024-06-08</td>
-          <td class="red-text">답변완료</td>
-        </tr>
-        <tr class="clickable-row" data-href="site_qna_detail.do">
-          <td>2</td>
-          <td>문의사항 제목 2</td>
-          <td>2024-06-07</td>
-          <td>대기</td>
-        </tr>
-        <tr class="clickable-row" data-href="site_qna_detail.do">
-          <td>3</td>
-          <td>문의사항 제목 3</td>
-          <td>2024-06-06</td>
-          <td>대기</td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="boardContent">
+    <textarea id="content" name="content"></textarea>
+    </div>
+    <a href="site_qna.do">
+    <button class="ui button">
+	  취소
+	</button>
+	</a>
+    <a href="site_qna.do">
+    <button class="ui button">
+	  보내기
+	</button>
+	</a>
+	
   </div>
 
   <div class="ui inverted vertical footer segment">

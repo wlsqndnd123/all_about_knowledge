@@ -10,4 +10,10 @@ public class UserNoticeController {
 	public String notice() {
 		return "student/site/notice";
 	}
+	
+	@GetMapping("/site_notice_detail.do")
+	public String detailNotice() {
+		return "student/site/notice_detail";
+	}
+	
 }

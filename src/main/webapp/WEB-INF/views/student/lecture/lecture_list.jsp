@@ -7,16 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>lecture list</title>
-<!--bootstrap 시작-->
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-<!--bootstrap 끝-->
-<link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/main.css" type="text/css" media="all" />
-<link rel="stylesheet" href="http://192.168.10.223/spring_mvc/common/css/board.css" type="text/css" media="all" />
-
-<!--jQuery CDN 시작-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!--jQuery CDN 끝-->
 
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -139,7 +129,7 @@
   </div>
 
   <div class="ui main container">
-    <h1 class="ui header">강의 리스트</h1>
+    <h1 class="ui header">개설강좌</h1>
     
     <div class="ui horizontal menu">
 	  <div class="ui dropdown item">
@@ -180,9 +170,6 @@
 	      <div class="meta">
 	        <a>곽우신</a>
 	      </div>
-	      <div class="description">
-	        Matthew is an interior designer living in New York.
-	      </div>
 	    </div>
 	    <div class="extra content">
 	      <span class="right floated">
@@ -205,9 +192,6 @@
 	        <!-- <span class="date">곽우신</span> -->
 	        <a>곽우신</a>
 	      </div>
-	      <div class="description">
-	        Molly is a personal assistant living in Paris.
-	      </div>
 	    </div>
 	    <div class="extra content">
 	      <span class="right floated">
@@ -229,9 +213,6 @@
 	      <div class="meta">
 	        <a>곽우신</a>>
 	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
-	      </div>
 	    </div>
 	    <div class="extra content">
 	      <span class="right floated">
@@ -253,8 +234,26 @@
 	      <div class="meta">
 	        <a>Coworker</a>
 	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
+	    </div>
+	    <div class="extra content">
+	      <span class="right floated">
+		  <i class="heart outline like icon"></i>
+		      17 likes
+		  </span>
+	      <span>
+	        <i class="user icon"></i>
+	        +100명
+	      </span>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="image">
+	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
+	    </div>
+	    <div class="content">
+	      <div class="header">파이썬 단기완성</div>
+	      <div class="meta">
+	        <a>Coworker</a>
 	      </div>
 	    </div>
 	    <div class="extra content">
@@ -277,33 +276,6 @@
 	      <div class="meta">
 	        <a>Coworker</a>
 	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
-	      </div>
-	    </div>
-	    <div class="extra content">
-	      <span class="right floated">
-		  <i class="heart outline like icon"></i>
-		      17 likes
-		  </span>
-	      <span>
-	        <i class="user icon"></i>
-	        +100명
-	      </span>
-	    </div>
-	  </div>
-	  <div class="card">
-	    <div class="image">
-	      <img src="${pageContext.request.contextPath}/front/student/images/java.png">
-	    </div>
-	    <div class="content">
-	      <div class="header">파이썬 단기완성</div>
-	      <div class="meta">
-	        <a>Coworker</a>
-	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
-	      </div>
 	    </div>
 	    <div class="extra content">
 	      <span class="right floated">
@@ -325,9 +297,6 @@
 	      <div class="meta">
 	        <a>Coworker</a>
 	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
-	      </div>
 	    </div>
 	    <div class="extra content">
 	      <span class="right floated">
@@ -348,9 +317,6 @@
 	      <div class="meta">
 	        <a>Coworker</a>
 	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
-	      </div>
 	    </div>
 	    <div class="extra content">
 	      <span class="right floated">
@@ -370,9 +336,6 @@
 	      <div class="header">파이썬 단기완성</div>
 	      <div class="meta">
 	        <a>Coworker</a>
-	      </div>
-	      <div class="description">
-	        Elyse is a copywriter working in New York.
 	      </div>
 	    </div>
 	    <div class="extra content">
