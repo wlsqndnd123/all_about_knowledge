@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -25,7 +26,6 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 
-</head>
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -44,7 +44,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item dropdown   active">
+                                <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
                                         
@@ -72,14 +72,14 @@
                                     </div>
                                 </li>
 
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">문의 관리</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown active">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         공지사항 관리
@@ -104,28 +104,54 @@
              <!-- row -->
         <div class="row tm-mt-big" style="width: 100%">
             <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block" style="width: 100%" >
-                    <div class="row">
+                <div class="bg-white tm-block" style="width: 100% ; height: 100%" >
+                    <div class="row" style="height: 100%">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">교육 카테고리 관리</h2>
-                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-</div>	
-                    <div style="text-align: center;margin: auto;">
-                    <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
-                    <option selected>교육 카테고리 명</option>
-                    <!-- <option value="code1">데이터사이언스</option>
-                    <option value="code1">개발/프로그래밍</option> -->
-                    </select>
-                    <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
-                    </div>
-                    <div id ="educatOutput"></div>
-                    <div id ="edusubOutput"></div>
+                            <h2 class="tm-block-title d-inline-block">강사 추가</h2>
+                            <div style="text-align: center; margin: auto; width: 50%">
+                            <div class="mb-3" >
+  <label for="formFile" class="form-label">강사 이미지</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+                            </div>
+                            <div style="text-align: center;">
+                            <table class="table table-hover" ">
+                            <tr>
+                            <td>이름</td>
+                            <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                            <td>강사아이디</td>
+                            <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                            <td>연락처</td>
+                            <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                            <td>이메일</td>
+                            <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                            <td>강사 학력사항</td>
+                            <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                            <td>주력 과목</td>
+                            <td><input type="text" /></td>
+                            </tr>
+                            
+                            </table>
+                            </div>
+                            <div>
+	<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
+	</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-          
- </div>
+            
         <footer class="row tm-mt-small" style="width: 90%;margin:auto;">
             <div class="col-12 font-weight-light">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
@@ -135,36 +161,20 @@
             </div>
         </footer>
     </div>
-
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
- <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
- <script type="text/javascript">
- $(function(){
-	 $("#catbtn").click(function(){
-		 $.ajax({
-				url:"http://localhost${pageContext.request.contextPath}/day0611/ajax_responsebody.do",
-				type:"GET",
-				dataType:"JSON",
-				error :function(xhr){
-					console.log(xhr.status +" : "+xhr.statusText);
-					alert("ㅈㅅㅈㅅ");
-				},
-				success : function(jsonObj){
-					var output ="";
-					output+= "<strong>"+jsonObj.name+"</strong>"
-					output+="<ul>"
-					$.each(jsonObj.lunchList,function(i,jsonTemp){
-						output+="<li>"+jsonTemp.lunch+"</li>"
-					});
-					output+="</ul>"
-					$("#educatOutput").html(output);
-				}
-			})	//ajax	
-		 
-	 })
- })
- </script>
- </div>
+  <!-- https://jquery.com/download/ -->
+   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+  <script type="text/javascript">
+  $(function(){
+  $("#btnback").click(function(){
+	  history.back();
+  })
+	  
+  
+	  
+  })
+  </script>
+    <!-- https://getbootstrap.com/ -->
 </body>
 
 </html>
