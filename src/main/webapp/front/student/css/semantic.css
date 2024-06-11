@@ -38779,6 +38779,7 @@ add
   width: 260px;
   height: 100vh;
   margin-bottom: 0px !important;
+  min-height: 430px !important;
 }
 
 .my_article{
@@ -38793,4 +38794,12 @@ add
 
 .top_nav .right.menu {
   margin-right: 260px;
+}
+
+.nav_font {
+  font-size: 1.2em !important;
+}
+
+.nav_header_font {
+  font-size: 1.5em !important;
 }
