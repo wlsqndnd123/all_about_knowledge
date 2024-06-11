@@ -102,104 +102,52 @@
                 </div>
             </div>
              <!-- row -->
-        <div class="row tm-content-row tm-mt-big">
-            <div class="tm-col tm-col-big">
-                <div class="bg-white tm-block">
+         <div class="row tm-mt-big" style="width: 100%">
+            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
+                <div class="bg-white tm-block" style="width: 100%" >
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Accounts</h2>
-                        </div>
+                            <h2 class="tm-block-title d-inline-block">문의 리스트</h2>
+                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                   
+                    
+                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
+                   
+                    <thead>
+                    <tr>
+                    <th>NO</th>
+                    <th>문의 제목</th>
+                    <th>아이디</th>
+                    <th>문의 날짜</th>
+                    <th>상태</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td>0002</td>
+                    <td><a href="manage_qna_details.do">한글이 안나와요</a></td>
+                    <td>JIN1234</td>
+                    <td>2024/06/06</td>
+                    <td>미확인</td>
+                    </tr>
+                    
+                    <tr>
+                    <td>0001</td>
+                    <td><a href="manage_qna_details.do">문의가 안보여요</a></td>
+                    <td>KIM1234</td>
+                    <td>2024/06/05</td>
+                    <td>확인</td>
+                    </tr>
+                    
+                    </tbody>
+                    </table>
                     </div>
-                    <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
-                        <li class="tm-list-group-item">
-                            Donec eget libero
-                        </li>
-                        <li class="tm-list-group-item">
-                            Nunc luctus suscipit elementum
-                        </li>
-                        <li class="tm-list-group-item">
-                            Maecenas eu justo maximus
-                        </li>
-                        <li class="tm-list-group-item">
-                            Pellentesque auctor urna nunc
-                        </li>
-                        <li class="tm-list-group-item">
-                            Sit amet aliquam lorem efficitur
-                        </li>
-                        <li class="tm-list-group-item">
-                            Pellentesque auctor urna nunc
-                        </li>
-                        <li class="tm-list-group-item">
-                            Sit amet aliquam lorem efficitur
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div class="tm-col tm-col-big">
-                <div class="bg-white tm-block">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="tm-block-title">Edit Account</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <form action="" class="tm-signup-form">
-                                <div class="form-group">
-                                    <label for="name">Account Name</label>
-                                    <input placeholder="Vulputate Eleifend Nulla" id="name" name="name" type="text" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Account Email</label>
-                                    <input placeholder="vulputate@eleifend.co" id="email" name="email" type="email" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input placeholder="******" id="password" name="password" type="password" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password2">Re-enter Password</label>
-                                    <input placeholder="******" id="password2" name="password2" type="password" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input placeholder="010-030-0440" id="phone" name="phone" type="tel" class="form-control validate">
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-sm-4">
-                                        <button type="submit" class="btn btn-primary">Update
-                                        </button>
-                                    </div>
-                                    <div class="col-12 col-sm-8 tm-btn-right">
-                                        <button type="submit" class="btn btn-danger">Delete Account
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tm-col tm-col-small">
-                <div class="bg-white tm-block">
-                    <h2 class="tm-block-title">Profile Image</h2>
-                    <img src="img/profile-image.png" alt="Profile Image" class="img-fluid">
-                    <div class="custom-file mt-3 mb-3">
-                        <input id="fileInput" type="file" style="display:none;" />
-                        <input type="button" class="btn btn-primary d-block mx-xl-auto" value="Upload New..." onclick="document.getElementById('fileInput').click();"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
         <footer class="row tm-mt-small">
-            <div class="col-12 font-weight-light">
-                <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Copyright &copy; 2018 Admin Dashboard . Created by
-                    <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
-                </p>
-            </div>
+         
         </footer>
     </div>
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>

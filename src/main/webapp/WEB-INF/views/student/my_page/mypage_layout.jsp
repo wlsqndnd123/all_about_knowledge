@@ -24,29 +24,33 @@
 <!-- 사이드 네비게이션 바 -->
 <aside class="side_nav ui vertical menu">
   <div class="item">
-    <div class="header">로고 넣을 자리</div>
+    <div class="header">로고 이미지 자리</div>
   </div>
   <div class="item">
     <div class="header">나의 강의실</div>
     <div class="menu">
       <a class="item"><img src="/all_about_knowledge/front/student/icon/dashboard.svg" class="nav_svg"/>대시보드</a>
-      <a class="item">나의강의</a>
-      <a class="item">관심강의</a>
-      <a class="item">나의문의</a>
+      <a class="item"><img src="/all_about_knowledge/front/student/icon/mylecture.svg" class="nav_svg"/>나의강의</a>
+      <a class="item"><img src="/all_about_knowledge/front/student/icon/interest.svg" class="nav_svg"/>관심강의</a>
+      <a class="item"><img src="/all_about_knowledge/front/student/icon/question.svg" class="nav_svg"/>나의문의</a>
     </div>
   </div>
   <div class="item">
     <div class="header">개인정보관리</div>
     <div class="menu">
-      <a class="item">개인정보수정</a>
-      <a class="item">탈퇴</a>
+      <a class="item"><img src="/all_about_knowledge/front/student/icon/my_info.svg" class="nav_svg"/>개인정보수정</a>
+      <a class="item"><img src="/all_about_knowledge/front/student/icon/exit.svg" class="nav_svg"/>탈퇴</a>
     </div>
   </div>
 </aside>
 
 <!-- 탑 네비게이션 바 -->
-<nav class="top_nav">
-상단 네비게이션바
+<nav class="top_nav ui stackable menu">
+  <div class="right menu">
+  <a class="item">개설강좌</a>
+  <a class="item">이용안내</a>
+  <a class="item">로그아웃</a>
+  </div>
 </nav>
 
 <!-- 컨텐츠 영역 -->

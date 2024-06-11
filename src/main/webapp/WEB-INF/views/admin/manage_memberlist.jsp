@@ -110,9 +110,7 @@
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">회원 리스트</h2>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  
-</div>	
-                    <div>
+                   
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
