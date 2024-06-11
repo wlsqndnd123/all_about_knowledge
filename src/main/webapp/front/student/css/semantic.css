@@ -74,20 +74,34 @@ html {
  */
 
 body {
+  display: flex;
   margin: 0;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 /**
  * Add the correct display in IE 9-.
  */
 
-article,
-aside,
 footer,
 header,
-nav,
 section {
   display: block;
+}
+
+nav {
+  width: 100vw;
+  height: 7vh;
+}
+
+aside{
+  width: 260px;
+  height: 100vh;
+}
+
+article{
+  height: 93vh;
 }
 
 /**
