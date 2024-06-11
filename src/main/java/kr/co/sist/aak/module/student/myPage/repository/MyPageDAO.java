@@ -1,5 +1,5 @@
 package kr.co.sist.aak.module.student.myPage.repository;
 
-public class LectureDAO {
+public class MyPageDAO {
 //LectureMapper로 할까?
 }

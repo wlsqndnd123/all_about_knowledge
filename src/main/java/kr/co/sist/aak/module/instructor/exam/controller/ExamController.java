@@ -11,5 +11,15 @@ public class ExamController {
 		
 		return "instructor/exam/examList";
 	}
+	
+	@GetMapping("/exam_write.do")
+	public String exam_write() {
+		return "instructor/exam/exam_write";
+	}
+	
+	@GetMapping("/exam_update.do")
+	public String exam_update() {
+		return "instructor/exam/exam_update";
+	}
 
 }
