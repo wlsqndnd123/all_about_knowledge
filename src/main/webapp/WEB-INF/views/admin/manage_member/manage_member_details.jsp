@@ -16,7 +16,7 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -25,9 +25,24 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+<script type ="text/javascript">
+	$(function(){
+		
+		$("#updateSubmit").click(function(){
+			$("#frmPost").action="manage_member_param.do";
+			$("#frmPost").submit();
+		});//click
+		$("#saveSubmit").click(function(){
+			$("#frmPost2").action="manage_member_param.do";
+			$("#frmPost2").submit();
+		});//click
+		
+	});//ready
+</script>
 
 </head>
-
 <body id="reportsPage">
     <div class="" id="home">
         <div class="container">
@@ -55,12 +70,12 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown active">
+                                <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
@@ -73,7 +88,7 @@
                                     </div>
                                 </li>
 
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">문의 관리</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -108,49 +123,97 @@
                 <div class="bg-white tm-block" style="width: 100%" >
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">회원 리스트</h2>
-                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  
-</div>	
-                    <div>
+                            <h2 class="tm-block-title d-inline-block">사용자 상세</h2>
+                    <div class="mb-3">
+                    
+  					<div>
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
-                    <thead>
-                    <tr>
-                    <th>NO</th>
-                    <th>사용자ID</th>
-                    <th>이름</th>
-                    <th>가입일</th>
-                    </tr>
-                    </thead>
+    
                     <tbody>
+                    
                     <tr>
-                    <td>1</td>
+                    <th>이름</th>
+                    <td>진수현</td>
+                    
+                    <c:if test="${flag eq '1' }">
+                    <td><input type="text" name="contact" value="진수현"></td>
+                    </c:if>
+                 
+                    
+                    
+                    </tr>
+                    
+                     <tr>
+                    <th>회원아이디</th>
                     <td>JIN123</td>
-                    <td><a href="manage_member_details.do">진수현</a></td>
-                    <td>2024/06/06</td>
+                    <c:if test="${flag eq '1' }">
+                    <td><input type="text" name="contact" value="JIN123"></td>
+                    </c:if>
                     </tr>
                     
-                    <tr>
-                    <td>2</td>
-                    <td>KIM1234</td>
-                    <td><a href="manage_member_details.do">김일신</a></td>
-                    <td>2024/06/05</td>
+                     <tr>
+                    <th>연락처</th>
+                    <td>010-1234-5678</td>
+                    <c:if test="${flag eq '1' }">
+                    <td><input type="text" name="contact" value="010-1234-5678"></td>
+                    </c:if>
                     </tr>
                     
+                     <tr>
+                    <th>이메일</th>
+                    <td>JIN123@naver.com</td>
+                    <c:if test="${flag eq '1' }">
+                    <td><input type="text" name="contact" value="JIN123@naver.com"></td>
+                    </c:if>
+                    </tr>
+                    
+                     <tr>
+                    <th>생년월일</th>
+                    <td>970630</td>
+                    <c:if test="${flag eq '1' }">
+                    <td><input type="text" name="contact" value="970630"></td>
+                    </c:if>
+                    </tr>
+  					
+  
                     </tbody>
                     </table>
                     </div>
+                    
+                    <c:if test="${flag != '1' }">
+                    <form action="manage_member_details.do" method="post" id ="frmPost">
+					<input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id ="updateSubmit"/>
+					</form> 
+					</c:if>
+					
+                  	<c:if test="${flag eq '1' }">
+                  	
+					<form action="manage_member_details.do" method="post" id ="frmPost2">
+					<input type="button" class="btn btn-light btn-sm me-md-2" value="저장" id ="saveSubmit"/>
+					</form> 
+					</c:if>
+                   
+                   
+                   
+                    
+					</div>
+					
                         </div>
                     </div>
                 </div>
             </div>
-        <footer class="row tm-mt-small">
-         
+            
+        <footer class="row tm-mt-small" style="width: 90%;margin:auto;">
+       
         </footer>
     </div>
-     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
-	</div>
+ <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+  <!-- https://jquery.com/download/ -->
+   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+  <script type="text/javascript">
+  
+  </script>
+    <!-- https://getbootstrap.com/ -->
 </body>
 
 </html>
