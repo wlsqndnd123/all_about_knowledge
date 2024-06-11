@@ -23,10 +23,6 @@
 			$("#frmGet")[0].action="login.do";
 			$("#frmGet").submit();
 		}); // click
-		$("#btnSmt").click(function() {
-			$("#frmGet")[0].action="test.do";
-			$("#frmGet").submit();
-		}); // click
 		$("#btnLecture").click(function() {
 			$("#frmGet")[0].action="lecture_list.do";
 			$("#frmGet").submit();
@@ -51,7 +47,6 @@
 	<div>
 	<form id="frmGet" method="get">
 		<input type="button" class="btn btn-sm btn-primary" value="로그인" id="btnLogin"><br>
-		<input type="button" class="btn btn-sm btn-info" value="semantic" id="btnSmt"><br>
 		<input type="button" class="btn btn-sm btn-info" value="lecture" id="btnLecture"><br>
 		<input type="button" class="btn btn-sm btn-info" value="notice" id="btnNotice"><br>
 		<input type="button" class="btn btn-sm btn-info" value="qna" id="btnQna"><br>

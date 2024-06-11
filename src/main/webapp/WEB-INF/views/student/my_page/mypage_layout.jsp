@@ -20,23 +20,21 @@
 	}); // ready
 </script>
 </head>
-<body>
+<body class="mypage">
 <!-- 사이드 네비게이션 바 -->
-<aside>
+<aside class="side_nav">
 사이드 네비게이션 바
 </aside>
 
 <!-- 탑 네비게이션 바 -->
-<nav>
+<nav class="top_nav">
 상단 네비게이션바
 </nav>
 
 <!-- 컨텐츠 영역 -->
-<article>
+<article class="my_article">
 content 영역
 </article>
-
-
 
 </body>
 </html>
