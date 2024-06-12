@@ -1,3 +1,8 @@
+<!-- 
+Desc : 사용자(학생)의 마이페이지 참고용 레이아웃
+작성자 : 고한별
+작성일 : 2024.06.11
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info = "" %>
@@ -7,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 - 레이아웃</title>
+<link rel="icon" href="/all_about_knowledge/favicon.png">
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
