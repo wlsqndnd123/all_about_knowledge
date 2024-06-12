@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -422,7 +422,7 @@
                                     		</span>
                                     		<span>
                                     			<label>강사소개글</label>
-		                                   		<input type="text" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/>
+		                                   		<input type="textarea" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/>
 		                                   		<input type="button" value="수정" class="btn btn-light btn-sm"/>
                                     		</span>
                                     	</div>	
@@ -454,7 +454,7 @@
                         </div>
 
                         <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
+                        <div><!-- class="col-xl-4 col-lg-5" -->
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                            <!--      <div
