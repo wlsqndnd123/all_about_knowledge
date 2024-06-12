@@ -107,6 +107,10 @@
     </div>
 					</div>
 					<div class="mb-3">
+ 				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+				 <input class="form-control" type="file" id="formFile">	
+					<div class="mb-3">
+					</div>
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"></textarea>
 </div>

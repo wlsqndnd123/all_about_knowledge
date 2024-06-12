@@ -63,7 +63,7 @@
                                         <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item active" >
+                                <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
@@ -75,7 +75,7 @@
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
@@ -101,7 +101,7 @@
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">공지사항 상세</h2>
                     <div class="mb-3">
-  						 <label for="staticEmail" class="col-sm-2 col-form-label">공지사항 제목</label>
+  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="걍하드코딩항">
     </div>

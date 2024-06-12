@@ -4,8 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.admin2">
 	<!-- 여기에 다이나믹쿼리 넣어야함... -->
-	<select id="selectAllInstructor" resultType ="InstructorManagementDomain">
-	select NAME from INST_INFO
+	<!-- 퇴사 안 한 강사들 -->
+	<select id="selectNAllInstructor" resultType ="InstructorManagementDomain">
+	select ii.INST_ID, ii.NAME, ii.EMAIL, ii.INTRODUCTION, ii.IMAGE, ii.PHONE, ii.MAJOR_SUBJECT, ii.EDUCATION ,i.DEL_YN
+	from INST_INFO ii, INSTRUCTOR i
+	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='N')
+	</select>
+	<!-- 퇴사한 강사 조회 -->
+	<select id="selectYAllInstructor" resultType ="InstructorManagementDomain">
+	select ii.INST_ID, ii.NAME
+	from INST_INFO ii, INSTRUCTOR i
+	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='Y')
 	</select>
 	<select id="selectinstIDMaxval" resultType ="String">
 	select max(inst_id)
