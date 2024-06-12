@@ -38,7 +38,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 
 <!-- breadcrumb 표시 -->
 <div class="ui small breadcrumb div_margin">
-  <a class="section">마이페이지</a>
+  <a class="section">나의강의실</a>
   <i class="right chevron icon divider"></i>
   <div class="active section">대시보드</div>
 </div>

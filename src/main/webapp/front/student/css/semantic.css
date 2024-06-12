@@ -38813,10 +38813,6 @@ add
   min-width: calc(33.33333333% - 2em) !important;
 }
 
-.trim_height{
-  min-height: 1em !important;
-}
-
 .lecture_status{
   margin-left: auto;
 }
