@@ -7,7 +7,7 @@
         </layout>
     </appender>
     <appender name="RollingFile" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="${env:LOG_PATH}/aak.log"/>
+        <param name="File" value="./log/aak.log"/>
         <param name="MaxFileSize" value="50MB"/>
         <param name="MaxBackupIndex" value="7"/>
         <layout class="org.apache.log4j.PatternLayout">

@@ -38,9 +38,9 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 
 <!-- breadcrumb 표시 -->
 <div class="ui small breadcrumb div_margin">
-  <a class="section">나의강의실</a>
+  <a class="section">개인정보관리</a>
   <i class="right chevron icon divider"></i>
-  <div class="active section">대시보드</div>
+  <div class="active section">개인정보수정</div>
 </div>
 
 </article>
