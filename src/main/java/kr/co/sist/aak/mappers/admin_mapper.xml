@@ -7,6 +7,33 @@
 	<select id="selectAllAdminNotice" resultType ="noticeManagementDomain">
 	select * from NOTICE
 	</select>
+	<!-- 공지사항 관리 상태에 따른 검색 쿼리 -->
+	<select id="dynamicNotificaionStatus" resultType="noticeManagementDomain" parameterType="String" >
+	select * 
+	from NOTICE
+	where 
+	<choose>
+	<when test ="status eq RESV">
+	status = RESV
+	</when>
+	<when test ="status eq POST">
+	status = POST
+	</when>
+	<otherwise>
+	status = DELT
+	</otherwise>
+	</choose>
+	</select>
+	
+	<!--  공지사항 제목으로 검색 -->
+	
+	<select id="searchNotificationTitle" resultType="noticeManagementDomain" parameterType="String">
+	select * 
+	from NOTICE
+	where title like '%'||#{title}||'%'
+	</select>
+	
+	
 	<select id="selectAdminNoticeMaxval" resultType ="String">
 	select max(NOTI_NO)
 	from   NOTICE

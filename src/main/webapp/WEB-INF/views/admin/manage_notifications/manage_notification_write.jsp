@@ -63,13 +63,9 @@
                                         <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">강사 관리
+                                <li class="nav-item" >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
-                                    </div>
                                 </li>
 
                                 <li class="nav-item dropdown ">
@@ -79,14 +75,10 @@
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                <li class="nav-item  active">
+                                    <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
-                                    </div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
@@ -101,17 +93,6 @@
                     </nav>
                 </div>
             </div>
-            <!-- 
-            <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-            
-             -->
              <!-- row -->
         <div class="col-12" style="width: 100%; margin-top: 15px;">
          <div class="col-12" style="width: 100%;margin: 0 auto;" >
@@ -126,6 +107,10 @@
     </div>
 					</div>
 					<div class="mb-3">
+ 				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+				 <input class="form-control" type="file" id="formFile">	
+					<div class="mb-3">
+					</div>
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"></textarea>
 </div>

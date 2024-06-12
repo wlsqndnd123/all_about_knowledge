@@ -10,7 +10,7 @@
  <typeAlias type="kr.co.sist.aak.domain.admin.InstructorManagementDomain" alias="InstructorManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.InstructorManagementVO" alias="InstructorManagementVO"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.EduCategoryManagementVO" alias="EduCategoryManagementVO"/>
- <typeAlias type="kr.co.sist.aak.domain.admin.vo.EduCategoryManagementDomain" alias="EduCategoryManagementDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.EduCategoryManagementDomain" alias="EduCategoryManagementDomain"/>
 </typeAliases>
 
   <environments default="development">
