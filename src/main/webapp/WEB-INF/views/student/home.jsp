@@ -39,6 +39,26 @@
 			$("#frmGet")[0].action="mypage_home.do";
 			$("#frmGet").submit();
 		}); // click
+		$("#btnMyLecture").click(function() {
+			$("#frmGet")[0].action="my_lecture.do";
+			$("#frmGet").submit();
+		}); // click
+		$("#btnInterestLecture").click(function() {
+			$("#frmGet")[0].action="interest_lecture.do";
+			$("#frmGet").submit();
+		}); // click
+		$("#btnMyQuestion").click(function() {
+			$("#frmGet")[0].action="my_question.do";
+			$("#frmGet").submit();
+		}); // click
+		$("#btnEditInfomation").click(function() {
+			$("#frmGet")[0].action="edit_information.do";
+			$("#frmGet").submit();
+		}); // click
+		$("#btnWithdrawal").click(function() {
+			$("#frmGet")[0].action="withdrawal.do";
+			$("#frmGet").submit();
+		}); // click
 	}); // ready
 </script>
 </head>
@@ -51,6 +71,11 @@
 		<input type="button" class="btn btn-sm btn-info" value="notice" id="btnNotice"><br>
 		<input type="button" class="btn btn-sm btn-info" value="qna" id="btnQna"><br>
 		<input type="button" class="btn btn-sm btn-success" value="home" id="btnHome"><br>
+		<input type="button" class="btn btn-sm btn-success" value="나의강의" id="btnMyLecture"><br>
+		<input type="button" class="btn btn-sm btn-success" value="관심강의" id="btnInterestLecture"><br>
+		<input type="button" class="btn btn-sm btn-success" value="나의문의" id="btnMyQuestion"><br>
+		<input type="button" class="btn btn-sm btn-success" value="개인정보수정" id="btnEditInfomation"><br>
+		<input type="button" class="btn btn-sm btn-success" value="탈퇴" id="btnWithdrawal"><br>
 	</form>
 	</div>
 </div>
