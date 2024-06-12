@@ -102,10 +102,10 @@
                 </div>
             </div>
              <!-- row -->
-        <div class="row tm-mt-big" style="width: 100%">
-            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block" style="width: 100%" >
-                    <div class="row">
+       <div class="col-12" style="width: 100%; margin-top: 15px;">
+         <div class="col-12" style="width: 100%;margin: 0 auto;" >
+                 <div class="bg-white tm-block col-12" style="width: 100%" >
+                    <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">강사 리스트</h2>
                             <form action="manage_instructor_addform.do" id ="addInstForm">
@@ -150,15 +150,6 @@
                     </div>
                 </div>
             </div>
-            
-        <footer class="row tm-mt-small" style="width: 90%;margin:auto;">
-            <div class="col-12 font-weight-light">
-                <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Copyright &copy; 2018 Admin Dashboard . Created by
-                    <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
-                </p>
-            </div>
-        </footer>
     </div>
 
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
