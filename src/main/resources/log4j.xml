@@ -15,7 +15,7 @@
         </layout>
     </appender>
     <root>
-        <priority value="trace"/>
+        <priority value="debug"/>
         <appender-ref ref="console"/>
         <appender-ref ref="RollingFile"/>
     </root>

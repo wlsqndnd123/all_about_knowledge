@@ -45,7 +45,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 
 <!-- 통계 -->
 <div class="ui three statistics div_margin">
-  <div class="statistic ui segment trim_margin trim_width">
+  <div class="statistic ui segment div_margin trim_width">
     <div class="label">
       전체 수강 강의 수
     </div>
@@ -53,7 +53,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
       8
     </div>
   </div>
-  <div class="statistic ui segment trim_margin trim_width">
+  <div class="statistic ui segment div_margin trim_width">
     <div class="label">
       진행 중인 강의 수
     </div>
@@ -61,7 +61,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
       3
     </div>
   </div>
-  <div class="statistic ui segment trim_margin trim_width">
+  <div class="statistic ui segment div_margin trim_width">
     <div class="label">
       완료된 강의 수
     </div>
