@@ -63,13 +63,9 @@
                                         <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">강사 관리
+                                <li class="nav-item active" >
+                                    <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
-                                    </div>
                                 </li>
 
                                 <li class="nav-item dropdown ">
@@ -79,14 +75,10 @@
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
-                                    </div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
@@ -108,37 +100,35 @@
                     <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">강사 추가</h2>
-                            <div style="text-align: center; margin: auto; width: 50%">
-                            <div class="mb-3" >
-  <label for="formFile" class="form-label">강사 이미지</label>
-  <input class="form-control" type="file" id="formFile">
-</div>
-                            </div>
-                            <div style="text-align: center;">
-                            <table class="table table-hover" ">
+                            <div style="text-align: center;"  class="mb-3" >
+                            <table class="table table-hover" style=" width:95%; text-align: center;">
                             <tr>
-                            <td>이름</td>
-                            <td><input type="text" /></td>
+  							<td style="vertical-align: middle;">강사 이미지</td>
+  							<td><input class="form-control" type="file" id="formFile"></td>
                             </tr>
                             <tr>
-                            <td>강사아이디</td>
-                            <td><input type="text" /></td>
+                            <td style="vertical-align: middle;">이름</td>
+                            <td><input type="email" class="form-control" id="exampleFormControlInput1"></td>
                             </tr>
                             <tr>
-                            <td>연락처</td>
-                            <td><input type="text" /></td>
+                            <td style="vertical-align: middle;">강사아이디</td>
+                            <td><input type="email" class="form-control" id="exampleFormControlInput1"></td>
                             </tr>
                             <tr>
-                            <td>이메일</td>
-                            <td><input type="text" /></td>
+                            <td style="vertical-align: middle;">연락처</td>
+                            <td><input type="email" class="form-control" id="exampleFormControlInput1"></td>
                             </tr>
                             <tr>
-                            <td>강사 학력사항</td>
-                            <td><input type="text" /></td>
+                            <td style="vertical-align: middle;">이메일</td>
+                            <td><input type="email" class="form-control" id="exampleFormControlInput1"></td>
+                             </tr>
+                            <tr>
+                            <td style="vertical-align: middle;">강사 학력사항</td>
+                            <td><input type="email" class="form-control" id="exampleFormControlInput1"></td>
                             </tr>
                             <tr>
-                            <td>주력 과목</td>
-                            <td><input type="text" /></td>
+                            <td style="vertical-align: middle;">주력 과목</td>
+                            <td><input type="email" class="form-control" id="exampleFormControlInput1"></td>
                             </tr>
                             
                             </table>

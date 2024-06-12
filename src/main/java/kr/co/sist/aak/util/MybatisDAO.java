@@ -13,7 +13,7 @@ public class MybatisDAO {
 	private static SqlSessionFactory ssf;
 
 	private MybatisDAO() {
-		org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
+	org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
 	}// MybatisDAO
 
 	public static MybatisDAO getInstance() {
