@@ -61,9 +61,10 @@
             </li>
             
             <li class="nav-item active">
-                <a class="nav-link">
+                <a class="nav-link" href="studentList">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>수강생 관리</span></a>
+                    <span>수강생 관리</span>
+                    </a>
             </li>
 
             <!-- Divider -->
@@ -394,63 +395,37 @@
                     <div class="row">
 
                         <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                            
-                            
-                                <!-- Card Header - Dropdown -->
-                                <div>
-                                    <!-- class="card-header py-3 d-flex flex-row align-items-center justify-content-between" 
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    -->
-                                    
-                                    <div class="dropdown no-arrow">
-                                    	
-                                    	<div>
-                                    	 <img class="rounded-circle"
-                                    		src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-                                    	</div>
-                                    		
-                                    	<div>
-                                    		<span>
-                                    			<label>이름</label>
-		                                   		<input type="text" value="곽우신" />
-                                    		</span>
-                                    		<span>
-		                                   		<label>이메일</label>
-		                                   		<input type="text" value="kws1234@naver.com"/>
-                                    		</span>
-                                    		<span>
-                                    			<label>강사소개글</label>
-		                                   		<input type="textarea" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/>
-		                                   		<input type="button" value="수정" class="btn btn-light btn-sm"/>
-                                    		</span>
-                                    	</div>	
-                                    
-                                        <!-- <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a> -->
-                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div> 
-                                        
-                                    </div>
-                                    </div>
-                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <!-- <canvas id="myAreaChart"></canvas> -->
-                                    </div>
-                                </div>
-                            </div>
+            <div class="col-xl-8 col-lg-7">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+       <!--  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+        </div> -->
+        <div class="card-body">
+            <div class="d-flex flex-column">
+                <div>
+                    <img class="rounded-circle" src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
+                </div>
+                <div>
+                    <span>
+                        <label>이름</label>
+                        <input type="text" value="곽우신" />
+                    </span>
+                    <span>
+                        <label>이메일</label>
+                        <input type="text" value="kws1234@naver.com"/>
+                    </span>
+                    <span>
+                        <label>강사소개글</label>
+                        <input type="textarea" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/>
+                        <input type="button" value="수정" class="btn btn-light btn-sm"/>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                         </div>
 
                         <!-- Pie Chart -->
