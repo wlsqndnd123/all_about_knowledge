@@ -1,3 +1,8 @@
+<!-- 
+Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
+작성자 : 고한별
+작성일 : 2024.06.12
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info = "" %>
@@ -7,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 - 홈</title>
+<link rel="icon" href="/all_about_knowledge/favicon.png">
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -30,12 +36,14 @@
 <!-- 컨텐츠 영역 -->
 <article class="my_article">
 
-<div class="ui large breadcrumb div_margin">
+<!-- breadcrumb 표시 -->
+<div class="ui small breadcrumb div_margin">
   <a class="section">마이페이지</a>
   <i class="right chevron icon divider"></i>
   <div class="active section">대시보드</div>
 </div>
 
+<!-- 통계 -->
 <div class="ui three statistics div_margin">
   <div class="statistic ui segment trim_margin trim_width">
     <div class="label">
@@ -63,6 +71,7 @@
   </div>
 </div>
 
+<!-- 강의 정보 -->
 <div class="ui segment div_margin">
 <div class="ui three cards trim_width">
   <div class="card">
