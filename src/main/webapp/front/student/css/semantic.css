@@ -38793,15 +38793,16 @@ add
 }
 
 .nav_font {
-  font-size: 1.2em !important;
+  font-size: 1em !important;
 }
 
 .nav_header_font {
-  font-size: 1.5em !important;
+  font-size: 1.2em !important;
 }
 
 .nav_logo_svg {
-  width: 100%;
+  width: 80%;
+  margin-left: 16px;
 }
 
 .div_margin{
