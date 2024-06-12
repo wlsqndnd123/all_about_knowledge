@@ -104,18 +104,12 @@
             <div class="row tm-content-row tm-mt-big">
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Latest Hits</h2>
+                        <h2 class="tm-block-title">월별 회원 추이</h2>
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
                 
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">실험</h2>
-                        <canvas id="lineChart1"></canvas>
-                    </div>
-                </div>
-                
+
                 
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">

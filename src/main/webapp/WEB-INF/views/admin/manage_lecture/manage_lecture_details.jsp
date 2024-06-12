@@ -11,28 +11,26 @@
     <title>All_About_Knowledge</title>
     <!--
 
-    Template 2108 Dashboard
-
-	http://www.tooplate.com/view/2108-dashboard
+   
 
     -->
-   <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
-      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
+     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fontawesome.min.css">
     <!-- https://fontawesome.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-
-<style>
+	<style>
 	.right {
   		 text-align: right;
 		}
-
-</style>
-</head>
+	
+	
+	
+	</style>
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -52,7 +50,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
                                         
                                     </a>
@@ -61,7 +59,7 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         회원 관리
@@ -79,14 +77,14 @@
                                     </div>
                                 </li>
 
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">문의 관리</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         공지사항 관리
@@ -108,72 +106,107 @@
                     </nav>
                 </div>
             </div>
-            <div class="row tm-mt-big" style="width: 100%">
+             <!-- row -->
+        <div class="row tm-mt-big" style="width: 100%">
             <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
                 <div class="bg-white tm-block" style="width: 100%" >
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">강의 신청 리스트</h2>
-                            
-                    <div class="right">
-                    <select class="form-select" aria-label="Default select example">
-                    <option selected>정렬조건</option>
-                    <option>최근 문의 순</option>
-                    <option>미확인 순</option>
-                    </select>
-                    </div>	
-                           
+                        <div class="mb-3">           
+                        	<img src="http://localhost/all_about_knowledge/front/admin/img/JAVA.png" border="0" width="120" height="100">
+                            <h2 class="tm-block-title d-inline-block">이 맛은 자바군!</h2>
+                              <label class="col-sm-5 col-form-label">프로그래밍 언어 > 자바</label> 
+                              
                              
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
-                   
+                        </div>
+                        
+       
+                         <div class="mb-3" >           
+                        <img src="http://localhost/all_about_knowledge/front/admin/img/%EB%94%94%EB%AA%A8%EC%94%A8.png" border="0" width="120" height="100">
+                            <h2 class="tm-block-title d-inline-block">디모씨 강사</h2>
+                              <label class="col-sm-5 col-form-label">강사 소개 : 내가 디오다!</label>
+                        </div>
+
+					<div>
+					
+					
+					
+					<div class="mb-3" >
+					
+ 						 <label for="exampleFormControlTextarea1" class="form-label">학습 개요</label>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" readonly rows="2">잘해보자
+  						</textarea>
+  						
+  						 <label for="exampleFormControlTextarea1" class="form-label">학습 목표</label>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" readonly rows="2">잘 될꺼야
+  						</textarea>
+  						
+					</div>
+  						
+					
+					
+					
+					<h2 class="tm-block-title d-inline-block">강의 목차</h2>
+					<div class="mb-3" style="height: 200px; overflow-y: auto"> 
+					<table class="table table-hover"  style="width: 100%;margin: auto; text-align: center; ">
+                  
                     <thead>
                     <tr>
-                    <th>NO</th>
-                    <th>신청 강좌명</th>
-                    <th>강사명</th>
-                    <th>카테고리</th>
-                    <th>총 차시 수</th>
+                    <th>차시</th>
+                    <th>제목</th>
+                    <th>강의목표</th>
                     </tr>
                     </thead>
+                    
                     <tbody>
-                    
                     <tr>
-                    <td>A002</td>
-                    <td><a href="manage_lecture_details.do">이 맛은 자바군!</a></td>
-                    <td>진모씨</td>
-                    <td>프로그래밍 언어 - 자바</td>
-                    <td>13</td>
+                    <td>1차시</td>
+                    <td><a href="manage_qna_details.do">스티키 핑거</a></td>
+                    <td>몰라</td>
                     </tr>
-                    
-                    <tr>
-                    <td>A001</td>
-                    <td><a href="manage_lecture_details.do">나에게 다가오지 말란말이다!!!</a></td>
-                    <td>디모씨</td>
-                    <td>프로그래밍 언어 - C</td>
-                    <td>8</td>
+
+					<tr>
+                    <td>2차시</td>
+                    <td><a href="manage_qna_details.do">스티키 핑거</a></td>
+                    <td>몰라</td>
                     </tr>
-                    
+					
+					<tr>
+                    <td>3차시</td>
+                    <td><a href="manage_qna_details.do">스티키 핑거</a></td>
+                    <td>몰라</td>
+                    </tr>
+
                     </tbody>
                     </table>
+					
+					</div>
+					<div>
+						
+  						<div class="right">
+  						<button class="btn btn-light btn-sm me-md-2 " type="button">승인</button>
+  						<button class="btn btn-light btn-sm me-md-2" type="button">반려</button>
+  						<button class="btn btn-light btn-sm me-md-2" type="button">취소</button>
+  						</div>
+  						
+					</div>
+                       
                     </div>
-                        </div>
-                    </div>
-                    
-                    
                 </div>
             </div>
-           </div> 
-           
-        <footer class="row tm-mt-small">
-         
+            </div>
+            </div>
+        <footer class="row tm-mt-small" style="width: 90%;margin:auto;">
+            
         </footer>
     </div>
-</div>
-  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-  <script type="text/javascript" src="<c:url value ="/resources/jquery-ui-datepicker/jquery-ui.min.js"/>"></script>
-  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
- 
+ <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+  <!-- https://jquery.com/download/ -->
+   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+  <script type="text/javascript">
+  
+  </script>
+    <!-- https://getbootstrap.com/ -->
 </body>
 
 </html>

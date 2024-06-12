@@ -25,6 +25,15 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 
+
+<style>
+	.right {
+  		 text-align: right;
+		}
+
+</style>
+
+
 </head>
 
 <body id="reportsPage">
@@ -108,6 +117,15 @@
                     <div class="row">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">문의 리스트</h2>
+                            
+                    <div class="right">
+                    <select class="form-select" aria-label="Default select example">
+                    <option selected>정렬조건</option>
+                    <option>최근 문의 순</option>
+                    <option>미확인 순</option>
+                    </select>
+                    </div>	
+
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
                    
                     
