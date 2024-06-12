@@ -108,8 +108,10 @@
                     <div class="row">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
+                            <form action="manage_notification_write.do" id ="formWrite">
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  	<button class="btn btn-light btn-sm me-md-2" type="button">공지사항 작성</button>
+  	<button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite">공지사항 작성</button>
+                            </form>
 </div>	
 				<div style="text-align: left;">
 				<select class="form-select" aria-label="Default select example">
@@ -163,7 +165,11 @@
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
-  
+  $(function(){
+	  $("#btnwrite").click(function(){
+		  $("#formWrite").submit();
+	  })
+  })
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>

@@ -119,7 +119,7 @@
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"></textarea>
 </div>
 <div>
-<input type="button" class="btn btn-link" value="&lt; 뒤로"/>
+<input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/>
 </div>
                         </div>
                     </div>
@@ -139,7 +139,11 @@
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
-  
+  $(function(){
+	  $("#btnback").click(function(){
+		  history.back();
+	  })
+  })
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>
