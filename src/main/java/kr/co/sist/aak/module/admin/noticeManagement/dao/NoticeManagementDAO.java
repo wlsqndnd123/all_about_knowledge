@@ -39,6 +39,23 @@ public class NoticeManagementDAO {
 	}
 	
 	/**
+	 * 공지사항 status로 글 분류하는 method
+	 * @param status 0: 예약 1: 게시 나머지 :삭제
+	 * @return
+	 * @throws PersistenceException
+	 */
+	public List<NoticeManagementDomain> searchNoticeStatus(int status) throws PersistenceException{
+		List<NoticeManagementDomain> list =null;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.admin.dynamicNotificaionStatus",status);
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
+	
+	/**
 	 * 선택한 공지사항의 상세 정보를 가져오는 method
 	 * @param noti_num 공지사항 번호
 	 * @return
@@ -105,4 +122,8 @@ public class NoticeManagementDAO {
 		return cnt;
 	}
 	
+	public static void main(String[] args) {
+		System.out.println(NoticeManagementDAO.getInstance().selectAllNotice());
+		
+	}
 }
