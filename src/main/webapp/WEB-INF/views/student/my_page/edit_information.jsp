@@ -22,6 +22,14 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 </style>
 <script type = "text/javascript">
 	$(function() {
+		
+		$('.special.modal')
+		  .modal({
+			  centered: true,
+			  blurring: true
+		  })
+		  .modal('show')
+		;
 
 	}); // ready
 </script>
@@ -44,6 +52,35 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 	  <i class="right chevron icon divider"></i>
 	  <div class="active section">개인정보수정</div>
 	</div>
+	
+	
+	<!-- 사용자 검증 모달 창 -->
+		<div class="ui special mini modal">
+		  <div class="ui icon header">
+		    <i class="address card icon"></i>
+		    개인정보수정
+		  </div>
+		  <div class="content">
+		    <p>현재 비밀번호를 입력하세요</p>
+		    <p>
+		    	<div class="field">
+      				<label>Password</label>
+      				<input type="password">
+    			</div>
+    		</p>
+		  </div>
+		  <div class="actions">
+		    <div class="ui red cancel inverted button">
+		      <i class="remove icon"></i>
+		      취소
+		    </div>
+		    <div class="ui green ok inverted button">
+		      <i class="checkmark icon"></i>
+		      확인
+		    </div>
+		  </div>
+		</div>
+		
 </div>
 
 </article>
