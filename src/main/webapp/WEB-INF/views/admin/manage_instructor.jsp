@@ -125,11 +125,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="list" items="${requestScope.instList }" varStatus="i">
                     <tr>
-                    <td>1</td>
-                    <td><a href="manage_instructor_details.do">진수현</a></td>
+                    
+                    <td><c:out value="${i.count }"/> </td>
+                    <td><a href="manage_instructor_details.do">${list.name}</a></td>
                     <td>1</td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                     </table>
                     </div>

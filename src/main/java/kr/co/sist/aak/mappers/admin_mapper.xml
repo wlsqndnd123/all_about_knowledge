@@ -8,19 +8,19 @@
 	select * from NOTICE
 	</select>
 	<!-- 공지사항 관리 상태에 따른 검색 쿼리 -->
-	<select id="dynamicNotificaionStatus" resultType="noticeManagementDomain" parameterType="String" >
+	<select id="dynamicNotificaionStatus" resultType="noticeManagementDomain" parameterType="int" >
 	select * 
 	from NOTICE
 	where 
 	<choose>
-	<when test ="status eq RESV">
-	status = RESV
+	<when test ="status eq 0">
+	status = 'RESV'
 	</when>
-	<when test ="status eq POST">
-	status = POST
+	<when test ="status eq 1">
+	status = 'POST'
 	</when>
 	<otherwise>
-	status = DELT
+	status = 'DELT'
 	</otherwise>
 	</choose>
 	</select>
