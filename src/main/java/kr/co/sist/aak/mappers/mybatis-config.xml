@@ -11,6 +11,8 @@
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.InstructorManagementVO" alias="InstructorManagementVO"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.EduCategoryManagementVO" alias="EduCategoryManagementVO"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.EduCategoryManagementDomain" alias="EduCategoryManagementDomain"/>
+ 
+ <typeAlias type="kr.co.sist.aak.domain.admin.MemberManagementDomain" alias="MemberManagementDomain"/>
 </typeAliases>
 
   <environments default="development">
@@ -31,5 +33,7 @@
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper2.xml"/>
  <!-- ManageEduCat&Sub -->  
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper3.xml"/>
+ <!-- Member -->   
+    <mapper resource="kr/co/sist/aak/mappers/admin_mapper4.xml"/>
   </mappers>
 </configuration>
