@@ -35,13 +35,14 @@ Desc : 사용자(학생)의 마이페이지 회원탈퇴 화면
 
 <!-- 컨텐츠 영역 -->
 <article class="my_article">
-
-<!-- breadcrumb 표시 -->
-<div class="ui small breadcrumb div_margin">
-  <a class="section">개인정보관리</a>
-  <i class="right chevron icon divider"></i>
-  <div class="active section">탈퇴</div>
-</div>
+	<div class="mypage_content_div">
+		<!-- breadcrumb 표시 -->
+		<div class="ui small breadcrumb div_margin">
+		  <a class="section">개인정보관리</a>
+		  <i class="right chevron icon divider"></i>
+		  <div class="active section">탈퇴</div>
+		</div>
+	</div>
 
 </article>
 

@@ -35,12 +35,15 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 
 <!-- 컨텐츠 영역 -->
 <article class="my_article">
+<div class="mypage_content_div">
 
-<!-- breadcrumb 표시 -->
-<div class="ui small breadcrumb div_margin">
-  <a class="section">나의강의실</a>
-  <i class="right chevron icon divider"></i>
-  <div class="active section">관심강의</div>
+	<!-- breadcrumb 표시 -->
+	<div class="ui small breadcrumb div_margin">
+	  <a class="section">나의강의실</a>
+	  <i class="right chevron icon divider"></i>
+	  <div class="active section">관심강의</div>
+	</div>
+
 </div>
 
 </article>
