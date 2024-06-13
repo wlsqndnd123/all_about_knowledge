@@ -129,7 +129,7 @@
                     <tr>
                     
                     <td><c:out value="${i.count }"/> </td>
-                    <td><a href="manage_instructor_details.do">${list.name}</a></td>
+                    <td><a href="manage_instructor_details.do?inst_id=${list.inst_id }">${list.name}</a></td>
                     <td>1</td>
                     </tr>
                     </c:forEach>

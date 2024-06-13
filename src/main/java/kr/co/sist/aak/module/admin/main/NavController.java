@@ -5,11 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NavController {
-	@GetMapping("manage_edu_cat.do")
-	public String manageEdu() {
-		
-		return "/admin/manage_edu_cat";
-	}
+	
 	@GetMapping("manage_lecture.do")
 	public String managelecture() {
 		

@@ -4,23 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.admin3">
 	<select id="selectAllCategory" resultType ="EduCategoryManagementDomain">
-	select distinct CAT_NAME,CAT_CODE from SUBJECT_CODE order by CAT_CODE asc
-	</select>
-	<select id="selectAllSubject" resultType ="EduCategoryManagementDomain">
-	select distinct SUB_CODE, SUB_NAME from SUBJECT_CODE order by SUB_CODE asc
+	select CAT_CODE,CAT_NAME
+	from CAT_CODE
+	where PRIME_CAT_CODE is null
+	order by CAT_CODE asc
 	</select>
 	<select id="selectCatcodeMaxval" resultType ="String">
-	select max(CAT_CODE) from SUBJECT_CODE 
+	select max(CAT_CODE) from CAT_CODE 
 	</select>
-	<select id="selectSubcodeMaxval" resultType ="String">
-	select max(SUB_CODE) from SUBJECT_CODE  
-	</select>
-	<insert id="insertEduCategory" parameterType="EduCategoryManagementVO">
+	<!-- <insert id="insertEduCategory" parameterType="EduCategoryManagementVO">
 	insert into SUBJECT_CODE (SUB_CODE,SUB_NAME,CAT_CODE, CAT_NAME)
 	values('-','-',#{cat_code},#{cat_name})
 	</insert>
 	<insert id="insertEduSubject" parameterType="EduCategoryManagementVO">
 	insert into SUBJECT_CODE (SUB_CODE,SUB_NAME,CAT_CODE, CAT_NAME)
 	values(#{sub_code},#{sub_name},#{cat_code},#{cat_name})
-	</insert>
+	</insert> -->
 </mapper>

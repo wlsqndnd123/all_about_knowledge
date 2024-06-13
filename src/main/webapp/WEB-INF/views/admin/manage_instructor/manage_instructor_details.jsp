@@ -1,9 +1,12 @@
+<%@page import="kr.co.sist.aak.domain.admin.InstructorManagementDomain"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
+<%
 
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,34 +105,38 @@
                             <h2 class="tm-block-title d-inline-block">강사 상세</h2>
                             <div style="text-align: center; margin: auto;">
                             <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                            <img src="http://localhost/all_about_knowledge/front/admin/img/profile-image.png"  class="card-img-top" alt="...">
+                            <img src="http://localhost/all_about_knowledge/upload/${ requestScope.image }"  class="card-img-top" alt="...">
                             </div>
                             </div>
                             <div>
                             <table class="table table-hover">
                             <tr>
                             <td>이름</td>
-                            <td>진수현</td>
+                            <td><c:out value="${ requestScope.name }"/> </td>
                             </tr>
                             <tr>
                             <td>강사아이디</td>
-                            <td>물?루?</td>
+                            <td><c:out value="${ requestScope.id }"/></td>
+                            </tr>
+                            <tr>
+                            <td>자기소개</td>
+                            <td><c:out value="${ requestScope.intro }"/></td>
                             </tr>
                             <tr>
                             <td>연락처</td>
-                            <td>0104568456</td>
+                            <td><c:out value="${ requestScope.phone }"/></td>
                             </tr>
                             <tr>
                             <td>이메일</td>
-                            <td>test@test.com</td>
+                            <td><c:out value="${ requestScope.email }"/></td>
                             </tr>
                             <tr>
                             <td>강사 학력사항</td>
-                            <td>몰?류</td>
+                            <td><c:out value="${ requestScope.education }"/></td>
                             </tr>
                             <tr>
                             <td>주력 과목</td>
-                            <td>몰?류</td>
+                            <td><c:out value="${ requestScope.major_subject }"/></td>
                             </tr>
                             
                             </table>
