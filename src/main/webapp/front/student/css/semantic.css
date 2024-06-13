@@ -38778,7 +38778,7 @@ add
 .side_nav{
   height: 100vh;
   margin-bottom: 0px !important;
-  min-height: 5ch !important;
+  min-height: 550px !important;
 }
 
 .my_article{
