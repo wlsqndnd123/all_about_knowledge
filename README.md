@@ -27,7 +27,7 @@
 양수민 : UI 설계 및 구현 - 사용자(강사) , 기능 구현 - 사용자(강사)
 
 ## 💻 개발환경
-Version : Java 17
+Version : Java 11
 
 IDE : Eclipse
 
