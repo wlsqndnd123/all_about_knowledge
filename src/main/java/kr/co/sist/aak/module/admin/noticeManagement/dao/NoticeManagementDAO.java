@@ -4,23 +4,24 @@ import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
 import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.NoticeManagementVO;
 import kr.co.sist.aak.util.MybatisDAO;
-
+@Component
 public class NoticeManagementDAO {
-	private static NoticeManagementDAO nDAO;
+	//private static NoticeManagementDAO nDAO;
 	private NoticeManagementDAO() {
 		
 	}
 	
-	public static NoticeManagementDAO getInstance() {
-		if(nDAO ==null) {
-			nDAO = new NoticeManagementDAO();
-		}
-		return nDAO;
-	}
+//	public static NoticeManagementDAO getInstance() {
+//		if(nDAO ==null) {
+//			nDAO = new NoticeManagementDAO();
+//		}
+//		return nDAO;
+//	}
 	
 	/**
 	 * 공지사항 리스트를 출력하는 method
@@ -100,6 +101,11 @@ public class NoticeManagementDAO {
 		return cnt;
 	}
 	
+	/**
+	 * 게시글의 상태를 변경하는 method
+	 * @param nVO
+	 * @return
+	 */
 	public int updateNotice(NoticeManagementVO nVO) {
 		int cnt =0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
@@ -111,6 +117,11 @@ public class NoticeManagementDAO {
 		return cnt;
 	}
 	
+	/**
+	 * 게시글을 삭제하는 method
+	 * @param noti_no
+	 * @return
+	 */
 	public int deleteNotice(String noti_no) {
 		int cnt =0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
@@ -122,8 +133,4 @@ public class NoticeManagementDAO {
 		return cnt;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(NoticeManagementDAO.getInstance().selectAllNotice());
-		
-	}
 }

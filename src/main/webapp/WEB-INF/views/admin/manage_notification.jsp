@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -125,12 +125,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
                     <tr>
-                    <td>1</td>
-                    <td><a href="manage_notification_details.do">걍하드코딩항</a></td>
-                    <td>240607</td>
-                    <td>게시</td>
+                    <td><c:out value="${  i.count }"/></td>
+                    <td><a href="manage_notification_details.do?noti_no=${list.noti_no }"><c:out value="${list.title }"/></a></td>
+                    <td><c:out value="${ list.write_date}"/></td>
+                    <td><c:out value="${list.status}"/></td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                     </table>
                     </div>

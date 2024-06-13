@@ -16,7 +16,26 @@ public class InstructorManagementController {
 	private InstructorManagementService ims;
 	
 	@GetMapping("manage_instructor_details.do")
-public String instructorDetail() {
+public String instructorDetail(Model model, String inst_id) {
+		InstructorManagementDomain imd = ims.instructorDetail(inst_id);
+		
+		String name =imd.getName();
+		String id =imd.getInst_id();
+		String email = imd.getEmail();
+		String intro = imd.getIntroduction();
+		String image = imd.getImage();
+		String phone = imd.getPhone();
+		String major_subject = imd.getMajor_subject();
+		String education = imd.getEducation();
+		model.addAttribute("ims",ims);
+		model.addAttribute("name",name);
+		model.addAttribute("id",id);
+		model.addAttribute("email",email);
+		model.addAttribute("intro",intro);
+		model.addAttribute("image",image);
+		model.addAttribute("phone",phone);
+		model.addAttribute("major_subject",major_subject);
+		model.addAttribute("education",education);
 	return "/admin/manage_instructor/manage_instructor_details";
 }
 	@GetMapping("manage_instructor_addform.do")

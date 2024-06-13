@@ -10,6 +10,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+
 public class NoticeManagementVO {
 	private String noti_no,title,id,content,status;
 	private Date write_date;
