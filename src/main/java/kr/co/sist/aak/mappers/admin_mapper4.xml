@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.aak.admin4">
+	
+	<!-- 학생리스트 쿼리 -->
+	<select id="selectMember" resultType ="MemberManagementDomain">
+	select * from STUDENT
+	</select>
+
+	
+</mapper>
