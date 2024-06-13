@@ -105,8 +105,9 @@
                     <div style="text-align: center;margin: auto;">
                     <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
                     <option selected>교육 카테고리 명</option>
-                    <!-- <option value="code1">데이터사이언스</option>
-                    <option value="code1">개발/프로그래밍</option> -->
+                    <c:forEach var="list" items="${requestScope.list }">
+                    <option value="${list.cat_code }"><c:out value="${list.cat_name }"/></option>
+                    </c:forEach>
                     </select>
                     <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
                     </div>

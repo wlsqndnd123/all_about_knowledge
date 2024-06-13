@@ -105,38 +105,38 @@
                             <h2 class="tm-block-title d-inline-block">강사 상세</h2>
                             <div style="text-align: center; margin: auto;">
                             <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                            <img src="http://localhost/all_about_knowledge/upload/${ requestScope.image }"  class="card-img-top" alt="...">
+                            <img src="http://localhost/all_about_knowledge/upload/${ imd.image }"  class="card-img-top" alt="...">
                             </div>
                             </div>
                             <div>
                             <table class="table table-hover">
                             <tr>
                             <td>이름</td>
-                            <td><c:out value="${ requestScope.name }"/> </td>
+                            <td><c:out value="${ imd.name }"/> </td>
                             </tr>
                             <tr>
                             <td>강사아이디</td>
-                            <td><c:out value="${ requestScope.id }"/></td>
+                            <td><c:out value="${ imd.inst_id }"/></td>
                             </tr>
                             <tr>
                             <td>자기소개</td>
-                            <td><c:out value="${ requestScope.intro }"/></td>
+                            <td><c:out value="${ imd.introduction }"/></td>
                             </tr>
                             <tr>
                             <td>연락처</td>
-                            <td><c:out value="${ requestScope.phone }"/></td>
+                            <td><c:out value="${ imd.phone }"/></td>
                             </tr>
                             <tr>
                             <td>이메일</td>
-                            <td><c:out value="${ requestScope.email }"/></td>
+                            <td><c:out value="${ imd.email }"/></td>
                             </tr>
                             <tr>
                             <td>강사 학력사항</td>
-                            <td><c:out value="${ requestScope.education }"/></td>
+                            <td><c:out value="${ imd.education }"/></td>
                             </tr>
                             <tr>
                             <td>주력 과목</td>
-                            <td><c:out value="${ requestScope.major_subject }"/></td>
+                            <td><c:out value="${ imd.major_subject }"/></td>
                             </tr>
                             
                             </table>
