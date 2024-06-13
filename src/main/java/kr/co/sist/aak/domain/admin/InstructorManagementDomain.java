@@ -10,6 +10,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class InstructorManagementDomain {
-private String inst_id,name,email,introduction;
-//image,phone,major_subject,education;
+private String inst_id,name,email,introduction,image,phone,major_subject,education;
+
 }

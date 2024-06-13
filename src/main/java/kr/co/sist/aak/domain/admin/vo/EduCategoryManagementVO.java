@@ -10,6 +10,5 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class EduCategoryManagementVO {
-private String category_code,category_name;
-private String subject_code,subject_name;
+private String cat_code,cat_name;
 }

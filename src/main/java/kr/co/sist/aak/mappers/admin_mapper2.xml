@@ -21,9 +21,9 @@
 	from   NOTICE
 	</select>
 	<select id="selectOneInstructor" parameterType="String" resultType ="InstructorManagementDomain">
-	select NAME,INST_ID,PHONE,EMAIL,EDUCATION,MAJOR_SUBJECT
+	select NAME,INST_ID,PHONE,EMAIL,EDUCATION,MAJOR_SUBJECT,image,introduction
 	from INST_INFO
-	where INST_ID = #{inst_id}
+	where inst_id = #{inst_id}
 	</select>
 	<insert id="insertInstructor" parameterType="InstructorManagementVO">
 	INSERT INTO INST_INFO (INST_ID, NAME, EMAIL, INTRODUCTION, IMAGE,PHONE,EDUCATION,MAJOR_SUBJECT) VALUES

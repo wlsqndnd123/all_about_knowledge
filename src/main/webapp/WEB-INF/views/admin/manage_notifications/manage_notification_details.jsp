@@ -103,12 +103,12 @@
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
     <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="걍하드코딩항">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="${requestScope.title }">
     </div>
 					</div>
 					<div class="mb-3">
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
-  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"></textarea>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"><c:out value="${requestScope.content }"/> </textarea>
 </div>
 <div>
 <input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/>
