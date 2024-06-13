@@ -1,5 +1,15 @@
 package kr.co.sist.aak.domain.admin;
 
-public class InstructorManagementDomain {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+public class InstructorManagementDomain {
+private String inst_id,name,email,introduction;
+//image,phone,major_subject,education;
 }
