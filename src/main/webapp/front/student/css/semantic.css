@@ -38778,7 +38778,7 @@ add
 .side_nav{
   height: 100vh;
   margin-bottom: 0px !important;
-  min-height: 450px !important;
+  min-height: 5ch !important;
 }
 
 .my_article{
@@ -38827,4 +38827,8 @@ add
 
 .rem_padding{
   padding: 1.2rem !important;
+}
+
+.mypage_content_div{
+  min-height: 550px !important;
 }
