@@ -9,6 +9,11 @@
 	where PRIME_CAT_CODE is null
 	order by CAT_CODE asc
 	</select>
+	<select id ="selectSubCat" resultType="EduCategoryManagementDomain">
+	select CAT_CODE, CAT_NAME
+	from CAT_CODE
+	where PRIME_CAT_CODE =#{prime_cat_code}
+	</select>
 	<select id="selectCatcodeMaxval" resultType ="String">
 	select max(CAT_CODE) from CAT_CODE 
 	</select>
