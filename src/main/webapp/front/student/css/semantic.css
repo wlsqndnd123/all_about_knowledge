@@ -38834,5 +38834,13 @@ add
 }
 
 .mypage_content_div{
-  min-height: 550px !important;
+  min-height: 600px !important;
+  min-width: 800px !important;
+}
+
+@media only screen and (min-width: 1200px) {
+  .ui.fav_container {
+    width: 80em !important;
+    margin: 2rem auto 0 !important;
+  }
 }
