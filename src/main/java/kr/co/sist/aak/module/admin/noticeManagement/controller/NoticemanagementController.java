@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
 import kr.co.sist.aak.module.admin.noticeManagement.service.NoticeManagementService;
 
-
 @Controller
 public class NoticemanagementController {
 	@Autowired(required = false)
@@ -21,13 +20,8 @@ public class NoticemanagementController {
 	@GetMapping("manage_notification_details.do")
 public String noticeDetail(NoticeManagementDomain nmd, @RequestParam(defaultValue = "A_NOT00000") String noti_no,Model model) {
 		nmd = nms.searchOneNotice(noti_no);
-		String content= nmd.getContent();
-		String id = nmd.getId();
-		String title= nmd.getTitle();
 		
-		model.addAttribute("content",content);
-		model.addAttribute("id",id);
-		model.addAttribute("title",title);
+		model.addAttribute("nmd",nmd);
 		
 	return "/admin/manage_notifications/manage_notification_details";
 }
