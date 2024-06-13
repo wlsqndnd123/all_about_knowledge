@@ -131,7 +131,6 @@
                     
                     
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
@@ -141,22 +140,18 @@
                     <th>가입일</th>
                     </tr>
                     </thead>
+                    
                     <tbody>
+                    <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
                     <tr>
-                    <td>1</td>
-                    <td>JIN123</td>
-                    <td><a href="manage_member_details.do">진수현</a></td>
-                    <td>2024/06/06</td>
+                    <td><c:out value="${i.count}"/></td>
+                    <td><c:out value="${mmd.std_id }"/></td>
+                    <td><a href="manage_member_details.do"><c:out value="${mmd.name }"/></a></td>
+                    <td><c:out value="${mmd.signup_date}"/></td>
                     </tr>
-                    
-                    <tr>
-                    <td>2</td>
-                    <td>KIM1234</td>
-                    <td><a href="manage_member_details.do">김일신</a></td>
-                    <td>2024/06/05</td>
-                    </tr>
-                    
+                    </c:forEach>
                     </tbody>
+                    
                     </table>
                     </div>
                         </div>

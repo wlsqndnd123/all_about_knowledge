@@ -12,11 +12,7 @@ public class NavController {
 		return "/admin/manage_lecture";
 	}
 	
-	@GetMapping("manage_memberlist.do")
-	public String manageMemberlist() {
-		
-		return "/admin/manage_memberlist";
-	}
+	
 	@GetMapping("manage_qna.do")
 	public String manageQna() {
 		
