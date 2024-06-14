@@ -100,20 +100,20 @@
                     <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
-                            <form action="manage_notification_write.do" id ="formWrite">
-                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  	<button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite">공지사항 작성</button>
-                            </form>
+                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
 				<div style="text-align: left;">
-				<select class="form-select" aria-label="Default select example">
-  		<option selected>--게시글 상태 --</option>
-  <option value="1">게시</option>
-  <option value="2">예약</option>
-  <option value="3">삭제</option>
+  <form>
+	<select class="form-select" aria-label="Default select example">
+  <option value="0">게시</option>
+  <option value="1">예약</option>
+  <option value="2">삭제</option>
+  <option value="3" selected="selected">전체</option>
 </select>
+  </form>
 				</div>
-                    <div>
+                  <div>
                     
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
