@@ -105,11 +105,11 @@
                             <table class="table table-hover" style=" width:95%; text-align: center;">
                             <tr>
   							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="image" name ="image"></td>
+  				<td><input class="form-control" type="file" id="formFile" name ="image"></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 아이디</td>
-                <td><input type="email" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
+                <td><input type="email" readonly="readonly" class="form-control" id="inst_id" value ="test" name ="inst_id"/></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">이름</td>
@@ -117,7 +117,7 @@
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">연락처</td>
-                    <td><input type="email" class="form-control" id="phone" name ="phone" maxlength="11"/></td>
+                    <td><input type="email" class="form-control" id="phone" name ="phone"/></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">이메일</td>
@@ -130,10 +130,6 @@
                             <tr>
                             <td style="vertical-align: middle;">주력 과목</td>
                    <td><input type="email" class="form-control" id="major_subject" name ="major_subject"></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">자기소개</td>
-                   <td><input type="email" class="form-control" id="introduction" name ="introduction"></td>
                             </tr>
                             
                             </table>
@@ -174,7 +170,7 @@
     });
 
     $("#btnSubmit").click(function() {
-        var file = $("#image").val();
+        var file = $("#formFile").val();
         var selectedExt = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
 
         var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];

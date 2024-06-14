@@ -14,7 +14,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 @Component
 public class InstructorManagementDAO {
 
-	private InstructorManagementDAO() {
+	public InstructorManagementDAO() {
 
 	}
 
@@ -58,10 +58,20 @@ public class InstructorManagementDAO {
 		return insDomain;
 	}
 
+	/**
+	 * 입력한 강사의 정보를 데이터베이스 안에 저장하는 method.
+	 * @param iVO
+	 * @return
+	 */
 	public int insertInstructor(InstructorManagementVO iVO) {
 		int cnt = 0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt += ss.insert("kr.co.sist.aak.admin2.insertInstructorInfo",iVO);
+		cnt += ss.insert("kr.co.sist.aak.admin2.insertInstructor",iVO.getInst_id());
+		if(cnt ==2) {
+			ss.commit();
+		}
 		return cnt;
 	}
 
@@ -76,5 +86,25 @@ public class InstructorManagementDAO {
 
 		return cnt;
 	}
-
+	public String selectMaxInstId() throws PersistenceException {
+		String maxId ="";
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		maxId = ss.selectOne("kr.co.sist.aak.admin2.selectinstIDMaxval");
+		mbDAO.closeHanlder(ss);
+		
+		return maxId;
+	}
+	public static void main(String[] args) {
+		String id =
+	new InstructorManagementDAO().selectMaxInstId();
+		System.out.println(id);
+		int idSub = Integer.parseInt(id.substring(6))+1 ;
+		System.out.println(idSub);
+		String id1 = String.format("%05d",idSub);
+		
+		System.out.println(id1);
+		
+	}
 }

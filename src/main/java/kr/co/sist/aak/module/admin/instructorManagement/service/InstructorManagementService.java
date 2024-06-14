@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.admin.InstructorManagementDomain;
+import kr.co.sist.aak.domain.admin.vo.InstructorManagementVO;
 import kr.co.sist.aak.module.admin.instructorManagement.dao.InstructorManagementDAO;
 @Service
 public class InstructorManagementService {
@@ -47,5 +48,28 @@ public class InstructorManagementService {
 			pe.printStackTrace();
 		}
 		return imd;
+	}
+	public void addInstructor(InstructorManagementVO iVO) {
+		try {
+			imDAO.insertInstructor(iVO);
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+	}
+	public String searchMaxInstId() {
+		String maxId = "";
+		
+	StringBuffer pre = new StringBuffer("INST_");
+	
+		try {
+			maxId =imDAO.selectMaxInstId();
+			int num = Integer.parseInt(maxId.substring(6))+1;
+			String nextnum = String.format("%05d",num);
+			pre.append(nextnum);
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return pre.toString();
 	}
 }
