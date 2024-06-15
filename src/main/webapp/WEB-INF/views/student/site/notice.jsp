@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <div class="ui main text container">
+  <div class="ui main container">
     <h1 class="ui header">공지사항</h1>
     
     <div class="search-container">
@@ -105,7 +105,7 @@
       </div>
     </div>
     
-    <table class="ui very basic table">
+    <table class="ui celled selectable very basic table">
       <thead>
         <tr>
           <th>No</th>

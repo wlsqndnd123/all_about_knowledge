@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -129,7 +129,7 @@
                     <tr>
                     <td><c:out value="${  i.count }"/></td>
                     <td><a href="manage_notification_details.do?noti_no=${list.noti_no }"><c:out value="${list.title }"/></a></td>
-                    <td><c:out value="${ list.write_date}"/></td>
+                    <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
                     <td><c:out value="${list.status}"/></td>
                     </tr>
                     </c:forEach>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
   	
-  	<input type="text" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+  	<input type="text" name="title" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
   <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
 </div>
                         </div>

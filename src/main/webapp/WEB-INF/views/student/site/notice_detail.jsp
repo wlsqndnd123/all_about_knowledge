@@ -93,7 +93,7 @@
     </div>
   </div>
 
-  <div class="ui main text container">
+  <div class="ui main container">
     <h1 class="ui header">공지사항</h1>
     
     <div class="ui segment">
