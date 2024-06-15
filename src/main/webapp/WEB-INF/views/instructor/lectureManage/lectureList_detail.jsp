@@ -69,7 +69,7 @@
 		</ul>
 	<!-- </div> -->
 
-	 <div id="content-wrapper">
+	 <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
@@ -253,7 +253,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                              <!--   <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -265,7 +265,7 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
-                                <div class="dropdown-divider"></div> --> -->
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -276,105 +276,73 @@
                     </ul>
 
                 </nav>
-
-
-				<!-- 강의관리 리스트 시작 -->
-				<div class="container-fluid justify-content-center ">
-					<div class="card-body  d-flex flex-col" style="padding-left: 220px;">
-						<!-- 검색바 -->
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button"
-								data-bs-toggle="dropdown" aria-expanded="false">승인여부</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else
-										here</a></li>
-							</ul>
-						</div>
-
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button"
-								data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else
-										here</a></li>
-							</ul>
-						</div>
-
-						<div class="col">
-							<div class="input-group mb-2" >
-								<input type="text" class="form-control" style="max-width: 350px;" > 
-								<input type="button" class="input-group-text" value="🔍">
-							</div>
-
-						</div>
-					</div>
-					<div class="container-fluid">
-						<!-- 리스트 -->
-						<table id="tab" class="table table-hover" class="d-flex flex-col">
-							<thead>
-								<tr>
-									<th scope="col">과목명</th>
-									<th scope="col">총 강의수</th>
-									<th scope="col">승인여부</th>
-									<th scope="col">반려샤유</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row"><a href="lectureList_detail.do">java 왕기초 4주 단기완성</a></th>
-									<td>8개</td>
-									<td>승인</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<th scope="row">c언어 기초문법</th>
-									<td>10개</td>
-									<td>승인</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<th scope="row">벼락치기 SQL</th>
-									<td>7개</td>
-									<td>대기중</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<th scope="row">알고리즘의 이해</th>
-									<td>15개</td>
-									<td>반려</td>
-									<td>강의시간 미달</td>
-								</tr>
-
-
-							</tbody>
-						</table>
-					</div>
-					<div class="container-fluid">
-						<!-- 페이지네이션 -->
-						<div id="pn" class="d-flex flex-col justify-content-center">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#"
-										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#"
-										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-									</a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
+                
+               	<div class="container-fluid">
+	  				<div class="card-body d-flex flex-column justify-content-center">
+    <!-- 강의 상세 정보 -->
+    <div class="bg-white tm-block" style="width: 100% ">
+    <div class="col-12">
+   <div class="mb-3 d-flex align-items-center" style="width: 100% ">
+    <div>
+        <img src="http://localhost/all_about_knowledge/resources/img/%EA%B0%95%EC%9D%98%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="max-width: 100px;">
+    </div>
+    <div id="lec_info" class="d-flex flex-column " style="width: 50%">
+        <div class="mb-2">
+            <label class="form-label">java 왕기초 4주 단기완성</label>
+            <a href="lectureEntrance.do"><input type="button" value="강의실 입장" class="btn btn-light btn-sm"></a>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">총 강의시간 | 800분</label>
+            <input type="button" value="문의관리" class="btn btn-light btn-sm">
+        </div>
+        <div>
+            <label class="form-label">총 강의 수 | 20개</label>
+            <input type="button" value="뒤로가기" class="btn btn-light btn-sm">
+        </div>
+    </div>
 </div>
 
-
+    
+    <!-- 진도현황 -->
+    <div class="mb-3">
+        <label for="customRange1" class="form-label">진도현황</label>
+        <input type="range" class="form-range" >
+    </div>
+    
+    <!-- 성적현황 -->
+    <div class="mb-3">
+    	
+        <label class="form-label">성적현황</label>
+        <strong><label>78 / 100</label></strong>
+        
+        <input type="button" value="시험관리" class="btn btn-light btn-sm"/>
+        <input type="button" value="수강생관리" class="btn btn-light btn-sm"/>
+    </div>
+    
+    <!-- 테이블 -->
+    <div class="mb-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                </tr>
+            </thead> 
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>4차시 강의해설 오탈자 수정</td>
+                    <td>2024-05-25</td>
+                </tr>
+             </tbody>
+             </table> 
+			</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<!-- Footer -->
 				<footer class="sticky-footer bg-white">
 					<div class="container my-auto">
 						<div class="copyright text-center my-auto">
