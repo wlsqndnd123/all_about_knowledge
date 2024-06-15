@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -83,8 +84,8 @@ public class InstructorManagementController {
 	}
 
 	@GetMapping("manage_instructor.do")
-	public String searchInstructorList(Model model) {
-		List<InstructorManagementDomain> list = ims.searchAllNInstructor();
+	public String searchInstructorList(Model model,@RequestParam(defaultValue = "") String name) {
+		List<InstructorManagementDomain> list = ims.searchAllNInstructor(name);
 		model.addAttribute("instList", list);
 		return "/admin/manage_instructor";
 	}

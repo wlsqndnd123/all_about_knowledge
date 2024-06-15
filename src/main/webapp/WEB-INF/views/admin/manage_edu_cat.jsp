@@ -102,16 +102,14 @@
                             <h2 class="tm-block-title d-inline-block">교육 카테고리 관리</h2>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 </div>	
-                    <div style="text-align: center;margin: auto;">
-                    <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
-                    <option selected>교육 카테고리 명</option>
-                    <c:forEach var="list" items="${requestScope.list }">
-                    <option value="${list.cat_code }"><c:out value="${list.cat_name }"/></option>
-                    </c:forEach>
-                    </select>
+                    <div style="text-align: center;margin: auto;" >
+                    <!-- <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
+                    --> <label>상위 교육 카테고리 명</label> <br>
+                   <!--  </select> -->
                     <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
+                    <input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/>
+                    <div id ="educatOutput"  style="text-align: center;margin: auto;"></div>
                     </div>
-                    <div id ="educatOutput"></div>
                     <div id ="edusubOutput"></div>
                         </div>
                     </div>
@@ -123,32 +121,31 @@
 
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
- <script type="text/javascript">
- $(function(){
-	 $("#catbtn").click(function(){
-		 $.ajax({
-				url:"http://localhost${pageContext.request.contextPath}/day0611/ajax_responsebody.do",
-				type:"GET",
-				dataType:"JSON",
-				error :function(xhr){
-					console.log(xhr.status +" : "+xhr.statusText);
-					alert("ㅈㅅㅈㅅ");
-				},
-				success : function(jsonObj){
-					var output ="";
-					output+= "<strong>"+jsonObj.name+"</strong>"
-					output+="<ul>"
-					$.each(jsonObj.lunchList,function(i,jsonTemp){
-						output+="<li>"+jsonTemp.lunch+"</li>"
-					});
-					output+="</ul>"
-					$("#educatOutput").html(output);
-				}
-			})	//ajax	
-		 
-	 })
- })
- </script>
+  <script type="text/javascript">
+        $(function() {
+            $("#catbtn").click(function() {
+                $.ajax({
+                    url: "manage_edu_cat_list.do",
+                    type: "GET",
+                    dataType: "JSON",
+                    error: function(xhr) {
+                        console.log(xhr.status + " : " + xhr.statusText);
+                        alert("서버 오류 발생");
+                    },
+                    success: function(jsonObj) {
+                        var output = "<select class ='form-select form-select-lg mb-3' "+
+                        " aria-label='Large select example'>";
+                       
+                        $.each(jsonObj.list, function(i, jsonTemp) {
+                        output += "<option value = "+jsonTemp.cat_code+" >" + jsonTemp.cat_name + "</option>";
+                        });
+                        output += "</select>";
+                        $("#educatOutput").html(output);
+                    }
+                }); // ajax
+            });
+        });
+    </script>
  </div>
 </body>
 
