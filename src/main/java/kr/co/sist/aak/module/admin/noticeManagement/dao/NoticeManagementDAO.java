@@ -154,4 +154,7 @@ public class NoticeManagementDAO {
 		return list;
 	}
 
+//	public static void main(String[] args) {
+//		new NoticeManagementDAO().selectNoticeTitle("DAO");
+//	}
 }
