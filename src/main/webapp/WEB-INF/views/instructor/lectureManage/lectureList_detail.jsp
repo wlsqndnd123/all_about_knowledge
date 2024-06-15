@@ -321,6 +321,9 @@
     
     <!-- 테이블 -->
     <div class="mb-3">
+        <label class="form-label">공지사항</label>
+        <input type="button" value="공지관리" class="btn btn-light btn-sm"/>
+    
         <table class="table">
             <thead>
                 <tr>

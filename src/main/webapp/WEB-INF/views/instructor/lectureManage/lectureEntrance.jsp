@@ -272,16 +272,21 @@ $(function () {
 												style="width: 50%">
 												<div class="mb-2">
 													<label class="form-label">java 왕기초 4주 단기완성</label> <a
-														href="lectureEntrance.do"><input type="button"
-														value="강의실 입장" class="btn btn-light btn-sm"></a>
+														href="lectureEntrance.do"></a>
 												</div>
 												<div class="mb-2">
-													<label class="form-label">총 강의시간 | 800분</label> <input
-														type="button" value="문의관리" class="btn btn-light btn-sm">
+													<label class="form-label">총 강의시간 | 800분</label> 
 												</div>
 												<div>
-													<label class="form-label">총 강의 수 | 20개</label> <input
-														type="button" value="뒤로가기" class="btn btn-light btn-sm">
+													<label class="form-label">총 강의 수 | 20개</label> 
+												</div>
+												<div>
+													<label class="form-label">학습개요</label> <br>
+													<label class="form-label">학습개요입니다라람쥐</label> 
+												</div>
+												<div>
+													<label class="form-label">학습목표</label> <br>
+													<label class="form-label">학습목표입니다</label> 
 												</div>
 											</div>
 										</div>
