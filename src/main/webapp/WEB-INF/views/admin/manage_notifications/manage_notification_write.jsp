@@ -107,6 +107,12 @@
       <input type="email" class="form-control" id="exampleFormControlInput1" name="title">
     </div>
 					</div>
+                    <div class="mb-3">
+  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 글 번호</label>
+    <div class="mb-3">
+      <input type="email" class="form-control" value="${requestScope.noti_no }" id="exampleFormControlInput1" name="noti_no" readonly="readonly">
+    </div>
+					</div>
 					<div class="mb-3">
  				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
 				 <input class="form-control" type="file" id="formFile" name="image">	

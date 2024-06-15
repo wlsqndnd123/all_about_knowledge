@@ -16,16 +16,16 @@ public class NoticeManagementService {
 	@Autowired(required = false)
 	private NoticeManagementDAO nmDAO;
 
-	public List<NoticeManagementDomain> searchAllNotice() {
-		List<NoticeManagementDomain> list = null;
-		try {
-			list = nmDAO.selectAllNotice();
-
-		} catch (PersistenceException pe) {
-			pe.printStackTrace();
-		}
-		return list;
-	}
+//	public List<NoticeManagementDomain> searchAllNotice() {
+//		List<NoticeManagementDomain> list = null;
+//		try {
+//			list = nmDAO.selectAllNotice();
+//
+//		} catch (PersistenceException pe) {
+//			pe.printStackTrace();
+//		}
+//		return list;
+//	}
 
 	public NoticeManagementDomain searchOneNotice(String noti_no) {
 		NoticeManagementDomain nmd = null;
@@ -69,15 +69,45 @@ public class NoticeManagementService {
 
 		try {
 			list = nmDAO.selectNoticeTitle(title);
+			
 			if ("".equals(title)) {
 				list = nmDAO.selectAllNotice();
 			}
 
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
+			
+		}finally {
+			for(NoticeManagementDomain temp :list) {
+				if(temp.getStatus().equals("RESV")) {
+					temp.setStatus("예약");
+				}else if(temp.getStatus().equals("DELT")){
+					temp.setStatus("삭제");
+					
+				}else {
+					temp.setStatus("게시");
+					
+				}
+			}
+			
 		}
 
 		return list;
 
 	}
+	 public String searchMaxNoticeVal() {
+		 String maxVal ="";
+		 
+		 StringBuffer pre = new StringBuffer("A_NOT");
+		 
+		 try{
+			 maxVal =nmDAO.selectMaxValue();
+			 int num = Integer.parseInt(maxVal.substring(6))+1;
+			 String nextVal = String.format("%05d", num);
+			 pre.append(nextVal);
+		 }catch (PersistenceException e) {
+			 e.printStackTrace();
+		 }
+		 return pre.toString();
+	 }
 }

@@ -18,10 +18,14 @@ public class InstructorManagementService {
 	 * 강사중 삭제 플래그가 N(재직중)인 강사들의 리스트를 출력하는 method
 	 * @return
 	 */
-	public List<InstructorManagementDomain> searchAllNInstructor() {
+	public List<InstructorManagementDomain> searchAllNInstructor(String name) {
 		List<InstructorManagementDomain> list =null;
 		try {
-		list = imDAO.selectAllNInstructor()	;
+			
+			list = imDAO.selectInstructorName(name);
+		if("".equals(name)) {
+			list = imDAO.selectAllNInstructor()	;
+		}
 		}catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}
