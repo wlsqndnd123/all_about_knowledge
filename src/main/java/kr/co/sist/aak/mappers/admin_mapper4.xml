@@ -6,8 +6,45 @@
 	
 	<!-- 학생리스트 쿼리 -->
 	<select id="selectMember" resultType ="MemberManagementDomain">
-	select * from STUDENT
+	SELECT 	s.std_id
+	,si.name
+	,s.del_yn
+	,s.signup_date
+	FROM student s
+	JOIN std_info si ON s.std_id = si.std_id
 	</select>
 
+	
+	<!-- 선택학생 세부 정보 쿼리 -->
+	<select id="selectDetaleMember" resultType ="MemberManagementDomain">
+	SELECT 	s.std_id
+	, si.name
+	, si.birth
+	, si.tel
+	, si.email
+	, s.del_yn
+	, s.signup_date
+	FROM student s
+	JOIN std_info si ON s.std_id = si.std_id
+	WHERE s.std_id = #{std_id}
+	
+	
+	</select>
+	
+	<!-- 학생 정보 변경 쿼리 -->
+	<update id="updateMember" parameterType="MemberManagementVO">
+	update std_info
+	set name = #{name}
+	,birth=#{birth}
+	,tel=#{tel}
+	,email=#{email}
+	where std_id = #{std_id}
+	</update>
+	
+	
+	
+	
+	
+	
 	
 </mapper>

@@ -41,9 +41,33 @@ public class MemberManagementDAO {
 	}
 	
 	
+	public MemberManagementDomain selectDetaleMember(String std_id)throws PersistenceException {
+		
+		MemberManagementDomain mmDomain = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		mmDomain = ss.selectOne("kr.co.sist.aak.admin4.selectDetaleMember", std_id);
+		mbDAO.closeHanlder(ss);
+		
+		
+		
+		return mmDomain;
+	
+	}
+	
+	
+	
 	
 	public int updateMember(MemberManagementVO mmVO) {
+	
 		int cnt = 0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(true);
+		cnt = ss.update("kr.co.sist.aak.admin4.updateMember",mmVO);
+		mbDAO.closeHanlder(ss);
+		
+		
+		
 		
 		return cnt;
 		

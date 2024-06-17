@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import kr.co.sist.aak.domain.admin.MemberManagementDomain;
-
+import kr.co.sist.aak.domain.admin.vo.MemberManagementVO;
 import kr.co.sist.aak.module.admin.memberManagement.dao.MemberManagementDAO;
 @Service
 public class MemberManagementService {
@@ -19,11 +19,44 @@ public class MemberManagementService {
 		List<MemberManagementDomain> list = null;
 		try {
 		list = mmDAO.selectMember()	;
-		System.out.println(list);
+	
 		}catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}
 		
 		return list;
 	}
+	
+	
+	public MemberManagementDomain searchDetaleMember(String std_id) {
+		MemberManagementDomain mmDomain = null;
+		try {
+			mmDomain = mmDAO.selectDetaleMember(std_id);
+		
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return mmDomain;
+	}
+	
+	public int modyifyMember(MemberManagementVO mmVO) {
+		int cnt = 0;
+
+		cnt=mmDAO.updateMember(mmVO);
+		
+		
+		return cnt;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
