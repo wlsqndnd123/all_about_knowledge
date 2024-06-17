@@ -100,30 +100,29 @@
                     <div class="col-12">
                         <div class="col-12">
     <form id ="frm" action="notification_write_form_process.do" method="post" enctype="multipart/form-data">
-                            <h2 class="tm-block-title d-inline-block">공지사항 작성</h2>
+                            <h2 class="tm-block-title d-inline-block">공지사항 작성 완료</h2>
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
     <div class="mb-3">
-      <input type="email" class="form-control" id="exampleFormControlInput1" name="title">
+      <input type="email" class="form-control" id="exampleFormControlInput1" name="title" value="${ nmVO.title }" readonly="readonly">
     </div>
 					</div>
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 글 번호</label>
     <div class="mb-3">
-      <input type="email" class="form-control" value="${requestScope.noti_no }" id="exampleFormControlInput1" name="noti_no" readonly="readonly">
+      <input type="email" class="form-control" value="${nmVO.noti_no }" id="exampleFormControlInput1" name="noti_no" readonly="readonly">
     </div>
 					</div>
-					<div class="mb-3">
+					<!-- <div class="mb-3">
  				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
-				 <input class="form-control" type="file" id="formFile" name="image">	
+				 <input class="form-control" type="file" id="image" name="image" >	
 					<div class="mb-3">
-					</div>
+					</div> -->
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
-  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15" name ="content"></textarea>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15" name ="content"><c:out value="${nmVO.content }"/> </textarea>
 </div>
 <div style="text-align: center;">
-<input type="button" class="btn btn-link" value="작성" id ="btnwrite"/>
-<input type="button" class="btn btn-link" value="취소" id ="btnback"/>
+<input type="button" class="btn btn-link" value="목록으로" id ="btnback"/>
 </div>
     </form>
                         </div>
@@ -139,29 +138,6 @@
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
-  $("#btnwrite").click(function(){
-
-			// 이미지만 업로드하도록 설정
-			var file = $("#upFile").val();
-			var selectedExt = file.substring(file.lastIndexOf(".")+1);
-
-			var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
-			var flag = false;
-
-			for(var i = 0; i < extArr.length; i++) {
-			if(selectedExt == extArr[i]) {
-			flag = true;
-			break;
-			} // end if
-			} // end for
-
-			if(!flag) {
-			alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
-			return;
-			} // end if
-
-			$("#frm").submit();
-			}); // click
   })
   
   </script>

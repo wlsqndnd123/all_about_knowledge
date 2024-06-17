@@ -20,114 +20,182 @@
 
 <style type="text/css">
   body {
-  padding: 1.5em;
-  background: #f5f5f5;
-}
-
-table {
-  border: 1px #a39485 solid;
-  font-size: .9em;
-  box-shadow: 0 2px 5px rgba(0,0,0,.25);
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-th {
-  text-align: left;
-}
-
-thead {
-  font-weight: bold;
-  color: #fff;
-  background: #73685d;
-}
-
-td, th {
-  padding: 1em .5em;
-  vertical-align: middle;
-}
-
-td {
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  background: #fff;
-}
-
-a {
-  color: #73685d;
-}
-
-@media all and (max-width: 768px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
+    padding: 1.5em;
+    background: #f5f5f5;
   }
 
-  th {
-    text-align: right;
-    border-bottom: 1px solid #a39485;
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* 사이드바 너비 조정 */
+    background-color: #212529;
+    color: #fff;
+    padding-top: 1rem;
+    overflow-y: auto;
   }
 
-  table {
-    position: relative;
-    padding-bottom: 0;
-    border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
+  .container {
+    margin-left: 250px; /* 사이드바 너비 만큼 컨텐츠를 오른쪽으로 밀어줌 */
+    padding: 2em;
   }
 
-  thead {
-    float: left;
-    white-space: nowrap;
+  .board {
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
   }
 
-  tbody {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    white-space: nowrap;
+  .board th {
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+    background: #73685d;
+    padding: 1em .5em;
+    vertical-align: middle;
   }
 
-  tr {
-    display: inline-block;
-    vertical-align: top;
+  .board td, .board th {
+    padding: 1em .5em;
+    vertical-align: middle;
   }
 
-  td {
-    border-bottom: 1px solid #e5e5e5;
+  .board td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
   }
-}
-    
+
+  .board a {
+    color: #73685d;
+  }
+
+  @media all and (max-width: 768px) {
+    .sidebar {
+      width: 100%; /* 작은 화면에서는 사이드바가 전체 너비를 차지 */
+      position: relative;
+    }
+
+    .container {
+      margin-left: 0; /* 작은 화면에서는 사이드바 영향 없앰 */
+      padding: 1em;
+    }
+
+    .board, .board thead, .board tbody, .board th, .board td, .board tr {
+      display: block;
+    }
+
+    .board thead {
+      float: left;
+      white-space: nowrap;
+    }
+
+    .board tbody {
+      overflow-x: auto;
+      overflow-y: hidden;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .board tr {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .board td {
+      border-bottom: 1px solid #e5e5e5;
+    }
+  }
 </style>
 <script type="text/javascript">
 	$(function(){
-	
+		
 	});
 	
 </script>
 </head>
 <body>
+<div class="sidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">AAk 강사메인</div>
+    </a>
 
-<div class="container">
-    <h3>공지사항</h3>
-    <table class="board">
-        <thead class="thead">
-            <tr>
-                <th class="num">번호</th>
-                <th class="title">제목</th>
-                <th class="sub">과목</th>
-                <th class="create_date">작성일</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>공지사항 제목 예시</td>
-                <td>과목 예시</td>
-                <td>2024-06-10</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <ul class="nav flex-column">
+        <li class="nav-item active">
+            <a class="nav-link"> <!-- href="index.html" -->
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>강의관리</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>강의신청</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>문의사항</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="studentList">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>수강생 관리</span>
+            </a>
+        </li>
+    </ul>
 </div>
 
+
+<div class="container">
+        <h3>공지사항</h3>
+        <table class="board">
+            <thead>
+                <tr>
+                    <th class="num">번호</th>
+                    <th class="title">제목</th>
+                    <th class="sub">과목</th>
+                    <th class="create_date">작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:choose>
+                    <c:when test="${empty noticelist}">
+                        <tr>
+                            <td colspan="4" style="text-align: center;">조회된 공지사항이 없습니다.</td>
+                        </tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="notice" items="${noticelist}">
+                            <tr>
+                                <td><c:out value="${notice.noti_no}"/></td>
+                                <td><a href="#"><c:out value="${notice.title}"/></a></td>
+                                <td><c:out value="${notice.sub_code}"/></td>
+                                <td><c:out value="${notice.write_date}"/></td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
+            </tbody>
+        </table>
+        <a href="notice_write.do"><button>공지작성</button></a>
+        <!-- Page level custom scripts -->
+    <script src="http://localhost/all_about_knowledge/resources/js/demo/chart-area-demo.js"></script>
+    <script src="http://localhost/all_about_knowledge/resources/js/demo/chart-pie-demo.js"></script>
+    </div>
 </body>
 </html>
