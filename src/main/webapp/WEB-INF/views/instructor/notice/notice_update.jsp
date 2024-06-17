@@ -20,6 +20,19 @@
 
 
 <style type="text/css">
+
+
+	.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* 사이드바 너비 조정 */
+    background-color: #212529;
+    color: #fff;
+    padding-top: 1rem;
+    overflow-y: auto;
+  }
   body {
     padding: 1.5em;
     background: #f5f5f5;
@@ -110,7 +123,46 @@
 </script>
 </head>
 <body>
+<div class="sidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">AAk 강사메인</div>
+    </a>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <ul class="nav flex-column">
+        <li class="nav-item active">
+            <a class="nav-link">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+<span>강의관리</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>강의신청</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>문의사항</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="studentList.do">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>수강생 관리</span>
+            </a>
+        </li>
+    </ul>
+</div>
 <div class="form-container">
   <form method="post" name="frmDetail" id="frmDetail">
     <input type="hidden" name="num" />
