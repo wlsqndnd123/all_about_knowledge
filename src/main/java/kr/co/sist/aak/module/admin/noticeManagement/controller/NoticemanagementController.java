@@ -26,14 +26,16 @@ public String noticeDetail(NoticeManagementDomain nmd, @RequestParam(defaultValu
 	return "/admin/manage_notifications/manage_notification_details";
 }
 	@GetMapping("manage_notification_write.do")
-	public String noticeWrite() {
+	public String noticeWrite(String noti_no,Model model) {
+		noti_no = nms.searchMaxNoticeVal();
+		model.addAttribute("noti_no",noti_no);
 		return "/admin/manage_notifications/manage_notification_write";
 	}
 @GetMapping("manage_notification.do")
-public String searchNoticeList(Model model) {
+public String searchNoticeList(Model model, @RequestParam(defaultValue = "") String title) {
 	List<NoticeManagementDomain> list =null;
 	
-	list = nms.searchAllNotice();
+	list = nms.searchNoticeTitle(title);
 	model.addAttribute("list",list);
 	return "/admin/manage_notification";
 }

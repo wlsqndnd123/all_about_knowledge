@@ -28,6 +28,15 @@ public class InstructorManagementDAO {
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
 		list = ss.selectList("kr.co.sist.aak.admin2.selectNAllInstructor");
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
+	public List<InstructorManagementDomain> selectInstructorName(String name) throws PersistenceException {
+		List<InstructorManagementDomain> list = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		list = ss.selectList("kr.co.sist.aak.admin2.searchInstName",name);
+		mbDAO.closeHanlder(ss);
 		return list;
 	}
 
@@ -41,6 +50,7 @@ public class InstructorManagementDAO {
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
 		list = ss.selectList("kr.co.sist.aak.admin2.selectYAllInstructor");
+		mbDAO.closeHanlder(ss);
 		return list;
 	}
 
@@ -55,6 +65,7 @@ public class InstructorManagementDAO {
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
 		insDomain = ss.selectOne("kr.co.sist.aak.admin2.selectOneInstructor", inst_id);
+		mbDAO.closeHanlder(ss);
 		return insDomain;
 	}
 
@@ -72,6 +83,7 @@ public class InstructorManagementDAO {
 		if(cnt ==2) {
 			ss.commit();
 		}
+		mbDAO.closeHanlder(ss);
 		return cnt;
 	}
 
@@ -96,15 +108,18 @@ public class InstructorManagementDAO {
 		
 		return maxId;
 	}
+	
+	
+	
 	public static void main(String[] args) {
-		String id =
-	new InstructorManagementDAO().selectMaxInstId();
-		System.out.println(id);
-		int idSub = Integer.parseInt(id.substring(6))+1 ;
-		System.out.println(idSub);
-		String id1 = String.format("%05d",idSub);
-		
-		System.out.println(id1);
-		
+//		String id =
+//	new InstructorManagementDAO().selectMaxInstId();
+//		System.out.println(id);
+//		int idSub = Integer.parseInt(id.substring(6))+1 ;
+//		System.out.println(idSub);
+//		String id1 = String.format("%05d",idSub);
+//		
+//		System.out.println(id1);
+	new InstructorManagementDAO().selectInstructorName("Áø½Ã¹Ù");
 	}
 }

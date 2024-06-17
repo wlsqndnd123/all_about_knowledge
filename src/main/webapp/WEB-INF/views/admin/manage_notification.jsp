@@ -103,15 +103,14 @@
                             	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
+  <form action="manage_notification.do" method="get" id ="frm">
 				<div style="text-align: left;">
-  <form>
 	<select class="form-select" aria-label="Default select example">
   <option value="0">게시</option>
   <option value="1">예약</option>
   <option value="2">삭제</option>
   <option value="3" selected="selected">전체</option>
 </select>
-  </form>
 				</div>
                   <div>
                     
@@ -139,8 +138,9 @@
                     <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
   	
   	<input type="text" name="title" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+  <button class="btn btn-outline-secondary" type="button" id="btnSearch">검색</button>
 </div>
+  </form>
                         </div>
                     </div>
                 </div>
@@ -151,8 +151,8 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
-	  $("#btnwrite").click(function(){
-		  $("#formWrite").submit();
+	  $("#btnSearch").click(function(){
+		  $("#frm").submit();
 	  })
   })
   </script>
