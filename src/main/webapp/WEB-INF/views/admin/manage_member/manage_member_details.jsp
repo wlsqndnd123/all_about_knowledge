@@ -28,18 +28,33 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	
 <script type ="text/javascript">
-	$(function(){
+/* $(function(){
 		
 		$("#updateSubmit").click(function(){
-			$("#frmPost").action="manage_member_param.do";
-			$("#frmPost").submit();
+			$("#frmGet").action="manage_member_details.do";
+			$("#frmGet").submit();
 		});//click
+
 		$("#saveSubmit").click(function(){
-			$("#frmPost2").action="manage_member_param.do";
-			$("#frmPost2").submit();
+			$("#frmGet").action="manage_member_modyify.do";
+			$("#frmGet").submit();
 		});//click
 		
-	});//ready
+	});//ready 
+	 */
+	 
+	 $(document).ready(function(){
+         $("#updateSubmit").click(function(){
+             $("#frmGet").attr("action", "manage_member_details.do");
+             $("#frmGet").submit();
+         });
+
+         $("#saveSubmit").click(function(){
+             $("#frmGet").attr("action", "manage_member_modyify.do");
+             $("#frmGet").submit();
+         });
+     });
+	
 </script>
 
 </head>
@@ -123,6 +138,10 @@
                 <div class="bg-white tm-block" style="width: 100%" >
                     <div class="row">
                         <div class="col-12">
+                        
+                        
+                    <form action="manage_member_details.do" method="get" id ="frmGet">
+                    
                             <h2 class="tm-block-title d-inline-block">사용자 상세</h2>
                     <div class="mb-3">
                     
@@ -130,73 +149,97 @@
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
     
                     <tbody>
-                    
-                    <tr>
+
+                      <tr>
                     <th>이름</th>
-                    <td>진수현</td>
-                    
-                    <c:if test="${flag eq '1' }">
-                    <td><input type="text" name="contact" value="진수현"></td>
-                    </c:if>
+                     <td>
+            		<c:choose>
+            		 <c:when test="${requestScope.flag eq '0'}">
+            		<input type="text" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
+            		</c:when>
+                    <c:otherwise>
+                    <input type="text" name="name" value="<c:out value="${mmDomain.name }"/>">
+                     </c:otherwise>
+                    </c:choose>
+                    </td>
+                    </tr>
                  
                     
-                    
+                      <tr>
+                    <th>아이디</th>
+                     <td>
+            		
+            		<input type="text" name="std_id" value="${mmDomain.std_id }"readonly>
+            		
+                    </td>
                     </tr>
-                    
-                     <tr>
-                    <th>회원아이디</th>
-                    <td>JIN123</td>
-                    <c:if test="${flag eq '1' }">
-                    <td><input type="text" name="contact" value="JIN123"></td>
-                    </c:if>
-                    </tr>
+                
                     
                      <tr>
                     <th>연락처</th>
-                    <td>010-1234-5678</td>
-                    <c:if test="${flag eq '1' }">
-                    <td><input type="text" name="contact" value="010-1234-5678"></td>
-                    </c:if>
+                     <td>
+            		<c:choose>
+            		 <c:when test="${requestScope.flag eq '0'}">
+            		<input type="text" name="tel" value="${mmDomain.tel }"readonly>
+            		</c:when>
+                    <c:otherwise>
+                    <input type="text" name="tel" value="${mmDomain.tel }">
+                     </c:otherwise>
+                    </c:choose>
+                    </td>
                     </tr>
+                    
+                    
+                    
                     
                      <tr>
                     <th>이메일</th>
-                    <td>JIN123@naver.com</td>
-                    <c:if test="${flag eq '1' }">
-                    <td><input type="text" name="contact" value="JIN123@naver.com"></td>
-                    </c:if>
+                     <td>
+            		<c:choose>
+            		 <c:when test="${requestScope.flag eq '0'}">
+            		<input type="text" name="email" value="${mmDomain.email }"readonly>
+            		</c:when>
+                    <c:otherwise>
+                    <input type="text" name="email" value="${mmDomain.email }">
+                     </c:otherwise>
+                    </c:choose>
+                    </td>
                     </tr>
+                    
                     
                      <tr>
                     <th>생년월일</th>
-                    <td>970630</td>
-                    <c:if test="${flag eq '1' }">
-                    <td><input type="text" name="contact" value="970630"></td>
-                    </c:if>
-                    </tr>
+        <td>
+            <c:choose>
+                <c:when test="${requestScope.flag eq '0'}">
+                    <input type="text" name="birth" value="${mmDomain.birth}"readonly>
+                </c:when>
+                <c:otherwise>
+                    <input type="text" name="birth" value="${mmDomain.birth}" >
+                </c:otherwise>
+            </c:choose>
+        </td>
+    </tr>
   					
   
                     </tbody>
                     </table>
                     </div>
                     
-                    <c:if test="${flag != '1' }">
-                    <form action="manage_member_details.do" method="post" id ="frmPost">
-					<input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id ="updateSubmit"/>
-					</form> 
+                    <c:if test="${requestScope.flag eq '0' }">
+                    <input type="hidden" name="flag" value="1" >
+                    <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit"/>
 					</c:if>
 					
-                  	<c:if test="${flag eq '1' }">
-                  	
-					<form action="manage_member_details.do" method="post" id ="frmPost2">
+                  	<c:if test="${requestScope.flag eq '1' }">
 					<input type="button" class="btn btn-light btn-sm me-md-2" value="저장" id ="saveSubmit"/>
-					</form> 
 					</c:if>
                    
                    
                    
                     
 					</div>
+					</form> 
 					
                         </div>
                     </div>

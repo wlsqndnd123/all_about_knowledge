@@ -145,8 +145,8 @@
                     <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
                     <tr>
                     <td><c:out value="${i.count}"/></td>
-                    <td><c:out value="${mmd.std_id }"/></td>
-                    <td><a href="manage_member_details.do"><c:out value="${mmd.name }"/></a></td>
+                    <td><c:out value="${mmd.std_id }"/></td>                 
+                    <td><a href="manage_member_details.do?std_id=${mmd.std_id }&flag=0"><c:out value="${mmd.name }"/></a></td>             
                     <td><c:out value="${mmd.signup_date}"/></td>
                     </tr>
                     </c:forEach>
