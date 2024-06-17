@@ -17,6 +17,12 @@ public class MyPageController {
 		return "student/my_page/my_lecture";
 	}
 	
+	// 학생 마이페이지 --- 나의 강의 -- 상세
+	@GetMapping("/my_lecture_detail.do")
+	public String lecture_detail(){
+		return "student/my_page/my_lecture_detail";
+	}
+	
 	// 학생 마이페이지 --- 관심 강의
 	@GetMapping("/interest_lecture.do")
 	public String interestLecture(){
