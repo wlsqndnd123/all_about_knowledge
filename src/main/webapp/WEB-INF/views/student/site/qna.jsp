@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <div class="ui main text container">
+  <div class="ui main container">
     <h1 class="ui header">문의사항</h1>
     <a href="site_qna_write.do">
     <div style="text-align: right;">

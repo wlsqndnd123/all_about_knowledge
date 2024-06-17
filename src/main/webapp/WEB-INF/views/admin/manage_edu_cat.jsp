@@ -102,17 +102,15 @@
                             <h2 class="tm-block-title d-inline-block">교육 카테고리 관리</h2>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 </div>	
-                    <div style="text-align: center;margin: auto;">
-                    <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
-                    <option selected>교육 카테고리 명</option>
-                    <c:forEach var="list" items="${requestScope.list }">
-                    <option value="${list.cat_code }"><c:out value="${list.cat_name }"/></option>
-                    </c:forEach>
-                    </select>
+                    <div style="text-align: center;margin: auto;" >
+                    <!-- <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
+                    --> <label>상위 교육 카테고리 명  </label>
+                   <!--  </select> -->
                     <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
+                    <a></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
+                    <div id ="educatOutput"  style="text-align: center;margin: auto;"></div>
                     </div>
-                    <div id ="educatOutput"></div>
-                    <div id ="edusubOutput"></div>
+                  <!--   <div id ="edusubOutput" style="text-align: center;margin: auto;"></div> -->
                         </div>
                     </div>
                 </div>
@@ -123,32 +121,70 @@
 
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
- <script type="text/javascript">
- $(function(){
-	 $("#catbtn").click(function(){
-		 $.ajax({
-				url:"http://localhost${pageContext.request.contextPath}/day0611/ajax_responsebody.do",
-				type:"GET",
-				dataType:"JSON",
-				error :function(xhr){
-					console.log(xhr.status +" : "+xhr.statusText);
-					alert("ㅈㅅㅈㅅ");
-				},
-				success : function(jsonObj){
-					var output ="";
-					output+= "<strong>"+jsonObj.name+"</strong>"
-					output+="<ul>"
-					$.each(jsonObj.lunchList,function(i,jsonTemp){
-						output+="<li>"+jsonTemp.lunch+"</li>"
-					});
-					output+="</ul>"
-					$("#educatOutput").html(output);
-				}
-			})	//ajax	
-		 
-	 })
- })
- </script>
+  <script type="text/javascript">
+        $(function() {
+        	 $("#catbtn").click(function() {
+                 $.ajax({
+                     url: "manage_edu_cat_list.do",
+                     type: "GET",
+                     dataType: "JSON",
+                     error: function(xhr) {
+                         console.log(xhr.status + " : " + xhr.statusText);
+                         alert("서버 오류 발생");
+                     },
+                     success: function(jsonObj) {
+                         var output = "<table class='table table-hover' style='margin: auto; text-align: center;'>";
+                        
+                         $.each(jsonObj.list, function(i, jsonTemp) {
+                             var outputId = 'edusubOutput' + i;
+                             output += "<tr><td>" + jsonTemp.cat_name + "</td>";
+                             output += "<td><input type='button' class='btn btn-outline-primary btn-sm' value='조회' onclick='searchSubcat(\"" + jsonTemp.cat_code + "\", \"" + outputId + "\")'/></td></tr>";
+                             output += "<tr><td colspan='2'><div id='" + outputId + "' style='display: none;'></div></td></tr>";
+                         });
+                         output += "</table>";
+                         $("#educatOutput").html(output).show(); // 카테고리 정보를 표시하고 출력
+                     }
+                 }); // ajax
+             }); // click
+
+             // 접기 버튼 이벤트 리스너 추가
+             $(document).on("click", "[id^=btnfold1_]", function(){
+                 var id = $(this).attr('id').replace('btnfold1_', '');
+                 $("#edusubOutput" + id).toggle();
+             });
+         });
+
+         function searchSubcat(cat_code, outputId) {
+             $.ajax({
+                 url: "manage_edu_subcat_list.do",
+                 type: "GET",
+                 dataType: "JSON",
+                 data: { cat_code: cat_code },
+                 error: function(xhr) {
+                     console.log(xhr.status + " : " + xhr.statusText);
+                     alert("서버 오류 발생");
+                 },
+                 success: function(jsonObj) {
+                     var output = "<table class='table table-hover' style='margin: auto; width:70%;text-align:center;'>"
+                    	 +"<tr><td>하위 교육 카테고리</td>"
+                     +"<td ><input type ='button' class = 'btn btn-outline-primary btn-sm' value ='추가'/></td></tr>";
+                     $.each(jsonObj.list, function(i, jsonTemp) {
+                         output += "<tr><td >" + jsonTemp.cat_name + "</td></tr>";
+                     });
+                     output += "<tr><td style ='text-align:right;'><input type='button' class='btn btn-link btn-sm' value='접기' id='btnfold2_" + outputId + "'/></td><tr>"
+                    +"</table>"
+                     
+                     $("#" + outputId).html(output).show(); // 데이터를 불러온 후에 표시
+
+                     // 동적으로 생성된 접기 버튼 이벤트 리스너 추가
+                     $("#btnfold2_" + outputId).on("click", function() {
+                         $("#" + outputId).toggle();
+                     });
+                 }
+             });
+         }
+               
+    </script>
  </div>
 </body>
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -100,20 +100,19 @@
                     <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
-                            <form action="manage_notification_write.do" id ="formWrite">
-                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  	<button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite">공지사항 작성</button>
-                            </form>
+                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
+  <form action="manage_notification.do" method="get" id ="frm">
 				<div style="text-align: left;">
-				<select class="form-select" aria-label="Default select example">
-  		<option selected>--게시글 상태 --</option>
-  <option value="1">게시</option>
-  <option value="2">예약</option>
-  <option value="3">삭제</option>
+	<select class="form-select" aria-label="Default select example">
+  <option value="0">게시</option>
+  <option value="1">예약</option>
+  <option value="2">삭제</option>
+  <option value="3" selected="selected">전체</option>
 </select>
 				</div>
-                    <div>
+                  <div>
                     
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
@@ -129,7 +128,7 @@
                     <tr>
                     <td><c:out value="${  i.count }"/></td>
                     <td><a href="manage_notification_details.do?noti_no=${list.noti_no }"><c:out value="${list.title }"/></a></td>
-                    <td><c:out value="${ list.write_date}"/></td>
+                    <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
                     <td><c:out value="${list.status}"/></td>
                     </tr>
                     </c:forEach>
@@ -138,9 +137,10 @@
                     </div>
                     <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
   	
-  	<input type="text" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+  	<input type="text" name="title" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="btnSearch">검색</button>
 </div>
+  </form>
                         </div>
                     </div>
                 </div>
@@ -151,8 +151,8 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
-	  $("#btnwrite").click(function(){
-		  $("#formWrite").submit();
+	  $("#btnSearch").click(function(){
+		  $("#frm").submit();
 	  })
   })
   </script>

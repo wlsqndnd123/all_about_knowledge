@@ -13,6 +13,7 @@
  <typeAlias type="kr.co.sist.aak.domain.admin.EduCategoryManagementDomain" alias="EduCategoryManagementDomain"/>
  
  <typeAlias type="kr.co.sist.aak.domain.admin.MemberManagementDomain" alias="MemberManagementDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.vo.MemberManagementVO" alias="MemberManagementVO"/>
 </typeAliases>
 
   <environments default="development">
