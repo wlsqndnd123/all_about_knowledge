@@ -36,7 +36,6 @@ Desc : 사용자(학생)의 마이페이지 참고용 레이아웃
 <!-- 컨텐츠 영역 -->
 <article class="my_article">
 <div class="mypage_content_div">
-content 영역
 </div>
 </article>
 
