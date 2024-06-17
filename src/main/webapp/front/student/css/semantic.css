@@ -38844,3 +38844,11 @@ add
     margin: 2rem auto 0 !important;
   }
 }
+
+.no_margin{
+  margin: 0em !important;
+}
+
+.progress_label{
+  height: 24.5px !important;
+}

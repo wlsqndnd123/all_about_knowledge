@@ -24,9 +24,9 @@
 
          <!-- Brand Box -->
          <div class="col-sm-6 brand">
-            <!-- <img src="/favicon.svg" class="logo" alt="">
-            <img src="http://localhost/view/student/images/title.svg" class="logo-title" alt="">
- -->
+            <img src="/all_about_knowledge/favicon.png" class="logo" alt="">
+            <img src="http://localhost/all_about_knowledge/front/student/icon/title.svg" class="logo-title" alt="">
+            
             <div class="heading">
                <h2>AAK</h2>
                <p>All About Knowledge</p>

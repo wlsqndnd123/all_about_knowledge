@@ -80,14 +80,14 @@ $(function () {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul
+				<ul
 			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 			id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="instructor_index.html">
+				href="http://localhost/all_about_knowledge/instructor_index.do">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -99,19 +99,19 @@ $(function () {
 
 			<!-- 탭 메뉴 -->
 			<li class="nav-item active"><a class="nav-link"
-				href="lectureManage/lectureList.do"> <i
+				href="http://localhost/all_about_knowledge/lectureManage/lectureList.do"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>강의관리</span></a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="lectureManage/lectureApply.do"> <i
+				href="http://localhost/all_about_knowledge/lectureManage/lectureApply.do"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>강의신청</span></a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+				href="http://localhost/all_about_knowledge/qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>문의사항</span></a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+				href="http://localhost/all_about_knowledge/studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>수강생 관리</span>
 			</a>
 			</li>
@@ -260,7 +260,7 @@ $(function () {
 	  </div>
 
         <div class="dropdown">
-            <a class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 과목명
             </a>
             

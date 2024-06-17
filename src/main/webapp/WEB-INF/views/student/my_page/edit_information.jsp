@@ -64,7 +64,7 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 		    <p>현재 비밀번호를 입력하세요</p>
 		    <p>
 		    	<div class="field">
-      				<label>Password</label>
+      				<label>비밀번호 : </label>
       				<input type="password">
     			</div>
     		</p>

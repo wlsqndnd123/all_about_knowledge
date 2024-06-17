@@ -36,7 +36,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="instructor_index.html">
+				href="http://localhost/all_about_knowledge/instructor_index.do">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -48,19 +48,19 @@
 
 			<!-- 탭 메뉴 -->
 			<li class="nav-item active"><a class="nav-link"
-				href="lectureManage/lectureList.do"> <i
+				href="http://localhost/all_about_knowledge/lectureManage/lectureList.do"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>강의관리</span></a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="lectureManage/lectureApply.do"> <i
+				href="http://localhost/all_about_knowledge/lectureManage/lectureApply.do"> <i
 					class="fas fa-fw fa-tachometer-alt"></i> <span>강의신청</span></a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+				href="http://localhost/all_about_knowledge/qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>문의사항</span></a></li>
 
 			<li class="nav-item active"><a class="nav-link"
-				href="studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+				href="http://localhost/all_about_knowledge/studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>수강생 관리</span>
 			</a>
 			</li>
@@ -289,7 +289,7 @@
     <div id="lec_info" class="d-flex flex-column " style="width: 50%">
         <div class="mb-2">
             <label class="form-label">java 왕기초 4주 단기완성</label>
-            <a href="lectureEntrance.do"><input type="button" value="강의실 입장" class="btn btn-light btn-sm"></a>
+            <a href="http://localhost/all_about_knowledge/lectureManage/lectureEntrance.do"><input type="button" value="강의실 입장" class="btn btn-light btn-sm"></a>
         </div>
         <div class="mb-2">
             <label class="form-label">총 강의시간 | 800분</label>
@@ -297,7 +297,7 @@
         </div>
         <div>
             <label class="form-label">총 강의 수 | 20개</label>
-            <input type="button" value="뒤로가기" class="btn btn-light btn-sm">
+            <input type="button" value="뒤로가기" class="btn btn-light btn-sm" onclick="history.back()">
         </div>
     </div>
 </div>
