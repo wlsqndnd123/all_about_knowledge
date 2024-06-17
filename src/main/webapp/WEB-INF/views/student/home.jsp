@@ -63,6 +63,10 @@
 			$("#frmGet")[0].action="my_lecture_detail.do";
 			$("#frmGet").submit();
 		}); // click
+		$("#btnPlayLecture").click(function() {
+			$("#frmGet")[0].action="play_lecture.do";
+			$("#frmGet").submit();
+		}); // click
 	}); // ready
 </script>
 </head>
@@ -81,6 +85,7 @@
 		<input type="button" class="btn btn-sm btn-success" value="개인정보수정" id="btnEditInfomation"><br>
 		<input type="button" class="btn btn-sm btn-success" value="탈퇴" id="btnWithdrawal"><br>
 		<input type="button" class="btn btn-sm btn-success" value="나의강의-상세" id="btnDetail"><br>
+		<input type="button" class="btn btn-sm btn-success" value="나의강의-재생" id="btnPlayLecture"><br>
 	</form>
 	</div>
 </div>
