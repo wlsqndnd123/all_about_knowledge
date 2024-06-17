@@ -28,48 +28,44 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">AAk 강사메인</div>
-            </a>
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="http://localhost/all_about_knowledge/instructor_index.do">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-laugh-wink"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">AAk 강사메인</div>
+			</a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link">  <!-- href="index.html" -->
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>강의관리</span></a>
-            </li>
-            
-             <li class="nav-item active">
-                <a class="nav-link">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>강의신청</span></a>
-            </li>
-            
-            <li class="nav-item active">
-                <a class="nav-link">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>문의사항</span></a>
-            </li>
-            
-            <li class="nav-item active">
-                <a class="nav-link" href="studentList">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>수강생 관리</span>
-                    </a>
-            </li>
+			<!-- 탭 메뉴 -->
+			<li class="nav-item active"><a class="nav-link"
+				href="http://localhost/all_about_knowledge/lectureManage/lectureList.do"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>강의관리</span></a></li>
 
-    
+			<li class="nav-item active"><a class="nav-link"
+				href="http://localhost/all_about_knowledge/lectureManage/lectureApply.do"> <i
+					class="fas fa-fw fa-tachometer-alt"></i> <span>강의신청</span></a></li>
 
-        </ul>
+			<li class="nav-item active"><a class="nav-link"
+				href="http://localhost/all_about_knowledge/qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+					<span>문의사항</span></a></li>
+
+			<li class="nav-item active"><a class="nav-link"
+				href="http://localhost/all_about_knowledge/studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
+					<span>수강생 관리</span>
+			</a>
+			</li>
+
+
+		</ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

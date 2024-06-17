@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>aak</title>
+    <title>AAK</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -41,137 +41,35 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- 탭 메뉴 -->
             <li class="nav-item active">
-                <a class="nav-link">  <!-- href="index.html" -->
+                <a class="nav-link" href="lectureManage/lectureList.do">  
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>강의관리</span></a>
             </li>
             
              <li class="nav-item active">
-                <a class="nav-link">
+                <a class="nav-link" href="lectureManage/lectureApply.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>강의신청</span></a>
             </li>
             
             <li class="nav-item active">
-                <a class="nav-link">
+                <a class="nav-link" href="qna/qnaList.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>문의사항</span></a>
             </li>
             
             <li class="nav-item active">
-                <a class="nav-link" href="studentList">
+                <a class="nav-link" href="studentList.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>수강생 관리</span>
                     </a>
             </li>
 
-            <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-
-            <!-- Heading -->
-           <!--  <div class="sidebar-heading">
-                Interface
-            </div> -->
-
-            <!-- Nav Item - Pages Collapse Menu -->
-        <!--     <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>강의관리2</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            Nav Item - Utilities Collapse Menu
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            Divider
-            <hr class="sidebar-divider">
-
-            Heading
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            Nav Item - Pages Collapse Menu
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            Nav Item - Charts
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            Nav Item - Tables
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
-            Divider
-            <hr class="sidebar-divider d-none d-md-block">
-
-            Sidebar Toggler (Sidebar)
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            Sidebar Message
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="/img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div> -->
 
         </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
+        
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -394,43 +292,47 @@
 					
                     <div class="row">
 
-                        <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-    <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-       <!--  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-        </div> -->
-        <div class="card-body">
-            <div class="d-flex flex-column">
-                <div>
-                    <img class="rounded-circle" src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-                </div>
-                <div>
-                    <span>
-                        <label>이름</label>
-                        <input type="text" value="곽우신" />
-                    </span>
-                    <span>
-                        <label>이메일</label>
-                        <input type="text" value="kws1234@naver.com"/>
-                    </span>
-                    <span>
-                        <label>강사소개글</label>
-                        <input type="textarea" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/>
-                        <input type="button" value="수정" class="btn btn-light btn-sm"/>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                    <!-- Area Chart -->
+				   <div class="col-xl-8 col-lg-7">
+				   <div class="card shadow mb-4">
+				       <!-- Card Header - Dropdown -->
+				      <!--  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				           <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+				       </div> -->
+				       
+				   <!-- 강사 소개 -->    
+				<div class="card-body d-flex">
+				    <div id="img" style="padding-right: 20px;">
+				       <img class="rounded-circle" src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
+				   </div>
+				   <div id="introduce" class="d-flex flex-column">
+				       <span>
+				           <label>이름</label>
+				           <!-- <input type="text" value="곽우신" /> -->
+				           <h5>곽우신</h5>
+				       </span>
+				       <span>
+				           <label>이메일</label>
+				           <!-- <input type="text" value="kws1234@naver.com"/> -->
+				           <h5>kws1234@naver.com</h5>
+				       </span>
+				       <span>
+				           <label>강사소개글</label>
+				           <!-- <input type="textarea" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/> -->
+				           <h5>JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다</h5>
+				           <input type="button" value="수정" class="btn btn-light btn-sm" style="position: absolute; bottom: 10px; right: 10px; padding: 10px;"/>
+					        </span>
+					    </div>
+				</div>
+				
+				    </div>
+				</div>
 
                         </div>
 
                         <!-- Pie Chart -->
                         <div><!-- class="col-xl-4 col-lg-5" -->
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-4" >
                                 <!-- Card Header - Dropdown -->
                            <!--      <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -477,7 +379,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2" style="margin-left:10px;">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -539,66 +441,18 @@
 						  </tbody>
 						</table>
                         
-                        
-                        
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                    <!--     <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        Pending Requests Card Example
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
 
                     <!-- Content Row -->
 
 
                     <!-- Content Row -->
-                    <div class="row">
+                   <!--  <div class="row">
 
-                        <!-- Content Column -->
-                 <!--        <div class="col-lg-6 mb-4">
+                        Content Column
+                        <div class="col-lg-6 mb-4">
 
                             Project Card Example
                             <div class="card shadow mb-4">
@@ -707,10 +561,10 @@
                                 </div>
                             </div>
 
-                        </div> -->
+                        </div>
 
                         <div class="col-lg-6 mb-4">
-<!-- 
+
                             Illustrations
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -741,23 +595,25 @@
                                         custom components and custom utility classes.</p>
                                     <p class="mb-0">Before working with this theme, you should become familiar with the
                                         Bootstrap framework, especially the utility classes.</p>
-                                </div>-->
+                                </div>
                             </div>
  
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
+            
+            
             <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; all about knowledge 2024</span>
                     </div>
                 </div>
             </footer>
