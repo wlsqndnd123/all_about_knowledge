@@ -63,8 +63,8 @@
                                         <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item active" >
-                                    <a class="nav-link" href="manage_instructor.do">강사 관리
+                                <li class="nav-item" >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
@@ -75,7 +75,7 @@
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item ">
+                                <li class="nav-item  active">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
@@ -94,54 +94,38 @@
                 </div>
             </div>
              <!-- row -->
-         <div class="col-12" style="width: 100%; margin-top: 15px;">
+        <div class="col-12" style="width: 100%; margin-top: 15px;">
          <div class="col-12" style="width: 100%;margin: 0 auto;" >
                  <div class="bg-white tm-block col-12" style="width: 100%" >
-                            <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
                     <div class="col-12">
                         <div class="col-12">
-                         <h2 class="tm-block-title d-inline-block">강사 추가</h2>
-                            <div style="text-align: center;"  class="mb-3" >
-                            <table class="table table-hover" style=" width:95%; text-align: center;">
-                            <tr>
-  							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="formFile" name ="image"></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">강사 아이디</td>
-                <td><input type="email" readonly="readonly" class="form-control" id="inst_id" value ="test" name ="inst_id"/></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">이름</td>
-                 <td><input type="email" class="form-control" id="name" name ="name"/></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">연락처</td>
-                    <td><input type="email" class="form-control" id="phone" name ="phone"/></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">이메일</td>
-                   <td><input type="email" class="form-control" id="email" name ="email"></td>
-                             </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">강사 학력사항</td>
-                <td><input type="email" class="form-control" id="education" name ="education"></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">주력 과목</td>
-                   <td><input type="email" class="form-control" id="major_subject" name ="major_subject"></td>
-                            </tr>
-                            
-                            </table>
-                            </div>
-                            <div style="text-align: center;">
-                            <input type="button" id ="btnSubmit" value="강사추가" class="btn btn-info btn-sm ">
-                            </div>
-                            <div>
-	<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
-	</div>
-                            </form>
-                            </div>
+    <form id ="frm" action="notification_write_form_process.do" method="post" enctype="multipart/form-data">
+                            <h2 class="tm-block-title d-inline-block">공지사항 작성</h2>
+                    <div class="mb-3">
+  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
+    <div class="mb-3">
+      <input type="email" class="form-control" id="exampleFormControlInput1" name="title">
+    </div>
+					</div>
+                    <div class="mb-3">
+  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 글 번호</label>
+    <div class="mb-3">
+      <input type="email" class="form-control" value="${requestScope.noti_no }" id="exampleFormControlInput1" name="noti_no" readonly="readonly">
+    </div>
+					</div>
+					<div class="mb-3">
+ 				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+				 <input class="form-control" type="file" id="image" name="image">	
+					<div class="mb-3">
+					</div>
+ 						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15" name ="content"></textarea>
+</div>
+<div style="text-align: center;">
+<input type="button" class="btn btn-link" value="작성" id ="btnwrite"/>
+<input type="button" class="btn btn-link" value="취소" id ="btnback"/>
+</div>
+    </form>
                         </div>
                     </div>
                 </div>
@@ -151,63 +135,36 @@
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
-  $(function() {
-    function checknull() {
-        let isValid = true;
-        $('#frm input[type="email"], #frm input[type="file"]').each(function() {
-            if ($(this).val().trim() === '') {
-                isValid = false;
-                alert($(this).attr('name') + ' 입력값이 비어 있습니다.');
-                $(this).focus();
-                return false;
-            }
-        });
-        return isValid;
-    }
+  $(function(){
+	  $("#btnback").click(function(){
+		  history.back();
+	  })
+  $("#btnwrite").click(function(){
 
-    $("#btnback").click(function() {
-        history.back();
-    });
+			// 이미지만 업로드하도록 설정
+			var file = $("#image").val();
+			var selectedExt = file.substring(file.lastIndexOf(".")+1);
 
-    $("#btnSubmit").click(function() {
-        var file = $("#formFile").val();
-        var selectedExt = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
+			var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
+			var flag = false;
 
-        var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
-        var flag = false;
+			for(var i = 0; i < extArr.length; i++) {
+			if(selectedExt == extArr[i]) {
+			flag = true;
+			break;
+			} // end if
+			} // end for
 
-        for (var i = 0; i < extArr.length; i++) {
-            if (selectedExt === extArr[i]) {
-                flag = true;
-                break;
-            }
-        }
-
-        if (!flag) {
-            alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
-            return;
-        }
-
-        if (checknull()) {
-            $("#frm").submit();
-        }
-    });
-
-    $('#frm input').on('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            let inputs = $('#frm input[type="email"], #frm input[type="file"]');
-            let idx = inputs.index(this);
-            if (idx < inputs.length - 1) {
-                inputs[idx + 1].focus();
-            } else {
-                inputs[0].focus();
-            }
-        }
-    });
-  });
-</script>
-
+			if(!flag) {
+			alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
+			return;
+			} // end if
+			
+			$("#frm").submit();
+			}); // click
+  })
+  
+  </script>
     <!-- https://getbootstrap.com/ -->
 </body>
 

@@ -48,7 +48,6 @@ public class InstructorManagementController {
 		MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath()
 				,tempSize,"UTF-8", new DefaultFileRenamePolicy());
 		//업로더 명 (web parameter)
-		String uploader = mr.getParameter("uploader");
 		String oriName = mr.getOriginalFileName("image");
 		String fsName = mr.getFilesystemName("image");
 		//최대크기 10mbyte
@@ -61,7 +60,6 @@ public class InstructorManagementController {
 			tempFile.delete();
 			uploadflag=true;
 		}
-		model.addAttribute("uploader",uploader);
 		model.addAttribute("fileName",oriName);
 		model.addAttribute("uploadflag",!uploadflag);
 		InstructorManagementVO imVO = new InstructorManagementVO();
