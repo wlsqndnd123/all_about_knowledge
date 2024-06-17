@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
+import kr.co.sist.aak.domain.admin.vo.NoticeManagementVO;
 import kr.co.sist.aak.module.admin.noticeManagement.dao.NoticeManagementDAO;
 
 @Service
@@ -110,4 +111,13 @@ public class NoticeManagementService {
 		 }
 		 return pre.toString();
 	 }
+	 public int addNotice(NoticeManagementVO nVO) {
+		int cnt = 0;
+		try {
+			cnt = nmDAO.insertNotice(nVO);
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return cnt;
+	}
 }

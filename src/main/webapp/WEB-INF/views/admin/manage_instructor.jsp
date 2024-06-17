@@ -107,22 +107,22 @@
   	</a>
 </div>	
                     <div>
-                    <select class="form-select" aria-label="Default select example">
+                    <!-- <select class="form-select" aria-label="Default select example">
                     <option selected>정렬조건</option>
                     <option>강사명 오름차 순</option>
                     <option>강사명 내림차 순</option>
                     <option>진행중인 강의가 많은 순</option>
                     <option>진행중인 강의가 적은 순</option>
-                    </select>
+                    </select> -->
                     </div>
                     <div>
                     
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
-                    <th>NO</th>
-                    <th style="width: 60%">강사명</th>
-                    <th>진행중인 강의 수</th>
+                    <th><a href ="">NO</a></th>
+                    <th style="width: 60%"><a href ="">강사명</a></th>
+                    <th><a href ="">진행중인 강의 수</a></th>
                     </tr>
                     </thead>
                     <tbody>

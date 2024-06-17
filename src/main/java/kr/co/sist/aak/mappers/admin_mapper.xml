@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.admin">
 	
 	<select id="selectAllAdminNotice" resultType ="noticeManagementDomain">
-	select * from NOTICE
+	select * from NOTICE order by NOTI_NO desc 
 	</select>
 	<!-- 공지사항 관리 상태에 따른 검색 쿼리 -->
 	<select id="dynamicNotificaionStatus" resultType="noticeManagementDomain" parameterType="int" >
@@ -31,6 +31,7 @@
 	select * 
 	from NOTICE
 	where title like '%'||#{title}||'%'
+	order by NOTI_NO desc 
 	</select>
 	
 	
