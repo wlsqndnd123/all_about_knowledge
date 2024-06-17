@@ -10,5 +10,27 @@ public class DashboardController {
 	public String dashboard() {
 		
 		return "/instructor/instructor_home";
-	}
+	}//dashboard
+	
+	
+	@GetMapping("lectureManage/lectureList.do")
+	public String lecturManage() {
+	
+		return "/instructor/lectureManage/lectureList";
+	}//lecturManage
+	
+	
+	@GetMapping("lectureManage/lectureApply.do")
+	public String lecturApply() {
+	
+		return "/instructor/lectureManage/lectureApply";
+	}//lecturApply
+	
+	
+	@GetMapping("qna/qnaList.do")
+	public String qnaList() {
+	
+		return "/instructor/qna/qnaList";
+	}//qnaList
+	
 }
