@@ -25,6 +25,9 @@ Desc : 사용자(학생)의 마이페이지 나의강의 화면
 	$(function() {
 		$('.tabular.menu .item').tab();
 		$('.progress').progress();
+		$('#enter').click(function(){
+            window.location.href = '${pageContext.request.contextPath}/my_lecture_detail.do';
+        });
 	}); // ready
 </script>
 </head>
@@ -89,7 +92,7 @@ Desc : 사용자(학생)의 마이페이지 나의강의 화면
         <button class="ui basic tiny button">문의</button>
       </td>
       <td class="single line">
-        <button class="ui right labeled icon green basic button">
+        <button class="ui right labeled icon green basic button" id="enter">
 		  <i class="right arrow icon"></i>
 		  입장
 		</button>
