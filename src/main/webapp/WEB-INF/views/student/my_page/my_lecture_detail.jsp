@@ -22,7 +22,10 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 </style>
 <script type = "text/javascript">
 	$(function() {
-
+		$('.progress').progress();
+		$('#playButton').click(function(){
+            window.location.href = '${pageContext.request.contextPath}/play_lecture.do';
+        });
 	}); // ready
 </script>
 </head>
@@ -38,9 +41,9 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 <div class="mypage_content_div">
 <!-- breadcrumb 표시 -->
 	<div class="ui small breadcrumb div_margin">
-	  <a class="section">나의강의실</a>
+	  <a class="section" href="${pageContext.request.contextPath}/mypage_home.do">나의강의실</a>
 	  <i class="right chevron icon divider"></i>
-	  <a class="section">나의강의</a>
+	  <a class="section" href="${pageContext.request.contextPath}/my_lecture.do">나의강의</a>
 	  <i class="right chevron icon divider"></i>
 	  <div class="active section">강의상세</div>
 	</div>
@@ -49,7 +52,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
   <div class="ui huge header">C var 수현</div>
     <div class="ui segment">
   <div class="ui grid">
-  <div class = "three wide column">
+  <div class = "four wide column">
     <div class="ui fluid image">
       <img src="/all_about_knowledge/front/student/images/java.png">
     </div>
@@ -59,21 +62,26 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 	<div class="progress_label">진도율 : </div>
 	<div>&nbsp;</div>
 	<p>시험응시 : </p>
+	<div>&nbsp;</div>
 	<p>문의하기 : </p>
     </div>
     
-    <div class="four wide column">
-    <div class="ui indicating progress no_margin">
-  	<div class="bar"></div>
+    <div class="three wide column">
+    <div class="ui indicating progress no_margin" data-percent="74">
+  	<div class="bar">
+  	<div class="progress"></div>
+  	</div>
   	</div>
   	<div>&nbsp;</div>
-  	<p> 시험 버튼 </p>
-  	<p> 문의 버튼 </p>
+  	<button class="ui inverted mini red button">시험응시</button>
+  	<div>&nbsp;</div>
+  	<p> <button class="ui inverted mini olive button">문의하기</button> </p>
     </div>
     
      <div class="three wide column">
-      <p>여기엔</p>
-      <p>강사 사진을 넣겠어요</p>
+     <div class="ui fluid image">
+      <img src="/all_about_knowledge/front/student/images/inst_sample.jpeg">
+    </div>
     </div>
 
      <div class="four wide column">
@@ -85,31 +93,49 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
     
   </div>
   
-  <table class="ui celled table">
+  <table class="ui celled table center aligned">
   <thead>
-    <tr><th>회차</th>
+    <tr><th class="one wide">회차</th>
     <th>수업명</th>
-    <th>상태</th>
-    <th>재생</th>
+    <th class="one wide">상태</th>
+    <th class="two wide">재생</th>
   </tr></thead>
   <tbody>
     <tr>
       <td data-label="Number">1</td>
       <td data-label="Title">오리엔테이션</td>
-      <td data-label="Status">완료</td>
-      <td data-label="Play">버튼</td>
+      <td data-label="Status"><div class="ui blue label">완료</div></td>
+      <td data-label="Play">
+      <div class="ui animated green button" id="playButton" tabindex="0">
+  <div class="visible content">재생</div>
+  <div class="hidden content">
+    <i class="caret square right icon"></i>
+  </div>
+</div>
+</td>
     </tr>
     <tr>
       <td data-label="Number">2</td>
       <td data-label="Title">수업을 시작한다</td>
-      <td data-label="Status">진행중</td>
-      <td data-label="Play">버튼</td>
+      <td data-label="Status"><div class="ui yellow label">진행</div></td>
+      <td data-label="Play">      
+      <div class="ui animated green button" tabindex="0">
+  <div class="visible content">재생</div>
+  <div class="hidden content">
+    <i class="caret square right icon"></i>
+  </div>
+</div></td>
     </tr>
     <tr>
       <td data-label="Number">3</td>
       <td data-label="Title">C var!</td>
-      <td data-label="Status">안시작</td>
-      <td data-label="Play">버튼</td>
+      <td data-label="Status"><div class="ui red label">아직</div></td>
+      <td data-label="Play">      <div class="ui animated green button" tabindex="0">
+  <div class="visible content">재생</div>
+  <div class="hidden content">
+    <i class="caret square right icon"></i>
+  </div>
+</div></td>
     </tr>
   </tbody>
 </table>
