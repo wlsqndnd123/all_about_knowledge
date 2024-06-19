@@ -49,21 +49,16 @@ public class MemberManagementController {
 	
 	
 	@GetMapping("manage_member_modyify.do")
-	public String modyifyMember(MemberManagementVO mmVO,Model model,
-			String name, String tel, String email, String birth) {
+	public String modyifyMember(MemberManagementVO mmVO,Model model
+			) {
 		
 		int cnt=0;	
-	
-		mmVO.setName(name);
-		mmVO.setTel(tel);
-		mmVO.setEmail(email);
-		mmVO.setBirth(birth);
+		
 		
 		cnt=mms.modyifyMember(mmVO);
-		
-		
 		model.addAttribute("cnt",cnt);
-		System.out.println(cnt);
+		model.addAttribute("std_id",mmVO.getStd_id());
+		
 		return "/admin/manage_member/manage_member_details";
 	}
 	
