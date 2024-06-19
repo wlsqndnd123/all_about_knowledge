@@ -9,7 +9,7 @@
 	</select>
 	<!-- 공지사항 관리 상태에 따른 검색 쿼리 -->
 	<select id="dynamicNotificaionStatus" resultType="noticeManagementDomain" parameterType="int" >
-	select * 
+	select noti_no, write_date,status,title
 	from NOTICE
 	where 
 	<choose>
