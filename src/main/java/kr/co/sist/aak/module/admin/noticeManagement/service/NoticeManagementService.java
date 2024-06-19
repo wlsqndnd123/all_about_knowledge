@@ -1,9 +1,12 @@
 package kr.co.sist.aak.module.admin.noticeManagement.service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,17 +48,43 @@ public class NoticeManagementService {
 	 * @param status
 	 * @return
 	 */
-	public List<NoticeManagementDomain> searchNoticeStatus(int status) {
+	public String searchNoticeStatus(int status) {
 		List<NoticeManagementDomain> list = null;
-
+		JSONObject jsonObj = new JSONObject();
 		try {
 			list = nmDAO.selectNoticeStatus(status);
 			if (status == 3) {
 				list = nmDAO.selectAllNotice();
 			}
 		} catch (PersistenceException pe) {
+		}finally {
+			JSONArray jsonArr = new JSONArray();
+			JSONObject jsonTemp = null;
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			for(NoticeManagementDomain temp :list) {
+				jsonTemp = new JSONObject();
+				jsonTemp.put("noti_no", temp.getNoti_no());
+				jsonTemp.put("write_date",sdf.format(temp.getWrite_date()));
+				jsonTemp.put("title",temp.getTitle());
+				
+
+			    String status1 = temp.getStatus();
+			    if (status1.equals("RESV")) {
+			        status1 = "예약";
+			    } else if (status1.equals("DELT")) {
+			        status1 = "삭제";
+			    } else {
+			        status1 = "게시";
+			    }
+			    
+				
+				jsonTemp.put("status", status1);
+				jsonArr.add(jsonTemp);	
+			}
+			jsonObj.put("list", jsonArr);
 		}
-		return list;
+		return jsonObj.toJSONString();
 
 	}
 

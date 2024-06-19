@@ -107,7 +107,7 @@
                     --> <label>상위 교육 카테고리 명  </label>
                    <!--  </select> -->
                     <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
-                    <a></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
+                    <a href =".do"></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
                     <div id ="educatOutput"  style="text-align: center;margin: auto;"></div>
                     </div>
                   <!--   <div id ="edusubOutput" style="text-align: center;margin: auto;"></div> -->
