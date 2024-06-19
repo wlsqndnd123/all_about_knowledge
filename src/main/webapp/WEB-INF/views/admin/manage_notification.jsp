@@ -96,34 +96,37 @@
              <!-- row -->
         <div class="col-12" style="width: 100%; margin-top: 15px;">
             <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block col-12" style="width: 100%" >
+            
+                <div class="bg-white tm-block col-12" style="width: 25%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 65%;margin-left: 35%;  padding-left: 20px;padding-right: 20px;" >
                     <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
                             	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
-  <form action="manage_notification.do" method="get" id ="frm">
+<form action="manage_notification_status.do" id ="frmStatus">
 				<div style="text-align: left;">
-	<select class="form-select" aria-label="Default select example">
+	<select class="form-select" aria-label="Default select example" name ="status" id ="status">
+  <option value="3">전체</option>
   <option value="0">게시</option>
   <option value="1">예약</option>
   <option value="2">삭제</option>
-  <option value="3" selected="selected">전체</option>
 </select>
 				</div>
-                  <div>
+</form>
+                  <div >
                     
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
-                    <th>NO</th>
-                    <th style="width: 60%">공지사항 제목</th>
-                    <th>게시 날짜</th>
-                    <th>게시글 상태</th>
+                    <th><a href ="manage_notification_noti_no">NO</a></th>
+                    <th style="width: 60%"><a>공지사항 제목</a></th>
+                    <th><a>게시 날짜</a></th>
+                    <th><a>게시글 상태</a></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id ="output">
                     <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
                     <tr>
                     <td><c:out value="${  i.count }"/></td>
@@ -135,6 +138,7 @@
                     </tbody>
                     </table>
                     </div>
+  <form action="manage_notification.do" method="get" id ="frm">
                     <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
   	
   	<input type="text" name="title" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -153,8 +157,38 @@
   $(function(){
 	  $("#btnSearch").click(function(){
 		  $("#frm").submit();
-	  })
-  })
+	  })//click
+	  
+	  $("#status").change(function(){
+		  var status =$("#status").val();
+		  searchStatus(status);
+		 
+	  })//change
+  })//load
+  function searchStatus(status){
+	  $.ajax({
+          url: "manage_notification_status.do",
+          type: "GET",
+          dataType: "JSON",
+          data : {status:status},
+          error: function(xhr) {
+              console.log(xhr.status + " : " + xhr.statusText);
+              alert("서버 오류 발생");
+          },
+          success: function(jsonObj) {
+        	  $("#output").empty();
+        	  var output ="";
+        	  $.each(jsonObj.list, function(i, jsonTemp) {
+        		  output +="<tr><td>"+(i+1)+"</td>"
+       +"<td><a href='manage_notification_details.do?noti_no="+jsonTemp.noti_no+"'>"+jsonTemp.title+"</a></td>"
+       +"<td>"+jsonTemp.write_date+"</td><td>"+jsonTemp.status+"</td></tr>";	  
+        		  
+        	  })
+        	  $("#output").html(output);
+          }//success
+	  
+  });//ajax
+  }
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>
