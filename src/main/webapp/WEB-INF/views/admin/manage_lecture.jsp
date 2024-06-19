@@ -61,40 +61,28 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        회원 관리
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_memberlist.do" >회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
+                                    
                                 </li>
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">강사 관리
+                                <li class="nav-item " >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
-                                    </div>
                                 </li>
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+								 <li class="nav-item">
+                                    <a class="nav-link " href="manage_qna.do" >문의 관리
+                                    </a>
+                                    
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
-                                    </div>
                                 </li>
+                                
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -108,11 +96,11 @@
                     </nav>
                 </div>
             </div>
-            <div class="row tm-mt-big" style="width: 100%">
-            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block" style="width: 100%" >
-                    <div class="row">
-                        <div class="col-12">
+           <div class="row tm-content-row tm-mt-big">
+        		<div class="col-12" >
+                 <div class="bg-white tm-block col-12" style="height: 700px;">
+              
+                        <div class="col-12" style="height: 600px">
                             <h2 class="tm-block-title d-inline-block">강의 신청 리스트</h2>
                             
                     <div class="right">
@@ -169,7 +157,7 @@
          
         </footer>
     </div>
-</div>
+
   <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <script type="text/javascript" src="<c:url value ="/resources/jquery-ui-datepicker/jquery-ui.min.js"/>"></script>
   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>

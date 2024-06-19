@@ -28,31 +28,33 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	
 <script type ="text/javascript">
-/* $(function(){
-		
-		$("#updateSubmit").click(function(){
-			$("#frmGet").action="manage_member_details.do";
-			$("#frmGet").submit();
-		});//click
-
-		$("#saveSubmit").click(function(){
-			$("#frmGet").action="manage_member_modyify.do";
-			$("#frmGet").submit();
-		});//click
-		
-	});//ready 
-	 */
-	 
 	 $(document).ready(function(){
          $("#updateSubmit").click(function(){
              $("#frmGet").attr("action", "manage_member_details.do");
              $("#frmGet").submit();
          });
 
+
+         
          $("#saveSubmit").click(function(){
+
+        	 if(!confirm("변경내용을 저장 하시겠습니까?")){
+         	    
+         	}else{
              $("#frmGet").attr("action", "manage_member_modyify.do");
              $("#frmGet").submit();
+         	    
+         	}
+        	 
          });
+
+         var cnt = "${cnt}";
+         if (cnt == 1) {
+             alert("수정 완료");
+             location.href="manage_member_details.do?std_id=${std_id}&flag=0";
+         }
+         
+         
      });
 	
 </script>
@@ -85,39 +87,26 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        회원 관리
+                                 <li class="nav-item   active">
+                                    <a class="nav-link " href="manage_memberlist.do" >회원 관리
                                     </a>
-                                    <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
+                                    
                                 </li>
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">강사 관리
+                                <li class="nav-item " >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
-                                    </div>
                                 </li>
 
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+								 <li class="nav-item">
+                                    <a class="nav-link " href="manage_qna.do" >문의 관리
+                                    </a>
+                                    
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
-                                    </div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
@@ -133,14 +122,14 @@
                 </div>
             </div>
              <!-- row -->
-        <div class="row tm-mt-big" style="width: 100%">
-            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block" style="width: 100%" >
-                    <div class="row">
-                        <div class="col-12">
+         <div class="row tm-content-row tm-mt-big">
+        		<div class="col-12" >
+                 <div class="bg-white tm-block col-12" style="height: 700px;">
+              
+                        <div class="col-12" style="height: 600px;border-right-width: 50px;padding-right: 120px;padding-left: 120px;" >
                         
                         
-                    <form action="manage_member_details.do" method="get" id ="frmGet">
+                    <form action="manage_member_details.do" method="get" id ="frmGet" style="width: 1100px;margin-inline: auto;">
                     
                             <h2 class="tm-block-title d-inline-block">사용자 상세</h2>
                     <div class="mb-3">
@@ -148,78 +137,83 @@
   					<div>
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
     
-                    <tbody>
+                    <tbody >
 
-                      <tr>
-                    <th>이름</th>
+                    <tr style="height: 73px;" >
+                    <th style="width: 500px;">아이디</th>
+                     <td >
+            		<c:out value="${mmDomain.std_id }"/>
+            		<input type="hidden" name="std_id" value="${mmDomain.std_id }"readonly>
+            		
+                    </td>
+                    </tr>
+                    <tr style="height: 73px;" >
+                    <th style="width: 500px;">이름</th>
                      <td>
             		<c:choose>
             		 <c:when test="${requestScope.flag eq '0'}">
-            		<input type="text" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
+            		 <c:out value="${mmDomain.name }"/>
+            		<input type="hidden" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
             		</c:when>
                     <c:otherwise>
-                    <input type="text" name="name" value="<c:out value="${mmDomain.name }"/>">
+                    <input type="text" name="name" value="<c:out value="${mmDomain.name }"/>" style="text-align: center;">
                      </c:otherwise>
                     </c:choose>
                     </td>
                     </tr>
                  
-                    
-                      <tr>
-                    <th>아이디</th>
-                     <td>
-            		
-            		<input type="text" name="std_id" value="${mmDomain.std_id }"readonly>
-            		
-                    </td>
-                    </tr>
-                
-                    
-                     <tr>
-                    <th>연락처</th>
-                     <td>
+                    <tr style="height: 73px;" >
+                    <th style="width: 500px;">연락처</th>
+                   <td>
             		<c:choose>
             		 <c:when test="${requestScope.flag eq '0'}">
-            		<input type="text" name="tel" value="${mmDomain.tel }"readonly>
+            		  <c:out value="${mmDomain.tel }"/>
+            		<input type="hidden" name="tel" value="${mmDomain.tel }"readonly>
             		</c:when>
                     <c:otherwise>
-                    <input type="text" name="tel" value="${mmDomain.tel }">
+                    <input type="text" name="tel" value="${mmDomain.tel }" style="text-align: center;">
                      </c:otherwise>
                     </c:choose>
                     </td>
                     </tr>
                     
-                    
-                    
-                    
-                     <tr>
-                    <th>이메일</th>
-                     <td>
+
+                    <tr style="height: 73px;" >
+                    <th style="width: 500px;">이메일</th>
+                    <td>
             		<c:choose>
             		 <c:when test="${requestScope.flag eq '0'}">
-            		<input type="text" name="email" value="${mmDomain.email }"readonly>
+            		  <c:out value="${mmDomain.email }"/>
+            		<input type="hidden" name="email" value="${mmDomain.email }"readonly>
             		</c:when>
                     <c:otherwise>
-                    <input type="text" name="email" value="${mmDomain.email }">
+                    <input type="text" name="email" value="${mmDomain.email }" style="text-align: center;">
                      </c:otherwise>
                     </c:choose>
                     </td>
                     </tr>
+
                     
-                    
-                     <tr>
-                    <th>생년월일</th>
-        <td>
-            <c:choose>
-                <c:when test="${requestScope.flag eq '0'}">
-                    <input type="text" name="birth" value="${mmDomain.birth}"readonly>
-                </c:when>
-                <c:otherwise>
-                    <input type="text" name="birth" value="${mmDomain.birth}" >
-                </c:otherwise>
-            </c:choose>
-        </td>
-    </tr>
+                    <tr style="height: 73px;" >
+                    <th style="width: 500px;">생년월일</th>
+      				  <td >
+       				     <c:choose>
+       				         <c:when test="${requestScope.flag eq '0'}">
+       				           <c:out value="${mmDomain.birth}"/>
+        				            <input type="hidden" name="birth" value="${mmDomain.birth}"readonly>
+       				         </c:when>
+       				         <c:otherwise>
+       				             <input type="text" name="birth" value="${mmDomain.birth}" style="text-align: center;">
+       				         </c:otherwise>
+     				       </c:choose>
+    				    </td>
+ 				   </tr>
+                    <tr>
+                    <th>
+                    </th>
+                    <td>
+                    </td>
+                    </tr>
   					
   
                     </tbody>
@@ -227,14 +221,14 @@
                     </div>
                     
                     <c:if test="${requestScope.flag eq '0' }">
-                    <input type="hidden" name="flag" value="1" >
-                    <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit"/>
+                    <input type="hidden" name="flag" value="1">
+                    <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit"  style=" margin-top: 50px; float: right;"/>
 					</c:if>
 					
-                  	<c:if test="${requestScope.flag eq '1' }">
-					<input type="button" class="btn btn-light btn-sm me-md-2" value="저장" id ="saveSubmit"/>
+                  	<c:if test="${requestScope.flag eq '1' }" >
+					<input type="button" class="btn btn btn-sm me-md-2 " value="완료" id ="saveSubmit" style="margin-top: 50px; float: right; "/>
 					</c:if>
-                   
+                   	
                    
                    
                     
@@ -244,6 +238,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             
         <footer class="row tm-mt-small" style="width: 90%;margin:auto;">

@@ -59,39 +59,26 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        회원 관리
+                               <li class="nav-item">
+                                    <a class="nav-link " href="manage_memberlist.do" >회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
+                                    
                                 </li>
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">강사 관리
+                                <li class="nav-item " >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
-                                    </div>
                                 </li>
 
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+								 <li class="nav-item">
+                                    <a class="nav-link " href="manage_qna.do" >문의 관리
+                                    </a>
+                                    
                                 </li>
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
-                                    </div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
@@ -107,45 +94,14 @@
                 </div>
             </div>
              <!-- row -->
-        <div class="row tm-mt-big" style="width: 100%">
-            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block" style="width: 100%" >
-                    <div class="row">
-                        <div class="col-12">
-                        <div class="mb-3">           
-                        	<img src="http://localhost/all_about_knowledge/front/admin/img/JAVA.png" border="0" width="120" height="100">
-                            <h2 class="tm-block-title d-inline-block">이 맛은 자바군!</h2>
-                              <label class="col-sm-5 col-form-label">프로그래밍 언어 > 자바</label> 
-                              
-                             
-                        </div>
-                        
-       
-                         <div class="mb-3" >           
-                        <img src="http://localhost/all_about_knowledge/front/admin/img/%EB%94%94%EB%AA%A8%EC%94%A8.png" border="0" width="120" height="100">
-                            <h2 class="tm-block-title d-inline-block">디모씨 강사</h2>
-                              <label class="col-sm-5 col-form-label">강사 소개 : 내가 디오다!</label>
-                        </div>
+       <div class="row tm-content-row tm-mt-big">
+        		<div class="col-12" >
+                 <div class="bg-white tm-block col-12" style="height: 700px;">
+              
 
-					<div>
-					
-					
-					
-					<div class="mb-3" >
-					
- 						 <label for="exampleFormControlTextarea1" class="form-label">학습 개요</label>
-  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" readonly rows="2">잘해보자
-  						</textarea>
-  						
-  						 <label for="exampleFormControlTextarea1" class="form-label">학습 목표</label>
-  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" readonly rows="2">잘 될꺼야
-  						</textarea>
-  						
-					</div>
-  						
-					
-					
-					
+                       <div class="col-12" style="height: 600px;border-right-width: 50px;padding-right: 120px;padding-left: 120px;" >
+                        
+					<div style="width: 600px; float: right; ">
 					<h2 class="tm-block-title d-inline-block">강의 목차</h2>
 					<div class="mb-3" style="height: 200px; overflow-y: auto"> 
 					<table class="table table-hover"  style="width: 100%;margin: auto; text-align: center; ">
@@ -181,6 +137,42 @@
                     </table>
 					
 					</div>
+					
+					
+					</div>
+                        <div style="width: 600px;" >
+                        <div class="mb-3">           
+                        	<img src="http://localhost/all_about_knowledge/front/admin/img/JAVA.png" border="0" width="120" height="100">
+                            <h2 class="tm-block-title d-inline-block">이 맛은 자바군!</h2>
+                              <label class="col-sm-5 col-form-label">프로그래밍 언어 > 자바</label> 
+                              
+                             
+                        </div>
+                        
+       
+                         <div class="mb-3" >           
+                        <img src="http://localhost/all_about_knowledge/front/admin/img/%EB%94%94%EB%AA%A8%EC%94%A8.png" border="0" width="120" height="100">
+                            <h2 class="tm-block-title d-inline-block">디모씨 강사</h2>
+                              <label class="col-sm-5 col-form-label">강사 소개 : 내가 디오다!</label>
+                        </div>
+
+					
+					
+					
+					<div class="mb-3" style=" width: 600px;">
+					
+ 						 <label for="exampleFormControlTextarea1" class="form-label">학습 개요</label>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" readonly rows="2" style=" width: 600px;">잘해보자
+  						</textarea>
+  						
+  						 <label for="exampleFormControlTextarea1" class="form-label">학습 목표</label>
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" readonly rows="2" style=" width: 600px;">잘 될꺼야
+  						</textarea>
+  						
+					</div>
+  					</div>	
+					
+					
 					<div>
 						
   						<div class="right">
@@ -191,8 +183,10 @@
   						
 					</div>
                        
-                    </div>
-                </div>
+                    
+            
+            </div>
+            </div>
             </div>
             </div>
             </div>
