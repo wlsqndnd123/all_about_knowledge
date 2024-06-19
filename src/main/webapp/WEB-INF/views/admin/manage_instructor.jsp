@@ -96,8 +96,9 @@
              <!-- row -->
        <div class="col-12" style="width: 100%; margin-top: 15px;">
          <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                 <div class="bg-white tm-block col-12" style="width: 100%" >
-                    <div class="col-12">
+                  <div class="bg-white tm-block col-12" style="width: 25%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 65%;margin-left: 35%;  padding-left: 20px;padding-right: 20px;" >
+                      <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">강사 리스트</h2>
                             	<form action="manage_instructor.do" method="get" id ="frm">
