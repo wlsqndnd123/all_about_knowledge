@@ -15,7 +15,7 @@
  <typeAlias type="kr.co.sist.aak.domain.admin.MemberManagementDomain" alias="MemberManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.MemberManagementVO" alias="MemberManagementVO"/>
 </typeAliases>
-
+ 
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
