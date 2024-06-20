@@ -111,9 +111,6 @@ a {text-decoration: none;}
              <li class="breadcrumb-item active">
              공지사항 상세</li></ol>
              </div>
-             <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">공지사항 상세</h2>
-             </div>
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
     <div class="col-sm-10">

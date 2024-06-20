@@ -2,7 +2,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+th,td,tr{font-size: 12px;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,26 +55,18 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="manage_memberlist.do">
                                         회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
                                 </li>
                                 <li class="nav-item " >
                                     <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " href="manage_notification.do">
@@ -108,9 +102,6 @@
              <li class="breadcrumb-item active">
              교육 카테고리 리스트</li></ol>
              </div>
-              <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">교육 카테고리 리스트</h2>
-                            </div>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 </div>	
                     <div style="text-align: center;margin: auto;" >

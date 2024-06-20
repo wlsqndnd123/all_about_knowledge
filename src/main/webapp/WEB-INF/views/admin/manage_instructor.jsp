@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-th,td,tr{font-size: 13px;}
-a {text-decoration: none;}
+th,td,tr{font-size: 12px;}
 </style>
 <head>
     <meta charset="UTF-8">

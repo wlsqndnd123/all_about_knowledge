@@ -106,15 +106,12 @@ th,td,tr{font-size: 12px;}
              <li class="breadcrumb-item active">
              공지사항 리스트</li></ol>
              </div>
-             <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
-             </div>
-                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
   	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
 <form action="manage_notification_status.do" id ="frmStatus">
 				<div style="text-align: left;">
-	<select style="width: 30%;" class="form-select" aria-label="Default select example" name ="status" id ="status">
+	<select style="width: 100px;" class="form-select" aria-label="Default select example" name ="status" id ="status">
   <option value="3">전체</option>
   <option value="0">게시</option>
   <option value="1">예약</option>

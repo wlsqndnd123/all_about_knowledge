@@ -55,26 +55,18 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="manage_memberlist.do" >
                                         회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
                                 </li>
                                 <li class="nav-item active" >
                                     <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="manage_qna.do" >문의 관리</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
