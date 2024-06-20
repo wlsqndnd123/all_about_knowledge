@@ -55,26 +55,18 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="manage_memberlist.do" >
                                         회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
                                 </li>
                                 <li class="nav-item active" >
                                     <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="manage_qna.do" >문의 관리</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
@@ -94,12 +86,12 @@
                     </nav>
                 </div>
             </div>
+            </div>
              <!-- row -->
-         <div class="col-12" style="width: 100%; margin-top: 15px;">
-         <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                  <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
-                <div class="bg-white tm-block col-12" style="overflow:scroll; width: 51%;margin-left:21%;  padding-left: 20px;padding-right: 20px; height: 85%;position: fixed;" >
-                    <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
+         <div class="container" style="padding: 1rem">
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
+                     <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
                     <div class="col-12">
                         <div class="col-12">
                          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
@@ -156,13 +148,12 @@
                             <div>
 	<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
 	</div>
+	</div>
+	</div>
                             </form>
                             </div>
                         </div>
-                    </div>
                 </div>
-            </div>
-    </div>
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>

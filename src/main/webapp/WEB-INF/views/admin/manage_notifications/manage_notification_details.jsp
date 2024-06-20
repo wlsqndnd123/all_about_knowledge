@@ -3,7 +3,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+th,td,tr{font-size: 13px;}
+a {text-decoration: none;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,12 +96,12 @@
                     </nav>
                 </div>
             </div>
+            </div>
              <!-- row -->
-        <div class="col-12" style="width: 100%; margin-top: 15px;">
-         <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                  <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
-                <div class="bg-white tm-block col-12" style="overflow:scroll; width: 51%;margin-left:21%;  padding-left: 20px;padding-right: 20px; height: 85%;position: fixed;" >
-                 <div class="col-12">
+       <div class="container" style="padding: 1rem">
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
+                    <div class="col-12">
                         <div class="col-12">
                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
@@ -107,9 +110,6 @@
              </li>
              <li class="breadcrumb-item active">
              공지사항 상세</li></ol>
-             </div>
-             <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">공지사항 상세</h2>
              </div>
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
@@ -129,6 +129,7 @@
                 </div>
             </div>
     </div>
+    
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
