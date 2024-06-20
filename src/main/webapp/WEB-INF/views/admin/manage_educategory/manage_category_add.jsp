@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,7 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -26,6 +25,7 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 
+</head>
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -43,7 +43,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown   active">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
                                         
@@ -62,19 +62,19 @@
                                         <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item active" >
+                                <li class="nav-item " >
                                     <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-                                <li class="nav-item dropdown ">
+                                <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">문의 관리</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item ">
+                                <li class="nav-item">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
@@ -93,135 +93,109 @@
                 </div>
             </div>
             </div>
+            
              <!-- row -->
-         <div class="container" style="padding: 1rem">
+        <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
-                     <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
                     <div class="col-12">
                         <div class="col-12">
                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             강사 관리
+             교육과목 관리
              </li>
              <li class="breadcrumb-item active">
-             강사 추가 완료</li></ol>
+             교육 카테고리 추가</li></ol>
              </div>
               <div style="text-align: center; margin-top: 50px;" >
-                         <h2 class="tm-block-title d-inline-block">강사 추가 완료</h2>
+                            <h2 class="tm-block-title d-inline-block">교육 카테고리 추가</h2>
                             </div>
-                            <div style="text-align: center;"  class="mb-3" >
-                            <table class="table table-hover" style=" width:95%; text-align: center;">
-                            <tr>
-  							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="image" name ="image"></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">강사 아이디</td>
-                <td><input type="email" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">이름</td>
-                 <td><input type="email" class="form-control" id="name" name ="name"/></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">연락처</td>
-                    <td><input type="email" class="form-control" id="phone" name ="phone" maxlength="11"/></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">이메일</td>
-                   <td><input type="email" class="form-control" id="email" name ="email"></td>
-                             </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">강사 학력사항</td>
-                <td><input type="email" class="form-control" id="education" name ="education"></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">주력 과목</td>
-                   <td><input type="email" class="form-control" id="major_subject" name ="major_subject"></td>
-                            </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">자기소개</td>
-                   <td><input type="email" class="form-control" id="introduction" name ="introduction"></td>
-                            </tr>
-                            
-                            </table>
-                            </div>
-                            <div style="text-align: center;">
-                            <input type="button" id ="btnSubmit" value="강사추가" class="btn btn-info btn-sm ">
-                            </div>
-                            <div>
-	<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
-	</div>
-	</div>
-	</div>
-                            </form>
-                            </div>
+                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+</div>	
+                    <div style="text-align: center;margin: auto;" >
+                    <!-- <select class="form-select form-select-lg mb-3" aria-label="Large select example" >
+                    --> <label>상위 교육 카테고리 명  </label>
+                   <!--  </select> -->
+                    <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
+                    <a href =".do"></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
+                    <div id ="educatOutput"  style="text-align: center;margin: auto;"></div>
+                    </div>
+                  <!--   <div id ="edusubOutput" style="text-align: center;margin: auto;"></div> -->
                         </div>
                     </div>
+                </div>
+            </div>
+          
+ </div>
+
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-  <!-- https://jquery.com/download/ -->
-   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+ <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
-  $(function() {
-    function checknull() {
-        let isValid = true;
-        $('#frm input[type="email"], #frm input[type="file"]').each(function() {
-            if ($(this).val().trim() === '') {
-                isValid = false;
-                alert($(this).attr('name') + ' 입력값이 비어 있습니다.');
-                $(this).focus();
-                return false;
-            }
-        });
-        return isValid;
-    }
+        $(function() {
+        	 $("#catbtn").click(function() {
+                 $.ajax({
+                     url: "manage_edu_cat_list.do",
+                     type: "GET",
+                     dataType: "JSON",
+                     error: function(xhr) {
+                         console.log(xhr.status + " : " + xhr.statusText);
+                         alert("서버 오류 발생");
+                     },
+                     success: function(jsonObj) {
+                         var output = "<table class='table table-hover' style='margin: auto; text-align: center;'>";
+                        
+                         $.each(jsonObj.list, function(i, jsonTemp) {
+                             var outputId = 'edusubOutput' + i;
+                             output += "<tr><td>" + jsonTemp.cat_name + "</td>";
+                             output += "<td><input type='button' class='btn btn-outline-primary btn-sm' value='조회' onclick='searchSubcat(\"" + jsonTemp.cat_code + "\", \"" + outputId + "\")'/></td></tr>";
+                             output += "<tr><td colspan='2'><div id='" + outputId + "' style='display: none;'></div></td></tr>";
+                         });
+                         output += "</table>";
+                         $("#educatOutput").html(output).show(); // 카테고리 정보를 표시하고 출력
+                     }
+                 }); // ajax
+             }); // click
 
-    $("#btnback").click(function() {
-        history.back();
-    });
+             // 접기 버튼 이벤트 리스너 추가
+             $(document).on("click", "[id^=btnfold1_]", function(){
+                 var id = $(this).attr('id').replace('btnfold1_', '');
+                 $("#edusubOutput" + id).toggle();
+             });
+         });
 
-    $("#btnSubmit").click(function() {
-        var file = $("#image").val();
-        var selectedExt = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
+         function searchSubcat(cat_code, outputId) {
+             $.ajax({
+                 url: "manage_edu_subcat_list.do",
+                 type: "GET",
+                 dataType: "JSON",
+                 data: { cat_code: cat_code },
+                 error: function(xhr) {
+                     console.log(xhr.status + " : " + xhr.statusText);
+                     alert("서버 오류 발생");
+                 },
+                 success: function(jsonObj) {
+                     var output = "<table class='table table-hover' style='margin: auto; width:70%;text-align:center;'>"
+                    	 +"<tr><td>하위 교육 카테고리</td>"
+                     +"<td ><input type ='button' class = 'btn btn-outline-primary btn-sm' value ='추가'/></td></tr>";
+                     $.each(jsonObj.list, function(i, jsonTemp) {
+                         output += "<tr><td >" + jsonTemp.cat_name + "</td></tr>";
+                     });
+                     output += "<tr><td style ='text-align:right;'><input type='button' class='btn btn-link btn-sm' value='접기' id='btnfold2_" + outputId + "'/></td><tr>"
+                    +"</table>"
+                     
+                     $("#" + outputId).html(output).show(); // 데이터를 불러온 후에 표시
 
-        var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
-        var flag = false;
-
-        for (var i = 0; i < extArr.length; i++) {
-            if (selectedExt === extArr[i]) {
-                flag = true;
-                break;
-            }
-        }
-
-        if (!flag) {
-            alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
-            return;
-        }
-
-        if (checknull()) {
-            $("#frm").submit();
-        }
-    });
-
-    $('#frm input').on('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            let inputs = $('#frm input[type="email"], #frm input[type="file"]');
-            let idx = inputs.index(this);
-            if (idx < inputs.length - 1) {
-                inputs[idx + 1].focus();
-            } else {
-                inputs[0].focus();
-            }
-        }
-    });
-  });
-</script>
-
-    <!-- https://getbootstrap.com/ -->
+                     // 동적으로 생성된 접기 버튼 이벤트 리스너 추가
+                     $("#btnfold2_" + outputId).on("click", function() {
+                         $("#" + outputId).toggle();
+                     });
+                 }
+             });
+         }
+               
+    </script>
+ </div>
 </body>
 
 </html>

@@ -34,8 +34,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
                         <a class="navbar-brand" href="adminindex.do">
-                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-                            <h1 class="tm-site-title mb-0">All About Knowledge</h1>
+                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -93,14 +92,25 @@
                     </nav>
                 </div>
             </div>
+            </div>
+            
              <!-- row -->
-        <div class="col-12" style="width: 100%; margin-top: 15px;">
-         <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                 <div class="bg-white tm-block col-12" style="width: 25%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
-                <div class="bg-white tm-block col-12" style="width: 65%;margin-left: 35%;  padding-left: 20px;padding-right: 20px;" >
+        <div class="container" style="padding: 1rem">
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">교육 카테고리 관리</h2>
+                        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+             <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
+             <li class="breadcrumb-item">
+             교육과목 관리
+             </li>
+             <li class="breadcrumb-item active">
+             교육 카테고리 리스트</li></ol>
+             </div>
+              <div style="text-align: center; margin-top: 50px;" >
+                            <h2 class="tm-block-title d-inline-block">교육 카테고리 리스트</h2>
+                            </div>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 </div>	
                     <div style="text-align: center;margin: auto;" >
@@ -118,7 +128,6 @@
             </div>
           
  </div>
-    </div>
 
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
@@ -186,7 +195,6 @@
          }
                
     </script>
- </div>
 </body>
 
 </html>
