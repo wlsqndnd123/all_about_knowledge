@@ -100,19 +100,19 @@
         <div class="col-12" style="width: 100%; margin-top: 15px;">
             <div class="col-12" style="width: 100%;margin: 0 auto;" >
             
-                <div class="bg-white tm-block col-12" style="width: 25%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
-                <div class="bg-white tm-block col-12" style="width: 65%;margin-left: 35%;  padding-left: 20px;padding-right: 20px;" >
+                <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll; width: 51%;margin-left:21%;  padding-left: 20px;padding-right: 20px; height: 85%;position: fixed;" >
                     <div class="col-12">
                         <div class="col-12">
-                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;"> 
+                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             <a href="/vite/demo/event-management" style="text-decoration: none;">공지사항 관리</a>
+             공지사항 관리
              </li>
              <li class="breadcrumb-item active">
-             <a href="/vite/demo/event-management" style="text-decoration: none;">공지사항 리스트</a></li></ol>
+             공지사항 리스트</li></ol>
              </div>
-             <div style="text-align: center;">
+             <div style="text-align: center; margin-top: 50px;" >
                             <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
              </div>
                             	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -120,7 +120,7 @@
 </div>	
 <form action="manage_notification_status.do" id ="frmStatus">
 				<div style="text-align: left;">
-	<select class="form-select" aria-label="Default select example" name ="status" id ="status">
+	<select style="width: 30%;" class="form-select" aria-label="Default select example" name ="status" id ="status">
   <option value="3">전체</option>
   <option value="0">게시</option>
   <option value="1">예약</option>
@@ -128,15 +128,15 @@
 </select>
 				</div>
 </form>
-                  <div >
+                  <div style="margin-top: 30px;">
                     
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
-                    <th><a href ="manage_notification_noti_no">NO</a></th>
+                    <th><a href ="manage_notification_noti_no">번호</a></th>
                     <th style="width: 60%"><a>공지사항 제목</a></th>
-                    <th><a>게시 날짜</a></th>
-                    <th><a>게시글 상태</a></th>
+                    <th><a>날짜</a></th>
+                    <th><a>상태</a></th>
                     </tr>
                     </thead>
                     <tbody id ="output">
