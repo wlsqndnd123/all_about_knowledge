@@ -16,8 +16,9 @@
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/index-DO6cl02t.css"> 
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+    
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -100,11 +101,11 @@
            <!-- row -->
         <div class="container" style="padding: 1rem">
             
-                <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
-                <div class="bg-white tm-block col-12" style="overflow:scroll; margin-left: 25%; width:auto" >
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
-                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style="  margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
              공지사항 관리
