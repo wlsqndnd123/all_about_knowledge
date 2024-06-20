@@ -1,9 +1,13 @@
 package kr.co.sist.aak.module.instructor.exam.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.co.sist.aak.domain.instructor.ExamDomain;
 import kr.co.sist.aak.module.instructor.exam.service.ExamService;
 
 @Controller
@@ -13,9 +17,12 @@ public class ExamController {
 	private ExamService es;
 	
 	@GetMapping("/examList.do")
-	public String exam() {
+	public String exam(Model model) {
 		
-		return "instructor/exam/examList";
+		List<ExamDomain> list=es.searchList();
+		model.addAttribute("examlist",list);
+		
+		return "/instructor/exam/examList";
 	}
 	
 	@GetMapping("/exam_write.do")

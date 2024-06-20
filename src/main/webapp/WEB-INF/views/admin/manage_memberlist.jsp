@@ -31,6 +31,13 @@
   		 text-align: right;
 		}
 
+	
+	.custom-font-size {
+   		font-size: 12px;
+	}
+
+
+
 </style>
 
 
@@ -65,39 +72,26 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        회원 관리
+                                 <li class="nav-item   active">
+                                    <a class="nav-link " href="manage_memberlist.do" >회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
+                                    
                                 </li>
-                                <li class="nav-item dropdown" >
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">강사 관리
+                                <li class="nav-item " >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_instructor.do">강사 리스트</a>
-                                    </div>
                                 </li>
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+								 <li class="nav-item">
+                                    <a class="nav-link " href="manage_qna.do" >문의 관리
+                                    </a>
+                                    
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_notification.do">공지사항 리스트</a>
-                                    </div>
                                 </li>
                             </ul>
                             <ul class="navbar-nav">
@@ -113,41 +107,40 @@
                 </div>
             </div>
              <!-- row -->
-        <div class="row tm-mt-big" style="width: 100%">
-            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="width: 100%;margin: 0 auto;" >
-                <div class="bg-white tm-block" style="width: 100%" >
-                    <div class="row">
-                        <div class="col-12">
+                <div class="row tm-content-row tm-mt-big" style="margin-top: 20px;">
+        		<div class="col-12" >
+        		
+                  <div class="bg-white tm-block col-12" style="width: 25%;border: 2px solid skyblue;position: fixed;height: 650px;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 69%; height: 650px;margin-left: 495px;">
+              
+                        <div class="col-8" style="height: 600px; float: right;">
                             <h2 class="tm-block-title d-inline-block">회원 리스트</h2>
-                            
-                    <div class="right">
-                    <select class="form-select" aria-label="Default select example">
-                    <option selected>정렬조건</option>
-                    <option>가나다 순</option>
-                    <option>가입일 오름차 순</option>
-                    <option>가입일 내림차 순</option>
-                    </select>
-                    </div>	
+
                     
-                    
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="height: 500px; overflow: auto;">
+                    <table class="table table-hover"   style="text-align: center; width: 692px;">
                     <thead>
                     <tr>
-                    <th>NO</th>
-                    <th>사용자ID</th>
-                    <th>이름</th>
-                    <th>가입일</th>
+                    <th class="custom-font-size">NO</th>
+                    <th class="custom-font-size" style="width: 120px;">사용자ID</th>
+                    <th class="custom-font-size" style="width: 120px;">이름</th>
+                    <th class="custom-font-size" style="width: 150px;">가입일</th>
+                    <th class="custom-font-size" style="width: 100px;">?</th>
+                    <th class="custom-font-size" style="width: 100px;">?</th>
+                    <th class="custom-font-size" style="width: 100px;">?</th>
                     </tr>
                     </thead>
                     
                     <tbody>
                     <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
                     <tr>
-                    <td><c:out value="${i.count}"/></td>
-                    <td><c:out value="${mmd.std_id }"/></td>                 
-                    <td><a href="manage_member_details.do?std_id=${mmd.std_id }&flag=0"><c:out value="${mmd.name }"/></a></td>             
-                    <td><c:out value="${mmd.signup_date}"/></td>
+                    <td class="custom-font-size"><c:out value="${i.count}"/></td>
+                    <td class="custom-font-size"><c:out value="${mmd.std_id }"/></td>                 
+                    <td class="custom-font-size"><a href="manage_member_details.do?std_id=${mmd.std_id }&flag=0"><c:out value="${mmd.name }"/></a></td>             
+                    <td class="custom-font-size"><c:out value="${mmd.signup_date}"/></td>
+                    <td class="custom-font-size">?</td>
+                    <td class="custom-font-size">?</td>
+                    <td class="custom-font-size">?</td>
                     </tr>
                     </c:forEach>
                     </tbody>
@@ -155,9 +148,11 @@
                     </table>
                     </div>
                         </div>
-                    </div>
+                    
                 </div>
+         
             </div>
+    </div>
         <footer class="row tm-mt-small">
          
         </footer>

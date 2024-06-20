@@ -96,7 +96,8 @@
              <!-- row -->
         <div class="col-12" style="width: 100%; margin-top: 15px;">
          <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                 <div class="bg-white tm-block col-12" style="width: 100%" >
+                 <div class="bg-white tm-block col-12" style="width: 25%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 65%;margin-left: 35%;  padding-left: 20px;padding-right: 20px;" >
                     <div class="col-12">
                         <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">교육 카테고리 관리</h2>
@@ -107,7 +108,7 @@
                     --> <label>상위 교육 카테고리 명  </label>
                    <!--  </select> -->
                     <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
-                    <a></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
+                    <a href =".do"></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
                     <div id ="educatOutput"  style="text-align: center;margin: auto;"></div>
                     </div>
                   <!--   <div id ="edusubOutput" style="text-align: center;margin: auto;"></div> -->

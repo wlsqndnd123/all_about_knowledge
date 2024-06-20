@@ -17,6 +17,8 @@
 
     -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/index-DO6cl02t.css"> 
+    
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -34,8 +36,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
                         <a class="navbar-brand" href="adminindex.do">
-                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-                            <h1 class="tm-site-title mb-0">All About Knowledge</h1>
+                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -96,12 +97,23 @@
              <!-- row -->
          <div class="col-12" style="width: 100%; margin-top: 15px;">
          <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                 <div class="bg-white tm-block col-12" style="width: 100%" >
-                            <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
+                  <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll; width: 51%;margin-left:21%;  padding-left: 20px;padding-right: 20px; height: 85%;position: fixed;" >
+                    <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
                     <div class="col-12">
                         <div class="col-12">
+                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+             <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
+             <li class="breadcrumb-item">
+             강사 관리
+             </li>
+             <li class="breadcrumb-item active">
+             강사 추가</li></ol>
+             </div>
+              <div style="text-align: center; margin-top: 50px;" >
                          <h2 class="tm-block-title d-inline-block">강사 추가</h2>
-                            <div style="text-align: center;"  class="mb-3" >
+              </div>
+                            <div style="text-align: center;"  class="mb-3" style="margin-top: 30px;" >
                             <table class="table table-hover" style=" width:95%; text-align: center;">
                             <tr>
   							<td style="vertical-align: middle;">강사 이미지</td>
@@ -109,31 +121,31 @@
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 아이디</td>
-                <td><input type="email" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
+                <td><input type="text" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">이름</td>
-                 <td><input type="email" class="form-control" id="name" name ="name"/></td>
+                 <td><input type="text" class="form-control" id="name" name ="name"/></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">연락처</td>
-                    <td><input type="email" class="form-control" id="phone" name ="phone" maxlength="11"/></td>
+                    <td><input type="text" class="form-control" id="phone" name ="phone" maxlength="11"/></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">이메일</td>
-                   <td><input type="email" class="form-control" id="email" name ="email"></td>
+                   <td><input type="text" class="form-control" id="email" name ="email"></td>
                              </tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 학력사항</td>
-                <td><input type="email" class="form-control" id="education" name ="education"></td>
+                <td><input type="text" class="form-control" id="education" name ="education"></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">주력 과목</td>
-                   <td><input type="email" class="form-control" id="major_subject" name ="major_subject"></td>
+                   <td><input type="text" class="form-control" id="major_subject" name ="major_subject"></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">자기소개</td>
-                   <td><input type="email" class="form-control" id="introduction" name ="introduction"></td>
+                   <td><input type="text" class="form-control" id="introduction" name ="introduction"></td>
                             </tr>
                             
                             </table>
