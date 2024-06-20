@@ -3,7 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
-
+<style>
+th,td,tr{font-size: 12px;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +31,7 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
     
 
-
+</head>
 <body id="reportsPage">
     <div class="" id="home">
         <div class="container">
@@ -57,26 +59,18 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_memberlist.do">
                                         회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
                                 </li>
                                 <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+                                <li class="nav-item  ">
+                                    <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
                                 <li class="nav-item  active">
                                     <a class="nav-link " href="manage_notification.do">
@@ -100,7 +94,6 @@
             </div>
            <!-- row -->
         <div class="container" style="padding: 1rem">
-            
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
@@ -113,15 +106,12 @@
              <li class="breadcrumb-item active">
              공지사항 리스트</li></ol>
              </div>
-             <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
-             </div>
-                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
   	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
 <form action="manage_notification_status.do" id ="frmStatus">
 				<div style="text-align: left;">
-	<select style="width: 30%;" class="form-select" aria-label="Default select example" name ="status" id ="status">
+	<select style="width: 100px;" class="form-select" aria-label="Default select example" name ="status" id ="status">
   <option value="3">전체</option>
   <option value="0">게시</option>
   <option value="1">예약</option>

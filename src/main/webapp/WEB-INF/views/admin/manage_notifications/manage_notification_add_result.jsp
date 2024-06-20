@@ -93,13 +93,14 @@
                     </nav>
                 </div>
             </div>
+            </div>
              <!-- row -->
-        <div class="col-12" style="width: 100%; margin-top: 15px;">
-         <div class="col-12" style="width: 100%;margin: 0 auto;" >
-                 <div class="bg-white tm-block col-12" style="width: 100%" >
-                    <div class="col-12">
-                        <div class="col-12">
+         <div class="container" style="padding: 1rem">
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
+                      <div class="col-12">
     <form id ="frm" action="notification_write_form_process.do" method="post" enctype="multipart/form-data">
+                        <div class="col-12">
                             <h2 class="tm-block-title d-inline-block">공지사항 작성 완료</h2>
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
@@ -124,12 +125,12 @@
 <div style="text-align: center;">
 <input type="button" class="btn btn-link" value="목록으로" id ="btnback"/>
 </div>
+
     </form>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
