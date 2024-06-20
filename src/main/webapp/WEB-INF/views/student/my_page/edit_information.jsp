@@ -30,6 +30,10 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 		  })
 		  .modal('show')
 		;
+		
+		$('#confirm').click(function(){
+            window.location.href = '${pageContext.request.contextPath}/edit_profile.do';
+        });
 
 	}); // ready
 </script>
@@ -53,7 +57,6 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 	  <div class="active section">개인정보수정</div>
 	</div>
 	
-	
 	<!-- 사용자 검증 모달 창 -->
 		<div class="ui special mini modal">
 		  <div class="ui icon header">
@@ -74,13 +77,13 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 		      <i class="remove icon"></i>
 		      취소
 		    </div>
-		    <div class="ui green ok inverted button">
+		    <div class="ui green ok inverted button" id="confirm">
 		      <i class="checkmark icon"></i>
 		      확인
 		    </div>
 		  </div>
 		</div>
-		
+
 </div>
 
 </article>
