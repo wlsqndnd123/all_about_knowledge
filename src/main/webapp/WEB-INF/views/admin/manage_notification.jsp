@@ -95,13 +95,13 @@
                     </nav>
                 </div>
             </div>
-            
+            </div>
+            </div>
            <!-- row -->
-        <div class="col-12" style="width: 100%; margin-top: 15px;">
-            <div class="col-12" style="width: 100%;margin: 0 auto;" >
+        <div class="container" style="padding: 1rem">
             
                 <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
-                <div class="bg-white tm-block col-12" style="overflow:scroll; width: 51%;margin-left:21%;  padding-left: 20px;padding-right: 20px; height: 85%;position: fixed;" >
+                <div class="bg-white tm-block col-12" style="overflow:scroll; margin-left: 25%; width:auto" >
                     <div class="col-12">
                         <div class="col-12">
                          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
@@ -162,7 +162,6 @@
                     </div>
                 </div>
             </div>
-    </div>
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
