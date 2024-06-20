@@ -48,7 +48,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 	  <div class="active section">관심강의</div>
 	</div>
 
-<table class="ui celled padded table fav_container">
+<table class="ui celled padded table fav_container center aligned">
   <thead>
     <tr>
     <th class="single line">과목분류</th>
@@ -68,7 +68,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
       <td>
         곽우신
       </td>
-      <td class="one wide center aligned">
+      <td class="one wide">
 		<div class="ui heart rating"></div>
       </td>
       <td class="single line">
@@ -88,7 +88,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
       <td>
         죽겠네
       </td>
-      <td class="one wide center aligned">
+      <td class="one wide">
 		<div class="ui heart rating"></div>
       </td>
       <td class="single line">
@@ -108,7 +108,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
       <td>
         김일신
       </td>
-      <td class="one wide center aligned">
+      <td class="one wide">
 		<div class="ui heart rating"></div>
       </td>
       <td class="single line">
@@ -128,7 +128,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
       <td>
         김도원
       </td>
-      <td class="one wide center aligned">
+      <td class="one wide">
 		<div class="ui heart rating"></div>
       </td>
       <td class="single line">
@@ -148,7 +148,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
       <td class="single line">
         시바수현
       </td>
-      <td class="one wide center aligned">
+      <td class="one wide">
 		<div class="ui heart rating"></div>
       </td>
       <td class="single line">
@@ -168,7 +168,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
       <td>
         진시바
       </td>
-      <td class="one wide center aligned">
+      <td class="one wide">
 		<div class="ui heart rating"></div>
       </td>
       <td class="single line">

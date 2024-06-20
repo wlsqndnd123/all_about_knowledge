@@ -22,7 +22,9 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 </style>
 <script type = "text/javascript">
 	$(function() {
-
+		$('#enterNeedExam').click(function(){
+            window.location.href = '${pageContext.request.contextPath}/my_lecture_detail.do';
+        });
 	}); // ready
 </script>
 </head>
@@ -92,43 +94,43 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
   	<tr>
   	<th class="collapsing">번호</th>
   	<th>제목</th>
-	<th>날짜</th>
+	<th class="center aligned">날짜</th>
 	</tr>
   </thead>
   <tbody>
     <tr>
-      <td>
+      <td class="center aligned">
         4
       </td>
       <td>뭐요</td>
-      <td class="right aligned collapsing">2024-06-12</td>
+      <td class="collapsing">2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         3
       </td>
       <td>이것은</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         2
       </td>
       <td>공지사항</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         1
       </td>
       <td>테이블</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
   </tbody>
 </table>
 </div>
     
-    <div class="ui bottom attached button black">
+    <div class="ui bottom attached button black" id="enterNeedExam">
       <i class="angle double right icon"></i>
       강의실 입장
     </div>
@@ -150,37 +152,37 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
   	<tr>
   	<th class="collapsing">번호</th>
   	<th>제목</th>
-	<th>날짜</th>
+	<th class="center aligned">날짜</th>
 	</tr>
   </thead>
   <tbody>
     <tr>
-      <td>
+      <td class="center aligned">
         4
       </td>
       <td>뭐요</td>
-      <td class="right aligned collapsing">2024-06-12</td>
+      <td class="collapsing">2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         3
       </td>
       <td>이것은</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         2
       </td>
       <td>공지사항</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         1
       </td>
       <td>테이블</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
   </tbody>
 </table>
@@ -208,37 +210,37 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
   	<tr>
   	<th class="collapsing">번호</th>
   	<th>제목</th>
-	<th>날짜</th>
+	<th class="center aligned">날짜</th>
 	</tr>
   </thead>
   <tbody>
     <tr>
-      <td>
+      <td class="center aligned">
         4
       </td>
       <td>뭐요</td>
-      <td class="right aligned collapsing">2024-06-12</td>
+      <td class="collapsing">2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         3
       </td>
       <td>이것은</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         2
       </td>
       <td>공지사항</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
     <tr>
-      <td>
+      <td class="center aligned">
         1
       </td>
       <td>테이블</td>
-      <td class="right aligned">2024-06-12</td>
+      <td>2024-06-12</td>
     </tr>
   </tbody>
 </table>

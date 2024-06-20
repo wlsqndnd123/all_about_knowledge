@@ -43,11 +43,11 @@
          <div class="col-sm-6 form">
 
             <!-- Login Form -->
-            <div class="login form-peice switched">
+            <div class="login form-peice">
                <form class="login-form" action="#" method="post">
                   <div class="form-group">
-                     <label for="loginemail">아이디</label>
-                     <input type="email" name="loginemail" id="loginemail" required>
+                     <label for="userId">아이디</label>
+                     <input type="text" name="userId" id="userId" class="userId" required>
                   </div>
 
                   <div class="form-group">
@@ -66,12 +66,12 @@
 
 
             <!-- Signup Form -->
-            <div class="signup form-peice">
+            <div class="signup form-peice switched">
                <form class="signup-form" action="#" method="post">
 
                   <div class="form-group">
-                     <label for="name">아이디</label>
-                     <input type="text" name="username" id="name" class="name">
+                     <label for="userId">아이디</label>
+                     <input type="text" name="userId" id="userId" class="userId">
                      <span class="error"></span>
                   </div>
                   
@@ -82,8 +82,8 @@
                   </div>
                   
                   <div class="form-group">
-                     <label for="name">생년월일</label>
-                     <input type="text" name="username" id="name" class="name">
+                     <label for="birth">생년월일</label>
+                     <input type="text" name="birth" id="birth" class="birth">
                      <span class="error"></span>
                   </div>
 
