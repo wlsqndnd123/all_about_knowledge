@@ -54,7 +54,7 @@ Desc : 사용자(학생)의 마이페이지 나의강의 화면
 	  <a class="item" data-tab="third">완료된강좌</a>
 	</div>
 	<div class="ui bottom attached tab segment active" data-tab="first">
-	  <table class="ui celled padded table">
+	  <table class="ui celled padded table center aligned">
   <thead>
     <tr>
     <th class="single line">과목분류</th>

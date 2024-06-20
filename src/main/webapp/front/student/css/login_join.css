@@ -1,7 +1,7 @@
 /* Fonts */
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #f7edd5;
+  background: #063b0127;
 }
 
 .container {
@@ -261,7 +261,7 @@ section#formHolder {
   font-size: 12px;
   text-transform: uppercase;
   padding: 5px 30px;
-  background: #f95959;
+  background: #208e36;
   color: #fff;
   border-radius: 30px;
   margin-right: 20px;

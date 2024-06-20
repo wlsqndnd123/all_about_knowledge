@@ -11,9 +11,11 @@ Desc : 사용자(학생)의 마이페이지 좌측 네비게이션
 		$('#home').click(function(){
             window.location.href = '${pageContext.request.contextPath}/mypage_home.do';
         });
-		$('#dashBoard').click(function(){
+		
+ 		$('#dashBoard').click(function(){
             window.location.href = '${pageContext.request.contextPath}/mypage_home.do';
         });
+        
 		$('#myLecture').click(function(){
             window.location.href = '${pageContext.request.contextPath}/my_lecture.do';
         });

@@ -4,8 +4,10 @@ $(document).ready(function () {
     'use strict';
 
     var usernameError = true,
+        userIdError   = true,
         emailError    = true,
         passwordError = true,
+        birthError    = true,
         passConfirm   = true;
 
     // Detect browser for css purpose
@@ -25,20 +27,38 @@ $(document).ready(function () {
         // User Name
         if ($(this).hasClass('name')) {
             if ($(this).val().length === 0) {
-                $(this).siblings('span.error').text('Please type your full name').fadeIn().parent('.form-group').addClass('hasError');
+                $(this).siblings('span.error').text('이름을 입력해주세요.').fadeIn().parent('.form-group').addClass('hasError');
                 usernameError = true;
-            } else if ($(this).val().length > 1 && $(this).val().length <= 6) {
-                $(this).siblings('span.error').text('Please type at least 6 characters').fadeIn().parent('.form-group').addClass('hasError');
+            } else if ($(this).val().length > 0 && $(this).val().length <= 1) {
+                $(this).siblings('span.error').text('2자 이상 입력 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
                 usernameError = true;
             } else {
                 $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 usernameError = false;
             }
         }
+
+        // User Id
+        if ($(this).hasClass('userId')) {
+            if ($(this).val().length === 0) {
+                $(this).siblings('span.error').text('아이디는 공백으로 둘 수 없습니다.').fadeIn().parent('.form-group').addClass('hasError');
+                userIdError = true;
+            } else if (userId.length >= 1 && userId.length <= 3) {
+                $(this).siblings('span.error').text('아이디는 4자 이상 입력 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
+                userIdError = true;
+            } else if (!userIdRegex.test(userId)) {
+                $(this).siblings('span.error').text('아이디는 영문 소문자와 숫자로만 구성되어야 합니다').fadeIn().parent('.form-group').addClass('hasError');
+                userIdError = true;
+            } else {
+                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                userIdError = false;
+            }
+        }
+
         // Email
         if ($(this).hasClass('email')) {
             if ($(this).val().length == '') {
-                $(this).siblings('span.error').text('Please type your email address').fadeIn().parent('.form-group').addClass('hasError');
+                $(this).siblings('span.error').text('이메일 주소를 확인 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
                 emailError = true;
             } else {
                 $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
@@ -49,7 +69,7 @@ $(document).ready(function () {
         // PassWord
         if ($(this).hasClass('pass')) {
             if ($(this).val().length < 8) {
-                $(this).siblings('span.error').text('Please type at least 8 charcters').fadeIn().parent('.form-group').addClass('hasError');
+                $(this).siblings('span.error').text('최소 8자 이상 입력 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
                 passwordError = true;
             } else {
                 $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
@@ -57,9 +77,20 @@ $(document).ready(function () {
             }
         }
 
+        // Birthday
+        if ($(this).hasClass('birth')) {
+            if ($(this).val().length == '') {
+                $(this).siblings('span.error').text('생년월일을 입력 해 주세요.').fadeIn().parent('.form-group').addClass('hasError');
+                birthError = true;
+            } else {
+                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                birthError = false;
+            }
+        }
+
         // PassWord confirmation
         if ($('.pass').val() !== $('.passConfirm').val()) {
-            $('.passConfirm').siblings('.error').text('Passwords don\'t match').fadeIn().parent('.form-group').addClass('hasError');
+            $('.passConfirm').siblings('.error').text('비밀번호 불일치').fadeIn().parent('.form-group').addClass('hasError');
             passConfirm = false;
         } else {
             $('.passConfirm').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
@@ -92,8 +123,8 @@ $(document).ready(function () {
     $('form.signup-form').submit(function (event) {
         event.preventDefault();
 
-        if (usernameError == true || emailError == true || passwordError == true || passConfirm == true) {
-            $('.name, .email, .pass, .passConfirm').blur();
+        if (usernameError == true || emailError == true || passwordError == true || passConfirm == true || userIdError == true || birthError == true) {
+            $('.name, .email, .pass, .passConfirm, .userId, .birth').blur();
         } else {
             $('.signup, .login').addClass('switched');
 

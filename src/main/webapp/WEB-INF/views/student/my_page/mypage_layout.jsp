@@ -20,9 +20,9 @@ Desc : 사용자(학생)의 마이페이지 참고용 레이아웃
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 <style type = "text/css">
 </style>
-<script type = "text/javascript">
+<script type="text/javascript">
 	$(function() {
-
+	
 	}); // ready
 </script>
 </head>
@@ -36,8 +36,9 @@ Desc : 사용자(학생)의 마이페이지 참고용 레이아웃
 <!-- 컨텐츠 영역 -->
 <article class="my_article">
 <div class="mypage_content_div">
+
+
 </div>
 </article>
-
 </body>
 </html>
