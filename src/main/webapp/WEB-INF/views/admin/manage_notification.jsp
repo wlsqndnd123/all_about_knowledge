@@ -17,6 +17,7 @@
 
     -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+   <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/index-DO6cl02t.css"> 
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -25,6 +26,7 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
+    
 
 
 <body id="reportsPage">
@@ -33,9 +35,9 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
-                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-                            <h1 class="tm-site-title mb-0">All About Knowledge</h1>
+                        <a class="brand-logo" href="adminindex.do">
+                            <!-- <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i> -->
+                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +95,8 @@
                     </nav>
                 </div>
             </div>
-             <!-- row -->
+            
+           <!-- row -->
         <div class="col-12" style="width: 100%; margin-top: 15px;">
             <div class="col-12" style="width: 100%;margin: 0 auto;" >
             
@@ -101,7 +104,17 @@
                 <div class="bg-white tm-block col-12" style="width: 65%;margin-left: 35%;  padding-left: 20px;padding-right: 20px;" >
                     <div class="col-12">
                         <div class="col-12">
+                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;"> 
+             <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
+             <li class="breadcrumb-item">
+             <a href="/vite/demo/event-management" style="text-decoration: none;">공지사항 관리</a>
+             </li>
+             <li class="breadcrumb-item active">
+             <a href="/vite/demo/event-management" style="text-decoration: none;">공지사항 리스트</a></li></ol>
+             </div>
+             <div style="text-align: center;">
                             <h2 class="tm-block-title d-inline-block">공지사항 리스트</h2>
+             </div>
                             	 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
 </div>	
