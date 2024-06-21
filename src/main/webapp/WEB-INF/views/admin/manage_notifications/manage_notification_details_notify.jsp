@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <style>
-th,td,tr{font-size: 12px;}
+th,td,tr{font-size: 13px;}
+a {text-decoration: none;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -18,9 +19,8 @@ th,td,tr{font-size: 12px;}
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-   <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/index-DO6cl02t.css"> 
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
-    
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/index-DO6cl02t.css"> 
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -29,17 +29,15 @@ th,td,tr{font-size: 12px;}
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-    
 
-</head>
+
 <body id="reportsPage">
     <div class="" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="brand-logo" href="adminindex.do">
-                            <!-- <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i> -->
+                        <a class="navbar-brand" href="adminindex.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -59,20 +57,28 @@ th,td,tr{font-size: 12px;}
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link " href="manage_memberlist.do">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
                                         회원 관리
                                     </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
+                                    </div>
                                 </li>
                                 <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-                                <li class="nav-item  ">
-                                    <a class="nav-link" href="manage_qna.do">문의 관리</a>
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">문의 관리</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
+                                    </div>
                                 </li>
-                                <li class="nav-item  active">
+                                <li class="nav-item active">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
@@ -91,107 +97,103 @@ th,td,tr{font-size: 12px;}
                 </div>
             </div>
             </div>
-            </div>
-           <!-- row -->
-        <div class="container" style="padding: 1rem">
+             <!-- row -->
+       <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
-                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style="  margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+                        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
              공지사항 관리
              </li>
              <li class="breadcrumb-item active">
-             공지사항 리스트</li></ol>
+             공지사항 수정</li></ol>
              </div>
-                            	 <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
-  	<a href= "manage_notification_write.do"><button class="btn btn-light btn-sm me-md-2" type="button" id ="btnwrite" >공지사항 작성</button></a>
-</div>	
-<form action="manage_notification_status.do" id ="frmStatus">
-				<div style="text-align: left;">
-	<select style="width: 100px;" class="form-select" aria-label="Default select example" name ="status" id ="status">
-  <option value="3">전체</option>
-  <option value="0">예약</option>
-  <option value="1">게시</option>
-  <option value="2">삭제</option>
-</select>
-				</div>
-</form>
-                  <div style="margin-top: 30px;">
-                    
-                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
-                    <thead>
-                    <tr>
-                    <th><a href ="manage_notification_noti_no">번호</a></th>
-                    <th style="width: 60%"><a>공지사항 제목</a></th>
-                    <th><a>날짜</a></th>
-                    <th><a>상태</a></th>
-                    </tr>
-                    </thead>
-                    <tbody id ="output">
-                    <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
-                    <tr>
-                    <td><c:out value="${  i.count }"/></td>
-                    <td><a href="manage_notification_details.do?noti_no=${list.noti_no }"><c:out value="${list.title }"/></a></td>
-                    <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
-                    <td><c:out value="${list.status}"/></td>
-                    </tr>
-                    </c:forEach>
-                    </tbody>
-                    </table>
-                    </div>
-  <form action="manage_notification.do" method="get" id ="frm">
-                    <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
-  	
-  	<input type="text" name="title" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="btnSearch">검색</button>
+             <form action="notification_modify_form_process.do" id ="frm"  method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
+    <div class="col-sm-10">
+      <input type="text"  class="form-control" id="title" value="${nmd.title }">
+    </div>
+					</div>
+					<div class="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">현 공지사항 이미지</label>
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img src="http://localhost/all_about_knowledge/upload/${ nmd.image }"  class="card-img-top" alt="...">
+                            </div>
+					</div>
+					<div class="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">바꿀 공지사항 이미지</label>
+					 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
+				 
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img id ="preview" class="card-img-top" alt="...">
+                            </div>
+					</div>
+					<div class="mb-3">
+ 						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
+  						<textarea class="form-control h-25" id="content" rows="15"><c:out value="${ nmd.content }"/> </textarea>
 </div>
-  </form>
+<div>
+<div style="width: 45%; float: left; text-align: center;">
+<input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/>
+</div>
+<div style="text-align:center;width: 45%;float: right;">
+<input type="button" class="btn btn-light btn-sm" value="취소" id ="btnback"/>
+</div>
+</div>
+             </form>
                         </div>
                     </div>
                 </div>
             </div>
+    </div>
+    
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
-	  $("#btnSearch").click(function(){
-		  $("#frm").submit();
-	  })//click
+	  $("#btnback").click(function(){
+		  history.back();
+	  })
+	  $("#btnModify").click(function(){
+
+				// 이미지만 업로드하도록 설정
+				var file = $("#image").val();
+				var selectedExt = file.substring(file.lastIndexOf(".")+1);
+
+				var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
+				var flag = false;
+
+				for(var i = 0; i < extArr.length; i++) {
+				if(selectedExt == extArr[i]) {
+				flag = true;
+				break;
+				} // end if
+				} // end for
+
+				if(!flag) {
+				alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
+				return;
+				} // end if
+				
+	  })
 	  
-	  $("#status").change(function(){
-		  var status =$("#status").val();
-		  searchStatus(status);
-		 
-	  })//change
-  })//load
-  function searchStatus(status){
-	  $.ajax({
-          url: "manage_notification_status.do",
-          type: "GET",
-          dataType: "JSON",
-          data : {status:status},
-          error: function(xhr) {
-              console.log(xhr.status + " : " + xhr.statusText);
-              alert("서버 오류 발생");
-          },
-          success: function(jsonObj) {
-        	  $("#output").empty();
-        	  var output ="";
-        	  $.each(jsonObj.list, function(i, jsonTemp) {
-        		  output +="<tr><td>"+(i+1)+"</td>"
-       +"<td><a href='manage_notification_details.do?noti_no="+jsonTemp.noti_no+"'>"+jsonTemp.title+"</a></td>"
-       +"<td>"+jsonTemp.write_date+"</td><td>"+jsonTemp.status+"</td></tr>";	  
-        		  
-        	  })
-        	  $("#output").html(output);
-          }//success
-	  
-  });//ajax
+  })
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "";
   }
+}
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>

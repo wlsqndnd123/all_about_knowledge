@@ -12,6 +12,6 @@ import lombok.ToString;
 @ToString
 
 public class NoticeManagementVO {
-	private String noti_no,title,id,content,status;
+	private String noti_no,title,id,content,status,image;
 	private Date write_date;
 }

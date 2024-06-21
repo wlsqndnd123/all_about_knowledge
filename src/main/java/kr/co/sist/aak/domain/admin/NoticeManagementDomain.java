@@ -13,6 +13,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class NoticeManagementDomain {
-	private String noti_no,title,id,content,status;
+	private String noti_no,title,id,content,status,image;
 	private Date write_date;
 }
