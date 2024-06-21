@@ -149,4 +149,9 @@ public class NoticeManagementService {
 		}
 		return cnt;
 	}
+	 public int modifyNotice(NoticeManagementVO nVO) {
+		 int cnt =0;
+		 
+		 return cnt;
+	 }
 }

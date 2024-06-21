@@ -118,11 +118,22 @@ a {text-decoration: none;}
     </div>
 					</div>
 					<div class="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+					<div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                            <img src="http://localhost/all_about_knowledge/upload/${ nmd.image }"  class="card-img-top" alt="...">
+                            </div>
+					</div>
+					<div class="mb-3">
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"><c:out value="${ nmd.content }"/> </textarea>
 </div>
 <div>
+<div style="width: 100px; float: left;">
 <input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/>
+</div>
+<div style="text-align:center;">
+<a href ="manage_notifi_notify.do?noti_no=${nmd.noti_no }"><input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/></a>
+</div>
 </div>
                         </div>
                     </div>
@@ -138,6 +149,10 @@ a {text-decoration: none;}
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
+	  $("#btnModify").click(function(){
+		  history.back();
+	  })
+	  
   })
   </script>
     <!-- https://getbootstrap.com/ -->

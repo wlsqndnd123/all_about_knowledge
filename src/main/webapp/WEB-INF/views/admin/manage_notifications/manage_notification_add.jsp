@@ -116,7 +116,10 @@
 					</div>
 					<div class="mb-3">
  				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
-				 <input class="form-control" type="file" id="image" name="image">	
+				 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
+				 <div style="text-align: center; height: 300px;">
+				<img id="preview" class="card-img-top" style="width: 300px; height: auto;"/>	
+				 </div>
 					<div class="mb-3">
 					</div>
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
@@ -163,7 +166,17 @@
 			$("#frm").submit();
 			}); // click
   })
-  
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "";
+  }
+}
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>

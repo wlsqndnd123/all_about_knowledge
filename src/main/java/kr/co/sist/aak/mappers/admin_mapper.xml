@@ -3,10 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.admin">
+	<!-- 공지사항 관리. 작성자 김일신 -->
+	<!-- 모든 공지사항의 내용을 출력하는 쿼리 -->
 	
 	<select id="selectAllAdminNotice" resultType ="noticeManagementDomain">
 	select * from NOTICE order by NOTI_NO desc 
 	</select>
+	
 	<!-- 공지사항 관리 상태에 따른 검색 쿼리 -->
 	<select id="dynamicNotificaionStatus" resultType="noticeManagementDomain" parameterType="int" >
 	select noti_no, write_date,status,title
@@ -45,13 +48,30 @@
 	where noti_no =#{noti_no}
 	</select>
 	<insert id="insertAdminNotice" parameterType="noticeManagementVO">
-	INSERT INTO NOTICE (NOTI_NO, TITLE, ID, CONTENT, STATUS) VALUES
-	(#{noti_no},#{title} ,#{id} ,#{content} ,#{status} )
+	INSERT INTO NOTICE (NOTI_NO, TITLE, ID, CONTENT, STATUS,IMAGE) VALUES
+	(#{noti_no},#{title} ,#{id} ,#{content} ,#{status},#{image} )
 
 	</insert>
-	<update id="updateAdminNotice" parameterType="noticeManagementVO">
+	<!--   -->
+	<update id="updateAdminNoticeStatus" parameterType="noticeManagementVO">
 	update NOTICE
 	set    STATUS = #{status}
+	where  NOTI_NO = #{noti_no}
+	</update>
+	
+	<update id="updateAdminNotice" parameterType="noticeManagementVO">
+	update NOTICE
+	<set>
+		<if test ="title neq null and title neq '' ">
+		title =#{title},
+		</if>
+		<if test ="content neq null and content neq '' ">
+		content =#{content},
+		</if>
+		<if test ="image neq null and image neq '' ">
+		image =#{image},
+		</if>
+	</set>
 	where  NOTI_NO = #{noti_no}
 	</update>
 	
