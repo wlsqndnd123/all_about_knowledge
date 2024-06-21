@@ -83,7 +83,7 @@ public class NoticemanagementController {
 		nmVO.setNoti_no(mr.getParameter("noti_no"));
 		nmVO.setTitle(mr.getParameter("title"));
 		nmVO.setStatus("RESV");
-
+		nmVO.setImage(fsName);
 		int cnt = nms.addNotice(nmVO);
 		if (cnt == 1) {
 			model.addAttribute("nmVO", nmVO);
@@ -91,12 +91,58 @@ public class NoticemanagementController {
 		return "/admin/manage_notifications/manage_notification_add_result";
 
 	}
+	@PostMapping("notification_modify_form_process.do")
+	public String nodifyNoticeFormProcess(HttpServletRequest request, String temp, Model model) throws IOException {
+		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
+		int tempSize = 100 * 1024 * 1024;
+		// 2. 파일 업로드 클래스 생성.
+		MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath(), tempSize, "UTF-8",
+				new DefaultFileRenamePolicy());
+		// 업로더 명 (web parameter)
+		String oriName = mr.getOriginalFileName("image");
+		String fsName = mr.getFilesystemName("image");
+		// 최대크기 10mbyte
+		File tempFile = new File(saveDir.getAbsolutePath() + "/" + fsName);
+		int maxSize = 10 * 1024 * 1024;
+		System.out.println(System.getProperty("user.dir"));
+		// 업로드 크기 제한
+		boolean uploadflag = false;
+		if (tempFile.length() > maxSize) {
+			tempFile.delete();
+			uploadflag = true;
+		}
+		model.addAttribute("fileName", oriName);
+		model.addAttribute("uploadflag", !uploadflag);
+		
+		NoticeManagementVO nmVO = new NoticeManagementVO();
+		nmVO.setContent(mr.getParameter("content"));
+		// nmVO.setId(mr.getParameter("id"));
+		nmVO.setId("aak_IS");
+		nmVO.setNoti_no(mr.getParameter("noti_no"));
+		nmVO.setTitle(mr.getParameter("title"));
+		nmVO.setStatus("RESV");
+		nmVO.setImage(fsName);
+		int cnt = nms.addNotice(nmVO);
+		if (cnt == 1) {
+			model.addAttribute("nmVO", nmVO);
+		}
+		return "/admin/manage_notifications/manage_notification_add_result";
+		
+	}
 	@ResponseBody
 	@RequestMapping( value = "manage_notification_status.do",
 			 method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String searchNoticeStatus(String status) {
 		 
 		return nms.searchNoticeStatus(Integer.parseInt(status));
+	}
+	@GetMapping("manage_notifi_notify.do")
+	public String modifyNotice(NoticeManagementDomain nmd, @RequestParam(defaultValue = "A_NOT00000") String noti_no,
+			Model model) {
+		nmd = nms.searchOneNotice(noti_no);
+
+		model.addAttribute("nmd", nmd);
+		return "/admin/manage_notifications/manage_notification_details_notify";
 	}
 	
 }
