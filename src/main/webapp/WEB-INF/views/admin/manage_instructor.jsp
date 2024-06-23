@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-th,td,tr{font-size: 12px;}
+th,td,tr{font-size: 12px; text-align: center;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -28,7 +28,8 @@ th,td,tr{font-size: 12px;}
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-
+	<link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/datatables.min.css">
+    
 </head>
 
 <body id="reportsPage">
@@ -107,7 +108,6 @@ th,td,tr{font-size: 12px;}
               <div style="text-align: center; margin-top: 50px;" >
                             <h2 class="tm-block-title d-inline-block">강사 리스트</h2>
               </div>
-                            	<form action="manage_instructor.do" method="get" id ="frm">
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<a href="manage_instructor_addform.do">
   	<button class="btn btn-light btn-sm me-md-2" type="button" id ="addInst">강사 추가</button>
@@ -123,13 +123,18 @@ th,td,tr{font-size: 12px;}
                     </select> -->
                     </div>
                     <div>
+                    <form action="manage_instructor.do" id ="YorN" method="get">
+	<label><input type="radio" name="status" value="N" checked> 재직중</label>
+
+	<label><input type="radio" name="status" value="Y"> 퇴사</label>
+                    </form>
                     
-                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
+                    <table id="instructor" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
                     <thead>
                     <tr>
-                    <th><a href ="">NO</a></th>
-                    <th style="width: 60%"><a href ="">강사명</a></th>
-                    <th><a href ="">진행중인 강의 수</a></th>
+                    <th>NO</th>
+                    <th style="width: 60%;text-align: center; " >강사명</th>
+                    <th style="text-align: center;">진행중인 강의 수</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -138,18 +143,12 @@ th,td,tr{font-size: 12px;}
                     
                     <td><c:out value="${i.count }"/> </td>
                     <td><a href="manage_instructor_details.do?inst_id=${list.inst_id }">${list.name}</a></td>
-                    <td>1</td>
+                    <td  style="text-align: center;">1</td>
                     </tr>
                     </c:forEach>
                     </tbody>
                     </table>
                     </div>
-                     <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
-  	
-  	<input type="text" class="form-control" placeholder="검색하실 강사의 이름을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2" name="name">
-  <button class="btn btn-outline-secondary" type="button" id="btnSearch">검색</button>
-      </div>
-                            	</form>
 </div>
                         </div>
                     </div>
@@ -159,10 +158,21 @@ th,td,tr{font-size: 12px;}
 
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+   <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
  <script type="text/javascript">
  $(function(){
-	 $("#btnSearch").click(function(){
-		$("#frm").submit(); 
+	 var selectedValue = localStorage.getItem('selectedStatus');
+	    if (selectedValue) {
+	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
+	    }
+	 
+	 $("input[name='status']").change(function() {
+		 var selectedValue = $(this).val();
+	        localStorage.setItem('selectedStatus', selectedValue);  
+		 $("#YorN").submit(); 
+	    });
+	 $("#instructor").DataTable({
+		 
 	 })
  })
  </script>
