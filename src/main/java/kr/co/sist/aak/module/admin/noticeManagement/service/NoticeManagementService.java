@@ -125,6 +125,18 @@ public class NoticeManagementService {
 		return list;
 
 	}
+	
+	public List<NoticeManagementDomain> searchAllNotice() {
+		List<NoticeManagementDomain> list = null;
+		try {
+			list = nmDAO.selectAllNotice();
+		}catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 	 public String searchMaxNoticeVal() {
 		 String maxVal ="";
 		 
@@ -140,6 +152,15 @@ public class NoticeManagementService {
 		 }
 		 return pre.toString();
 	 }
+	 public int searchCount() {
+		int cnt =0;
+		 try {
+			cnt =nmDAO.selectCount();
+		}catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		 return cnt;
+	}
 	 public int addNotice(NoticeManagementVO nVO) {
 		int cnt = 0;
 		try {

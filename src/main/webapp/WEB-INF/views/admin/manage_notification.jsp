@@ -5,6 +5,10 @@
 <html lang="ko">
 <style>
 th,td,tr{font-size: 12px;}
+.dt-end{
+
+            text-align: center;
+        }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -29,6 +33,7 @@ th,td,tr{font-size: 12px;}
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/datatables.min.css">
     
 
 </head>
@@ -121,7 +126,7 @@ th,td,tr{font-size: 12px;}
 </form>
                   <div style="margin-top: 30px;">
                     
-                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
+                    <table id ="notice" class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
                     <th><a href ="manage_notification_noti_no">번호</a></th>
@@ -142,13 +147,6 @@ th,td,tr{font-size: 12px;}
                     </tbody>
                     </table>
                     </div>
-  <form action="manage_notification.do" method="get" id ="frm">
-                    <div class="input-group mb-3" style="width: 70%;text-align: center; margin: auto; margin-top: 20px;">
-  	
-  	<input type="text" name="title" class="form-control" placeholder="검색하실 공지사항의 제목을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="btnSearch">검색</button>
-</div>
-  </form>
                         </div>
                     </div>
                 </div>
@@ -156,42 +154,55 @@ th,td,tr{font-size: 12px;}
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+   <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
   <script type="text/javascript">
-  $(function(){
-	  $("#btnSearch").click(function(){
-		  $("#frm").submit();
-	  })//click
-	  
-	  $("#status").change(function(){
-		  var status =$("#status").val();
-		  searchStatus(status);
-		 
-	  })//change
-  })//load
-  function searchStatus(status){
-	  $.ajax({
-          url: "manage_notification_status.do",
-          type: "GET",
-          dataType: "JSON",
-          data : {status:status},
-          error: function(xhr) {
-              console.log(xhr.status + " : " + xhr.statusText);
-              alert("서버 오류 발생");
-          },
-          success: function(jsonObj) {
-        	  $("#output").empty();
-        	  var output ="";
-        	  $.each(jsonObj.list, function(i, jsonTemp) {
-        		  output +="<tr><td>"+(i+1)+"</td>"
-       +"<td><a href='manage_notification_details.do?noti_no="+jsonTemp.noti_no+"'>"+jsonTemp.title+"</a></td>"
-       +"<td>"+jsonTemp.write_date+"</td><td>"+jsonTemp.status+"</td></tr>";	  
-        		  
-        	  })
-        	  $("#output").html(output);
-          }//success
-	  
-  });//ajax
-  }
+	  $(function() {
+		    // DataTables 초기화
+		    var table = $("#notice").DataTable({
+		        "processing": true,
+		        "serverSide": false, // 클라이언트 측에서 데이터 처리
+		        "columns": [
+		            { "data": "index" },
+		            { "data": "titleLink" },
+		            { "data": "write_date" },
+		            { "data": "status" }
+		        ]
+		    });
+
+		    // #status 요소의 값이 변경될 때 이벤트 핸들러를 부착
+		    $("#status").change(function() {
+		        var status = $(this).val();  // 변경된 #status의 값을 가져옴
+		        searchStatus(status, table); // searchStatus 함수를 호출하고 새로운 status를 인자로 넘김
+		    });
+		});
+
+		function searchStatus(status, table) {
+		    $.ajax({
+		        url: "manage_notification_status.do",
+		        type: "GET",
+		        dataType: "JSON",
+		        data: { status: status },
+		        error: function(xhr) {
+		            console.log(xhr.status + " : " + xhr.statusText);
+		            alert("서버 오류 발생");
+		        },
+		        success: function(jsonObj) {
+		            var data = jsonObj.list.map(function(item, index) {
+		                return {
+		                    index: index + 1,
+		                    titleLink: "<a href='manage_notification_details.do?noti_no=" + item.noti_no + "'>" + item.title + "</a>",
+		                    write_date: item.write_date,
+		                    status: item.status
+		                };
+		            });
+		            table.clear();          // 기존 데이터를 지우고
+		            table.rows.add(data);   // 새 데이터 추가
+		            table.draw();           // 테이블 다시 그리기
+		        }
+		    });
+		}
+
+  
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>
