@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class qnaController {
 	
-	@GetMapping("qna/qnaDetail.do")
+	@GetMapping("/instructor/qna/qnaDetail.do")
 	public String qnaDetail() {
-		return "/instructor/qna/qnaDetail";
+		return "instructor/qna/qnaDetail";
 	}
 	
 	

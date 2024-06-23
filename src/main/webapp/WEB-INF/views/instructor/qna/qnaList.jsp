@@ -11,7 +11,17 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<!--bootstrap 시작-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+<!--bootstrap 끝-->
 <title>AAK</title>
 
 <!-- Custom fonts for this template-->
@@ -33,46 +43,49 @@
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
+	<jsp:include page="../common/instructor_sidebar.jsp"></jsp:include>
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-			id="accordionSidebar">
+		   <!-- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-			<!-- Sidebar - Brand -->
-			<a
-				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="http://localhost/all_about_knowledge/instructor_index.do">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">AAk 강사메인</div>
-			</a>
+            Sidebar - Brand
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3" style="font-size: 20px;">AAk 강사메인</div>
+            </a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
+            Divider
+            <hr class="sidebar-divider my-0">
 
-			<!-- 탭 메뉴 -->
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/lectureManage/lectureList.do"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>강의관리</span></a></li>
+            탭 메뉴
+            <li class="nav-item active">
+                <a class="nav-link" href="lectureManage/lectureList.do">  
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">강의관리</span></a>
+            </li>
+            
+             <li class="nav-item active">
+                <a class="nav-link" href="lectureManage/lectureApply.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">강의신청</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="qna/qnaList.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">문의사항</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="studentList.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">수강생 관리</span>
+                    </a>
+            </li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/lectureManage/lectureApply.do"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>강의신청</span></a></li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>문의사항</span></a></li>
-
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>수강생 관리</span>
-			</a>
-			</li>
-
-
-		</ul>
+        </ul> -->
 
 		<!-- </div> -->
 
@@ -80,21 +93,21 @@
 
 			<!-- Main Content -->
 			<div id="content">
-
+			<jsp:include page="../common/instructor_header.jsp"></jsp:include>	
 				<!-- Topbar -->
-				<nav
+<!-- 				<nav
 					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-					<!-- Sidebar Toggle (Topbar) -->
+					Sidebar Toggle (Topbar)
 					<button id="sidebarToggleTop"
 						class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>
 					</button>
 
-					<!-- Topbar Search -->
+					Topbar Search
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<!--   <div class="input-group">
+						  <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -102,18 +115,18 @@
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
-                        </div> -->
+                        </div>
 					</form>
 
-					<!-- Topbar Navbar -->
+					Topbar Navbar
 					<ul class="navbar-nav ml-auto">
 
-						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+						Nav Item - Search Dropdown (Visible Only XS)
 						<li class="nav-item dropdown no-arrow d-sm-none"><a
 							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
-						</a> <!-- Dropdown - Messages -->
+						</a> Dropdown - Messages
 							<div
 								class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
 								aria-labelledby="searchDropdown">
@@ -132,13 +145,13 @@
 								</form>
 							</div></li>
 
-						<!-- Nav Item - Alerts -->
+						Nav Item - Alerts
 						<li class="nav-item dropdown no-arrow mx-1"><a
 							class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <!-- Counter - Alerts -->
-								<!--  <span class="badge badge-danger badge-counter">3+</span> -->
-						</a> <!-- Dropdown - Alerts -->
+							aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> Counter - Alerts
+								 <span class="badge badge-danger badge-counter">3+</span>
+						</a> Dropdown - Alerts
 							<div
 								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="alertsDropdown">
@@ -179,14 +192,14 @@
 									href="#">Show All Alerts</a>
 							</div></li>
 
-						<!-- Nav Item - Messages -->
+						Nav Item - Messages
 						<li class="nav-item dropdown no-arrow mx-1">
-							<!--  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+							 <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 Counter - Messages
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a> --> <!-- Dropdown - Messages -->
+                            </a> Dropdown - Messages
 							<div
 								class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="messagesDropdown">
@@ -244,15 +257,15 @@
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
-						<!-- Nav Item - User Information -->
+						Nav Item - User Information
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <img
 								class="img-profile rounded-circle"
 								src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">logout</span>
-						</a> <!-- Dropdown - User Information -->
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small" style="padding-left: 20px; font-size:15px">logout</span>
+						</a> Dropdown - User Information
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="userDropdown">
@@ -275,12 +288,13 @@
 
 					</ul>
 
-				</nav>
+				</nav> -->
 				<!-- 문의리스트 -->
-				<div class="container-fluid justify-content-center ">
-					<div class="card-body  d-flex flex-col" style="padding-left: 220px;">
+				<div class="container-fluid" style="width: 70%; background-color: white;">
+					<div
+						class="card-body d-flex flex-row justify-content-center align-items-center mb-4">
 						<!-- 검색바 -->
-						<div class="dropdown">
+						<div class="dropdown me-2">
 							<button class="btn btn-secondary dropdown-toggle" type="button"
 								data-bs-toggle="dropdown" aria-expanded="false">승인여부</button>
 							<ul class="dropdown-menu">
@@ -291,7 +305,7 @@
 							</ul>
 						</div>
 
-						<div class="dropdown">
+						<div class="dropdown me-2">
 							<button class="btn btn-secondary dropdown-toggle" type="button"
 								data-bs-toggle="dropdown" aria-expanded="false">제목</button>
 							<ul class="dropdown-menu">
@@ -302,14 +316,11 @@
 							</ul>
 						</div>
 
-						<div class="col">
-							<div class="input-group mb-2" >
-								<input type="text" class="form-control" style="max-width: 350px;" > 
-								<input type="button" class="input-group-text" value="🔍">
-							</div>
+						<input type="text" class="form-control" style="max-width: 350px;">
+						<input type="button" class="input-group-text" value="🔍">
 
-						</div>
 					</div>
+
 					<div class="container-fluid">
 						<!-- 리스트 -->
 						<table id="tab" class="table table-hover" class="d-flex flex-col">
@@ -318,8 +329,8 @@
 									<th scope="col">작성자</th>
 									<th scope="col">과목명</th>
 									<th scope="col">제목</th>
-									<th scope="col">작성일</th>
 									<th scope="col">답변여부</th>
+									<th scope="col">작성일</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -327,79 +338,79 @@
 									<th scope="row">ming3333</th>
 									<td>알고리즘의 이해</td>
 									<td><a href="qnaDetail.do">4강 질문내용 있습니다</a></td>
-									<td>2024-05-20</td>
 									<td>답변대기</td>
+									<td>2024-05-20</td>
 								</tr>
 								<tr>
 									<th scope="row">abc12345</th>
 									<td>벼락치기 SQL</td>
 									<td><a href="qnaDetail.do">환경세팅 오류 질문입니다</a></td>
-									<td>2024-04-10</td>
 									<td>답변대기</td>
+									<td>2024-04-10</td>
 								</tr>
 								<tr>
 									<th scope="row">tomato5588</th>
 									<td>java 왕기초 4주 단기 완성</td>
 									<td><a href="qnaDetail.do">7강 문제풀이 질문입니다</a></td>
-									<td>2024-03-08</td>
 									<td>답변완료</td>
+									<td>2024-03-08</td>
 								</tr>
 
 
 							</tbody>
 						</table>
 					</div>
-					<div class="container-fluid">
-						<!-- 페이지네이션 -->
-						<div id="pn" class="d-flex flex-col justify-content-center">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="#"
-										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#"
-										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-									</a></li>
-								</ul>
-							</nav>
-						</div>
+
+				<div class="container-fluid">
+					<!-- 페이지네이션 -->
+					<div id="pn" class="d-flex justify-content-center">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2021</span>
-					</div>
-				</div>
-			</footer>
+		</div>
+		<jsp:include page="../common/instructor_footer.jsp"></jsp:include>
+<!-- 	<footer class="sticky-footer bg-white">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy; Your Website 2021</span>
+			</div>
+		</div>
+	</footer> -->
 
 
-			<!-- Bootstrap core JavaScript-->
-			<script
-				src="http://localhost/all_about_knowledge/resources/vendor/jquery/jquery.min.js"></script>
-			<script
-				src="http://localhost/all_about_knowledge/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script
+		src="http://localhost/all_about_knowledge/resources/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="http://localhost/all_about_knowledge/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-			<!-- Core plugin JavaScript-->
-			<script
-				src="http://localhost/all_about_knowledge/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script
+		src="http://localhost/all_about_knowledge/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-			<!-- Custom scripts for all pages-->
-			<script
-				src="http://localhost/all_about_knowledge/resources/js/sb-admin-2.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script
+		src="http://localhost/all_about_knowledge/resources/js/sb-admin-2.min.js"></script>
 
-			<!-- Page level plugins -->
-			<script
-				src="http://localhost/all_about_knowledge/resources/vendor/chart.js/Chart.min.js"></script>
+	<!-- Page level plugins -->
+	<script
+		src="http://localhost/all_about_knowledge/resources/vendor/chart.js/Chart.min.js"></script>
 
-			<!-- Page level custom scripts -->
-			<script
-				src="http://localhost/all_about_knowledge/resources/js/demo/chart-area-demo.js"></script>
-			<script
-				src="http://localhost/all_about_knowledge/resources/js/demo/chart-pie-demo.js"></script>
+	<!-- Page level custom scripts -->
+	<script
+		src="http://localhost/all_about_knowledge/resources/js/demo/chart-area-demo.js"></script>
+	<script
+		src="http://localhost/all_about_knowledge/resources/js/demo/chart-pie-demo.js"></script>
 </body>
 </html>

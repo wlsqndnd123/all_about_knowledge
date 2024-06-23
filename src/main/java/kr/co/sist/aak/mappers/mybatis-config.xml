@@ -36,5 +36,10 @@
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper3.xml"/>
  <!-- Member -->   
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper4.xml"/>
+    
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper5.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper6.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper7.xml"/>
   </mappers>
 </configuration>

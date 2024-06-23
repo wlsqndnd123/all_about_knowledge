@@ -26,46 +26,49 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
+	<jsp:include page="../common/instructor_sidebar.jsp"></jsp:include>
         <!-- Sidebar -->
-      		<ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-			id="accordionSidebar">
+      		<!--    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-			<!-- Sidebar - Brand -->
-			<a
-				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="http://localhost/all_about_knowledge/instructor_index.do">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">AAk 강사메인</div>
-			</a>
+            Sidebar - Brand
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3" style="font-size: 20px;">AAk 강사메인</div>
+            </a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
+            Divider
+            <hr class="sidebar-divider my-0">
 
-			<!-- 탭 메뉴 -->
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/lectureManage/lectureList.do"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>강의관리</span></a></li>
+            탭 메뉴
+            <li class="nav-item active">
+                <a class="nav-link" href="lectureManage/lectureList.do">  
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">강의관리</span></a>
+            </li>
+            
+             <li class="nav-item active">
+                <a class="nav-link" href="lectureManage/lectureApply.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">강의신청</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="qna/qnaList.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">문의사항</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="studentList.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">수강생 관리</span>
+                    </a>
+            </li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/lectureManage/lectureApply.do"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>강의신청</span></a></li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>문의사항</span></a></li>
-
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>수강생 관리</span>
-			</a>
-			</li>
-
-
-		</ul>
+        </ul> -->
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -73,19 +76,19 @@
 
             <!-- Main Content -->
             <div id="content">
-
+			<jsp:include page="../common/instructor_header.jsp"></jsp:include>
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!--   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
+                    Sidebar Toggle (Topbar)
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                    Topbar Search
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <!--   <div class="input-group">
+                        <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -93,19 +96,19 @@
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
-                        </div> -->
+                        </div>
                     </form>
 
-                    <!-- Topbar Navbar -->
+                    Topbar Navbar
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        Nav Item - Search Dropdown (Visible Only XS)
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                            <!-- Dropdown - Messages -->
+                            Dropdown - Messages
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -123,15 +126,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
+                        Nav Item - Alerts
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                               <!--  <span class="badge badge-danger badge-counter">3+</span> -->
+                                Counter - Alerts
+                                <span class="badge badge-danger badge-counter">3+</span>
                             </a>
-                            <!-- Dropdown - Alerts -->
+                            Dropdown - Alerts
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -174,15 +177,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
+                        Nav Item - Messages
                         <li class="nav-item dropdown no-arrow mx-1">
-                           <!--  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 Counter - Messages
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a> -->
-                            <!-- Dropdown - Messages -->
+                            </a>
+                            Dropdown - Messages
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -242,15 +245,15 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Nav Item - User Information -->
+                        Nav Item - User Information
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
                                     src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">logout</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="padding-left: 20px; font-size:15px">logout</span>
                             </a>
-                            <!-- Dropdown - User Information -->
+                            Dropdown - User Information
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -275,11 +278,11 @@
 
                     </ul>
 
-                </nav>
+                </nav> -->
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="width:70%; background-color:white;">
 
                     <!-- Page Heading -->
                     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -289,22 +292,11 @@
                                 
                     </div> -->
 					
-                    <div class="row">
-
-
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div><!-- class="col-xl-4 col-lg-5" -->
-                            <div class="card shadow mb-4">
-                            </div>
-                        </div>
-                    </div>
-                 
+                                   
             
             <div class="bg-white tm-block" style="width: 70% " >
             	<div class="row" style="padding-left: 20px;">
-                        <div class="col-12">
+                        <div class="col-12" >
 						
                     <div class="mb-3">
                         <span>
@@ -334,25 +326,25 @@
   						</div>
   						
 					</div>
+                    </div>
 					
+    </div>
                         </div>
                     </div>
-         <!--    </div> -->
-
+			<jsp:include page="../common/instructor_footer.jsp"></jsp:include>
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+       <!--      <footer class="sticky-footer bg-white" style="margin-top:20px">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
 
-    </div>
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class lectureEntranceController {
 
-	@GetMapping("lectureManage/lectureEntrance.do")
+	@GetMapping("/instructor/lectureManage/lectureEntrance.do")
 	public String lectureEntrance() {
-		return "/instructor/lectureManage/lectureEntrance";
+		return "instructor/lectureManage/lectureEntrance";
 	}
 	
 }

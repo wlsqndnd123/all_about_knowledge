@@ -16,6 +16,6 @@ public class HomeController {
 	}
 	@GetMapping("/instructor_index.do")
 	public String instructorMain() {
-		return "/instructor/index";
+		return "instructor/login";
 	}
 }
