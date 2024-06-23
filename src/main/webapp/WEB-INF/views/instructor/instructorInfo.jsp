@@ -12,11 +12,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!--bootstrap 끝-->
-<!--jQuery CDN 시작-->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!--jQuery CDN 끝-->
-
     <title>AAK</title>
 
     <!-- Custom fonts for this template-->
@@ -47,58 +42,6 @@
 var cnt = 0;
 $(function () {
 	
-	$("#add").click(function(){
-		var lesson=$("#lesson").val();
-		var title=$("#title").val();
-		var explain=$("#explain").val();
-		var fileNm=$("#fileNm").val();
-		
-		if( lesson == ""){
-			alert("차시는 필수 입력");
-			$("#lesson").focus();
-			return;
-		}
-		if( title == ""){
-			alert("제목 필수 입력");
-			$("#title").focus();
-			return;
-		}
-		if( explain == ""){
-			alert("강의계획은 필수 입력");
-			$("#explain").focus();
-			return;
-		}
-		if( fileNm == ""){
-			alert("강의 파일은 필수 입력");
-			return;
-		}
-		
-		 fileNm=fileNm.substring( fileNm.lastIndexOf("\\")+1);
-		var output="<tr><td>"+ lesson+" </td><td>"+title+"</td><td>"+explain+"</td><td>"+fileNm+"</td></tr>";
-		$("#tab > tbody").append(output);	//더 명확한 selector의 사용
-		
-		var lesson=$("#lesson").val("");
-		var title=$("#title").val("");
-		var explain=$("#explain").val("");
-		var fileNm=$("#fileNm").val("");
-	});
-	
-	$("#delete").click(function(){
-		//$("#tab").remove();
-		//아이디가 tab인 대상의 tbody 가장 마지막 tr을 삭제
-		$("#tab > tbody > tr:last").remove();
-	});
-
-/*     // 카테고리 클릭 시 이벤트 처리  이거슨 AJAX로 처리한다!!!
-    $("#category1").click(function(){
-        $("#division1").show(); // division1 표시
-        $("#division2").hide(); // division2 숨김
-    });
-
-    $("#category2").click(function(){
-        $("#division2").show(); // division2 표시
-        $("#division1").hide(); // division1 숨김
-    }); */
 });//ready
 </script>
 
@@ -110,9 +53,9 @@ $(function () {
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-		<jsp:include page="../common/instructor_sidebar.jsp"></jsp:include>
+	<jsp:include page="common/instructor_sidebar.jsp"></jsp:include>
 		<!-- Sidebar -->
-	<!-- 		   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		    <!--   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             Sidebar - Brand
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
@@ -133,7 +76,7 @@ $(function () {
             </li>
             
              <li class="nav-item active">
-                <a class="nav-link" href="lectureApply.do">
+                <a class="nav-link" href="lectureManage/lectureApply.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="font-size: 18px;">강의신청</span></a>
             </li>
@@ -158,10 +101,9 @@ $(function () {
 
             <!-- Main Content -->
             <div id="content">
-				<jsp:include page="../common/instructor_header.jsp"></jsp:include>
+			<jsp:include page="common/instructor_header.jsp"></jsp:include>	
                 <!-- Topbar -->
-                
-               <!--  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+             <!--    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     Sidebar Toggle (Topbar)
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -275,131 +217,69 @@ $(function () {
 
                     </ul>
 
-                </nav> -->
-
+                </nav>
+ -->
 				<!-- 페이지 contents  -->
 				  <div class="row">
 
+				   <div class="col-xl-8 col-lg-7">
+				   <div class="card shadow mb-4">
 				   
-	<div class="container-fluid" style="width:70%; background-color:white;">
+	<div class="container-fluid">
     <div class="card-body d-flex justify-content-center">
-       <div class="dropdown me-2">
-		  <a class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		    카테고리
-		  </a>
-		  <ul class="dropdown-menu">
-		    <li id="category1"><a class="dropdown-item" href="#">컴퓨터공학이론</a></li>
-		    <li id="category2"><a class="dropdown-item" href="#">프로그래밍언어</a></li>
-		  </ul>
-	  </div>
-
-        <div class="dropdown me-2">
-            <a class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                과목명
-            </a>
-            
-	           <ul class="dropdown-menu" id="division1"> <!-- 과목명 -->
-	               <li><a class="dropdown-item" href="#">CS</a></li>
-	           </ul>
-	           <ul class="dropdown-menu" id="division2">
-	               <li id="sub1"><a class="dropdown-item" href="#">Java</a></li>
-	               <li id="sub2"><a class="dropdown-item" href="#">JavaScript</a></li>
-	               <li id="sub3"><a class="dropdown-item" href="#">C</a></li>
-	               <li id="sub4"><a class="dropdown-item" href="#">C++</a></li>
-	           </ul>
-               
-        </div>
+    
       </div>
 
 	<div id="apply_info" class="d-flex flex-column mt-3"> <!-- apply_info -->
-    <!-- 강의 상세내용 -->
-    <div id="label_group" class="d-flex flex-row justify-content-center">
-        <div id="lec_detail" style="flex-direction: column;">
-            <!-- 강의명 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="lectureName"  style="width: 150px; margin-right: 20px;">강의명</label>
-                <input type="text" id="lectureName" class="form-control" placeholder="강의명을 입력해주세요" aria-describedby="lectureName">
-            </div>
-            <!-- 학습개요 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="studyOverview"  style="width: 150px; margin-right: 20px;">학습개요</label>
-                <input type="text" id="studyOverview" class="form-control" placeholder="학습개요를 입력해주세요" aria-describedby="studyOverview">
-            </div>
-            <!-- 학습목표 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="studyGoal"  style="width: 150px; margin-right: 20px;">학습목표</label>
-                <input type="text" id="studyGoal" class="form-control" placeholder="학습목표를 입력해주세요" aria-describedby="studyGoal">
-            </div>
-            <!-- 강의이미지 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="lectureImage"  style="width: 150px; margin-right: 20px;">강의이미지</label>
-                <input type="file" id="lectureImage" class="form-control" aria-describedby="lectureImage">
-            </div>
-            <!-- 총 차시 수 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="totalSessions" style="width: 150px; margin-right: 20px;">총 차시 수</label>
-                <input type="text" id="totalSessions" class="form-control" value="8개" readonly aria-describedby="totalSessions">
-            </div>
-            <!-- 개설일자 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="openDate"  style="width: 150px; margin-right: 20px;">개설일자</label>
-                <input type="datetime-local" id="openDate" class="form-control" aria-describedby="openDate">
-            </div>
-            
-    <!-- 강의 차시 -->
-    <label style=" margin-top:10px; margin-bottom: 20px;">강의목차</label>
-    
-            <!-- 차시 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="lesson" style="width: 150px; margin-right: 20px;">차시</label>
-                <input type="text" id="lesson" class="form-control" placeholder="차시" aria-describedby="lesson">
-            </div>
-            <!-- 제목 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="title"  style="width: 150px; margin-right: 20px;">제목</label>
-                <input type="text" id="title" class="form-control" placeholder="제목" aria-describedby="title">
-            </div>
-            <!-- 설명 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="explain"  style="width: 150px; margin-right: 20px;">설명</label>
-                <input type="text" id="explain" class="form-control" placeholder="설명" aria-describedby="explain">
-            </div>
-            <!-- 파일 -->
-            <div class="form-group d-flex align-items-center mb-3">
-                <label for="fileNm"  style="width: 150px; margin-right: 20px;">파일</label>
-                <input type="file" id="fileNm" class="form-control" aria-describedby="fileNm">
-            </div>
-            <!-- 버튼 -->
-            <div style="text-align: center;">
-                <input type="button" value="추가" class="btn btn-dark btn-sm ml-2" id="add">
-                <input type="button" value="삭제" class="btn btn-light btn-sm ml-2" id="delete">
-            </div>
-        </div>
-	<div>
-	    <table id="tab" class="table" style="margin-left:25px">
-	        <thead>
-	            <tr>
-	                <th scope="col" style="width:50px">차시</th>
-	                <th scope="col" style="width:250px">제목</th>
-	                <th scope="col" style="width:300px">설명</th>
-	                <th scope="col" style="width:150px">첨부파일</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	        </tbody>
+		<!-- 강의 상세내용 -->
+	    <div id="label_group" class="d-flex flex-row justify-content-center" >
+	       
+	       <!-- 강사 정보 입력 -->
+	       <div id="instructor_info" style="flex-direction: column;"> 
+		    <div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">이름</span>
+			  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+		    <div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">이메일</span>
+			  <input type="text" class="form-control"aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+		    <div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">강사소개</span>
+			  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+		    <div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">강사이미지</span>
+			  <input type="file" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">연락처</span>
+			  <input type="text"  class="form-control" aria-describedby="basic-addon1" >
+			</div>
+			<div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">학력</span>
+			  <input type="text"  class="form-control"  aria-describedby="basic-addon1">
+			</div>
+			<div class="form-group d-flex align-items-center mb-3">
+			  <span id="basic-addon1">주력 과목</span>
+			  <input type="text"  class="form-control"  aria-describedby="basic-addon1">
+			</div>
+			
+		 </div> 
 	        
-	    </table>
+	    </div>
+	    
+
+	    <div style="text-align: center;">
+		    <input type="submit" value="수정" class="btn btn-dark btn-sm" id="updateBtn"/>
+		    <input type="button" value="취소" class="btn btn-light btn-sm" id="cancleBtn" onclick="history.back()"/>
+	    </div>
+	    
 	</div>
-    </div>
-    <div style="text-align: center; margin-top: 40px; margin-bottom:20px;">
-        <input type="submit" value="신청" class="btn btn-dark btn-sm" id="applyBtn">
-        <input type="button" value="취소" class="btn btn-light btn-sm" id="cancelBtn">
-    </div>
-</div>
-
 
 </div>
-		<jsp:include page="../common/instructor_footer.jsp"></jsp:include>
+</div>
+		<jsp:include page="common/instructor_footer.jsp"></jsp:include>
 			<!-- 	<footer class="sticky-footer bg-white">
 					<div class="container my-auto">
 						<div class="copyright text-center my-auto">
