@@ -31,6 +31,18 @@ public class MyPageController {
 		return "student/my_page/play_lecture";
 	}
 	
+	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 확인
+	@GetMapping("/exam_confirm.do")
+	public String examConfirm(){
+		return "student/my_page/exam_confirm";
+	}
+	
+	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 응시
+	@GetMapping("/exam.do")
+	public String exam(){
+		return "student/my_page/exam";
+	}
+	
 	// 학생 마이페이지 --- 관심 강의
 	@GetMapping("/interest_lecture.do")
 	public String interestLecture(){
@@ -60,10 +72,5 @@ public class MyPageController {
 	public String withdrawal(){
 		return "student/my_page/withdrawal";
 	}
-	
-	// **********************학생 로그인*************************** 나중에 옮길 것
-	@GetMapping("/login.do")
-	public String login(){
-		return "student/login_join";
-	}
+
 }

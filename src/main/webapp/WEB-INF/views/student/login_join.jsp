@@ -67,7 +67,7 @@
 
             <!-- Signup Form -->
             <div class="signup form-peice switched">
-               <form class="signup-form" action="#" method="post">
+               <form class="signup-form" action="/join" method="post">
 
                   <div class="form-group">
                      <label for="userId">아이디</label>

@@ -14,6 +14,8 @@
  
  <typeAlias type="kr.co.sist.aak.domain.admin.MemberManagementDomain" alias="MemberManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.MemberManagementVO" alias="MemberManagementVO"/>
+ 
+ <typeAlias type="kr.co.sist.aak.domain.student.vo.JoinVO" alias="JoinVO"/>
 </typeAliases>
  
   <environments default="development">
@@ -41,5 +43,8 @@
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper5.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper6.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper7.xml"/>
+    
+    <!-- 학생 회원가입 -->
+    <mapper resource="kr/co/sist/aak/mappers/student/auth/join_Mapper.xml"/>
   </mappers>
 </configuration>
