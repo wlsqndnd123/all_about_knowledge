@@ -82,8 +82,11 @@ public class InstructorManagementController {
 	}
 
 	@GetMapping("manage_instructor.do")
-	public String searchInstructorList(Model model,@RequestParam(defaultValue = "") String name) {
-		List<InstructorManagementDomain> list = ims.searchAllNInstructor(name);
+	public String searchInstructorList(Model model,@RequestParam(defaultValue = "N") String status) {
+		List<InstructorManagementDomain> list = ims.searchAllNInstructor();
+		if(status.equals("Y")) {
+			list = ims.searchAllyInstructor();
+		}
 		model.addAttribute("instList", list);
 		return "/admin/manage_instructor";
 	}

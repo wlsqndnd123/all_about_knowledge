@@ -32,6 +32,16 @@ public class NoticeManagementDAO {
 		return list;
 	}
 
+	/*
+	 * public List<NoticeManagementDomain> selectAllNotice() throws
+	 * PersistenceException { List<NoticeManagementDomain> list = null;
+	 * 
+	 * MybatisDAO mbDAO = MybatisDAO.getInstance(); SqlSession ss =
+	 * mbDAO.getMyBatisHandler(false);
+	 * 
+	 * list = ss.selectList("kr.co.sist.aak.admin.selectAllAdminNotice");
+	 * mbDAO.closeHanlder(ss); return list; }
+	 */
 	/**
 	 * 공지사항 status로 글 분류하는 method
 	 * 
@@ -48,6 +58,14 @@ public class NoticeManagementDAO {
 		list = ss.selectList("kr.co.sist.aak.admin.dynamicNotificaionStatus", status);
 		mbDAO.closeHanlder(ss);
 		return list;
+	}
+	public int selectCount() throws PersistenceException {
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt = ss.selectOne("kr.co.sist.aak.admin.count");
+		mbDAO.closeHanlder(ss);
+		return cnt;
 	}
 
 	/**

@@ -46,10 +46,8 @@ public class NoticemanagementController {
 	}
 
 	@GetMapping("manage_notification.do")
-	public String searchNoticeList(Model model, @RequestParam(defaultValue = "") String title) {
-		List<NoticeManagementDomain> list = null;
-		list = nms.searchNoticeTitle(title);
-		model.addAttribute("list", list);
+	public String searchNoticeList(Model model) {
+		model.addAttribute("list", nms.searchAllNotice());
 		return "/admin/manage_notification";
 	}
 
@@ -133,7 +131,7 @@ public class NoticemanagementController {
 	@RequestMapping( value = "manage_notification_status.do",
 			 method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String searchNoticeStatus(String status) {
-		 
+		// PageNation pn = new PageNation();
 		return nms.searchNoticeStatus(Integer.parseInt(status));
 	}
 	@GetMapping("manage_notifi_notify.do")
