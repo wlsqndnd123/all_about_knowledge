@@ -20,6 +20,18 @@
     <!-- Custom styles for this template-->
     <link href="http://localhost/all_about_knowledge/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
+	<style>
+	   .notice-container {
+	       width: 80%; /* 원하는 가로 길이로 설정 */
+	       margin: 0 auto; /* 가운데 정렬 */
+	   }
+	   
+	   .table-container {
+        border: 1px solid #000; /* 테이블을 감싸는 테두리 추가 */
+        padding: 10px; /* 테두리와 테이블 사이의 간격 추가 */
+    }
+	</style>
+
 </head>
 
 
@@ -27,65 +39,68 @@
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
+	<jsp:include page="../common/instructor_sidebar.jsp"></jsp:include>
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-			id="accordionSidebar">
+		 <!--   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-			<!-- Sidebar - Brand -->
-			<a
-				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="http://localhost/all_about_knowledge/instructor_index.do">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">AAk 강사메인</div>
-			</a>
+            Sidebar - Brand
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3" style="font-size: 20px;">AAk 강사메인</div>
+            </a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
+            Divider
+            <hr class="sidebar-divider my-0">
 
-			<!-- 탭 메뉴 -->
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/lectureManage/lectureList.do"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>강의관리</span></a></li>
+            탭 메뉴
+            <li class="nav-item active">
+                <a class="nav-link" href="lectureManage/lectureList.do">  
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">강의관리</span></a>
+            </li>
+            
+             <li class="nav-item active">
+                <a class="nav-link" href="lectureManage/lectureApply.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">강의신청</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="qna/qnaList.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">문의사항</span></a>
+            </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="studentList.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span style="font-size: 18px;">수강생 관리</span>
+                    </a>
+            </li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/lectureManage/lectureApply.do"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>강의신청</span></a></li>
 
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/qna/qnaList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>문의사항</span></a></li>
-
-			<li class="nav-item active"><a class="nav-link"
-				href="http://localhost/all_about_knowledge/studentList.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>수강생 관리</span>
-			</a>
-			</li>
-
-
-		</ul>
+        </ul> -->
 	<!-- </div> -->
 
 	 <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
-
+			<jsp:include page="../common/instructor_header.jsp"></jsp:include>
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!--   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
+                    Sidebar Toggle (Topbar)
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                    Topbar Search
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <!--   <div class="input-group">
+                        <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -93,19 +108,19 @@
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
-                        </div> -->
+                        </div>
                     </form>
 
-                    <!-- Topbar Navbar -->
+                    Topbar Navbar
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        Nav Item - Search Dropdown (Visible Only XS)
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                            <!-- Dropdown - Messages -->
+                            Dropdown - Messages
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -123,15 +138,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
+                        Nav Item - Alerts
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                               <!--  <span class="badge badge-danger badge-counter">3+</span> -->
+                                Counter - Alerts
+                                <span class="badge badge-danger badge-counter">3+</span>
                             </a>
-                            <!-- Dropdown - Alerts -->
+                            Dropdown - Alerts
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -174,15 +189,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
+                        Nav Item - Messages
                         <li class="nav-item dropdown no-arrow mx-1">
-                           <!--  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 Counter - Messages
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a> -->
-                            <!-- Dropdown - Messages -->
+                            </a>
+                            Dropdown - Messages
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -242,15 +257,15 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Nav Item - User Information -->
+                        Nav Item - User Information
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
                                     src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">logout</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="padding-left: 20px; font-size:15px">logout</span>
                             </a>
-                            <!-- Dropdown - User Information -->
+                            Dropdown - User Information
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -275,56 +290,58 @@
 
                     </ul>
 
-                </nav>
+                </nav> -->
                 
-               	<div class="container-fluid">
+               	<div class="container-fluid" style="width:70%; background-color:white;">
 	  				<div class="card-body d-flex flex-column justify-content-center">
     <!-- 강의 상세 정보 -->
     <div class="bg-white tm-block" style="width: 100% ">
-    <div class="col-12">
-   <div class="mb-3 d-flex align-items-center" style="width: 100% ">
-    <div>
-        <img src="http://localhost/all_about_knowledge/resources/img/%EA%B0%95%EC%9D%98%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="max-width: 100px;">
+  <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 100%;">
+    <div style="flex: 1; text-align: center;">
+        <img src="http://localhost/all_about_knowledge/resources/img/%EA%B0%95%EC%9D%98%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="max-width: 200px;">
     </div>
-    <div id="lec_info" class="d-flex flex-column " style="width: 50%">
-        <div class="mb-2">
-            <label class="form-label">java 왕기초 4주 단기완성</label>
-            <a href="http://localhost/all_about_knowledge/lectureManage/lectureEntrance.do"><input type="button" value="강의실 입장" class="btn btn-light btn-sm"></a>
+    <div id="lec_info" class="d-flex flex-column" style="flex: 1;">
+        <div class="mb-3">
+            <label class="form-label" style="font-size: 18px">java 왕기초 4주 단기완성</label>
+            <a href="http://localhost/all_about_knowledge/lectureManage/lectureEntrance.do">
+                <input type="button" value="강의실 입장" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px">
+            </a>
         </div>
-        <div class="mb-2">
-            <label class="form-label">총 강의시간 | 800분</label>
-            <input type="button" value="문의관리" class="btn btn-light btn-sm">
+        <div class="mb-3">
+            <label class="form-label" style="font-size: 18px">총 강의시간 | 800분</label>
+            <input type="button" value="문의관리" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px">
         </div>
-        <div>
-            <label class="form-label">총 강의 수 | 20개</label>
-            <input type="button" value="뒤로가기" class="btn btn-light btn-sm" onclick="history.back()">
+        <div class="mb-3">
+            <label class="form-label" style="font-size: 18px">총 강의 수 | 20개</label>
+            <input type="button" value="뒤로가기" class="btn btn-light btn-sm" onclick="history.back()" style="margin-left:20px; font-size: 18px">
         </div>
-    </div>
-</div>
-
     
     <!-- 진도현황 -->
     <div class="mb-3">
-        <label for="customRange1" class="form-label">진도현황</label>
-        <input type="range" class="form-range" >
+        <label for="customRange1" class="form-label" style="font-size: 18px">진도현황</label>
+        <input type="range" class="form-range" disabled >
+        <strong style="margin-left:20px; font-size: 18px"><label> 75 %</label></strong>
     </div>
     
     <!-- 성적현황 -->
     <div class="mb-3">
     	
-        <label class="form-label">성적현황</label>
-        <strong><label>78 / 100</label></strong>
+        <label class="form-label" style="font-size: 18px">성적현황</label>
+        <strong style="margin-left:20px; font-size: 18px"><label>78 / 100</label></strong>
         
-        <input type="button" value="시험관리" class="btn btn-light btn-sm"/>
-        <input type="button" value="수강생관리" class="btn btn-light btn-sm"/>
+        <input type="button" value="시험관리" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px"/>
+        <input type="button" value="수강생관리" class="btn btn-light btn-sm" style="margin-left:10px; font-size: 18px"/>
     </div>
+    </div>
+</div>
     
     <!-- 테이블 -->
-    <div class="mb-3">
-        <label class="form-label">공지사항</label>
-        <input type="button" value="공지관리" class="btn btn-light btn-sm"/>
-    
-        <table class="table">
+    <div class="mb-3 notice-container">
+        <label class="form-label" style="font-size: 18px">공지사항</label>
+        <input type="button" value="공지관리" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px"/>
+    </div>
+    <div class="mb-3 notice-container table-container">
+        <table class="table" style="margin-top:10px">
             <thead>
                 <tr>
                     <th>번호</th>
@@ -340,19 +357,20 @@
                 </tr>
              </tbody>
              </table> 
-			</div>
+		</div>
 				</div>
 				</div>
 				</div>
 				</div>
+					<jsp:include page="../common/instructor_footer.jsp"></jsp:include>	
 				<!-- Footer -->
-				<footer class="sticky-footer bg-white">
+			<!-- 	<footer class="sticky-footer bg-white">
 					<div class="container my-auto">
 						<div class="copyright text-center my-auto">
 							<span>Copyright &copy; Your Website 2021</span>
 						</div>
 					</div>
-				</footer>
+				</footer> -->
 	
 	
 	<!-- Bootstrap core JavaScript-->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html>
 
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -8,13 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<!--bootstrap 시작-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--bootstrap 끝-->
     <title>AAK</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -22,212 +24,21 @@
 
 </head>
 
-<style type="text/css">
-  body {
-    padding: 0;
-    background: #f5f5f5;
-  }
- 
 
-  .selectbox {
-    position: relative;
-    width: 200px;
-    border: 1px solid #999;
-    z-index: 1;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  }
-
-  .selectbox.focus {
-    border-color: #66afe9;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-  }
-
-  .selectbox:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    width: 0;
-    height: 0;
-    margin-top: -1px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #313131;
-  }
-
-  .selectbox label {
-    position: absolute;
-    top: 1px;
-    left: 5px;
-    padding: .5em .5em;
-    color: #333;
-    z-index: -1;
-  }
-
-  .selectbox select {
-    width: 100%;
-    height: auto;
-    line-height: normal;
-    background-color: transparent;
-    font-family: inherit;
-    padding: .8em .5em;
-    border: 0;
-    opacity: 0;
-    appearance: none;
-  }
-
-  .search-box {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    width: 300px;
-    background: white;
-    border-radius: 20px;
-    padding: 0 10px;
-    border: 1px solid #f9deec;
-    margin-bottom: 1em;
-  }
-
-  .search-txt {
-    flex: 1;
-    border: none;
-    background: none;
-    outline: none;
-    padding: 0 10px;
-    color: #797979;
-    font-size: 16px;
-  }
-
-  .search-btn {
-    color: #797979;
-    background: none;
-    border: none;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .search-box-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1em;
-  }
-
-  .small-selectbox {
-    position: relative;
-    top: -10px;
-    width: 100px;
-    border: 1px solid #999;
-    margin-right: 20px;
-    margin-top: 10px;
-    z-index: 1;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  }
-
-  .small-selectbox.focus {
-    border-color: #66afe9;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-  }
-
-  .small-selectbox:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    width: 0;
-    height: 0;
-    margin-top: -1px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #313131;
-  }
-
-  .small-selectbox label {
-    position: absolute;
-    top: 1px;
-    left: 5px;
-    padding: .5em .5em;
-    color: #333;
-    z-index: -1;
-  }
-
-  .small-selectbox select {
-    width: 100%;
-    height: auto;
-    line-height: normal;
-    font-family: inherit;
-    padding: .8em .5em;
-    border: 0;
-    opacity: 0;
-    appearance: none;
-  }
-
- 
-
-  table {
-    border: 1px #a39485 solid;
-    font-size: .9em;
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  th {
-    text-align: left;
-  }
-
-  thead {
-    font-weight: bold;
-    color: #fff;
-    background: #73685d;
-  }
-
-  td, th {
-    padding: 1em .5em;
-    vertical-align: middle;
-  }
-
-  td {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    background: #fff;
-  }
-
-  a {
-    color: #73685d;
-  }
-
-
-   
-    
-  }
-
-</style>
-<script type="text/javascript">
-	$(function(){
-	
-	});
-	
-</script>
-</head>
 <body id="page-top">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-		<jsp:include page="common/instructor_sidebar.jsp"></jsp:include>
-        <!-- Sidebar -->
-      <!--   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+	<jsp:include page="../common/instructor_sidebar.jsp"></jsp:include>
+		<!-- Sidebar -->
+	  <!--  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             Sidebar - Brand
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">AAk 강사메인</div>
+                <div class="sidebar-brand-text mx-3" style="font-size: 20px;">AAk 강사메인</div>
             </a>
 
             Divider
@@ -237,50 +48,49 @@
             <li class="nav-item active">
                 <a class="nav-link" href="lectureManage/lectureList.do">  
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>강의관리</span></a>
+                    <span style="font-size: 18px;">강의관리</span></a>
             </li>
             
              <li class="nav-item active">
                 <a class="nav-link" href="lectureManage/lectureApply.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>강의신청</span></a>
+                    <span style="font-size: 18px;">강의신청</span></a>
             </li>
             
             <li class="nav-item active">
                 <a class="nav-link" href="qna/qnaList.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>문의사항</span></a>
+                    <span style="font-size: 18px;">문의사항</span></a>
             </li>
             
             <li class="nav-item active">
                 <a class="nav-link" href="studentList.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>수강생 관리</span>
+                    <span style="font-size: 18px;">수강생 관리</span>
                     </a>
             </li>
 
 
         </ul> -->
-        <!-- End of Sidebar -->
+	<!-- </div> -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+	 <div id="content-wrapper">
 
             <!-- Main Content -->
             <div id="content">
-
+			<jsp:include page="../common/instructor_header.jsp"></jsp:include>
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+              <!--   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
+                    Sidebar Toggle (Topbar)
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                    Topbar Search
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <!--   <div class="input-group">
+                        <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -288,19 +98,19 @@
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
-                        </div> -->
+                        </div>
                     </form>
 
-                    <!-- Topbar Navbar -->
+                    Topbar Navbar
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        Nav Item - Search Dropdown (Visible Only XS)
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                            <!-- Dropdown - Messages -->
+                            Dropdown - Messages
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -318,15 +128,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
+                        Nav Item - Alerts
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                               <!--  <span class="badge badge-danger badge-counter">3+</span> -->
+                                Counter - Alerts
+                                <span class="badge badge-danger badge-counter">3+</span>
                             </a>
-                            <!-- Dropdown - Alerts -->
+                            Dropdown - Alerts
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -369,15 +179,15 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
+                        Nav Item - Messages
                         <li class="nav-item dropdown no-arrow mx-1">
-                           <!--  <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 Counter - Messages
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a> -->
-                            <!-- Dropdown - Messages -->
+                            </a>
+                            Dropdown - Messages
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
@@ -437,15 +247,15 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Nav Item - User Information -->
+                        Nav Item - User Information
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
                                     src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">logout</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="padding-left: 20px; font-size:15px">logout</span>
                             </a>
-                            <!-- Dropdown - User Information -->
+                            Dropdown - User Information
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -460,7 +270,7 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
-                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div> -->
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -470,129 +280,94 @@
 
                     </ul>
 
-                </nav>
-                <!-- End of Topbar -->
-<!-- main -->
-          <div class="selectbox">   
-        <select id="select">
-            <option>1</option>
-            <option>2</option>
-        </select>
-                </div>
-          <div class="selectbox">
-        <select id="select">
-            <option>1</option>
-            <option>2</option>
-        </select>
-    </div>
-     <div>전체수강인원:</div>
-    <div>전체 시험 미응시학생</div>
+                </nav> -->
 
-    <div class="search-box-container">
-        <div class="small-selectbox">
-            <select id="small-select">
-              <option disabled selected>검색조건</option>
-                <option>A</option>
-                <option>B</option>
-            </select>
-        </div>
-        <form class="search-box" action="" method="get">
-            <input class="search-txt" type="text" name="" placeholder="검색어를 입력하세요.">
-            <button class="search-btn" type="submit">검색</button>
-        </form>
-    </div>
-	 <a href="notice.do">공지</a>
-	 <a href="examList.do">시험</a>
-  
-     <table class="table">
-     <thead>
-   
-    			<tr>
-                    <th class="id">아이디</th>
-                    <th class="name">이름</th>
-                    <th class="sub_code">과목</th>
-                    <th class="status">학습현황</th>
-                    <th class="score">합격여부</th>
-                    <th class="Try">시험응시</th>
-                </tr><br>
-                    </thead>
-             <tbody>
-                            <c:catch var="exception">
-                                <c:forEach var="student" items="${listStudent}">
-                                    <tr>
-                                        <td>${student.STD_ID}</td>
-                                        <td>${student.name}</td>
-                                        <td>${student.sub_code}</td>
-                                        <td>${student.status}</td>
-                                         <td>${student.score}</td>
-                                <td>${student.TRY}</td>
-                                        
-                                    </tr>
-                                </c:forEach>
-                                <c:if test="${empty lectureList}">
-                                    <tr>
-                                        <td colspan="6" style="text-align:center;">강의가 없습니다.</td>
-                                    </tr>
-                                </c:if>
-                            </c:catch>
-                            <c:if test="${not empty exception}">
-                                <tr>
-                                    <td colspan="6" style="color:red;">오류가 발생했습니다: ${exception.message}</td>
-                                </tr>
-                            </c:if>
-                        </tbody>
-                    </table>
-                
-  
 
-<!-- /main -->
-               
+				<!-- 강의관리 리스트 시작 -->
+				<div class="container-fluid" style="width:70%; background-color:white;">
+					<div class="card-body  d-flex flex-col" style="padding-left: 220px;">
+						<!-- 검색바 -->
+					<!-- 	<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button"
+								data-bs-toggle="dropdown" aria-expanded="false">승인여부</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">승인</a></li>
+								<li><a class="dropdown-item" href="#">반려</a></li>
+								<li><a class="dropdown-item" href="#">대기중</a></li>
+							</ul>
+						</div>
 
-            </div>
-            
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button"
+								data-bs-toggle="dropdown" aria-expanded="false">카테고리</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">컴퓨터공학이론</a></li>
+								<li><a class="dropdown-item" href="#">프로그래밍언어</a></li>
+							</ul>
+						</div> -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+						<div class="col">
+							<div class="input-group mb-2" >
+								<input type="text" class="form-control" style="max-width: 350px;" > 
+								<input type="button" class="input-group-text" value="🔍">
+							</div>
 
-        </div>
-        <!-- End of Content Wrapper -->
+						</div>
+					</div>
+					<div class="container-fluid">
+						<!-- 리스트 -->
+						<table id="tab" class="table table-hover" class="d-flex flex-col">
+							<thead>
+								<tr>
+									<th scope="col">과목명</th>
+									<th scope="col">반려사유</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">java 왕기초 4주 단기완성</a></th>
+									<td>반려사유1</td>
+								</tr>
+								<tr>
+									<th scope="row">운영체제의 종류</th>
+									<td>반려사유2</td>
+								</tr>
 
-    </div>
-    <!-- End of Page Wrapper -->
+							</tbody>
+						</table>
+					</div>
+					<div class="container-fluid">
+						<!-- 페이지네이션 -->
+						<div id="pn" class="d-flex flex-col justify-content-center">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+									</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+</div>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Ã</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
+		<jsp:include page="../common/instructor_footer.jsp"></jsp:include>
+			<!-- 	<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Copyright &copy; Your Website 2021</span>
+						</div>
+					</div>
+				</footer> -->
+	
+	
+	<!-- Bootstrap core JavaScript-->
     <script src="http://localhost/all_about_knowledge/resources/vendor/jquery/jquery.min.js"></script>
     <script src="http://localhost/all_about_knowledge/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -608,7 +383,6 @@
     <!-- Page level custom scripts -->
     <script src="http://localhost/all_about_knowledge/resources/js/demo/chart-area-demo.js"></script>
     <script src="http://localhost/all_about_knowledge/resources/js/demo/chart-pie-demo.js"></script>
-
+	
 </body>
-
 </html>
