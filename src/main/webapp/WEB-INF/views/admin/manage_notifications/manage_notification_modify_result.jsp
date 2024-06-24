@@ -109,43 +109,32 @@ a {text-decoration: none;}
              공지사항 관리
              </li>
              <li class="breadcrumb-item active">
-             공지사항 수정</li></ol>
+             공지사항 수정 완료</li></ol>
              </div>
-             <form action="notification_modify_form_process.do" id ="frm"  method="post" enctype="multipart/form-data">
                     <div class="mb-3">
   						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 제목</label>
     <div class="col-sm-10">
-      <input type="text"  class="form-control" id="title" value="${nmd.title }" name ="title">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="${nmd.title }">
     </div>
 					</div>
 					<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">현 공지사항 이미지</label>
-					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                           <img src="http://localhost/all_about_knowledge/upload/${ nmd.image }"  class="card-img-top" alt="...">
-                            </div>
-					</div>
-					<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">바꿀 공지사항 이미지</label>
-					 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
-				 
-					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                           <img id ="preview" class="card-img-top" alt="...">
+					<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+					<div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                            <img src="http://localhost/all_about_knowledge/upload/${ nmd.image }"  class="card-img-top" alt="...">
                             </div>
 					</div>
 					<div class="mb-3">
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
-  						<textarea class="form-control h-25" id="content" rows="15" name="content"><c:out value="${ nmd.content }"/></textarea>
-  						<input type="hidden" value="${nmd.noti_no }" name ="noti_no">
+  						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"><c:out value="${ nmd.content }"/> </textarea>
 </div>
 <div>
-<div style="width: 45%; float: left; text-align: center;">
-<input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/>
+<div style="width: 100px; float: left;">
+<a href="manage_notification.do"><input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/></a> 
 </div>
-<div style="text-align:center;width: 45%;float: right;">
-<input type="button" class="btn btn-light btn-sm" value="취소" id ="btnback"/>
+<div style="text-align:center;">
+<a href ="manage_notifi_notify.do?noti_no=${nmd.noti_no }"><input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/></a>
 </div>
 </div>
-             </form>
                         </div>
                     </div>
                 </div>
@@ -160,44 +149,11 @@ a {text-decoration: none;}
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
-	  
-	  
 	  $("#btnModify").click(function(){
-			
-				// 이미지만 업로드하도록 설정
-				var file = $("#image").val();
-		
-				var selectedExt = file.substring(file.lastIndexOf(".")+1);
-
-				var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
-				var flag = false;
-
-				for(var i = 0; i < extArr.length; i++) {
-				if(selectedExt == extArr[i]) {
-				flag = true;
-				break;
-				} // end if
-				} // end for
-
-				if(!flag) {
-				alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
-				return;
-				} // end if
-				$("#frm").submit();
+		  history.back();
 	  })
 	  
   })
-  function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      document.getElementById('preview').src = e.target.result;
-    };
-    reader.readAsDataURL(input.files[0]);
-  } else {
-    document.getElementById('preview').src = "";
-  }
-}
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>
