@@ -9,17 +9,20 @@
 	select ii.INST_ID, ii.NAME, ii.EMAIL, ii.INTRODUCTION, ii.IMAGE, ii.PHONE, ii.MAJOR_SUBJECT, ii.EDUCATION ,i.DEL_YN
 	from INST_INFO ii, INSTRUCTOR i
 	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='N')
+	order by ii.INST_ID desc
 	</select>
 	<select id ="searchInstName" resultType ="InstructorManagementDomain">
 	select ii.INST_ID, ii.NAME, ii.EMAIL, ii.INTRODUCTION, ii.IMAGE, ii.PHONE, ii.MAJOR_SUBJECT, ii.EDUCATION ,i.DEL_YN
 	from INST_INFO ii, INSTRUCTOR i
-	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='N') and(ii.NAME like '%'||#{name}||'%')
+	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='N') and(ii.NAME like '%'||#{name}||'%') 
+	
 	</select>
 	<!-- 퇴사한 강사 조회 -->
 	<select id="selectYAllInstructor" resultType ="InstructorManagementDomain">
 	select ii.INST_ID, ii.NAME
 	from INST_INFO ii, INSTRUCTOR i
 	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='Y')
+	order by ii.INST_ID desc
 	</select>
 	<select id="selectinstIDMaxval" resultType ="String">
 	select max(INST_ID)

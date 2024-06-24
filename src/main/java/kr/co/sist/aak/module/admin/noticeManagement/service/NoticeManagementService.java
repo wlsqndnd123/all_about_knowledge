@@ -4,13 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.NoticeManagementVO;
 import kr.co.sist.aak.module.admin.noticeManagement.dao.NoticeManagementDAO;
@@ -132,6 +129,18 @@ public class NoticeManagementService {
 			list = nmDAO.selectAllNotice();
 		}catch (PersistenceException e) {
 			e.printStackTrace();
+		}finally {
+			for(NoticeManagementDomain temp :list) {
+				if(temp.getStatus().equals("RESV")) {
+					temp.setStatus("예약");
+				}else if(temp.getStatus().equals("DELT")){
+					temp.setStatus("삭제");
+					
+				}else {
+					temp.setStatus("게시");
+					
+				}
+			}
 		}
 		return list;
 	}
