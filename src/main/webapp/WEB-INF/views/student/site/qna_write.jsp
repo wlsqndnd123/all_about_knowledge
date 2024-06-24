@@ -157,19 +157,31 @@ body {
 		</div>
 	</div>
 
-	<div class="ui main text container">
-		<h1 class="ui header">문의사항</h1>
-		<hr>
-		<div id="boardContent">
-			<textarea id="content" name="content"></textarea>
-		</div>
-		<a href="site_qna.do">
-			<button class="ui button">취소</button>
-		</a> <a href="site_qna.do">
-			<button class="ui button">보내기</button>
-		</a>
-
-	</div>
+	<div class="ui main container">
+    <h1 class="ui header">문의사항</h1>
+    <hr>
+    <div id="boardContent">
+    <div class="field">
+        <label>작성자: userId | 작성일: 2024-06-18</label>
+    </div>
+    <div class="field" style="margin-top: 10px; margin-bottom: 10px;">
+        <label>제목</label>
+        <input type="text" name="title" style="width: 60.2%; box-sizing: border-box; border-color: #ddd;" placeholder="제목을 입력하세요">
+    </div>
+    <div class="field">
+        <textarea rows="5" name="content" id="content" style="width: 100%; box-sizing: border-box;" placeholder="문의사항을 입력하세요"></textarea>
+        <div id="charCount" style="width: 60.2%; box-sizing: border-box; text-align: left; background-color: transparent; border: none; padding: 0;">0/300자</div>
+    </div>
+</div>
+    <div style="margin-top: 10px;">
+        <a href="site_qna.do">
+            <button class="ui button">취소</button>
+        </a>
+        <a href="site_qna.do">
+            <button class="ui button">보내기</button>
+        </a>
+    </div>
+</div>
 
 	<div class="ui inverted vertical footer segment">
 		<div class="ui center aligned container">
