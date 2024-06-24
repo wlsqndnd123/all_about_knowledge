@@ -4,7 +4,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 작성일 : 2024.06.17
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info = "" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -73,7 +73,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
   	</div>
   	</div>
   	<div>&nbsp;</div>
-  	<button class="ui inverted mini red button">시험응시</button>
+  	<a class="ui inverted mini red button" href="${pageContext.request.contextPath}/exam_confirm.do">시험응시</a>
   	<div>&nbsp;</div>
   	<p> <button class="ui inverted mini olive button">문의하기</button> </p>
     </div>

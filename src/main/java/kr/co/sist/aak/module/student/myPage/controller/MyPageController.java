@@ -2,8 +2,6 @@ package kr.co.sist.aak.module.student.myPage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MyPageController {
@@ -29,6 +27,18 @@ public class MyPageController {
 	@GetMapping("/play_lecture.do")
 	public String playLecture(){
 		return "student/my_page/play_lecture";
+	}
+	
+	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 확인
+	@GetMapping("/exam_confirm.do")
+	public String examConfirm(){
+		return "student/my_page/exam_confirm";
+	}
+	
+	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 응시
+	@GetMapping("/exam.do")
+	public String exam(){
+		return "student/my_page/exam";
 	}
 	
 	// 학생 마이페이지 --- 관심 강의
@@ -60,10 +70,5 @@ public class MyPageController {
 	public String withdrawal(){
 		return "student/my_page/withdrawal";
 	}
-	
-	// **********************학생 로그인*************************** 나중에 옮길 것
-	@GetMapping("/login.do")
-	public String login(){
-		return "student/login_join";
-	}
+
 }

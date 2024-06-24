@@ -1,7 +1,7 @@
 <!-- 
-Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
+Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 작성자 : 고한별
-작성일 : 2024.06.12
+작성일 : 2024.06.21
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
@@ -12,7 +12,7 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 	<head>
 		<meta charset="UTF-8">
 		
-		<title>마이페이지 - 개인정보수정</title>
+		<title>나의강의 - 시험</title>
 		
 		<link rel="icon" href="/all_about_knowledge/favicon.png">
 		<link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
@@ -21,8 +21,8 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 		  crossorigin="anonymous"></script>
 		<script src="/all_about_knowledge/front/student/js/semantic.js"></script>
-		
-		<script type = "text/javascript">
+	
+		<script type="text/javascript">
 			$(function() {
 				$('.special.modal')
 				  .modal({
@@ -49,37 +49,41 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 		<article class="my_article">
 			<div class="mypage_content_div">
 			
-				<!-- breadcrumb 표시 -->
+				<!-- breadcrumb 시작 -->
 				<div class="ui small breadcrumb div_margin">
-					<a class="section">개인정보관리</a>
+					<a class="section" href="${pageContext.request.contextPath}/mypage_home.do">나의강의실</a>
 					<i class="right chevron icon divider"></i>
-					<div class="active section">개인정보수정</div>
+					<a class="section" href="${pageContext.request.contextPath}/my_lecture.do">나의강의</a>
+					<i class="right chevron icon divider"></i>
+					<div class="active section">시험</div>
 				</div>
-			
-				<!-- 사용자 검증 모달 창 -->
+				<!-- breadcrumb 종료 -->
+				
+				<!-- 시험 응시 확인 모달 창 시작 -->
 				<div class="ui special mini modal">
 					<div class="ui icon header">
-						<i class="address card icon"></i> 개인정보수정
+						<i class="edit icon"></i> 시험 응시
 					</div>
 					
 					<div class="content">
-						<p>현재 비밀번호를 입력하세요</p>
-						<div class="field">
-							<label>비밀번호 : </label>
-							<input type="password">
-						</div>
+						<p>[과목명] 의 시험에 응시하시겠습니까?</p>
 					</div>
 					
 					<div class="actions">
 						<div class="ui red cancel inverted button">
-							<i class="remove icon"></i> 취소
+							<i class="remove icon"></i> ㄴㄴ
 						</div>
+						
 						<div class="ui green ok inverted button" id="confirm">
-							<i class="checkmark icon"></i> 확인
+							<i class="checkmark icon"></i> ㅇㅇ
 						</div>
 					</div>
 				</div>
+				<!-- 시험 응시 확인 모달 창 종료 -->
+				
 			</div>
 		</article>
+		<!-- 컨텐츠 영역 종료 -->
+		
 	</body>
 </html>

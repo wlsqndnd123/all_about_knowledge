@@ -38857,3 +38857,7 @@ video {
   width: auto;
   height: 565px;
 }
+
+.text_right{
+  text-align: right;
+}
