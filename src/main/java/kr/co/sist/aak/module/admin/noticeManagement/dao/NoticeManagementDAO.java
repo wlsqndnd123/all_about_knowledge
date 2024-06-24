@@ -17,7 +17,7 @@ public class NoticeManagementDAO {
 	}
 	/**
 	 * 공지사항 리스트를 출력하는 method
-	 * 
+	 * 작성자: 김일신
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -32,19 +32,9 @@ public class NoticeManagementDAO {
 		return list;
 	}
 
-	/*
-	 * public List<NoticeManagementDomain> selectAllNotice() throws
-	 * PersistenceException { List<NoticeManagementDomain> list = null;
-	 * 
-	 * MybatisDAO mbDAO = MybatisDAO.getInstance(); SqlSession ss =
-	 * mbDAO.getMyBatisHandler(false);
-	 * 
-	 * list = ss.selectList("kr.co.sist.aak.admin.selectAllAdminNotice");
-	 * mbDAO.closeHanlder(ss); return list; }
-	 */
 	/**
 	 * 공지사항 status로 글 분류하는 method
-	 * 
+	 * 작성자: 김일신
 	 * @param status 0: 예약 1: 게시 나머지 :삭제
 	 * @return
 	 * @throws PersistenceException
@@ -59,18 +49,10 @@ public class NoticeManagementDAO {
 		mbDAO.closeHanlder(ss);
 		return list;
 	}
-	public int selectCount() throws PersistenceException {
-		int cnt =0;
-		MybatisDAO mbDAO = MybatisDAO.getInstance();
-		SqlSession ss = mbDAO.getMyBatisHandler(false);
-		cnt = ss.selectOne("kr.co.sist.aak.admin.count");
-		mbDAO.closeHanlder(ss);
-		return cnt;
-	}
 
 	/**
 	 * 선택한 공지사항의 상세 정보를 가져오는 method
-	 * 
+	 * 작성자: 김일신
 	 * @param noti_num 공지사항 번호
 	 * @return
 	 * @throws PersistenceException
@@ -88,7 +70,7 @@ public class NoticeManagementDAO {
 
 	/**
 	 * 공지사항 테이블의 공지사항 번호의 최고값을 가져오는 method
-	 * 
+	 * 작성자: 김일신
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -105,6 +87,7 @@ public class NoticeManagementDAO {
 
 	/**
 	 * 공지사항 테이블에 새로운 공지사항을 입력하는 method
+	 * 작성자: 김일신
 	 * @param nVO
 	 * @return
 	 * @throws PersistenceException
@@ -122,8 +105,8 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * 게시글의 상태를 변경하는 method
-	 * 
+	 * 게시글을 변경하는 method
+	 * 작성자: 김일신
 	 * @param nVO
 	 * @return
 	 */
@@ -141,7 +124,7 @@ public class NoticeManagementDAO {
 
 	/**
 	 * 게시글을 삭제하는 method
-	 * 
+	 * 작성자: 김일신
 	 * @param noti_no
 	 * @return
 	 */
@@ -149,7 +132,7 @@ public class NoticeManagementDAO {
 		int cnt = 0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
-		cnt = ss.delete("kr.co.sist.aak.admin.updateAdminNotice", noti_no);
+		cnt = ss.delete("kr.co.sist.aak.admin.deleteAdminNotice", noti_no);
 		if (cnt == 1) {
 			ss.commit();
 		}

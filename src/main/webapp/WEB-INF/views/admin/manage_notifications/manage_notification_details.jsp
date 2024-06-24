@@ -128,11 +128,17 @@ a {text-decoration: none;}
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"><c:out value="${ nmd.content }"/> </textarea>
 </div>
 <div>
+<div style="text-align:left: ;float: left; padding-left: 250px;">
+<a href ="manage_notifi_notify.do?noti_no=${nmd.noti_no }"><input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/></a>
+</div>
+<div style=" text-align: right; padding-right: 250px;">
+<form action="manage_notification_delete.do?noti_no=${nmd.noti_no }" id ="deleteFrm">
+<input type="hidden" value="${nmd.noti_no }" name ="noti_no"/>
+<input type="button" class="btn btn-light btn-sm" value="공지사항 삭제" id ="btnDelete"/>
+</form>
+</div>
 <div style="width: 100px; float: left;">
 <input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/>
-</div>
-<div style="text-align:center;">
-<a href ="manage_notifi_notify.do?noti_no=${nmd.noti_no }"><input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/></a>
 </div>
 </div>
                         </div>
@@ -151,6 +157,11 @@ a {text-decoration: none;}
 	  })
 	  $("#btnModify").click(function(){
 		  history.back();
+	  })
+	  $("#btnDelete").click(function(){
+		  if (confirm('정말로 삭제하시겠습니까?')) {
+		        $("#deleteFrm").submit();
+		    }
 	  })
 	  
   })

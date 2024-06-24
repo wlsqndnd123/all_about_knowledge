@@ -2,7 +2,6 @@ package kr.co.sist.aak.module.admin.noticeManagement.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -90,7 +89,8 @@ public class NoticemanagementController {
 
 	}
 	@PostMapping("notification_modify_form_process.do")
-	public String nodifyNoticeFormProcess(HttpServletRequest request, String temp, Model model) throws IOException {
+	public String modifyNoticeFormProcess(HttpServletRequest request, String temp, Model model) throws IOException {
+		
 		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
 		int tempSize = 100 * 1024 * 1024;
 		// 2. 파일 업로드 클래스 생성.
@@ -115,16 +115,21 @@ public class NoticemanagementController {
 		NoticeManagementVO nmVO = new NoticeManagementVO();
 		nmVO.setContent(mr.getParameter("content"));
 		// nmVO.setId(mr.getParameter("id"));
-		nmVO.setId("aak_IS");
+		//nmVO.setId("aak_IS");
 		nmVO.setNoti_no(mr.getParameter("noti_no"));
 		nmVO.setTitle(mr.getParameter("title"));
-		nmVO.setStatus("RESV");
 		nmVO.setImage(fsName);
-		int cnt = nms.addNotice(nmVO);
+		int cnt = nms.modifyNotice(nmVO);
+		
+		NoticeManagementDomain nmd = null;
 		if (cnt == 1) {
-			model.addAttribute("nmVO", nmVO);
+			nmd = nms.searchOneNotice(nmVO.getNoti_no());
+
+			model.addAttribute("nmd", nmd);
+
 		}
-		return "/admin/manage_notifications/manage_notification_add_result";
+		
+		return "/admin/manage_notifications/manage_notification_modify_result";
 		
 	}
 	@ResponseBody
@@ -141,6 +146,18 @@ public class NoticemanagementController {
 
 		model.addAttribute("nmd", nmd);
 		return "/admin/manage_notifications/manage_notification_details_notify";
+	}
+	
+	
+	@GetMapping("manage_notification_delete.do")
+	public String removeNotice(@RequestParam(defaultValue = "A_NOT00000") String noti_no,Model model) {
+		
+		
+		nms.removeNotice(noti_no);
+		model.addAttribute("list", nms.searchAllNotice());
+		
+		return "/admin/manage_notification";
+		
 	}
 	
 }
