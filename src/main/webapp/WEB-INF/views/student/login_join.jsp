@@ -11,8 +11,8 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://localhost/all_about_knowledge/front/student/css/login_join.css" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="http://localhost/all_about_knowledge/front/student/js/login.js"></script>
 </head>
@@ -67,17 +67,17 @@
 
             <!-- Signup Form -->
             <div class="signup form-peice switched">
-               <form class="signup-form" action="/join.do" method="post">
+               <form class="signup-form" id="signup-form" action="/all_about_knowledge/join.do" method="post">
 
                   <div class="form-group">
                      <label for="userId">아이디</label>
-                     <input type="text" name="userId" id="userId" class="userId">
+                     <input type="text" name="stdId" id="stdId" class="userId">
                      <span class="error"></span>
                   </div>
                   
                   <div class="form-group">
                      <label for="name">이름</label>
-                     <input type="text" name="username" id="name" class="name">
+                     <input type="text" name="name" id="name" class="name">
                      <span class="error"></span>
                   </div>
                   
@@ -101,17 +101,17 @@
                   
                   <div class="form-group">
                      <label for="phone">휴대전화</label>
-                     <input type="tel" name="phone" id="phone">
+                     <input type="tel" name="tel" id="tel">
                   </div>
                   
                   <div class="form-group">
                      <label for="email">이메일</label>
-                     <input type="email" name="emailAddress" id="email" class="email">
+                     <input type="email" name="email" id="email" class="email">
                      <span class="error"></span>
                   </div>
 
                   <div class="CTA">
-                     <input type="submit" value="회원가입" id="submit">
+                     <input type="submit" value="회원가입" id="joinBtn">
                      <a href="#" class="switch">로그인</a>
                   </div>
                </form>

@@ -7,7 +7,7 @@
 	<!-- STUDENT -->
     <insert id="insertStudent" parameterType="JoinVO">
         INSERT INTO student (std_id, password, pre_pass, change_date, del_yn)
-        VALUES (#{stdId}, #{password}, NULL, NOW(), 'N')
+        VALUES (#{stdId}, #{password}, NULL, sysdate, 'N')
     </insert>
 
     <!-- STD_INFO -->
