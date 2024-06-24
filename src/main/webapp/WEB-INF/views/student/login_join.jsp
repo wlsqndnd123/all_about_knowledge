@@ -67,7 +67,7 @@
 
             <!-- Signup Form -->
             <div class="signup form-peice switched">
-               <form class="signup-form" action="/join" method="post">
+               <form class="signup-form" action="/join.do" method="post">
 
                   <div class="form-group">
                      <label for="userId">아이디</label>
@@ -83,7 +83,7 @@
                   
                   <div class="form-group">
                      <label for="birth">생년월일</label>
-                     <input type="text" name="birth" id="birth" class="birth">
+                     <input type="date" name="birth" id="birth" class="birth">
                      <span class="error"></span>
                   </div>
 
@@ -101,12 +101,12 @@
                   
                   <div class="form-group">
                      <label for="phone">휴대전화</label>
-                     <input type="text" name="phone" id="phone">
+                     <input type="tel" name="phone" id="phone">
                   </div>
                   
                   <div class="form-group">
                      <label for="email">이메일</label>
-                     <input type="email" name="emailAdress" id="email" class="email">
+                     <input type="email" name="emailAddress" id="email" class="email">
                      <span class="error"></span>
                   </div>
 

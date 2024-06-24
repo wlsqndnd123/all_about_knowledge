@@ -1,6 +1,6 @@
 package kr.co.sist.aak.module.student.auth.service;
 
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.student.vo.JoinVO;
