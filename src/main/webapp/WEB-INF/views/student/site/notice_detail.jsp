@@ -54,6 +54,7 @@
     display: flex;
     justify-content: flex-end;
   }
+  
 </style>
 <script type="text/javascript">
   $(document).ready(function($) {
@@ -110,9 +111,10 @@ A site can specify styles for page content.</p>
     
     </div>
     <a href="site_notice.do">
-    <button class="ui center button">
-	  목록
-	</button>
+     <button class="ui center aligned button" id="listBtn">
+        <i class="list icon"></i>
+        목록
+    </button>
 	</a>
   </div>
 
