@@ -9,26 +9,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 
-public class MybatisDAO {
-	private static MybatisDAO mDAO;
-	private static SqlSessionFactory ssf;
+@Component
+public class SpringMyBatis {
 
-	private MybatisDAO() {
-	org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
-	}// MybatisDAO
-
-	public static MybatisDAO getInstance() {
-		if (mDAO == null) {
-			mDAO = new MybatisDAO();
-		} // end if
-		return mDAO;
-	}// getInstance
+	private static SqlSessionFactory ssf; 
 
 	static {
+		org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
 		if (ssf == null) {
-			Reader reader;
 			try {
-				reader = Resources.getResourceAsReader("kr/co/sist/aak/mappers/mybatis-config.xml");
+				Reader reader = Resources.getResourceAsReader("kr/co/sist/aak/mappers/mybatis-config.xml");
 				ssf = new SqlSessionFactoryBuilder().build(reader);
 				if (reader != null) {
 					reader.close();
@@ -37,15 +27,16 @@ public class MybatisDAO {
 				e.printStackTrace();
 			}
 		}
-	}// static �쁺�뿭
+	}
 
 	public SqlSession getMyBatisHandler(boolean autoCommit) {
 		return ssf.openSession(autoCommit);
-	}// getMyBatisHandler
-
-	public void closeHanlder(SqlSession ss) {
-		if (ss != null) {
+	}
+	
+	public void closeHandler(SqlSession ss) {
+		if(ss != null) {
 			ss.close();
 		}
-	}// closeHanlder
-}// MybatisDAO
+	}
+}
+
