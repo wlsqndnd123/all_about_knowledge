@@ -5,13 +5,13 @@
 <mapper namespace="kr.co.sist.aak.instructor">
 
 <!-- 문의리스트 -->
-<select id="" resultType="">
+<select id="qnaList" resultType="QnaVO">
 select std_id, sub_code, lec_code, title, date
 from qna_sub_q
 </select>
 
 <!-- 제목 검색 -->
-<select id="" resultType="">
+<select id="serchTitle" resultType="QnaDomain" parameterType="String">
 select std_id, sub_code, lec_code, title, date 
 from qna_sub_q
 where title like '%'||#{title}||'%'

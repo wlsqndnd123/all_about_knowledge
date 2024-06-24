@@ -6,34 +6,25 @@
 
 	<!-- 강사 메인화면 쿼리문 -->
 	<!-- 강사소개 -->
-	<select id="" resultType="">
+	<select id="instructorInfo" resultType="InstructorInfoVO">
 		select inst_id, name, email, introduction, image
 		from inst_info
-		where inst_id= INST_00011
-	</select>
-
-	<!-- 미답변 문의수 -->
-	<select id="" resultType="">
+		where inst_id=#{inst_id} 
 	</select>
 
 	<!-- 강의 개설현황 -->
-	<select id="" resultType="">
-		SELECT COUNT(status) as cnt
-		FROM subject;
-	</select>
-
-	<select id="" resultType="">
+	<select id="openLectureCnt" resultType="OpenRequestVO">
 		SELECT COUNT(status) as cnt
 		FROM subject
-		where status='Y'
+		where status=#{status}
 	</select>
 	
 	<!-- 반려 리스트 -->
-	<select id="" resultType="">
+	<select id="rejectLecture" resultType="RejectDomain">
 		SELECT s.sub_code, sr.reason
 		FROM subject s
 		JOIN sub_reject sr ON s.sub_code = sr.sub_code
-		WHERE s.status = 'N';
+		WHERE s.status = #{status}
 	</select>
 
 </mapper>

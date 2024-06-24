@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class LectureLessonDomain {
 
-	private String sub_code, lec_code, sub_title, intro, goal, image, lec_name, explain, file_Nm;
-	private int total_no, total_time, lesson;
-	private Date create_date;
+	private String sub_code, lec_code, title, explain, file_Nm;
+	private int lesson;
+	private char status;
 }

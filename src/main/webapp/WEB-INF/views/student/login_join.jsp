@@ -83,7 +83,7 @@
                   
                   <div class="form-group">
                      <label for="birth">생년월일</label>
-                     <input type="date" name="birth" id="birth" class="birth">
+                     <input type="text" name="birth" id="birth" class="birth">
                      <span class="error"></span>
                   </div>
 
@@ -118,9 +118,7 @@
             </div><!-- End Signup Form -->
          </div>
       </div>
-
    </section>
-
 </div>
 </body>
 </html>
