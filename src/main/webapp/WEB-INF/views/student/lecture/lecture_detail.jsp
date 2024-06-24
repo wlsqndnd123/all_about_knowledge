@@ -23,53 +23,6 @@
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 
 <style type="text/css">
-body {
-	background-color: #FFFFFF;
-}
-
-.ui.menu .item img.logo {
-	margin-right: 1.5em;
-}
-
-.main.container {
-	margin-top: 7em;
-}
-
-.wireframe {
-	margin-top: 2em;
-}
-
-.ui.footer.segment {
-	margin: 5em 0em 0em;
-	padding: 5em 0em;
-}
-
-.ui.fixed.menu {
-	background-color: #FFFFFF !important;
-	color: #000000 !important;
-}
-
-.ui.fixed.menu .item {
-	color: #000000 !important;
-}
-
-.ui.fixed.menu .item:hover {
-	background-color: #F0F0F0 !important;
-}
-
-.ui.vertical.footer.segment {
-	background-color: #FFFFFF !important;
-	color: #000000 !important;
-}
-
-.ui.vertical.footer.segment .header, .ui.vertical.footer.segment .item {
-	color: #000000 !important;
-}
-
-.ui.vertical.footer.segment .item:hover {
-	background-color: #F0F0F0 !important;
-}
-
 .search-container {
 	display: flex;
 	justify-content: flex-end;
@@ -92,6 +45,7 @@ body {
 	height: 200px;
 }
 
+
 </style>
 
 <script type="text/javascript">
@@ -104,35 +58,32 @@ body {
 			$('.content').addClass('hidden'); // 모든 컨텐츠를 숨김
 			$('#' + targetContent).removeClass('hidden'); // 클릭한 메뉴에 해당하는 컨텐츠를 보여줌
 		});
+		// 모달 열기 버튼 클릭 이벤트
+		$('#openModalBtn').click(function() {
+			$('#myModal').modal('show'); // 모달을 보이도록 설정
+		});
+		// 글자 수 세기
+		$('#content').on('input', function() {
+			var textLength = $(this).val().length;
+			$('#charCount').text(textLength + '/300자');
+		});
+		// 수강 신청 버튼 클릭 시 동작
+		$('#enrollButton').on('click', function() {
+			alert('수강신청이 완료되었습니다.');
+			$(this).text('수강 중인 강좌입니다.');
+		});
+
+		// 관심 강의 버튼 클릭 시 동작
+		$('#likeButton').on('click', function() {
+			$(this).toggleClass('active');
+		});
 	});
 </script>
 </head>
 <body>
 
-	<div class="ui fixed menu">
-		<div class="ui container">
-			<a href="#" class="header item"> <img class="logo"
-				src="assets/images/logo.png"> Project Name
-			</a> <a href="#" class="item">Home</a>
-			<div class="ui simple dropdown item">
-				Dropdown <i class="dropdown icon"></i>
-				<div class="menu">
-					<a class="item" href="#">Link Item</a> <a class="item" href="#">Link
-						Item</a>
-					<div class="divider"></div>
-					<div class="header">Header Item</div>
-					<div class="item">
-						<i class="dropdown icon"></i> Sub Menu
-						<div class="menu">
-							<a class="item" href="#">Link Item</a> <a class="item" href="#">Link
-								Item</a>
-						</div>
-					</div>
-					<a class="item" href="#">Link Item</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- 헤더 -->
+	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
 	<div class="ui main container">
 		<!-- <h1 class="ui header"></h1> -->
@@ -234,64 +185,48 @@ body {
 							habitant morbi tristique senectus et netus et malesuada fames ac
 							turpis egestas. Mauris a tincidunt metus. Fusce congue metus
 							aliquam ex auctor eleifend.</p>
-						<p>Ut imperdiet dignissim feugiat. Phasellus tristique odio eu
-							justo dapibus, nec rutrum ipsum luctus. Ut posuere nec tortor eu
-							ullamcorper. Etiam pellentesque tincidunt tortor, non sagittis
-							nibh pretium sit amet. Sed neque dolor, blandit eu ornare vel,
-							lacinia porttitor nisi. Vestibulum sit amet diam rhoncus,
-							consectetur enim sit amet, interdum mauris. Praesent feugiat
-							finibus quam, porttitor varius est egestas id.</p>
 
 					</div>
 				</div>
 				<div id="강의문의" class="content hidden">
-					<!-- <p>강의 문의 내용</p> -->
-					<a href="site_qna_write.do">
-						<div style="text-align: right;">
-							<button class="ui button">문의 작성</button>
+					<div style="text-align: right;">
+						<button id="openModalBtn" class="ui button">문의 작성</button>
+					</div>
+					<div class="ui modal" id="myModal">
+						<i class="close icon"></i>
+						<div class="header">문의사항 작성</div>
+						<div class="content">
+							<div class="ui form">
+								<div class="field">
+									<label>작성자: userId | 작성일: 2024-06-18</label>
+								</div>
+								<div class="field">
+									<label>제목</label> <input type="text" name="title"
+										placeholder="제목을 입력하세요">
+								</div>
+								<div class="field">
+									<label>내용</label>
+									<textarea rows="5" name="content" id="content"
+										placeholder="문의사항을 입력하세요"></textarea>
+									<div class="ui message" id="charCount">0/300자</div>
+								</div>
+							</div>
 						</div>
-					</a>
-					<!-- <table class="ui very basic table">
-						<thead>
-							<tr>
-								<th>No</th>
-								<th>제목</th>
-								<th>작성일</th>
-								<th>답변</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="clickable-row" data-href="site_qna_detail.do">
-								<td>1</td>
-								<td>문의사항 제목 1</td>
-								<td>2024-06-08</td>
-								<td class="red-text">답변완료</td>
-							</tr>
-							<tr class="clickable-row" data-href="site_qna_detail.do">
-								<td>2</td>
-								<td>문의사항 제목 2</td>
-								<td>2024-06-07</td>
-								<td>대기</td>
-							</tr>
-							<tr class="clickable-row" data-href="site_qna_detail.do">
-								<td>3</td>
-								<td>문의사항 제목 3</td>
-								<td>2024-06-06</td>
-								<td>대기</td>
-							</tr>
-						</tbody>
-					</table> -->
+						<div class="actions">
+							<div class="ui positive button">전송</div>
+						</div>
+					</div>
 					<div class="box" style="height: auto;">
 						<h5>
-							아이디 <span style="float: right; color: #999;">작성일:
-								2024-06-08</span>
+							질문 제목 <span style="float: right; color: #999;">작성자:dddd
+								|작성일: 2024-06-08</span>
 						</h5>
 						<div class="ui divider"></div>
-						<p>내용</p>
+						<p>질문 내용</p>
 					</div>
 					<div class="box inline"
 						style="height: 80px; margin: 0; background-color: #f5f5f5;">
-						<p>내용</p>
+						<p>강사 답변 내용</p>
 					</div>
 				</div>
 			</div>
@@ -301,10 +236,15 @@ body {
 					<h3 class="ui center aligned header">무료강의</h3>
 					<div class="ui center aligned buttons"
 						style="display: flex; flex-direction: column;">
-						<button class="positive ui button" style="margin-bottom: 10px;">수강
+						<!-- <button class="positive ui button" style="margin-bottom: 10px;">수강
 							신청</button>
 						<button class="ui icon button">
 							<i class="heart icon"></i> 관심 강의
+						</button> -->
+						<button id="enrollButton" class="positive ui button"
+							style="margin-bottom: 10px;">수강 신청</button>
+						<button id="likeButton" class="ui icon button">
+							<i id="heartIcon" class="heart icon"></i> 관심 강의
 						</button>
 					</div>
 				</div>
@@ -319,52 +259,9 @@ body {
 		</div>
 	</div>
 
-
-
-	</div>
-
-	<div class="ui inverted vertical footer segment">
-		<div class="ui center aligned container">
-			<div class="ui stackable inverted divided grid">
-				<div class="three wide column">
-					<h4 class="ui inverted header">Group 1</h4>
-					<div class="ui inverted link list">
-						<a href="#" class="item">Link One</a> <a href="#" class="item">Link
-							Two</a> <a href="#" class="item">Link Three</a> <a href="#"
-							class="item">Link Four</a>
-					</div>
-				</div>
-				<div class="three wide column">
-					<h4 class="ui inverted header">Group 2</h4>
-					<div class="ui inverted link list">
-						<a href="#" class="item">Link One</a> <a href="#" class="item">Link
-							Two</a> <a href="#" class="item">Link Three</a> <a href="#"
-							class="item">Link Four</a>
-					</div>
-				</div>
-				<div class="three wide column">
-					<h4 class="ui inverted header">Group 3</h4>
-					<div class="ui inverted link list">
-						<a href="#" class="item">Link One</a> <a href="#" class="item">Link
-							Two</a> <a href="#" class="item">Link Three</a> <a href="#"
-							class="item">Link Four</a>
-					</div>
-				</div>
-				<div class="seven wide column">
-					<h4 class="ui inverted header">Footer Header</h4>
-					<p>Extra space for a call to action inside the footer that
-						could help re-engage users.</p>
-				</div>
-			</div>
-			<div class="ui inverted section divider"></div>
-			<img src="assets/images/logo.png" class="ui centered mini image">
-			<div class="ui horizontal inverted small divided link list">
-				<a class="item" href="#">Site Map</a> <a class="item" href="#">Contact
-					Us</a> <a class="item" href="#">Terms and Conditions</a> <a
-					class="item" href="#">Privacy Policy</a>
-			</div>
-		</div>
-	</div>
+	<!-- 푸터 -->
+	<jsp:include page="../site/main_footer.jsp"></jsp:include>
+	
 </body>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
