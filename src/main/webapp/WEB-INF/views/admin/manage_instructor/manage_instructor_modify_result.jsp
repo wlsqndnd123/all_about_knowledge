@@ -146,10 +146,10 @@
                             </table>
                             </div>
                            <div>
-<div style="width: 100px; float: left;">
+<div style="width: 400px; float: left; padding-left: 200px;">
 <a href="manage_instructor.do"><input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/></a> 
 </div>
-<div style="text-align:center;">
+<div style="text-align:right ;padding-right: 200px;">
 <a href ="manage_instructor_modify.do?inst_id=${imd.inst_id }"><input type="button" class="btn btn-light btn-sm" value="강사 정보 수정" id ="btnModify"/></a>
 </div>
 </div>
@@ -166,12 +166,6 @@
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
-	  $("#btnDelete").click(function(){
-		  if (confirm('정말로 삭제하시겠습니까?')) {
-		        $("#deleteFrm").submit();
-		    }
-	  })
-	  
   })
   </script>
     <!-- https://getbootstrap.com/ -->

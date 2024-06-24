@@ -85,4 +85,14 @@ public class InstructorManagementService {
 		
 		return cnt;
 	}
+	public int removeInstructor(String inst_id) {
+		int cnt =0;
+		try {
+			
+			imDAO.deleteInstructor(inst_id);
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return cnt;
+	}
 }

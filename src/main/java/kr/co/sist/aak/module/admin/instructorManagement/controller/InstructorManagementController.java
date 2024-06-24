@@ -138,4 +138,10 @@ public class InstructorManagementController {
 		model.addAttribute("imd",imd);
 		return "/admin/manage_instructor/manage_instructor_modify";
 	}
+	@GetMapping("manage_instructor_delete.do")
+	public String deleteInstructor(@RequestParam(defaultValue = "INST_00001") String inst_id,Model model) {
+		ims.removeInstructor(inst_id);
+		model.addAttribute("instList",ims.searchAllNInstructor());
+		return "/admin/manage_instructor";
+	}
 }
