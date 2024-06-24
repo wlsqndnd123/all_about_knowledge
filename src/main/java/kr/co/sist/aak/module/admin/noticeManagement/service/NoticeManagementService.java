@@ -28,6 +28,12 @@ public class NoticeManagementService {
 //		return list;
 //	}
 
+	/**
+	 * 선택 한 공지사항의 상세 정보를 출력하는 method.
+	 * 작성자: 김일신
+	 * @param noti_no
+	 * @return
+	 */
 	public NoticeManagementDomain searchOneNotice(String noti_no) {
 		NoticeManagementDomain nmd = null;
 
@@ -42,6 +48,7 @@ public class NoticeManagementService {
 	/**
 	 * 셀렉트값에 따라 출력되는 결과의 값이 다름
 	 * status 0: 예약 1: 게시 2:삭제 3:전체 게시글 조회.
+	 * 작성자: 김일신
 	 * @param status
 	 * @return
 	 */
@@ -88,6 +95,7 @@ public class NoticeManagementService {
 	/**
 	 * 공지사항의 제목을 검색하는 method.
 	 * title이 null이라면 전체 공지사항이 검색되도록 설정함.
+	 * 작성자: 김일신
 	 * @param title
 	 * @return
 	 */
@@ -123,6 +131,15 @@ public class NoticeManagementService {
 
 	}
 	
+	/**
+	 * 모든 공지사항의 리스트를 출력하는 method.
+	 * 공지사항의 status가 RESV: 예약.
+	 * 공지사항의 status가 DELT: 삭제.
+	 * 나머지 :게시.
+	 * 로 변환하여 출력한다.
+	 * 작성자: 김일신
+	 * @return
+	 */
 	public List<NoticeManagementDomain> searchAllNotice() {
 		List<NoticeManagementDomain> list = null;
 		try {
@@ -146,7 +163,12 @@ public class NoticeManagementService {
 	}
 	
 	
-	 public String searchMaxNoticeVal() {
+	 /**
+	  * 공지사항 작성 시 공지사항 번호의 최고값을 가져와 +1하여 반환하는 method.
+	  * 작성자: 김일신
+	 * @return
+	 */
+	public String searchMaxNoticeVal() {
 		 String maxVal ="";
 		 
 		 StringBuffer pre = new StringBuffer("A_NOT");
@@ -161,16 +183,13 @@ public class NoticeManagementService {
 		 }
 		 return pre.toString();
 	 }
-	 public int searchCount() {
-		int cnt =0;
-		 try {
-			cnt =nmDAO.selectCount();
-		}catch (PersistenceException e) {
-			e.printStackTrace();
-		}
-		 return cnt;
-	}
-	 public int addNotice(NoticeManagementVO nVO) {
+	 
+	 /**
+	  * 공지사항을 업로드 하는 method
+	 * @param nVO
+	 * @return
+	 */
+	public int addNotice(NoticeManagementVO nVO) {
 		int cnt = 0;
 		try {
 			cnt = nmDAO.insertNotice(nVO);
@@ -181,7 +200,24 @@ public class NoticeManagementService {
 	}
 	 public int modifyNotice(NoticeManagementVO nVO) {
 		 int cnt =0;
+		 try {
+			 cnt =nmDAO.updateNotice(nVO);
+		 }catch (PersistenceException pe) {
+			 pe.printStackTrace();
+		 }
 		 
 		 return cnt;
 	 }
+	 public int  removeNotice(String noti_no) {
+		 int cnt =0;
+		 
+		 try {
+			 cnt=nmDAO.deleteNotice(noti_no);
+		 }catch (PersistenceException pe) {
+			 
+		}
+		 
+		 return cnt;
+		
+	}
 }

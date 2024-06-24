@@ -9,7 +9,7 @@ package kr.co.sist.aak.module.student.auth.controller;
 //@RestController
 //@RequestMapping("/join.do")
 public class JoinController {
-//
+
 //    private final JoinService joinService;
 //
 //    @PostMapping
@@ -19,6 +19,6 @@ public class JoinController {
 //                       @RequestParam String password,
 //                       @RequestParam String tel,
 //                       @RequestParam String email) {
-//        return joinService.create(stdId, name, birth, password, tel, email);
+//    	return joinService.create(stdId, name, birth, password, tel, email);
 //    }
 }

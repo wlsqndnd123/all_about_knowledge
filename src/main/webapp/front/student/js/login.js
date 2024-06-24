@@ -10,6 +10,8 @@ $(document).ready(function () {
         birthError    = true,
         passConfirm   = true;
 
+    var userIdRegex = /^[a-z0-9]+$/;
+
     // Detect browser for css purpose
     if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
         $('.form form label').addClass('fontSwitch');
@@ -17,7 +19,6 @@ $(document).ready(function () {
 
     // Label effect
     $('input').focus(function () {
-
         $(this).siblings('label').addClass('active');
     });
 
@@ -33,14 +34,15 @@ $(document).ready(function () {
                 $(this).siblings('span.error').text('2자 이상 입력 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
                 usernameError = true;
             } else {
-                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                $(this).siblings('span.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 usernameError = false;
             }
         }
 
         // User Id
         if ($(this).hasClass('userId')) {
-            if ($(this).val().length === 0) {
+            var userId = $(this).val();
+            if (userId.length === 0) {
                 $(this).siblings('span.error').text('아이디는 공백으로 둘 수 없습니다.').fadeIn().parent('.form-group').addClass('hasError');
                 userIdError = true;
             } else if (userId.length >= 1 && userId.length <= 3) {
@@ -50,7 +52,7 @@ $(document).ready(function () {
                 $(this).siblings('span.error').text('아이디는 영문 소문자와 숫자로만 구성되어야 합니다').fadeIn().parent('.form-group').addClass('hasError');
                 userIdError = true;
             } else {
-                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                $(this).siblings('span.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 userIdError = false;
             }
         }
@@ -61,7 +63,7 @@ $(document).ready(function () {
                 $(this).siblings('span.error').text('이메일 주소를 확인 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
                 emailError = true;
             } else {
-                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                $(this).siblings('span.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 emailError = false;
             }
         }
@@ -72,7 +74,7 @@ $(document).ready(function () {
                 $(this).siblings('span.error').text('최소 8자 이상 입력 해 주세요').fadeIn().parent('.form-group').addClass('hasError');
                 passwordError = true;
             } else {
-                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                $(this).siblings('span.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 passwordError = false;
             }
         }
@@ -83,17 +85,17 @@ $(document).ready(function () {
                 $(this).siblings('span.error').text('생년월일을 입력 해 주세요.').fadeIn().parent('.form-group').addClass('hasError');
                 birthError = true;
             } else {
-                $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+                $(this).siblings('span.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 birthError = false;
             }
         }
 
         // PassWord confirmation
         if ($('.pass').val() !== $('.passConfirm').val()) {
-            $('.passConfirm').siblings('.error').text('비밀번호 불일치').fadeIn().parent('.form-group').addClass('hasError');
-            passConfirm = false;
+            $('.passConfirm').siblings('span.error').text('비밀번호 불일치').fadeIn().parent('.form-group').addClass('hasError');
+            passConfirm = true;
         } else {
-            $('.passConfirm').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+            $('.passConfirm').siblings('span.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
             passConfirm = false;
         }
 
@@ -104,7 +106,6 @@ $(document).ready(function () {
             $(this).siblings('label').removeClass('active');
         }
     });
-
 
     // form switch
     $('a.switch').click(function (e) {
@@ -117,7 +118,6 @@ $(document).ready(function () {
             $(this).parents('.form-peice').removeClass('switched').siblings('.form-peice').addClass('switched');
         }
     });
-
 
     // Form submit
     $('form.signup-form').submit(function (event) {
@@ -141,6 +141,5 @@ $(document).ready(function () {
     $('a.profile').on('click', function () {
         location.reload(true);
     });
-
 
 });

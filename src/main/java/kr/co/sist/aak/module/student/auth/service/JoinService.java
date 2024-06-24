@@ -1,16 +1,16 @@
 package kr.co.sist.aak.module.student.auth.service;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import kr.co.sist.aak.domain.student.vo.JoinVO;
-import kr.co.sist.aak.module.student.auth.repository.JoinRepository;
-import lombok.RequiredArgsConstructor;
-
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.stereotype.Service;
+//
+//import kr.co.sist.aak.domain.student.vo.JoinVO;
+//import kr.co.sist.aak.module.student.auth.repository.JoinRepository;
+//import lombok.RequiredArgsConstructor;
+//
 //@RequiredArgsConstructor
 //@Service
 public class JoinService {
-	
+//	
 //    private final JoinRepository joinRepository;
 //    private final PasswordEncoder passwordEncoder;
 //    
@@ -29,5 +29,5 @@ public class JoinService {
 //
 //        return joinVO;
 //    }
-//	
+	
 }
