@@ -44,7 +44,31 @@
 
 	</insert>
 	<update id="updateInstructorInfo" parameterType="InstructorManagementVO">
-	
+	update INST_INFO
+	<set>
+	<if test="name neq null and name neq ''">
+	name =#{name},
+	</if>
+	<if test="email neq null and email neq ''">
+	email =#{email},
+	</if>
+	<if test="introduction neq null and introduction neq ''">
+	introduction =#{introduction},
+	</if>
+	<if test="image neq null and image neq ''">
+	image =#{image},
+	</if>
+	<if test="phone neq null and phone neq ''">
+	phone =#{phone},
+	</if>
+	<if test="education neq null and education neq ''">
+	education =#{education},
+	</if>
+	<if test="major_subject neq null and major_subject neq ''">
+	major_subject =#{major_subject},
+	</if>
+	</set>
+	where INST_ID = #{inst_id}
 	</update>
 	
 	<update id="deleteinstructor" parameterType="String">
