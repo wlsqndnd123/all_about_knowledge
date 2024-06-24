@@ -74,7 +74,7 @@ public class InstructorManagementDAO {
 	 * @param iVO
 	 * @return
 	 */
-	public int insertInstructor(InstructorManagementVO iVO) {
+	public int insertInstructor(InstructorManagementVO iVO) throws PersistenceException  {
 		int cnt = 0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
@@ -87,15 +87,25 @@ public class InstructorManagementDAO {
 		return cnt;
 	}
 
-	public int updateInstructor(InstructorManagementVO iVO) {
+	public int updateInstructor(InstructorManagementVO iVO)  throws PersistenceException {
 		int cnt = 0;
-
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt = ss.update("kr.co.sist.aak.admin2.updateInstructorInfo",iVO);
+		if(cnt ==1) {
+			ss.commit();
+		}
 		return cnt;
 	}
 
-	public int deleteInstructor(String inst_id) {
+	public int deleteInstructor(String inst_id)  throws PersistenceException  {
 		int cnt = 0;
-
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt = ss.delete("kr.co.sist.aak.admin2.deleteinstructor",inst_id);
+		if(cnt==1) {
+			ss.commit();
+		}
 		return cnt;
 	}
 	public String selectMaxInstId() throws PersistenceException {

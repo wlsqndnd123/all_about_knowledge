@@ -102,68 +102,74 @@
              강사 관리
              </li>
              <li class="breadcrumb-item active">
-             강사 상세</li></ol>
+             강사 정보 수정</li></ol>
              </div>
              <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">강사 상세</h2>
+                            <h2 class="tm-block-title d-inline-block">강사 정보 수정</h2>
              </div>
+             <form action="manage_instructor_modify_process.do" id ="frm" method="post" enctype="multipart/form-data">
                             <div style="text-align: center; margin: auto;">
-                            <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                            <img src="http://localhost/all_about_knowledge/upload/${ imd.image }"  class="card-img-top" alt="...">
+                           <div class="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">현 강사 이미지</label>
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img src="http://localhost/all_about_knowledge/upload/${ nmd.image }"  class="card-img-top" alt="...">
                             </div>
+					</div>
+					<div class="mb-3">
+					<label for="exampleFormControlTextarea1" class="form-label">바꿀 강사 이미지</label>
+					 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
+				 
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img id ="preview" class="card-img-top" alt="...">
                             </div>
-                            <div>
+					</div>
+                            </div>
+                          <div class="mb-3">
                             <table class="table table-hover">
                             <tr>
                             <td>이름</td>
-                            <td><c:out value="${ imd.name }"/> </td>
+                            <td><input type="text" class="form-control" value="${ imd.name }" name="name"/></td>
                             </tr>
                             <tr>
                             <td>강사아이디</td>
-                            <td><c:out value="${ imd.inst_id }"/></td>
+                            <td><input type="text" class="form-control" readonly="readonly" value="${ imd.inst_id }" name="inst_id"/></td>
                             </tr>
                             <tr>
                             <td>자기소개</td>
-                            <td><c:out value="${ imd.introduction }"/></td>
+                            <td><input type="text" class="form-control" value="${ imd.introduction }" name="introduction"/></td>
                             </tr>
                             <tr>
                             <td>연락처</td>
-                            <td><c:out value="${ imd.phone }"/></td>
+                            <td><input type="text" class="form-control" value="${ imd.phone }" name="phone"/></td>
                             </tr>
                             <tr>
                             <td>이메일</td>
-                            <td><c:out value="${ imd.email }"/></td>
+                            <td><input type="text" class="form-control" value="${ imd.email }" name="email"/></td>
                             </tr>
                             <tr>
                             <td>강사 학력사항</td>
-                            <td><c:out value="${ imd.education }"/></td>
+                            <td><input type="text" class="form-control" value="${ imd.education }" name="education"/></td>
                             </tr>
                             <tr>
                             <td>주력 과목</td>
-                            <td><c:out value="${ imd.major_subject }"/></td>
+                            <td><input type="text" class="form-control" value="${ imd.major_subject }" name="major_subject"/></td>
                             </tr>
                             
                             </table>
                             </div>
-                            <div>
-<div style="text-align:left: ;float: left; padding-left: 250px;">
-<a href ="manage_instructor_modify.do?inst_id=${imd.inst_id }"><input type="button" class="btn btn-light btn-sm" value="강사 정보 수정" id ="btnModify"/></a>
+<div style="width: 45%; float: left; text-align: center;">
+<input type="button" class="btn btn-light btn-sm" value="강사 정보 수정" id ="btnModify"/>
 </div>
-<div style=" text-align: right; padding-right: 250px;">
-<form action="manage_instructor_delete.do?noti_no=${imd.inst_id }" id ="deleteFrm">
-<input type="hidden" value="${imd.inst_id}" name ="inst_id"/>
-<input type="button" class="btn btn-light btn-sm" value="강사 정보 삭제" id ="btnDelete"/>
-</form>
+<div style="text-align:center;width: 45%;float: right;">
+<input type="button" class="btn btn-light btn-sm" value="정보 수정 취소" id ="btnback"/>
 </div>
-<div style="width: 100px; float: left;">
-<input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/>
-</div>
+             </form>
 </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
+    
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
@@ -172,16 +178,44 @@
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
+	  
+	  
 	  $("#btnModify").click(function(){
-		  history.back();
-	  })
-	  $("#btnDelete").click(function(){
-		  if (confirm('정말로 삭제하시겠습니까?')) {
-		        $("#deleteFrm").submit();
-		    }
+			
+				// 이미지만 업로드하도록 설정
+				var file = $("#image").val();
+		
+				var selectedExt = file.substring(file.lastIndexOf(".")+1);
+
+				var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
+				var flag = false;
+
+				for(var i = 0; i < extArr.length; i++) {
+				if(selectedExt == extArr[i]) {
+				flag = true;
+				break;
+				} // end if
+				} // end for
+
+				if(!flag) {
+				alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
+				return;
+				} // end if
+				$("#frm").submit();
 	  })
 	  
   })
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "";
+  }
+}
   </script>
     <!-- https://getbootstrap.com/ -->
 </body>

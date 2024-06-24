@@ -128,17 +128,17 @@ a {text-decoration: none;}
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15"><c:out value="${ nmd.content }"/> </textarea>
 </div>
 <div>
-<div style="width: 100px; float: left;">
-<a href="manage_notification.do"><input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/></a> 
+<div style="width: 400px; float: left; padding-left: 200px">
+<a href="manage_notification.do" ><input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/></a> 
 </div>
-<div style="text-align:center;">
+<div style="text-align:right; padding-right: 200px;">
 <a href ="manage_notifi_notify.do?noti_no=${nmd.noti_no }"><input type="button" class="btn btn-light btn-sm" value="공지사항 수정" id ="btnModify"/></a>
 </div>
 </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           </div>
+           </div>
+           </div>
+           </div>
     </div>
     
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
