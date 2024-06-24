@@ -102,7 +102,7 @@
              강사 관리
              </li>
              <li class="breadcrumb-item active">
-             강사 상세</li></ol>
+             강사 정보 수정 완료</li></ol>
              </div>
              <div style="text-align: center; margin-top: 50px;" >
                             <h2 class="tm-block-title d-inline-block">강사 상세</h2>
@@ -145,18 +145,12 @@
                             
                             </table>
                             </div>
-                            <div>
-<div style="text-align:left: ;float: left; padding-left: 250px;">
-<a href ="manage_instructor_modify.do?inst_id=${imd.inst_id }"><input type="button" class="btn btn-light btn-sm" value="강사 정보 수정" id ="btnModify"/></a>
-</div>
-<div style=" text-align: right; padding-right: 250px;">
-<form action="manage_instructor_delete.do?noti_no=${imd.inst_id }" id ="deleteFrm">
-<input type="hidden" value="${imd.inst_id}" name ="inst_id"/>
-<input type="button" class="btn btn-light btn-sm" value="강사 정보 삭제" id ="btnDelete"/>
-</form>
-</div>
+                           <div>
 <div style="width: 100px; float: left;">
-<input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/>
+<a href="manage_instructor.do"><input type="button" class="btn btn-link" value="&lt; 뒤로" id ="btnback"/></a> 
+</div>
+<div style="text-align:center;">
+<a href ="manage_instructor_modify.do?inst_id=${imd.inst_id }"><input type="button" class="btn btn-light btn-sm" value="강사 정보 수정" id ="btnModify"/></a>
 </div>
 </div>
                         </div>
@@ -170,9 +164,6 @@
   <script type="text/javascript">
   $(function(){
 	  $("#btnback").click(function(){
-		  history.back();
-	  })
-	  $("#btnModify").click(function(){
 		  history.back();
 	  })
 	  $("#btnDelete").click(function(){
