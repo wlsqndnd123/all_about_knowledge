@@ -3,7 +3,6 @@ package kr.co.sist.aak.module.instructor.notice.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
