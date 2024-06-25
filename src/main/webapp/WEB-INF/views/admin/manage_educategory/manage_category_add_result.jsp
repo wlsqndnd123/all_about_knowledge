@@ -106,24 +106,19 @@
              교육과목 관리
              </li>
              <li class="breadcrumb-item active">
-             교육 카테고리 추가</li></ol>
+             교육 카테고리 추가 완료</li></ol>
              </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 </div>	
                     <div style="text-align: center;margin: auto;" >
-                    <form action="add_cat_process.do" method="get" id ="frm">
                     <table  class="table table-hover">
-                    <tr><td>상위 카테고리명</td><td><input type="text" class="form-control" name ="prime_cat_code" value="${pCatCode}" readonly="readonly"></td></tr>
-                    <tr><td>추가하는 카테고리 코드</td><td><input type="text" class="form-control" name ="cat_code" value="${maxValue}" readonly="readonly"></td></tr>
-                    <tr><td>추가하는 카테고리명</td><td><input type="text" class="form-control" name ="cat_name" value="${prime_cat_code}"></td></tr>
+                    <tr><td>상위 카테고리명 </td><td><input type="text" class="form-control" name ="prime_cat_code" value="${emVO.prime_cat_code}" readonly="readonly"></td></tr>
+                    <tr><td>추가하는 카테고리 코드</td><td><input type="text" class="form-control" name ="cat_code" value="${emVO.cat_code}" readonly="readonly"></td></tr>
+                    <tr><td>추가하는 카테고리명</td><td><input type="text" class="form-control" name ="cat_name" readonly="readonly" value="${emVO.cat_name}"></td></tr>
                     </table>
-                    <div style=" width:400px; padding-left:200px;text-align: center; float: left;">
-                     <input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
+                    <div style="text-align: center;">
+                     <a href ="manage_edu_cat.do"><input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/></a>
                      </div>
-                     <div style="float: right; padding-right: 200px;">
-                    <input type="button" id ="btnSubmit" value="카테고리 추가" class="btn btn-info btn-sm ">
-	</div>
-                    </form>
                     </div>
                         </div>
                     </div>
@@ -136,12 +131,7 @@
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
         $(function() {
-        $("#btnSubmit").click(function(){
-        	$("#frm").submit();
-        })
-        $("#btnback").click(function(){
-        	history.back();
-        })
+        
         });
     </script>
 </body>

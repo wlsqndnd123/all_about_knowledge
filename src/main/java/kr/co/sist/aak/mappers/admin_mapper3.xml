@@ -6,7 +6,7 @@
 	<select id="selectAllCategory" resultType ="EduCategoryManagementDomain">
 	select CAT_CODE,CAT_NAME
 	from CAT_CODE
-	where PRIME_CAT_CODE is null
+	where PRIME_CAT_CODE ='N/A'
 	order by CAT_CODE asc
 	</select>
 	<select id ="selectSubCat" resultType="EduCategoryManagementDomain">
@@ -17,7 +17,24 @@
 	<select id="selectCatcodeMaxval" resultType ="String">
 	select max(CAT_CODE) from CAT_CODE 
 	</select>
-	<!-- <insert id="insertEduCategory" parameterType="EduCategoryManagementVO">
+	
+	<insert id="insertEduCategory" parameterType="EduCategoryManagementVO">
+	insert into CAT_CODE 
+	(CAT_CODE, CAT_NAME, PRIME_CAT_CODE) values
+	(#{cat_code},#{cat_name},#{prime_cat_code})
+	</insert>
+	
+	<select id="selectMaxvalue" resultType="String">
+	select max(CAT_CODE) from CAT_CODE
+	</select>
+	
+	<select id ="select_prime_cat_code" resultType="String" parameterType="String">
+	select PRIME_CAT_CODE
+	from CAT_CODE
+	where cat_code=#{cat_code}
+	</select>
+	
+	<!-- <insert >
 	insert into SUBJECT_CODE (SUB_CODE,SUB_NAME,CAT_CODE, CAT_NAME)
 	values('-','-',#{cat_code},#{cat_name})
 	</insert>

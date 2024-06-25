@@ -161,7 +161,7 @@
   $(function() {
     function checknull() {
         let isValid = true;
-        $('#frm input[type="email"], #frm input[type="file"]').each(function() {
+        $('#frm input[type="text"], #frm input[type="file"]').each(function() {
             if ($(this).val().trim() === '') {
                 isValid = false;
                 alert($(this).attr('name') + ' 입력값이 비어 있습니다.');
