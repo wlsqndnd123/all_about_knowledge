@@ -117,9 +117,8 @@
 										id="form2Example3" /> <label class="form-check-label"
 										for="form2Example3"> Remember me </label>
 								</div> --> <!-- http://localhost/all_about_knowledge/instructor/findPw.do -->
-								<form action="http://localhost/all_about_knowledge/instructor/findPw.do" method="post" id="findPwBtn">
-								Forgot password?
-								</form>
+								
+								<a href="http://localhost/all_about_knowledge/instructor/findPw.do">Forgot password?</a>
 							</div>
 
 							<div class="text-center text-lg-start mt-4 pt-2">
@@ -130,7 +129,7 @@
 								<!-- <p class="small fw-bold mt-2 pt-1 mb-0">
 									Don't have an account? <a href="#!" class="link-danger">Register</a>
 								</p> -->
-							</div>
+							</div>  
 
 						</form>
 					</div>
