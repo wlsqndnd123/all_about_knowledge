@@ -6,67 +6,67 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
 	// 학생 마이페이지 --- 홈 (대시보드)
-	@GetMapping("/mypage_home.do")
+	@GetMapping("/mypage/mypage_home.do")
 	public String myPageHome(){
 		return "student/my_page/home_dashboard";
 	}
 	
 	// 학생 마이페이지 --- 나의 강의
-	@GetMapping("/my_lecture.do")
+	@GetMapping("/mypage/my_lecture.do")
 	public String lecture(){
 		return "student/my_page/my_lecture";
 	}
 	
 	// 학생 마이페이지 --- 나의 강의 -- 상세
-	@GetMapping("/my_lecture_detail.do")
+	@GetMapping("/mypage/my_lecture_detail.do")
 	public String lectureDetail(){
 		return "student/my_page/my_lecture_detail";
 	}
 	
 	// 학생 마이페이지 --- 나의 강의 -- 재생
-	@GetMapping("/play_lecture.do")
+	@GetMapping("/mypage/play_lecture.do")
 	public String playLecture(){
 		return "student/my_page/play_lecture";
 	}
 	
 	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 확인
-	@GetMapping("/exam_confirm.do")
+	@GetMapping("/mypage/exam_confirm.do")
 	public String examConfirm(){
 		return "student/my_page/exam_confirm";
 	}
 	
 	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 응시
-	@GetMapping("/exam.do")
+	@GetMapping("/mypage/exam.do")
 	public String exam(){
 		return "student/my_page/exam";
 	}
 	
 	// 학생 마이페이지 --- 관심 강의
-	@GetMapping("/interest_lecture.do")
+	@GetMapping("/mypage/interest_lecture.do")
 	public String interestLecture(){
 		return "student/my_page/interest_lecture";
 	}
 	
 	// 학생 마이페이지 --- 나의 문의
-	@GetMapping("/my_question.do")
+	@GetMapping("/mypage/my_question.do")
 	public String question(){
 		return "student/my_page/my_question";
 	}
 	
 	// 학생 마이페이지 --- 개인정보수정 -- 사용자 검증 모달
-	@GetMapping("/edit_information.do")
+	@GetMapping("/mypage/edit_information.do")
 	public String information(){
 		return "student/my_page/edit_information";
 	}
 	
 	// 학생 마이페이지 --- 개인정보수정
-	@GetMapping("/edit_profile.do")
+	@GetMapping("/mypage/edit_profile.do")
 	public String edit_profile(){
 		return "student/my_page/edit_profile";
 	}
 	
 	// 학생 마이페이지 --- 탈퇴
-	@GetMapping("/withdrawal.do")
+	@GetMapping("/mypage/withdrawal.do")
 	public String withdrawal(){
 		return "student/my_page/withdrawal";
 	}

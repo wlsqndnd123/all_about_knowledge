@@ -38,9 +38,9 @@ Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 <div class="mypage_content_div">
 	<!-- breadcrumb 표시 -->
 	<div class="ui small breadcrumb div_margin">
-	  <a class="section" href="${pageContext.request.contextPath}/mypage_home.do">나의강의실</a>
+	  <a class="section" href="${pageContext.request.contextPath}/mypage/mypage_home.do">나의강의실</a>
 	  <i class="right chevron icon divider"></i>
-	  <a class="section" href="${pageContext.request.contextPath}/my_lecture.do">나의강의</a>
+	  <a class="section" href="${pageContext.request.contextPath}/mypage/my_lecture.do">나의강의</a>
 	  <i class="right chevron icon divider"></i>
 	  <div class="active section">시험</div>
 	</div>

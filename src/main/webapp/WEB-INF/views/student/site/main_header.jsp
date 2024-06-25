@@ -13,7 +13,7 @@
 			$("#frmGet").submit();
 		}); // click */
 		$('#login').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/login.do';
+            window.location.href = '${pageContext.request.contextPath}/student/login.do';
         });
 		$('#logout').click(function(){
             window.location.href = '${pageContext.request.contextPath}/index.do';
@@ -37,7 +37,7 @@
 </div>
   <div class="right menu">
   <!-- <form id="frmGet" method="get"> --> 
-  <a class="item" id="btnHome" href="http://localhost/all_about_knowledge/mypage_home.do">마이페이지</a>
+  <a class="item" id="btnHome" href="http://localhost/all_about_knowledge/mypage/mypage_home.do">마이페이지</a>
   <a class="item" id="btnLecture" href="http://localhost/all_about_knowledge/lecture_list.do">개설강좌</a>
   <a class="item" id="login">로그인</a>
   <a class="item" id="logout">로그아웃</a>

@@ -12,9 +12,11 @@ public class LoginController {
 	 * 작성일 : 2024.06.23
 	 * @return 로그인,회원가입 jsp의 경로
 	 */
-	@GetMapping("/login.do")
+	@GetMapping("/student/login.do")
 	public String login(){
 		return "student/login_join";
 	}
+	
+	
 	
 }
