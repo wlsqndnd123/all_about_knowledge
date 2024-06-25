@@ -119,26 +119,35 @@ $(document).ready(function () {
         }
     });
 
+    
     // Form submit
-    // $('form.signup-form').submit(function (event) {
-    //     event.preventDefault();
-    //     if (usernameError == true || emailError == true || passwordError == true || passConfirm == true || userIdError == true || birthError == true) {
-    //         $('.name, .email, .pass, .passConfirm, .userId, .birth').blur();
-    //     } else {
-    //         $('.signup, .login').addClass('switched');
+    $('form.signup-form').submit(function (event) {
+        event.preventDefault();
 
-    //         setTimeout(function () { $('.signup, .login').hide(); }, 700);
-    //         setTimeout(function () { $('.brand').addClass('active'); }, 300);
-    //         setTimeout(function () { $('.heading').addClass('active'); }, 600);
-    //         setTimeout(function () { $('.success-msg p').addClass('active'); }, 900);
-    //         setTimeout(function () { $('.success-msg a').addClass('active'); }, 1050);
-    //         setTimeout(function () { $('.form').hide(); }, 700);
-    //     }
-    // });
-
-    $('#joinBtn').click(function () {
-       $("#signup-form").submit();
+        if (usernameError == true || emailError == true || passwordError == true || passConfirm == true || userIdError == true || birthError == true) {
+            $('.name, .email, .pass, .passConfirm, .userId, .birth').blur();
+        } else {
+            var formData = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: '/all_about_knowledge/join.do',
+                data: formData,
+                success: function () {
+                    $('.signup, .login').addClass('switched');
+                    setTimeout(function () { $('.signup, .login').hide(); }, 700);
+                    setTimeout(function () { $('.brand').addClass('active'); }, 300);
+                    setTimeout(function () { $('.heading').addClass('active'); }, 600);
+                    setTimeout(function () { $('.success-msg p').addClass('active'); }, 900);
+                    setTimeout(function () { $('.success-msg a').addClass('active'); }, 1050);
+                    setTimeout(function () { $('.form').hide(); }, 700);
+                },
+                error: function () {
+                    alert('회원가입 중 오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            });
+        }
     });
+
 
     // Reload page
     $('a.profile').on('click', function () {

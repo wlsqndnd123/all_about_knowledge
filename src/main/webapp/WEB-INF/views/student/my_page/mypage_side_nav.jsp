@@ -9,27 +9,27 @@ Desc : 사용자(학생)의 마이페이지 좌측 네비게이션
     <script type = "text/javascript">
 	$(function() {
 		$('#home').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/mypage_home.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/mypage_home.do';
         });
 		
  		$('#dashBoard').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/mypage_home.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/mypage_home.do';
         });
         
 		$('#myLecture').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/my_lecture.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture.do';
         });
 		$('#interest').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/interest_lecture.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/interest_lecture.do';
         });
 		$('#question').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/my_question.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/my_question.do';
         });
 		$('#myInfo').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/edit_information.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/edit_information.do';
         });
 		$('#withdraw').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/withdrawal.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/withdrawal.do';
         });
 	}); // ready
 </script>

@@ -32,7 +32,7 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 				  .modal('show');
 				
 				$('#confirm').click(function(){
-		            window.location.href = '${pageContext.request.contextPath}/exam.do';
+		            window.location.href = '${pageContext.request.contextPath}/mypage/exam.do';
 		        });
 			}); // ready
 		</script>
