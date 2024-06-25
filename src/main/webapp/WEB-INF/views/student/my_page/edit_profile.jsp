@@ -7,6 +7,7 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info = "" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -74,7 +75,7 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 					    	<div class="field"></div>
 						    <div class="field">
 								<label>아이디</label>
-								<input name="userId" type="text">
+								<input name="userId" type="text" value="<sec:authentication property='name'/>" readonly>
 						    </div>
 						    <div class="field">
 							    <label>이름</label>
