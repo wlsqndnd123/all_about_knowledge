@@ -3,4 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.student.mypage.my_lecture">
+
+	<!-- 신규 업로드 강의 -->
+    <select id="selectNewLectureList" parameterType="String" resultType="int">
+        SELECT COUNT(SUB_CODE)
+        FROM STD_SUBJECT
+        WHERE std_id = #{stdId}
+    </select>
+
+    <!-- 진행 중인 강의 -->
+    <select id="selectProcessLectureList" parameterType="String" resultType="int">
+        SELECT COUNT(SUB_CODE)
+        FROM STD_SUBJECT
+        WHERE std_id = #{stdId} and apply = 'P'
+    </select>
+    
+    <!-- 완료된 강의 -->
+    <select id="selectCompleteLectureList" parameterType="String" resultType="int">
+        SELECT COUNT(SUB_CODE)
+        FROM STD_SUBJECT
+        WHERE std_id = #{stdId} and apply = 'C'
+    </select>
+
+
 </mapper>

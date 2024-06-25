@@ -15,9 +15,7 @@ Desc : 사용자(학생)의 마이페이지 나의강의 화면
 <title>마이페이지 - 나의강의</title>
 <link rel="icon" href="/all_about_knowledge/favicon.png">
 <link rel="stylesheet" type="text/css" href="/all_about_knowledge/front/student/css/semantic.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 <style type = "text/css">
 </style>

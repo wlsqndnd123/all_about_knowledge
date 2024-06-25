@@ -9,7 +9,6 @@ Desc : 사용자(학생)의 마이페이지 상단 네비게이션
     info = "" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(function() {
         $("#logout").click(function() {
