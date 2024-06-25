@@ -386,9 +386,9 @@
                         <c:forEach var="notice" items="${noticelist}">
                             <tr>
                                 <td><c:out value="${notice.noti_no}"/></td>
-                                <td><a href="#"><c:out value="${notice.title}"/></a></td>
+                                <td><a href="notice_detail.do?noti_no=${notice.noti_no }"><c:out value="${notice.title}"/></a></td>
                                 <td><c:out value="${notice.sub_code}"/></td>
-                                <td><c:out value="${notice.write_date}"/></td>
+                                <td><c:out value="${notice.write_date}" /></td>
                             </tr>
                         </c:forEach>
                     </c:otherwise>
@@ -396,7 +396,7 @@
             </tbody>
         </table>
         <a href="notice_write.do"><button>공지작성</button></a>
-        <a href="notice_update.do"><button>공지수정</button></a>
+       
         <!-- /main -->
       </div>
             

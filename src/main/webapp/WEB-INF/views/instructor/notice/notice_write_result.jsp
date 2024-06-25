@@ -21,6 +21,13 @@
     <link href="http://localhost/all_about_knowledge/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+ <script type="text/javascript">
+  $(function(){
+	  $("#btnback").click(function(){
+	  })
+  })
+  
+  </script>
 <style type="text/css">
   
   
@@ -72,6 +79,23 @@
   }
 </style>
 </head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+   
+	$(document).ready(function(){
+	    // 완료 버튼 클릭 시
+	    $("#updateSubmit").click(function(){
+	        if(confirm("변경 내용을 저장 하시겠습니까?")) {
+	            // 폼의 액션을 변경하고 서브밋
+	            $("#frmpost").attr("action", "notice_write_pr.do");
+	            $("#frmpost").submit();
+	        } else {
+	            // 취소 시 동작
+	        }
+	    });
+	});
+</script>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -332,24 +356,13 @@
                 <!-- End of Topbar -->
 <!-- main -->
 <div class="main">
-    <h3>공지사항 작성</h3>
+    <h3>공지사항 작성완료!</h3>
     
-    <form method="post" name="frmDetail" id="frmDetail" action="exam_write.do">
-        <input type="hidden" name="num" />
-        <table>
-             <td colspan="2"><input type="text" class="sub_code" id="sub_code" readonly/></td>
-                 </tr>
-      <tr>
-                <td colspan="6"><input type="text" class="title" id="title" placeholder="제목" id="title"/></td> 
-            </tr>
-            <tr>
-                 <td colspan="6"><textarea rows="5" placeholder="내용"></textarea></td>
-            </tr>
-        </table>
-           <div class="btn-container">
-                    <input type="button" id="btn_ok" value="작성완료" class="btn btn-info btn-sm"/>
-                    <input type="button" id="btn_cancel" value="취소" class="btn btn-info btn-sm"/>
-            </div>
+    <form method="post" name="frmpost" id="frmpost" action="notice_write_pr.do">
+        
+          
+            <input type="button" class="btn btn-light btn-sm me-md-2" value="목록으로" id="btnback" style="margin-top: 50px; float: right;"/>
+         <a href="notice.do"> <button>목록으로</button></a>
     </form>
 </div>
 <!-- /main -->
