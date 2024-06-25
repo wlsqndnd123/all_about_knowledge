@@ -179,13 +179,14 @@
 
   th {
     text-align: left;
-  }
-
-  thead {
-    font-weight: bold;
+     font-weight: bold;
     color: #fff;
     background: #73685d;
+    padding: 1em .5em;
+    vertical-align: middle;
   }
+
+  
 
   td, th {
     padding: 1em .5em;
@@ -218,11 +219,11 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-		<jsp:include page="common/instructor_sidebar.jsp"></jsp:include>
-        <!-- Sidebar -->
-      <!--   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            Sidebar - Brand
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="instructor_index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
@@ -230,10 +231,10 @@
                 <div class="sidebar-brand-text mx-3">AAk 강사메인</div>
             </a>
 
-            Divider
+            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            탭 메뉴
+            <!-- 탭 메뉴 -->
             <li class="nav-item active">
                 <a class="nav-link" href="lectureManage/lectureList.do">  
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -260,7 +261,7 @@
             </li>
 
 
-        </ul> -->
+        </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -486,7 +487,6 @@
         </select>
     </div>
      <div>전체수강인원:</div>
-    <div>전체 시험 미응시학생</div>
 
     <div class="search-box-container">
         <div class="small-selectbox">
@@ -525,7 +525,14 @@
                                         <td>${student.sub_code}</td>
                                         <td>${student.status}</td>
                                          <td>${student.score}</td>
-                                <td>${student.TRY}</td>
+                                <td><c:choose>
+                        <c:when test="${student.TRY eq 0}">
+                            미응시
+                        </c:when>
+                        <c:otherwise>
+                            ${student.TRY}
+                        </c:otherwise>
+                    </c:choose></td>
                                         
                                     </tr>
                                 </c:forEach>

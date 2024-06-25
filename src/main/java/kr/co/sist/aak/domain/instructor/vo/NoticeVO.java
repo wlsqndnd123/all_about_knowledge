@@ -8,26 +8,28 @@ import lombok.Setter;
 import lombok.ToString;
 
 public class NoticeVO {
-	private String noti_no,title,content,status,sub_code;
+	private String NOTI_NO,title,INST_ID,content,status,SUB_CODE;
 	private Date write_date;
-	public NoticeVO(String noti_no, String title, String content, String status, String sub_code, Date write_date) {
+	public NoticeVO(String nOTI_NO, String title, String iNST_ID, String cONTENT, String status, String SUB_CODE,
+			Date write_date) {
 		super();
-		this.noti_no = noti_no;
+		this.NOTI_NO = nOTI_NO;
 		this.title = title;
-		this.content = content;
+		this.INST_ID = iNST_ID;
+		this.content = cONTENT;
 		this.status = status;
-		this.sub_code = sub_code;
+		this.SUB_CODE = SUB_CODE;
 		this.write_date = write_date;
 	}
 	public NoticeVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getNoti_no() {
-		return noti_no;
+	public String getNOTI_NO() {
+		return NOTI_NO;
 	}
-	public void setNoti_no(String noti_no) {
-		this.noti_no = noti_no;
+	public void setNOTI_NO(String nOTI_NO) {
+		this.NOTI_NO = nOTI_NO;
 	}
 	public String getTitle() {
 		return title;
@@ -35,11 +37,17 @@ public class NoticeVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
+	public String getINST_ID() {
+		return INST_ID;
+	}
+	public void setINST_ID(String iNST_ID) {
+		this.INST_ID = iNST_ID;
+	}
+	public String getCONTENT() {
 		return content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setCONTENT(String cONTENT) {
+		this.content = cONTENT;
 	}
 	public String getStatus() {
 		return status;
@@ -48,10 +56,10 @@ public class NoticeVO {
 		this.status = status;
 	}
 	public String getSub_code() {
-		return sub_code;
+		return SUB_CODE;
 	}
 	public void setSub_code(String sub_code) {
-		this.sub_code = sub_code;
+		this.SUB_CODE = sub_code;
 	}
 	public Date getWrite_date() {
 		return write_date;
@@ -61,9 +69,10 @@ public class NoticeVO {
 	}
 	@Override
 	public String toString() {
-		return "NoticeVO [noti_no=" + noti_no + ", title=" + title + ", content=" + content + ", status=" + status
-				+ ", sub_code=" + sub_code + ", write_date=" + write_date + "]";
+		return "NoticeVO [NOTI_NO=" + NOTI_NO + ", title=" + title + ", INST_ID=" + INST_ID + ", CONTENT=" + content
+				+ ", status=" + status + ", sub_code=" + SUB_CODE + ", write_date=" + write_date + "]";
 	}
+	
 	
 	
 

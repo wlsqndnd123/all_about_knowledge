@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <title>AAK</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+   <!--  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -23,48 +24,77 @@
 </head>
 
 <style type="text/css">
-    form {
-        max-width: 800px;
-        margin: 20px auto;
-        text-align: center;
-    }
+  
+  
+  body {
+    padding: 0;
+    background: #f5f5f5;
+  }
+ 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+ 
 
-   
-    .sub {
-        width: 300px;
-        margin: 20px 0;
-    }
-    .test-box {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-    }
-    textarea {
-        width: 400px;
-        height: 100px;
-        margin-bottom: 10px;
-    }
-    .test-box input[type="text"] {
-        width: 400px;
-        margin-bottom: 5px;
-    }
-    #btn-write, #btn-update {
-        margin-top: 20px;
-    }
+  
+ th {
+    background: #73685d;
+    color: #fff;
+  }
+
+  
+
+ th, td {
+    padding: 0.75em;
+    text-align: left;
+  }
+
+ td {
+    border-bottom: 1px solid #ddd;
+  }
+
+  a {
+    color: #73685d;
+  }
+
+ .title, textarea {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+ 
+
+ 
+  }
 </style>
-<script type="text/javascript">
-    $(function(){
-        $("#btn-write").click(function(){
-        
-        });
-        $("#btn-update").click(function(){
-            
-        });
-    
-    });
-</script>
+ 
 </head>
+<script type="text/javascript">
+$(document).ready(function(){
+   
+
+    // 완료 버튼 클릭 시
+    $("#updateSubmit").click(function(){
+        if(confirm("변경내용을 저장 하시겠습니까?")) {
+            $("#frmPost").attr("action", "notice_update.do");
+            $("#frmPost").submit();
+          
+        } else {
+           
+        }
+    });
+
+    var cnt = "${cnt}";
+    if (cnt == 1) {
+        alert("수정 완료");
+        var notiNo = "${nDomain.noti_no}";
+        location.href = "notice_detail.do?noti_no=" + notiNo; // GET 방식으로 상세 페이지 조회
+    }
+});
+</script>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -324,40 +354,27 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- main -->
-<div>
-    <c:catch var="e">
-        <form>
-            <div id="test">
-            
-                <td>과목:</td><input type="text" name="SUB_CODE" class="sub" id="sub" readonly/>
-                <c:choose>
-                    <c:when test="${empty examlist}">
-                        <p>문제가 없습니다.</p>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach var="exam" items="${examlist}">
-                            <div class="test-box">
-                            <textarea >${exam.CONTENT }</textarea><br>
-                              1번 보기 <input type="text" value="${exam.EX_1}"/><input type="radio" name="SOLUTION1" /><br>
-                                2번 보기 <input type="text" value="${exam.EX_2}"/><input type="radio" name="SOLUTION1" /><br>
-                                3번 보기 <input type="text"value="${exam.EX_3}"/><input type="radio" name="SOLUTION1" /><br>
-                                4번 보기 <input type="text"value="${exam.EX_4}"/><input type="radio" name="SOLUTION1" /><br>
-                         		 정답: <input type="text" value="${exam.SOLUTION}"/><br>
-                       
-                            </div>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-        </form>
-    </c:catch>
-    <c:if test="${not empty e}">
-        조회 중 오류가 발생했습니다.
-    </c:if>
+<div class="main">
+    <h3>공지사항 상세</h3>
     
+    <form action="notice_detail.do" id="frmPost" method="post">
+        <input type="hidden" name="noti_no" value="${ nDomain.noti_no }" /> 
+        <table>
+            <tr>
+                <td colspan="6">
+                    <input type="text" class="title" value="${ nDomain.title }" id="title" name="title" placeholder="제목"/>
+                </td> 
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <textarea rows="5" name="content" id="content" placeholder="내용" >${ nDomain.content }</textarea>
+                </td>
+            </tr>
+        </table>
+        
+        <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit" style="margin-top: 50px; float: right;"/>
+    </form>
 </div>
-<a href="exam_write.do"><button>문제작성</button></a>
-<a href="exam_update.do"><button>문제수정</button></a>
 <!-- /main -->
                
 
