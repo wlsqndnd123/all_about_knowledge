@@ -154,7 +154,23 @@ public class NoticeManagementDAO {
 		mbDAO.closeHanlder(ss);
 		return list;
 	}
-
+	
+	public int selectResvCnt() throws PersistenceException{
+	int cnt =0;
+	MybatisDAO mbDAO = MybatisDAO.getInstance();
+	SqlSession ss = mbDAO.getMyBatisHandler(false);
+	cnt = ss.selectOne("kr.co.sist.aak.admin.selectResvCnt");
+	mbDAO.closeHanlder(ss);
+	return cnt;
+}
+	public List<NoticeManagementDomain> selectResvTitle() throws PersistenceException{
+		List<NoticeManagementDomain> list = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		list = ss.selectList("kr.co.sist.aak.admin.selectResvTitle");
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
 //	public static void main(String[] args) {
 //		new NoticeManagementDAO().selectNoticeTitle("DAO");
 //	}
