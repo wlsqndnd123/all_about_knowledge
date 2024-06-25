@@ -3,13 +3,13 @@ package kr.co.sist.aak.module.student.myPage.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * Desc : 마이페이지의 각 페이지를 연결하는 controller
+ * @author 고한별
+ * 작성일 : 2024.06.25
+ */
 @Controller
 public class MyPageController {
-	// 학생 마이페이지 --- 홈 (대시보드)
-	@GetMapping("/mypage/mypage_home.do")
-	public String myPageHome(){
-		return "student/my_page/home_dashboard";
-	}
 	
 	// 학생 마이페이지 --- 나의 강의
 	@GetMapping("/mypage/my_lecture.do")

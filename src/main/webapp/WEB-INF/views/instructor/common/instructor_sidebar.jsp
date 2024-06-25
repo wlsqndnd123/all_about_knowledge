@@ -34,12 +34,12 @@
 		   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" 
-            href="http://localhost/all_about_knowledge/instructor/loginProcess.do">
-                <div class="sidebar-brand-icon rotate-n-15">
+                       <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3" style="font-size: 20px;">AAk 강사메인</div>
+                <div class="sidebar-brand-text mx-3" style="font-size: 20px;">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" 
+            href="http://localhost/all_about_knowledge/instructor_home.do">AAk 강사메인</a></div>
             </a>
 
             <!-- Divider -->

@@ -53,7 +53,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
       전체 수강 강의 수
     </div>
     <div class="value">
-      8
+      ${totalLectureCount}
     </div>
   </div>
   <div class="statistic ui segment div_margin trim_width">
@@ -61,7 +61,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
       진행 중인 강의 수
     </div>
     <div class="value">
-      3
+      ${processLectureCount}
     </div>
   </div>
   <div class="statistic ui segment div_margin trim_width">
@@ -69,7 +69,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
       완료된 강의 수
     </div>
     <div class="value">
-      5
+      ${completeLectureCount}
     </div>
   </div>
 </div>
