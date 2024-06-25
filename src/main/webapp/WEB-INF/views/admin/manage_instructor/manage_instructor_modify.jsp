@@ -112,7 +112,7 @@
                            <div class="mb-3">
 					<label for="exampleFormControlTextarea1" class="form-label">현 강사 이미지</label>
 					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                           <img src="http://localhost/all_about_knowledge/upload/${ nmd.image }"  class="card-img-top" alt="...">
+                           <img src="http://localhost/all_about_knowledge/upload/${ imd.image }"  class="card-img-top" alt="...">
                             </div>
 					</div>
 					<div class="mb-3">

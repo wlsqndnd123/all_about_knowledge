@@ -129,7 +129,7 @@ th,td,tr{font-size: 12px;}
                     <table id ="notice" class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
-                    <th><a href ="manage_notification_noti_no">번호</a></th>
+                    <th>번호</th>
                     <th style="width: 60%"><a>공지사항 제목</a></th>
                     <th><a>날짜</a></th>
                     <th><a>상태</a></th>

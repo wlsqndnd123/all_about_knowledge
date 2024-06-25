@@ -4,6 +4,9 @@
 <html lang="en">
 <style>
 th,td,tr{font-size: 12px;}
+.align{
+vertical-align: middle;
+}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -109,8 +112,9 @@ th,td,tr{font-size: 12px;}
                     --> <label>상위 교육 카테고리 명  </label>
                    <!--  </select> -->
                     <input type="button" class="btn btn-outline-primary btn-sm" value="조회" id ="catbtn"/>
-                    <a href =".do"></a><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
-                    <div id ="educatOutput"  style="text-align: center;margin: auto;"></div>
+                    <a href ="manage_edu_cat_add.do"><input type="button" class="btn btn-outline-primary btn-sm" value="상위 카테고리 추가" id ="catbtnAdd"/></a>
+                    <div id ="educatOutput"  style="text-align: center;margin: auto;">
+                    </div>
                     </div>
                   <!--   <div id ="edusubOutput" style="text-align: center;margin: auto;"></div> -->
                         </div>
@@ -124,7 +128,7 @@ th,td,tr{font-size: 12px;}
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
         $(function() {
-        	 $("#catbtn").click(function() {
+        	 /* $("#catbtn").click(function() { */
                  $.ajax({
                      url: "manage_edu_cat_list.do",
                      type: "GET",
@@ -134,28 +138,35 @@ th,td,tr{font-size: 12px;}
                          alert("서버 오류 발생");
                      },
                      success: function(jsonObj) {
-                         var output = "<table class='table table-hover' style='margin: auto; text-align: center;'>";
+                         var output = "<table class='table table-hover align' style='margin: auto; text-align: center;'>";
                         
                          $.each(jsonObj.list, function(i, jsonTemp) {
                              var outputId = 'edusubOutput' + i;
-                             output += "<tr><td>" + jsonTemp.cat_name + "</td>";
-                             output += "<td><input type='button' class='btn btn-outline-primary btn-sm' value='조회' onclick='searchSubcat(\"" + jsonTemp.cat_code + "\", \"" + outputId + "\")'/></td></tr>";
+                             output += "<tr><td style='vertical-align: middle;'>" + jsonTemp.cat_name + "</td>";
+                             output += "<td class='align'><input type='button' class='btn btn-outline-primary btn-sm' value='조회' onclick='searchSubcat(\"" + jsonTemp.cat_code + "\", \"" + outputId + "\")'/></td></tr>";
                              output += "<tr><td colspan='2'><div id='" + outputId + "' style='display: none;'></div></td></tr>";
                          });
                          output += "</table>";
                          $("#educatOutput").html(output).show(); // 카테고리 정보를 표시하고 출력
                      }
                  }); // ajax
-             }); // click
+           /*   }); // click */
 
              // 접기 버튼 이벤트 리스너 추가
              $(document).on("click", "[id^=btnfold1_]", function(){
                  var id = $(this).attr('id').replace('btnfold1_', '');
                  $("#edusubOutput" + id).toggle();
              });
-         });
+       
+        $("#catbtnAdd").click(function(){
+        	
+        })
+        
+        
+        });
 
          function searchSubcat(cat_code, outputId) {
+        	 var cat_code =cat_code;
              $.ajax({
                  url: "manage_edu_subcat_list.do",
                  type: "GET",
@@ -167,12 +178,12 @@ th,td,tr{font-size: 12px;}
                  },
                  success: function(jsonObj) {
                      var output = "<table class='table table-hover' style='margin: auto; width:70%;text-align:center;'>"
-                    	 +"<tr><td>하위 교육 카테고리</td>"
-                     +"<td ><input type ='button' class = 'btn btn-outline-primary btn-sm' value ='추가'/></td></tr>";
+                    	 +"<tr><td class='align' style='vertical-align: middle;'>하위 교육 카테고리</td>"
+                     +"<td  clss='align'><a href='manage_edu_cat_add.do?prime_cat_code="+cat_code+"'><input type ='button' class = 'btn btn-outline-primary btn-sm' value ='추가'/></a></td></tr>";
                      $.each(jsonObj.list, function(i, jsonTemp) {
-                         output += "<tr><td >" + jsonTemp.cat_name + "</td></tr>";
+                         output += "<tr><td  clss='align'>" + jsonTemp.cat_name + "</td></tr>";
                      });
-                     output += "<tr><td style ='text-align:right;'><input type='button' class='btn btn-link btn-sm' value='접기' id='btnfold2_" + outputId + "'/></td><tr>"
+                     output += "<tr><td class='align' style ='text-align:right;'><input type='button' class='btn btn-link btn-sm' value='접기' id='btnfold2_" + outputId + "'/></td><tr>"
                     +"</table>"
                      
                      $("#" + outputId).html(output).show(); // 데이터를 불러온 후에 표시
