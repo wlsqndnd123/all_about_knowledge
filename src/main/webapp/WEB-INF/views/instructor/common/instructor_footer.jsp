@@ -44,10 +44,16 @@
 		<footer class="sticky-footer bg-white">
 			<div class="container my-auto">
 				<div class="copyright text-center my-auto">
-					<span>Copyright &copy; all about knowledge 2024</span>
+					<span>Copyright © all about knowledge <span id="thisYear"/></span>
 				</div>
 			</div>
 		</footer>
 	</div>
+	<script>
+const _date = new Date();
+const _year = _date.getFullYear();
+const thisYear = document.getElementById('thisYear');
+thisYear.innerText = _year;
+</script>
 </body>
 </html>

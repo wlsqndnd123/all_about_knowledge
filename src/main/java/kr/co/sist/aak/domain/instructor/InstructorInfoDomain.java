@@ -1,4 +1,5 @@
-package kr.co.sist.aak.domain.instructor.vo;
+package kr.co.sist.aak.domain.instructor;
+
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class InstructorInfoVO {
+public class InstructorInfoDomain {
 
 	private String id, name, email, introduce, image, phone, education, major_subject;
 	

@@ -303,7 +303,7 @@
     <div id="lec_info" class="d-flex flex-column" style="flex: 1;">
         <div class="mb-3">
             <label class="form-label" style="font-size: 18px">java 왕기초 4주 단기완성</label>
-            <a href="http://localhost/all_about_knowledge/lectureManage/lectureEntrance.do">
+            <a href="http://localhost/all_about_knowledge/instructor/lectureManage/lectureEntrance.do">
                 <input type="button" value="강의실 입장" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px">
             </a>
         </div>

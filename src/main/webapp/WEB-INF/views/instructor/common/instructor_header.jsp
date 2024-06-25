@@ -129,7 +129,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle"
                                     src="http://localhost/all_about_knowledge/resources/img/profile.jpg">
-                                <a href="http://localhost/all_about_knowledge/instructor/instructor_index.do" ><span class="mr-2 d-none d-lg-inline text-gray-600 small" style="padding-left: 20px; font-size:15px">logout</span></a>
+                                <a href="http://localhost/all_about_knowledge/instructor_index.do" ><span class="mr-2 d-none d-lg-inline text-gray-600 small" style="padding-left: 20px; font-size:15px">logout</span></a>
                             </a>
                             <!-- 오른쪽 상단 이미지 클릭 메뉴 -->
                             <!-- Dropdown - User Information -->
