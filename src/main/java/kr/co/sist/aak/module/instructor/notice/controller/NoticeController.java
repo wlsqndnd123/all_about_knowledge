@@ -21,6 +21,7 @@ import kr.co.sist.aak.domain.instructor.vo.NoticeVO;
 import kr.co.sist.aak.module.instructor.notice.service.NoticeService;
 
 @Controller
+@RequestMapping("/instructor")
 public class NoticeController {
 	
 	@Autowired(required = false)
