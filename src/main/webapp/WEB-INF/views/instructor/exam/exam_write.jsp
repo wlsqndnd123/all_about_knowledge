@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
     <title>AAK</title>
 
@@ -53,28 +54,12 @@
     
 </style>
 <script type="text/javascript">
-$(function(){
-    
-    $("#btn-add").click(function(){
-    	
-        const newIndex = $('.test-box').length + 1; 
-        
-        $("#test").append(`
-            <div class="test-box">
-                문제 : <textarea></textarea> <br>
-                번 보기 <input type="text"/> <input type="radio" name="SOLUTION${newIndex}" /><br>
-                번 보기 <input type="text"/> <input type="radio" name="SOLUTION${newIndex}" /><br>
-                번 보기 <input type="text"/> <input type="radio" name="SOLUTION${newIndex}" /><br>
-                번 보기 <input type="text"/> <input type="radio" name="SOLUTION${newIndex}" /><br>
-            </div>
-        `);//#test
-    });//btn-add
-    
-  
-    
-    
-});
-	
+    $(function() {
+        $(document).on("click", "#btn-end", function() {
+            $("#frm").attr("action", "exam_write_pr.do");
+            $("#frm").submit();
+        });
+    });
 </script>
 </head>
 <body id="page-top">
@@ -339,17 +324,20 @@ $(function(){
 <div class="container">
     <section class="box">
         <div class="box-contents">
-            <form>
+            <form action="exam.write_pr.do" id="frm" method="post">
                 <div id="test">
                     <h3>시험출제</h3>
-                    <td>과목:</td><input type="text" class="sub" id="sub" readonly/>
+                   
+                    <input type="hidden" name="SUB_CODE" value="SUB_000001">
                     <div class="test-box">
-                        문제 : <textarea></textarea> <br>
-                        1번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
-                        2번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
-                        3번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
-                        4번 보기 <input type="text"/> <input type="radio" name="SOLUTION1" /><br>
+                       <input type="hidden" value="${requestScope.Q_NO }" name="Q_NO"/>
+                        문제 : <textarea name="CONTENT"></textarea> <br>
+                        1번 보기 <input type="text" name="EX_1"/> <input type="radio" name="SOLUTION" value="1" /><br>
+                        2번 보기 <input type="text" name="EX_2"/> <input type="radio" name="SOLUTION" value="2" /><br>
+                        3번 보기 <input type="text" name="EX_3"/> <input type="radio" name="SOLUTION" value="3" /><br>
+                        4번 보기 <input type="text" name="EX_4"/> <input type="radio" name="SOLUTION" value="4" /><br>
                     </div>
+                   
                 </div>
                 <div class="text-end">
                     <input type="button" id="btn-add" value="문제추가" class="btn btn-sm btn-info"/>

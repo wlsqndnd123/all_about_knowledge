@@ -22,48 +22,37 @@
 
 </head>
 
+
 <style type="text/css">
     form {
+    
         max-width: 800px;
-        margin: 20px auto;
-        text-align: center;
+        margin-left: 20px;
     }
-
-   
     .sub {
-        width: 300px;
         margin: 20px 0;
     }
     .test-box {
+     background-color: #ccc;
         border: 1px solid #ccc;
         padding: 10px;
         margin-bottom: 10px;
         border-radius: 5px;
     }
     textarea {
-        width: 400px;
+        width: 600px;
         height: 100px;
-        margin-bottom: 10px;
     }
     .test-box input[type="text"] {
-        width: 400px;
-        margin-bottom: 5px;
+        width: 600px;
     }
-    #btn-write, #btn-update {
-        margin-top: 20px;
-    }
-</style>
-<script type="text/javascript">
-    $(function(){
-        $("#btn-write").click(function(){
-        
-        });
-        $("#btn-update").click(function(){
-            
-        });
+    .test-box input[type="text"],
+.test-box input[type="radio"] {
+    margin-left: 20px;
+}
     
-    });
-</script>
+</style>
+
 </head>
 <body id="page-top">
 
@@ -324,40 +313,17 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- main -->
-<div>
-    <c:catch var="e">
-        <form>
-            <div id="test">
-            
-                <td>과목:</td><input type="text" name="SUB_CODE" class="sub" id="sub" readonly/>
-                <c:choose>
-                    <c:when test="${empty examlist}">
-                        <p>문제가 없습니다.</p>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach var="exam" items="${examlist}">
-                            <div class="test-box">
-                            <textarea >${exam.CONTENT }</textarea><br>
-                              1번 보기 <input type="text" value="${exam.EX_1}"/><input type="radio" name="SOLUTION1" /><br>
-                                2번 보기 <input type="text" value="${exam.EX_2}"/><input type="radio" name="SOLUTION1" /><br>
-                                3번 보기 <input type="text"value="${exam.EX_3}"/><input type="radio" name="SOLUTION1" /><br>
-                                4번 보기 <input type="text"value="${exam.EX_4}"/><input type="radio" name="SOLUTION1" /><br>
-                         		 정답: <input type="text" value="${exam.SOLUTION}"/><br>
-                       
-                            </div>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-        </form>
-    </c:catch>
-    <c:if test="${not empty e}">
-        조회 중 오류가 발생했습니다.
-    </c:if>
-    
+<div class="container">
+  
+                    <h3>출제완료</h3>
+                    
+                <div class="text-end">
+                <a href="examList.do"><button>목록으로</button></a>
+                </div>
+            </form>
+        </div>
+    </section>
 </div>
-<a href="exam_write.do"><button>문제작성</button></a>
-<a href="exam_update.do"><button>문제수정</button></a>
 <!-- /main -->
                
 

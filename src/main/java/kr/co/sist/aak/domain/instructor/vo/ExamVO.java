@@ -2,22 +2,9 @@ package kr.co.sist.aak.domain.instructor.vo;
 
 public class ExamVO {
 
-	private String  SUB_CODE,CONTENT,EX_1,EX_2,EX_3,EX_4;
+	private String  SUB_CODE,CONTENT,EX_1,EX_2,EX_3,EX_4,SOLUTION;
 	private int Q_NO;
-	public ExamVO(String sUB_CODE, String cONTENT, String eX_1, String eX_2, String eX_3, String eX_4, int q_NO) {
-		super();
-		SUB_CODE = sUB_CODE;
-		CONTENT = cONTENT;
-		this.EX_1 = eX_1;
-		this.EX_2 = eX_2;
-		this.EX_3 = eX_3;
-		this.EX_4 = eX_4;
-		this.Q_NO = q_NO;
-	}
-	public ExamVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	public String getSUB_CODE() {
 		return SUB_CODE;
 	}
@@ -54,17 +41,41 @@ public class ExamVO {
 	public void setEX_4(String eX_4) {
 		this.EX_4 = eX_4;
 	}
+	public String getSOLUTION() {
+		return SOLUTION;
+	}
+	public void setSOLUTION(String sOLUTION) {
+		this.SOLUTION = sOLUTION;
+	}
 	public int getQ_NO() {
 		return Q_NO;
 	}
 	public void setQ_NO(int q_NO) {
-		this.Q_NO = q_NO;
+		Q_NO = Q_NO;
 	}
+	public ExamVO(String sUB_CODE, String cONTENT, String eX_1, String eX_2, String eX_3, String eX_4, String sOLUTION,
+			int q_NO) {
+		super();
+		this.SUB_CODE = sUB_CODE;
+		this.CONTENT = cONTENT;
+		this.EX_1 = eX_1;
+		this.EX_2 = eX_2;
+		this.EX_3 = eX_3;
+		this.EX_4 = eX_4;
+		this.SOLUTION = sOLUTION;
+		this.Q_NO = Q_NO;
+	}
+	public ExamVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Override
 	public String toString() {
 		return "ExamVO [SUB_CODE=" + SUB_CODE + ", CONTENT=" + CONTENT + ", EX_1=" + EX_1 + ", EX_2=" + EX_2 + ", EX_3="
-				+ EX_3 + ", EX_4=" + EX_4 + ", Q_NO=" + Q_NO + "]";
+				+ EX_3 + ", EX_4=" + EX_4 + ", SOLUTION=" + SOLUTION + ", Q_NO=" + Q_NO + "]";
 	}
+	
 	
 	
 }
