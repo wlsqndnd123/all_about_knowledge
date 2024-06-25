@@ -24,7 +24,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 	$(function() {
 		$('.progress').progress();
 		$('#playButton').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/play_lecture.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/play_lecture.do';
         });
 	}); // ready
 </script>
@@ -41,9 +41,9 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 <div class="mypage_content_div">
 <!-- breadcrumb 표시 -->
 	<div class="ui small breadcrumb div_margin">
-	  <a class="section" href="${pageContext.request.contextPath}/mypage_home.do">나의강의실</a>
+	  <a class="section" href="${pageContext.request.contextPath}/mypage/mypage_home.do">나의강의실</a>
 	  <i class="right chevron icon divider"></i>
-	  <a class="section" href="${pageContext.request.contextPath}/my_lecture.do">나의강의</a>
+	  <a class="section" href="${pageContext.request.contextPath}/mypage/my_lecture.do">나의강의</a>
 	  <i class="right chevron icon divider"></i>
 	  <div class="active section">강의상세</div>
 	</div>
@@ -73,7 +73,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
   	</div>
   	</div>
   	<div>&nbsp;</div>
-  	<a class="ui inverted mini red button" href="${pageContext.request.contextPath}/exam_confirm.do">시험응시</a>
+  	<a class="ui inverted mini red button" href="${pageContext.request.contextPath}/mypage/exam_confirm.do">시험응시</a>
   	<div>&nbsp;</div>
   	<p> <button class="ui inverted mini olive button">문의하기</button> </p>
     </div>

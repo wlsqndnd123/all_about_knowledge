@@ -34,7 +34,7 @@
 
             <div class="success-msg">
                <p> 회원 가입이 성공적으로 완료되었습니다 </p>
-               <a href="#" class="profile">마이페이지</a>
+               <a href="#" class="profile">로그인</a>
             </div>
          </div>
 
@@ -44,15 +44,15 @@
 
             <!-- Login Form -->
             <div class="login form-peice">
-               <form class="login-form" action="#" method="post">
+               <form class="login-form" action="/all_about_knowledge/login" method="post">
                   <div class="form-group">
                      <label for="userId">아이디</label>
-                     <input type="text" name="userId" id="userId" class="userId" required>
+                     <input type="text" name="username" id="userId" class="userId" required>
                   </div>
 
                   <div class="form-group">
                      <label for="loginPassword">비밀번호</label>
-                     <input type="password" name="loginPassword" id="loginPassword" required>
+                     <input type="password" name="password" id="loginPassword" required>
                   </div>
 
                   <div class="CTA">

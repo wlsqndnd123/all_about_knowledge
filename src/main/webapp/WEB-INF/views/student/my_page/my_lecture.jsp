@@ -26,7 +26,7 @@ Desc : 사용자(학생)의 마이페이지 나의강의 화면
 		$('.tabular.menu .item').tab();
 		$('.progress').progress();
 		$('#enter').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/my_lecture_detail.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
         });
 	}); // ready
 </script>

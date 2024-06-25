@@ -23,7 +23,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 <script type = "text/javascript">
 	$(function() {
 		$('#enterNeedExam').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/my_lecture_detail.do';
+            window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
         });
 	}); // ready
 </script>
