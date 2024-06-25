@@ -136,7 +136,6 @@ public class NoticemanagementController {
 	@RequestMapping( value = "manage_notification_status.do",
 			 method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String searchNoticeStatus(String status) {
-		// PageNation pn = new PageNation();
 		return nms.searchNoticeStatus(Integer.parseInt(status));
 	}
 	@GetMapping("manage_notifi_notify.do")
@@ -158,6 +157,12 @@ public class NoticemanagementController {
 		
 		return "/admin/manage_notification";
 		
+	}
+	@ResponseBody
+	@RequestMapping(value = "manage_notifi_resv.do",produces = "application/json;charset=UTF-8",
+	method = RequestMethod.GET)
+	public String searchResv() {
+		return nms.searchResvInfomation();
 	}
 	
 }

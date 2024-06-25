@@ -99,7 +99,22 @@ th,td,tr{font-size: 12px;}
             </div>
            <!-- row -->
         <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <!-- 아이디 정보 -->
+                <div></div>
+                <!-- 아이디 권한 정보  -->
+                <div></div>
+                
+                
+                <!-- 공지사항 정보 로드 -->
+                <div>
+                <table class="table table-hover">
+                <tbody id ="resvNotice">
+                
+                </tbody>
+                </table>
+                </div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
@@ -174,7 +189,27 @@ th,td,tr{font-size: 12px;}
 		        var status = $(this).val();  // 변경된 #status의 값을 가져옴
 		        searchStatus(status, table); // searchStatus 함수를 호출하고 새로운 status를 인자로 넘김
 		    });
+		$.ajax({
+			url: "manage_notifi_resv.do",
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.log(xhr.status + " : " + xhr.statusText);
+	            alert("서버 오류 발생");
+	        },
+	        success: function(jsonObj){
+	        	$("#resvNotice").empty();
+	        	var output ="<tr><td>예약 된 공지사항의 수</td><td>"+jsonObj.cnt+"건</td>";
+	        	$.each(jsonObj.list,function(i,jsonTemp){
+	        		output+="<tr><td>예약 된 공지사항 제목</td><td>"+jsonTemp.title+"</td></tr>";
+	        	})
+	        	$("#resvNotice").html(output);
+	        	
+	        }
 		});
+	  
+	  
+	  });
 
 		function searchStatus(status, table) {
 		    $.ajax({

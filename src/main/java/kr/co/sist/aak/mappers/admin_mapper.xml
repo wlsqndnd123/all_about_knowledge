@@ -102,5 +102,16 @@
 	set    STATUS = 'DELT'
 	where  NOTI_NO = #{noti_no}
 	</update>
+	<select id="selectResvCnt" resultType="int">
+	select count(NOTI_NO)
+from NOTICE
+where STATUS='RESV'
+	</select>
+	<select id="selectResvTitle" resultType="noticeManagementDomain">
+	select TITLE
+from NOTICE
+where STATUS='RESV'
+	</select>
+	
 	
 </mapper>
