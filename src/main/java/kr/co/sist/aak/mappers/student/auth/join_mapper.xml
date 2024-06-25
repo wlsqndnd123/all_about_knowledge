@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.sist.aak.mappers.student.auth">
+<mapper namespace="kr.co.sist.aak.student.auth.join">
 	<!-- STUDENT -->
     <insert id="insertStudent" parameterType="JoinVO">
         INSERT INTO student (std_id, password, pre_pass, change_date, del_yn)

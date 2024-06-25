@@ -138,7 +138,6 @@ $(document).ready(function () {
 
     $('#joinBtn').click(function () {
        $("#signup-form").submit();
-        
     });
 
     // Reload page

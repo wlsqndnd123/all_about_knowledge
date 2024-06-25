@@ -15,13 +15,13 @@ public class JoinRepository {
 	
 	public void insertStudent(JoinVO joinVO) {
 		SqlSession ss = myBatisDAO.getMyBatisHandler(true);
-		ss.insert("kr.co.sist.aak.mappers.student.auth.insertStudent", joinVO);
+		ss.insert("kr.co.sist.aak.student.auth.join.insertStudent", joinVO);
 		myBatisDAO.closeHandler(ss);
 	}
 	
 	public void insertStudentInfo(JoinVO joinVO) {
 		SqlSession ss = myBatisDAO.getMyBatisHandler(true);
-		ss.insert("kr.co.sist.aak.mappers.student.auth.insertStudentInfo", joinVO);
+		ss.insert("kr.co.sist.aak.student.auth.join.insertStudentInfo", joinVO);
 		myBatisDAO.closeHandler(ss);
 	}
 
