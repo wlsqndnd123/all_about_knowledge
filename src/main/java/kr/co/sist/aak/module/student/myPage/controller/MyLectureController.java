@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,15 +21,7 @@ public class MyLectureController {
     private MyLectureService myLectureService;
     
     @GetMapping("/my_lecture.do")
-    public String lecture(Principal principal, Model model) {
-        String stdId = principal.getName();
-
-        List<MyLectureVO> processLectureList = myLectureService.getProcessLectureList(stdId);
-        model.addAttribute("processLectureList", processLectureList);
-        
-        List<MyLectureVO> completeLectureList = myLectureService.getCompleteLectureList(stdId);
-        model.addAttribute("completeLectureList", completeLectureList);
-        
+    public String lecture() {
         return "student/my_page/my_lecture";
     }
 
