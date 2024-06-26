@@ -99,19 +99,23 @@
                 <div></div>
                 <!-- 해당 강사가 진행하는 강의 제목  -->
                 <div>
-                <input type="hidden" value="${ imd.inst_id  }" id ="instIdVal">
-                <table class="table table-hover">
-                <tbody id ="subTitle">
-                <tr><td>이 강사가 진행중인 강의</td></tr>
-                <c:if test="${ requestScope.list  eq null}">
-                <tr><td>해당 강사가 진행중인 강의가 없습니다.</td></tr>
+    <table class="table table-hover">
+        <tbody id="subTitle">
+            <tr><td>이 강사가 진행중인 강의</td></tr>
+            <c:if test="${empty lectures}">
+                <tr><td>해당 강사의 강의가 존재하지 않습니다.</td></tr>
+            </c:if>
+            <c:forEach var="lecture" items="${lectures}">
+                <c:if test="${lecture != null}">
+                    <tr><td><c:out value="${lecture}" /></td></tr>
                 </c:if>
-                <c:forEach var="list" items="${requestScope.list }">
-                <tr><td>강의 명</td><td><c:out value="${list.subject_name }"/></td></tr>
-                </c:forEach>
-                </tbody>
-                </table>
-                </div>
+                <c:if test="${lecture == null}">
+                    <tr><td>해당 강사의 강의가 존재하지 않습니다.</td></tr>
+                </c:if>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
                 </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">

@@ -80,7 +80,7 @@ ORDER BY i.INST_ID desc
 	set DEL_YN ='Y'
 	where INST_ID = #{inst_id}
 	</update>
-	<select id="selectInstructorSubTitle" parameterType="String" resultType="kr.co.sist.aak.domain.admin.InstructorManagementDomain">
+	<select id="selectInstructorSubTitle" parameterType="String" resultType="String">
 select sc.SUB_TITLE subject_name
 from   SUBJECT_CODE sc, SUB_INSTRUCTOR  si
 where (sc.SUB_CODE=si.SUB_CODE) and si.INST_ID=#{inst_id}

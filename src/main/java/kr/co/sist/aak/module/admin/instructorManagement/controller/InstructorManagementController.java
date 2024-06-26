@@ -35,7 +35,7 @@ public class InstructorManagementController {
 		List<String> list =ims.searchInstructorSubject(inst_id);
 		imd = ims.instructorDetail(inst_id);
 		model.addAttribute("imd", imd);
-		model.addAttribute("list", list);
+		model.addAttribute("lectures", list);
 		
 		return "/admin/manage_instructor/manage_instructor_details";
 	}
