@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.instructor">
 
 <!-- 강의 개설신청 -->
-<insert id="insertLecture" parameterType="OpenRequestDomain">
+<insert id="insertLecture" parameterType="openRequestDomain">
 insert into subject
 values(#{sub_code},#{sub_title},#{intro},#{goal},#{total_no},#{total_time},#{create_date},#{status},#{image},#{comp_time})
 </insert>

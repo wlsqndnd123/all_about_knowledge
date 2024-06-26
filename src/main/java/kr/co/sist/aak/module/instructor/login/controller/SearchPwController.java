@@ -1,4 +1,4 @@
-package kr.co.sist.aak.module.instructor.login;
+package kr.co.sist.aak.module.instructor.login.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

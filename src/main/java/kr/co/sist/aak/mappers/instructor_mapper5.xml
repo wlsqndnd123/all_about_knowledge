@@ -6,7 +6,7 @@
 
 <!-- 강의관리 리스트 -->
 <!-- 전체 강의 리스트 -->
-<select id="LectureList" resultType="LecturDomain">
+<select id="lectureList" resultType="LecturDomain">
 SELECT s.*, sr.reason
 FROM subject s
 JOIN sub_instructor si ON s.sub_code = si.sub_code
@@ -14,8 +14,15 @@ JOIN instructor i ON si.inst_id = i.inst_id
 LEFT JOIN sub_reject sr ON s.sub_code = sr.sub_code AND s.status = #{status}
 </select>
 
+<!-- 강의상세 -->
+<select id="lectureDetail" resultType="lectureDomain">
+select *
+from subject
+where sub_code=#{sub_code}
+</select>
+
 <!-- 승인여부에 따른 검색 -->
-<select id="searchApprove" resultType="LectureDomain">
+<select id="searchApprove" resultType="lectureDomain">
 select *
 from subject
 where status=#{status}
@@ -23,7 +30,7 @@ where status=#{status}
 
 
 <!-- 과목명 검색 -->
-<select id="searchTitle" resultType="LectureDomain" parameterType="String">
+<select id="searchTitle" resultType="lectureDomain" parameterType="String">
 select * 
 from subject
 where sub_title like '%'||#{sub_title}||'%'

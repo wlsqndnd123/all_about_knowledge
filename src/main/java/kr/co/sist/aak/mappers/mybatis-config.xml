@@ -21,8 +21,23 @@
  <typeAlias alias="InterestLectureVO" type="kr.co.sist.aak.domain.student.vo.InterestLectureVO"/>
  <typeAlias alias="LoginVO" type="kr.co.sist.aak.domain.student.vo.LoginVO"/>
  <!-- student typeAlias 종료 --> 
-</typeAliases>
+
+<!-- 강사 typeAlias -->
+ <typeAlias type="kr.co.sist.aak.domain.instructor.vo.InstructorInfoVO" alias="instructorInfoVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.vo.LectureLessonVO" alias="lectureLessonVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.vo.OpenRequestVO" alias="openRequestVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.vo.QnaVO" alias="qnaVO"/>
  
+ <typeAlias type="kr.co.sist.aak.domain.instructor.InstructorInfoDomain" alias="instructorInfoDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.LectureLessonDomain" alias="lectureLessonDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.LectureDomain" alias="lectureDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.OpenRequestDomain" alias="openRequestDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.QnaDomain" alias="qnaDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.RejectDomain" alias="rejectDomain"/>
+<!-- 강사 typeAlias 끝 -->
+ 
+</typeAliases>
+
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -53,6 +68,12 @@
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/interest_lecture_mapper.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/my_lecture_mapper.xml"/>
     <!-- student mapper 종료 -->
+    
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper5.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper6.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/instructor_mapper7.xml"/>
+    
 
   </mappers>
 </configuration>
