@@ -9,9 +9,9 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class LectureVO {
+public class MyLectureVO {
 	
-	private String catName, subName, name, status;
-	private int totalNo;
+	private String catName, subTitle, name, status, examStatus;
+	private int percent;
 	
 }
