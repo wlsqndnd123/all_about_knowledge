@@ -93,7 +93,14 @@ th,td,tr{font-size: 12px; text-align: center;}
              <!-- row -->
              <div class="container" style="padding: 1rem">
              
-             <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+             <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <!-- 아이디 정보 -->
+                <div></div>
+                <!-- 아이디 권한 정보  -->
+                <div></div>
+                
+                
+             </div>
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
@@ -143,7 +150,7 @@ th,td,tr{font-size: 12px; text-align: center;}
                     
                     <td><c:out value="${i.count }"/> </td>
                     <td><a href="manage_instructor_details.do?inst_id=${list.inst_id }">${list.name}</a></td>
-                    <td  style="text-align: center;">1</td>
+                    <td  style="text-align: center;"><c:out value="${list.subject_count }"/></td>
                     </tr>
                     </c:forEach>
                     </tbody>

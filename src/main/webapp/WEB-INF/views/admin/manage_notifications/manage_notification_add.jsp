@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -27,7 +28,11 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-
+<style type="text/css">
+#recentNotice{
+font-size: 9px;
+}
+</style>
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -89,8 +94,22 @@
             </div>
              <!-- row -->
          <div class="container" style="padding: 1rem">
-            
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <!-- 아이디 정보 -->
+                <div></div>
+                <!-- 아이디 권한 정보  -->
+                <div></div>
+                
+                
+                <!-- 공지사항 정보 로드 -->
+                <div>
+                <table class="table table-hover">
+                <tbody id ="recentNotice">
+                
+                </tbody>
+                </table>
+                </div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
@@ -139,6 +158,28 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
+	  $.ajax({
+			url: "manage_notifi_recent.do",
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.log(xhr.status + " : " + xhr.statusText);
+	            alert("서버 오류 발생");
+	        },
+	        success: function(jsonObj){
+	        	$("#recentNotice").empty();
+	        		var output="<tr><td>공지사항 제목</td><td>"+jsonObj.title+"</td></tr>";
+	        		output+="<tr><td>공지사항 작성ID</td><td>"+jsonObj.id+"</td></tr>";
+	        		output+="<tr><td>공지사항 내용</td><td>"+jsonObj.content+"</td></tr>";
+	        		output+="<tr><td>공지사항 작성날짜</td><td>"+jsonObj.write_date+"</td></tr>";
+	        	$("#recentNotice").html(output);
+	        	
+	        }
+	        });
+		
+	  
+	  
+	  
 	  $("#btnback").click(function(){
 		  history.back();
 	  })

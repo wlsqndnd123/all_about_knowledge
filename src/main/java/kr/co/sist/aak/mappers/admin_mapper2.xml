@@ -6,10 +6,12 @@
 	<!-- 여기에 다이나믹쿼리 넣어야함... -->
 	<!-- 퇴사 안 한 강사들 -->
 	<select id="selectNAllInstructor" resultType ="InstructorManagementDomain">
-	select ii.INST_ID, ii.NAME, ii.EMAIL, ii.INTRODUCTION, ii.IMAGE, ii.PHONE, ii.MAJOR_SUBJECT, ii.EDUCATION ,i.DEL_YN
-	from INST_INFO ii, INSTRUCTOR i
-	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='N')
-	order by ii.INST_ID desc
+	SELECT i.INST_ID, i.NAME, i.EMAIL, i.INTRODUCTION, i.IMAGE, i.PHONE, i.EDUCATION, i.MAJOR_SUBJECT, COUNT(s.SUB_CODE) AS subject_count
+FROM INST_INFO i
+JOIN INSTRUCTOR ins ON i.INST_ID = ins.INST_ID AND ins.DEL_YN = 'N'
+LEFT JOIN SUB_INSTRUCTOR s ON i.INST_ID = s.INST_ID
+GROUP BY i.INST_ID, i.NAME, i.EMAIL, i.INTRODUCTION, i.IMAGE, i.PHONE, i.EDUCATION, i.MAJOR_SUBJECT
+ORDER BY i.INST_ID desc
 	</select>
 	<select id ="searchInstName" resultType ="InstructorManagementDomain">
 	select ii.INST_ID, ii.NAME, ii.EMAIL, ii.INTRODUCTION, ii.IMAGE, ii.PHONE, ii.MAJOR_SUBJECT, ii.EDUCATION ,i.DEL_YN
@@ -19,10 +21,12 @@
 	</select>
 	<!-- 퇴사한 강사 조회 -->
 	<select id="selectYAllInstructor" resultType ="InstructorManagementDomain">
-	select ii.INST_ID, ii.NAME
-	from INST_INFO ii, INSTRUCTOR i
-	where (ii.INST_ID = i.INST_ID) and (i.DEL_YN ='Y')
-	order by ii.INST_ID desc
+	SELECT i.INST_ID, i.NAME, i.EMAIL, i.INTRODUCTION, i.IMAGE, i.PHONE, i.EDUCATION, i.MAJOR_SUBJECT, COUNT(s.SUB_CODE) AS subject_count
+FROM INST_INFO i
+JOIN INSTRUCTOR ins ON i.INST_ID = ins.INST_ID AND ins.DEL_YN = 'Y'
+LEFT JOIN SUB_INSTRUCTOR s ON i.INST_ID = s.INST_ID
+GROUP BY i.INST_ID, i.NAME, i.EMAIL, i.INTRODUCTION, i.IMAGE, i.PHONE, i.EDUCATION, i.MAJOR_SUBJECT
+ORDER BY i.INST_ID desc
 	</select>
 	<select id="selectinstIDMaxval" resultType ="String">
 	select max(INST_ID)
@@ -76,5 +80,10 @@
 	set DEL_YN ='Y'
 	where INST_ID = #{inst_id}
 	</update>
+	<select id="selectInstructorSubTitle" parameterType="String" resultType="String">
+select sc.SUB_TITLE subject_name
+from   SUBJECT_CODE sc, SUB_INSTRUCTOR  si
+where (sc.SUB_CODE=si.SUB_CODE) and si.INST_ID=#{inst_id}
+	</select>
 	
 </mapper>

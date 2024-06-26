@@ -92,7 +92,31 @@
             </div>
              <!-- row -->
          <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <!-- 아이디 정보 -->
+                <div></div>
+                <!-- 아이디 권한 정보  -->
+                <div></div>
+                <!-- 해당 강사가 진행하는 강의 제목  -->
+                <div>
+    <table class="table table-hover">
+        <tbody id="subTitle">
+            <tr><td>이 강사가 진행중인 강의</td></tr>
+            <c:if test="${empty lectures}">
+                <tr><td>해당 강사의 강의가 존재하지 않습니다.</td></tr>
+            </c:if>
+            <c:forEach var="lecture" items="${lectures}">
+                <c:if test="${lecture != null}">
+                    <tr><td><c:out value="${lecture}" /></td></tr>
+                </c:if>
+                <c:if test="${lecture == null}">
+                    <tr><td>해당 강사의 강의가 존재하지 않습니다.</td></tr>
+                </c:if>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
@@ -169,6 +193,8 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
+	  
+	  
 	  $("#btnback").click(function(){
 		  history.back();
 	  })

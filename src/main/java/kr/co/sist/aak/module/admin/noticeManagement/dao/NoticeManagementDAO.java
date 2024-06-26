@@ -171,6 +171,39 @@ public class NoticeManagementDAO {
 		mbDAO.closeHanlder(ss);
 		return list;
 	}
+	public NoticeManagementDomain selectRecentNotice() throws PersistenceException {
+		NoticeManagementDomain nm =null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		String maxval =this.selectMaxValue();
+		nm = ss.selectOne("kr.co.sist.aak.admin.selectRecentNotice",maxval);
+		mbDAO.closeHanlder(ss);
+		return nm;
+	}
+	public int selectCntResv()  throws PersistenceException {
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt =ss.selectOne("kr.co.sist.aak.admin.selectCntResv");
+		mbDAO.closeHanlder(ss);
+		return cnt;
+	}
+	public int selectCntPost() throws PersistenceException  {
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt =ss.selectOne("kr.co.sist.aak.admin.selectCntPost");
+		mbDAO.closeHanlder(ss);
+		return cnt;
+	}
+	public int selectCntDelt() throws PersistenceException  {
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt =ss.selectOne("kr.co.sist.aak.admin.selectCntDelt");
+		mbDAO.closeHanlder(ss);
+		return cnt;
+	}
 //	public static void main(String[] args) {
 //		new NoticeManagementDAO().selectNoticeTitle("DAO");
 //	}
