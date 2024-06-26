@@ -321,7 +321,7 @@
 				           <label>강사소개글</label>
 				           <!-- <input type="textarea" value="JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다"/> -->
 				           <h5>JAVA 관련 강의를 주로 진행하며 체계적인 커리큘럼과 탄탄한 강의로 개념을 쏙쏙 이해시켜드립니다</h5>
-				           <a href="instructor/instructorInfo.do">
+				           <a href="instructorInfo.do">
 				           <input type="button" value="수정" class="btn btn-light btn-sm" style="position: absolute; bottom: 10px; right: 10px; padding: 10px;"/>
 					        </a>
 					        </span>
@@ -384,7 +384,7 @@
                             <tr class="table-secondary">
                                 <td colspan="3">
                                     반려
-                                    <a href="instructor/lectureManage/returnLectureList.do">
+                                    <a href="lectureManage/returnLectureList.do">
                                         <input type="button" value="상세" style="float:right;background-color: #444; color: white;">
                                     </a>
                                 </td>

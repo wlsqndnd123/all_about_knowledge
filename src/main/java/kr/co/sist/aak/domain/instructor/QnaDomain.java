@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class QnaDomain {
 
-	private String qna_no, title, id, sub_code, lec_code, replyContent, content;
-	private Date writeDate, replyDate;
+	private String qna_no, sub_title, title, id, sub_code, replyContent, content;
+	private Date q_date;
 	private char status;
 }

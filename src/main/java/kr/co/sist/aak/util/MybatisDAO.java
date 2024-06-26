@@ -14,7 +14,6 @@ public class MybatisDAO {
 	private static SqlSessionFactory ssf;
 
 	private MybatisDAO() {
-	org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
 	}// MybatisDAO
 
 	public static MybatisDAO getInstance() {
@@ -26,6 +25,7 @@ public class MybatisDAO {
 
 	static {
 		if (ssf == null) {
+			org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
 			Reader reader;
 			try {
 				reader = Resources.getResourceAsReader("kr/co/sist/aak/mappers/mybatis-config.xml");

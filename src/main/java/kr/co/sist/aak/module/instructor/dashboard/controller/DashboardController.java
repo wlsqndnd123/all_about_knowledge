@@ -13,25 +13,18 @@ public class DashboardController {
 	}//dashboard
 	
 
-	@GetMapping("/instructor/lectureManage/lectureList.do")
-	public String lecturManage() {
-	
-		return "instructor/lectureManage/lectureList";
-	}//lecturManage
-	
-	
-	@GetMapping("/instructor/lectureManage/lectureApply.do")
-	public String lecturApply() {
-	
-		return "instructor/lectureManage/lectureApply";
-	}//lecturApply
+//	@GetMapping("/instructor/lectureManage/lectureList.do")
+//	public String lecturManage() {
+//	
+//		return "instructor/lectureManage/lectureList";
+//	}//lecturManage
 	
 	
-	@GetMapping("/instructor/qna/qnaList.do")
-	public String qnaList() {
-	
-		return "instructor/qna/qnaList";
-	}//qnaList
+//	@GetMapping("/instructor/lectureManage/lectureApply.do")
+//	public String lecturApply() {
+//	
+//		return "instructor/lectureManage/lectureApply";
+//	}//lecturApply
 	
 	
 	@GetMapping("/instructor/lectureManage/returnLectureList.do")

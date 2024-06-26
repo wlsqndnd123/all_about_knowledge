@@ -22,12 +22,61 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 </style>
 <script type = "text/javascript">
 	$(function() {
-		$('.ui.rating')
-		  .rating({
-			initialRating: 1,
-		    maxRating: 1
-		  });
-	}); // ready
+	    loadData();
+	});
+	
+	function loadData() {
+	    var endpoint = '${pageContext.request.contextPath}/mypage/interest_lecture_data.do';
+	    fetch(endpoint, {
+	        headers: {
+	            'Accept': 'application/json'
+	        }
+	    })
+	    .then(response => {
+	        if (!response.ok) {
+	            throw new Error('네트워크 응답 없음');
+	        }
+	        return response.json();
+	    })
+	    .then(data => {
+	        updateContent(data);
+	    })
+	    .catch(error => {
+	        alert('데이터 로드 실패!');
+	    });
+	}
+	
+	function updateContent(data) {
+	    const tabSelector = ".ui.celled.padded.table.fav_container.center.aligned tbody";
+	    $(tabSelector).empty();
+	    data.forEach((lecture, index) => {
+	        const row = createInterestLectureTable(lecture, index);
+	        $(tabSelector).append(row);
+	    });
+	    
+	    $('.ui.rating').rating({
+	        initialRating: 1,
+	        maxRating: 1
+	    });
+	}
+	
+	function createInterestLectureTable(lecture, index){
+	    return `
+		<tr>
+	      <td class="one wide">\${lecture.catName}</td>
+	      <td class="single line">\${lecture.subTitle}</td>
+	      <td class="single line">\${lecture.name}</td>
+	      <td class="one wide">
+			<div class="ui heart rating"></div>
+	      </td>
+	      <td class="single line">
+	        <button class="ui blue basic button">
+			  보기
+			</button>
+	      </td>
+	    </tr>
+	    `;
+	}
 </script>
 </head>
 <body class="mypage">
@@ -58,127 +107,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
     <th class="one wide">강의상세</th>
   </tr></thead>
   <tbody>
-    <tr>
-      <td class="one wide">
-        java
-      </td>
-      <td class="single line">
-        이것이 자바인가
-      </td>
-      <td>
-        곽우신
-      </td>
-      <td class="one wide">
-		<div class="ui heart rating"></div>
-      </td>
-      <td class="single line">
-        <button class="ui blue basic button">
-		  보기
-		</button>
-      </td>
-    </tr>
-    
-    <tr>
-      <td class="one wide">
-        CS이론
-      </td>
-      <td class="single line">
-        가데이터 넣어줘
-      </td>
-      <td>
-        죽겠네
-      </td>
-      <td class="one wide">
-		<div class="ui heart rating"></div>
-      </td>
-      <td class="single line">
-        <button class="ui blue basic button">
-		  보기
-		</button>
-      </td>
-    </tr>
-    
-    <tr>
-      <td class="one wide">
-        java
-      </td>
-      <td class="single line">
-        java 숨쉬기보다 쉽다
-      </td>
-      <td>
-        김일신
-      </td>
-      <td class="one wide">
-		<div class="ui heart rating"></div>
-      </td>
-      <td class="single line">
-        <button class="ui blue basic button">
-		  보기
-		</button>
-      </td>
-    </tr>
-    
-    <tr>
-      <td class="one wide">
-        java
-      </td>
-      <td class="single line">
-        호흡곤란에 빠진 java
-      </td>
-      <td>
-        김도원
-      </td>
-      <td class="one wide">
-		<div class="ui heart rating"></div>
-      </td>
-      <td class="single line">
-        <button class="ui blue basic button">
-		  보기
-		</button>
-      </td>
-    </tr>
-    
-    <tr>
-      <td class="one wide">
-        C
-      </td>
-      <td class="single line">
-        C var 수현
-      </td>
-      <td class="single line">
-        시바수현
-      </td>
-      <td class="one wide">
-		<div class="ui heart rating"></div>
-      </td>
-      <td class="single line">
-        <button class="ui blue basic button">
-		  보기
-		</button>
-      </td>
-    </tr>
-    
-    <tr>
-      <td class="one wide">
-        C
-      </td>
-      <td class="single line">
-        진C화로
-      </td>
-      <td>
-        진시바
-      </td>
-      <td class="one wide">
-		<div class="ui heart rating"></div>
-      </td>
-      <td class="single line">
-        <button class="ui blue basic button">
-		  보기
-		</button>
-      </td>
-    </tr>
-    
-    
+   
   </tbody>
   <tfoot>
     <tr><th colspan="5">

@@ -14,88 +14,86 @@
 <style type="text/css">
 </style>
 <script type="text/javascript">
-$(document).ready(function() {
-    initializeTabs();
-    loadDataForTab('first');
-    bindEnterButton();
-});
-
-function initializeTabs() {
-    $('.tabular.menu .item').tab({
-        onVisible: function(tabPath) {
-            loadDataForTab(tabPath);
-        }
-    });
-}
-
-function loadDataForTab(tabPath) {
-    var endpoint = tabPath === 'first' ? '${pageContext.request.contextPath}/mypage/get_lecture_data/progress.do' : '${pageContext.request.contextPath}/mypage/get_lecture_data/complete.do';
-    fetch(endpoint, {
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Data loaded:', data);
-        updateTabContent(tabPath, data);
-    })
-    .catch(error => {
-        console.error('Error loading the tab data:', error);
-        alert('탭 데이터를 로드하는 데 실패했습니다.');
-    });
-}
-
-function updateTabContent(tabPath, data) {
-    const tabSelector = `.ui.bottom.attached.tab.segment[data-tab="\${tabPath}"] tbody`;
-    $(tabSelector).empty();
-    data.forEach((lecture, index) => {
-        const row = createLectureRow(lecture, index);
-        $(tabSelector).append(row);
-    });
-    $('.progress').progress();
-    bindEnterButton();
-}
-
-function createLectureRow(lecture, index) {
-    const examStatusClass = lecture.examStatus === '응시' ? 'green' : 'red';
-    const progressColor = lecture.percent === 0 ? 'red' : 'yellow';
-    return `
-	        <tr>
-	            <td class="one wide">\${lecture.catName}</td>
-	            <td class="single line">\${lecture.subTitle}</td>
-	            <td>\${lecture.name}</td>
-	            <td class="single line">
-	                <button class="ui \${examStatusClass} tiny basic button">\${lecture.examStatus}</button>
-	            </td>
-	            <td>
-	                <div class="ui \${progressColor} progress" data-percent="\${lecture.percent}" id="progress\${index}">
-	                    <div class="bar"></div>
-	                </div>
-	            </td>
-	            <td>\${lecture.percent}%</td>
-	            <td class="single line">
-	                <button class="ui basic tiny button">문의</button>
-	            </td>
-	            <td class="single line">
-	                <button class="ui right labeled icon green basic button enter-button">
-	                    <i class="right arrow icon"></i> 입장
-	                </button>
-	            </td>
-	        </tr>
-    `;
-}
-
-function bindEnterButton() {
-    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
-        window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
-    });
-}
+	$(function() {
+	    initializeTabs();
+	    loadDataForTab('first');
+	    bindEnterButton();
+	});
+	
+	function initializeTabs() {
+	    $('.tabular.menu .item').tab({
+	        onVisible: function(tabPath) {
+	            loadDataForTab(tabPath);
+	        }
+	    });
+	}
+	
+	function loadDataForTab(tabPath) {
+	    var endpoint = tabPath === 'first' ? '${pageContext.request.contextPath}/mypage/get_lecture_data/progress.do' : '${pageContext.request.contextPath}/mypage/get_lecture_data/complete.do';
+	    fetch(endpoint, {
+	        headers: {
+	            'Accept': 'application/json'
+	        }
+	    })
+	    .then(response => {
+	        if (!response.ok) {
+	            throw new Error('네트워크 응답 없음');
+	        }
+	        return response.json();
+	    })
+	    .then(data => {
+	        updateTabContent(tabPath, data);
+	    })
+	    .catch(error => {
+	        alert('데이터를 로드 실패!');
+	    });
+	}
+	
+	function updateTabContent(tabPath, data) {
+	    const tabSelector = `.ui.bottom.attached.tab.segment[data-tab="\${tabPath}"] tbody`;
+	    $(tabSelector).empty();
+	    data.forEach((lecture, index) => {
+	        const row = createLectureRow(lecture, index);
+	        $(tabSelector).append(row);
+	    });
+	    $('.progress').progress();
+	    bindEnterButton();
+	}
+	
+	function createLectureRow(lecture, index) {
+	    const examStatusClass = lecture.examStatus === '응시' ? 'green' : 'red';
+	    const progressColor = lecture.percent === 0 ? 'red' : 'yellow';
+	    return `
+		        <tr>
+		            <td class="one wide">\${lecture.catName}</td>
+		            <td class="single line">\${lecture.subTitle}</td>
+		            <td>\${lecture.name}</td>
+		            <td class="single line">
+		                <button class="ui \${examStatusClass} tiny basic button">\${lecture.examStatus}</button>
+		            </td>
+		            <td>
+		                <div class="ui \${progressColor} progress" data-percent="\${lecture.percent}" id="progress\${index}">
+		                    <div class="bar"></div>
+		                </div>
+		            </td>
+		            <td>\${lecture.percent}%</td>
+		            <td class="single line">
+		                <button class="ui basic tiny button">문의</button>
+		            </td>
+		            <td class="single line">
+		                <button class="ui right labeled icon green basic button enter-button">
+		                    <i class="right arrow icon"></i> 입장
+		                </button>
+		            </td>
+		        </tr>
+	    `;
+	}
+	
+	function bindEnterButton() {
+	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
+	        window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
+	    });
+	}
 </script>
 </head>
 <body class="mypage">
