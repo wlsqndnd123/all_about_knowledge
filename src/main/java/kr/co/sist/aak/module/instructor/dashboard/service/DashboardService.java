@@ -13,15 +13,15 @@ public class DashboardService {
 	@Autowired(required = false)
 	private DashboardDAO dbDAO;
 	
-	public InstructorDomain loginInstructor(String inst_id) {
-		InstructorDomain iDomain= null;
+	public InstructorDomain introduceInstructor(String inst_id) {
+		InstructorDomain instd= null;
 		
 		try {
-			iDomain= (InstructorDomain) dbDAO.selectInstructorInfo(inst_id);
+			instd= (InstructorDomain) dbDAO.selectInstructorInfo(inst_id);
 		}catch(PersistenceException pe){
 			pe.printStackTrace();
 		}
-		return iDomain;
+		return instd;
 	}
 
 }

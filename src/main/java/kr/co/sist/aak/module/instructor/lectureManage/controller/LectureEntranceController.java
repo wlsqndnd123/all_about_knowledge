@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class lectureController {
+public class LectureEntranceController {
 
-	@GetMapping("/instructor/lectureManage/lectureList_detail.do")
-	public String lectureList_detail() {
-		return "instructor/lectureManage/lectureList_detail";
+	@GetMapping("/instructor/lectureManage/lectureEntrance.do")
+	public String lectureEntrance() {
+		return "instructor/lectureManage/lectureEntrance";
 	}
 	
 }
