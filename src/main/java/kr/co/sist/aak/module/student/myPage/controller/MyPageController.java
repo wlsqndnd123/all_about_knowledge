@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
 	
-	// 학생 마이페이지 --- 나의 강의
-	@GetMapping("/mypage/my_lecture.do")
-	public String lecture(){
-		return "student/my_page/my_lecture";
-	}
+
 	
 	// 학생 마이페이지 --- 나의 강의 -- 상세
 	@GetMapping("/mypage/my_lecture_detail.do")
