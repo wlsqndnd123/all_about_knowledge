@@ -12,15 +12,13 @@ import kr.co.sist.aak.util.SpringMyBatis;
 @Component
 public class InterestLectureRepository {
 
-	@Autowired(required = false)
-	private SpringMyBatis myBatisDAO;
-	
-	public List<InterestLectureVO> selectInterestLectureList(String stdId) {
-		List<InterestLectureVO> interestLectureList = null;
-		SqlSession ss = myBatisDAO.getMyBatisHandler(false);
-		interestLectureList = ss.selectList("kr.co.sist.aak.student.mypage.intrest.selectInterestLectureList", stdId);
-		
-		return interestLectureList;
-	}
-	
+    @Autowired(required = false)
+    private SpringMyBatis myBatisDAO;
+    
+    public List<InterestLectureVO> selectInterestLectureList(String stdId) {
+        List<InterestLectureVO> interestLectureList = null;
+        SqlSession ss = myBatisDAO.getMyBatisHandler(false);
+        interestLectureList = ss.selectList("kr.co.sist.aak.student.mypage.interest.selectInterestLectureList", stdId);
+        return interestLectureList;
+    }
 }
