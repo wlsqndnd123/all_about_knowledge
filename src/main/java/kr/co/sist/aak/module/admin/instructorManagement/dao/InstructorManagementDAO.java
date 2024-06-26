@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.sist.aak.domain.admin.InstructorManagementDomain;
+import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.InstructorManagementVO;
 import kr.co.sist.aak.module.admin.noticeManagement.dao.NoticeManagementDAO;
 import kr.co.sist.aak.util.MybatisDAO;
@@ -119,9 +120,17 @@ public class InstructorManagementDAO {
 		return maxId;
 	}
 	
+	public List<String> selectInstructorSubject(String inst_id) throws PersistenceException{
+		List<String> list =null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.admin2.selectInstructorSubTitle",inst_id);
+		
+		return list;
+	}
 	
-	
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 //		String id =
 //	new InstructorManagementDAO().selectMaxInstId();
 //		System.out.println(id);
@@ -130,6 +139,6 @@ public class InstructorManagementDAO {
 //		String id1 = String.format("%05d",idSub);
 //		
 //		System.out.println(id1);
-	new InstructorManagementDAO().selectInstructorName("진시바");
-	}
+//	new InstructorManagementDAO().selectInstructorName("진시바");
+	//}
 }

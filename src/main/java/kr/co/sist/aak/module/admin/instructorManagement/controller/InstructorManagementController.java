@@ -12,12 +12,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.sist.aak.domain.admin.InstructorManagementDomain;
+import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.InstructorManagementVO;
 import kr.co.sist.aak.module.admin.instructorManagement.service.InstructorManagementService;
 
@@ -28,9 +32,11 @@ public class InstructorManagementController {
 
 	@GetMapping("manage_instructor_details.do")
 	public String instructorDetail(InstructorManagementDomain imd, Model model, String inst_id) {
+		List<String> list =ims.searchInstructorSubject(inst_id);
 		imd = ims.instructorDetail(inst_id);
 		model.addAttribute("imd", imd);
-
+		model.addAttribute("list", list);
+		
 		return "/admin/manage_instructor/manage_instructor_details";
 	}
 
@@ -144,4 +150,11 @@ public class InstructorManagementController {
 		model.addAttribute("instList",ims.searchAllNInstructor());
 		return "/admin/manage_instructor";
 	}
+//	@ResponseBody
+//	@RequestMapping(value = "manage_inst_subTitle.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+//	public String searchSubject(String inst_id) {
+//		
+//		
+//		return ims.searchInstructorSubject(inst_id) ;
+//	}
 }

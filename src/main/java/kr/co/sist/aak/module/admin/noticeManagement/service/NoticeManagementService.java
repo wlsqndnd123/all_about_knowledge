@@ -233,10 +233,52 @@ public class NoticeManagementService {
 			}
 			jsonObj.put("list", jsonArr);
 			jsonObj.put("cnt", cnt);
-			System.out.println("=============================="+jsonObj.toJSONString());
 		}catch (PersistenceException pe) {
 		pe.printStackTrace();
 		}
 		return jsonObj.toJSONString();
 	}
+	
+	public String searchRecentNotice() {
+	NoticeManagementDomain nm =null;
+	JSONObject jsonObj = new JSONObject();
+	try {
+		//작성관리자 ID,날짜,제목, 내용
+		nm =nmDAO.selectRecentNotice();
+		JSONArray jsonArr = new JSONArray();
+		JSONObject jsonTemp = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		jsonObj.put("title", nm.getTitle());
+		jsonObj.put("write_date", sdf.format(nm.getWrite_date()));
+		jsonObj.put("id", nm.getId());
+		String content = nm.getContent();
+		if(content.length()>9) {
+			content.substring(0, 10).concat("...");
+		}
+		jsonObj.put("content", content);
+		//jsonArr.add(jsonTemp);
+		//jsonObj.put("notice", jsonArr);
+	}catch (PersistenceException pe) {
+		pe.printStackTrace();
+	}
+	return jsonObj.toJSONString();
+	}
+	
+	public String searchStatusCnt(){
+		JSONObject jsonObj = new JSONObject();
+		try {
+			int resv= nmDAO.selectCntResv();
+			int post= nmDAO.selectCntPost();
+			int delt= nmDAO.selectCntDelt();
+			jsonObj.put("resv", resv);
+			jsonObj.put("post", post);
+			jsonObj.put("delt", delt);
+			
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return jsonObj.toJSONString();
+	}
+	
+	
 }

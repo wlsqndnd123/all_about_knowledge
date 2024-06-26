@@ -92,7 +92,27 @@
             </div>
              <!-- row -->
          <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <!-- 아이디 정보 -->
+                <div></div>
+                <!-- 아이디 권한 정보  -->
+                <div></div>
+                <!-- 해당 강사가 진행하는 강의 제목  -->
+                <div>
+                <input type="hidden" value="${ imd.inst_id  }" id ="instIdVal">
+                <table class="table table-hover">
+                <tbody id ="subTitle">
+                <tr><td>이 강사가 진행중인 강의</td></tr>
+                <c:if test="${ requestScope.list  eq null}">
+                <tr><td>해당 강사가 진행중인 강의가 없습니다.</td></tr>
+                </c:if>
+                <c:forEach var="list" items="${requestScope.list }">
+                <tr><td>강의 명</td><td><c:out value="${list.subject_name }"/></td></tr>
+                </c:forEach>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
@@ -169,6 +189,8 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
+	  
+	  
 	  $("#btnback").click(function(){
 		  history.back();
 	  })

@@ -165,4 +165,17 @@ public class NoticemanagementController {
 		return nms.searchResvInfomation();
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "manage_notifi_recent.do",produces = "application/json;charset=UTF-8",
+	method = RequestMethod.GET)
+	public String searchRecentNotice() {
+		return nms.searchRecentNotice();
+	}
+	@ResponseBody
+	@RequestMapping(value = "manage_notifi_status_cnt.do",produces = "application/json;charset=UTF-8",
+	method = RequestMethod.GET)
+	public String searchStatusCnt() {
+		return nms.searchStatusCnt();
+	}
+	
 }
