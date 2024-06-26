@@ -9,6 +9,9 @@ th,td,tr{font-size: 12px;}
 
             text-align: center;
         }
+.tableaj{
+font-size: 9px;
+}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -108,11 +111,19 @@ th,td,tr{font-size: 12px;}
                 
                 <!-- 공지사항 정보 로드 -->
                 <div>
-                <table class="table table-hover">
+                <table class="table table-hover tableaj">
                 <tbody id ="resvNotice">
                 
                 </tbody>
                 </table>
+                <!-- 공지사항 staus 정보 로드 -->
+                <div>
+                <table class="table table-hover tableaj">
+                <tbody id ="statusCnt">
+                
+                </tbody>
+                </table>
+                </div>
                 </div>
                 </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
@@ -204,6 +215,23 @@ th,td,tr{font-size: 12px;}
 	        		output+="<tr><td>예약 된 공지사항 제목</td><td>"+jsonTemp.title+"</td></tr>";
 	        	})
 	        	$("#resvNotice").html(output);
+	        	
+	        }
+		});
+		$.ajax({
+			url: "manage_notifi_status_cnt.do",
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.log(xhr.status + " : " + xhr.statusText);
+	            alert("서버 오류 발생");
+	        },
+	        success: function(jsonObj){
+	        	$("#statusCnt").empty();
+	        	var output ="<tr><td>현재 예약중인 공지사항의 수</td><td>"+jsonObj.resv+"건</td>";
+	        	output +="<tr><td>현재 게시중인 공지사항의 수</td><td>"+jsonObj.post+"건</td>";
+	        	output +="<tr><td>현재 삭제 된 공지사항의 수</td><td>"+jsonObj.delt+"건</td>";
+	        	$("#statusCnt").html(output);
 	        	
 	        }
 		});
