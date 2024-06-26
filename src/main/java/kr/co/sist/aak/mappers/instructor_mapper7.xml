@@ -6,20 +6,20 @@
 
 <!-- 문의리스트 kr.co.sist.aak.instructor.qnaList -->
 <select id="qnaList" resultType="qnaDomain">
-select std_id, sub_code, lec_code, title, date
+select qna_no,std_id, sub_code,(select sub_title from subject_code where subject_code.sub_code=qna_sub_q.sub_code) sub_title, title,q_date
 from qna_sub_q
 </select>
 
 <!-- 문의상세 -->
 <select id="qnaDetail" resultType="qnaDomain">
-select qna_no,title,std_id,content,date
+select qna_no,title,std_id,content,q_date
 from qna_sub_q
 where qna_no=#{qna_no}
 </select>
 
 <!-- 제목 검색 -->
 <select id="serchTitle" resultType="qnaDomain" parameterType="String">
-select std_id, sub_code, lec_code, title, date 
+select std_id, sub_code, lec_code, title, q_date 
 from qna_sub_q
 where title like '%'||#{title}||'%'
 </select>

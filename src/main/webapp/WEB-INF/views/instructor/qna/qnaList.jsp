@@ -99,14 +99,14 @@
 								</tr>
 							</thead>
 							<tbody id="output">
-								<c:forEach var="qnaList" items="${list}" varStatus="i">
+								<c:forEach var="qnaList" items="${qnaList}" varStatus="i">
 									<tr>
-										<td><c:out value="${qnaList.std_id}" /></td>
-										<td>알고리즘의 이해</td>
-										<td><a href="qnaDetail.do">
+										<td><c:out value="${qnaList.id}" /></td>
+										<td><c:out value="${qnaList.sub_title }"/></td>
+										<td><a href="qnaDetail.do?qna_no=${qnaList.qna_no}">
 										<c:out value="${qnaList.title}"/></a></td>
 										<td><c:out value="${qnaList.status}"/></td>
-										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qnaList.date}" /></td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qnaList.q_date}" /></td>
 									</tr>
 								</c:forEach>
 								<!-- 				<tr>

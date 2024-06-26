@@ -18,7 +18,7 @@ public class QnaDAO {
 		MybatisDAO mbDAO= MybatisDAO.getInstance();
 		SqlSession ss= mbDAO.getMyBatisHandler(false);
 		
-		ss.selectList("kr.co.sist.aak.instructor.qnaList");
+		list=ss.selectList("kr.co.sist.aak.instructor.qnaList");
 		
 		mbDAO.closeHanlder(ss);
 		return list;
