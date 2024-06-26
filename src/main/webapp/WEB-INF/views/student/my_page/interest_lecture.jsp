@@ -22,16 +22,11 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 </style>
 <script type = "text/javascript">
 	$(function() {
-		$('.ui.rating')
-		  .rating({
-			initialRating: 1,
-		    maxRating: 1
-		  });
-		createInterestLectureTable();
-	}); // ready
+	    loadData();
+	});
 	
-	function loadDataForTab() {
-	    var endpoint = '${pageContext.request.contextPath}/mypage/interest_lecture_data.do'
+	function loadData() {
+	    var endpoint = '${pageContext.request.contextPath}/mypage/interest_lecture_data.do';
 	    fetch(endpoint, {
 	        headers: {
 	            'Accept': 'application/json'
@@ -39,33 +34,38 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 	    })
 	    .then(response => {
 	        if (!response.ok) {
-	            throw new Error('Network response was not ok');
+	            throw new Error('네트워크 응답 없음');
 	        }
 	        return response.json();
 	    })
 	    .then(data => {
-	        updateTabContent(tabPath, data);
+	        updateContent(data);
 	    })
 	    .catch(error => {
-	        alert('탭 데이터를 로드하는 데 실패했습니다.');
+	        alert('데이터 로드 실패!');
 	    });
 	}
 	
-	function updateTabContent(tabPath, data) {
-	    const tabSelector = `.ui .celled .padded .table .fav_container .center .aligned tbody`;
+	function updateContent(data) {
+	    const tabSelector = ".ui.celled.padded.table.fav_container.center.aligned tbody";
 	    $(tabSelector).empty();
 	    data.forEach((lecture, index) => {
 	        const row = createInterestLectureTable(lecture, index);
 	        $(tabSelector).append(row);
 	    });
+	    
+	    $('.ui.rating').rating({
+	        initialRating: 1,
+	        maxRating: 1
+	    });
 	}
 	
 	function createInterestLectureTable(lecture, index){
-		return `
+	    return `
 		<tr>
 	      <td class="one wide">\${lecture.catName}</td>
 	      <td class="single line">\${lecture.subTitle}</td>
-	      <td>\${lecture.name}</td>
+	      <td class="single line">\${lecture.name}</td>
 	      <td class="one wide">
 			<div class="ui heart rating"></div>
 	      </td>
