@@ -25,8 +25,8 @@ public class SpringMyBatis {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
-		}
+			} 
+		} 
 	}
 
 	public SqlSession getMyBatisHandler(boolean autoCommit) {

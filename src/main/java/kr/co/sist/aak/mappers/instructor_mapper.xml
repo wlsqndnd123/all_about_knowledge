@@ -6,21 +6,21 @@
 
 	<!-- 강사 메인화면 쿼리문 -->
 	<!-- 강사소개 -->
-	<select id="instructorInfo" resultType="InstructorInfoVO">
+	<select id="instructorInfo" resultType="instructorInfoVO">
 		select inst_id, name, email, introduction, image
 		from inst_info
 		where inst_id=#{inst_id} 
 	</select>
 
 	<!-- 강의 개설현황 -->
-	<select id="openLectureCnt" resultType="OpenRequestVO">
+	<select id="openLectureCnt" resultType="openRequestVO">
 		SELECT COUNT(status) as cnt
 		FROM subject
 		where status=#{status}
 	</select>
 	
 	<!-- 반려 리스트 -->
-	<select id="rejectLecture" resultType="RejectDomain">
+	<select id="rejectLecture" resultType="rejectDomain">
 		SELECT s.sub_code, sr.reason
 		FROM subject s
 		JOIN sub_reject sr ON s.sub_code = sr.sub_code
