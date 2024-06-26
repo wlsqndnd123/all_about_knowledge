@@ -14,26 +14,19 @@ import kr.co.sist.aak.module.student.myPage.service.InterestLectureService;
 
 @Controller
 public class InterestLectureController {
-	
-	@Autowired
-	private InterestLectureService interestLectureService;
+    
+    @Autowired
+    private InterestLectureService interestLectureService;
 
-	@GetMapping("/mypage/interest_lecture.do")
-	public String interestLecture(Principal principal, Model model){
-		String stdId = principal.getName();
-		
-		List<InterestLectureVO> selectInterestLectureList = interestLectureService.getInterestLectureList(stdId);
-		model.addAttribute("interestLectureList",selectInterestLectureList);
-	
-		return "student/my_page/interest_lecture";
-	}
-	
-	@GetMapping("/mypage/interest_lecture_data.do")
-	@ResponseBody
-	public List<InterestLectureVO> getInterestLectureData(Principal principal) {
-		String stdId = principal.getName();
-		return interestLectureService.getInterestLectureList(stdId);
-	}
-	
-	
+    @GetMapping("/mypage/interest_lecture.do")
+    public String interestLecture(Principal principal, Model model) {
+        return "student/my_page/interest_lecture";
+    }
+    
+    @GetMapping("/mypage/interest_lecture_data.do")
+    @ResponseBody
+    public List<InterestLectureVO> getInterestLectureData(Principal principal) {
+        String stdId = principal.getName();
+        return interestLectureService.getInterestLectureList(stdId);
+    }
 }

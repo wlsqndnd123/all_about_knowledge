@@ -37,7 +37,7 @@
 	    })
 	    .then(response => {
 	        if (!response.ok) {
-	            throw new Error('Network response was not ok');
+	            throw new Error('네트워크 응답 없음');
 	        }
 	        return response.json();
 	    })
@@ -45,7 +45,7 @@
 	        updateTabContent(tabPath, data);
 	    })
 	    .catch(error => {
-	        alert('탭 데이터를 로드하는 데 실패했습니다.');
+	        alert('데이터를 로드 실패!');
 	    });
 	}
 	
