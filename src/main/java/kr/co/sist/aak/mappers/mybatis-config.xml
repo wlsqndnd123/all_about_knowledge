@@ -17,7 +17,7 @@
  
  <!-- student typeAlias 시작 -->
  <typeAlias alias="JoinVO" type="kr.co.sist.aak.domain.student.vo.JoinVO"/>
- <typeAlias alias="LectureVO" type="kr.co.sist.aak.domain.student.vo.LectureVO"/>
+ <typeAlias alias="MyLectureVO" type="kr.co.sist.aak.domain.student.vo.MyLectureVO"/>
  <typeAlias alias="LoginVO" type="kr.co.sist.aak.domain.student.vo.LoginVO"/>
  <!-- student typeAlias 종료 --> 
 </typeAliases>
