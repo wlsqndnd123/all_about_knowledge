@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,33 +23,6 @@
 
 <!-- Site Properties -->
 <title>Fixed Menu Example - Semantic</title>
-
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/reset.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/site.css">
-
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/container.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/grid.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/header.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/image.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/menu.css">
-
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/divider.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/list.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/segment.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/dropdown.css">
-<link rel="stylesheet" type="text/css"
-	href="../dist/components/icon.css">
 
 <!-- Semantic UI CSS -->
 <link rel="stylesheet" type="text/css"
@@ -81,6 +55,11 @@
 	$(document).ready(function() {
 		// Semantic UI dropdown initialization
 		$('.ui.dropdown').dropdown();
+		$('.ui.rating')
+		  .rating({
+			initialRating: 0,
+		    maxRating: 1
+		  });
 	});
 	$('#goHome').click(function() {
 		window.location.href = '${pageContext.request.contextPath}/index.do';
@@ -93,7 +72,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
-	<div class="ui main container" style="padding:50px">
+	<div class="ui main container" style="padding: 50px">
 		<h1 class="ui header">개설강좌</h1>
 
 		<div class="ui horizontal menu">
@@ -129,26 +108,51 @@
 				<option value="인기순">인기순</option>
 			</select>
 		</div>
-
+		<%-- <table class="ui celled selectable very basic table">
+			<thead>
+				<tr>
+					<th>코드</th>
+					<th>제목</th>
+					<th>작성자</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="listLecture" items="${ requestScope.listLecture }" varStatus="i">
+					<tr>
+						<td><c:out value="${listLecture.sub_code}" /></td>
+						<td><c:out value="${listLecture.intro}" /></td>
+						<td><c:out value="${listLecture.goal}" /></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table> --%>
 		<div class="ui three stackable link cards">
-			<div class="card">
-				<a href="user_lecture_detail.do" class="image"> <img
-					src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</a>
-				<div class="content">
-					<div class="header">이것이 C인가?</div>
-					<div class="meta">
-						<a>곽우신</a>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> <i
-						class="heart outline like icon"></i> 17 likes
-					</span> <span> <i class="user icon"></i> +100명
-					</span>
-				</div>
-			</div>
-			<div class="card">
+    <c:forEach var="listLecture" items="${requestScope.listLecture }" varStatus="i">
+        <div class="card">
+            <a href="user_lecture_detail.do" class="image">
+                <img src="${pageContext.request.contextPath}/front/student/images/java.png">
+            </a>
+            <div class="content">
+                <div class="header">
+                    <c:out value="${listLecture.sub_title}" />
+                </div>
+                <div class="meta">
+                    <a><c:out value="${listLecture.inst_id}" /></a>
+                </div>
+            </div>
+            <div class="extra content">
+                <span class="right floated">
+                    <div class="ui heart rating"></div> 17 likes
+                </span>
+                <span>
+                    <i class="user icon"></i> +100명
+                </span>
+            </div>
+        </div>
+    </c:forEach>
+</div>
+	</div>
+	<%-- <div class="card">
 				<a href="user_lecture_detail.do" class="image"> <img
 					src="${pageContext.request.contextPath}/front/student/images/java.png">
 				</a>
@@ -287,9 +291,8 @@
 					</span>
 				</div>
 			</div>
-		</div>
+		</div> --%>
 
-	</div>
 
 	<!-- 푸터 -->
 	<jsp:include page="../site/main_footer.jsp"></jsp:include>

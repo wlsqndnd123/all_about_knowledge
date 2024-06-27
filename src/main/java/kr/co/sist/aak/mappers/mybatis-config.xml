@@ -20,6 +20,10 @@
  <typeAlias alias="MyLectureVO" type="kr.co.sist.aak.domain.student.vo.MyLectureVO"/>
  <typeAlias alias="InterestLectureVO" type="kr.co.sist.aak.domain.student.vo.InterestLectureVO"/>
  <typeAlias alias="LoginVO" type="kr.co.sist.aak.domain.student.vo.LoginVO"/>
+ 
+ <typeAlias type="kr.co.sist.aak.domain.student.UserNoticeDomain" alias="UserNoticeDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.student.UserLectureDomain" alias="UserLectureDomain"/>
+ 
  <!-- student typeAlias 종료 --> 
 
 <!-- 강사 typeAlias -->
@@ -67,6 +71,9 @@
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/info_mapper.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/interest_lecture_mapper.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/my_lecture_mapper.xml"/>
+    
+    <mapper resource="kr/co/sist/aak/mappers/student_mapper.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/student_mapper3.xml"/>
     <!-- student mapper 종료 -->
     
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper.xml"/>

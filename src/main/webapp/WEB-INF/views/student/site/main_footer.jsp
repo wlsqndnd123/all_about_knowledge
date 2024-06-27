@@ -32,11 +32,12 @@
 </script>
 </head>
 <body>
-	<div class="ui inverted vertical footer segment" style="padding:100px">
+	<div class="ui inverted vertical footer segment" style="padding:100px 0px">
 		<div class="ui center aligned container">
+		<div class="ui inverted section divider"></div>
 			<div class="ui stackable inverted divided grid">
 				<div class="three wide column">
-					<h4 class="ui inverted header">고객센터</h4>
+					<h4>고객센터</h4>
 					<div class="ui inverted link list">
 						<a href="http://localhost/all_about_knowledge/site_notice.do" class="item">공지사항</a> 
 						<a href="http://localhost/all_about_knowledge/site_qna.do" class="item">문의사항</a> 
@@ -45,18 +46,11 @@
 				<div class="three wide column">
 				</div>
 				<div class="ten wide column">
-					<h4 class="ui inverted header">All About Knowledge</h4>
-					<p>(주)인프랩 | 대표자: 이형주 | 사업자번호: 499-81-00612 사업자 정보 확인<br> 통신판매업:
-						2018-성남분당B-0062 | 개인정보보호책임자: 이동욱 | 이메일: info@inflearn.com <br>전화번호:
-						070-4948-1181 | 주소: 경기도 성남시 분당구 판교로289번길 20 3동 5층</p>
+					<h4>All About Knowledge</h4>
+					<p>(주)AAK | 대표자: 곽우신 | 사업자번호: 000-00-00000 사업자 정보 확인<br> 통신판매업:
+						2018-성남분당B-0062 | 개인정보보호책임자: 이동욱 | 이메일: aak@aak.com <br>전화번호:
+						070-4948-1181 | 주소: 서울특별시 강남구 테헤란로 132(역삼동) 한독약품빌딩 8층 쌍용교육센터</p>
 				</div>
-			</div>
-			<div class="ui inverted section divider"></div>
-			<img src="assets/images/logo.png" class="ui centered mini image">
-			<div class="ui horizontal inverted small divided link list">
-				<a class="item" href="#">Site Map</a> <a class="item" href="#">Contact
-					Us</a> <a class="item" href="#">Terms and Conditions</a> <a
-					class="item" href="#">Privacy Policy</a>
 			</div>
 		</div>
 	</div>
