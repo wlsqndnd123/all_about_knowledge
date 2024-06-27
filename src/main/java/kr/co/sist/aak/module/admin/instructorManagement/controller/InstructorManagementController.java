@@ -82,6 +82,28 @@ public class InstructorManagementController {
 		imVO.setPhone(mr.getParameter("phone"));
 		
 		ims.addInstructor(imVO);
+
+	    String imageUrl = "all_about_knowledge/upload/" + fsName;
+	    boolean isImageAvailable = false;
+	    int retryCount = 10;
+	    
+	    while (retryCount > 0) {
+	        if (isImageAvailable(imageUrl)) {
+	            isImageAvailable = true;
+	            break;
+	        }
+	        try {
+	            Thread.sleep(500); // 0.5초 대기
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	        retryCount--;
+	    }
+	    
+	    if (!isImageAvailable) {
+	        model.addAttribute("imageError", "이미지 업로드에 실패했습니다. 다시 시도해 주세요.");
+	    }
+
 		
 		
 		return "/admin/manage_instructor/manage_instructor_add_result";
@@ -133,7 +155,7 @@ public class InstructorManagementController {
 	    InstructorManagementDomain imd = ims.instructorDetail(mr.getParameter("inst_id"));
 	    model.addAttribute("imd", imd);
 	    
-	    // 이미지 URL 확인 및 지연 로직
+	    
 	    String imageUrl = "all_about_knowledge/upload/" + fsName;
 	    boolean isImageAvailable = false;
 	    int retryCount = 10;

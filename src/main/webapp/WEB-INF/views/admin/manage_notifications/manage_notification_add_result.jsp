@@ -114,16 +114,15 @@
       <input type="email" class="form-control" value="${nmVO.noti_no }" id="exampleFormControlInput1" name="noti_no" readonly="readonly">
     </div>
 					</div>
-					<!-- <div class="mb-3">
- 				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
-				 <input class="form-control" type="file" id="image" name="image" >	
-					<div class="mb-3">
-					</div> -->
+					<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+					<div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                            <img src="http://localhost/all_about_knowledge/upload/${ nmVO.image }"  class="card-img-top" alt="...">
+                            </div>
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15" name ="content"><c:out value="${nmVO.content }"/> </textarea>
 </div>
 <div style="text-align: center;">
-<input type="button" class="btn btn-link" value="목록으로" id ="btnback"/>
+<a href="manage_notification.do" ><input type="button" class="btn btn-link" value="목록으로" id ="btnback"/></a>
 </div>
 
     </form>

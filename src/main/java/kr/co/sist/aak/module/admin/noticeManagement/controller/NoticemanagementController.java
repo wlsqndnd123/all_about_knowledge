@@ -2,6 +2,8 @@ package kr.co.sist.aak.module.admin.noticeManagement.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -85,9 +87,46 @@ public class NoticemanagementController {
 		if (cnt == 1) {
 			model.addAttribute("nmVO", nmVO);
 		}
+
+	    
+	    String imageUrl = "all_about_knowledge/upload/" + fsName;
+	    boolean isImageAvailable = false;
+	    int retryCount = 10;
+	    
+	    while (retryCount > 0) {
+	        if (isImageAvailable(imageUrl)) {
+	            isImageAvailable = true;
+	            break;
+	        }
+	        try {
+	            Thread.sleep(500); // 0.5초 대기
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	        retryCount--;
+	    }
+	    
+	    if (!isImageAvailable) {
+	        model.addAttribute("imageError", "이미지 업로드에 실패했습니다. 다시 시도해 주세요.");
+	    }
+
 		return "/admin/manage_notifications/manage_notification_add_result";
 
 	}
+
+	private boolean isImageAvailable(String url) {
+	    try {
+	        HttpURLConnection connection = (HttpURLConnection) new URL("http://localhost" + url).openConnection();
+	        connection.setRequestMethod("HEAD");
+	        return (connection.getResponseCode() == HttpURLConnection.HTTP_OK);
+	    } catch (IOException e) {
+	        return false;
+	    }
+	}
+	
+	
+	
+	
 	@PostMapping("notification_modify_form_process.do")
 	public String modifyNoticeFormProcess(HttpServletRequest request, String temp, Model model) throws IOException {
 		
@@ -128,6 +167,28 @@ public class NoticemanagementController {
 			model.addAttribute("nmd", nmd);
 
 		}
+
+	    String imageUrl = "all_about_knowledge/upload/" + fsName;
+	    boolean isImageAvailable = false;
+	    int retryCount = 10;
+	    
+	    while (retryCount > 0) {
+	        if (isImageAvailable(imageUrl)) {
+	            isImageAvailable = true;
+	            break;
+	        }
+	        try {
+	            Thread.sleep(500); // 0.5초 대기
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	        retryCount--;
+	    }
+	    
+	    if (!isImageAvailable) {
+	        model.addAttribute("imageError", "이미지 업로드에 실패했습니다. 다시 시도해 주세요.");
+	    }
+
 		
 		return "/admin/manage_notifications/manage_notification_modify_result";
 		
