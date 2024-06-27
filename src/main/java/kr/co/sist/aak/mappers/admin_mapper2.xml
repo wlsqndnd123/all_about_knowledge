@@ -85,5 +85,28 @@ select sc.SUB_TITLE subject_name
 from   SUBJECT_CODE sc, SUB_INSTRUCTOR  si
 where (sc.SUB_CODE=si.SUB_CODE) and si.INST_ID=#{inst_id}
 	</select>
+	<select id="instructorsMajorSub" resultType="InstructorManagementDomain">
+	SELECT
+    MAJOR_SUBJECT,
+    COUNT(MAJOR_SUBJECT) AS SUBJECT_COUNT,
+    (COUNT(MAJOR_SUBJECT) * 100.0 / (SELECT COUNT(*) FROM INST_INFO)) AS PERCENTAGE
+	FROM
+    INST_INFO
+	GROUP BY
+    MAJOR_SUBJECT
+    order by PERCENTAGE desc
+	</select>
+	<select id ="cntdelynY" resultType="int">
+	select count(DEL_YN)
+	from INSTRUCTOR
+	where DEL_YN ='Y'
+	group by DEL_YN
+	</select>
+	<select id ="cntdelynN" resultType="int">
+	select count(DEL_YN)
+	from INSTRUCTOR
+	where DEL_YN ='N'
+	group by DEL_YN
+	</select>
 	
 </mapper>

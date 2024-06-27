@@ -108,4 +108,38 @@ public class InstructorManagementService {
 		}
 		return list;
 	}
+	public String searchInstructorSubjectPercentage(){
+		 List<InstructorManagementDomain> list =null;
+		 JSONObject jsonObj = new JSONObject();
+		 try {
+			 list = imDAO.selectInstructorSubjectPercentage();
+			 JSONArray jsonArr = new JSONArray();
+			 JSONObject jsonTemp = null;
+		for(InstructorManagementDomain temp :list) {
+			jsonTemp = new JSONObject();
+			jsonTemp.put("major_subject", temp.getMajor_subject());
+			jsonTemp.put("subject_count", temp.getSubject_count());
+			jsonTemp.put("percentage", temp.getPercentage());
+			jsonArr.add(jsonTemp);
+		}
+		jsonObj.put("list", jsonArr);
+		 }catch (PersistenceException e) {
+			 e.printStackTrace();
+		}
+		 return jsonObj.toJSONString();
+	}
+	public String searchNYInstructor() {
+		int n =0;
+		int y =0;
+		JSONObject jsonObj = new JSONObject();
+		try {
+			n = imDAO.selectInstructorNCount();
+			y = imDAO.selectInstructorYCount();
+			jsonObj.put("n", n);
+			jsonObj.put("y", y);
+		}catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		return jsonObj.toJSONString();
+	}
 }
