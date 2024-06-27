@@ -19,54 +19,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 
 <style type="text/css">
-/* body {
-	background-color: #FFFFFF;
-}
-
-.ui.menu .item img.logo {
-	margin-right: 1.5em;
-}
-
-.main.container {
-	margin-top: 7em;
-	margin-bottom: 17em;
-}
-
-.wireframe {
-	margin-top: 2em;
-}
-
-.ui.footer.segment {
-	margin: 5em 0em 0em;
-	padding: 5em 0em;
-}
-
-.ui.fixed.menu {
-	background-color: #FFFFFF !important;
-	color: #000000 !important;
-}
-
-.ui.fixed.menu .item {
-	color: #000000 !important;
-}
-
-.ui.fixed.menu .item:hover {
-	background-color: #F0F0F0 !important;
-}
-
-.ui.vertical.footer.segment {
-	background-color: #FFFFFF !important;
-	color: #000000 !important;
-}
-
-.ui.vertical.footer.segment .header, .ui.vertical.footer.segment .item {
-	color: #000000 !important;
-}
-
-.ui.vertical.footer.segment .item:hover {
-	background-color: #F0F0F0 !important;
-} */
-
 .search-container {
 	display: flex;
 	justify-content: flex-end;
@@ -100,39 +52,37 @@
 
 	<!-- 헤더 -->
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
-	
+
 
 	<div class="ui main container">
 		<h1 class="ui header">문의사항</h1>
-		<!-- <a href="site_qna_write.do"> -->
-			<div style="text-align: right;">
-				<button id="openModalBtn" class="ui button">문의 작성</button>
-			</div>
-		<!-- </a> -->
+		<div style="text-align: right;">
+			<button id="openModalBtn" class="ui button">문의 작성</button>
+		</div>
 		<div class="ui modal" id="myModal">
-						<i class="close icon"></i>
-						<div class="header">문의사항 작성</div>
-						<div class="content">
-							<div class="ui form">
-								<div class="field">
-									<label>작성자: userId | 작성일: 2024-06-18</label>
-								</div>
-								<div class="field">
-									<label>제목</label> <input type="text" name="title"
-										placeholder="제목을 입력하세요">
-								</div>
-								<div class="field">
-									<label>내용</label>
-									<textarea rows="5" name="content" id="content"
-										placeholder="문의사항을 입력하세요"></textarea>
-									<div class="ui message" id="charCount">0/300자</div>
-								</div>
-							</div>
-						</div>
-						<div class="actions">
-							<div class="ui positive button">전송</div>
-						</div>
+			<i class="close icon"></i>
+			<div class="header">문의사항 작성</div>
+			<div class="content">
+				<div class="ui form">
+					<div class="field">
+						<label>작성자: userId | 작성일: 2024-06-18</label>
 					</div>
+					<div class="field">
+						<label>제목</label> <input type="text" name="title"
+							placeholder="제목을 입력하세요">
+					</div>
+					<div class="field">
+						<label>내용</label>
+						<textarea rows="5" name="content" id="content"
+							placeholder="문의사항을 입력하세요"></textarea>
+						<div class="ui message" id="charCount">0/300자</div>
+					</div>
+				</div>
+			</div>
+			<div class="actions">
+				<div class="ui positive button">전송</div>
+			</div>
+		</div>
 		<div class="search-container">
 			<div class="ui icon input">
 				<input type="text" placeholder="Search..."> <i
