@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,10 @@
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="../dist/components/icon.css">
+<!--jQuery CDN 시작-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!--jQuery CDN 끝-->
 <!-- Semantic UI CSS -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
@@ -29,14 +34,20 @@
 	margin-top: 150px; /* 위에서 주어진 마진 값 */
 }
 
-.table td.center-aligned {
-	text-align: center;
+.center-aligned {
+	text-align: center !important;
 }
 
-.table td.right-aligned {
-	text-align: right;
+.left-aligned {
+	text-align: left !important;
 }
 
+.right-aligned {
+	text-align: right !important;
+}
+.narrow-column {
+        width: 120px;
+    }
 </style>
 <script type="text/javascript">
 	$(document).ready(function($) {
@@ -52,7 +63,7 @@
 
 	<!-- main container -->
 	<div class="ui main container">
-		<h1 class="ui header">공지사항</h1>
+			<h1 class="ui header">공지사항</h1>
 
 		<div class="search-container">
 			<div class="ui icon input">
@@ -64,75 +75,25 @@
 		<table class="ui celled selectable very basic table">
 			<thead>
 				<tr>
-					<th class="center-aligned">번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th class="right-aligned">작성일</th>
+					<th class="center-aligned narrow-column">번호</th>
+					<th class="left-aligned">제목</th>
+					<th class="center-aligned narrow-column">작성자</th>
+					<th class="center-aligned narrow-column">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="clickable-row" data-href="site_notice_detail.do">
-					<td class="center-aligned">1</td>
-					<td>공지사항 제목 1</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-08</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">2</td>
-					<td>공지사항 제목 2</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-07</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">3</td>
-					<td>공지사항 제목 3</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-06</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">4</td>
-					<td>공지사항 제목 2</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-07</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">5</td>
-					<td>공지사항 제목 3</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-06</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">6</td>
-					<td>공지사항 제목 2</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-07</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">7</td>
-					<td>공지사항 제목 3</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-06</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">8</td>
-					<td>공지사항 제목 3</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-06</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">9</td>
-					<td>공지사항 제목 3</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-06</td>
-				</tr>
-				<tr>
-					<td class="center-aligned">10</td>
-					<td>공지사항 제목 3</td>
-					<td>관리자</td>
-					<td class="right-aligned">2024-06-06</td>
-				</tr>
+				<c:forEach var="list" items="${requestScope.list }" varStatus="i">
+					<tr>
+						<td class="center-aligned"><c:out value="${i.count }" /></td>
+						<td class="left-aligned"><c:out value="${list.title}" /></td>
+						<td class="center-aligned"><c:out value="${list.id}" /></td>
+						<td class="center-aligned"><fmt:formatDate
+								pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
+
 		<div class="ui container">
 			<div class="pagination-container">
 				<div class="ui pagination menu">

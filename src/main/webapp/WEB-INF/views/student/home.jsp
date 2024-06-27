@@ -24,8 +24,10 @@
     }
 
     .masthead.segment {
-      min-height: 350px;
+      min-height: 350px; /* 고정된 높이 설정 */
       padding: 1em 0em;
+      display: flex; /* 중앙 정렬을 위한 flexbox 설정 */
+      align-items: center; /* 세로 중앙 정렬 */
     }
     .masthead .logo.item img {
       margin-right: 1em;
@@ -90,9 +92,19 @@
       .secondary.pointing.menu .toc.item {
         display: block;
       }
-      .masthead.segment {
-        min-height: 350px;
-      }
+       .masthead.segment {
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+  }
+  .masthead.segment .column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .masthead.segment .column img {
+      height: 100%;
+  }
       .masthead h1.ui.header {
         font-size: 2em;
         margin-top: 1.5em;
@@ -102,6 +114,12 @@
         font-size: 1.5em;
       }
     }
+
+  .masthead .column img {
+      max-height: 300px; /* 이미지의 최대 높이 설정 */
+      height: 100%; /* 부모 요소에 맞춰서 높이 조정 */
+      object-fit: cover; /* 비율을 유지하며 크기 조정 */
+  }
 
 </style>
  <script src="assets/library/jquery.min.js"></script>
@@ -133,7 +151,7 @@
 
       $('.ui.rating')
 	  .rating({
-		initialRating: 1,
+		initialRating: 0,
 	    maxRating: 1
 	  });
     });
@@ -146,23 +164,32 @@
 	<!-- 컨텐츠 영역 -->
 	<!-- Page Contents -->
 <div class="pusher">
-  <div class="ui inverted vertical masthead center aligned segment" style="background-color: #E2F0D9;">
+  <div class="ui inverted vertical masthead segment" style="background-color: black;">
     <div class="ui container">
-    <h1 class="ui inverted header" style="margin-top:40px;color: black;"> 
-         <div class="ui red button" style="pointer-events: none; cursor: default;">
-            전부무료
+        <div class="ui stackable two column grid" style="padding:20px; height: 100%;">
+            <div class="column" style="text-align: left; display: flex; flex-direction: column; justify-content: center;">
+                <h2 class="ui inverted header" style="margin-top:10px;margin-bottom:10px;color: white;"> 
+                    <div class="ui red button" style="pointer-events: none; cursor: default;">
+                        전부무료
+                    </div>
+                    <div style="margin-top: 20px;color: white;">
+                        <span>
+                        <p>
+                            누구나 쉬운 입문 강의<br/>
+                            지금 찾아보세요!</p>
+                          <p>  <h4>모든 강의를 무료로 제공합니다</h4></p>
+                        </span>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </h2>
+            </div>
+            <div class="column" style="display: flex; justify-content: center; align-items: center;">
+                <img src="${pageContext.request.contextPath}/front/student/images/banner_image2.png" style="max-width: 100%; height: 100%;">
+            </div>
         </div>
-        <div style="margin-top: 20px;color: black;">
-        <span>
-            기다리던 JAVA 강의가 왔습니다!
-        </span>
-        </div>
-        <div>
-            그것도, <span style="color: red;">무료</span>로!
-        </div>
-    </h1>
-</div>
-
+    </div>
   </div>
 
   <div class="ui vertical stripe segment">
@@ -303,36 +330,22 @@
 
 
 <div class="ui vertical stripe quote segment">
-    <div class="ui equal width stackable internally celled grid">
+    <!-- <div class="ui equal width stackable internally celled grid"> -->
       <div class="center aligned row">
         <div class="column">
           <h3>"What a Company"</h3>
           <p>That is what they all say about us</p>
         </div>
-        <div class="column">
+        <!-- <div class="column">
           <h3>"I shouldn't have gone with their competitor."</h3>
           <p>
             <img src="assets/images/avatar/nan.jpg" class="ui avatar image"> <b>Nan</b> Chief Fun Officer Acme Toys
           </p>
-        </div>
+        </div> -->
       </div>
-    </div>
+    <!-- </div> -->
   </div>
-
-  <div class="ui vertical segment" style="padding:50px">
-    <!-- <div class="ui text container">
-      <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
-      <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
-      <a class="ui large button">Read More</a>
-      <h4 class="ui horizontal header divider">
-        <a href="#">Case Studies</a>
-      </h4>
-      <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
-      <p>Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-      <a class="ui large button">I'm Still Quite Interested</a>
-    </div> -->
-  </div> 
-
+<div class="ui vertical stripe quote segment"></div>
 </div>
 
 
