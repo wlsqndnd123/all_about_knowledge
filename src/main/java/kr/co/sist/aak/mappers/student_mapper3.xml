@@ -1,10 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.sist.aak.student3">
+<mapper namespace="kr.co.sist.aak.student3"> 
 
 	<!-- 강의 리스트 -->
+	<select id="selectAllUserLecture" resultType="UserLectureDomain">
+		select SUB_CODE,
+		STATUS, IMAGE, SUB_TITLE, CAT_CODE, INST_ID
+		from ( select
+		s.SUB_CODE,s.STATUS,s.IMAGE,sc.SUB_TITLE,sc.CAT_CODE,si.INST_ID
+		from SUBJECT s, SUBJECT_CODE sc, SUB_INSTRUCTOR si
+		where (s.SUB_CODE=sc.SUB_CODE and s.SUB_CODE=si.SUB_CODE)
+		)
+	</select>
+	<!-- <select id="selectAllUserLecture" resultType="kr.co.sist.aak.domain.student.UserLectureDomain">
+		select * from subject
+	</select> -->
+	
+	
 	<!-- 강의 상세 -->
 	<!-- 수강 신청 -->
 	<!-- 관심강의 추가 -->

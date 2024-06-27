@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -32,25 +32,26 @@
 		) where rnum between #{startNum} and #{endNum}
 	</select> -->
 	<!-- 사이트 공지사항 리스트 -->
-	<select id="selectUserNoticeList" resultType="UserNoticeDomain">
-    SELECT NOTI_NO, TITLE, ID, WRITE_DATE
-    FROM NOTICE
-    WHERE STATUS = 'POST'
-    ORDER BY WRITE_DATE DESC
+	<select id="selectAllUserNotice" resultType="UserNoticeDomain">
+    select * from NOTICE order by NOTI_NO desc
+    <!-- SELECT NOTI_NO, TITLE, ID, WRITE_DATE
+    FROM NOTICE -->
+    <!-- WHERE STATUS = 'POST' -->
+    <!-- ORDER BY WRITE_DATE DESC -->
 	</select>
 
 	<!-- 사이트 공지사항 상세보기 -->
-	<select id="selectOneUserNotice" resultType="UserNoticeDomain" parameterType="String">
+	<!-- <select id="selectOneUserNotice" resultType="UserNoticeDomain" parameterType="String">
 		select TITLE, ID, WRITE_DATE, CONTENT
 		from NOTICE
 		where NOTI_NO=#{NOTI_NO}
-	</select>
+	</select> -->
 	
 	<!-- 강의 공지사항 리스트 -->
-	<select id="selectInstNoticeList" resultType="">
+	<!-- <select id="selectInstNoticeList" resultType="">
 	select NOTI_NO, INST_ID, TITLE, WRITE_DATE, CONTENT
 	from  INST_NOTICE
 	where SUB_CODE=#{SUB_CODE}
-	</select>
+	</select> -->
 	<!-- 강의 공지사항 상세보기 -->
 </mapper>
