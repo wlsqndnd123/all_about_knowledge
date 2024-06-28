@@ -20,6 +20,7 @@
  <typeAlias alias="MyLectureVO" type="kr.co.sist.aak.domain.student.vo.MyLectureVO"/>
  <typeAlias alias="InterestLectureVO" type="kr.co.sist.aak.domain.student.vo.InterestLectureVO"/>
  <typeAlias alias="LoginVO" type="kr.co.sist.aak.domain.student.vo.LoginVO"/>
+ <typeAlias alias="MyExamVO" type="kr.co.sist.aak.domain.student.vo.MyExamVO"/>
  
  <typeAlias type="kr.co.sist.aak.domain.student.UserNoticeDomain" alias="UserNoticeDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.UserLectureDomain" alias="UserLectureDomain"/>
