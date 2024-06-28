@@ -1,6 +1,5 @@
 package kr.co.sist.aak.module.student.auth.controller;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +20,13 @@ public class LoginController {
 		return "student/login_join";
 	}
 	
+	
+	/**
+	 * Desc : 로그인 실패시 알림창 띄우고 로그인창 재 호출
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/student/login-error.do")
 	public String loginError(HttpServletRequest request, Model model) {
 		String error = request.getParameter("error");
