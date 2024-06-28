@@ -66,7 +66,7 @@ Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 					</div>
 					
 					<div class="content">
-						<p>[과목명] 의 시험에 응시하시겠습니까?</p>
+						<p>[ <c:out value="${sessionScope.sub_title}"/> ] 의 시험에 응시하시겠습니까?</p>
 					</div>
 					
 					<div class="actions">
