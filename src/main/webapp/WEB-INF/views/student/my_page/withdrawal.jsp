@@ -31,6 +31,10 @@ Desc : 사용자(학생)의 마이페이지 회원탈퇴 화면
 				    blurring: true
 				  })
 				  .modal('show');
+				
+		        $('#cancel').click(function(){
+		        	history.back();
+		        });
 			
 			}); // ready
 		</script>
@@ -63,7 +67,7 @@ Desc : 사용자(학생)의 마이페이지 회원탈퇴 화면
 						<p>진짜 가?</p>
 					</div>
 					<div class="actions">
-						<div class="ui red cancel inverted button">
+						<div class="ui red cancel inverted button" id="cancel">
 							<i class="remove icon"></i> ㄴㄴ
 						</div>
 						<div class="ui green ok inverted button">
