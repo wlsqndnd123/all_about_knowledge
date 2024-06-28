@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class MyLectureVO {
 	
-	private String catName, subTitle, name, status, examStatus;
+	private String catName, subTitle, name, status, examStatus, subCode;
 	private int percent;
 	
 }

@@ -25,14 +25,28 @@ Desc : 사용자(학생)의 마이페이지 개인정보수정 화면
 		<script type = "text/javascript">
 			$(function() {
 				$('.special.modal')
-				  .modal({
-					  centered: true,
-					  blurring: true
-				  })
-				  .modal('show');
-				
-				$('#confirm').click(function(){
-		            window.location.href = '${pageContext.request.contextPath}/mypage/edit_profile.do';
+		            .modal({
+		                centered: true,
+		                blurring: true
+		            })
+		            .modal('show');
+	        
+		        $('#confirm').click(function(){
+		            var password = $('input[type="password"]').val();
+		            $.ajax({
+		                type: "POST",
+		                url: "${pageContext.request.contextPath}/mypage/verify_password.do",
+		                data: { password: password },
+		                success: function(response) {
+		                    if (response === "success") {
+		                        window.location.href = '${pageContext.request.contextPath}/mypage/edit_profile.do';
+		                    }
+		                },
+		                error: function() {
+		                    alert("비밀번호를 확인하세요");
+		                    window.location.href = '${pageContext.request.contextPath}/mypage/edit_information.do'
+		                }
+		            });
 		        });
 			}); // ready
 		</script>
