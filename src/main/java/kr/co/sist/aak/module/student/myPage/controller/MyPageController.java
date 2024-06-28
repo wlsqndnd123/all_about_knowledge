@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
 	
-
-	
 	// 학생 마이페이지 --- 나의 강의 -- 상세
 	@GetMapping("/mypage/my_lecture_detail.do")
 	public String lectureDetail(){
@@ -23,18 +21,6 @@ public class MyPageController {
 	@GetMapping("/mypage/play_lecture.do")
 	public String playLecture(){
 		return "student/my_page/play_lecture";
-	}
-	
-	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 확인
-	@GetMapping("/mypage/exam_confirm.do")
-	public String examConfirm(){
-		return "student/my_page/exam_confirm";
-	}
-	
-	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 응시
-	@GetMapping("/mypage/exam.do")
-	public String exam(){
-		return "student/my_page/exam";
 	}
 	
 	// 학생 마이페이지 --- 나의 문의

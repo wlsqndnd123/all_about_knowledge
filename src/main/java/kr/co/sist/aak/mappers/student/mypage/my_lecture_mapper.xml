@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.student.mypage.my_lecture">
     <!-- 진행 중인 강의 -->
     <select id="selectProcessLectureList" parameterType="String" resultType="MyLectureVO">
-        SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, 
+        SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.SUB_CODE as subCode,
 		(COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 	    CASE WHEN COALESCE(se.try_count, 0) != 3 AND s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
 	    THEN '응시' ELSE '미응시' END AS examStatus
@@ -18,12 +18,12 @@
 	    JOIN SUBJECT s ON s.SUB_CODE = sc.SUB_CODE
 	    LEFT JOIN STD_EXAM se ON se.SUB_CODE = sc.SUB_CODE AND se.STD_ID = ss.STD_ID
 	    WHERE ss.STD_ID = #{stdId} and ss.APPLY = 'P'
-	    GROUP BY cc.CAT_NAME, sc.SUB_TITLE, ii.NAME, s.TOTAL_NO, se.try_count
+	    GROUP BY cc.CAT_NAME, sc.SUB_TITLE, ii.NAME, s.TOTAL_NO, se.try_count, ss.SUB_CODE
     </select>
     
     <!-- 완료된 강의 -->
     <select id="selectCompleteLectureList" parameterType="String" resultType="MyLectureVO">
-        SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, 
+        SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.SUB_CODE as subCode,
 		(COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 		CASE WHEN COALESCE(se.try_count, 0) != 3 AND s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
 		THEN '응시' ELSE '미응시' END AS examStatus
@@ -36,7 +36,7 @@
 	    JOIN SUBJECT s ON s.SUB_CODE = sc.SUB_CODE
 	    LEFT JOIN STD_EXAM se ON se.SUB_CODE = sc.SUB_CODE AND se.STD_ID = ss.STD_ID
 	    WHERE ss.STD_ID = #{stdId} and ss.APPLY = 'C'
-	    GROUP BY cc.CAT_NAME, sc.SUB_TITLE, ii.NAME, s.TOTAL_NO, se.try_count
+	    GROUP BY cc.CAT_NAME, sc.SUB_TITLE, ii.NAME, s.TOTAL_NO, se.try_count, ss.SUB_CODE
     </select>
 
 </mapper>
