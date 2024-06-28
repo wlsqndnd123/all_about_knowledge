@@ -70,27 +70,21 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 				
 				<div class="ui segment">		
 					<form class="ui form">
-						<div class="six fields">
-					    	<div class="field"></div>
+						<div class="three fields">
 					    	<div class="field"></div>
 						    <div class="field">
 								<label>아이디</label>
 								<input name="userId" type="text" value="<sec:authentication property='name'/>" readonly>
 						    </div>
+						</div>
+						
+						<div class="three fields">
+					    	<div class="field"></div>
 						    <div class="field">
 							    <label>이름</label>
 							    <input name="name" type="text">
 							</div>
 						</div>
-			
-					  	<div class="three fields">
-					    	<div class="field"></div>
-					    	<div class="field">
-					      		<label>이전 비밀번호</label>
-					      		<input name="password" type="password">
-					    	</div>
-					    </div>
-					  
 			
 					    <div class="three fields">
 					    	<div class="field"></div>

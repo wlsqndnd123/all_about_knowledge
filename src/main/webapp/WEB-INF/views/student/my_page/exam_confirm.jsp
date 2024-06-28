@@ -34,6 +34,10 @@ Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 				$('#confirm').click(function(){
 		            window.location.href = '${pageContext.request.contextPath}/mypage/exam.do';
 		        });
+				
+		        $('#cancel').click(function(){
+		        	history.back();
+		        });
 			}); // ready
 		</script>
 	</head>
@@ -70,7 +74,7 @@ Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 					</div>
 					
 					<div class="actions">
-						<div class="ui red cancel inverted button">
+						<div class="ui red cancel inverted button" id="cancel">
 							<i class="remove icon"></i> ㄴㄴ
 						</div>
 						
