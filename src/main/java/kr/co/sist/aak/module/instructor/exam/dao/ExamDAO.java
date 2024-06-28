@@ -37,16 +37,22 @@ public class ExamDAO {
 	}
 	
 	
-	public int insertExam(ExamVO eVO)throws PersistenceException{
-		int cnt=0;
-		MybatisDAO mbDAO=MybatisDAO.getInstance();
-    	SqlSession ss =mbDAO.getMyBatisHandler(false);
-    	cnt=ss.insert("kr.co.sist.aak.instructor4.insert_exam",eVO);
-		if(cnt==1) {
-			ss.commit();
-		}
-		mbDAO.closeHanlder(ss);
-		return cnt;
+	public int insertExam(ExamVO eVO) throws PersistenceException {
+	    int cnt = 0;
+	    MybatisDAO mbDAO = MybatisDAO.getInstance();
+	    SqlSession ss = mbDAO.getMyBatisHandler(false);
+	    try {
+	        cnt = ss.insert("kr.co.sist.aak.instructor4.insert_exam", eVO);
+	        if (cnt == 1) {
+	            ss.commit();
+	        }
+	    } catch (PersistenceException e) {
+	        ss.rollback(); // 롤백 처리
+	        throw e; // 예외 다시 던지기
+	    } finally {
+	        mbDAO.closeHanlder(ss);
+	    }
+	    return cnt;
 	}
 	
 	public int selectQNum()throws PersistenceException{
@@ -64,21 +70,19 @@ public class ExamDAO {
 	
 	
 	public int updateExam(ExamVO eVO) {
-		
 		int cnt=0;
 		MybatisDAO mbDAO=MybatisDAO.getInstance();
-		SqlSession ss=mbDAO.getMyBatisHandler(true);
-		cnt=ss.update("kr.co.sist.aak.instructor4.update_exam",eVO);
-		mbDAO.closeHanlder(ss);
+		SqlSession ss = mbDAO.getMyBatisHandler(true);
+		cnt=ss.update("kr.co.sist.aak.instructor4.update_exam", eVO);
 		
-		System.out.println("ExamVO in DAO :"+ eVO.toString());
+		System.out.println("update의 dao"+ eVO.toString());
 		
 		return cnt;
-		
 	}
 	
 	
-
+	
+	
 	
 	
 

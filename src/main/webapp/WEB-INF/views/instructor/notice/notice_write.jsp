@@ -345,7 +345,7 @@ $(document).ready(function(){
     <h3>공지사항 작성</h3>
     
     <form action="notice_write_pr.do" id="frm" method="post">
-        <input type="text" name="instId" value="INST_00001" /><br>
+        <input type="text" name="STD_ID" value="INST_00001" readonly/><br>
           <input type="text" class="SUB_CODE" id="SUB_CODE" value="SUB_000001" readonly/>
        
         <table>
@@ -353,14 +353,14 @@ $(document).ready(function(){
         <td><input type="text" name="noti_no" value="${ requestScope.noti_no }" readonly/></td>
                  </tr>
       <tr>
-                <td colspan="6"><input type="text" class="title" id="title" name="title" placeholder="제목"/></td> 
+                <td colspan="6"><input type="text" class="title" id="title" name="title" placeholder="제목을입력하세요"/></td> 
             </tr>
             <tr>
-                 <td colspan="6"><textarea rows="5" name="content" placeholder="내용"></textarea></td>
+                 <td colspan="6"><textarea rows="5" name="content" placeholder="내용을 입력하세요"></textarea></td>
             </tr>
         </table>
           
-            <input type="button" class="btn btn-link" value="작성" id ="btnwrite"/>
+            <input type="button" class="btn btn-dark btn-sm" value="작성" id ="btnwrite"/>
           
     </form>
 </div>
