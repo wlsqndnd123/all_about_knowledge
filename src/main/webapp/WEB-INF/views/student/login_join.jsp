@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,6 +62,12 @@
                      <a href="#" class="switch-a">ID찾기</a>
                      <a href="#" class="switch-a">비밀번호찾기</a>
                   </div>
+					<c:if test="${loginError}">
+						<script type="text/javascript">
+                         alert("아이디와 비밀번호를 확인하세요");
+                        </script>
+					</c:if>
+                  
                </form>
             </div><!-- End Login Form -->
 

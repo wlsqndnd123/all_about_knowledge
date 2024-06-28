@@ -33,7 +33,7 @@
         <security:intercept-url pattern="/mypage/*" access="isAuthenticated()" />
         <security:intercept-url pattern="/student/login.do" access="permitAll" />
         <security:intercept-url pattern="/**" access="permitAll" />
-        <security:form-login login-page="/student/login.do" default-target-url="/mypage/mypage_home.do" authentication-failure-url="/login?error=true" login-processing-url="/login" />
+        <security:form-login login-page="/student/login.do" default-target-url="/mypage/mypage_home.do" authentication-failure-url="/student/login-error.do?error=true" login-processing-url="/login" />
          <security:logout logout-url="/logout" logout-success-url="/index.do" />
         <security:csrf disabled="true"/>
     </security:http>
