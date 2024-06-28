@@ -36,6 +36,7 @@ font-size: 7px;
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/datatables.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/datatables.datatables.css">
     
 
 </head>
@@ -152,20 +153,20 @@ font-size: 7px;
 </form>
                   <div style="margin-top: 30px;">
                     
-                    <table id ="notice" class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
+                    <table id ="notice" class="hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
-                    <th>번호</th>
-                    <th style="width: 60%"><a>공지사항 제목</a></th>
-                    <th ><a>날짜</a></th>
-                    <th><a>상태</a></th>
+                    <th style="text-align: center;">번호</th>
+                    <th style="width: 60%;text-align: center;"><a>공지사항 제목</a></th>
+                    <th style="text-align: center;" ><a>날짜</a></th>
+                    <th style="text-align: center;"><a>상태</a></th>
                     </tr>
                     </thead>
                     <tbody id ="output">
                     <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
-                    <tr>
-                    <td><c:out value="${  i.count }"/></td>
-                    <td><a href="manage_notification_details.do?noti_no=${list.noti_no }"><c:out value="${list.title }"/></a></td>
+                    <tr onclick="changeUrl('${list.noti_no}')">
+                    <td><c:out value="${ list.noti_no }"/></td>
+                    <td><c:out value="${list.title }"/></td>
                     <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
                     <td><c:out value="${list.status}"/></td>
                     </tr>
@@ -192,7 +193,17 @@ font-size: 7px;
 		            { "data": "titleLink" },
 		            { "data": "write_date" },
 		            { "data": "status" }
-		        ]
+		        ],
+		        language: {
+	                search: "공지사항 명 조회: ",
+	                zeroRecords: "일치하는 공지사항이 없습니다.",
+	                info: "현재 _START_ - _END_ / 총 _TOTAL_건",
+	                lengthMenu: "한 페이지당 _MENU_ 개씩 보기",
+	                paginate: {
+	                    next: "다음",
+	                    previous: "이전",
+	                }
+		        }
 		    });
 
 		    // #status 요소의 값이 변경될 때 이벤트 핸들러를 부착
@@ -263,6 +274,10 @@ font-size: 7px;
 		            table.draw();           // 테이블 다시 그리기
 		        }
 		    });
+		}
+		function changeUrl(url){
+			var url=url;
+			window.location.href='manage_notification_details.do?noti_no='+url;
 		}
 
   

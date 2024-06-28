@@ -33,13 +33,24 @@
 	from CAT_CODE
 	where cat_code=#{cat_code}
 	</select>
-	
-	<!-- <insert >
-	insert into SUBJECT_CODE (SUB_CODE,SUB_NAME,CAT_CODE, CAT_NAME)
-	values('-','-',#{cat_code},#{cat_name})
-	</insert>
-	<insert id="insertEduSubject" parameterType="EduCategoryManagementVO">
-	insert into SUBJECT_CODE (SUB_CODE,SUB_NAME,CAT_CODE, CAT_NAME)
-	values(#{sub_code},#{sub_name},#{cat_code},#{cat_name})
-	</insert> -->
+	<select id="categorysubCnt" resultType="EduCategoryManagementDomain" parameterType="String">
+	SELECT
+    CC.CAT_NAME AS PRIME_CAT_CODE,
+    COUNT(SC.SUB_CODE) AS subject_count
+FROM
+    CAT_CODE CC
+LEFT JOIN
+    CAT_CODE CC2 ON CC.CAT_CODE = CC2.PRIME_CAT_CODE
+LEFT JOIN
+    SUBJECT_CODE SC ON SC.CAT_CODE = CC2.CAT_CODE
+WHERE
+    CC.PRIME_CAT_CODE = 'N/A' and CC2.PRIME_CAT_CODE=#{prime_cat_code}
+GROUP BY
+    CC.CAT_NAME
+	</select>
+	<select id="selectMaxvalPrimecode" parameterType="String" resultType="EduCategoryManagementDomain">
+	select prime_cat_code,cat_name
+	from CAT_CODE
+	where CAT_CODE =#{cat_code} 
+	</select>
 </mapper>

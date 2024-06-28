@@ -11,4 +11,5 @@ import lombok.ToString;
 @ToString
 public class EduCategoryManagementDomain {
 private String cat_code,cat_name,prime_cat_code;
+private int subject_count;
 }

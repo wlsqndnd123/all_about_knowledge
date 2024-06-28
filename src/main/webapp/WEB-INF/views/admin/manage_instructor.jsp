@@ -137,9 +137,6 @@ width: 15vw;height: auto;
              <li class="breadcrumb-item active">
              강사 리스트</li></ol>
              </div>
-              <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">강사 리스트</h2>
-              </div>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<a href="manage_instructor_addform.do">
   	<button class="btn btn-light btn-sm me-md-2" type="button" id ="addInst">강사 추가</button>
@@ -155,17 +152,16 @@ width: 15vw;height: auto;
                     <table id="instructor" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
                     <thead>
                     <tr>
-                    <th>NO</th>
+                    <th style="text-align: center;">강사 아이디</th>
                     <th style="width: 60%;text-align: center; " >강사명</th>
                     <th style="text-align: center;">진행중인 강의 수</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="list" items="${requestScope.instList }" varStatus="i">
-                    <tr>
-                    
-                    <td><c:out value="${i.count }"/> </td>
-                    <td><a href="manage_instructor_details.do?inst_id=${list.inst_id }">${list.name}</a></td>
+                    <tr onclick="changeUrl('${list.inst_id}')">
+                    <td><c:out value="${list.inst_id}"/> </td>
+                    <td>${list.name}</td>
                     <td  style="text-align: center;"><c:out value="${list.subject_count }"/></td>
                     </tr>
                     </c:forEach>
@@ -230,9 +226,24 @@ width: 15vw;height: auto;
 	        $("#YorN").submit(); 
 	    });
 
-	    $("#instructor").DataTable();
+	    $("#instructor").DataTable({
+	    	language: {
+                search: "강사 명 조회: ",
+                zeroRecords: "일치하는 강사가 없습니다.",
+                info: "현재 _START_ - _END_ / 총 _TOTAL_건",
+                lengthMenu: "한 페이지당 _MENU_ 개씩 보기",
+                paginate: {
+                    next: "다음",
+                    previous: "이전",
+                }
+	    }
+	    
 	});
-
+ });
+ function changeUrl(url){
+		var url=url;
+		window.location.href='manage_instructor_details.do?inst_id='+url;
+	}
  </script>
 </body>
 

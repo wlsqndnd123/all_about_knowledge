@@ -24,7 +24,13 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-
+<style type="text/css">
+.side{
+font-size: 11px;
+text-align: center;
+font-weight: normal;
+}
+</style>
 </head>
 
 <body id="reportsPage">
@@ -96,7 +102,17 @@
             
              <!-- row -->
         <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <table class="table table-hover side">
+                <thead>
+                <tr><th colspan="2">최근에 추가 된 카테고리</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>카테고리 코드</td><td>${primcat}</td></tr>
+                <tr><td>카테고리명</td><td>${catname}</td></tr>
+                </tbody>
+                </table>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
