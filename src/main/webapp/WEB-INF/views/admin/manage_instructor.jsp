@@ -4,6 +4,12 @@
 <html lang="en">
 <style>
 th,td,tr{font-size: 12px; text-align: center;}
+#myChart{
+width: 15vw;height: auto;
+}
+.myChart{
+width: 15vw;height: auto;
+}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -98,8 +104,27 @@ th,td,tr{font-size: 12px; text-align: center;}
                 <div></div>
                 <!-- 아이디 권한 정보  -->
                 <div></div>
+                <!-- 퇴사|재직중인 강사 -->
+                <div>
+                <table class ="table table-hover">
+                <tbody id ="instNY">
                 
+                </tbody>
+                </table>
                 
+                </div>
+                <hr  class="border border-primary border-1 opacity-50">
+                <!--강사들의 주력과목 -->
+                <div>
+                <table class ="table table-hover">
+                <tbody id ="instSubject">
+                
+                </tbody>
+                </table>
+                </div>
+               <%--  <div class="myChart">
+                <canvas id ="myChart"></canvas>
+                </div> --%>
              </div>
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
@@ -120,20 +145,11 @@ th,td,tr{font-size: 12px; text-align: center;}
   	<button class="btn btn-light btn-sm me-md-2" type="button" id ="addInst">강사 추가</button>
   	</a>
 </div>	
-                    <div>
-                    <!-- <select class="form-select" aria-label="Default select example">
-                    <option selected>정렬조건</option>
-                    <option>강사명 오름차 순</option>
-                    <option>강사명 내림차 순</option>
-                    <option>진행중인 강의가 많은 순</option>
-                    <option>진행중인 강의가 적은 순</option>
-                    </select> -->
-                    </div>
+                    
                     <div>
                     <form action="manage_instructor.do" id ="YorN" method="get">
-	<label><input type="radio" name="status" value="N" checked> 재직중</label>
-
-	<label><input type="radio" name="status" value="Y"> 퇴사</label>
+			<label><input type="radio" name="status" value="N" checked> 재직중</label>
+			<label><input type="radio" name="status" value="Y"> 퇴사</label>
                     </form>
                     
                     <table id="instructor" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
@@ -162,26 +178,61 @@ th,td,tr{font-size: 12px; text-align: center;}
                 </div>
             </div>
     
-
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
    <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
  $(function(){
-	 var selectedValue = localStorage.getItem('selectedStatus');
+	    $.ajax({
+	        url: "manage_inst_subPercentage.do", 
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.error('AJAX request failed:', xhr);
+	        },
+	        success: function(jsonObj) {
+	        	$("#instSubject").empty();
+	            	var output ="<tr><td  colspan='2'>강사들의 주력과목</td></tr>";
+	            $.each(jsonObj.list,function(i,jsonTemp) {
+	            	output+="<tr><td>과목명: "+jsonTemp.major_subject+"</td><td> 비율:"+jsonTemp.percentage+"% </td></tr>";
+	            })
+	            $("#instSubject").html(output);
+	            }
+
+	    });
+	    $.ajax({
+	        url: "manage_inst_ny.do", 
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.error('AJAX request failed:', xhr);
+	        },
+	        success: function(jsonObj) {
+	        	$("#instNY").empty();
+	          
+	            	var output="<tr><td>재직중인 강사 수: "+jsonObj.n+"</td></tr>";
+	            	output+="<tr><td>퇴사 한 강사 수:"+jsonObj.y+"</td></tr>";
+	            
+	            $("#instNY").html(output);
+	            }
+
+	    });
+
+	    var selectedValue = localStorage.getItem('selectedStatus');
 	    if (selectedValue) {
 	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
 	    }
-	 
-	 $("input[name='status']").change(function() {
-		 var selectedValue = $(this).val();
+
+	    $("input[name='status']").change(function() {
+	        var selectedValue = $(this).val();
 	        localStorage.setItem('selectedStatus', selectedValue);  
-		 $("#YorN").submit(); 
+	        $("#YorN").submit(); 
 	    });
-	 $("#instructor").DataTable({
-		 
-	 })
- })
+
+	    $("#instructor").DataTable();
+	});
+
  </script>
 </body>
 

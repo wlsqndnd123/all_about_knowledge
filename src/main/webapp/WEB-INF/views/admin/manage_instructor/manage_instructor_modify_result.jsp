@@ -109,7 +109,7 @@
              </div>
                             <div style="text-align: center; margin: auto;">
                             <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                            <img src="http://localhost/all_about_knowledge/upload/${ imd.image }"  class="card-img-top" alt="...">
+                            <img src="http://localhost/all_about_knowledge/upload/${ imd.image }" class="card-img-top" alt="..." loading="lazy"/>
                             </div>
                             </div>
                             <div>

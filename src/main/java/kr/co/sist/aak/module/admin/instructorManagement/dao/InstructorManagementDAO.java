@@ -96,6 +96,7 @@ public class InstructorManagementDAO {
 		if(cnt ==1) {
 			ss.commit();
 		}
+		mbDAO.closeHanlder(ss);
 		return cnt;
 	}
 
@@ -107,6 +108,7 @@ public class InstructorManagementDAO {
 		if(cnt==1) {
 			ss.commit();
 		}
+		mbDAO.closeHanlder(ss);
 		return cnt;
 	}
 	public String selectMaxInstId() throws PersistenceException {
@@ -126,10 +128,40 @@ public class InstructorManagementDAO {
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
 		
 		list = ss.selectList("kr.co.sist.aak.admin2.selectInstructorSubTitle",inst_id);
-		
+		mbDAO.closeHanlder(ss);
 		return list;
 	}
+	public List<InstructorManagementDomain> selectInstructorSubjectPercentage() throws PersistenceException {
+		List<InstructorManagementDomain> list =null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.admin2.instructorsMajorSub");
+		mbDAO.closeHanlder(ss);
+		return list;
+		
+		
+	}
+	public int selectInstructorNCount() throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.selectOne("kr.co.sist.aak.admin2.cntdelynN");
+		mbDAO.closeHanlder(ss);
+		return cnt;
 	
+	}
+	public int selectInstructorYCount() throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.selectOne("kr.co.sist.aak.admin2.cntdelynY");
+		mbDAO.closeHanlder(ss);
+		return cnt;
+		
+	}
 //	public static void main(String[] args) {
 //		String id =
 //	new InstructorManagementDAO().selectMaxInstId();
