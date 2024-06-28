@@ -32,6 +32,14 @@ public class InstructorManagementController {
 	@Autowired(required = false)
 	private InstructorManagementService ims;
 
+	/**
+	 * 해당하는 사번의 상세정보를 조회하는 method.
+	 * 작성자 : 김일신
+	 * @param imd
+	 * @param model
+	 * @param inst_id
+	 * @return
+	 */
 	@GetMapping("manage_instructor_details.do")
 	public String instructorDetail(InstructorManagementDomain imd, Model model, String inst_id) {
 		List<String> list =ims.searchInstructorSubject(inst_id);
@@ -42,12 +50,30 @@ public class InstructorManagementController {
 		return "/admin/manage_instructor/manage_instructor_details";
 	}
 
+	/**
+	 * 강사 추가 화면으로 이동하는 method.
+	 * 해당 페이지에서 강사 사번의 최곳값+1이 계산되어 리턴된다.
+	 * 작성자 : 김일신
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("manage_instructor_addform.do")
 	public String instructorAddForm(Model model) {
 		String inst_id =ims.searchMaxInstId();
+		
 		model.addAttribute("inst_id",inst_id);
 		return "/admin/manage_instructor/manage_instructor_add";
 	}
+	
+	/**
+	 * 강사 추가 화면에서 받아온 값들을 데이터베이스로 넘기는 method.
+	 * 작성자 : 김일신
+	 * @param request
+	 * @param temp
+	 * @param model
+	 * @return
+	 * @throws IOException
+	 */
 	@PostMapping("inst_add_process.do")
 	public String instructorFormProcess(HttpServletRequest request,String temp, Model model) throws IOException {
 		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
@@ -111,6 +137,14 @@ public class InstructorManagementController {
 		
 	}
 
+	/**
+	 * 퇴사한 강사/재직중인 강사를 보여주는 method.
+	 * 작성자 : 김일신.
+	 * 수정될 수 있음
+	 * @param model
+	 * @param status
+	 * @return
+	 */
 	@GetMapping("manage_instructor.do")
 	public String searchInstructorList(Model model,@RequestParam(defaultValue = "N") String status) {
 		List<InstructorManagementDomain> list = ims.searchAllNInstructor();
@@ -120,6 +154,17 @@ public class InstructorManagementController {
 		model.addAttribute("instList", list);
 		return "/admin/manage_instructor";
 	}
+	
+	
+	/**
+	 * 강사 정보 수정페이지에서 받은 값들을 데이터베이스에 넣는 method.
+	 * 작성자 : 김일신
+	 * @param request
+	 * @param temp
+	 * @param model
+	 * @return
+	 * @throws IOException
+	 */
 	@PostMapping("manage_instructor_modify_process.do")
 	public String modifyInstructorProcess(HttpServletRequest request, String temp, Model model) throws IOException {
 	    File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
@@ -191,13 +236,13 @@ public class InstructorManagementController {
 	}
 
 	@GetMapping("manage_instructor_modify.do")
-	public String modifyInstructorInfo(InstructorManagementDomain imd,String inst_id,Model model) {
+	public String modifyInstructor(InstructorManagementDomain imd,String inst_id,Model model) {
 		imd = ims.instructorDetail(inst_id);
 		model.addAttribute("imd",imd);
 		return "/admin/manage_instructor/manage_instructor_modify";
 	}
 	@GetMapping("manage_instructor_delete.do")
-	public String deleteInstructor(@RequestParam(defaultValue = "INST_00001") String inst_id,Model model) {
+	public String removeInstructor(@RequestParam(defaultValue = "INST_00001") String inst_id,Model model) {
 		ims.removeInstructor(inst_id);
 		model.addAttribute("instList",ims.searchAllNInstructor());
 		return "/admin/manage_instructor";

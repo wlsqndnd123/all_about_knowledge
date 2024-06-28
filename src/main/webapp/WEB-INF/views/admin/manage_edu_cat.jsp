@@ -3,9 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-th,td,tr{font-size: 12px;}
+.main{font-size: 12px;}
 .align{
 vertical-align: middle;
+}
+.side{
+font-size: 11px;
+text-align: center;
 }
 </style>
 <head>
@@ -93,7 +97,15 @@ vertical-align: middle;
             
              <!-- row -->
         <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <div>
+                <table class ="table table-hover side">
+                <tbody id ="catSubCnt">
+                <tr><td colspan="2">각 상위카테고리 조회시 <br>각 카테고리에 속하는 과목수가 보여집니다.</td></tr>
+                </tbody>
+                </table>
+                </div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
@@ -128,7 +140,9 @@ vertical-align: middle;
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
         $(function() {
+        	
         	 /* $("#catbtn").click(function() { */
+                
                  $.ajax({
                      url: "manage_edu_cat_list.do",
                      type: "GET",
@@ -138,7 +152,7 @@ vertical-align: middle;
                          alert("서버 오류 발생");
                      },
                      success: function(jsonObj) {
-                         var output = "<table class='table table-hover align' style='margin: auto; text-align: center;'>";
+                         var output = "<table class='table table-hover align main' style='margin: auto; text-align: center;'>";
                         
                          $.each(jsonObj.list, function(i, jsonTemp) {
                              var outputId = 'edusubOutput' + i;
@@ -194,6 +208,30 @@ vertical-align: middle;
                      });
                  }
              });
+             $.ajax({
+                 url: "manage_edu_cat_subCnt.do",
+                 type: "GET",
+                 dataType: "JSON",
+                 data:{ prime_cat_code: cat_code },
+                 error: function(xhr) {
+                     console.log(xhr.status + " : " + xhr.statusText);
+                     alert("서버 오류 발생");
+                 },
+                 success: function(jsonObj) {
+                    $("#catSubCnt").empty();
+                	 var output = "<tr><td colspan='2'>상위 카테고리별 과목 수</td></tr>";
+                    	if(jsonObj.flag){
+                         output += "<tr><td>카테고리 명</td><td>" + jsonObj.prime_cat_code + "</td></tr>";
+                         output += "<tr><td>과목 수</td><td>"+jsonObj.subject_count+"</td></tr>";
+                    	}else{
+                         output += "<tr><td colspan ='2'>해당하는 상위 카테고리 내 하위 카테고리가 없어<br/>정보 조회에 실패했습니다.</td></tr>";
+                    		
+                    	}
+                         
+                    
+                     $("#catSubCnt").html(output); // 카테고리 정보를 표시하고 출력
+                 }
+             }); // ajax
          }
                
     </script>
