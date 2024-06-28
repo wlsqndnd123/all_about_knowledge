@@ -31,7 +31,12 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 
-
+<style type="text/css">
+.tablefont{
+font-size: 11px;
+text-align: center;
+}
+</style>
 <body id="reportsPage">
     <div class="" id="home">
         <div class="container">
@@ -99,7 +104,7 @@
                 <div></div>
                 <!-- 해당 강사가 진행하는 강의 제목  -->
                 <div>
-    <table class="table table-hover">
+    <table class="table table-hover tablefont">
         <tbody id="subTitle">
             <tr><td>이 강사가 진행중인 강의</td></tr>
             <c:if test="${empty lectures}">

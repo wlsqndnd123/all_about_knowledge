@@ -19,5 +19,6 @@ phone,
 major_subject,
 education;
 int subject_count;
+double percentage;
 
 }
