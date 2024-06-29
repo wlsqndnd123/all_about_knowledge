@@ -72,12 +72,10 @@
                                     <button type="submit" class="btn btn-primary d-inline-block mx-auto">Login</button>
                                 </div>
                                 <div class="input-group mt-3">
-       <!-- 기본 환영 메시지 -->
     <div id="message" class="success">
         환영합니다. 관리자 페이지입니다.
     </div>
 
-    <!-- 로그인 실패 시 오류 메시지 -->
     <c:if test="${adminid == 'false'}">
         <script>
             $(document).ready(function() {
@@ -88,7 +86,6 @@
 
     <script>
         $(document).ready(function() {
-            // 기본 환영 메시지를 페이드인
             $('#message').fadeIn(1000);
         });
     </script>
