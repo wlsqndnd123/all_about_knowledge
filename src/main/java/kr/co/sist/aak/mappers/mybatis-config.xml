@@ -13,6 +13,8 @@
  <typeAlias type="kr.co.sist.aak.domain.admin.EduCategoryManagementDomain" alias="EduCategoryManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.AdminLoginVO" alias="AdminLoginVO"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.AdminLoginDomain" alias="AdminLoginDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.vo.AdminPermissionVO" alias="AdminPermissionVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.admin.AdminPermissionDomain" alias="AdminPermissionDomain"/>
  
  <typeAlias type="kr.co.sist.aak.domain.admin.MemberManagementDomain" alias="MemberManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.MemberManagementVO" alias="MemberManagementVO"/>
@@ -66,7 +68,7 @@
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper3.xml"/>
  <!-- Member -->   
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper4.xml"/>
- <!-- login -->   
+ <!-- login&Auth -->   
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper5.xml"/>
     
     <!-- student mapper 시작 -->

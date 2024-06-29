@@ -9,6 +9,6 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class AdminLoginVO {
-	private String id,password;
+public class AdminPermissionVO {
+	private String id , notice_management, member_management, category_management, instructor_management, qna_management;
 }
