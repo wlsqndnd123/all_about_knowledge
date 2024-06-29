@@ -9,4 +9,8 @@
 from ADMIN
 where ID =#{id}
 </select>
+<select id="selectAdminPermission" parameterType="AdminLoginVO" resultType="AdminPermissionDomain">
+select * from ADMINPERMISSIONS
+where ID =#{id}
+</select>
 </mapper>
