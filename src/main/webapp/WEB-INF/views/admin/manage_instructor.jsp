@@ -101,8 +101,13 @@ width: 15vw;height: auto;
              
              <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <!-- 아이디 정보 -->
-                <div></div>
+                <div>
+                
+                </div>
                 <!-- 아이디 권한 정보  -->
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                </table>
                 <div></div>
                 <!-- 퇴사|재직중인 강사 -->
                 <div>
