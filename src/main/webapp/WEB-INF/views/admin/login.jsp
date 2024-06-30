@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="input-group mt-3">
     <div id="message" class="success">
-        환영합니다. 관리자 페이지입니다.
+        환영합니다. AAK 관리자 페이지입니다.
     </div>
 
     <c:if test="${adminid == 'false'}">
