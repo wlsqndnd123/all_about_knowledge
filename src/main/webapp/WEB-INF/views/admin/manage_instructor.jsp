@@ -4,12 +4,6 @@
 <html lang="en">
 <style>
 th,td,tr{font-size: 12px; text-align: center;}
-#myChart{
-width: 15vw;height: auto;
-}
-.myChart{
-width: 15vw;height: auto;
-}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -114,10 +108,11 @@ width: 15vw;height: auto;
                 
                 </div>
                 <!-- 아이디 권한 정보  -->
+                <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
                 </table>
-                <div></div>
+                </div>
                 <!-- 퇴사|재직중인 강사 -->
                 <div>
                 <table class ="table table-hover">

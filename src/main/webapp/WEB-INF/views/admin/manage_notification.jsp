@@ -90,7 +90,6 @@ font-size: 7px;
                                 </li>
                                 </c:if>
                                 <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
-                                
                                 <li class="nav-item  active">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
@@ -100,7 +99,7 @@ font-size: 7px;
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -116,7 +115,11 @@ font-size: 7px;
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <!-- 아이디 정보 -->
-                <div></div>
+               <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                </table>
+                </div>
                 <!-- 아이디 권한 정보  -->
                 <div></div>
                 
