@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -146,11 +147,12 @@ public class InstructorManagementController {
 	 * @return
 	 */
 	@GetMapping("manage_instructor.do")
-	public String searchInstructorList(Model model,@RequestParam(defaultValue = "N") String status) {
-		List<InstructorManagementDomain> list = ims.searchAllNInstructor();
-		if(status.equals("Y")) {
-			list = ims.searchAllyInstructor();
-		}
+	public String searchInstructorList(Model model,HttpServletRequest request) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String[] del_yn =  request.getParameterValues("del_yn");
+		System.out.println("===================================="+del_yn);
+		map.put("del_yns", del_yn);
+		List<InstructorManagementDomain> list = ims.searchAllInstructors(map);
 		model.addAttribute("instList", list);
 		return "/admin/manage_instructor";
 	}
