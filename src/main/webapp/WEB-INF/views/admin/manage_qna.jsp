@@ -30,7 +30,11 @@
 	.right {
   		 text-align: right;
 		}
-
+		
+	.custom-font-size {
+   		font-size: 12px;
+	}
+	
 </style>
 
 
@@ -96,63 +100,62 @@
                 </div>
             </div>
              <!-- row -->
-          <div class="row tm-content-row tm-mt-big">
-        		<div class="col-12" >
-                 <div class="bg-white tm-block col-12" style="height: 700px;">
+          <div class="container" style="padding: 1rem">
+            
+               <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="  margin-left: 25%; width:auto" >
               
-                        <div class="col-12" style="height: 600px">
-                            <h2 class="tm-block-title d-inline-block">문의 리스트</h2>
-                            
-                  
-
-                            	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                   
-                    
+                       <div class="col-12">
+          <div class="col-12">
+          
                     <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
                    
                     <thead>
                     <tr>
-                    <th>NO</th>
-                    <th>문의 제목</th>
-                    <th>아이디</th>
-                    <th>문의 날짜</th>
-                    <th>상태</th>
+                    <th class="custom-font-size">NO</th>
+                    <th class="custom-font-size">문의 제목</th>
+                    <th class="custom-font-size">아이디</th>
+                    <th class="custom-font-size">문의 날짜</th>
+                    <th class="custom-font-size">상태</th>
                     </tr>
                     </thead>
+                 
+                  
                     <tbody>
+                    <c:forEach var="qmd" items="${requestScope.qnaList }" varStatus="i">
                     <tr>
-                    <td>0002</td>
-                    <td><a href="manage_qna_details.do">한글이 안나와요</a></td>
-                    <td>JIN1234</td>
-                    <td>2024/06/06</td>
-                    <td>미확인</td>
+                    <td class="custom-font-size"><c:out value="${qmd.qna_no}"/></td>
+                    <td class="custom-font-size"><a href="manage_qna_details.do?qna_no=${qmd.qna_no}&status=${qmd.status}"><c:out value="${qmd.title }"/></td>                 
+                    <td class="custom-font-size"><c:out value="${qmd.std_id }"/></a></td>             
+                    <td class="custom-font-size"><c:out value="${qmd.q_date}"/></td>
+                    <td class="custom-font-size"> 
+                    <c:choose>
+       				 <c:when test="${qmd.status == 'N'}">미확인</c:when>
+       				 <c:when test="${qmd.status == 'Y'}">확인</c:when>
+       				 <c:when test="${qmd.status == 'D'}">삭제</c:when>
+           		 	</c:choose>
+           		 	</td>
                     </tr>
-                    
-                    <tr>
-                    <td>0001</td>
-                    <td><a href="manage_qna_details.do">문의가 안보여요</a></td>
-                    <td>KIM1234</td>
-                    <td>2024/06/05</td>
-                    <td>확인</td>
-                    </tr>
-                    
+                    </c:forEach>
                     </tbody>
+                
                     </table>
-                    </div>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
-            </div>
-            </div>
+         
            
+    </div>
         <footer class="row tm-mt-small">
          
         </footer>
+        </div>
+        </div>
     </div>
- <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-     <!-- https://jquery.com/download/ -->
+     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
-  <!-- https://getbootstrap.com/ -->
+	</div>
 </body>
+                  
 
 </html>
