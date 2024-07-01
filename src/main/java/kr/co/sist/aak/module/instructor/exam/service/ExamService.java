@@ -17,15 +17,15 @@ public class ExamService {
 	@Autowired
 	private ExamDAO eDAO;
 	
-	public List<ExamDomain>searchList(){
-		List<ExamDomain>list=null;
-		try {
-			list=eDAO.selectList();
-			System.out.println("서비스쪽:"+list);
-		}catch(PersistenceException pe) {
-			pe.printStackTrace();
-		}
-		return list;
+	public List<ExamDomain> searchList(String SUB_CODE) {
+	    List<ExamDomain> list = null;
+	    try {
+	        list = eDAO.selectList(SUB_CODE);
+	        System.out.println("서비스쪽:" + list);
+	    } catch (PersistenceException pe) {
+	        pe.printStackTrace();
+	    }
+	    return list;
 	}
 
 	
@@ -67,10 +67,10 @@ public class ExamService {
         return result;
     }
 	
-	public List<ExamDomain>searchList1(){
+	public List<ExamDomain>searchList1(String SUB_CODE){
 		List<ExamDomain>list=null;
 		try {
-			list=eDAO.selectList();
+			list=eDAO.selectList(SUB_CODE);
 			System.out.println(list);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();

@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.sist.aak.domain.instructor.NoticeDomain;
 import kr.co.sist.aak.domain.instructor.vo.NoticeVO;
@@ -55,11 +53,21 @@ public class NoticeController {
 
 	@PostMapping("/notice_write_pr.do")
 	public String notice_Write(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+		
 		request.setCharacterEncoding("UTF-8");
 		String noti_no = request.getParameter("noti_no");
 		String SUB_CODE = request.getParameter("SUB_CODE");
 	    String title = request.getParameter("title");
 	    String content = request.getParameter("content");
+	    String INST_ID = request.getParameter("INST_ID");
+	    
+	    System.out.println("Received Parameters:"); 
+	    System.out.println("noti_no: " + noti_no);
+	    System.out.println("SUB_CODE: " + SUB_CODE);
+	    System.out.println("title: " + title);
+	    System.out.println("content: " + content);
+	    System.out.println("inst_id: " + INST_ID);
+
 
 	    NoticeVO nVO = new NoticeVO();
 	    nVO.setNOTI_NO(noti_no);
@@ -71,7 +79,8 @@ public class NoticeController {
 	    try {
 	        int cnt = ns.insertNotice(nVO);
 	        if (cnt == 1) {
-	            model.addAttribute("nVO", nVO);
+	            model.addAttribute("cnt", cnt);
+	            
 	        } else {
 	          
 	        }

@@ -27,12 +27,12 @@ public class ExamController {
 	private ExamService es;
 	
 	@GetMapping("/examList.do")
-	public String exam(Model model) {
-		
-		List<ExamDomain> list=es.searchList();
-		model.addAttribute("examlist",list);
-		System.out.println("컨트롤러:"+list);
-		return "/instructor/exam/examList";
+	public String exam( Model model) {
+		 String SUB_CODE = "SUB_000001"; //SUB_000001로 고정값으로 받는중
+		List<ExamDomain> list = es.searchList(SUB_CODE);
+	    model.addAttribute("examlist", list);
+	    System.out.println("컨트롤러:" + list);
+	    return "/instructor/exam/examList";
 	}
 	
 	
@@ -88,9 +88,9 @@ public class ExamController {
 	}
 
 	@GetMapping("/exam_update.do")
-	public String exam_updateFrm(Model model) {
+	public String exam_updateFrm(Model model, @RequestParam("SUB_CODE") String SUB_CODE) {
 		
-		List<ExamDomain> list=es.searchList1();
+		List<ExamDomain> list=es.searchList1(SUB_CODE);
 		model.addAttribute("examlist",list);
 		System.out.println("update쪽 리스트"+list);
 		

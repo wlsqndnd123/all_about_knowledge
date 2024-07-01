@@ -7,6 +7,7 @@
 	<select id="select_exam" resultType="ExamDomain">
 	select SUB_CODE,Q_NO,CONTENT,EX_1,EX_2,EX_3,EX_4,SOLUTION
 	from INST_EXAM
+	where SUB_CODE = #{SUB_CODE}
 
 	</select>
 	

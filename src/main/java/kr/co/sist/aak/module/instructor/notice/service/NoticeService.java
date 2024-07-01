@@ -58,7 +58,7 @@ public class NoticeService {
 	 public int insertNotice(NoticeVO nVO) {
 		 int cnt=0;
 		 try {
-			 nDAO.insertNotice(nVO);
+			 cnt = nDAO.insertNotice(nVO);
 		 }catch(PersistenceException e) {
 			 e.printStackTrace();
 		 }

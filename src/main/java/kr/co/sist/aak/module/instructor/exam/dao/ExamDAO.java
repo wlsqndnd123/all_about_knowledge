@@ -26,14 +26,14 @@ public class ExamDAO {
 		return eDAO;
 	}
 	
-	public List<ExamDomain> selectList()throws PersistenceException{
-		List<ExamDomain>list=null;
-		MybatisDAO mbDAO = MybatisDAO.getInstance();
-		SqlSession ss=mbDAO.getMyBatisHandler(false);
-		list=ss.selectList("kr.co.sist.aak.instructor4.select_exam");
-		System.out.println("doa list:"+list);
-		mbDAO.closeHanlder(ss);
-		return list;
+	public List<ExamDomain> selectList(String SUB_CODE) throws PersistenceException {
+	    List<ExamDomain> list = null;
+	    MybatisDAO mbDAO = MybatisDAO.getInstance();
+	    SqlSession ss = mbDAO.getMyBatisHandler(false);
+	    list = ss.selectList("kr.co.sist.aak.instructor4.select_exam", SUB_CODE);
+	    System.out.println("dao list:" + list);
+	    mbDAO.closeHanlder(ss);
+	    return list;
 	}
 	
 	

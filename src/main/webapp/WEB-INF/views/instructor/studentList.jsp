@@ -474,18 +474,7 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- main -->
-           <div class="dropdown me-2">
-        <select id="select">
-            <option>1</option>
-            <option>2</option>
-        </select>
-                </div>
-           <div class="dropdown me-2">
-        <select id="select">
-            <option>1</option>
-            <option>2</option>
-        </select>
-    </div>
+        
      
 
     <div class="search-box-container">
