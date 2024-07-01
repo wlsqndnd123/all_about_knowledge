@@ -23,6 +23,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 <script type = "text/javascript">
 	$(function() {
 	    loadData();
+	    bindEnterButton();
 	});
 	
 	function loadData() {
@@ -70,12 +71,27 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 			<div class="ui heart rating"></div>
 	      </td>
 	      <td class="single line">
-	        <button class="ui blue basic button">
+	      	<button class="ui green basic button enter-button" data-subcode="\${lecture.subCode}" data-subtitle ="\${lecture.subTitle}">
 			  보기
 			</button>
 	      </td>
 	    </tr>
 	    `;
+	}
+	
+	function bindEnterButton() {
+	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
+	        var subCode = $(this).data('subcode');
+	        var subTitle = $(this).data('subtitle');
+	        saveData({ subCode: subCode, subTitle: subTitle });
+	    });
+	}
+
+	function saveData(data) {
+	    $.post('${pageContext.request.contextPath}/mypage/save_subcode.do', data)
+	        .done(function() {
+	            window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
+	        });
 	}
 </script>
 </head>

@@ -33,10 +33,22 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 <script type = "text/javascript">
 	$(function() {
 		$('.progress').progress();
-		$('#playButton').click(function(){
-            window.location.href = '${pageContext.request.contextPath}/mypage/play_lecture.do';
-        });
+		bindEnterButton();
 	}); // ready
+	
+	function bindEnterButton() {
+	    $(document).off('click', '.playButton').on('click', '.playButton', function() {
+	        var lecCode = $(this).data('leccode');
+	        saveData(lecCode);
+	    });
+	}
+
+	function saveData(lecCode) {
+	    $.post('${pageContext.request.contextPath}/mypage/save_leccode.do', { lecCode: lecCode })
+	        .done(function() {
+	            window.location.href = '${pageContext.request.contextPath}/mypage/play_lecture.do';
+	        });
+	}
 </script>
 </head>
 <body class="mypage">
@@ -138,7 +150,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 				</c:choose>
 			</td>
 			<td>
-				<div class="ui animated mini green button" id="playButton" tabindex="0">
+				<div class="ui animated mini green button playButton" tabindex="0" data-leccode="${lecture.lecCode}">
 					<div class="visible content">재생</div>
 					<div class="hidden content">
 						<i class="caret square right icon"></i>

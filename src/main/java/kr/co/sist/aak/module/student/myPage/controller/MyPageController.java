@@ -13,11 +13,7 @@ public class MyPageController {
 	
 
 	
-	// 학생 마이페이지 --- 나의 강의 -- 재생
-	@GetMapping("/mypage/play_lecture.do")
-	public String playLecture(){
-		return "student/my_page/play_lecture";
-	}
+
 	
 	// 학생 마이페이지 --- 나의 문의
 	@GetMapping("/mypage/my_question.do")
