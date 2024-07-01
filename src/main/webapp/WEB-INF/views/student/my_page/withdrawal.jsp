@@ -73,10 +73,10 @@ Desc : 사용자(학생)의 마이페이지 회원탈퇴 화면
 					</div>
 					<div class="actions">
 						<div class="ui red cancel inverted button" id="cancel">
-							<i class="remove icon"></i> ㄴㄴ
+							<i class="remove icon"></i> 취소
 						</div>
 						<div class="ui green ok inverted button">
-							<i class="checkmark icon" id="confirm"></i> ㅇㅇ
+							<i class="checkmark icon" id="confirm"></i> 탈퇴
 						</div>
 					</div>
 				</div>

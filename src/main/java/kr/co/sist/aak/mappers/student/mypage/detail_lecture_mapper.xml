@@ -4,13 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.student.mypage.detail_lecture">
 	<select id="selectDeailLecture" parameterType="map" resultType="DetailLectureVO">
-		SELECT l.TITLE , l.LEC_CODE , ls.STATUS 
+		SELECT l.TITLE , l.LEC_CODE as lecCode , ls.STATUS 
 		FROM LECTURE l
 		JOIN SUBJECT s ON s.SUB_CODE = l.SUB_CODE 
 		JOIN LEC_STATUS ls ON l.SUB_CODE = ls.SUB_CODE
 	    WHERE s.SUB_CODE = #{subCode} AND ls.STD_ID = #{stdId}
-		ORDER BY LEC_CODE ASC
+		ORDER BY l.LEC_CODE ASC
 	</select>
+	
+    <select id="selectLecturePlay" parameterType="map" resultType="String">
+    	SELECT l.F_NAME
+		FROM LECTURE l 
+		WHERE l.SUB_CODE = #{subCode} AND l.LEC_CODE = #{lecCode}
+    </select>
+	
 <!-- 	<select id="selectDeailLectureInfo" parameterType="map" resultType="DetailLectureVO">
 	  SELECT s.INTRO , s.GOAL , s.IMAGE , ii.NAME , ii.INTRODUCTION , ii.IMAGE , l.TITLE , l.LEC_CODE , ls.STATUS 
 	  FROM SUBJECT s

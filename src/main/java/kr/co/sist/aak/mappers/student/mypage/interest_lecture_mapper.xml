@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.student.mypage.interest">
 
 <select id="selectInterestLectureList" parameterType="String" resultType="InterestLectureVO">
-        SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.INTEREST
+        SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.INTEREST, ss.SUB_CODE as subCode
 	    FROM CAT_CODE cc
 	    JOIN SUBJECT_CODE sc ON cc.CAT_CODE = sc.CAT_CODE
 	    JOIN STD_SUBJECT ss ON ss.SUB_CODE = sc.SUB_CODE

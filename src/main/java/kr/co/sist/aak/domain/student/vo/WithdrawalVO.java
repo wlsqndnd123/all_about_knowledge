@@ -5,12 +5,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @ToString
-public class DetailLectureVO {
+public class WithdrawalVO {
 
-	private String intro, goal, subImage, name, introduction, instImage, title, status, lecCode;
+	private String stdId, reason;
 	
 }
