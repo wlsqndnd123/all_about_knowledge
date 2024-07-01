@@ -74,7 +74,7 @@
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper4.xml"/>
  <!-- login&Auth -->   
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper5.xml"/>
- <!-- Member -->   
+  <!-- qna -->
     <mapper resource="kr/co/sist/aak/mappers/admin_mapper6.xml"/>
     
     <!-- student mapper 시작 -->

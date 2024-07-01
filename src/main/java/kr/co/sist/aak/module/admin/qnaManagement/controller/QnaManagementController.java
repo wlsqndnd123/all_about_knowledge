@@ -21,7 +21,7 @@ public class QnaManagementController {
 	private QnaManagementService qms;
 	
 	
-	@GetMapping("manage_qna.do")
+	@GetMapping("/manage_qna.do")
 	public String manageQna(Model model) {
 		
 		List<QnaManagementDomain> list = qms.searchQna();
@@ -33,7 +33,7 @@ public class QnaManagementController {
 	
 	
 	
-	@GetMapping("manage_qna_details.do")
+	@GetMapping("/manage_qna_details.do")
 	public String searchDetaleQna(QnaManagementDomain qnaDomain, Model model, String qna_no) {
 		
 		qnaDomain = qms.searchDetaleQna(qna_no);
@@ -43,7 +43,7 @@ public class QnaManagementController {
 		return "/admin/manage_qna/manage_qna_details";
 	}
 	
-	@PostMapping("manage_qna_modyify.do")
+	@PostMapping("/manage_qna_modyify.do")
 	public String modyifyQnaAnswer(QnaManagementVO qnaVO, Model model) {
 		
 		int cnt =0;
@@ -57,7 +57,7 @@ public class QnaManagementController {
 	}
 	
 	
-	@PostMapping("manage_qna_add.do")
+	@PostMapping("/manage_qna_add.do")
 	public String addQnaAnswer(QnaManagementVO qnaVO, Model model) {
 		
 		int cnt =0;
@@ -70,7 +70,7 @@ public class QnaManagementController {
 		return "/admin/manage_qna/manage_qna_details";
 	}
 	
-	@PostMapping("manage_qna_delete.do")
+	@PostMapping("/manage_qna_delete.do")
 	public String deleteQna(QnaManagementVO qnaVO, Model model) {
 		
 		int cnt =0;

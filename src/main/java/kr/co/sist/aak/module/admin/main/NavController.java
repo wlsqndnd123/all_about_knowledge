@@ -12,11 +12,5 @@ public class NavController {
 		return "/admin/manage_lecture";
 	}
 	
-	
-	@GetMapping("manage_qna.do")
-	public String manageQna() {
-		
-		return "/admin/manage_qna";
-	}
 
 }
