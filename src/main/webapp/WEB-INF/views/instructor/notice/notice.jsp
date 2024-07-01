@@ -395,8 +395,7 @@
                 </c:choose>
             </tbody>
         </table>
-        <a href="notice_write.do"><button>공지작성</button></a>
-       
+        <a href="notice_write.do"><button class="btn btn-dark btn-sm">공지작성</button></a>
         <!-- /main -->
       </div>
             

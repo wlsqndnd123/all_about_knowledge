@@ -10,7 +10,7 @@
         JOIN STD_SUBJECT ss ON si.STD_ID = ss.STD_ID
        
 	</select>
-	
+
 	
 	
 	

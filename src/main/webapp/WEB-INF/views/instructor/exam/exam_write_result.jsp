@@ -315,7 +315,7 @@
 <!-- main -->
 <div class="container">
   
-                    <h3>출제완료</h3>
+                    <h3>문제작성완료!!</h3>
                     
                 <div class="text-end">
                 <a href="examList.do"><button>목록으로</button></a>
