@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sist.aak.admin6">
+	
+	<!-- qna리스트 쿼리 -->
+	<select id="selectQna" resultType ="QnaManagementDomain">
+	select qna_no, title, std_id, content as content_question, q_date, status 
+	from QNA_GEN_Q
+	</select>
+	
+	
+	<!-- qna 세부 정보 쿼리 -->
+	<select id="selectDetaleQna" resultType ="QnaManagementDomain">
+	SELECT
+    Q.qna_no,
+    Q.title,
+    Q.std_id,
+    Q.content AS content_question,
+    A.content AS content_answer,
+    A.ans_date,
+    Q.q_date,
+    Q.status
+	FROM
+    QNA_GEN_Q Q
+	JOIN
+    QNA_GEN_A A ON Q.qna_no = A.qna_no
+    WHERE Q.qna_no = #{qna_no}
+	</select>
+	
+	
+	
+	<!-- qna 답번 수정 쿼리 -->
+	<update id="updateQnaAnswer" parameterType="QnaManagementVO">
+	update qna_gen_a 
+	set content = #{content_answer}
+	
+	where qna_no = #{qna_no}
+	</update>
+	
+
+	
+	<!-- qna 질문 업데이트 쿼리 -->
+	<update id="updateQna" parameterType="QnaManagementVO">
+	update qna_gen_q 
+	set status = 'Y'
+	where qna_no = #{qna_no}
+	</update>
+	
+	
+	<!-- qna 삭제 쿼리 -->
+	<update id="deleteQna" parameterType="QnaManagementVO">
+	update qna_gen_q 
+	set status
+	where std_id = #{std_id}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
