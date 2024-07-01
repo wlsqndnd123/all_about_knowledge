@@ -49,6 +49,11 @@
  <typeAlias type="kr.co.sist.aak.domain.instructor.OpenRequestDomain" alias="openRequestDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.QnaDomain" alias="qnaDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.RejectDomain" alias="rejectDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.NoticeDomain" alias="NoticeDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.StudentListDomain" alias="StudentListDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.ExamDomain" alias="ExamDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.vo.ExamVO" alias="ExamVO"/>
+<typeAlias type="kr.co.sist.aak.domain.instructor.vo.NoticeVO" alias="NoticeVO"/>
 <!-- 강사 typeAlias 끝 -->
  
 </typeAliases>
@@ -97,7 +102,9 @@
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper5.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper6.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper7.xml"/>
-    
+     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper2.xml"/>
+     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper3.xml"/>
+     <mapper resource="kr/co/sist/aak/mappers/instructor_mapper4.xml"/>
 
   </mappers>
 </configuration>
