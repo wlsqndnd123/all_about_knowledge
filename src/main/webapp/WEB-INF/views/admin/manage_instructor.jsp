@@ -136,9 +136,6 @@ width: 15vw;height: auto;
                 </tbody>
                 </table>
                 </div>
-               <%--  <div class="myChart">
-                <canvas id ="myChart"></canvas>
-                </div> --%>
              </div>
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
