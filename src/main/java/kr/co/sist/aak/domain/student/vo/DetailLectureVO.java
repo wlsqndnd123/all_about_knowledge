@@ -11,6 +11,6 @@ import lombok.ToString;
 @ToString
 public class DetailLectureVO {
 
-	private String intro, goal, subImage, name, introduction, instImage, title, status;
+	private String intro, goal, subImage, name, introduction, instImage, title, status, lecCode;
 	
 }

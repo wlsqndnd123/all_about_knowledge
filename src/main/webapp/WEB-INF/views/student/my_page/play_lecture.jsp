@@ -49,6 +49,7 @@ Desc : 사용자(학생)의 마이페이지 강의 재생
 				  <div class="active section">강의재생</div>
 				</div>
 				<div class="ui segment center aligned">
+				<!-- 세션에 SUB_CODE랑 LEC_CODE 저장된 상태, fileName 쿼리 detail_lecture_mapper -->
 					<video src="http://localhost/all_about_knowledge/front/student/video/sample.mp4" controls></video>
 				</div>
 			</div>

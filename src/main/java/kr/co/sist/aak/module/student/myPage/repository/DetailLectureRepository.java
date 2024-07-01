@@ -29,4 +29,17 @@ public class DetailLectureRepository {
 		ss.close();
 		return detailLectureVO;
 	}
+	
+	public String selectLecturePlay(String subCode, String lecCode) {
+		String fileName = "";
+		SqlSession ss = myBatisDAO.getMyBatisHandler(false);
+		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("subCode", subCode);
+		param.put("lecCode", lecCode);
+		
+		fileName = ss.selectOne("kr.co.sist.aak.student.mypage.detail_lecture.selectLecturePlay", param);
+		ss.close();
+		return fileName;
+	}
 }
