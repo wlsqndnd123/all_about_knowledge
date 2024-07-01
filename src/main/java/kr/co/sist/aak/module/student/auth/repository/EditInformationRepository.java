@@ -20,5 +20,14 @@ public class EditInformationRepository {
         ss.close();
         return joinVO;
     }
+    
+    public void updateInformation(JoinVO joinVO) {
+        SqlSession ss = myBatisDAO.getMyBatisHandler(true);
+        if (joinVO.getPassword() != null && !joinVO.getPassword().isEmpty()) {
+            ss.update("kr.co.sist.aak.student.mypage.info.updatePass", joinVO);
+        }
+        ss.update("kr.co.sist.aak.student.mypage.info.updateInfo", joinVO);
+        ss.close();
+    }
 	
 }

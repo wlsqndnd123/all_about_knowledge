@@ -12,14 +12,14 @@
 
 	<update id="updateInfo" parameterType="JoinVO">
 	    UPDATE STD_INFO 
-	    SET TEL = #{newTel}, 
-	        EMAIL = #{newEmail} 
+	    SET TEL = #{tel}, 
+	        EMAIL = #{email} 
 	    WHERE STD_ID = #{stdId}
 	</update>
     
-	<update id="updatePass">
+	<update id="updatePass" parameterType="JoinVO">
 	    UPDATE STUDENT 
-	    SET PASSWORD = #{newPass} 
+	    SET PASSWORD = #{password} 
 	    WHERE STD_ID = #{stdId}
     </update>   
 
