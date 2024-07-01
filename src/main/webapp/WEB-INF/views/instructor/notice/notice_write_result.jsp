@@ -358,11 +358,9 @@ $(document).ready(function(){
 <div class="main">
     <h3>공지사항 작성완료!</h3>
     
-    <form method="post" name="frmpost" id="frmpost" action="notice_write_pr.do">
         
           
-            <input type="button" class="btn btn-light btn-sm me-md-2" value="목록으로" id="btnback" style="margin-top: 50px; float: right;"/>
-         <a href="notice.do"> <button>목록으로</button></a>
+         <a href="notice.do"><button>목록으로</button></a>
     </form>
 </div>
 <!-- /main -->

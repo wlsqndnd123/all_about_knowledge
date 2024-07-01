@@ -474,26 +474,16 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- main -->
-          <div class="selectbox">   
-        <select id="select">
-            <option>1</option>
-            <option>2</option>
-        </select>
-                </div>
-          <div class="selectbox">
-        <select id="select">
-            <option>1</option>
-            <option>2</option>
-        </select>
-    </div>
-     <div>전체수강인원:</div>
+        
+     
 
     <div class="search-box-container">
-        <div class="small-selectbox">
+         <div class="dropdown me-2">
             <select id="small-select">
               <option disabled selected>검색조건</option>
-                <option>A</option>
-                <option>B</option>
+                <option>아이디</option>
+                <option>이름</option>
+                <option>과목</option>
             </select>
         </div>
         <form class="search-box" action="" method="get">
@@ -504,7 +494,7 @@
 	 <a href="notice.do">공지</a>
 	 <a href="examList.do">시험</a>
   
-     <table class="table">
+   <table class="table">
      <thead>
    
     			<tr>
@@ -514,7 +504,7 @@
                     <th class="status">학습현황</th>
                     <th class="score">합격여부</th>
                     <th class="Try">시험응시</th>
-                </tr><br>
+                </tr>
                     </thead>
              <tbody>
                             <c:catch var="exception">
@@ -522,25 +512,44 @@
                                     <tr>
                                         <td>${student.STD_ID}</td>
                                         <td>${student.name}</td>
-                                        <td>${student.sub_code}</td>
+                                        <td><c:choose>
+                                        <c:when test="${student.sub_code eq 'SUB_000001'}">
+                                        Java
+                                        </c:when>
+                                        <c:when test="${student.sub_code eq 'SUB_000002'}">
+                                        c언어
+                                        </c:when>
+                                        <c:when test="${student.sub_code eq 'SUB_000003'}">
+                                        파이썬
+                                        </c:when>
+                                        <c:when test="${student.sub_code eq 'SUB_000004'}">
+                                        자바스크립트
+                                        </c:when>
+                                        <c:when test="${student.sub_code eq 'SUB_000005'}">
+                                        운영체제
+                                        </c:when>
+                                         <c:otherwise>
+                                        ${student.sub_code}
+                                         </c:otherwise>
+                                        </c:choose></td>
                                         <td>${student.status}</td>
                                          <td>${student.score}</td>
                                 <td><c:choose>
-                        <c:when test="${student.TRY eq 0}">
+                        <c:when test="${student.TRY_COUNT eq 0}">
                             미응시
                         </c:when>
                         <c:otherwise>
-                            ${student.TRY}
+                            ${student.TRY_COUNT}
                         </c:otherwise>
                     </c:choose></td>
                                         
                                     </tr>
                                 </c:forEach>
-                                <c:if test="${empty lectureList}">
+                               <%--  <c:if test="${empty lectureList}">
                                     <tr>
                                         <td colspan="6" style="text-align:center;">강의가 없습니다.</td>
                                     </tr>
-                                </c:if>
+                                </c:if> --%>
                             </c:catch>
                             <c:if test="${not empty exception}">
                                 <tr>
@@ -548,8 +557,7 @@
                                 </tr>
                             </c:if>
                         </tbody>
-                    </table>
-                
+                    </table>       
   
 
 <!-- /main -->
