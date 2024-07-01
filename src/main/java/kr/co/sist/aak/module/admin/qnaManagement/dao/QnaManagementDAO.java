@@ -30,7 +30,7 @@ public class QnaManagementDAO {
 		List<QnaManagementDomain> list = null;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
-		list = ss.selectList("kr.co.sist.aak.admin5.selectQna");
+		list = ss.selectList("kr.co.sist.aak.admin6.selectQnaAdmin");
 		mbDAO.closeHanlder(ss);
 		
 		return list;
@@ -42,7 +42,7 @@ public class QnaManagementDAO {
 		QnaManagementDomain qnaDomain = null;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
-		qnaDomain = ss.selectOne("kr.co.sist.aak.admin5.selectDetaleQna", qna_no);
+		qnaDomain = ss.selectOne("kr.co.sist.aak.admin6.selectDetaleQnaAdmin", qna_no);
 		mbDAO.closeHanlder(ss);
 		
 		return qnaDomain;
@@ -57,7 +57,7 @@ public class QnaManagementDAO {
 
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.update("kr.co.sist.aak.admin5.updateQnaAnswer",qnaVO);
+		cnt = ss.update("kr.co.sist.aak.admin6.updateQnaAnswerAdmin",qnaVO);
 
 		mbDAO.closeHanlder(ss);
 
@@ -72,8 +72,8 @@ public class QnaManagementDAO {
 
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.update("kr.co.sist.aak.admin5.updateQnaAnswer",qnaVO);
-		cnt2 = ss.insert("kr.co.sist.aak.admin5.updateQna",qnaVO);
+		cnt = ss.update("kr.co.sist.aak.admin6.updateQnaAnswerAdmin",qnaVO);
+		cnt2 = ss.insert("kr.co.sist.aak.admin6.updateQnaAdmin",qnaVO);
 
 		mbDAO.closeHanlder(ss);
 		
@@ -88,7 +88,7 @@ public class QnaManagementDAO {
 
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.insert("kr.co.sist.aak.admin5.deleteQnaAnswer",qnaVO);
+		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAnswerAdmin",qnaVO);
 		
 
 		mbDAO.closeHanlder(ss);

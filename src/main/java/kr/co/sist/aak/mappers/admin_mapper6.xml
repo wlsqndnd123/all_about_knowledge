@@ -5,14 +5,14 @@
 <mapper namespace="kr.co.sist.aak.admin6">
 	
 	<!-- qna리스트 쿼리 -->
-	<select id="selectQna" resultType ="QnaManagementDomain">
+	<select id="selectQnaAdmin" resultType ="QnaManagementDomain">
 	select qna_no, title, std_id, content as content_question, q_date, status 
 	from QNA_GEN_Q
 	</select>
 	
 	
 	<!-- qna 세부 정보 쿼리 -->
-	<select id="selectDetaleQna" resultType ="QnaManagementDomain">
+	<select id="selectDetaleQnaAdmin" resultType ="QnaManagementDomain">
 	SELECT
     Q.qna_no,
     Q.title,
@@ -32,7 +32,7 @@
 	
 	
 	<!-- qna 답번 수정 쿼리 -->
-	<update id="updateQnaAnswer" parameterType="QnaManagementVO">
+	<update id="updateQnaAnswerAdmin" parameterType="QnaManagementVO">
 	update qna_gen_a 
 	set content = #{content_answer}
 	
@@ -42,7 +42,7 @@
 
 	
 	<!-- qna 질문 업데이트 쿼리 -->
-	<update id="updateQna" parameterType="QnaManagementVO">
+	<update id="updateQnaAdmin" parameterType="QnaManagementVO">
 	update qna_gen_q 
 	set status = 'Y'
 	where qna_no = #{qna_no}
@@ -50,7 +50,7 @@
 	
 	
 	<!-- qna 삭제 쿼리 -->
-	<update id="deleteQna" parameterType="QnaManagementVO">
+	<update id="deleteQnaAdmin" parameterType="QnaManagementVO">
 	update qna_gen_q 
 	set status
 	where std_id = #{std_id}
