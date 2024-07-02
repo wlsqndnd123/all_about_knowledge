@@ -11,4 +11,5 @@ import lombok.ToString;
 @ToString
 public class AdminLoginDomain {
 	private String id,password,auth;
+
 }
