@@ -11,7 +11,6 @@ vertical-align: middle;
 font-size: 11px;
 text-align: center;
 }
-th,td,tr{font-size: 12px; text-align: center;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -90,13 +89,6 @@ th,td,tr{font-size: 12px; text-align: center;}
                                     </a>
                                 </li>
                                 </c:if>
-                                <c:if test="${sessionScope.auth == 'SUPER'}">
-                                <li class="nav-item">
-                                    <a class="nav-link " href="manage_admin.do">
-                                        관리자 관리
-                                    </a>
-                                </li>
-                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -115,12 +107,6 @@ th,td,tr{font-size: 12px; text-align: center;}
              <!-- row -->
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <div>
-                <table class ="table table-hover">
-                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
-                </table>
-                </div>
-                <hr  class="border border-primary border-1 opacity-50">
                 <div>
                 <table class ="table table-hover side">
                 <tbody id ="catSubCnt">

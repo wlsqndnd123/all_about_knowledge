@@ -3,8 +3,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-th,td,tr{font-size: 12px; text-align: center;}
 
+th{font-weight: normal;}
+tr{vertical-align: middle;}
+td{vertical-align: middle;}
+.permission{
+text-align: left;
+}
+.tbl{
+
+}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -18,7 +26,7 @@ th,td,tr{font-size: 12px; text-align: center;}
 	http://www.tooplate.com/view/2108-dashboard
 
     -->
-    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
+     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/fullcalendar.min.css">
     <!-- https://fullcalendar.io/ -->
      <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/family.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -28,6 +36,7 @@ th,td,tr{font-size: 12px; text-align: center;}
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 
+</head>
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -45,8 +54,8 @@ th,td,tr{font-size: 12px; text-align: center;}
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
-	<c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
-                                <li class="nav-item dropdown">
+                            <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
+                                <li class="nav-item dropdown   active">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
                                         
@@ -56,33 +65,37 @@ th,td,tr{font-size: 12px; text-align: center;}
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-	</c:if>
-	<c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
-                                <li class="nav-item ">
+                                </c:if>
+                      <c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
+                                <li class="nav-item">
                                     <a class="nav-link" href="manage_memberlist.do">
                                         회원 관리
                                     </a>
                                 </li>
-                                    </c:if>
-                                <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
-                                <li class="nav-item   active" >
-                                    <a class="nav-link " href="manage_instructor.do">강사 관리
+                                </c:if>
+                                  <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
+                                <li class="nav-item " >
+                                    <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-                                        </c:if>
-                                  <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
-                                <li class="nav-item ">
-                                    
-                                    <a class="nav-link " href="manage_qna.do">문의 관리</a>
+                                </c:if>
+	 <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
-                                    </c:if>
-                                  <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
-                                <li class="nav-item ">
+                                </c:if>
+       <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
+                                <li class="nav-item">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
-                                    </c:if>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -97,96 +110,58 @@ th,td,tr{font-size: 12px; text-align: center;}
                 </div>
             </div>
             </div>
+            
              <!-- row -->
-         <div class="container" style="padding: 1rem">
+        <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <div>
-                <!-- 아이디 정보 -->
                 </div>
-                <!-- 아이디 권한 정보  -->
-                <div>
-                <table class ="table table-hover">
-                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
-                </table>
-                </div>
-                </div>
+                </div> 
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
-                     <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
                     <div class="col-12">
                         <div class="col-12">
                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             강사 관리
+             교육과목 관리
              </li>
              <li class="breadcrumb-item active">
-             강사 추가 완료</li></ol>
+             교육 카테고리 리스트</li></ol>
              </div>
-              <div style="text-align: center; margin-top: 50px;" >
-                         <h2 class="tm-block-title d-inline-block">강사 추가 완료</h2>
-                            </div>
-                           <div style="text-align: center; margin: auto;">
-                            <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
-                            <img src="http://localhost/all_about_knowledge/upload/${ imd.image }" class="card-img-top" alt="..."/>
-                            </div>
-                            </div>
-                            <div>
-                            <table class="table table-hover">
-                            <tr>
-                            <td>이름</td>
-                            <td><c:out value="${ imd.name }"/> </td>
-                            </tr>
-                            <tr>
-                            <td>강사아이디</td>
-                            <td><c:out value="${ imd.inst_id }"/></td>
-                            </tr>
-                            <tr>
-                            <td>자기소개</td>
-                            <td><c:out value="${ imd.introduction }"/></td>
-                            </tr>
-                            <tr>
-                            <td>연락처</td>
-                            <td><c:out value="${ imd.phone }"/></td>
-                            </tr>
-                            <tr>
-                            <td>이메일</td>
-                            <td><c:out value="${ imd.email }"/></td>
-                            </tr>
-                            <tr>
-                            <td>강사 학력사항</td>
-                            <td><c:out value="${ imd.education }"/></td>
-                            </tr>
-                            <tr>
-                            <td>주력 과목</td>
-                            <td><c:out value="${ imd.major_subject }"/></td>
-                            </tr>
-                            </table>
-                            </div>
-                            <div style="text-align: center;">
-                            <input type="button" id ="btnSubmit" value="강사추가" class="btn btn-info btn-sm ">
-                            </div>
-                            <div>
-                            <a href="manage_instructor.do">
-	<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
-                            </a>
-	</div>
-	</div>
-	</div>
-                            </form>
-                            </div>
+               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+</div>	
+                    <div style="text-align: center;margin: auto;width: 75%"  >
+                    <div style="text-align: right;">
+                    <br>
+                    <input type="button" class="btn-light" value="관리자 추가"/>
+                    <br>
+                    <br>
+                    </div>
+                    <table class="table table-hover" >
+                    <thead>
+                    <tr><th>관리자 아이디</th><th>관리자 권한</th></tr>
+                    </thead>
+                    <c:forEach var="list" items="${ list }">
+                    <tbody>
+                    <tr><td>${list.id }</td><td class="permission">${list.permissions}</td>
+                    </c:forEach>
+                    </tbody>
+                    </table>
+                    </div>
                         </div>
                     </div>
- <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-  <!-- https://jquery.com/download/ -->
-   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
-  <script type="text/javascript">
-  $(function() {
-    $("#btnback").click(function() {
-        history.back();
-    });
-</script>
+                </div>
+            </div>
+          
+ </div>
 
-    <!-- https://getbootstrap.com/ -->
+ <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+ <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+  <script type="text/javascript">
+        $(function() {
+         
+        });
+    </script>
 </body>
 
 </html>
