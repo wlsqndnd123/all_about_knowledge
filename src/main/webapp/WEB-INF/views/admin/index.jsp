@@ -33,8 +33,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
                         <a class="navbar-brand" href="adminindex.do">
-                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-                            <h1 class="tm-site-title mb-0">All About Knowledge</h1>
+                            <h2 class="tm-site-title mb-0">All About Knowledge</h2>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +42,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+                               <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -53,29 +53,47 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
+                                </c:if>
+                                	<c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
                              <li class="nav-item " >
                                     <a class="nav-link " href="manage_memberlist.do">회원 관리
                                         </a>
+                                        
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
                                 <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-								
+								</c:if>
+								<c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                                
                                 <li class="nav-item">
                                     <a class="nav-link " href="manage_qna.do" >문의 관리
                                     </a>
                                     
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
+                                
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>

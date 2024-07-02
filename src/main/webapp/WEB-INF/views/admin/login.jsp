@@ -76,7 +76,7 @@
         환영합니다. AAK 관리자 페이지입니다.
     </div>
 
-    <c:if test="${adminid == 'false'}">
+    <c:if test="${errorpage == false}">
         <script>
             $(document).ready(function() {
                 $('#message').removeClass('success').addClass('error').text('입력 정보를 확인하세요.').fadeIn(1000).delay(2000).fadeOut(1000);
@@ -99,7 +99,6 @@
         <footer class="row tm-mt-big">
             <div class="col-12 font-weight-light text-center">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Copyright &copy; 2018 Admin Dashboard . Created by
                     <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
                 </p>
             </div>

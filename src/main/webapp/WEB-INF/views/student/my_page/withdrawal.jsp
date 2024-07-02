@@ -34,26 +34,8 @@ Desc : 사용자(학생)의 마이페이지 회원탈퇴 화면
 				
 		        $('#cancel').click(function(){
 		        	history.back();
-		        });
-
-				$('#confirm').click(function() {
-					var reason = $('#exitReason').val();
-					
-					$.ajax({
-						type: 'POST',
-						url: '/withdrawal_form.do',
-						data: {
-							reason: reason
-						},
-						success: function(response) {
-							alert('탈퇴 처리가 완료되었습니다.');
-							window.location.href = '/logout.do';
-						},
-						error: function(xhr, status, error) {
-							alert('탈퇴 처리 중 오류가 발생했습니다.');
-						}
-					});
-				});
+		        });      
+			
 			}); // ready
 		</script>
 	</head>
@@ -85,7 +67,7 @@ Desc : 사용자(학생)의 마이페이지 회원탈퇴 화면
 						<div class="ui form">
 						    <div class="required field">
 						      <label>탈퇴 사유</label>
-						      <input type="text" id="exitReason" placeholder="탈퇴사유를 입력해주세요">
+						      <input type="text" placeholder="탈퇴사유를 입력해주세요">
 						    </div>
 						</div>
 					</div>

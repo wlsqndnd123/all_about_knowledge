@@ -26,12 +26,9 @@
 	SET title = #{title, jdbcType=VARCHAR}, content = #{content, jdbcType=VARCHAR}
 	WHERE NOTI_NO = #{NOTI_NO, jdbcType=VARCHAR}
 	</update>
-	<select id="countNotice" resultType="noticeVO">
-    <![CDATA[
-    SELECT NOTI_NO
-    FROM (SELECT NOTI_NO FROM INST_NOTICE ORDER BY noti_no DESC)
-    WHERE ROWNUM = 1
-    ]]>
+	<select id="countNotice" resultType="String">
+   select max(NOTI_NO)
+	from INST_NOTICE
 </select>
 	
 </mapper>

@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.sist.aak.domain.instructor.StudentListDomain;
 import kr.co.sist.aak.module.instructor.studentList.service.StudentListService;
 
 @Controller
+@RequestMapping("/instructor")
 public class StudentListController {
 	
 	@Autowired(required = false)
@@ -23,7 +25,7 @@ public class StudentListController {
 		List<StudentListDomain> list=sls.searchList();
 		model.addAttribute("listStudent",list);
 		
-		return "instructor/studentList";
+		return "/instructor/studentList";
 	}
 
 }

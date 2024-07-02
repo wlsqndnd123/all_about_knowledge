@@ -10,7 +10,7 @@
     </update>
     
     <!-- WITHDRAWL -->
-    <insert id="insertExitReaseon" parameterType="WithdrawalVO">
+    <insert id="createExit" parameterType="WithdrawalVO">
     	INSERT INTO WITHDRAWAL (STD_ID, REASON) VALUES (#{stdId}, #{reason})
     </insert>
 

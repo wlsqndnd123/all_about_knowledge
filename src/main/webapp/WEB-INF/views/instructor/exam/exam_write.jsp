@@ -55,7 +55,25 @@
 </style>
 <script type="text/javascript">
     $(function() {
+    	 var questionCount = 1; // Start with 1 because one question is already present in the HTML
+
+    	    $(document).on("click", "#btn-add", function() {
+    	        // Check if the maximum limit (3 questions) is reached
+    	        if (questionCount >= 3) {
+    	            alert("최대 3개의 문제까지 추가할 수 있습니다.");
+    	            return;
+    	        }
+
+    	        var clonedBox = $(".test-box").first().clone(); // Clone the first .test-box
+    	        clonedBox.find("textarea, input[type='text']").val(""); // Clear input values in the cloned box
+    	        $("#test").append(clonedBox); // Append the cloned box to the #test section
+
+    	        // Increment the question count
+    	        questionCount++;
+    	    });
+
         $(document).on("click", "#btn-end", function() {
+        	alert("작성완료")
             $("#frm").attr("action", "exam_write_pr.do");
             $("#frm").submit();
         });
@@ -330,12 +348,12 @@
                    
                     <input type="hidden" name="SUB_CODE" value="SUB_000001">
                     <div class="test-box">
-                       <input type="hidden" value="${requestScope.Q_NO }" name="Q_NO"/>
-                        문제 : <textarea name="CONTENT"></textarea> <br>
-                        1번 보기 <input type="text" name="EX_1"/> <input type="radio" name="SOLUTION" value="1" /><br>
-                        2번 보기 <input type="text" name="EX_2"/> <input type="radio" name="SOLUTION" value="2" /><br>
-                        3번 보기 <input type="text" name="EX_3"/> <input type="radio" name="SOLUTION" value="3" /><br>
-                        4번 보기 <input type="text" name="EX_4"/> <input type="radio" name="SOLUTION" value="4" /><br>
+                      번호 <input type="text" value="${requestScope.Q_NO }" name="Q_NO"/><br>
+                        문제 : <textarea name="CONTENT" placeholder="문제를 입력하세요"></textarea> <br>
+                        1번 보기 <input type="text" name="EX_1" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="1" /><br>
+                        2번 보기 <input type="text" name="EX_2" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="2" /><br>
+                        3번 보기 <input type="text" name="EX_3" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="3" /><br>
+                        4번 보기 <input type="text" name="EX_4" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="4" /><br>
                     </div>
                    
                 </div>

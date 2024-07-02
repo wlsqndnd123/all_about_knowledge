@@ -362,12 +362,12 @@ $(document).ready(function(){
         <table>
             <tr>
                 <td colspan="6">
-                    <input type="text" class="title" value="${ nDomain.title }" id="title" name="title" placeholder="제목"/>
+                    <input type="text" class="title" value="${ nDomain.title }" id="title" name="title" />
                 </td> 
             </tr>
             <tr>
                 <td colspan="6">
-                    <textarea rows="5" name="content" id="content" placeholder="내용" >${ nDomain.content }</textarea>
+                    <textarea rows="5" name="content" id="content"  >${ nDomain.content }</textarea>
                 </td>
             </tr>
         </table>

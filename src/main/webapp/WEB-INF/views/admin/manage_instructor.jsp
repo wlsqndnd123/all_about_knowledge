@@ -4,12 +4,6 @@
 <html lang="en">
 <style>
 th,td,tr{font-size: 12px; text-align: center;}
-#myChart{
-width: 15vw;height: auto;
-}
-.myChart{
-width: 15vw;height: auto;
-}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -78,7 +72,6 @@ width: 15vw;height: auto;
                                         </a>
                                 </li>
                                         </c:if>
-
                                   <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
                                 <li class="nav-item ">
                                     
@@ -92,10 +85,17 @@ width: 15vw;height: auto;
                                     </a>
                                 </li>
                                     </c:if>
+                                    <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -115,10 +115,12 @@ width: 15vw;height: auto;
                 
                 </div>
                 <!-- 아이디 권한 정보  -->
+                <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
                 </table>
-                <div></div>
+                </div>
+                <hr  class="border border-primary border-1 opacity-50">
                 <!-- 퇴사|재직중인 강사 -->
                 <div>
                 <table class ="table table-hover">
@@ -137,9 +139,6 @@ width: 15vw;height: auto;
                 </tbody>
                 </table>
                 </div>
-               <%--  <div class="myChart">
-                <canvas id ="myChart"></canvas>
-                </div> --%>
              </div>
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
@@ -160,10 +159,16 @@ width: 15vw;height: auto;
                     
                     <div>
                     <form action="manage_instructor.do" id ="YorN" method="get">
-			<label><input type="radio" name="status" value="N" checked> 재직중</label>
-			<label><input type="radio" name="status" value="Y"> 퇴사</label>
+                    <div class="form-check form-check-inline">
+  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  name="del_yn" value="N">
+  <label class="form-check-label" for="inlineCheckbox1">재직중</label>
+</div>
+<div class="form-check form-check-inline">
+  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  name="del_yn" value="Y">
+  <label class="form-check-label" for="inlineCheckbox2"> 퇴사</label>
+</div>
+			<input type="submit" value="검색"/>
                     </form>
-                    
                     <table id="instructor" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
                     <thead>
                     <tr>
@@ -230,16 +235,16 @@ width: 15vw;height: auto;
 
 	    });
 
-	    var selectedValue = localStorage.getItem('selectedStatus');
+	   /*  var selectedValue = localStorage.getItem('selectedDel_yn');
 	    if (selectedValue) {
-	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
+	        $("input[name='del_yn'][value='" + selectedValue + "']").prop('checked', true);
 	    }
 
-	    $("input[name='status']").change(function() {
+	    $("input[name='del_yn']").change(function() {
 	        var selectedValue = $(this).val();
-	        localStorage.setItem('selectedStatus', selectedValue);  
+	        localStorage.setItem('selectedDel_yn', selectedValue);  
 	        $("#YorN").submit(); 
-	    });
+	    }); */
 
 	    $("#instructor").DataTable({
 	    	language: {
@@ -259,6 +264,17 @@ width: 15vw;height: auto;
 		var url=url;
 		window.location.href='manage_instructor_details.do?inst_id='+url;
 	}
+
+ var urlParams = new URLSearchParams(window.location.search);
+ var del_yn_values = urlParams.getAll('del_yn');
+
+ // Set checkbox states based on query parameters
+ $('input:checkbox[name="del_yn"]').each(function() {
+     if (del_yn_values.indexOf(this.value) > -1) {
+         $(this).prop('checked', true);
+     }
+ });
+ 
  </script>
 </body>
 
