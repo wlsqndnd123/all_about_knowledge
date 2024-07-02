@@ -53,5 +53,8 @@ public class MyLectureController {
         if (params.containsKey("subTitle")) {
             session.setAttribute("sub_title", params.get("subTitle"));
         }
+        if (params.containsKey("percent")) {
+        	session.setAttribute("percent", params.get("percent"));
+        }
     }
 }
