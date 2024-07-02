@@ -31,6 +31,9 @@ public class DetailLectureController {
         
         List<DetailLectureVO> detailLecture = detailLectureService.getDetailLecture(subCode, stdId);
         model.addAttribute("detailLecture", detailLecture);
+        
+        DetailLectureVO detailLectureVO = detailLectureService.getDeailLectureInfo(subCode);
+        model.addAttribute("lectureInfo", detailLectureVO);
 		
 		return "student/my_page/my_lecture_detail";
 	}

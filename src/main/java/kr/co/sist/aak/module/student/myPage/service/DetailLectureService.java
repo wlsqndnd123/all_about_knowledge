@@ -18,6 +18,10 @@ public class DetailLectureService {
 		return detailLectureRepository.selectDetailLecture(subCode, StdId);
 	}
 	
+	public DetailLectureVO getDeailLectureInfo(String subCode) {
+		return detailLectureRepository.selectDeailLectureInfo(subCode);
+	}
+	
 	public String getLecturePlay(String subCode, String lecCode) {
 		return detailLectureRepository.selectLecturePlay(subCode, lecCode);
 	}
