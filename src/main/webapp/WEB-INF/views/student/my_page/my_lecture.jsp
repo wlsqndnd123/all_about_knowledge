@@ -93,7 +93,8 @@
 	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
 	        var subCode = $(this).data('subcode');
 	        var subTitle = $(this).data('subtitle');
-	        saveData({ subCode: subCode, subTitle: subTitle });
+	        var percent = $(this).data('percent')
+	        saveData({ subCode: subCode, subTitle: subTitle, percent: percent });
 	    });
 	}
 
