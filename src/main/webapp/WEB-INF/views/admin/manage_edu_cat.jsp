@@ -52,6 +52,7 @@ text-align: center;
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+                            <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
                                 <li class="nav-item dropdown   active">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -62,28 +63,36 @@ text-align: center;
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
+                                </c:if>
+                      <c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
                                 <li class="nav-item">
                                     <a class="nav-link" href="manage_memberlist.do">
                                         회원 관리
                                     </a>
                                 </li>
+                                </c:if>
+                                  <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
                                 <li class="nav-item " >
                                     <a class="nav-link" href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-
+                                </c:if>
+	 <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
                                 <li class="nav-item">
                                     <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
+                                </c:if>
+       <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
                                 <li class="nav-item">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>

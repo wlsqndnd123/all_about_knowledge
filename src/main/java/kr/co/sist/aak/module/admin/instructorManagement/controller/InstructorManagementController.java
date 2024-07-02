@@ -4,11 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.ImageView;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.encrypt.TextEncryptor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,12 +100,15 @@ public class InstructorManagementController {
 			tempFile.delete();
 			uploadflag=true;
 		}
+		String key="bys190";
+		String salt ="19911031";
+		TextEncryptor te = Encryptors.text(key, salt);
 		model.addAttribute("fileName",oriName);
 		model.addAttribute("uploadflag",!uploadflag);
 		InstructorManagementVO imVO = new InstructorManagementVO();
 		imVO.setEducation(mr.getParameter("education"));
 		imVO.setEmail(mr.getParameter("email"));
-		
+		imVO.setPassword(te.encrypt(mr.getParameter("inst_id")));
 		imVO.setImage(fsName);
 		imVO.setInst_id(mr.getParameter("inst_id"));
 		imVO.setIntroduction(mr.getParameter("introduction"));
@@ -146,11 +155,11 @@ public class InstructorManagementController {
 	 * @return
 	 */
 	@GetMapping("manage_instructor.do")
-	public String searchInstructorList(Model model,@RequestParam(defaultValue = "N") String status) {
-		List<InstructorManagementDomain> list = ims.searchAllNInstructor();
-		if(status.equals("Y")) {
-			list = ims.searchAllyInstructor();
-		}
+	public String searchInstructorList(Model model,HttpServletRequest request) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String[] del_yn =  request.getParameterValues("del_yn");
+		map.put("del_yns", del_yn);
+		List<InstructorManagementDomain> list = ims.searchAllInstructors(map);
 		model.addAttribute("instList", list);
 		return "/admin/manage_instructor";
 	}

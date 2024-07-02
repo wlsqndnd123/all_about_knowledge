@@ -17,7 +17,8 @@ introduction,
 image,
 phone,
 major_subject,
-education;
+education
+,del_yn;
 int subject_count;
 double percentage;
 

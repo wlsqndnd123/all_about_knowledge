@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
     <title>AAK</title>
 
@@ -22,73 +22,52 @@
     <link href="http://localhost/all_about_knowledge/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+
 <style type="text/css">
-  
-  
-  body {
-    padding: 0;
-    background: #f5f5f5;
-  }
- 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
- 
+    form {
+        max-width: 800px;
+        margin: 20px auto;
+        text-align: center;
+    }
 
-  
- th {
-    background: #73685d;
-    color: #fff;
-  }
-
-  thead {
-    font-weight: bold;
-    color: #fff;
-    background: #73685d;
-  }
-
- th, td {
-    padding: 0.75em;
-    text-align: left;
-  }
-
- td {
-    border-bottom: 1px solid #ddd;
-  }
-
-  a {
-    color: #73685d;
-  }
-
- .title, textarea {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
- 
-
- 
-  }
+   
+    .sub {
+        width: 300px;
+        margin: 20px 0;
+    }
+    .test-box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    textarea {
+        width: 400px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+    .test-box input[type="text"] {
+        width: 400px;
+        margin-bottom: 5px;
+    }
+    #btn-write, #btn-update {
+        margin-top: 20px;
+    }
 </style>
-</head>
-
 <script type="text/javascript">
-    $(document).ready(function(){
-        $("#frm").submit(function(e){
-            e.preventDefault(); // 기본 제출 동작 방지
-            
-            alert("공지를 작성합니다!");
-            
-            // 폼 액션 설정 (이미 HTML에서 설정되어 있다면 이 줄은 필요 없습니다)
-            $(this).attr("action", "notice_write_pr.do");
-            
-            // 폼 수동 제출
-            this.submit();
+    $(function(){
+        $("#btn-write").click(function(){
+        
         });
+        $("#btn-update").click(function(){
+            
+        });
+    
     });
 </script>
+</head>
+
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -155,15 +134,7 @@
                     <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <!--   <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div> -->
+                    
                     </form>
 
                     <!-- Topbar Navbar -->
@@ -348,26 +319,13 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- main -->
-<div class="main">
-    <h3>공지사항 작성</h3>
+<div>
+<h3>수정이 완료되었습니다!!</h3>
+   <a href="examList.do"><button>목록으로</button></a>
     
-    <form action="notice_write_pr.do" id="frm" method="post">
-            강사아이디<input type="text" name="INST_ID" value="INST_00001" readonly/><br>
-            과목<input type="text" class="SUB_CODE" name="SUB_CODE" id="SUB_CODE" value="SUB_000001" readonly/>
-            <table>
-                <tr>
-                    <td>번호<input type="text" name="noti_no" value="${ requestScope.noti_no }" readonly/></td>
-                </tr>
-                <tr>
-                    <td colspan="6"><input type="text" class="title" id="title" name="title" placeholder="제목을 입력하세요"/></td>
-                </tr>
-                <tr>
-                    <td colspan="6"><textarea rows="5" name="content" placeholder="내용을 입력하세요"></textarea></td>
-                </tr>
-            </table>
-            <input type="submit" class="btn btn-dark btn-sm" value="작성" id="btnwrite"/>
-        </form>
 </div>
+
+    
 <!-- /main -->
                
 

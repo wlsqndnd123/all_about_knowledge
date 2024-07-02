@@ -1,5 +1,6 @@
 package kr.co.sist.aak.module.admin.instructorManagement.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -17,6 +18,16 @@ public class InstructorManagementService {
 	@Autowired(required = false)
 	private InstructorManagementDAO imDAO;
 	
+	public List<InstructorManagementDomain> searchAllInstructors(HashMap<String, Object> map) {
+		List<InstructorManagementDomain> list =null;
+		try {
+			list = imDAO.selectInstructors(map);
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return list;
+	}
 	/**
 	 * 강사중 삭제 플래그가 N(재직중)인 강사들의 리스트를 출력하는 method
 	 * @return
@@ -119,7 +130,7 @@ public class InstructorManagementService {
 			jsonTemp = new JSONObject();
 			jsonTemp.put("major_subject", temp.getMajor_subject());
 			jsonTemp.put("subject_count", temp.getSubject_count());
-			jsonTemp.put("percentage", temp.getPercentage());
+			jsonTemp.put("percentage",  String.format("%.2f",temp.getPercentage() ));
 			jsonArr.add(jsonTemp);
 		}
 		jsonObj.put("list", jsonArr);
