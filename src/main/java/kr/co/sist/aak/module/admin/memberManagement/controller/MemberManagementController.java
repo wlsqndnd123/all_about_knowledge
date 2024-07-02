@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.sist.aak.domain.admin.MemberManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.MemberManagementVO;
@@ -53,8 +55,7 @@ public class MemberManagementController {
 			) {
 		
 		int cnt=0;	
-		
-		
+
 		cnt=mms.modyifyMember(mmVO);
 		model.addAttribute("cnt",cnt);
 		model.addAttribute("std_id",mmVO.getStd_id());
@@ -63,7 +64,15 @@ public class MemberManagementController {
 	}
 	
 	
-	
+	@ResponseBody
+	@RequestMapping(value = "manage_member_pre.do", method = RequestMethod.GET, 
+	produces = "application/json;charset=UTF-8")
+	public String searchMembers() {
+		
+		
+						
+		return mms.searchMembers();
+	}
 	
 	
 }
