@@ -115,11 +115,7 @@ text-align: center;
             
              <!-- row -->
         <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <div>
-                </div>
-                </div> 
-                <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
+                <div class="bg-white tm-block col-12"  style=" text-align: center ;margin-left:5px; overflow:scroll;width: 75vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
@@ -135,10 +131,11 @@ text-align: center;
                     <div style="text-align: center;margin: auto;width: 75%"  >
                     <div style="text-align: right;">
                     <br>
-                    <input type="button" class="btn-light" value="관리자 추가"/>
+                    <input type="button" class="btn-light" id ="btnAdd" value="관리자 추가"/>
                     <br>
                     <br>
                     </div>
+                    <div>
                     <table class="table table-hover" >
                     <thead>
                     <tr><th>관리자 아이디</th><th>관리자 권한</th></tr>
@@ -149,6 +146,26 @@ text-align: center;
                     </c:forEach>
                     </tbody>
                     </table>
+                    </div>
+                    <div id ="adminAdd" style="display: none;" class="tab"> 
+                    관리자 추가
+                    <br>
+                    <br>
+                    <table class="table table-hover" >
+                    <tr><td>관리자 아이디</td><td><input type="text" name ="id"/></td></tr>
+                    <tr><td>비밀번호</td><td><input type="text" name ="password"/></td></tr>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <table class="table table-hover" >
+                    <tr><td>교육과목</td><td>권한부여<input type="radio" name="category_management" value="Y"/></td></tr>
+                    <tr><td>강사</td><td>권한부여<input type="radio" name="instructor_management" value="Y"/></td></tr>
+                    <tr><td>문의</td><td>권한부여<input type="radio" name="qna_management" value="Y"/></td></tr>
+                    <tr><td>회원</td><td>권한부여<input type="radio" name="member_management" value="Y"/></td></tr>
+                    <tr><td>공지사항</td><td>권한부여<input type="radio" name="notice_management" value="Y"/></td></tr>
+                    </table>
+                    </div>
                     </div>
                         </div>
                     </div>
@@ -161,7 +178,10 @@ text-align: center;
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
         $(function() {
-         
+         $("#btnAdd").click(function(){
+        	 const tab=document.querySelector('.tab');
+        	 tab.style.display = 'block';
+         })
         });
     </script>
 </body>
