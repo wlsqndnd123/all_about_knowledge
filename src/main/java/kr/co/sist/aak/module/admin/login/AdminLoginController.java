@@ -25,6 +25,7 @@ public String login(@ModelAttribute AdminLoginVO alVO, Model model,HttpSession s
 		AdminPermissionDomain ald = adls.searchAdminPermission(alVO);
 	session.setAttribute("adminid", alVO.getId());
 	session.setAttribute("adminPermission", ald);
+	session.setAttribute("auth",adls.searchAuth(alVO) );
 	model.addAttribute("flag",true);	
 		return "/admin/index";
 	}else {

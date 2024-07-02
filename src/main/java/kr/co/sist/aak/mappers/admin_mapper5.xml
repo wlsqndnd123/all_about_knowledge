@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.admin5">
 	
 <select id ="loginProcess" parameterType="AdminLoginVO" resultType="AdminLoginDomain">
- select PASSWORD
+ select PASSWORD,auth
 from ADMIN
 where ID =#{id}
 </select>
@@ -17,6 +17,11 @@ where ID =#{id}
 <insert id ="insertAdmin" parameterType="AdminLoginVO">
 insert into ADMIN values (#{id},#{password},'ADMIN')
 </insert>
+<select id="selectAllAdmin" resultType="AdminPermissionDomain" >
+select *
+from ADMINPERMISSIONS
+where ID !='aaksuper'
+</select>
 <!-- <insert id="insertAdminPermission" parameterType="AdminPermissionVO">
 </insert> -->
 </mapper>

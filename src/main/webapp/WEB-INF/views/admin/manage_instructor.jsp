@@ -85,6 +85,13 @@ th,td,tr{font-size: 12px; text-align: center;}
                                     </a>
                                 </li>
                                     </c:if>
+                                    <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -113,6 +120,7 @@ th,td,tr{font-size: 12px; text-align: center;}
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
                 </table>
                 </div>
+                <hr  class="border border-primary border-1 opacity-50">
                 <!-- 퇴사|재직중인 강사 -->
                 <div>
                 <table class ="table table-hover">
@@ -256,6 +264,17 @@ th,td,tr{font-size: 12px; text-align: center;}
 		var url=url;
 		window.location.href='manage_instructor_details.do?inst_id='+url;
 	}
+
+ var urlParams = new URLSearchParams(window.location.search);
+ var del_yn_values = urlParams.getAll('del_yn');
+
+ // Set checkbox states based on query parameters
+ $('input:checkbox[name="del_yn"]').each(function() {
+     if (del_yn_values.indexOf(this.value) > -1) {
+         $(this).prop('checked', true);
+     }
+ });
+ 
  </script>
 </body>
 
