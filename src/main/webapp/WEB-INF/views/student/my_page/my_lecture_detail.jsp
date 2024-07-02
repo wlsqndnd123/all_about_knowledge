@@ -71,7 +71,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 	</div>
 
 <div class="ui sizer vertical segment div_margin">
-  <div class="ui huge header">C var 수현</div>
+  <div class="ui huge header">${ lectureInfo.subTitle }</div>
     <div class="ui segment">
   <div class="ui grid">
   <div class = "three wide column">
@@ -81,13 +81,14 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
   </div>
   
   <div class="two wide column">
-	<p>강의 소개 </p>
+	<p> ${ lectureInfo.intro } </p>
+	<p> ${ lectureInfo.goal } </p>
     </div>
      
     <div class="four wide column">
 	    <div class="progress-container">
 	    	<label>진도율 : &nbsp;</label>
-		    <div class="ui indicating progress no_margin progress" data-percent="74">
+		    <div class="ui indicating progress no_margin progress" data-percent= "${ lectureInfo.percent }">
 			  	<div class="bar">
 			  		<div class="progress"></div>
 			  	</div>
@@ -116,10 +117,8 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
     </div>
 
      <div class="three wide column">
-      <p>강사명 : 진시바</p>
-      <p>여기엔 무엇을</p>
-      <p>쓰는 것이 좋을까</p>
-      <p>세상엔 힘든 일이 많아요</p>
+      <p>강사명 : ${ lectureInfo.name }</p>
+      <p>${ lectureInfo.introduction }</p>
     </div>
     
   </div>

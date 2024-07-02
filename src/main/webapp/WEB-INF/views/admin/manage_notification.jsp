@@ -121,18 +121,14 @@ font-size: 7px;
            <!-- row -->
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <!-- 아이디 정보 -->
                <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
                 <hr  class="border border-primary border-1 opacity-50">
-                
-                <!-- 아이디 권한 정보  -->
-                <div></div>
-                
-                
                 <!-- 공지사항 정보 로드 -->
                 <div>
                 <table class="table table-hover">

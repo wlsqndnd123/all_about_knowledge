@@ -4,11 +4,11 @@
 <html lang="en">
 <style>
 
-th{font-weight: normal;}
+th{font-weight: normal;font-size: 13px;}
 tr{vertical-align: middle;}
-td{vertical-align: middle;}
+td{vertical-align: middle; font-size: 13px;}
 .permission{
-text-align: left;
+text-align: center;
 }
 .tbl{
 
@@ -44,7 +44,7 @@ text-align: left;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -90,6 +90,8 @@ text-align: left;
                                         공지사항 관리
                                     </a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
                                 <li class="nav-item">
                                     <a class="nav-link " href="manage_admin.do">
                                         관리자 관리
@@ -121,12 +123,12 @@ text-align: left;
                     <div class="col-12">
                         <div class="col-12">
                         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
-             <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
+             <!-- <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
              교육과목 관리
              </li>
              <li class="breadcrumb-item active">
-             교육 카테고리 리스트</li></ol>
+             교육 카테고리 리스트</li></ol> -->
              </div>
                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 </div>	
