@@ -17,7 +17,7 @@ public class EditInformationRepository {
     	JoinVO joinVO = null;
         SqlSession ss = myBatisDAO.getMyBatisHandler(false);
         joinVO = ss.selectOne("kr.co.sist.aak.student.mypage.info.selectInfo", stdId);
-        ss.close();
+        myBatisDAO.closeHandler(ss);
         return joinVO;
     }
     
@@ -27,7 +27,7 @@ public class EditInformationRepository {
             ss.update("kr.co.sist.aak.student.mypage.info.updatePass", joinVO);
         }
         ss.update("kr.co.sist.aak.student.mypage.info.updateInfo", joinVO);
-        ss.close();
+        myBatisDAO.closeHandler(ss);
     }
 	
 }
