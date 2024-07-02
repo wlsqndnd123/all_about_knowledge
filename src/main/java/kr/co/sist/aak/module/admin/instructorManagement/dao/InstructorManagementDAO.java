@@ -1,5 +1,6 @@
 package kr.co.sist.aak.module.admin.instructorManagement.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -160,6 +161,18 @@ public class InstructorManagementDAO {
 		cnt = ss.selectOne("kr.co.sist.aak.admin2.cntdelynY");
 		mbDAO.closeHanlder(ss);
 		return cnt;
+		
+	}
+	public List<InstructorManagementDomain> selectInstructors(HashMap<String, Object> map) throws PersistenceException {
+		List<InstructorManagementDomain> list =null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		list = ss.selectList("kr.co.sist.aak.admin2.selectInstforeach",map);
+		mbDAO.closeHanlder(ss);
+		
+		
+		
+		return list;
 		
 	}
 //	public static void main(String[] args) {

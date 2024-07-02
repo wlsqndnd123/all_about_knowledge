@@ -3,7 +3,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+th,td,tr{font-size: 12px; text-align: center;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +47,7 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+	<c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -55,28 +58,37 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="manage_memberlist.do" >
+	</c:if>
+	<c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="manage_memberlist.do">
                                         회원 관리
                                     </a>
                                 </li>
-                                <li class="nav-item active" >
-                                    <a class="nav-link" href="manage_instructor.do">강사 관리
+                                    </c:if>
+                                <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
+                                <li class="nav-item   active" >
+                                    <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-
+                                        </c:if>
+                                  <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="manage_qna.do" >문의 관리</a>
+                                    
+                                    <a class="nav-link " href="manage_qna.do">문의 관리</a>
                                 </li>
+                                    </c:if>
+                                  <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+                                    </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -89,7 +101,18 @@
             </div>
              <!-- row -->
          <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <!-- 아이디 정보 -->
+                <div>
+                
+                </div>
+                <!-- 아이디 권한 정보  -->
+                <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                </table>
+                </div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                      <form id ="frm" action ="inst_add_process.do" method="post" enctype="multipart/form-data" >
                     <div class="col-12">
@@ -107,10 +130,13 @@
               </div>
                             <div style="text-align: center;"  class="mb-3" style="margin-top: 30px;" >
                             <table class="table table-hover" style=" width:95%; text-align: center;">
-                            <tr>
-  							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="image" name ="image"></td>
-                            </tr>
+              <tr><td style="vertical-align: middle;">강사 이미지</td>
+					<td>
+					 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img id ="preview" class="card-img-top" alt="...">
+                            </div>
+					</td></tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 아이디</td>
                 <td><input type="text" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
@@ -213,6 +239,17 @@
         }
     });
   });
+  function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('preview').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('preview').src = "";
+	  }
+	}
 </script>
 
     <!-- https://getbootstrap.com/ -->
