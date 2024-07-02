@@ -81,7 +81,7 @@ public class InstructorManagementDAO {
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
 		cnt += ss.insert("kr.co.sist.aak.admin2.insertInstructorInfo",iVO);
-		cnt += ss.insert("kr.co.sist.aak.admin2.insertInstructor",iVO);
+		cnt += ss.insert("kr.co.sist.aak.admin2.insertInstructor",iVO.getInst_id());
 		if(cnt ==2) {
 			ss.commit();
 		}
