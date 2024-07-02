@@ -18,8 +18,8 @@ public class WithdrawalService {
     	withdrawalVO.setStdId(stdId);
     	withdrawalVO.setReason(reason);
     	
-    	withdrawalRepository.insertExitReason(withdrawalVO);
     	withdrawalRepository.deleteStudent(stdId);
+    	withdrawalRepository.insertExitReason(withdrawalVO);
 
         return withdrawalVO;
     }

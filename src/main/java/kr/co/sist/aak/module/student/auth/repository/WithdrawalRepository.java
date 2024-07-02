@@ -21,9 +21,8 @@ public class WithdrawalRepository {
 	
 	public void insertExitReason(WithdrawalVO withdrawalVO) {
 		SqlSession ss = myBatisDAO.getMyBatisHandler(true);
-		ss.insert("kr.co.sist.aak.student.auth.exit.insertExitReaseon", withdrawalVO);
+		ss.insert("kr.co.sist.aak.student.auth.exit.insertExitReason", withdrawalVO);
 		myBatisDAO.closeHandler(ss);
 	}
-
 	
 }
