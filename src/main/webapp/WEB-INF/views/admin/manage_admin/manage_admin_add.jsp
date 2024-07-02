@@ -42,8 +42,7 @@ text-align: center;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
-                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
+                        <a class="navbar-brand" href="admin_main.do">                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -89,6 +88,13 @@ text-align: center;
                                     </a>
                                 </li>
                                 </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -108,12 +114,20 @@ text-align: center;
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
+                </table>
+                </div>
+                <div>
                 <table class ="table table-hover side">
                 <tbody id ="catSubCnt">
                 <tr><td colspan="2">각 상위카테고리 조회시 <br>각 카테고리에 속하는 과목수가 보여집니다.</td></tr>
                 </tbody>
                 </table>
                 </div>
+                
                 </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">

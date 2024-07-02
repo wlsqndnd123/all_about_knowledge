@@ -43,7 +43,7 @@ th,td,tr{font-size: 12px; text-align: center;}
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -118,6 +118,8 @@ th,td,tr{font-size: 12px; text-align: center;}
                 <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
                 <hr  class="border border-primary border-1 opacity-50">
