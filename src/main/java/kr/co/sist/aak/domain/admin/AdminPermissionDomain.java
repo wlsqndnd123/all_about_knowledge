@@ -12,5 +12,6 @@ import lombok.ToString;
 @ToString
 public class AdminPermissionDomain {
 	private String id ,notice_management, member_management, category_management, instructor_management, qna_management;
+	private String permissions;
 
 }

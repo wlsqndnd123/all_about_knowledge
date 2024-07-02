@@ -96,6 +96,13 @@ font-size: 7px;
                                     </a>
                                 </li>
                                 </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -120,6 +127,8 @@ font-size: 7px;
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
                 </table>
                 </div>
+                <hr  class="border border-primary border-1 opacity-50">
+                
                 <!-- 아이디 권한 정보  -->
                 <div></div>
                 
@@ -237,9 +246,15 @@ font-size: 7px;
 	        success: function(jsonObj){
 	        	$("#resvNotice").empty();
 	        	var output ="<tr><td>예약 된 공지사항 명</td></tr>";
+	        	if(jsonObj.flag){
+	        		
 	        	$.each(jsonObj.list,function(i,jsonTemp){
 	        		output+="<tr><td>"+jsonTemp.title+"</td></tr>";
 	        	})
+	        	}else{
+	        		output+="<tr><td>예약 된 공지사항이 없습니다.</td></tr>";
+	        		
+	        	}
 	        	$("#resvNotice").html(output);
 	        	
 	        }

@@ -4,9 +4,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<%
+<style>
+th,td,tr{font-size: 12px; text-align: center;}
 
-%>
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

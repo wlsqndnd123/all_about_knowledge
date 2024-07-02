@@ -3,7 +3,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+th,td,tr{font-size: 12px; text-align: center;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,10 +130,13 @@
               </div>
                             <div style="text-align: center;"  class="mb-3" style="margin-top: 30px;" >
                             <table class="table table-hover" style=" width:95%; text-align: center;">
-                            <tr>
-  							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="image" name ="image"></td>
-                            </tr>
+              <tr><td style="vertical-align: middle;">강사 이미지</td>
+					<td>
+					 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img id ="preview" class="card-img-top" alt="...">
+                            </div>
+					</td></tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 아이디</td>
                 <td><input type="text" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
@@ -234,6 +239,17 @@
         }
     });
   });
+  function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('preview').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('preview').src = "";
+	  }
+	}
 </script>
 
     <!-- https://getbootstrap.com/ -->

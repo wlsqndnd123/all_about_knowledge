@@ -117,6 +117,8 @@ public class InstructorManagementController {
 		imVO.setPhone(mr.getParameter("phone"));
 		
 		ims.addInstructor(imVO);
+		InstructorManagementDomain imd = ims.instructorDetail(mr.getParameter("inst_id"));
+		model.addAttribute("imd", imd);
 
 	    String imageUrl = "all_about_knowledge/upload/" + fsName;
 	    boolean isImageAvailable = false;

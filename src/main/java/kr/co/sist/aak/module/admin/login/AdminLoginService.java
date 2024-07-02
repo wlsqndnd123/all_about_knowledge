@@ -32,5 +32,15 @@ public class AdminLoginService {
 		}
 		return ald;
 	}
-	
+	public String searchAuth(AdminLoginVO alVO) {
+		AdminLoginDomain adld = null;
+		try {
+			adld = adlDAO.selectAdminPass(alVO);
+		}catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return adld.getAuth();
+	}
 }
