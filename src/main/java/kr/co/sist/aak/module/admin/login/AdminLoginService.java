@@ -23,8 +23,8 @@ public class AdminLoginService {
 			TextEncryptor te = Encryptors.text(key, salt);
 			adld = adlDAO.selectAdminPass(alVO);
 			plain =te.decrypt(adld.getPassword());
-			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++"+plain);
-		}catch (Exception e) {
+		}catch (PersistenceException e) {
+			e.printStackTrace();
 		}
 		return adld!= null&& plain.equals(alVO.getPassword());
 		
