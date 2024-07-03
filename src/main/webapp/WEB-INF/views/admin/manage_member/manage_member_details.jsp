@@ -55,22 +55,55 @@ a {text-decoration: none;}
          if (cnt == 1) {
              alert("수정 완료");
              location.href="manage_member_details.do?std_id=${std_id}&flag=0";
+         }else if(cnt == 2){
+        	 alert("입력하지 않은 값이 있습니다.")
+        	 location.href="manage_member_details.do?std_id=${std_id}&flag=0";
+         }else if(cnt == 3){
+        	 alert("이메일 형식이 아닙니다.")
+        	 location.href="manage_member_details.do?std_id=${std_id}&flag=0";
          }
          
+  
          $("#back").click(function(){
-
-        	 history.back();
+		
+        	 location.href="manage_memberlist.do";
 
          });
-       
-         
-         
-         
-         
-         
+
      });
 
+	 function validateInput(event) {
+         const charCode = event.which ? event.which : event.keyCode;
+         const charStr = String.fromCharCode(charCode);
+         // 정규 표현식을 사용하여 문자만 허용
+         if (!/^[a-zA-Z]*$/.test(charStr)) {
+             event.preventDefault();
+         }
+     }
+	 
+	 function formatTelInput(event) {
+         const input = event.target;
+         let value = input.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+
+         // 최대 11자리까지만 입력 허용
+         if (value.length > 11) {
+             value = value.substring(0, 11);
+         }
+
+         // 3번째 자리와 이후 4번째 자리마다 '-' 추가
+         if (value.length > 3) {
+             value = value.substring(0, 3) + '-' + value.substring(3);
+         }
+         if (value.length > 8) {
+             value = value.substring(0, 8) + '-' + value.substring(8);
+         }
+
+         input.value = value;
+     }
+	 
+	 
 </script>
+
 
 
 
@@ -191,7 +224,7 @@ a {text-decoration: none;}
             		<input  type="hidden" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
             		</c:when>
                     <c:otherwise>
-                    <input  type="text" name="name" value="<c:out value="${mmDomain.name }"/>" style="text-align: center;">
+                     <input type="text" name="name" value="<c:out value="${mmDomain.name }"/>" style="text-align: center;" onkeypress="validateInput(event)">
                      </c:otherwise>
                     </c:choose>
                     </td>
@@ -206,7 +239,7 @@ a {text-decoration: none;}
             		<input type="hidden" name="tel" value="${mmDomain.tel }"readonly>
             		</c:when>
                     <c:otherwise>
-                    <input type="text" name="tel" value="${mmDomain.tel }" style="text-align: center;">
+                    <input type="text" name="tel" value="${mmDomain.tel}" style="text-align: center;" oninput="formatTelInput(event)">
                      </c:otherwise>
                     </c:choose>
                     </td>
@@ -222,7 +255,7 @@ a {text-decoration: none;}
             		<input type="hidden" name="email" value="${mmDomain.email }"readonly>
             		</c:when>
                     <c:otherwise>
-                    <input type="text" name="email" value="${mmDomain.email }" style="text-align: center;">
+                    <input type="email" name="email" value="${mmDomain.email }" style="text-align: center;">
                      </c:otherwise>
                     </c:choose>
                     </td>
@@ -238,7 +271,7 @@ a {text-decoration: none;}
         				            <input type="hidden" name="birth" value="${mmDomain.birth}"readonly>
        				         </c:when>
        				         <c:otherwise>
-       				             <input type="text" name="birth" value="${mmDomain.birth}" style="text-align: center;">
+       				             <input type="text" name="birth" value="${mmDomain.birth}" style="text-align: center;" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
        				         </c:otherwise>
      				       </c:choose>
     				    </td>
