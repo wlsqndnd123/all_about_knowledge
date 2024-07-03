@@ -2,6 +2,8 @@ package kr.co.sist.aak.module.admin.adminmanagement.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,13 +35,19 @@ public class AdminManagementController {
 	@ResponseBody
 	public List<AdminPermissionDomain> searchaddedAdmin(Model model) {
 		
-		
 				return ams.searchAdmins();
 	}
 	@PostMapping("manage_adminadd.do")
 	@ResponseBody
 	public String addAdmin(@ModelAttribute AdminPermissionVO apVO) {
 		ams.addAdmin(apVO);
+		return "success";
+	}
+	@PostMapping("manage_modify.do")
+	@ResponseBody
+	public String modifyAdmin(@ModelAttribute AdminPermissionVO apVO) {
+		ams.modifyAdmin(apVO);
+		System.out.println(apVO);
 		return "success";
 	}
 		

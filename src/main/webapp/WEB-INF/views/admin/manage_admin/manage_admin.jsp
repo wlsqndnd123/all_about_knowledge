@@ -13,6 +13,10 @@ text-align: center;
 .tbl{
 
 }
+input[type="checkbox"]{
+zoom:0.6;
+      }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -153,25 +157,25 @@ text-align: center;
                     <tr><td>${list.id }</td>
                     <td>
                     권한
-                    <input type="radio" name="category_management_${list.id}" value="Y" <c:if test="${list.category_management == 'Y'}">checked</c:if>> Y
+                    <input type="checkbox" id="category_management_${list.id}" value="Y" <c:if test="${list.category_management == 'Y'}">checked</c:if>> Y
                 </td>
                 <td>
                     권한
-                    <input type="radio" name="instructor_management_${list.id}" value="Y" <c:if test="${list.instructor_management == 'Y'}">checked</c:if>> Y
+                    <input type="checkbox" id="instructor_management_${list.id}" value="Y" <c:if test="${list.instructor_management == 'Y'}">checked</c:if>> Y
                 </td>
                 <td>
                     권한
-                    <input type="radio" name="qna_management_${list.id}" value="Y" <c:if test="${list.qna_management == 'Y'}">checked</c:if>> Y
+                    <input type="checkbox" id="qna_management_${list.id}" value="Y" <c:if test="${list.qna_management == 'Y'}">checked</c:if>> Y
                 </td>
                 <td>
                     권한
-                    <input type="radio" name="member_management_${list.id}" value="Y" <c:if test="${list.member_management == 'Y'}">checked</c:if>> Y
+                    <input type="checkbox" id="member_management_${list.id}" value="Y" <c:if test="${list.member_management == 'Y'}">checked</c:if>> Y
                 </td>
                 <td>
                     권한
-                    <input type="radio" name="notice_management_${list.id}" value="Y" <c:if test="${list.notice_management == 'Y'}">checked</c:if>> Y
+                    <input type="checkbox" id="notice_management_${list.id}" value="Y" <c:if test="${list.notice_management == 'Y'}">checked</c:if>> Y
                 </td>
-                <td><input type="button" value="수정" onclick="modify('${list.id},${i.count}')"/>
+                <td><input type="button" value="수정" onclick="modify('${list.id}"/>
                 </td> 
                 </tr>
                     </c:forEach>
@@ -190,11 +194,11 @@ text-align: center;
                     <br>
                     <br>
                     <table class="table table-hover" >
-                    <tr><td>교육과목</td><td>권한<input type="radio" name="category_management" value="Y"/></td></tr>
-                    <tr><td>강사</td><td>권한<input type="radio" name="instructor_management" value="Y"/></td></tr>
-                    <tr><td>문의</td><td>권한<input type="radio" name="qna_management" value="Y"/></td></tr>
-                    <tr><td>회원</td><td>권한<input type="radio" name="member_management" value="Y"/></td></tr>
-                    <tr><td>공지사항</td><td>권한<input type="radio" name="notice_management" value="Y"/></td></tr>
+                    <tr><td>교육과목</td><td>권한<input type="checkbox" name="category_management" value="Y"/></td></tr>
+                    <tr><td>강사</td><td>권한<input type="checkbox" name="instructor_management" value="Y"/></td></tr>
+                    <tr><td>문의</td><td>권한<input type="checkbox" name="qna_management" value="Y"/></td></tr>
+                    <tr><td>회원</td><td>권한<input type="checkbox" name="member_management" value="Y"/></td></tr>
+                    <tr><td>공지사항</td><td>권한<input type="checkbox" name="notice_management" value="Y"/></td></tr>
                     </table>
                     <input type="button" class="btn-light" id ="btnAdd" value="정보 추가"/>
                     <input type="button" class="btn-light" id ="btnfold" value="접기"/>
@@ -259,39 +263,62 @@ text-align: center;
                  success: function(data) {
                      var adminList = $("#adminList");
                      adminList.empty(); 
-                     
-                     data.forEach(function(admin) {
-                         var row = '<tr>';
+                     var row ='';
+                     data.forEach(function(admin, i) {
+                         row += '<form id="frm' + i + '" method="post" action="modify_admin.do">';
+                         row += '<tr>';
                          row += '<td>' + admin.id + '</td>';
                          row += '<td>권한';
-                         row += '<input type="radio" name="category_management_' + admin.id + '" value="Y"' + (admin.category_management == 'Y' ? ' checked' : '') + '> Y';
+                         row += '<input type="checkbox" id="category_management_' + admin.id + '" value="Y"' + (admin.category_management == 'Y' ? ' checked' : '') + '> Y';
                          row += '</td>';
                          row += '<td>권한';
-                         row += '<input type="radio" name="instructor_management_' + admin.id + '" value="Y"' + (admin.instructor_management == 'Y' ? ' checked' : '') + '> Y';
+                         row += '<input type="checkbox" id="instructor_management_' + admin.id + '" value="Y"' + (admin.instructor_management == 'Y' ? ' checked' : '') + '> Y';
                          row += '</td>';
                          row += '<td>권한';
-                         row += '<input type="radio" name="qna_management_' + admin.id + '" value="Y"' + (admin.qna_management == 'Y' ? ' checked' : '') + '> Y';
+                         row += '<input type="checkbox" id="qna_management_' + admin.id + '" value="Y"' + (admin.qna_management == 'Y' ? ' checked' : '') + '> Y';
                          row += '</td>';
                          row += '<td>권한';
-                         row += '<input type="radio" name="member_management_' + admin.id + '" value="Y"' + (admin.member_management == 'Y' ? ' checked' : '') + '> Y';
+                         row += '<input type="checkbox" id="member_management_' + admin.id + '" value="Y"' + (admin.member_management == 'Y' ? ' checked' : '') + '> Y';
                          row += '</td>';
                          row += '<td>권한';
-                         row += '<input type="radio" name="notice_management_' + admin.id + '" value="Y"' + (admin.notice_management == 'Y' ? ' checked' : '') + '> Y';
+                         row += '<input type="checkbox" id="notice_management_' + admin.id + '" value="Y"' + (admin.notice_management == 'Y' ? ' checked' : '') + '> Y';
                          row += '</td>';
+                         row += '<td><input type="button" value="수정" onclick="modify(\'' + admin.id +'\')"/></td>';
                          row += '</tr>';
-
-                         adminList.append(row);
+                         row += '</form>';
                      });
+                         adminList.html(row);
                  },
                  error: function(xhr, status, error) {
                      alert("관리자 리스트를 가져오는 중 오류가 발생했습니다.");
                  }
              });
+             
          }
+         refreshAdminList();
      });
         function modify(id,i){
         	var id=id;
-        	alert(id);
+        	let data = {
+        	        id: id,
+        	        category_management: $('#category_management_' + id).is(':checked') ? 'Y' : 'N',
+        	        instructor_management: $('#instructor_management_' + id).is(':checked') ? 'Y' : 'N',
+        	        qna_management: $('#qna_management_' + id).is(':checked') ? 'Y' : 'N',
+        	        member_management: $('#member_management_' + id).is(':checked') ? 'Y' : 'N',
+        	        notice_management: $('#notice_management_' + id).is(':checked') ? 'Y' : 'N'
+        	    };
+        	        $.ajax({
+        	            type: "POST",
+        	            url: "manage_modify.do",
+        	            data: data,
+        	            success: function(response) {
+        	                alert("관리자 권한이 성공적으로 변경되었습니다.");
+        	        	 	refreshAdminList();
+        	            },
+        	            error: function(xhr, status, error) {
+        	                alert("관리자 추가 중 오류가 발생했습니다.");
+        	            }
+        });
         }
         
     </script>
