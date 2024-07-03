@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +42,10 @@ public class AdminManagementController {
 	@PostMapping("manage_adminadd.do")
 	@ResponseBody
 	public String addAdmin(@ModelAttribute AdminPermissionVO apVO) {
+		String key = "bys190";
+		String salt ="19911031";
+		TextEncryptor te = Encryptors.text(key, salt);
+		apVO.setPassword(te.encrypt(apVO.getPassword()));
 		ams.addAdmin(apVO);
 		return "success";
 	}

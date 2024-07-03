@@ -2,6 +2,8 @@ package kr.co.sist.aak.module.admin.login;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.admin.AdminLoginDomain;
@@ -14,13 +16,18 @@ public class AdminLoginService {
 	
 	public boolean searchLogin(AdminLoginVO alVO) {
 		AdminLoginDomain adld = null;
+		String plain ="";
 		try {
+			String key = "bys190";
+			String salt = "19911031";
+			TextEncryptor te = Encryptors.text(key, salt);
 			adld = adlDAO.selectAdminPass(alVO);
-			
+			plain =te.decrypt(adld.getPassword());
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++"+plain);
 		}catch (Exception e) {
-			
 		}
-		return adld!= null&& adld.getPassword().equals(alVO.getPassword());
+		return adld!= null&& plain.equals(alVO.getPassword());
+		
 	}
 	
 	public AdminPermissionDomain searchAdminPermission(AdminLoginVO alVO) {
