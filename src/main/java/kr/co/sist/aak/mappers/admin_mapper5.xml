@@ -35,4 +35,14 @@ insert into ADMINPERMISSIONS values
 #{instructor_management},
 #{qna_management})
 </insert>
+<update id="updatePermissions" parameterType="AdminPermissionVO">
+update ADMINPERMISSIONS
+set
+NOTICE_MANAGEMENT =#{notice_management},
+MEMBER_MANAGEMENT = #{member_management},
+CATEGORY_MANAGEMENT = #{category_management},
+INSTRUCTOR_MANAGEMENT = #{instructor_management},
+QNA_MANAGEMENT = #{qna_management}
+where ID =#{id}
+</update>
 </mapper>
