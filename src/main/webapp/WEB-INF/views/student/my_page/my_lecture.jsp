@@ -81,7 +81,7 @@
 		                <button class="ui basic tiny button">문의</button>
 		            </td>
 		            <td class="single line">
-		                <button class="ui right labeled icon green basic button enter-button" data-subcode="\${lecture.subCode}" data-subtitle ="\${lecture.subTitle}">
+		                <button class="ui right labeled icon green basic button enter-button" data-percent="\${lecture.percent}" data-subcode="\${lecture.subCode}" data-subtitle ="\${lecture.subTitle}">
 		                    <i class="right arrow icon"></i> 입장
 		                </button>
 		            </td>
@@ -93,7 +93,7 @@
 	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
 	        var subCode = $(this).data('subcode');
 	        var subTitle = $(this).data('subtitle');
-	        var percent = $(this).data('percent')
+	        var percent = $(this).data('percent');
 	        saveData({ subCode: subCode, subTitle: subTitle, percent: percent });
 	    });
 	}

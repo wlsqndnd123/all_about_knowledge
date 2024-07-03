@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                             <h1 class="tm-site-title mb-0">All About Knowledge</h1>
                         </a>
@@ -81,6 +81,13 @@
                                     </a>
                                 </li>
                                 </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -101,6 +108,8 @@
             <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
                 </div>

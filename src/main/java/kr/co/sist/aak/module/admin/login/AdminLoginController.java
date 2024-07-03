@@ -25,6 +25,7 @@ public String login(@ModelAttribute AdminLoginVO alVO, Model model,HttpSession s
 		AdminPermissionDomain ald = adls.searchAdminPermission(alVO);
 	session.setAttribute("adminid", alVO.getId());
 	session.setAttribute("adminPermission", ald);
+	session.setAttribute("permission", ald.getPermissions());
 	session.setAttribute("auth",adls.searchAuth(alVO) );
 	model.addAttribute("flag",true);	
 		return "/admin/index";
@@ -34,9 +35,14 @@ public String login(@ModelAttribute AdminLoginVO alVO, Model model,HttpSession s
 	}
 		return "/admin/login";
 }
+	
 	@GetMapping("admin_index_logout.do")
-	public String logout(@ModelAttribute AdminLoginVO alVO, Model model,HttpSession session) {
+	public String logout(HttpSession session) {
 		session.invalidate();
 		return "/admin/login";
+	}
+	@GetMapping("admin_main.do")
+	public String toMain() {
+		return "/admin/index";
 	}
 }

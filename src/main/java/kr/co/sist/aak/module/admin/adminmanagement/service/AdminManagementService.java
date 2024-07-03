@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.admin.AdminPermissionDomain;
+import kr.co.sist.aak.domain.admin.vo.AdminPermissionVO;
 import kr.co.sist.aak.module.admin.adminmanagement.dao.AdminManagementDAO;
 
 @Service
@@ -44,4 +45,13 @@ public class AdminManagementService {
 		}
 		return list;
 	}
+	public void addAdmin(AdminPermissionVO apVO) {
+		try {
+			amd.insertAdmin(apVO);
+		}catch (Exception e) {
+			
+		}
+	
+	}
+	
 }

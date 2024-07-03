@@ -18,7 +18,7 @@ select * from ADMINPERMISSIONS
 where ID =#{id}
 </select>
 <!-- 관리자 계정 권한 인서트 -->
-<insert id ="insertAdmin" parameterType="AdminLoginVO">
+<insert id ="insertAdmin" parameterType="AdminPermissionVO">
 insert into ADMIN values (#{id},#{password},'ADMIN')
 </insert>
 <select id="selectAllAdmin" resultType="AdminPermissionDomain" >
@@ -26,6 +26,13 @@ select *
 from ADMINPERMISSIONS
 where ID !='aaksuper'
 </select>
-<!-- <insert id="insertAdminPermission" parameterType="AdminPermissionVO">
-</insert> -->
+<insert id="insertAdminPermission" parameterType="AdminPermissionVO">
+insert into ADMINPERMISSIONS values
+(#{id},
+#{notice_management},
+#{member_management},
+#{category_management},
+#{instructor_management},
+#{qna_management})
+</insert>
 </mapper>
