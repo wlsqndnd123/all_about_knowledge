@@ -77,21 +77,19 @@ public class MemberManagementService {
 	
 	
 	public String searchMembers() {
-		int n=0;
-		int p=0;
-		JSONObject jsonObj = new JSONObject();
-		try {
-			n = mmDAO.selectNonMember();
-			p = mmDAO.selectPreMember();
-			jsonObj.put("n", n);
-			jsonObj.put("p", p);
-		}catch (PersistenceException e) {
-			e.printStackTrace();
-		}
-		return jsonObj.toJSONString();
-	}
-	
-	
+        int n = 0;
+        int p = 0;
+        JSONObject jsonObj = new JSONObject();
+        try {
+            n = mmDAO.selectNonMember();
+            p = mmDAO.selectPreMember();
+            jsonObj.put("n", n);
+            jsonObj.put("p", p);
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        return jsonObj.toJSONString();
+    }
 	
 	
 	

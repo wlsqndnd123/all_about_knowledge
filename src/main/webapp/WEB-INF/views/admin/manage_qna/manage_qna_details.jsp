@@ -98,13 +98,23 @@ a {text-decoration: none;}
                     <input type="hidden" name="status" value="${qnaDomain.status}">
                     <label for="staticEmail" class="col-sm-5 col-form-label">아이디 : <c:out value="${qnaDomain.std_id}"/></label>
                     
+                    <c:if test="${param.status eq 'Y' and param.delete eq null}">
                     <button class="btn btn-light btn-sm me-md-2" type="button" id="delete">삭제</button>
+                    </c:if>
                     
                 </div>
                 <div class="mb-3" style="height: 450px;">
                     <div style="width: 50%; float: right; padding-left: 40px;">
+                     <c:choose>
+                    	<c:when test="${param.status eq 'D'}">
+                        <label for="content_answer" class="form-label">삭제 사유</label>
+                        <textarea class="form-control h-25"  readonly  id="content_answer" rows="13" style= "resize: none;" name="content_answer" maxlength="100"><c:out value="${qnaDomain.reaseon}"/></textarea>
+                    	</c:when>  
+                    	<c:otherwise>
                         <label for="content_answer" class="form-label">문의 답변</label>
                         <textarea class="form-control h-25" id="content_answer" rows="13" style= "resize: none;" name="content_answer" maxlength="100"><c:out value="${qnaDomain.content_answer}"/></textarea>
+                        </c:otherwise>	
+                     </c:choose>
                         <div class="textCount" id="charCount" style="width: 100px;">0</div>/100자
                     </div>
                     <div style="width: 50%;">
@@ -120,7 +130,7 @@ a {text-decoration: none;}
                         <button class="btn btn-light btn-sm me-md-2" type="button" id="submitA">수정</button>
                     </c:if>
                     
-                    <button class="btn btn-light btn-sm me-md-2" type="button" id="goBack">취소</button>
+                    <button class="btn btn-light btn-sm me-md-2" type="button" id="goBack">뒤로</button>
                 </div>
             </form>
         </div>
@@ -188,12 +198,11 @@ a {text-decoration: none;}
 
         // 삭제 팝업창
         function openDeletePopup() {
-        	const popup = window.open("manage_qna_reason.do?qna_no=${param.qna_no}", "DeletePopup", "width=400,height=300");
-        	popup.onbeforeunload = function() {
-                window.location.reload();
-            };
-        };
-        document.getElementById("delete").addEventListener("click", openDeletePopup);
+            window.open("manage_qna_reason.do?qna_no=${param.qna_no}", "DeletePopup", "width=400,height=300");
+        }
+        
+        
     </script>
 </body>
 </html>
+

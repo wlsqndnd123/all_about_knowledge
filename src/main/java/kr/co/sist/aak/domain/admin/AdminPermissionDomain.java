@@ -16,17 +16,6 @@ public class AdminPermissionDomain {
 	 private String permissions;
 	
 
-	public AdminPermissionDomain(String id, String notice_management, String member_management,
-			String category_management, String instructor_management, String qna_management, String permissions) {
-		super();
-		this.id = id;
-		this.notice_management = notice_management;
-		this.member_management = member_management;
-		this.category_management = category_management;
-		this.instructor_management = instructor_management;
-		this.qna_management = qna_management;
-		this.permissions = permissions;
-	}
 
 	public String getId() {
 		return id;

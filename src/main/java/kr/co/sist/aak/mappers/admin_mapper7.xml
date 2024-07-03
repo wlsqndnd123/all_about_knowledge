@@ -12,11 +12,13 @@
 		c.sub_title,
 		i.name,
 		cc.cat_name
+
 	FROM subject s
 	JOIN SUBJECT_CODE c ON S.sub_code = c.sub_code
 	join SUB_INSTRUCTOR sc on sc.sub_code = c.sub_code
 	JOIN INST_INFO i ON i.INST_id = sc.INST_id
 	JOIN CAT_CODE cc ON cc.CAT_CODE = c.CAT_CODE
+	where s.status = 'N'
 	</select>
 
 	
@@ -56,7 +58,7 @@
 	FROM subject s
 	JOIN LECTURE l ON S.sub_code = l.sub_code
 	where S.sub_code = #{sub_code}
-	ORDER BY s.sub_code, l.lec_code;
+	ORDER BY s.sub_code, l.lec_code
 
 	</select>
 	
