@@ -12,9 +12,12 @@ import lombok.ToString;
 @ToString
 public class AdminPermissionDomain {
 	private String id ,notice_management, member_management, category_management, instructor_management, qna_management;
+	
+	 private String permissions;
+	
 
 	public AdminPermissionDomain(String id, String notice_management, String member_management,
-			String category_management, String instructor_management, String qna_management) {
+			String category_management, String instructor_management, String qna_management, String permissions) {
 		super();
 		this.id = id;
 		this.notice_management = notice_management;
@@ -22,6 +25,7 @@ public class AdminPermissionDomain {
 		this.category_management = category_management;
 		this.instructor_management = instructor_management;
 		this.qna_management = qna_management;
+		this.permissions = permissions;
 	}
 
 	public String getId() {
@@ -70,6 +74,14 @@ public class AdminPermissionDomain {
 
 	public void setQna_management(String qna_management) {
 		this.qna_management = qna_management;
+	}
+
+	public String getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(String permissions) {
+		this.permissions = permissions;
 	}
 
 }
