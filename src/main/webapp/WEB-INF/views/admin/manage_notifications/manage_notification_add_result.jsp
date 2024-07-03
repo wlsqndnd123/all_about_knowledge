@@ -152,6 +152,11 @@
   <script type="text/javascript">
   $(function(){
 	  $("#btnback").click(function(){
+		  var adminId = '<%= session.getAttribute("adminid") %>';
+          
+          if (adminId == '' || adminId == 'null') {
+              location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+          }
 		  history.back();
 	  })
   })

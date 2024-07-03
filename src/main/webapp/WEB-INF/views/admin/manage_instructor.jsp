@@ -197,6 +197,11 @@ th,td,tr{font-size: 12px; text-align: center;}
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
  $(function(){
+	 var adminId = '<%= session.getAttribute("adminid") %>';
+     
+     if (adminId == '' || adminId == 'null') {
+         location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+     }
 	    $.ajax({
 	        url: "manage_inst_subPercentage.do", 
 	        type: "GET",

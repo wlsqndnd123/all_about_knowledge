@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kr.co.sist.aak.domain.admin.AdminLoginDomain;
 import kr.co.sist.aak.domain.admin.AdminPermissionDomain;
 import kr.co.sist.aak.domain.admin.vo.AdminLoginVO;
-
 @Controller
 public class AdminLoginController {
 	@Autowired(required = false)
@@ -39,7 +39,7 @@ public String login(@ModelAttribute AdminLoginVO alVO, Model model,HttpSession s
 	@GetMapping("admin_index_logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "/admin/login";
+		return "redirect:admin_index.do";
 	}
 	@GetMapping("admin_main.do")
 	public String toMain() {

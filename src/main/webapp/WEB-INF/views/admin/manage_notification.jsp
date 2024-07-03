@@ -204,7 +204,11 @@ font-size: 7px;
    <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
   <script type="text/javascript">
 	  $(function() {
-		    // DataTables 초기화
+		  var adminId = '<%= session.getAttribute("adminid") %>';
+          
+          if (adminId == '' || adminId == 'null') {
+              location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+          }
 		    var table = $("#notice").DataTable({
 		        "processing": true,
 		        "serverSide": false, // 클라이언트 측에서 데이터 처리
