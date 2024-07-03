@@ -4,9 +4,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<%
-
-%>
+<style>
+th,td,tr{font-size: 13px;}
+a {text-decoration: none;}
+.cursor{cursor: progress;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,13 +202,18 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
+	  var adminId = '<%= session.getAttribute("adminid") %>';
+      
+      if (adminId == '' || adminId == 'null') {
+          location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+      }
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
 	  
 	  
 	  $("#btnModify").click(function(){
-			
+		  $("body").addClass("cursor");
 				// 이미지만 업로드하도록 설정
 				var file = $("#image").val();
 		
@@ -227,6 +234,8 @@
 				return;
 				} // end if
 				$("#frm").submit();
+				$("#btnModify").attr("disabled", true);
+				
 	  })
 	  
   })

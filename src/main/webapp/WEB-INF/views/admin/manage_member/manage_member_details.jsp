@@ -295,7 +295,7 @@ a {text-decoration: none;}
                   	<c:if test="${requestScope.flag eq '1' }" >
 					<input type="button" class="btn btn btn-sm me-md-2 " value="완료" id ="saveSubmit" style=" margin: 10px; "/>
 					</c:if>
-                <input type="button" class="btn btn-light btn-sm me-md-2" value="취소" id="back"  style=" margin : 10px;"/>
+                <input type="button" class="btn btn-light btn-sm me-md-2" value="뒤로" id="back"  style=" margin : 10px;"/>
            
     	</div>
     	</form>

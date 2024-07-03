@@ -50,6 +50,18 @@ public class QnaManagementDAO {
 		
 	}
 	
+	public QnaManagementDomain selectDetalDeletedQna(String qna_no)throws PersistenceException{
+		QnaManagementDomain qnaDomain = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		qnaDomain = ss.selectOne("kr.co.sist.aak.admin6.selectDetalDeletedQna", qna_no);
+		mbDAO.closeHanlder(ss);
+		
+		return qnaDomain;
+		
+		
+	}
+	
 
 	
 	public int updateQnaAnswer(QnaManagementVO qnaVO){

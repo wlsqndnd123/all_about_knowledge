@@ -195,35 +195,50 @@ width: 15vw;height: auto;
    <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
- $(function(){
-	    /*  $.ajax({
-	        url: "manage_inst_subPercentage.do", 
-	        type: "GET",
-	        dataType: "JSON",
-	        error: function(xhr) {
-	            console.error('AJAX request failed:', xhr);
-	        },
-	        success: function(jsonObj) {
-	        	$("#instSubject").empty();
-	            	var output ="<tr><td  colspan='2'>강사들의 주력과목</td></tr>";
-	            $.each(jsonObj.list,function(i,jsonTemp) {
-	            	output+="<tr><td>과목명: "+jsonTemp.major_subject+"</td><td> 비율:"+jsonTemp.percentage+"% </td></tr>";
-	            })
-	            $("#instSubject").html(output);
+ 
+ $(document).ready(function() {
+	    /* function fetchMemberCounts() {
+	        $.ajax({
+	            url: "manage_member_pre.do",
+	            type: "GET",
+	            dataType: "json",
+	            error: function(xhr, status, error) {
+	                console.error('AJAX request failed:', xhr.status, xhr.responseText);
+	            },
+	            success: function(jsonObj) {
+	                console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
+	                $("#preMember").empty();
+	                if (jsonObj && jsonObj.p !== undefined && jsonObj.n !== undefined) { // 응답이 유효한지 확인
+	                    var output = "<tr><td>현재 회원 수: " + jsonObj.p + "</td></tr>";
+	                    output += "<tr><td>탈퇴 한 회원 수: " + jsonObj.n + "</td></tr>";
+	                    $("#preMember").html(output);
+	                } else {
+	                    console.error('Invalid JSON response');
+	                }
 	            }
+	        });
+	    }
 
-	    }); */
-	    $.ajax({
-	        url: "manage_memeber_pre.do", 
+	    // 초기 데이터 로드
+	    fetchMemberCounts();
+
+	    // (10초)마다 데이터 갱신
+	    setInterval(fetchMemberCounts, 10000); */
+	});
+ 
+ 
+ $(function(){
+	 $.ajax({
+	        url: "manage_member_pre.do",
 	        type: "GET",
-	        dataType: "JSON",
+	        dataType: "json",
 	        error: function(xhr, status, error) {
 	            console.error('AJAX request failed:', xhr.status, xhr.responseText);
 	        },
 	        success: function(jsonObj) {
 	            console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
 	            $("#preMember").empty();
-	            if (jsonObj) { // 응답이 유효한지 확인
+	            if (jsonObj && jsonObj.p !== undefined && jsonObj.n !== undefined) { // 응답이 유효한지 확인
 	                var output = "<tr><td>현재 회원 수: " + jsonObj.p + "</td></tr>";
 	                output += "<tr><td>탈퇴 한 회원 수: " + jsonObj.n + "</td></tr>";
 	                $("#preMember").html(output);
@@ -231,7 +246,27 @@ width: 15vw;height: auto;
 	                console.error('Invalid JSON response');
 	            }
 	        }
-	    });
+	    }); 
+	    
+	    $.ajax({
+	        url: "manage_member_pre.do",
+	        type: "GET",
+	        dataType: "json",
+	        error: function(xhr, status, error) {
+	            console.error('AJAX request failed:', xhr.status, xhr.responseText);
+	        },
+	        success: function(jsonObj) {
+	            console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
+	            $("#preMember").empty();
+	            if (jsonObj && jsonObj.p !== undefined && jsonObj.n !== undefined) { // 응답이 유효한지 확인
+	                var output = "<tr><td>현재 회원 수: " + jsonObj.p + "</td></tr>";
+	                output += "<tr><td>탈퇴 한 회원 수: " + jsonObj.n + "</td></tr>";
+	                $("#preMember").html(output);
+	            } else {
+	                console.error('Invalid JSON response');
+	            }
+	        }
+	    }); 
 
 	    /* var selectedValue = localStorage.getItem('selectedStatus');
 	    if (selectedValue) {
@@ -420,7 +455,7 @@ function sortTableByDate() {
     
     
      --%>
-    
+   
     
     
 

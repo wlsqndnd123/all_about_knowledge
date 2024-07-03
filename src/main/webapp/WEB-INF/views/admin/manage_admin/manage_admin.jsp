@@ -2,8 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
-<style>
 
+<style>
 th{font-weight: normal;font-size: 13px;}
 tr{vertical-align: middle;}
 td{vertical-align: middle; font-size: 13px;}
@@ -43,6 +43,7 @@ zoom:0.6;
 </head>
 
 <body id="reportsPage">
+
     <div class="" id="home">
         <div class="container">
             <div class="row">
@@ -216,6 +217,11 @@ zoom:0.6;
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
         $(function() {
+        	var adminId = '<%= session.getAttribute("adminid") %>';
+            
+            if (adminId == '' || adminId == 'null') {
+                location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+            }
         	 const tab=document.querySelector('.tab');
          $("#btnunfold").click(function(){
         	 tab.style.display = 'block';
