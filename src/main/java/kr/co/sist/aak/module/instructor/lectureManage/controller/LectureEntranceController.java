@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LectureEntranceController {
-
+//lectureDomain, lecturelessonDomain
 	@GetMapping("/instructor/lectureManage/lectureEntrance.do")
 	public String lectureEntrance() {
 		return "instructor/lectureManage/lectureEntrance";
