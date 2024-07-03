@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,6 +37,7 @@ public class DetailLectureRepository {
 		SqlSession ss = myBatisDAO.getMyBatisHandler(false);
 		
 		detailLectureVO = ss.selectOne("kr.co.sist.aak.student.mypage.detail_lecture.selectDeailLectureInfo", subCode);
+
 		ss.close();
 		return detailLectureVO;
 	}

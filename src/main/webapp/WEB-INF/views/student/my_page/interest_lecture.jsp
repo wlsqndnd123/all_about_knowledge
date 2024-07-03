@@ -79,6 +79,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 	    `;
 	}
 	
+	<!-- 이 부분 메인 홈페이지 강의 상세로 연결해야 함 -->
 	function bindEnterButton() {
 	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
 	        var subCode = $(this).data('subcode');
