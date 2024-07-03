@@ -11,8 +11,9 @@ import lombok.ToString;
 @NoArgsConstructor
 public class MyExamVO {
 
-	private int qNo,answer;
-	private String subName, content, ex1, ex2, ex3, ex4;
+	private int qNo, score, tryCount;
+	private String subName, content, ex1, ex2, ex3, ex4, stdId, subCode;
+	private char answer, solution;
 	
 	public int getqNo() {
 		return qNo;
