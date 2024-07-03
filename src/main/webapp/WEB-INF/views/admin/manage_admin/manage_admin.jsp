@@ -145,6 +145,7 @@ text-align: center;
             		<th>문의</th>
             		<th>회원</th>
             		<th>공지사항</th>
+            		<th>수정</th>
                     </tr>
                     </thead>
                     <tbody id ="adminList">
@@ -247,7 +248,6 @@ text-align: center;
            
             },
             error: function(xhr, status, error) {
-                // 에러 시 처리
                 alert("관리자 추가 중 오류가 발생했습니다.");
             }
         });
