@@ -11,6 +11,6 @@ import lombok.ToString;
 @ToString
 public class InstructorInfoVO {
 
-	private String id, name, email, introduce, image, phone, education, major_subject;
+	private String inst_id, name, email, introduction, image, phone, education, major_subject;
 	
 }

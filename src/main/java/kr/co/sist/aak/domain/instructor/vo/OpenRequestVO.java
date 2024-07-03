@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class OpenRequestVO {
-	private String sub_code, lec_code, sub_title, intro, goal, image, lec_name, explain, video;
+	private String sub_code, lec_code, sub_title, intro, goal, image, lec_name, explain, video,status;
 	private int total_no, total_time, lesson;
 	private Date create_date;
 }

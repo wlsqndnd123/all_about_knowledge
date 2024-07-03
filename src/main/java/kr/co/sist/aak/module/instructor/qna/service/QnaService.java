@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.instructor.QnaDomain;
+import kr.co.sist.aak.domain.instructor.vo.QnaVO;
 import kr.co.sist.aak.module.instructor.qna.dao.QnaDAO;
 
 @Service
@@ -28,13 +29,26 @@ public class QnaService {
 	}
 	
 	public QnaDomain qnaDetail(String qna_no) {
-		QnaDomain qad=null;
+		QnaDomain qnd=null;
 		
 		try {
-			qad=qaDAO.detailQna(qna_no);
+			qnd=qaDAO.detailQna(qna_no);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
-		return qad;
+		return qnd;
 	}
+	
+	public int qnaAnswer(String qna_no) {
+		int cnt=0;
+		
+		try {
+			cnt=qaDAO.updateAnswer(qna_no);
+						
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+		return cnt;
+	}
+	
 }

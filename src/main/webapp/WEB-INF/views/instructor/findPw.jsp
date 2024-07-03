@@ -33,7 +33,10 @@
 <script type="text/javascript">
 	$(function() {
 		$("#searchBtn").click(function(){
-			$("#findPwFrm").submit()
+			
+			var inputId = $("#inputId").val();
+			var inputEmail = $("#inputEmail").val();
+			var inputName = $("#inputName").val();
 			
 			if( inputId == ""){
 				alert("아이디는 필수 입력");
@@ -51,47 +54,31 @@
 				return;
 			}
 			
+			$("#findPwFrm").submit()
 		});
 	});//ready
 </script>
 
-<form action="http://localhost/all_about_knowledge/instructor/findPw.do" method="post" id="findPwFrm">
+<form action="http://localhost/all_about_knowledge/instructor/findPw.do" method="post" id="findPwFrm" class="text-center">
   <!-- 아이디 -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="text" id="inputId" class="form-control" />
-    <label class="form-label" for="form2Example1">아이디를 입력해주세요</label>
+  <div data-mdb-input-init class="form-outline mb-4 mx-auto" style="max-width: 400px; padding-top:20px">
+    <input type="text" id="inputId" class="form-control" placeholder="아이디를 입력해주세요" />
+    <label class="form-label"></label>
   </div>
   
   <!-- 이메일 -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="text" id="inputEmail" class="form-control" />
-    <label class="form-label" for="form2Example1">이메일을 입력해주세요/label>
+  <div data-mdb-input-init class="form-outline mb-4 mx-auto" style="max-width: 400px;">
+    <input type="text" id="inputEmail" class="form-control" placeholder="이메일을 입력해주세요" />
+    <label class="form-label"></label>
   </div>
 
   <!-- 이름 -->
-  <div data-mdb-input-init class="form-outline mb-4">
-    <input type="text" id="inputName" class="form-control" />
-    <label class="form-label" for="form2Example2">이름을 입력해주세요</label>
+  <div data-mdb-input-init class="form-outline mb-4 mx-auto" style="max-width: 400px;">
+    <input type="text" id="inputName" class="form-control" placeholder="이름을 입력해주세요"/>
+    <label class="form-label"></label>
   </div>
 
-  <!-- 2 column grid layout for inline styling -->
-<!--   <div class="row mb-4">
-    <div class="col d-flex justify-content-center">
-      Checkbox
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-        <label class="form-check-label" for="form2Example31"> Remember me </label>
-      </div>
-    </div>
-
-    <div class="col">
-      Simple link
-      <a href="#!">비밀번호를 까먹으셨나요?</a>
-    </div>
-  </div> -->
-
   <!-- Submit button -->
-  <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" id="searchBtn">
+    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4" id="searchBtn">
   인증하기</button>
-
-</form>
+  </form>

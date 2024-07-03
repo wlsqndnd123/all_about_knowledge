@@ -117,7 +117,6 @@
     </div>
     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/moment.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/fullcalendar.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/tooplate-scripts.js"/>"></script>
