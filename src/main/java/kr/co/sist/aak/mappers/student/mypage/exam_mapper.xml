@@ -26,5 +26,11 @@
         FROM STD_EXAM
         WHERE STD_ID = #{stdId} AND SUB_CODE = #{subCode}
     </select>
+    
+	<select id="checkIfExamTaken" parameterType="map" resultType="int">
+        SELECT COUNT(*) 
+        FROM STD_EXAM 
+        WHERE STD_ID = #{stdId} AND SUB_CODE = #{subCode}
+    </select>
 
 </mapper>
