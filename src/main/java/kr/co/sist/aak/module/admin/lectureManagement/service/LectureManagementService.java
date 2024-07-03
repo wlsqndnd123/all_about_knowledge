@@ -37,7 +37,6 @@ public class LectureManagementService{
 		try {
 			smDomain = lmDAO.selectDetaleSubject(sub_code);
 			
-		
 		}catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}

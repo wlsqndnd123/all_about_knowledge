@@ -63,20 +63,11 @@ public class MemberManagementController {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	@ResponseBody
-	@RequestMapping(value = "manage_member_pre.do", method = RequestMethod.GET, 
-	produces = "application/json;charset=UTF-8")
-	public String searchMembers() {
-		
-		
-						
-		return mms.searchMembers();
-	}
-	
-	
+    @RequestMapping(value = "manage_member_pre.do", method = RequestMethod.GET, 
+                    produces = "application/json;charset=UTF-8")
+    public String searchMembers() {
+        return mms.searchMembers();
+    }
 }

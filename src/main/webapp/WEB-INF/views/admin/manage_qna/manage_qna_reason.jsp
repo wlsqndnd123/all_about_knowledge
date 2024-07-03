@@ -20,8 +20,8 @@ a {text-decoration: none;}
     <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
     <script>
         function submitForm() {
-            var reason = document.getElementById("reason").value;
-            if (reason.trim() === "") {
+            var reaseon = document.getElementById("reaseon").value;
+            if (reaseon.trim() === "") {
                 alert("삭제 사유를 입력해주세요.");
                 return false;
             }
@@ -31,11 +31,20 @@ a {text-decoration: none;}
                 var cnt = "${cnt}";
                 if(cnt == 1)
                 	alert("수행을 완료 했습니다.");
-                	/* window.close(); */
+                	window.close();
+        
+                window.onbeforeunload = function() {
+                    // 부모 창을 새로고침
+                    if (opener) {
+                    	 opener.location.href = "manage_qna.do";
+                    }
+                };
             	}else if(cnt == '0'){
                     alert("수행 중 오류가 있습니다.");
                 }
             }
+        
+        
        
     </script>
 </head>
@@ -44,7 +53,7 @@ a {text-decoration: none;}
     <form id="deleteForm" method="post" >
     <input type="hidden" name="qna_no" value="${param.qna_no}">
         <label for="reason">Reason:</label><br>
-        <textarea id="reaseon" name="reason" rows="4" cols="50"></textarea><br><br>
+        <textarea id="reaseon" name="reaseon" rows="4" cols="50"></textarea><br><br>
         <button type="button" onclick="submitForm()">확인</button>
         <button type="button" onclick="window.close()">취소</button>
     </form>

@@ -54,7 +54,7 @@ public class LectureManagementDAO {
 		List<LectureManagementDomain> list = null;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(false);
-		list = ss.selectOne("kr.co.sist.aak.admin7.selectLecture", sub_code);
+		list = ss.selectList("kr.co.sist.aak.admin7.selectLecture", sub_code);
 		mbDAO.closeHanlder(ss);
 		
 		

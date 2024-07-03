@@ -29,11 +29,20 @@ public class QnaManagementService {
 	}
 	
 	
-	public QnaManagementDomain searchDetaleQna ( String qna_no) {
+	public QnaManagementDomain searchDetaleQna ( String qna_no, String status) {
 		QnaManagementDomain qnaDomain = null;
 		try {
+			if(status.equals("D")) {
+			
+			qnaDomain = qmDAO.selectDetalDeletedQna(qna_no);
+			
+			}else {
+
 			qnaDomain = qmDAO.selectDetalQna(qna_no);
-		
+
+			}
+			
+			
 		}catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}

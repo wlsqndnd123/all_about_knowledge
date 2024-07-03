@@ -33,9 +33,9 @@ public class QnaManagementController {
 	
 	
 	@GetMapping("/manage_qna_details.do")
-	public String searchDetaleQna(QnaManagementDomain qnaDomain, Model model, String qna_no) {
+	public String searchDetaleQna(QnaManagementDomain qnaDomain, Model model, String qna_no, String status) {
 		
-		qnaDomain = qms.searchDetaleQna(qna_no);
+		qnaDomain = qms.searchDetaleQna(qna_no,status);
 		model.addAttribute("qnaDomain", qnaDomain);
 		
 		
