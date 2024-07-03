@@ -69,6 +69,13 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 	  <i class="right chevron icon divider"></i>
 	  <div class="active section">강의상세</div>
 	</div>
+	
+	<c:if test="${not empty errorMessage}">
+	    <div class="ui red message">
+	        <i class="close icon"></i>
+	        ${errorMessage}
+	    </div>
+	</c:if>
 
 <div class="ui sizer vertical segment div_margin">
   <div class="ui huge header">${ lectureInfo.subTitle }</div>
