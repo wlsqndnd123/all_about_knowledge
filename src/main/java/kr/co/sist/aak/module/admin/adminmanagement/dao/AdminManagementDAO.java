@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.sist.aak.domain.admin.AdminPermissionDomain;
+import kr.co.sist.aak.domain.admin.vo.AdminPermissionVO;
 import kr.co.sist.aak.util.MybatisDAO;
 
 @Component
@@ -21,6 +22,20 @@ public class AdminManagementDAO {
 		mbDAO.closeHanlder(ss);
 		return list;
 
+	}
+	public int insertAdmin (AdminPermissionVO apVO) throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.insert("kr.co.sist.aak.admin5.insertAdmin",apVO);
+		cnt += ss.insert("kr.co.sist.aak.admin5.insertAdminPermission",apVO);
+		if(cnt==2) {
+			ss.commit();
+		}
+		
+		
+		return cnt;
 	}
 //
 //	public static void main(String[] args) {
