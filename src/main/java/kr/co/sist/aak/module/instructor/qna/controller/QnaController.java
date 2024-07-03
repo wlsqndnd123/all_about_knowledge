@@ -19,23 +19,20 @@ public class QnaController {
 	public String allQna(Model model) {
 		
 		model.addAttribute("qnaList", qas.selectAllQna());
+		
 		return "instructor/qna/qnaList";
 	}
 	
 	
-	//  instructor/qna/qnaDetail.do?qna_no=Q_SUB00001
+	
 	@GetMapping("/instructor/qna/qnaDetail.do")
 	public String qnaDetail(QnaDomain qnd, @RequestParam(defaultValue="Q_SUB00001") String qna_no, Model model) {
-		System.out.println("----------------"+qna_no);
+		
 		qnd=qas.qnaDetail(qna_no);
 		model.addAttribute("qnd", qnd);
 		
-		return "instructor/qna/qnaDetail"; 
-	}  
-	
-	
-	
-	
+		return "instructor/qna/qnaDetail";
+	}
 	
 	
 }
