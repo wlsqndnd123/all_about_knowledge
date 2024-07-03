@@ -39,7 +39,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3" style="font-size: 20px;">
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" 
-            href="http://localhost/all_about_knowledge/instructor/instructor_home.do">AAk 강사메인</a></div>
+            href="http://localhost/all_about_knowledge/instructor_home.do">AAk 강사메인</a></div>
             </a>
 
             <!-- Divider -->

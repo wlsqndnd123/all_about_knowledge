@@ -5,84 +5,27 @@
 <mapper namespace="kr.co.sist.aak.instructor">
 
 	<!-- 강사 메인화면 쿼리문 -->
-
 	<!-- 강사소개 -->
-	<select id="instructorInfo" resultType="instructorInfoDomain" parameterType="String">
+	<select id="instructorInfo" resultType="instructorInfoVO">
 		select inst_id, name, email, introduction, image
 		from inst_info
-		where inst_id=#{inst_id}
-	</select>
-
-	<!-- 미답변 -->
-	<select id="noreplyCnt" resultType="int" parameterType="String">
-		select
-		count(status) as cnt
-		from qna_sub_q
-		where status='N'and inst_id=#{inst_id}
+		where inst_id=#{inst_id} 
 	</select>
 
 	<!-- 강의 개설현황 -->
-	<select id="totalCnt" resultType="int" parameterType="String">
-		select  nvl(max(COUNT(s.status)),0 )  as cnt
-		from subject s
-		left join sub_instructor si on si.sub_code = s.sub_code
-		where si.inst_id=#{inst_id}
-		GROUP BY s.sub_code, si.inst_id
+	<select id="openLectureCnt" resultType="openRequestVO">
+		SELECT COUNT(status) as cnt
+		FROM subject
+		where status=#{status}
 	</select>
-
-	<select id="openLectureCnt" resultType="int" parameterType="String">
-		SELECT  nvl(max(COUNT(s.status)),0 ) as cnt
-		FROM subject s
-		join sub_instructor si on si.sub_code = s.sub_code
-		where si.inst_id=#{inst_id} and status='Y'
-		GROUP BY s.sub_code, si.inst_id
-	</select>
-
+	
 	<!-- 반려 리스트 -->
-	<select id="rejectLecture" resultType="rejectDomain" parameterType="String">
-	 	SELECT s.sub_code, sr.reason, si.inst_id
+	<select id="rejectLecture" resultType="rejectDomain">
+		SELECT s.sub_code, sr.reason
 		FROM subject s
 		JOIN sub_reject sr ON s.sub_code = sr.sub_code
-		JOIN sub_instructor si ON s.sub_code = si.sub_code
-		WHERE s.status = 'N' AND si.inst_id = #{inst_id} 
-		
-		
+		WHERE s.status = #{status}
 	</select>
-
-	<!-- 로그인 -->
-	<select id="loginInstructor" resultType="instructorInfoDomain"
-		parameterType="String">
-		SELECT i.inst_id, i.password, i.image, ini.*
-		FROM
-		instructor i
-		JOIN inst_info ini ON i.inst_id = ini.inst_id
-		WHERE
-		i.inst_id = #{inst_id}
-		AND i.password = #{password}
-		AND i.del_yn = 'N'
-	</select>
-	<!-- 임시 비밀번호 -->
-<!-- 
-	<update id="searchPassword" parameterType=">
-		update instructor i
-		set i.password = #{password}
-		from inst_info ini
-		where i.inst_id =
-		ini.inst_id
-		and i.inst_id = #{inst_Id}
-		and ini.email = #{email}
-		and ini.name = #{name}
-	</update> -->
-
-	<!-- 강사개인정보 수정 -->
-	<update id="modifyInfo" parameterType="String">
-		update inst_info
-		set
-		name=#{name}, email=#{email}, introduction=#{introduction},
-		image=#{image}, phone=#{phone}, education=#{education},
-		major_subject=#{major_subject}
-		where inst_id=#{inst_id}
-	</update>
 
 </mapper>
   

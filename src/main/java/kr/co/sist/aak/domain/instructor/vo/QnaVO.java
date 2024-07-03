@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class QnaVO {
 
-	private String title, std_id, inst_id, sub_code, lec_code, ans_content, content,status;
+	private String title, id, sub_code, lec_code, replyContent, content;
 	private int qna_no;
-	private Date ans_date;
+	private Date reply_date;
 }

@@ -6,12 +6,12 @@
 
 <!-- 강의관리 리스트 -->
 <!-- 전체 강의 리스트 -->
-<select id="lectureList" resultType="lectureDomain" parameterType="String">
-SELECT s.*, sr.reason, sc.sub_title
+<select id="lectureList" resultType="lectureDomain">
+SELECT s.*, sr.reason
 FROM subject s
 JOIN sub_instructor si ON s.sub_code = si.sub_code
-JOIN subject_code sc ON s.sub_code = sc.sub_code
-LEFT JOIN sub_reject sr ON s.sub_code = sr.sub_code AND s.status = 'N'
+JOIN instructor i ON si.inst_id = i.inst_id
+LEFT JOIN sub_reject sr ON s.sub_code = sr.sub_code AND s.status = #{status}
 </select>
 
 <!-- 강의상세 -->

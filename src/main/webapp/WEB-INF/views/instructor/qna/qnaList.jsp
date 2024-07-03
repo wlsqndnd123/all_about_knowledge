@@ -27,6 +27,9 @@
 <!--bootstrap 끝-->
 <title>AAK</title>
 
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
@@ -62,9 +65,8 @@
 							<button class="btn btn-secondary dropdown-toggle" type="button"
 								data-bs-toggle="dropdown" aria-expanded="false">승인여부</button>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">승인</a></li>
-								<li><a class="dropdown-item" href="#">대기중</a></li>
-								<li><a class="dropdown-item" href="#">반려</a></li>
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
 							</ul>
 						</div>
 
@@ -99,14 +101,37 @@
 							<tbody id="output">
 								<c:forEach var="qnaList" items="${qnaList}" varStatus="i">
 									<tr>
-										<td><c:out value="${qnaList.std_id}" /></td>
-										<td><c:out value="${qnaList.sub_title}"/></td>
+										<td><c:out value="${qnaList.id}" /></td>
+										<td><c:out value="${qnaList.sub_title }"/></td>
 										<td><a href="qnaDetail.do?qna_no=${qnaList.qna_no}">
 										<c:out value="${qnaList.title}"/></a></td>
 										<td><c:out value="${qnaList.status}"/></td>
 										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qnaList.q_date}" /></td>
 									</tr>
 								</c:forEach>
+								<!-- 				<tr>
+									<th scope="row">ming3333</th>
+									<td>알고리즘의 이해</td>
+									<td><a href="qnaDetail.do">4강 질문내용 있습니다</a></td>
+									<td>답변대기</td>
+									<td>2024-05-20</td>
+								</tr>
+								<tr>
+									<th scope="row">abc12345</th>
+									<td>벼락치기 SQL</td>
+									<td><a href="qnaDetail.do">환경세팅 오류 질문입니다</a></td>
+									<td>답변대기</td>
+									<td>2024-04-10</td>
+								</tr>
+								<tr>
+									<th scope="row">tomato5588</th>
+									<td>java 왕기초 4주 단기 완성</td>
+									<td><a href="qnaDetail.do">7강 문제풀이 질문입니다</a></td>
+									<td>답변완료</td>
+									<td>2024-03-08</td>
+								</tr> -->
+
+
 							</tbody>
 						</table>
 					</div>
@@ -146,5 +171,14 @@
 			<script
 				src="http://localhost/all_about_knowledge/resources/js/sb-admin-2.min.js"></script>
 
+			<!-- Page level plugins -->
+			<script
+				src="http://localhost/all_about_knowledge/resources/vendor/chart.js/Chart.min.js"></script>
+
+			<!-- Page level custom scripts -->
+			<script
+				src="http://localhost/all_about_knowledge/resources/js/demo/chart-area-demo.js"></script>
+			<script
+				src="http://localhost/all_about_knowledge/resources/js/demo/chart-pie-demo.js"></script>
 </body>
 </html>
