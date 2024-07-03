@@ -3,7 +3,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+th,td,tr{font-size: 13px;}
+a {text-decoration: none;}
+.cursor{cursor: progress;}
+</style>
 <head>
 
     <meta charset="UTF-8">
@@ -208,7 +212,7 @@ font-size: 9px;
 		  history.back();
 	  })
   $("#btnwrite").click(function(){
-
+	  $("body").addClass("cursor");
 			// 이미지만 업로드하도록 설정
 			var file = $("#image").val();
 			var selectedExt = file.substring(file.lastIndexOf(".")+1);
@@ -229,6 +233,7 @@ font-size: 9px;
 			} // end if
 			
 			$("#frm").submit();
+			 $("#btnwrite").attr("disabled", true);
 			}); // click
   })
   function readURL(input) {

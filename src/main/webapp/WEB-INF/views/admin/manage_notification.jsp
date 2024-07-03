@@ -11,6 +11,7 @@ th,td,tr{font-size: 11px;text-align: center; vertical-align: middle;}
 .tableaj{
 font-size: 7px;
 } 
+.pointer      { cursor: pointer; }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -184,7 +185,7 @@ font-size: 7px;
                     </thead>
                     <tbody id ="output">
                     <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
-                    <tr onclick="changeUrl('${list.noti_no}')">
+                    <tr onclick="changeUrl('${list.noti_no}')" class="pointer">
                     <td><c:out value="${ list.noti_no }"/></td>
                     <td><c:out value="${list.title }"/></td>
                     <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>

@@ -6,6 +6,7 @@
 <style>
 th,td,tr{font-size: 13px;}
 a {text-decoration: none;}
+.cursor{cursor: progress;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -207,6 +208,8 @@ a {text-decoration: none;}
 				return;
 				} // end if
 				$("#frm").submit();
+				$("#btnModify").attr("disabled", true);
+				$("body").addClass("cursor");
 	  })
 	  
   })

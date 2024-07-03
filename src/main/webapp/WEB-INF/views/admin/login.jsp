@@ -72,11 +72,10 @@
                                     <button type="submit" class="btn btn-primary d-inline-block mx-auto">Login</button>
                                 </div>
                                 <div class="input-group mt-3">
-    <div id="message" class="success">
-        환영합니다. AAK 관리자 페이지입니다.
+    <div id="message">
     </div>
 
-    <c:if test="${errorpage == false}">
+    <c:if test="${errorpage == true}">
         <script>
             $(document).ready(function() {
                 $('#message').removeClass('success').addClass('error').text('입력 정보를 확인하세요.').fadeIn(1000).delay(2000).fadeOut(1000);
@@ -84,11 +83,6 @@
         </script>
     </c:if>
 
-    <script>
-        $(document).ready(function() {
-            $('#message').fadeIn(1000);
-        });
-    </script>
                                 </div>
                             </form>
                         </div>
