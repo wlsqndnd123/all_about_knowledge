@@ -24,6 +24,11 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 	$(function() {
 	    loadData();
 	    bindEnterButton();
+	    
+	    $('table').on('loadeddata', function() {
+	        $('.ui.active.inverted.dimmer').removeClass('active').addClass('disabled');
+	        $('.ui.large.text.loader').removeClass('active').addClass('disabled');
+	    });
 	});
 	
 	function loadData() {
@@ -41,6 +46,7 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 	    })
 	    .then(data => {
 	        updateContent(data);
+	        $('table').trigger('loadeddata');
 	    })
 	    .catch(error => {
 	        alert('데이터 로드 실패!');
@@ -113,6 +119,10 @@ Desc : 사용자(학생)의 마이페이지 관심강의 화면
 	  <i class="right chevron icon divider"></i>
 	  <div class="active section">관심강의</div>
 	</div>
+	
+<div class="ui active inverted dimmer">
+  <div class="ui large text loader">Loading</div>
+</div>
 
 <table class="ui celled padded table fav_container center aligned">
   <thead>

@@ -18,6 +18,11 @@
 	    initializeTabs();
 	    loadDataForTab('first');
 	    bindEnterButton();
+	    
+	    $('table').on('loadeddata', function() {
+	        $('.ui.active.inverted.dimmer').removeClass('active').addClass('disabled');
+	        $('.ui.large.text.loader').removeClass('active').addClass('disabled');
+	    });
 	});
 	
 	function initializeTabs() {
@@ -43,9 +48,10 @@
 	    })
 	    .then(data => {
 	        updateTabContent(tabPath, data);
+	        $('table').trigger('loadeddata');
 	    })
 	    .catch(error => {
-	        alert('데이터를 로드 실패!');
+	        alert('데이터 로드 실패!');
 	    });
 	}
 	
@@ -121,6 +127,10 @@
     <a class="section">나의강의실</a>
     <i class="right chevron icon divider"></i>
     <div class="active section">나의강의</div>
+</div>
+
+<div class="ui active inverted dimmer">
+  <div class="ui large text loader">Loading</div>
 </div>
 
 <div class="ui top attached tabular menu">

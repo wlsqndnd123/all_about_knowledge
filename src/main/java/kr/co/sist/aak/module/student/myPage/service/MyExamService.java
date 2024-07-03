@@ -1,5 +1,6 @@
 package kr.co.sist.aak.module.student.myPage.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,21 @@ public class MyExamService {
 	public List<MyExamVO> getExam() {
 		String subCode = (String) session.getAttribute("sub_code");
         return myExamRepository.selectExam(subCode);
+    }
+	
+    public void submitExamResult(List<MyExamVO> examResults, Principal principal) {
+    	String stdId = principal.getName();
+        String subCode = (String) session.getAttribute("sub_code");
+
+        for (MyExamVO examResult : examResults) {
+            examResult.setStdId(stdId);
+            examResult.setSubCode(subCode);
+            myExamRepository.insertExamResult(examResult);
+        }
+    }
+    
+    public int getTotalScore(String stdId, String subCode) {
+        return myExamRepository.selectTotalScore(stdId, subCode);
     }
 
 }

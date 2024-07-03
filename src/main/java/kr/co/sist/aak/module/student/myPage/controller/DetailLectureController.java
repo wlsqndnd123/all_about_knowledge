@@ -42,4 +42,17 @@ public class DetailLectureController {
     public void saveLecCode(@RequestParam("lecCode") String lecCode, HttpSession session) {
         session.setAttribute("lec_code", lecCode);
     }
+    
+	@GetMapping("/mypage/play_lecture.do")
+	public String playLecture(HttpSession session, Model model){
+		String subCode = (String)session.getAttribute("sub_code");
+		String lecCode = (String)session.getAttribute("lec_code");
+
+		String fileName = detailLectureService.getLecturePlay(subCode, lecCode);
+		model.addAttribute("fileName", fileName);
+
+		return "student/my_page/play_lecture";
+	}
+    
+    
 }
