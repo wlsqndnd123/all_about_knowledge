@@ -39,5 +39,9 @@ public class MyExamService {
     public int getTotalScore(String stdId, String subCode) {
         return myExamRepository.selectTotalScore(stdId, subCode);
     }
+    
+    public boolean isExamTaken(String stdId, String subCode) {
+        return myExamRepository.checkIfExamTaken(stdId, subCode);
+    }
 
 }

@@ -36,4 +36,11 @@ public class MyExamRepository {
         ss.close();
         return grade;
     }
+	
+	public boolean checkIfExamTaken(String stdId, String subCode) {
+        SqlSession ss = myBatisDAO.getMyBatisHandler(true);
+        int count = ss.selectOne("kr.co.sist.aak.student.mypage.exam.checkIfExamTaken", Map.of("stdId", stdId, "subCode", subCode));
+        ss.close();
+        return count > 0;
+    }
 }
