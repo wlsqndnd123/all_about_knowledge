@@ -5,9 +5,15 @@
 <mapper namespace="kr.co.sist.aak.instructor">
 
 <!-- 강의 개설신청 -->
-<insert id="insertLecture" parameterType="openRequestDomain">
-insert into subject
+<insert id="insertLecture" parameterType="lectureVO">
+insert into subject (sub_code, sub_title, intro, goal, total_no, total_time, create_date, status, image, comp_time, inst_id)
 values(#{sub_code},#{sub_title},#{intro},#{goal},#{total_no},#{total_time},#{create_date},#{status},#{image},#{comp_time})
+where inst_id=#{inst_id}
+</insert>
+
+<insert id="lectureLesson" parameterType="lectureLessonVO">
+insert into lecture (sub_code, lec_code, title, time, status, f_name, lec_explain)
+values (#{sub_code},#{lec_code},#{title},#{time},#{status},#{f_name},#{lec_explain})
 </insert>
 	
 </mapper>
