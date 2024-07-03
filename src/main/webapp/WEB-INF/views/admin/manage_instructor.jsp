@@ -45,9 +45,9 @@ th,td,tr{font-size: 12px; text-align: center;}
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+	<c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -58,28 +58,44 @@ th,td,tr{font-size: 12px; text-align: center;}
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
+	</c:if>
+	<c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
                                 <li class="nav-item ">
                                     <a class="nav-link" href="manage_memberlist.do">
                                         회원 관리
                                     </a>
                                 </li>
+                                    </c:if>
+                                <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
                                 <li class="nav-item   active" >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-
+                                        </c:if>
+                                  <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
                                 <li class="nav-item ">
+                                    
                                     <a class="nav-link " href="manage_qna.do">문의 관리</a>
                                 </li>
+                                    </c:if>
+                                  <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -94,12 +110,32 @@ th,td,tr{font-size: 12px; text-align: center;}
              <div class="container" style="padding: 1rem">
              
              <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <!-- 아이디 정보 -->
-                <div></div>
-                <!-- 아이디 권한 정보  -->
-                <div></div>
+               <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
+                </table>
+                </div>
+                <hr  class="border border-primary border-1 opacity-50">
+                <!-- 퇴사|재직중인 강사 -->
+                <div>
+                <table class ="table table-hover">
+                <tbody id ="instNY">
                 
+                </tbody>
+                </table>
                 
+                </div>
+                <hr  class="border border-primary border-1 opacity-50">
+                <!--강사들의 주력과목 -->
+                <div>
+                <table class ="table table-hover">
+                <tbody id ="instSubject">
+                
+                </tbody>
+                </table>
+                </div>
              </div>
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
@@ -112,44 +148,37 @@ th,td,tr{font-size: 12px; text-align: center;}
              <li class="breadcrumb-item active">
              강사 리스트</li></ol>
              </div>
-              <div style="text-align: center; margin-top: 50px;" >
-                            <h2 class="tm-block-title d-inline-block">강사 리스트</h2>
-              </div>
                             	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
   	<a href="manage_instructor_addform.do">
   	<button class="btn btn-light btn-sm me-md-2" type="button" id ="addInst">강사 추가</button>
   	</a>
 </div>	
-                    <div>
-                    <!-- <select class="form-select" aria-label="Default select example">
-                    <option selected>정렬조건</option>
-                    <option>강사명 오름차 순</option>
-                    <option>강사명 내림차 순</option>
-                    <option>진행중인 강의가 많은 순</option>
-                    <option>진행중인 강의가 적은 순</option>
-                    </select> -->
-                    </div>
+                    
                     <div>
                     <form action="manage_instructor.do" id ="YorN" method="get">
-	<label><input type="radio" name="status" value="N" checked> 재직중</label>
-
-	<label><input type="radio" name="status" value="Y"> 퇴사</label>
+                    <div class="form-check form-check-inline">
+  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  name="del_yn" value="N">
+  <label class="form-check-label" for="inlineCheckbox1">재직중</label>
+</div>
+<div class="form-check form-check-inline">
+  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  name="del_yn" value="Y">
+  <label class="form-check-label" for="inlineCheckbox2"> 퇴사</label>
+</div>
+			<input type="submit" value="검색"/>
                     </form>
-                    
                     <table id="instructor" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
                     <thead>
                     <tr>
-                    <th>NO</th>
+                    <th style="text-align: center;">강사 아이디</th>
                     <th style="width: 60%;text-align: center; " >강사명</th>
                     <th style="text-align: center;">진행중인 강의 수</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="list" items="${requestScope.instList }" varStatus="i">
-                    <tr>
-                    
-                    <td><c:out value="${i.count }"/> </td>
-                    <td><a href="manage_instructor_details.do?inst_id=${list.inst_id }">${list.name}</a></td>
+                    <tr onclick="changeUrl('${list.inst_id}')">
+                    <td><c:out value="${list.inst_id}"/> </td>
+                    <td>${list.name}</td>
                     <td  style="text-align: center;"><c:out value="${list.subject_count }"/></td>
                     </tr>
                     </c:forEach>
@@ -162,26 +191,87 @@ th,td,tr{font-size: 12px; text-align: center;}
                 </div>
             </div>
     
-
  <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
    <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
  $(function(){
-	 var selectedValue = localStorage.getItem('selectedStatus');
-	    if (selectedValue) {
-	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
-	    }
-	 
-	 $("input[name='status']").change(function() {
-		 var selectedValue = $(this).val();
-	        localStorage.setItem('selectedStatus', selectedValue);  
-		 $("#YorN").submit(); 
+	    $.ajax({
+	        url: "manage_inst_subPercentage.do", 
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.error('AJAX request failed:', xhr);
+	        },
+	        success: function(jsonObj) {
+	        	$("#instSubject").empty();
+	            	var output ="<tr><td  colspan='2'>강사들의 주력과목</td></tr>";
+	            $.each(jsonObj.list,function(i,jsonTemp) {
+	            	output+="<tr><td>과목명: "+jsonTemp.major_subject+"</td><td> 비율:"+jsonTemp.percentage+"% </td></tr>";
+	            })
+	            $("#instSubject").html(output);
+	            }
+
 	    });
-	 $("#instructor").DataTable({
-		 
-	 })
- })
+	    $.ajax({
+	        url: "manage_inst_ny.do", 
+	        type: "GET",
+	        dataType: "JSON",
+	        error: function(xhr) {
+	            console.error('AJAX request failed:', xhr);
+	        },
+	        success: function(jsonObj) {
+	        	$("#instNY").empty();
+	          
+	            	var output="<tr><td>재직중인 강사 수: "+jsonObj.n+"</td></tr>";
+	            	output+="<tr><td>퇴사 한 강사 수:"+jsonObj.y+"</td></tr>";
+	            
+	            $("#instNY").html(output);
+	            }
+
+	    });
+
+	   /*  var selectedValue = localStorage.getItem('selectedDel_yn');
+	    if (selectedValue) {
+	        $("input[name='del_yn'][value='" + selectedValue + "']").prop('checked', true);
+	    }
+
+	    $("input[name='del_yn']").change(function() {
+	        var selectedValue = $(this).val();
+	        localStorage.setItem('selectedDel_yn', selectedValue);  
+	        $("#YorN").submit(); 
+	    }); */
+
+	    $("#instructor").DataTable({
+	    	language: {
+                search: "강사 명 조회: ",
+                zeroRecords: "일치하는 강사가 없습니다.",
+                info: "현재 _START_ - _END_ / 총 _TOTAL_건",
+                lengthMenu: "한 페이지당 _MENU_ 개씩 보기",
+                paginate: {
+                    next: "다음",
+                    previous: "이전",
+                }
+	    }
+	    
+	});
+ });
+ function changeUrl(url){
+		var url=url;
+		window.location.href='manage_instructor_details.do?inst_id='+url;
+	}
+
+ var urlParams = new URLSearchParams(window.location.search);
+ var del_yn_values = urlParams.getAll('del_yn');
+
+ // Set checkbox states based on query parameters
+ $('input:checkbox[name="del_yn"]').each(function() {
+     if (del_yn_values.indexOf(this.value) > -1) {
+         $(this).prop('checked', true);
+     }
+ });
+ 
  </script>
 </body>
 

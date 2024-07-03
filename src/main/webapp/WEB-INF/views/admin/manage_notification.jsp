@@ -4,14 +4,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <style>
-th,td,tr{font-size: 12px;}
-.dt-end{
-
-            text-align: center;
+th,td,tr{font-size: 11px;text-align: center; vertical-align: middle;} 
+.dt-end{ text-align: center;
         }
+        
 .tableaj{
-font-size: 9px;
-}
+font-size: 7px;
+} 
 </style>
 <head>
     <meta charset="UTF-8">
@@ -37,6 +36,7 @@ font-size: 9px;
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/datatables.min.css">
+    <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/datatables.datatables.css">
     
 
 </head>
@@ -57,6 +57,8 @@ font-size: 9px;
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+                              <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
+    
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -67,28 +69,44 @@ font-size: 9px;
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_memberlist.do">
                                         회원 관리
                                     </a>
                                 </li>
+                                </c:if>
+                               <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
                                 <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-
+								</c:if>
+								<c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                                
                                 <li class="nav-item  ">
                                     <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
                                 <li class="nav-item  active">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -103,23 +121,26 @@ font-size: 9px;
            <!-- row -->
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <!-- 아이디 정보 -->
-                <div></div>
-                <!-- 아이디 권한 정보  -->
-                <div></div>
-                
-                
+               <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
+                </table>
+                </div>
+                <hr  class="border border-primary border-1 opacity-50">
                 <!-- 공지사항 정보 로드 -->
                 <div>
-                <table class="table table-hover tableaj">
-                <tbody id ="resvNotice">
+                <table class="table table-hover">
+                <tbody id ="statusCnt">
                 
                 </tbody>
                 </table>
+                <hr  class="border border-primary border-1 opacity-50">
                 <!-- 공지사항 staus 정보 로드 -->
                 <div>
                 <table class="table table-hover tableaj">
-                <tbody id ="statusCnt">
+                <tbody id ="resvNotice">
                 
                 </tbody>
                 </table>
@@ -152,20 +173,20 @@ font-size: 9px;
 </form>
                   <div style="margin-top: 30px;">
                     
-                    <table id ="notice" class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
+                    <table id ="notice" class="hover"  style="width: 100%;margin: auto; text-align: center;">
                     <thead>
                     <tr>
-                    <th>번호</th>
-                    <th style="width: 60%"><a>공지사항 제목</a></th>
-                    <th><a>날짜</a></th>
-                    <th><a>상태</a></th>
+                    <th style="text-align: center;">번호</th>
+                    <th style="width: 60%;text-align: center;"><a>공지사항 제목</a></th>
+                    <th style="text-align: center;" ><a>날짜</a></th>
+                    <th style="text-align: center;"><a>상태</a></th>
                     </tr>
                     </thead>
                     <tbody id ="output">
                     <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
-                    <tr>
-                    <td><c:out value="${  i.count }"/></td>
-                    <td><a href="manage_notification_details.do?noti_no=${list.noti_no }"><c:out value="${list.title }"/></a></td>
+                    <tr onclick="changeUrl('${list.noti_no}')">
+                    <td><c:out value="${ list.noti_no }"/></td>
+                    <td><c:out value="${list.title }"/></td>
                     <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
                     <td><c:out value="${list.status}"/></td>
                     </tr>
@@ -192,7 +213,17 @@ font-size: 9px;
 		            { "data": "titleLink" },
 		            { "data": "write_date" },
 		            { "data": "status" }
-		        ]
+		        ],
+		        language: {
+	                search: "공지사항 명 조회: ",
+	                zeroRecords: "일치하는 공지사항이 없습니다.",
+	                info: "현재 _START_ - _END_ / 총 _TOTAL_건",
+	                lengthMenu: "한 페이지당 _MENU_ 개씩 보기",
+	                paginate: {
+	                    next: "다음",
+	                    previous: "이전",
+	                }
+		        }
 		    });
 
 		    // #status 요소의 값이 변경될 때 이벤트 핸들러를 부착
@@ -210,10 +241,16 @@ font-size: 9px;
 	        },
 	        success: function(jsonObj){
 	        	$("#resvNotice").empty();
-	        	var output ="<tr><td>예약 된 공지사항의 수</td><td>"+jsonObj.cnt+"건</td>";
+	        	var output ="<tr><td>예약 된 공지사항 명</td></tr>";
+	        	if(jsonObj.flag){
+	        		
 	        	$.each(jsonObj.list,function(i,jsonTemp){
-	        		output+="<tr><td>예약 된 공지사항 제목</td><td>"+jsonTemp.title+"</td></tr>";
+	        		output+="<tr><td>"+jsonTemp.title+"</td></tr>";
 	        	})
+	        	}else{
+	        		output+="<tr><td>예약 된 공지사항이 없습니다.</td></tr>";
+	        		
+	        	}
 	        	$("#resvNotice").html(output);
 	        	
 	        }
@@ -228,9 +265,9 @@ font-size: 9px;
 	        },
 	        success: function(jsonObj){
 	        	$("#statusCnt").empty();
-	        	var output ="<tr><td>현재 예약중인 공지사항의 수</td><td>"+jsonObj.resv+"건</td>";
-	        	output +="<tr><td>현재 게시중인 공지사항의 수</td><td>"+jsonObj.post+"건</td>";
+	        	var output ="<tr><td>현재 게시중인 공지사항의 수</td><td>"+jsonObj.post+"건</td>";
 	        	output +="<tr><td>현재 삭제 된 공지사항의 수</td><td>"+jsonObj.delt+"건</td>";
+	        	output +="<tr><td>현재 예약중인 공지사항의 수</td><td>"+jsonObj.resv+"건</td>";
 	        	$("#statusCnt").html(output);
 	        	
 	        }
@@ -263,6 +300,10 @@ font-size: 9px;
 		            table.draw();           // 테이블 다시 그리기
 		        }
 		    });
+		}
+		function changeUrl(url){
+			var url=url;
+			window.location.href='manage_notification_details.do?noti_no='+url;
 		}
 
   

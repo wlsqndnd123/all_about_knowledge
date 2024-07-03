@@ -20,7 +20,7 @@
         <property name="authoritiesByUsernameQuery" value="SELECT STD_ID as username, 'ROLE_USER' as authority FROM STUDENT WHERE STD_ID = ?"/>
     </bean>
     
-    <security:authentication-manager>
+    <security:authentication-manager id="authenticationManager">
         <security:authentication-provider user-service-ref="jdbcUserDetailsManager">
             <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
@@ -28,13 +28,13 @@
 
     <security:http auto-config="true" use-expressions="true">
         <security:intercept-url pattern="/**/*.js" access="permitAll" />
-    	<security:intercept-url pattern="/**/*.css" access="permitAll" />
+        <security:intercept-url pattern="/**/*.css" access="permitAll" />
         <security:intercept-url pattern="/admin" access="isAuthenticated()" />
         <security:intercept-url pattern="/mypage/*" access="isAuthenticated()" />
         <security:intercept-url pattern="/student/login.do" access="permitAll" />
         <security:intercept-url pattern="/**" access="permitAll" />
-        <security:form-login login-page="/student/login.do" default-target-url="/mypage/mypage_home.do" authentication-failure-url="/login?error=true" login-processing-url="/login" />
-         <security:logout logout-url="/logout" logout-success-url="/index.do" />
+        <security:form-login login-page="/student/login.do" default-target-url="/mypage/mypage_home.do" authentication-failure-url="/student/login-error.do?error=true" login-processing-url="/login" />
+        <security:logout logout-url="/logout" logout-success-url="/index.do" />
         <security:csrf disabled="true"/>
     </security:http>
 

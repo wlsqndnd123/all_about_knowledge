@@ -20,49 +20,49 @@ public class ExamVO {
 	public String getEX_1() {
 		return EX_1;
 	}
-	public void setEX_1(String eX_1) {
-		this.EX_1 = eX_1;
+	public void setEX_1(String EX_1) {
+		this.EX_1 = EX_1;
 	}
 	public String getEX_2() {
 		return EX_2;
 	}
-	public void setEX_2(String eX_2) {
-		this.EX_2 = eX_2;
+	public void setEX_2(String EX_2) {
+		this.EX_2 = EX_2;
 	}
 	public String getEX_3() {
 		return EX_3;
 	}
-	public void setEX_3(String eX_3) {
-		this.EX_3 = eX_3;
+	public void setEX_3(String EX_3) {
+		this.EX_3 = EX_3;
 	}
 	public String getEX_4() {
 		return EX_4;
 	}
-	public void setEX_4(String eX_4) {
-		this.EX_4 = eX_4;
+	public void setEX_4(String EX_4) {
+		this.EX_4 = EX_4;
 	}
 	public String getSOLUTION() {
 		return SOLUTION;
 	}
-	public void setSOLUTION(String sOLUTION) {
-		this.SOLUTION = sOLUTION;
+	public void setSOLUTION(String SOLUTION) {
+		this.SOLUTION = SOLUTION;
 	}
 	public int getQ_NO() {
 		return Q_NO;
 	}
-	public void setQ_NO(int q_NO) {
-		Q_NO = Q_NO;
+	public void setQ_NO(int Q_NO) {
+		this.Q_NO = Q_NO;
 	}
-	public ExamVO(String sUB_CODE, String cONTENT, String eX_1, String eX_2, String eX_3, String eX_4, String sOLUTION,
-			int q_NO) {
+	public ExamVO(String sUB_CODE, String cONTENT, String EX_1, String EX_2, String EX_3, String EX_4, String SOLUTION,
+			int Q_NO) {
 		super();
 		this.SUB_CODE = sUB_CODE;
 		this.CONTENT = cONTENT;
-		this.EX_1 = eX_1;
-		this.EX_2 = eX_2;
-		this.EX_3 = eX_3;
-		this.EX_4 = eX_4;
-		this.SOLUTION = sOLUTION;
+		this.EX_1 = EX_1;
+		this.EX_2 = EX_2;
+		this.EX_3 = EX_3;
+		this.EX_4 = EX_4;
+		this.SOLUTION = SOLUTION;
 		this.Q_NO = Q_NO;
 	}
 	public ExamVO() {

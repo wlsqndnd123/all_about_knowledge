@@ -55,9 +55,25 @@
          }
          
          
+         
+         
+         
      });
-	
+
 </script>
+
+<style>
+	
+	
+	.custom-font-size {
+   		font-size: 12px;
+	}
+
+
+
+</style>
+
+
 
 </head>
 <body id="reportsPage">
@@ -66,9 +82,9 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
-                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-                            <h1 class="tm-site-title mb-0">All About Knowledge</h1>
+                        <a class="brand-logo" href="adminindex.do">
+                            <!-- <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i> -->
+                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -87,27 +103,26 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                 <li class="nav-item   active">
-                                    <a class="nav-link " href="manage_memberlist.do" >회원 관리
-                                    </a>
-                                    
+                                 <li class="nav-item active " >
+                                    <a class="nav-link "href="manage_memberlist.do">회원 리스트</a>
+                                 
                                 </li>
                                 <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
 
-								 <li class="nav-item">
-                                    <a class="nav-link " href="manage_qna.do" >문의 관리
-                                    </a>
+                                    <li class="nav-item " >
                                     
+                                        <a class="nav-link" href="manage_qna.do">문의 리스트</a>
+                                   
                                 </li>
-                                
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -121,12 +136,135 @@
                     </nav>
                 </div>
             </div>
+             </div>
+            </div>
              <!-- row -->
-         <div class="row tm-content-row tm-mt-big">
-        		<div class="col-12" >
-                 <div class="bg-white tm-block col-12" style="height: 700px;">
+                 <div class="container" style="padding: 1rem">
+            
+               <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style= "margin-left: 25%; width:auto" >
               
-                        <div class="col-12" style="height: 600px;border-right-width: 50px;padding-right: 120px;padding-left: 120px;" >
+          	<form action="manage_member_details.do" method="get" id ="frmGet" style="width: 1100px;margin-inline: auto;">
+                       <div class="col-12">
+          <div class="col-12">
+                     <table class="table table-hover"   style="width: 100%;margin: auto; text-align: center;">
+    
+                    <tbody >
+
+                    <tr style="height: 73px;" >
+                    <th class="custom-font-size" style="width: 500px;">아이디</th>
+                     <td class="custom-font-size" >
+            		<c:out value="${mmDomain.std_id }"/>
+            		<input type="hidden" name="std_id" value="${mmDomain.std_id }"readonly>
+            		
+                    </td>
+                    </tr>
+                    <tr style="height: 73px;" >
+                    <th class="custom-font-size" style="width: 500px;">이름</th>
+                     <td class="custom-font-size">
+            		<c:choose>
+            		 <c:when test="${requestScope.flag eq '0'}">
+            		 <c:out value="${mmDomain.name }"/>
+            		<input  type="hidden" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
+            		</c:when>
+                    <c:otherwise>
+                    <input  type="text" name="name" value="<c:out value="${mmDomain.name }"/>" style="text-align: center;">
+                     </c:otherwise>
+                    </c:choose>
+                    </td>
+                    </tr>
+                 
+                    <tr class="custom-font-size" style="height: 73px;" >
+                    <th class="custom-font-size" style="width: 500px;">연락처</th>
+                   <td class="custom-font-size">
+            		<c:choose>
+            		 <c:when test="${requestScope.flag eq '0'}">
+            		  <c:out  value="${mmDomain.tel }"/>
+            		<input type="hidden" name="tel" value="${mmDomain.tel }"readonly>
+            		</c:when>
+                    <c:otherwise>
+                    <input type="text" name="tel" value="${mmDomain.tel }" style="text-align: center;">
+                     </c:otherwise>
+                    </c:choose>
+                    </td>
+                    </tr>
+                    
+
+                    <tr style="height: 73px;" >
+                    <th class="custom-font-size" style="width: 500px;">이메일</th>
+                    <td class="custom-font-size">
+            		<c:choose>
+            		 <c:when test="${requestScope.flag eq '0'}">
+            		  <c:out value="${mmDomain.email }"/>
+            		<input type="hidden" name="email" value="${mmDomain.email }"readonly>
+            		</c:when>
+                    <c:otherwise>
+                    <input type="text" name="email" value="${mmDomain.email }" style="text-align: center;">
+                     </c:otherwise>
+                    </c:choose>
+                    </td>
+                    </tr>
+
+                    
+                    <tr style="height: 73px;" >
+                    <th class="custom-font-size" style="width: 500px;">생년월일</th>
+      				  <td class="custom-font-size" >
+       				     <c:choose>
+       				         <c:when test="${requestScope.flag eq '0'}">
+       				           <c:out value="${mmDomain.birth}"/>
+        				            <input type="hidden" name="birth" value="${mmDomain.birth}"readonly>
+       				         </c:when>
+       				         <c:otherwise>
+       				             <input type="text" name="birth" value="${mmDomain.birth}" style="text-align: center;">
+       				         </c:otherwise>
+     				       </c:choose>
+    				    </td>
+ 				   </tr>
+                    <tr>
+                    <th>
+                    </th>
+                    <td>
+                    </td>
+                    </tr>
+  					
+  
+                    </tbody>
+                    </table>
+                    
+                    
+                </div>
+         <c:if test="${requestScope.flag eq '0' }">
+                    <input type="hidden" name="flag" value="1">
+                    <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit"  style=" margin-top: 50px; float: right;"/>
+					</c:if>
+					
+                  	<c:if test="${requestScope.flag eq '1' }" >
+					<input type="button" class="btn btn btn-sm me-md-2 " value="완료" id ="saveSubmit" style="margin-top: 50px; float: right; "/>
+					</c:if>
+           
+    	</div>
+    	</form>
+    	
+        <footer class="row tm-mt-small">
+         
+        </footer>
+    </div>
+     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
+	</div>
+</body>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+                        <%-- <div class="col-12" style="height: 600px;border-right-width: 50px;padding-right: 120px;padding-left: 120px;" >
                         
                         
                     <form action="manage_member_details.do" method="get" id ="frmGet" style="width: 1100px;margin-inline: auto;">
@@ -235,23 +373,8 @@
 					</div>
 					</form> 
 					
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            
-        <footer class="row tm-mt-small" style="width: 90%;margin:auto;">
-       
-        </footer>
-    </div>
- <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-  <!-- https://jquery.com/download/ -->
-   <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
-  <script type="text/javascript">
-  
-  </script>
-    <!-- https://getbootstrap.com/ -->
-</body>
+                        </div> --%>
+
+        
 
 </html>

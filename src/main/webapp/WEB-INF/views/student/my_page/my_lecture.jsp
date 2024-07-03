@@ -81,7 +81,7 @@
 		                <button class="ui basic tiny button">문의</button>
 		            </td>
 		            <td class="single line">
-		                <button class="ui right labeled icon green basic button enter-button">
+		                <button class="ui right labeled icon green basic button enter-button" data-percent="\${lecture.percent}" data-subcode="\${lecture.subCode}" data-subtitle ="\${lecture.subTitle}">
 		                    <i class="right arrow icon"></i> 입장
 		                </button>
 		            </td>
@@ -91,8 +91,18 @@
 	
 	function bindEnterButton() {
 	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
-	        window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
+	        var subCode = $(this).data('subcode');
+	        var subTitle = $(this).data('subtitle');
+	        var percent = $(this).data('percent');
+	        saveData({ subCode: subCode, subTitle: subTitle, percent: percent });
 	    });
+	}
+
+	function saveData(data) {
+	    $.post('${pageContext.request.contextPath}/mypage/save_subcode.do', data)
+	        .done(function() {
+	            window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
+	        });
 	}
 </script>
 </head>
@@ -133,6 +143,22 @@
 	    </thead>
 	    <tbody>
 	    </tbody>
+	    <tfoot>
+    <tr><th colspan="8">
+      <div class="ui right floated pagination menu">
+        <a class="icon item">
+          <i class="left chevron icon"></i>
+        </a>
+        <a class="item">1</a>
+        <a class="item">2</a>
+        <a class="item">3</a>
+        <a class="item">4</a>
+        <a class="icon item">
+          <i class="right chevron icon"></i>
+        </a>
+      </div>
+    </th>
+  </tr></tfoot>
         </table>
 </div>
 
@@ -152,6 +178,22 @@
 	    </thead>
 	    <tbody>
 	    </tbody>
+	    <tfoot>
+    <tr><th colspan="8">
+      <div class="ui right floated pagination menu">
+        <a class="icon item">
+          <i class="left chevron icon"></i>
+        </a>
+        <a class="item">1</a>
+        <a class="item">2</a>
+        <a class="item">3</a>
+        <a class="item">4</a>
+        <a class="icon item">
+          <i class="right chevron icon"></i>
+        </a>
+      </div>
+    </th>
+  </tr></tfoot>
         </table>
 </div>
 </div>

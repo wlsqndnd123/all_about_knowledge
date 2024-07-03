@@ -226,12 +226,16 @@ public class NoticeManagementService {
 			list = nmDAO.selectResvTitle();
 			JSONArray jsonArr = new JSONArray();
 			JSONObject jsonTemp = null;
+			boolean flag =false;
 			for(NoticeManagementDomain temp:list) {
 				jsonTemp = new JSONObject();
 				jsonTemp.put("title", temp.getTitle());
 				jsonArr.add(jsonTemp);
+				flag =true;
+				
 			}
 			jsonObj.put("list", jsonArr);
+			jsonObj.put("flag", flag);
 			jsonObj.put("cnt", cnt);
 		}catch (PersistenceException pe) {
 		pe.printStackTrace();

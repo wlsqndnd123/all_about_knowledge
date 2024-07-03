@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                             <h1 class="tm-site-title mb-0">All About Knowledge</h1>
                         </a>
@@ -41,49 +41,57 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+                              <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
-                                        
                                     </a>
                                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="manage_edu_cat.do">교육카테고리리스트</a>
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
+                                <li class="nav-item ">
+                                    <a class="nav-link " href="manage_memberlist.do">
                                         회원 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_memberlist.do">회원 리스트</a>
-                                    </div>
                                 </li>
-                                <li class="nav-item" >
+                                </c:if>
+                               <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
+                                <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-
-                                <li class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">문의 관리</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="manage_qna.do">문의 리스트</a>
-                                    </div>
+								</c:if>
+								<c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                                
+                                <li class="nav-item  ">
+                                    <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
+                                
                                 <li class="nav-item  active">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -96,7 +104,15 @@
             </div>
              <!-- row -->
          <div class="container" style="padding: 1rem">
-                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+            <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
+                </table>
+                </div>
+                </div>
                 <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                       <div class="col-12">
     <form id ="frm" action="notification_write_form_process.do" method="post" enctype="multipart/form-data">
@@ -114,16 +130,15 @@
       <input type="email" class="form-control" value="${nmVO.noti_no }" id="exampleFormControlInput1" name="noti_no" readonly="readonly">
     </div>
 					</div>
-					<!-- <div class="mb-3">
- 				<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
-				 <input class="form-control" type="file" id="image" name="image" >	
-					<div class="mb-3">
-					</div> -->
+					<label for="exampleFormControlTextarea1" class="form-label">공지사항 이미지</label>
+					<div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                            <img src="http://localhost/all_about_knowledge/upload/${ nmVO.image }"  class="card-img-top" alt="...">
+                            </div>
  						 <label for="exampleFormControlTextarea1" class="form-label">공지사항 내용</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea1" rows="15" name ="content"><c:out value="${nmVO.content }"/> </textarea>
 </div>
 <div style="text-align: center;">
-<input type="button" class="btn btn-link" value="목록으로" id ="btnback"/>
+<a href="manage_notification.do" ><input type="button" class="btn btn-link" value="목록으로" id ="btnback"/></a>
 </div>
 
     </form>

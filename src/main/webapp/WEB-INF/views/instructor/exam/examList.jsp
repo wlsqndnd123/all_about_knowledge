@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="kr.co.sist.aak.domain.instructor.ExamDomain"%>
+<%@page import="java.util.List"%>
 <html lang="kr">
 
 <head>
@@ -327,7 +329,8 @@
         <form>
             <div id="test">
             
-                <td>과목:</td><input type="text" name="SUB_CODE" class="sub" id="sub" readonly/>
+                과목:<input type="text" name="SUB_CODE" class="sub" id="sub" value="SUB_000001"  readonly/>
+             
                 <c:choose>
                     <c:when test="${empty examlist}">
                         <p>문제가 없습니다.</p>
@@ -336,14 +339,15 @@
                         <c:forEach var="exam" items="${examlist}">
                             <div class="test-box">
                             <textarea >${exam.CONTENT }</textarea><br>
-                              1번 보기 <input type="text" value="${exam.EX_1}"/><input type="radio" name="SOLUTION1" /><br>
-                                2번 보기 <input type="text" value="${exam.EX_2}"/><input type="radio" name="SOLUTION1" /><br>
-                                3번 보기 <input type="text"value="${exam.EX_3}"/><input type="radio" name="SOLUTION1" /><br>
-                                4번 보기 <input type="text"value="${exam.EX_4}"/><input type="radio" name="SOLUTION1" /><br>
-                         		 정답: <input type="text" value="${exam.SOLUTION}"/><br>
-                       
-                            </div>
+                            1번 보기 <input type="text" value="${exam.EX_1}"/><input type="radio" name="SOLUTION1" /><br>
+        2번 보기 <input type="text" value="${exam.EX_2}"/><input type="radio" name="SOLUTION1" /><br>
+        3번 보기 <input type="text" value="${exam.EX_3}"/><input type="radio" name="SOLUTION1" /><br>
+        4번 보기 <input type="text" value="${exam.EX_4}"/><input type="radio" name="SOLUTION1" /><br>
+        정답: <input type="text" value="${exam.SOLUTION}"/><br>
+        번호: <input type="text" value="${exam.q_NO}"/><br> 
+    </div>
                         </c:forEach>
+                      
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -354,7 +358,7 @@
     </c:if>
     
 </div>
-<a href="exam_write.do"><button>문제작성</button></a>
+<a href="exam_write.do"><button class="btn btn-dark btn-sm">문제작성</button></a>
 <a href="exam_update.do"><button>문제수정</button></a>
 <!-- /main -->
                

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +24,26 @@
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 </head>
-
+<style>
+        #message {
+            display: none;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        #message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        #message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+    </style>
+    
+ <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
 <body class="bg03">
     <div class="container">
         <div class="row tm-mt-big">
@@ -41,17 +62,33 @@
                             <form action="adminindex.do" method="post" class="tm-login-form">
                                 <div class="input-group">
                                     <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>
-                                    <input name="username" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" value="admin" required>
+                                    <input name="id" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="id" value="aaksuper" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Password</label>
-                                    <input name="password" type="password" class="form-control validate" id="password" value="1234" required>
+                                    <input name="password" type="password" class="form-control validate" id="password" value="921015" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <button type="submit" class="btn btn-primary d-inline-block mx-auto">Login</button>
                                 </div>
                                 <div class="input-group mt-3">
-                                    <p><em>Just put a character to login.</em></p>
+    <div id="message" class="success">
+        환영합니다. AAK 관리자 페이지입니다.
+    </div>
+
+    <c:if test="${errorpage == false}">
+        <script>
+            $(document).ready(function() {
+                $('#message').removeClass('success').addClass('error').text('입력 정보를 확인하세요.').fadeIn(1000).delay(2000).fadeOut(1000);
+            });
+        </script>
+    </c:if>
+
+    <script>
+        $(document).ready(function() {
+            $('#message').fadeIn(1000);
+        });
+    </script>
                                 </div>
                             </form>
                         </div>
@@ -62,7 +99,6 @@
         <footer class="row tm-mt-big">
             <div class="col-12 font-weight-light text-center">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Copyright &copy; 2018 Admin Dashboard . Created by
                     <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
                 </p>
             </div>

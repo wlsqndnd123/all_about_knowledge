@@ -47,61 +47,45 @@ Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 	
 	<div class="ui segment div_margin">
 	<div class="ui form">
-  <div class="grouped fields">
-    <label>1. 다음 중 가장 집에 가고 싶은 사람은?</label>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example1" checked="checked">
-        <label>이주희</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example1">
-        <label>강아지똥</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example1">
-        <label>회장님</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example1">
-        <label>나의 최애</label>
-      </div>
-    </div>
-  </div>
-  
-  <div class="grouped fields">
-    <label>2. 다음 중 일신이의 저녁으로 적절한 것은?</label>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example2" checked="checked">
-        <label>식욕이 없어서 안 먹는다.</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example2">
-        <label>귀찮아서 안 먹는다.</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example2">
-        <label>배가 안 고파서 안 먹는다.</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" name="example2">
-        <label>카레</label>
-      </div>
-    </div>
-  </div>
+<form action="/all_about_knowledge/mypage/examSubmit.do" method="post">	
+	<c:if test="${not empty examList}">
+	    <c:forEach var="exam" items="${examList}" varStatus="status">
+	        <div class="grouped fields">
+	            <label>${exam.qNo}. ${exam.content}</label>
+	            <div class="field">
+	                <div class="ui radio checkbox">
+	                    <input type="radio" name="example${status.index}">
+	                    <label>${exam.ex1}</label>
+	                </div>
+	            </div>
+	            <div class="field">
+	                <div class="ui radio checkbox">
+	                    <input type="radio" name="example${status.index}">
+	                    <label>${exam.ex2}</label>
+	                </div>
+	            </div>
+	            <div class="field">
+	                <div class="ui radio checkbox">
+	                    <input type="radio" name="example${status.index}">
+	                    <label>${exam.ex3}</label>
+	                </div>
+	            </div>
+	            <div class="field">
+	                <div class="ui radio checkbox">
+	                    <input type="radio" name="example${status.index}">
+	                    <label>${exam.ex4}</label>
+	                </div>
+	            </div>
+	        </div>
+	    </c:forEach>
+	</c:if>
+	<c:if test="${empty examList}">
+	    <p>등록된 시험이 없습니다.</p>
+	</c:if>
+  	<div class="text_right">
+	<button type="submit" class="ui inverted olive button">제출</button>
+	</div>
+</form>
   
 </div>
 </div>

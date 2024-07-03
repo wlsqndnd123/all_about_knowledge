@@ -36,15 +36,20 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 				          }]
 				      },
 				      
-				      regex: {
+/* 				      regex: {
 				        identifier  : 'name',
 				        rules: [{
 				            type   : 'regExp[/^[ㄱ-ㅎ|가-힣]{2,10}$/]',
 				            prompt : '이름은 한글 2-10자 이내로 입력가능합니다'
 				          }]
-				      }
+				      } */
 				    }
 				  });
+				
+                <c:if test="${updateSuccess}">
+	                alert('수정이 완료되었습니다.');
+	                window.location.href = '${pageContext.request.contextPath}/mypage/mypage_home.do';
+            	</c:if>
 			}); // ready
 		</script>
 	</head>
@@ -69,34 +74,28 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 				<!-- breadcrumb 종료 -->
 				
 				<div class="ui segment">		
-					<form class="ui form">
-						<div class="six fields">
-					    	<div class="field"></div>
+					<form class="ui form" action="/all_about_knowledge/mypage/update_profile.do" method="post">
+						<div class="three fields">
 					    	<div class="field"></div>
 						    <div class="field">
 								<label>아이디</label>
-								<input name="userId" type="text" value="<sec:authentication property='name'/>" readonly>
+								<input name="userId" type="text" placeholder="<sec:authentication property='name'/>" readonly="">
 						    </div>
+						</div>
+						
+						<div class="three fields">
+					    	<div class="field"></div>
 						    <div class="field">
 							    <label>이름</label>
-							    <input name="name" type="text">
+							    <input name="name" type="text" placeholder="${studentInfo.name}" readonly="">
 							</div>
 						</div>
-			
-					  	<div class="three fields">
-					    	<div class="field"></div>
-					    	<div class="field">
-					      		<label>이전 비밀번호</label>
-					      		<input name="password" type="password">
-					    	</div>
-					    </div>
-					  
 			
 					    <div class="three fields">
 					    	<div class="field"></div>
 					    	<div class="field">
 					      		<label>새 비밀번호</label>
-					      		<input name="newPass" type="password">
+					      		<input name="password" type="password">
 					    	</div>
 					    </div>
 					    
@@ -112,7 +111,7 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 					    	<div class="field"></div>
 					    	<div class="field">
 					      		<label>휴대전화</label>
-					      		<input name="phone" type="text">
+					      		<input name="tel" type="text" placeholder="${studentInfo.tel}" value="${studentInfo.tel}">
 					    	</div>
 					    </div>
 					    
@@ -120,13 +119,13 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 							<div class="field"></div>
 							<div class="field">
 								<label>이메일</label>
-								<input name="email" type="text">
+								<input name="email" type="text" placeholder="${studentInfo.email}" value="${studentInfo.email}">
 							</div>
 						</div>
 			
 						<div class="text_right">
 							<div class="ui cancel basic button">취소</div>
-							<div class="ui submit basic button">수정</div>
+							<button type="submit" class="ui submit basic button">수정</button>
 						</div>
 			
 					  <div class="ui error message"></div>

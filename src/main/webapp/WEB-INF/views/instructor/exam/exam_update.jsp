@@ -20,7 +20,36 @@
     <link href="http://localhost/all_about_knowledge/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+<script>
+    // 수정 버튼 클릭 시 readonly 속성을 제거하는 함수
+   /*  function enableEdit(index) {
+        var testBox = document.querySelectorAll('.test-box')[index];
+        var inputs = testBox.querySelectorAll('input[type="text"]');
+        var textarea = testBox.querySelector('textarea');
 
+        inputs.forEach(function(input) {
+            input.removeAttribute('readonly');
+        });
+        textarea.removeAttribute('readonly');
+    } */
+    $(document).ready(function(){
+    	   
+
+        // 완료 버튼 클릭 시
+        $("#updateSubmit").click(function(){
+            if(confirm("변경내용을 저장 하시겠습니까?")) {
+                $("#frmpost").attr("action", "exam_update.do");
+                $("#frmpost").submit();
+              
+            } else {
+               
+            }
+        });
+
+       
+    });
+    
+</script>
 <style type="text/css">
     form {
         max-width: 800px;
@@ -52,38 +81,10 @@
         margin-top: 20px;
     }
 </style>
-<script type="text/javascript">
-    $(function(){
-        $("#btn-write").click(function(){
-        
-        });
-        $("#btn-update").click(function(){
-            
-        });
-    
-    });
-</script>
-</head>
-<script type="text/javascript">
-$(document).ready(function(){
-    // 완료 버튼 클릭 시
-    $("#updateSubmit").click(function(){
-        if(confirm("변경내용을 저장 하시겠습니까?")) {
-            // 폼 데이터 확인
-            const formData = new FormData(document.getElementById('frm'));
-            formData.forEach((value, key) => {
-                console.log(key + ": " + value);
-            });
 
-            // 폼 제출
-            $("#frm").attr("action", "exam_update_pr.do");
-            $("#frm").submit();
-        } else {
-            // 사용자가 취소를 선택한 경우
-            console.log("폼 제출이 취소되었습니다.");
-        }
-    });
-});
+</head>
+<script>
+    
 </script>
 
 <body id="page-top">
@@ -152,15 +153,7 @@ $(document).ready(function(){
                     <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <!--   <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div> -->
+                    
                     </form>
 
                     <!-- Topbar Navbar -->
@@ -347,38 +340,36 @@ $(document).ready(function(){
 <!-- main -->
 <div>
 <h3>문제수정</h3>
-    <c:catch var="e">
-        <form action="exam_update.do" method="post" id="frm">
-            <div id="test">
-            
-                <c:choose>
-                    <c:when test="${empty examlist}">
-                        <p>문제가 없습니다.</p>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach var="exam" items="${examlist}">
-                            <div class="test-box">
-                            <textarea name="CONTENT">${exam.CONTENT }</textarea><br>
-                              1번 보기 <input type="text" name="EX_1" value="${exam.EX_1}"/><br>
-                                2번 보기 <input type="text" name="EX_2" value="${exam.EX_2}"/><br>
-                                3번 보기 <input type="text" name="EX_3" value="${exam.EX_3}"/><br>
-                                4번 보기 <input type="text" name="EX_4"  value="${exam.EX_4}"/><br>
-                             	정답: <input type="text" name="SOLUTION" value="${requestScope.SOLUTION}"/>
-                             	<input type="text" name="Q_NO" value="${requestScope.Q_NO }"/>
-                            </div>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-            <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit" style="margin-top: 50px; float: right;"/>
-        </form>
+ <c:catch var="e">
+    <form action="exam_update.do" method="post" id="frmpost">
+        <div id="test">
+            <c:choose>
+                <c:when test="${empty examlist}">
+                    <p>문제가 없습니다.</p>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="exam" items="${examlist}" varStatus="loop">
+                        <div class="test-box">
+                            <textarea name="CONTENT" >${exam.CONTENT}</textarea><br>
+                            1번 보기 <input type="text" name="EX_1" value="${exam.EX_1}" /><br>
+                            2번 보기 <input type="text" name="EX_2" value="${exam.EX_2}" /><br>
+                            3번 보기 <input type="text" name="EX_3" value="${exam.EX_3}" /><br>
+                            4번 보기 <input type="text" name="EX_4" value="${exam.EX_4}" /><br>
+                            정답: <input type="text" name="SOLUTION" value="${exam.SOLUTION}" />
+                            <input type="text" name="q_NO" value="${exam.q_NO}" readonly />
+                        </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <input type="button" class="btn btn-light btn-sm me-md-2" value="저장" id="updateSubmit" style="margin-top: 50px; float: right;"/>
+    </form>
     </c:catch>
 <c:if test="${not empty e}">
         조회 중 오류가 발생했습니다.
     </c:if>
     
 </div>
-
     
 <!-- /main -->
                

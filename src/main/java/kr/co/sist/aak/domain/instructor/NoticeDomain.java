@@ -4,12 +4,14 @@ import java.util.Date;
 
 public class NoticeDomain {
 	
-	private String noti_no,title,content,status,sub_code;
+	private String noti_no,title,INST_ID,content,status,sub_code;
 	private Date write_date;
-	public NoticeDomain(String noti_no, String title, String content, String status, String sub_code, Date write_date) {
+	public NoticeDomain(String noti_no, String title, String iNST_ID, String content, String status, String sub_code,
+			Date write_date) {
 		super();
 		this.noti_no = noti_no;
 		this.title = title;
+		this.INST_ID = iNST_ID;
 		this.content = content;
 		this.status = status;
 		this.sub_code = sub_code;
@@ -17,6 +19,7 @@ public class NoticeDomain {
 	}
 	public NoticeDomain() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getNoti_no() {
 		return noti_no;
@@ -29,6 +32,12 @@ public class NoticeDomain {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getINST_ID() {
+		return INST_ID;
+	}
+	public void setINST_ID(String iNST_ID) {
+		this.INST_ID = iNST_ID;
 	}
 	public String getContent() {
 		return content;
@@ -56,8 +65,8 @@ public class NoticeDomain {
 	}
 	@Override
 	public String toString() {
-		return "NoticeDomain [noti_no=" + noti_no + ", title=" + title + ", content=" + content + ", status=" + status
-				+ ", sub_code=" + sub_code + ", write_date=" + write_date + "]";
+		return "NoticeDomain [noti_no=" + noti_no + ", title=" + title + ", INST_ID=" + INST_ID + ", content=" + content
+				+ ", status=" + status + ", sub_code=" + sub_code + ", write_date=" + write_date + "]";
 	}
 	
 	

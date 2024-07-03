@@ -5,18 +5,19 @@ package kr.co.sist.aak.domain.instructor.vo;
 public class StudentListVO {
 	
 	private String sub_code,STD_ID,name,status;
-	private int score,Try;
-	public StudentListVO(String sub_code, String sTD_ID, String name, String status, int score, int try1) {
+	private int score,TRY_COUNT;
+	public StudentListVO(String sub_code, String sTD_ID, String name, String status, int score, int tRY_COUNT) {
 		super();
 		this.sub_code = sub_code;
 		this.STD_ID = sTD_ID;
 		this.name = name;
 		this.status = status;
 		this.score = score;
-		this.Try = try1;
+		this.TRY_COUNT = tRY_COUNT;
 	}
 	public StudentListVO() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getSub_code() {
 		return sub_code;
@@ -48,17 +49,18 @@ public class StudentListVO {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public int getTry() {
-		return Try;
+	public int getTRY_COUNT() {
+		return TRY_COUNT;
 	}
-	public void setTry(int try1) {
-		this.Try = try1;
+	public void setTRY_COUNT(int tRY_COUNT) {
+		this.TRY_COUNT = tRY_COUNT;
 	}
 	@Override
 	public String toString() {
 		return "StudentListVO [sub_code=" + sub_code + ", STD_ID=" + STD_ID + ", name=" + name + ", status=" + status
-				+ ", score=" + score + ", Try=" + Try + "]";
+				+ ", score=" + score + ", TRY_COUNT=" + TRY_COUNT + "]";
 	}
+	
 
 	
 }

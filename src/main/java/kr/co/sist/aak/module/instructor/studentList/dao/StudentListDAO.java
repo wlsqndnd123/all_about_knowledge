@@ -36,5 +36,7 @@ public class StudentListDAO {
 		mbDAO.closeHanlder(ss);
 		return list;
 	}
+	
+
 
 }
