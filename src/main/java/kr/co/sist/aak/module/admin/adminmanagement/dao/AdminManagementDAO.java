@@ -34,6 +34,15 @@ public class AdminManagementDAO {
 			ss.commit();
 		}
 		
+		return cnt;
+	}
+	public int updateAdmin(AdminPermissionVO apVO) {
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt =ss.update("kr.co.sist.aak.admin5.updatePermissions",apVO);
+		ss.commit();
+		mbDAO.closeHanlder(ss);
 		
 		return cnt;
 	}

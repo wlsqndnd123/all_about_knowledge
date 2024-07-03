@@ -53,5 +53,13 @@ public class AdminManagementService {
 		}
 	
 	}
+	public void modifyAdmin(AdminPermissionVO apVO) {
+		try {
+			amd.updateAdmin(apVO);
+		}catch (Exception e) {
+			
+		}
+		
+	}
 	
 }
