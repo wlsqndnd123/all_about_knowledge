@@ -5,6 +5,8 @@
 <html lang="en">
 <style>
 th,td,tr{font-size: 12px; text-align: center;}
+.cursor{cursor: progress;}
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -189,6 +191,11 @@ th,td,tr{font-size: 12px; text-align: center;}
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function() {
+	  var adminId = '<%= session.getAttribute("adminid") %>';
+      
+      if (adminId == '' || adminId == 'null') {
+          location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+      }
     function checknull() {
         let isValid = true;
         $('#frm input[type="text"], #frm input[type="file"]').each(function() {
@@ -207,6 +214,7 @@ th,td,tr{font-size: 12px; text-align: center;}
     });
 
     $("#btnSubmit").click(function() {
+    	$("body").addClass("cursor");
         var file = $("#image").val();
         var selectedExt = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
 
@@ -227,6 +235,7 @@ th,td,tr{font-size: 12px; text-align: center;}
 
         if (checknull()) {
             $("#frm").submit();
+            $("#btnSubmit").attr("disabled", true);
         }
     });
 

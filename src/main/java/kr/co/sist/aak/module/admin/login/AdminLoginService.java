@@ -15,7 +15,7 @@ public class AdminLoginService {
 	private AdminLoginDAO adlDAO;
 	
 	public boolean searchLogin(AdminLoginVO alVO) {
-		AdminLoginDomain adld = null;
+		AdminLoginDomain adld = new AdminLoginDomain();
 		String plain ="";
 		try {
 			String key = "bys190";
@@ -23,8 +23,8 @@ public class AdminLoginService {
 			TextEncryptor te = Encryptors.text(key, salt);
 			adld = adlDAO.selectAdminPass(alVO);
 			plain =te.decrypt(adld.getPassword());
-		}catch (PersistenceException e) {
-			e.printStackTrace();
+		}catch (PersistenceException | NullPointerException b) {
+			b.printStackTrace();
 		}
 		return adld!= null&& plain.equals(alVO.getPassword());
 		

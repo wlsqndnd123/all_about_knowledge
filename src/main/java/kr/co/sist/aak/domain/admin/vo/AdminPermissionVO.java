@@ -2,7 +2,7 @@ package kr.co.sist.aak.domain.admin.vo;
 
 public class AdminPermissionVO {
 
-	private String id , notice_management, member_management, category_management, instructor_management, qna_management;
+	private String id , notice_management, member_management, category_management, instructor_management, qna_management,password;
 
 	public AdminPermissionVO() {
 		super();
@@ -18,6 +18,14 @@ public class AdminPermissionVO {
 		this.category_management = category_management;
 		this.instructor_management = instructor_management;
 		this.qna_management = qna_management;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

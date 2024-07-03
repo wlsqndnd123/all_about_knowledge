@@ -6,6 +6,7 @@
 <style>
 th,td,tr{font-size: 13px;}
 a {text-decoration: none;}
+.cursor{cursor: progress;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -175,6 +176,11 @@ a {text-decoration: none;}
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
+	  var adminId = '<%= session.getAttribute("adminid") %>';
+      
+      if (adminId == '' || adminId == 'null') {
+          location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+      }
 	  $("#btnback").click(function(){
 		  history.back();
 	  })
@@ -202,6 +208,8 @@ a {text-decoration: none;}
 				return;
 				} // end if
 				$("#frm").submit();
+				$("#btnModify").attr("disabled", true);
+				$("body").addClass("cursor");
 	  })
 	  
   })
