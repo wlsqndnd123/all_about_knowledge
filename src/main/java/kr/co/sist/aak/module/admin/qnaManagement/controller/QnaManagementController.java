@@ -45,7 +45,6 @@ public class QnaManagementController {
 	
 	@PostMapping("/manage_qna_modyify.do")
 	public String modyifyQnaAnswer(QnaManagementVO qnaVO, Model model) {
-		
 		int cnt =0;
 		
 		cnt=qms.modyifyQnaAnswer(qnaVO);

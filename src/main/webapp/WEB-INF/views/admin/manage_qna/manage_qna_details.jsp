@@ -3,10 +3,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
+<style>
+th,td,tr{font-size: 13px;}
+a {text-decoration: none;}
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,23 +28,16 @@
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
-	<style>
-	.right {
-  		 text-align: right;
-		}
-	
-	
-	
-	</style>
+
+
 
 <body id="reportsPage">
-    <div class="" id="home">
+    
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="brand-logo" href="adminindex.do">
-                            <!-- <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i> -->
+                        <a class="navbar-brand" href="adminindex.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -52,8 +45,10 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
+                              <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
+    
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -64,30 +59,37 @@
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-                                 <li class="nav-item" >
-                                    <a class="nav-link "href="manage_memberlist.do">회원 리스트</a>
-                                 
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_memberlist.do">
+                                        회원 관리
+                                    </a>
                                 </li>
+                                </c:if>
+                               <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
                                 <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-
-                                    <li class="nav-item active  " >
-                                    
-                                        <a class="nav-link" href="manage_qna.do">문의 리스트</a>
-                                   
+								</c:if>
+								<c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                                
+                                <li class="nav-item active  ">
+                                    <a class="nav-link" href="manage_qna.do">문의 관리</a>
                                 </li>
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
-
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -97,12 +99,19 @@
                     </nav>
                 </div>
             </div>
-             </div>
             </div>
              <!-- row -->
-                 <div class="container" style="padding: 1rem">
+                
             
-               <div class="bg-white tm-block col-12" style="width: 20%;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" ></div>
+                <div class="container" style="padding: 1rem">
+                <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                 <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                </table>
+                </div>
+                </div>
+                
                 <div class="bg-white tm-block col-12" style= "margin-left: 25%; width:auto" >
               
           	 <form action="manage_qna_details.do" method="post" id ="frmPost" style="width: 1100px;margin-inline: auto;">     
@@ -110,7 +119,7 @@
                             <h2 class="tm-block-title d-inline-block"style=" margin-bottom: 10px;">문의 제목 : <c:out value="${qnaDomain.title}"/></h2>
                             <input type="hidden" name="title" value="${qnaDomain.title}">
                     <div class="mb-3">
-  						 <label for="staticEmail" class="col-sm-5 col-form-label" style="width: 330px;">문의 코드 : <c:out value="${qnaDomain.qna_no}"/></label>
+  						 <label class="col-sm-5 col-form-label" style="width: 330px;">문의 코드 : <c:out value="${qnaDomain.qna_no}"/></label>
    						 <input type="hidden" name="qna_no" value="${qnaDomain.qna_no}">
    						 <input type="hidden" name="status" value="${qnaDomain.status}">
    						 <label for="staticEmail" class="col-sm-5 col-form-label">아이디 : <c:out value="${qnaDomain.std_id}"/></label>
@@ -121,7 +130,7 @@
 					</div>
 					<div class="mb-3" style="height: 450px;">
 					<div  style="width: 50%; float: right; padding-left: 40px;" >
- 						 <label for="exampleFormControlTextarea1" class="form-label">문의 답변</label>
+ 						 <label class="form-label">문의 답변</label>
   						<textarea class="form-control h-25" id="exampleFormControlTextarea" rows="13"  
   						style="width: 500px; resize: none;" name="content_answer" maxlength="100"><c:out value="${qnaDomain.content_answer}"/></textarea>
   						 <div class="textCount" id="charCount"style="width: 100px;">0</div>/100자
@@ -130,7 +139,7 @@
   					</div>
 					<div  style="width: 50%;">
 
- 						 <label for="exampleFormControlTextarea1" class="form-label">문의 사항 내용</label>
+ 						 <label class="form-label">문의 사항 내용</label>
   						<textarea class="form-control h-25"  readonly id="exampleFormControlTextarea1"
   						rows="13" style="width: 500px; resize: none;" name="content_question"><c:out value="${qnaDomain.content_question}"/></textarea>	
 						
@@ -149,24 +158,24 @@
        					<button class="btn btn-light btn-sm me-md-2 " type="button" id="submit">수정</button>
            		 		</c:if>
            		 		
-           		 		<c:if test="${param.delete eq '0' }">
+           		 		<%-- <c:if test="${param.delete eq '0' }">
        					<button class="btn btn-light btn-sm me-md-2 " type="button" id="submit">학인</button>
-           		 		</c:if>
+           		 		</c:if> --%>
   						
   						<button class="btn btn-light btn-sm me-md-2" type="button" id="goBack">취소</button>
   						
-  						<input type="hidden" name="delete" value='0' >
+  						<%-- <input type="hidden" name="delete" value='0' >
   						<c:if test="${param.delete eq null }">
   						<button class="btn btn-light btn-sm me-md-2" type="button" id="delete">삭제</button>
-  						</c:if>	
+  						</c:if>	 --%>
   						
   						</div>
 					</form> 
-    	</div> 
-        <footer class="row tm-mt-small">
-         
-        </footer>
+    
     </div>
+        </div>
+        
+               
      <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
   <!-- https://jquery.com/download/ -->
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
@@ -195,7 +204,6 @@
   	 $(document).ready(function(){
   		 
   		$("#delete").click(function(){
-  			req
   			
   			location.href="manage_qna_details.do?qna_no=${qna_no}&status=${status}&delete=0";
             
@@ -203,31 +211,25 @@
   		 
   		/* 답변내용변경 */
          $("#submit").click(function(){
-
         	 if(!confirm("답변내용을 수정 하시겠습니까?")){
+        		 
         		 return;
-         	    
          	}else{
-         		
              $("#frmPost").attr("action", "manage_qna_modyify.do");
              $("#frmPost").submit();
-             
-             
          	};
         	 
          });
             
          /* 답변내용입력 */
          $("#check").click(function(){
-
         	 if(!confirm("답변내용을 입력 하시겠습니까?")){
          	    return;
-         	    
+
          	}else {
              $("#frmPost").attr("action", "manage_qna_add.do");
              $("#frmPost").submit();
-             
-         	    
+
          	};
         	 
          });
@@ -303,8 +305,6 @@
 	
 	
 	
-	
-	</div>
 </body>
             
 
