@@ -85,12 +85,10 @@ public class QnaManagementDAO {
 	public int deleteQna(QnaManagementVO qnaVO){
 		int cnt = 0;
 		
-
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAnswerAdmin",qnaVO);
+		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAdmin",qnaVO);
 		
-
 		mbDAO.closeHanlder(ss);
 
 		return cnt;
@@ -98,5 +96,17 @@ public class QnaManagementDAO {
 		
 	}
 	
-	
+	public int insertQnaDelete(QnaManagementVO qnaVO ){
+		int cnt = 0;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(true);
+		cnt = ss.insert("kr.co.sist.aak.admin6.insertQnaDeleteAdmin",qnaVO);
+		
+		mbDAO.closeHanlder(ss);
+
+		return cnt;
+		
+		
+	}
 }

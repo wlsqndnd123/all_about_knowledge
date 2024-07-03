@@ -52,10 +52,14 @@
 	<!-- qna 삭제 쿼리 -->
 	<update id="deleteQnaAdmin" parameterType="QnaManagementVO">
 	update qna_gen_q 
-	set status
-	where std_id = #{std_id}
+	set status = 'D'
+	where qna_no = #{qna_no}
 	</update>
 	
+	<insert id="insertQnaDeleteAdmin" parameterType="QnaManagementVO">
+	insert into qna_gen_delete(qna_no, reaseon)
+	values(#{qna_no},#{reaseon})
+	</insert>
 	
 	
 	

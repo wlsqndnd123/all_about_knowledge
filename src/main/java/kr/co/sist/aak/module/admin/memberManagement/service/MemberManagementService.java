@@ -33,7 +33,14 @@ public class MemberManagementService {
 		MemberManagementDomain mmDomain = null;
 		try {
 			mmDomain = mmDAO.selectDetaleMember(std_id);
-		
+			
+			StringBuilder tel = new StringBuilder(mmDomain.getTel());
+			tel.insert(3, '-');
+			tel.insert(8, '-');
+			
+			mmDomain.setTel(tel.toString());
+			
+			
 		}catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}
@@ -42,13 +49,32 @@ public class MemberManagementService {
 	}
 	
 	public int modyifyMember(MemberManagementVO mmVO) {
-		int cnt = 0;
-
-		cnt=mmDAO.updateMember(mmVO);
+		int cnt = 0; 
 		
+		
+		String birth = mmVO.getBirth().replaceAll("\\s+", "");
+		String name = mmVO.getName().replaceAll("\\s+", "");
+		String email = mmVO.getEmail().replaceAll("\\s+", "");
+		String tel = mmVO.getTel().replaceAll("[\\s-]+", "");
+		
+		if(	birth.isEmpty() || name.isEmpty() || email.isEmpty() || tel.isEmpty() ) {
+			cnt=2;
+		}else if(email.contains("@") && email.contains(".") && !email.endsWith(".")  ) {
+			
+			mmVO.setTel(tel);
+			cnt=mmDAO.updateMember(mmVO);
+			
+		}else {
+			cnt=3;
+		}
 		
 		return cnt;
 	}
+	
+	
+	
+	
+	
 	
 	public String searchMembers() {
 		int n=0;

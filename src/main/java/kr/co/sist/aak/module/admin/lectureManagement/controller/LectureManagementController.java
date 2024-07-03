@@ -22,7 +22,7 @@ public class LectureManagementController {
 	@Autowired(required = false)
 	private LectureManagementService lms;
 	
-	@GetMapping("manage_lecture.do")
+	@GetMapping("/admin/manage_lecture.do")
 	public String searchSubject(Model model) {
 		List<SubjectManagementDomain> list = lms.searchSubject();
 		model.addAttribute("list",list);
@@ -32,7 +32,7 @@ public class LectureManagementController {
 	
 	
 	
-	@GetMapping("manage_lecture_details.do")
+	@GetMapping("/admin/manage_lecture_details.do")
 	public String searchDetaleLecture( SubjectManagementDomain smDomain, Model model, String sub_code) {
 		List<LectureManagementDomain> lecList = lms.searchLecture(sub_code);
 		smDomain = lms.searchDetaleSubject(sub_code);
@@ -43,7 +43,7 @@ public class LectureManagementController {
 		return "/admin/manage_lecture/manage_lecture_details";
 	}
 	
-	@GetMapping("manage_lecture_modyify.do")
+	@GetMapping("/admin/manage_lecture_modyify.do")
 	public String modyifySubject(SubjectManagementVO smVO,Model model) {
 		
 		int cnt=0;	

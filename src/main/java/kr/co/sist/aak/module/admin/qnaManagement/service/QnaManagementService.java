@@ -64,11 +64,17 @@ public class QnaManagementService {
 	}
 	
 	public int deleteQna(QnaManagementVO qnaVO) {
-		int cnt = 0;
+		int cnt =0 ;
+		int cnt1 = 0;
+		int cnt2 = 0;
+		
+		cnt1=qmDAO.deleteQna(qnaVO);
+		cnt2=qmDAO.insertQnaDelete(qnaVO);
+		
+		if(cnt1+cnt2==2) {
+			cnt=1;
+		}	
 
-		cnt=qmDAO.deleteQna(qnaVO);
-		
-		
 		return cnt;
 	}
 	
