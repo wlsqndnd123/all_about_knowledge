@@ -51,8 +51,7 @@ public class MemberManagementController {
 	
 	
 	@GetMapping("manage_member_modyify.do")
-	public String modyifyMember(MemberManagementVO mmVO,Model model
-			) {
+	public String modyifyMember(MemberManagementVO mmVO,Model model) {
 		
 		int cnt=0;	
 
@@ -62,6 +61,11 @@ public class MemberManagementController {
 		
 		return "/admin/manage_member/manage_member_details";
 	}
+	
+	
+	
+	
+	
 	
 	
 	@ResponseBody
