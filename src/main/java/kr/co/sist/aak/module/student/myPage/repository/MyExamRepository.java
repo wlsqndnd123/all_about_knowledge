@@ -1,6 +1,7 @@
 package kr.co.sist.aak.module.student.myPage.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,16 @@ public class MyExamRepository {
 		return myLectureList;
 	}
 
-
+	public void insertExamResult(MyExamVO examResult) {
+        SqlSession ss = myBatisDAO.getMyBatisHandler(true);
+        ss.insert("kr.co.sist.aak.student.mypage.exam.insertExamResult", examResult);
+        ss.close();
+    }
+	
+	public int selectTotalScore(String stdId, String subCode) {
+        SqlSession ss = myBatisDAO.getMyBatisHandler(true);
+        int grade = ss.selectOne("kr.co.sist.aak.student.mypage.exam.selectTotalScore", Map.of("stdId", stdId, "subCode", subCode));
+        ss.close();
+        return grade;
+    }
 }

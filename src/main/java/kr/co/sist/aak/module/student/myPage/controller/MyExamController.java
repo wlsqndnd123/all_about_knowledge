@@ -1,12 +1,18 @@
 package kr.co.sist.aak.module.student.myPage.controller;
 
+import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import kr.co.sist.aak.domain.student.vo.ExamResultsForm;
 import kr.co.sist.aak.domain.student.vo.MyExamVO;
 import kr.co.sist.aak.module.student.myPage.service.MyExamService;
 
@@ -30,15 +36,20 @@ public class MyExamController {
 		return "student/my_page/exam";
 	}
 	
-	// 시험 제출...
-	// 과목코드 시험문제번호 일치하는 곳의 정답이 라디오버튼이랑 같아야한다
-	// 같으면 스코어++ 인데 시험 몇문제냐...5개라네요
-	// 자동채점해서 성적 모달
-	// 완료된 강의에서는 그럼 성적이 보야모;ㅐ롲ㅁ;ㅕㅑㄷ뢔;모런우리ㅏㅋ시발
-	// 강의 상세페이지에서 보여준다
-	
-	public int examSubmit() {
-		int result = 0;
-		return result;
+	@PostMapping("/mypage/examSubmit.do")
+	public String submitExam(@ModelAttribute ExamResultsForm examResultsForm, Principal principal, Model model, HttpSession session) {
+	    List<MyExamVO> examResults = examResultsForm.getExamResults();
+
+	    if (examResults != null && !examResults.isEmpty()) {
+	    	myExamService.submitExamResult(examResults, principal);
+            String stdId = principal.getName();
+            String subCode = (String) session.getAttribute("sub_code");
+            int totalScore = myExamService.getTotalScore(stdId, subCode);
+            model.addAttribute("totalScore", totalScore);
+            model.addAttribute("message", "시험 결과가 성공적으로 제출되었습니다.");
+	    } else {
+	        model.addAttribute("message", "제출된 시험 결과가 없습니다.");
+	    }
+	    return "student/my_page/exam_result";
 	}
 }
