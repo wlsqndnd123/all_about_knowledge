@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.SubjectManagementDomain;
+import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
 import kr.co.sist.aak.domain.admin.vo.SubjectManagementVO;
 import kr.co.sist.aak.util.MybatisDAO;
 
@@ -62,7 +63,7 @@ public class LectureManagementDAO {
 	}
 	
 	
-	 public int updateSubject(SubjectManagementVO smVO) { 
+	 public int updateSubject(SubjectManagementVO smVO) throws PersistenceException{ 
 	 int cnt = 0;
 	 MybatisDAO mbDAO = MybatisDAO.getInstance(); 
 	 SqlSession ss = mbDAO.getMyBatisHandler(true); 
@@ -73,11 +74,35 @@ public class LectureManagementDAO {
 	 
 	 }
 	
+	 
 	
+	 public int updateRefuseSubject(SubjectManagementVO smVO)throws PersistenceException{
+			int cnt = 0;
+			
+			MybatisDAO mbDAO = MybatisDAO.getInstance();
+			SqlSession ss = mbDAO.getMyBatisHandler(true);
+			cnt = ss.update("kr.co.sist.aak.admin7.updateRefuseSubject",smVO);
+			
+			mbDAO.closeHanlder(ss);
+
+			return cnt;
+			
+			
+		}
 	
-	
-	
-	
+	 public int insertRefuseSubject(SubjectManagementVO smVO)throws PersistenceException{
+			int cnt = 0;
+			
+			MybatisDAO mbDAO = MybatisDAO.getInstance();
+			SqlSession ss = mbDAO.getMyBatisHandler(true);
+			cnt = ss.insert("kr.co.sist.aak.admin7.insertRefuseSubject",smVO);
+			
+			mbDAO.closeHanlder(ss);
+
+			return cnt;
+			
+			
+		}
 	
 	
 	

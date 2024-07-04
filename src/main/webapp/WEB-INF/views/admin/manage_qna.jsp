@@ -162,10 +162,10 @@ width: 15vw;height: auto;
                           <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             회원 관리
+             문의 관리
              </li>
              <li class="breadcrumb-item active">
-             회원 리스트</li></ol>
+             문의 리스트</li></ol>
              </div>
                             	
                     

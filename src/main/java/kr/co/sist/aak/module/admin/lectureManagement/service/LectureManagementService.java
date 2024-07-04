@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.co.sist.aak.domain.admin.SubjectManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.LectureManagementVO;
 import kr.co.sist.aak.domain.admin.vo.MemberManagementVO;
+import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
 import kr.co.sist.aak.domain.admin.vo.SubjectManagementVO;
 import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.MemberManagementDomain;
@@ -66,8 +67,17 @@ public class LectureManagementService{
 		return cnt;
 	}
 	
-	
-	
-	
+	public int refuseSubject(SubjectManagementVO smVO) {
+		int cnt =0 ;
+		int cnt1 =0 ;
+		int cnt2 = 0;
+		cnt=lmDAO.updateRefuseSubject(smVO);
+		cnt2=lmDAO.insertRefuseSubject(smVO);
+		if(cnt1+cnt2==2) {
+			cnt=1;
+		}
+		return cnt;
+	}	
+		
 	
 }

@@ -183,13 +183,13 @@ width: 15vw;height: auto;
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
                     <div class="col-12">
                         <div class="col-12">
-                          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+                          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 30%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             회원 관리
+             신청강의 관리
              </li>
              <li class="breadcrumb-item active">
-             회원 리스트</li></ol>
+             신청강의 리스트</li></ol>
              </div>
                             	
                     
@@ -281,8 +281,8 @@ width: 15vw;height: auto;
 
 	     $("#lecture").DataTable({
 	    	language: {
-                search: "회원명 조회: ",
-                zeroRecords: "일치하는 회원이 없습니다.",
+                search: "조회: ",
+                zeroRecords: "일치하는 정보가 없습니다.",
                 info: "현재 _START_ - _END_ / 총 _TOTAL_건",
                 lengthMenu: "한 페이지당 _MENU_ 개씩 보기",
                 paginate: {

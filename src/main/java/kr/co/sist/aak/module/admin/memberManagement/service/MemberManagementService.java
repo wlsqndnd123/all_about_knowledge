@@ -72,7 +72,17 @@ public class MemberManagementService {
 	}
 	
 	
+	public MemberManagementDomain searchMemberReason(String std_id) {
+		MemberManagementDomain mmDomain = null;
+		try {
+			mmDomain = mmDAO.selectMemberReason(std_id);
 	
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return mmDomain;
+	}
 	
 	
 	
