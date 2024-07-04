@@ -19,6 +19,7 @@ public class MemberManagementDomain {
 	,tel
 	,email
 	,del_yn
+	,reason
 	;
 	
 	private Date change_date, signup_date;
@@ -28,7 +29,7 @@ public class MemberManagementDomain {
 	}
 
 	public MemberManagementDomain(String std_id, String name, String password, String pre_pass, String birth,
-			String tel, String email, String del_yn, Date change_date, Date signup_date) {
+			String tel, String email, String del_yn, Date change_date, Date signup_date, String reason) {
 		super();
 		this.std_id = std_id;
 		this.name = name;
@@ -40,14 +41,9 @@ public class MemberManagementDomain {
 		this.del_yn = del_yn;
 		this.change_date = change_date;
 		this.signup_date = signup_date;
+		this.reason = reason;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberManagementDomain [std_id=" + std_id + ", name=" + name + ", password=" + password + ", pre_pass="
-				+ pre_pass + ", birth=" + birth + ", tel=" + tel + ", email=" + email + ", del_yn=" + del_yn
-				+ ", change_date=" + change_date + ", signup_date=" + signup_date + "]";
-	}
 
 	public String getStd_id() {
 		return std_id;
@@ -127,6 +123,21 @@ public class MemberManagementDomain {
 
 	public void setSignup_date(Date signup_date) {
 		this.signup_date = signup_date;
+	}
+	
+	public Date getReason() {
+		return signup_date;
+	}
+	
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberManagementDomain [std_id=" + std_id + ", name=" + name + ", password=" + password + ", pre_pass="
+				+ pre_pass + ", birth=" + birth + ", tel=" + tel + ", email=" + email + ", del_yn=" + del_yn
+				+ ", reason=" + reason + ", change_date=" + change_date + ", signup_date=" + signup_date + "]";
 	}
 
 	

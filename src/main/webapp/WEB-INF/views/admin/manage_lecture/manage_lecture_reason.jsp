@@ -50,11 +50,11 @@ a {text-decoration: none;}
     </script>
 </head>
 <body>
-    <h2>삭제 사유 작성</h2>
+    <h2>반려 사유 작성</h2>
     <form id="refuseForm" method="post" >
     <input type="hidden" name="sub_code" value="${param.sub_code}">
         <label for="reason">Reason:</label><br>
-        <textarea id="reaseon" name="reason" rows="4" cols="50"></textarea><br><br>
+        <textarea id="reaseon" name="reason" rows="4" cols="50" style="height: 185px; width: 414px;"></textarea><br><br>
         <button type="button" onclick="submitForm()">확인</button>
         <button type="button" onclick="window.close()">취소</button>
     </form>

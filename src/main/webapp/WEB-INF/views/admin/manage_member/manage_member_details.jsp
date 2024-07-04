@@ -200,13 +200,13 @@ a {text-decoration: none;}
                  <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">    
                  <div class="col-12">
                         <div class="col-12">
-                  <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+                  <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 30%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             공지사항 관리
+             회원 관리
              </li>
              <li class="breadcrumb-item active">
-             공지사항 상세</li></ol>
+             회원 상세</li></ol>
              </div>
                            
           	<form action="manage_member_details.do" method="get" id ="frmGet" style="width: 1100px;margin-inline: auto;">
@@ -217,16 +217,16 @@ a {text-decoration: none;}
                     <tbody >
 
                     <tr >
-                    <th >아이디</th>
-                    <td >
+                    <th style="font-size: 18px;">아이디</th>
+                    <td style="font-size: 18px;">
             		<c:out value="${mmDomain.std_id }"/>
             		<input type="hidden" name="std_id" value="${mmDomain.std_id }"readonly>
             		
                     </td>
                     </tr>
                     <tr >
-                    <th >이름</th>
-                     <td style="text-align: center;">
+                    <th style="font-size: 18px;" >이름</th>
+                     <td  style="text-align: center; font-size: 18px;">
             		<c:choose>
             		 <c:when test="${requestScope.flag eq '0'}">
             		 <c:out value="${mmDomain.name }"/>
@@ -240,8 +240,8 @@ a {text-decoration: none;}
                     </tr>
                  
                     <tr >
-                    <th>연락처</th>
-                   <td style="text-align: center;">
+                    <th style="font-size: 18px;">연락처</th>
+                   <td style="text-align: center; font-size: 18px;">
             		<c:choose>
             		 <c:when test="${requestScope.flag eq '0'}">
             		  <c:out  value="${mmDomain.tel }"/>
@@ -256,8 +256,8 @@ a {text-decoration: none;}
                     
 
                     <tr>
-                    <th>이메일</th>
-                    <td style="text-align: center;">
+                    <th style="font-size: 18px;">이메일</th>
+                    <td style="text-align: center; font-size: 18px;">
             		<c:choose>
             		 <c:when test="${requestScope.flag eq '0'}">
             		  <c:out value="${mmDomain.email }"/>
@@ -272,8 +272,8 @@ a {text-decoration: none;}
 
                     
                     <tr>
-                    <th>생년월일</th>
-      				  <td style="text-align: center;">
+                    <th style="font-size: 18px;">생년월일</th>
+      				  <td style="text-align: center; font-size: 18px;">
        				     <c:choose>
        				         <c:when test="${requestScope.flag eq '0'}">
        				           <c:out value="${mmDomain.birth}"/>

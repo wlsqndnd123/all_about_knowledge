@@ -99,7 +99,7 @@ public class QnaManagementDAO {
 		
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAdmin",qnaVO);
+		cnt = ss.update("kr.co.sist.aak.admin6.deleteQnaAdmin",qnaVO);
 		
 		mbDAO.closeHanlder(ss);
 

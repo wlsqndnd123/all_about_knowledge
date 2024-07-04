@@ -212,7 +212,7 @@ width: 15vw;height: auto;
                     </thead>
                     <tbody>
                     <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
-                    <tr onclick="changeUrl('${mmd.std_id}')">
+                    <tr onclick="changeUrl('${mmd.std_id},${mmd.del_yn}')">
                     <td style="text-align: center;"><c:out value="${mmd.std_id}"/> </td>
                     <td style="text-align: center;"><c:out value="${mmd.name}"/></td>
                      <c:choose>
@@ -317,16 +317,7 @@ width: 15vw;height: auto;
 	    }); 
 
 
-	    /* var selectedValue = localStorage.getItem('selectedStatus');
-	    if (selectedValue) {
-	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
-	    }
-
-	    $("input[name='status']").change(function() {
-	        var selectedValue = $(this).val();
-	        localStorage.setItem('selectedStatus', selectedValue);  
-	        $("#YorN").submit(); 
-	    }); */
+	   
 
 	    $("#member").DataTable({
 	    	language: {
@@ -342,169 +333,28 @@ width: 15vw;height: auto;
 	    
 	});
  });
- function changeUrl(url){
-		var url=url;
-		window.location.href='manage_member_details.do?flag=0&std_id='+url;
+ function changeUrl(data){
+	 	var parts = data.split(',');
+		var std_id = parts[0];
+	 	var del_yn = parts[1];
+		
+		if(del_yn == 'N'){
+		window.location.href='manage_member_details.do?flag=0&std_id='+std_id;
+		}
+		else if(del_yn == 'Y'){
+			 var popupWidth = 400;
+			    var popupHeight = 300;
+			    var left = (screen.width - popupWidth) / 2;
+			    var top = (screen.height - popupHeight) / 2;
+			var popup = window.open('manage_member_reason.do?std_id=' + std_id, "VideoPopup", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
+		}
+		
+		
+		
 	}
  </script>
              
-             
-             
-                <%-- <div class="bg-white tm-block col-12" style="  margin-left: 25%; width:auto" >
-              
-                       <div class="col-12">
-          <div class="col-12">
-          
-                    <table  id="memberTable" class="table table-hover"   style="width: 100%;margin: auto; text-align: center;">
-                    <thead>
-                    <tr>
-                   
-                    <th class="custom-font-size">사용자ID</th>
-                    <th class="custom-font-size">이름</th>
-                    <th class="custom-font-size" id="signupStatusHeader" style="cursor:pointer;" >상태</th>
-                    <th class="custom-font-size" id="signupDateHeader" style="cursor:pointer;">가입일</th>
-                    
-                    </tr>
-                    </thead>
-                    
-                    <tbody>
-                    <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
-                    <tr>
-                    
-                    <td class="custom-font-size"><c:out value="${mmd.std_id }"/></td>                 
-                    <td class="custom-font-size"><a href="manage_member_details.do?std_id=${mmd.std_id }&flag=0"><c:out value="${mmd.name }"/></a></td> 
-                    <c:choose>
-                    <c:when test="${mmd.del_yn eq 'N'}">         
-                    <td class="custom-font-size">회원</td>
-                  	</c:when>
-                     <c:otherwise>
-                     <td class="custom-font-size">탈퇴</td>
-                     </c:otherwise>
-                    </c:choose>
-                    <td class="custom-font-size"><c:out value="${mmd.signup_date}"/></td>
-  
-                    </tr>
-                    </c:forEach>
-                    </tbody>
-                    
-                    </table>
-                    
-                    
-                </div>
-         
-           
-    </div>
-        <footer class="row tm-mt-small">
-         
-        </footer>
-    </div>
-     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
-    
-    <script>
-    function fetchNewUsersCount() {
-        $.ajax({
-            url: "manage_admin_side.do",
-            type: "GET",
-            dataType: "JSON",
-            error: function(xhr) {
-                console.log(xhr.status + " : " + xhr.statusText);
-                alert("서버 오류 발생");
-            },
-            success: function(response) {
-                $("#newUsersCount").text("가입 수: " + response.count);
-            }
-        });
-    }
 
-        // 페이지 로드 시 및 1분마다 데이터를 가져옴
-        window.onload = function() {
-            fetchNewUsersCount();
-            setInterval(fetchNewUsersCount, 600000);
-        };
-    </script>
-    
-    
-    
-    
-    
-     <script>
-     
-     
-     
-        // 테이블 정렬 함수 가입일
-        var filterActive = false;
-var sortOrder = 'asc'; // 기본 정렬 순서: 오름차순
-
-function sortTableByDate() {
-    var rows = $('#memberTable tbody tr').get();
-
-    rows.sort(function(a, b) {
-        var A = new Date($(a).children('td').eq(3).text());
-        var B = new Date($(b).children('td').eq(3).text());
-
-        if (sortOrder === 'asc') {
-            if (A < B) return -1;
-            if (A > B) return 1;
-        } else {
-            if (A < B) return 1;
-            if (A > B) return -1;
-        }
-        return 0;
-    });
-
-    $.each(rows, function(index, row) {
-        $('#memberTable').children('tbody').append(row);
-    });
-
-    // 정렬 순서를 토글
-    sortOrder = (sortOrder === 'asc') ? 'desc' : 'asc';
-}
-        
-        
-        
-		// 테이블 정렬 함수 상태
-        var filterActive2 = false;
-        function filterTableByStatus() {
-            var rows = $('#memberTable tbody tr').get();
-
-            if (filterActive2) {
-                rows.forEach(function(row) {
-                    $(row).show();
-                });
-                filterActive2 = false;
-            } else {
-                rows.forEach(function(row) {
-                    var status = $(row).children('td').eq(3).text();
-                    if (status !== "탈퇴") {
-                        $(row).hide();
-                    } else {
-                        $(row).show();
-                    }
-                });
-                filterActive2 = true;
-            }
-        }
-        
-        $(document).ready(function() {
-            // 가입일 클릭 이벤트 바인딩
-            $('#signupDateHeader').click(function() {
-            	
-                sortTableByDate();
-            });
-         // 상태 클릭 이벤트 바인딩
- 			$('#signupStatusHeader').click(function() {
-            	
- 				filterTableByStatus();
-            });
-            
-            
-        });
-    </script>
-    
-    
-     --%>
-   
     
     
 
