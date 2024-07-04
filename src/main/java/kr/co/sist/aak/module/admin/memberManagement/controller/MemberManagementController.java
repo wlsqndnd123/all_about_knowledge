@@ -46,10 +46,6 @@ public class MemberManagementController {
 	}
 	
 	
-	
-	
-	
-	
 	@GetMapping("manage_member_modyify.do")
 	public String modyifyMember(MemberManagementVO mmVO,Model model) {
 		
