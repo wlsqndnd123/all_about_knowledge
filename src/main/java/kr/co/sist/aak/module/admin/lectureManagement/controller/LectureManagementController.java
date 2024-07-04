@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.SubjectManagementDomain;
+import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
 import kr.co.sist.aak.domain.admin.vo.SubjectManagementVO;
 import kr.co.sist.aak.module.admin.lectureManagement.service.LectureManagementService;
 
@@ -55,9 +57,24 @@ public class LectureManagementController {
 	}
 	
 	
+	@GetMapping("/manage_lecture_reason.do")
+	public String reasonQna() {
 	
+		return "/admin/manage_lecture/manage_lecture_reason";
+	}
 	
-	
+	@PostMapping("/manage_lecture_refuse.do")
+	public String deleteQna(QnaManagementVO qnaVO, Model model) {
+		
+		  int cnt =0;
+		  System.out.println(qnaVO);
+		  cnt=lms.deleteQna(qnaVO); 
+		  model.addAttribute("cnt",cnt);
+		 
+		 
+		
+		return "/admin/manage_qna/manage_qna_reason";
+	}
 	
 	
 	

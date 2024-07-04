@@ -20,19 +20,19 @@
 	<select id="selectCountExitMember" resultType ="int">
 	select count(std_id)
 	from student
-	where del_yn = 'Y';
+	where del_yn = 'Y'
 	</select>
 	
 	<select id="selectCountNeedChkSubject" resultType ="int">
 	select count(sub_code)
 	from SUBJECT
-	where status = 'N';
+	where status = 'N'
 	</select>
 	
 	<select id="selectCountNeedChkQuestion" resultType ="int">
 	select count(qna_no)
 	from QNA_GEN_Q
-	where status = 'Y';
+	where status = 'Y'
 	</select>
 	
 	
