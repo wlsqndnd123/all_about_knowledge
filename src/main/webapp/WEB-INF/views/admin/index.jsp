@@ -166,7 +166,7 @@
         var data = '<%= request.getAttribute("dbDomain.setAllmember_count")%>'; 
        
         // 총 인원 수 예제: 0에서 150까지 3초 동안 증가
-        animateCounter("#counter", 0, data, 3000); 	
+        animateCounter("#counter", 0, 10, 3000); 	
     });
     
     

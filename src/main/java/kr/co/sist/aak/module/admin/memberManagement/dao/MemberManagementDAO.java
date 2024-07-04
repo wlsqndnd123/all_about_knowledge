@@ -68,6 +68,24 @@ public class MemberManagementDAO {
 		
 	}
 	
+	
+	public MemberManagementDomain selectMemberReason(String std_id)throws PersistenceException{
+		MemberManagementDomain mmDomain = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		mmDomain = ss.selectOne("kr.co.sist.aak.admin4.MemberReason", std_id);
+		mbDAO.closeHanlder(ss);
+		return mmDomain;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public int selectNonMember()throws PersistenceException{
 		int cnt =0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();

@@ -126,10 +126,10 @@ a {text-decoration: none;}
                   <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 35%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             공지사항 관리
+             문의 관리
              </li>
              <li class="breadcrumb-item active">
-             공지사항 상세</li></ol>
+             문의 상세</li></ol>
              </div>
                            
           	 <form action="manage_qna_details.do" method="post" id="frmPost";>
@@ -143,7 +143,7 @@ a {text-decoration: none;}
                     
                     <label for="staticEmail" class="col-sm-5 col-form-label">문의자 : <c:out value="${qnaDomain.std_id}"/></label>
                     
-                    <c:if test="${param.status eq 'Y' and param.delete eq null}">
+                    <c:if test="${param.status != 'D' and param.delete eq null  }">
                     <button class="btn btn-light btn-sm me-md-2" type="button" id="delete">삭제</button>
                     </c:if>
                     

@@ -55,6 +55,22 @@
 	where del_yn = 'N'
 	</select>
 	
+	<!-- 탈퇴한 학생 사유 -->
+	<select id="MemberReason" resultType ="MemberManagementDomain">
+	select
+	std_id,
+	reason
+	from WITHDRAWAL
+	where std_id= #{std_id}
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper>

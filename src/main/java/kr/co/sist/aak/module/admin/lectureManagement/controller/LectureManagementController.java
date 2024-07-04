@@ -58,26 +58,29 @@ public class LectureManagementController {
 	
 	
 	@GetMapping("/manage_lecture_reason.do")
-	public String reasonQna() {
+	public String reasonSubject() {
 	
 		return "/admin/manage_lecture/manage_lecture_reason";
 	}
 	
 	@PostMapping("/manage_lecture_refuse.do")
-	public String deleteQna(QnaManagementVO qnaVO, Model model) {
+	public String refuseSubject(SubjectManagementVO smVO, Model model) {
 		
 		  int cnt =0;
-		  System.out.println(qnaVO);
-		  cnt=lms.deleteQna(qnaVO); 
+		 
+		  cnt=lms.refuseSubject(smVO); 
 		  model.addAttribute("cnt",cnt);
 		 
-		 
-		
+
 		return "/admin/manage_qna/manage_qna_reason";
 	}
 	
 	
+	@GetMapping("/manage_lecture_video.do")
+	public String lectureVideo() {
 	
+		return "/admin/manage_lecture/manage_lecture_video";
+	}
 	
 	
 	

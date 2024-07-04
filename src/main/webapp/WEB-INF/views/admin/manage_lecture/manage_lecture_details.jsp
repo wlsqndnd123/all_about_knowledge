@@ -57,84 +57,6 @@ a {text-decoration: none;}
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="http://localhost/all_about_knowledge/front/admin/css/tooplate.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	
-<script type ="text/javascript">
-	 $(document).ready(function(){
-         $("#updateSubmit").click(function(){
-             $("#frmGet").attr("action", "manage_member_details.do");
-             $("#frmGet").submit();
-         });
-
-
-         
-         $("#saveSubmit").click(function(){
-
-        	 if(!confirm("변경내용을 저장 하시겠습니까?")){
-         	    
-         	}else{
-             $("#frmGet").attr("action", "manage_member_modyify.do");
-             $("#frmGet").submit();
-         	    
-         	}
-        	 
-         });
-
-         var cnt = "${cnt}";
-         if (cnt == 1) {
-             alert("수정 완료");
-             location.href="manage_member_details.do?std_id=${std_id}&flag=0";
-         }else if(cnt == 2){
-        	 alert("입력하지 않은 값이 있습니다.")
-        	 location.href="manage_member_details.do?std_id=${std_id}&flag=0";
-         }else if(cnt == 3){
-        	 alert("이메일 형식이 아닙니다.")
-        	 location.href="manage_member_details.do?std_id=${std_id}&flag=0";
-         }
-         
-  
-         $("#back").click(function(){
-		
-        	 location.href="manage_memberlist.do";
-
-         });
-
-     });
-
-	 function validateInput(event) {
-         const charCode = event.which ? event.which : event.keyCode;
-         const charStr = String.fromCharCode(charCode);
-         // 정규 표현식을 사용하여 문자만 허용
-         if (!/^[a-zA-Z]*$/.test(charStr)) {
-             event.preventDefault();
-         }
-     }
-	 
-	 function formatTelInput(event) {
-         const input = event.target;
-         let value = input.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
-
-         // 최대 11자리까지만 입력 허용
-         if (value.length > 11) {
-             value = value.substring(0, 11);
-         }
-
-         // 3번째 자리와 이후 4번째 자리마다 '-' 추가
-         if (value.length > 3) {
-             value = value.substring(0, 3) + '-' + value.substring(3);
-         }
-         if (value.length > 8) {
-             value = value.substring(0, 8) + '-' + value.substring(8);
-         }
-
-         input.value = value;
-     }
-	 
-	 
-</script>
-
-
-
-
 
 <body id="reportsPage">
     <div class="" id="home">
@@ -228,13 +150,13 @@ a {text-decoration: none;}
                  <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">    
                  <div class="col-12">
                         <div class="col-12">
-                  <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 100%;" > 
+                  <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex" style=" margin-left :65% ;height:  40px; text-align: right; width: 30%;" > 
              <ol class="breadcrumb"style="width: 95%;background-color: transparent ; padding-top: 0px; " >
              <li class="breadcrumb-item">
-             강의신청 관리
+             신청강의 관리
              </li>
              <li class="breadcrumb-item active">
-             강의신청 상세</li></ol>
+             신청강의 상세</li></ol>
              </div>
                            
           	<form action="manage_member_details.do" method="get" id ="frmGet" style="margin-inline: auto;">
@@ -282,9 +204,10 @@ a {text-decoration: none;}
                     </thead>
                     <tbody>
                     <c:forEach var="lmd" items="${requestScope.lecList }" varStatus="i">
-                    <tr>
+                    <tr onclick="videoUrl('${lmd.f_name}&title=${lmd.title}')">
                     <td>${i.index + 1}차시</td>
-                    <td><a href="manage_qna_details.do"><c:out value="${lmd.title}"/></a></td>
+                    
+                    <td><c:out value="${lmd.title}"/></td>
                     <td><c:out value="${lmd.lec_explain}"/></td>
                     </tr>
 					</c:forEach>
@@ -311,78 +234,82 @@ a {text-decoration: none;}
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
 	<script type="text/javascript">
 	
-	$(document).ready(function(){
-   	 
-   	 $("#nop").click(function(){
-   	     openNopPopup();
-   	 });
+	$(document).ready(function() {
+	    $("#nop").click(function() {
+	        openNopPopup();
+	    });
 
-       /* 답변내용변경 */
-       $("#approve").click(function(){
-           if(!confirm("승인 하시겠습니까?")){
-               return;
-           } else {
-               $("#frmGet").attr("action", "manage_lecture_modyify.do");
-               $("#frmGet").submit();
-           }
-       });
-       var cnt = "${cnt}";
-       if (cnt == 1) {
-           alert("수행을 완료 했습니다.");
-           location.href="manage_lecture.do";
-       } else if(cnt == '0'){
-           alert("수행 중 오류가 있습니다.");
-           location.href="manage_lecture.do";
-       }
+	    /* 답변내용변경 */
+	    $("#approve").click(function() {
+	        if (!confirm("승인 하시겠습니까?")) {
+	            return;
+	        } else {
+	            $("#frmGet").attr("action", "manage_lecture_modify.do");
+	            $("#frmGet").submit();
+	        }
+	    });
 
-       $("#goBack").click(function(){
-           location.href="manage_lecture.do";
-       });
-   });
-	
+	    var cnt = "${cnt}";
+	    if (cnt == 1) {
+	        alert("수행을 완료 했습니다.");
+	        location.href = "manage_lecture.do";
+	    } else if (cnt == '0') {
+	        alert("수행 중 오류가 있습니다.");
+	        location.href = "manage_lecture.do";
+	    }
+
+	    $("#goBack").click(function() {
+	        location.href = "manage_lecture.do";
+	    });
+	});
+
 	// 반려 팝업창
-    function openNopPopup() {
-        // 팝업창 크기
-        var popupWidth = 400;
-        var popupHeight = 300;
+	function openNopPopup() {
+	    // 팝업창 크기
+	    var popupWidth = 450;
+	    var popupHeight = 400;
 
-        // 부모창 크기
-        var screenWidth = window.innerWidth;
-        var screenHeight = window.innerHeight;
+	    // 부모창 크기
+	    var screenWidth = window.innerWidth;
+	    var screenHeight = window.innerHeight;
 
-        // 부모창의 중간 위치 계산
-        var left = (screenWidth - popupWidth) / 2;
-        var top = (screenHeight - popupHeight) / 2;
+	    // 부모창의 중간 위치 계산
+	    var left = (screenWidth - popupWidth) / 2;
+	    var top = (screenHeight - popupHeight) / 2;
 
-        // 부모창 밖으로 나가지 않도록 조정
-        left = Math.max(0, left);
-        top = Math.max(0, top);
+	    // 부모창 밖으로 나가지 않도록 조정
+	    left = Math.max(0, left);
+	    top = Math.max(0, top);
 
-        // 팝업창 열기
-        var popup = window.open("manage_lecture_reason.do?sub_code=${param.sub_code}", "NopPopup", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
+	    // 팝업창 열기
+	    var popup = window.open("manage_lecture_reason.do?sub_code=${param.sub_code}", "NopPopup", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
 
-        // 모달 오버레이 추가
-        var modalOverlay = document.createElement('div');
-        modalOverlay.className = 'modal-overlay';
-        document.body.appendChild(modalOverlay);
-        modalOverlay.style.display = 'block';
+	    // 모달 오버레이 추가
+	    var modalOverlay = document.createElement('div');
+	    modalOverlay.className = 'modal-overlay';
+	    document.body.appendChild(modalOverlay);
+	    modalOverlay.style.display = 'block';
 
-        // 팝업창이 부모창 위에 있는지 확인하고 위치를 유지
-        var interval = setInterval(function() {
-            if (popup.closed) {
-                clearInterval(interval);
-                modalOverlay.style.display = 'none';
-                document.body.removeChild(modalOverlay);
-            } else {
-                // 팝업창이 부모창 위에 있는지 확인
-                popup.focus();
+	    // 팝업창이 부모창 위에 있는지 확인하고 위치를 유지
+	    var interval = setInterval(function() {
+	        if (popup.closed) {
+	            clearInterval(interval);
+	            modalOverlay.style.display = 'none';
+	            document.body.removeChild(modalOverlay);
+	        } else {
+	            // 팝업창이 부모창 위에 있는지 확인
+	            popup.focus();
+	        }
+	    }, 100);
+	}
 
-
-            }
-        }, 100);
-    }
-	
-	
+	function videoUrl(url) {
+	    var popupWidth = 600;
+	    var popupHeight = 450;
+	    var left = (screen.width - popupWidth) / 2;
+	    var top = (screen.height - popupHeight) / 2;
+	    var popup = window.open('manage_lecture_video.do?f_name=' + url, "VideoPopup", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
+	}
 	
 	
 	</script>
@@ -391,5 +318,3 @@ a {text-decoration: none;}
 
 
 </body>
-
-</html>

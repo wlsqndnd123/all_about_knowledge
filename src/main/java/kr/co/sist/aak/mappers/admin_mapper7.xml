@@ -71,8 +71,17 @@
 	</update>
 	
 	
-
 	
+	<update id="updateRefuseSubject" parameterType="SubjectManagementVO">
+	update subject 
+	set status = 'D'
+	where sub_code = #{sub_code}
+	</update>	
+
+	<insert id="insertRefuseSubject" parameterType="SubjectManagementVO">
+	insert into SUB_REJECT(sub_code, reason)
+	values(#{qna_no}, #{reason})
+	</insert>
 	
 	
 	
