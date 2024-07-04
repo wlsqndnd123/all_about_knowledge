@@ -60,7 +60,7 @@ zoom:0.6;
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
                             <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
-                                <li class="nav-item dropdown   active">
+                                <li class="nav-item dropdown   ">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
                                         
@@ -97,7 +97,7 @@ zoom:0.6;
                                 </li>
                                 </c:if>
                                 <c:if test="${sessionScope.auth == 'SUPER'}">
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link " href="manage_admin.do">
                                         관리자 관리
                                     </a>
