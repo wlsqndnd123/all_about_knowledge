@@ -23,6 +23,7 @@
 
 </head>
 
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -62,22 +63,23 @@
                     </h2>
 					<div class="mb-3">
  						 <label  class="form-label">문의 내용</label>
-  						<textarea class="form-control h-25" id="content"  readonly  rows="10" name="content">
-							<c:out value="${qnd.content}"/>
-  						</textarea>
+  						<textarea class="form-control h-25" id="content"  readonly  rows="10" name="content"><c:out value="${qnd.content}"/></textarea>
 					</div>
 					
-					<div class="mb-3">
+					<form action="qnaDetailProcess.do" method="post" id="answerFrm">
 						 <input type="hidden" value="${qnd.qna_no}" name="qna_no"/>
+						 
 							<label  class="form-label">문의 답변</label>
-	 						<textarea class="form-control h-25" id="replyContent" rows="8" name="replyContent">
-							<c:out value="${qnd.ans_content }"/>
-  							</textarea>
+	 						<textarea class="form-control h-25" id="ans_content" rows="8" name="ans_content"><c:out value="${qnd.ans_content}"/></textarea>
+	 						<br/>
+	 						<c:if test="${ not empty qnd.ans_date}">
+	 						작성일 : <c:out value="${qnd.ans_date}"/>
+		 					</c:if>
   						<div class="text-center">
-  						<input type="submit" value="확인" class="btn btn-dark btn-sm"/>
+  						<input type="submit" value="확인"  id="btnAns" class="btn btn-dark btn-sm"/>
   						<input type="button" value="취소" class="btn btn-light btn-sm"/>
   						</div>
-  						
+  					</form>
 					</div>
                     </div>
 					

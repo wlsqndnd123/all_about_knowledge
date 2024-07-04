@@ -1,6 +1,7 @@
 package kr.co.sist.aak.module.instructor.qna.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,11 @@ public class QnaService {
 		return qnd;
 	}
 	
-	public int qnaAnswer(String qna_no) {
+	public int qnaAnswer(QnaVO qVO) {
 		int cnt=0;
 		
 		try {
-			cnt=qaDAO.updateAnswer(qna_no);
+			cnt=qaDAO.updateAnswer(qVO);
 						
 		}catch(PersistenceException pe){
 			pe.printStackTrace();
