@@ -30,11 +30,13 @@
     s.goal,
     s.total_time,
     s.status,
-    s.image,
+    s.image as sub_image,
     s.comp_time,
     s.total_no,
 	c.sub_title,
 	i.name,
+	i.image as inst_image,
+	i.introduction,
 	cc.cat_name
 
 	FROM subject s
@@ -62,7 +64,11 @@
 
 	</select>
 	
-	
+	<update id="updateSubject" parameterType="SubjectManagementVO">
+	update subject 
+	set status = 'Y'
+	where sub_code = #{sub_code}
+	</update>
 	
 	
 

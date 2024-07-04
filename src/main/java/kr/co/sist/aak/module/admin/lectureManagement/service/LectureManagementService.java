@@ -57,7 +57,7 @@ public class LectureManagementService{
 		return lecList;
 	}
 	
-	public int modyifyMember(SubjectManagementVO smVO) {
+	public int modyifySubject(SubjectManagementVO smVO) {
 		int cnt = 0;
 
 		cnt=lmDAO.updateSubject(smVO);

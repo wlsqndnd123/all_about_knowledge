@@ -47,11 +47,11 @@ public class LectureManagementController {
 		
 		int cnt=0;	
 
-		cnt=lms.modyifyMember(smVO);
+		cnt=lms.modyifySubject(smVO);
 		model.addAttribute("cnt",cnt);
 		model.addAttribute("sub_code",smVO.getSub_code());
 		
-		return "/admin/manage_lecture/manage_member_details";
+		return "/admin/manage_lecture/manage_lecture_details";
 	}
 	
 	

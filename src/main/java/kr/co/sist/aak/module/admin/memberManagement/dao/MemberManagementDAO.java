@@ -55,7 +55,7 @@ public class MemberManagementDAO {
 	
 	}
 
-	public int updateMember(MemberManagementVO mmVO) {
+	public int updateMember(MemberManagementVO mmVO)throws PersistenceException {
 	
 		int cnt = 0;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();

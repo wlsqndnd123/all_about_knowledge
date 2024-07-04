@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.sist.aak.domain.admin.QnaManagementDomain;
 import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
@@ -91,6 +94,12 @@ public class QnaManagementController {
 		return "/admin/manage_qna/manage_qna_reason";
 	}
 	
+	@ResponseBody
+    @RequestMapping(value = "manage_qna_new.do", method = RequestMethod.GET, 
+                    produces = "application/json;charset=UTF-8")
+    public String searchNewQna() {
+        return qms.searchNewQna();
+    }
 	
 }
 

@@ -66,7 +66,7 @@ public class LectureManagementDAO {
 	 int cnt = 0;
 	 MybatisDAO mbDAO = MybatisDAO.getInstance(); 
 	 SqlSession ss = mbDAO.getMyBatisHandler(true); 
-	 cnt = ss.update("kr.co.sist.aak.admin7.updateLecture",smVO);
+	 cnt = ss.update("kr.co.sist.aak.admin7.updateSubject",smVO);
 	 mbDAO.closeHanlder(ss); 
 	 
 	 return cnt;

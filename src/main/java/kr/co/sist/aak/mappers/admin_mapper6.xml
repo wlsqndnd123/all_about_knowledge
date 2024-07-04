@@ -53,8 +53,7 @@
 	<!-- qna 답번 수정 쿼리 -->
 	<update id="updateQnaAnswerAdmin" parameterType="QnaManagementVO">
 	update qna_gen_a 
-	set content = #{content_answer}
-	
+	set content = #{content_answer}, id = #{id}
 	where qna_no = #{qna_no}
 	</update>
 	
@@ -81,7 +80,12 @@
 	</insert>
 	
 	
-	
+	<select id="selectNewQna" resultType ="int">
+	select count(qna_no)
+    from qna_gen_q
+    where TRUNC(q_date) = TRUNC(SYSDATE) 
+    and status = 'N'
+	</select>
 	
 	
 	
