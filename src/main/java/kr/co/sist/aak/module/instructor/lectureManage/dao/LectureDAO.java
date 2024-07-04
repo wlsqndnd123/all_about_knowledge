@@ -88,7 +88,7 @@ public class LectureDAO {
 	}
 
 	//강의목차
-	public LectureLessonVO lectureLesson(String sub_code, String lec_code)   {
+	public LectureLessonVO lectureLesson(String sub_code)   {
 		
 		LectureLessonVO leclessVO=null;
 		

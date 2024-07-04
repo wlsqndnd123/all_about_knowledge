@@ -84,5 +84,10 @@
 		where inst_id=#{inst_id}
 	</update>
 
+	<select id ="loginProcess" parameterType="String" resultType="instructorLoginDomain">
+		select password
+		from instructor
+		where inst_id =#{inst_id}
+	</select> 
 </mapper>
   

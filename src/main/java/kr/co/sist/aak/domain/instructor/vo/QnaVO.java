@@ -14,6 +14,6 @@ import lombok.ToString;
 public class QnaVO {
 
 	private String title, std_id, inst_id, sub_code, lec_code, ans_content, content,status;
-	private int qna_no;
+	private String qna_no;
 	private Date ans_date;
 }
