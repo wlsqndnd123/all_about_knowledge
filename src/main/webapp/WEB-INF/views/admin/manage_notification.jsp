@@ -11,6 +11,7 @@ th,td,tr{font-size: 11px;text-align: center; vertical-align: middle;}
 .tableaj{
 font-size: 7px;
 } 
+.pointer      { cursor: pointer; }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -96,6 +97,13 @@ font-size: 7px;
                                     </a>
                                 </li>
                                 </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -114,16 +122,14 @@ font-size: 7px;
            <!-- row -->
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <!-- 아이디 정보 -->
                <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
-                <!-- 아이디 권한 정보  -->
-                <div></div>
-                
-                
+                <hr  class="border border-primary border-1 opacity-50">
                 <!-- 공지사항 정보 로드 -->
                 <div>
                 <table class="table table-hover">
@@ -179,7 +185,7 @@ font-size: 7px;
                     </thead>
                     <tbody id ="output">
                     <c:forEach var="list" items="${ requestScope.list}" varStatus="i">
-                    <tr onclick="changeUrl('${list.noti_no}')">
+                    <tr onclick="changeUrl('${list.noti_no}')" class="pointer">
                     <td><c:out value="${ list.noti_no }"/></td>
                     <td><c:out value="${list.title }"/></td>
                     <td><fmt:formatDate  pattern="yyyy-MM-dd" value="${list.write_date }" /></td>
@@ -199,7 +205,11 @@ font-size: 7px;
    <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
   <script type="text/javascript">
 	  $(function() {
-		    // DataTables 초기화
+		  var adminId = '<%= session.getAttribute("adminid") %>';
+          
+          if (adminId == '' || adminId == 'null') {
+              location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+          }
 		    var table = $("#notice").DataTable({
 		        "processing": true,
 		        "serverSide": false, // 클라이언트 측에서 데이터 처리
@@ -237,9 +247,15 @@ font-size: 7px;
 	        success: function(jsonObj){
 	        	$("#resvNotice").empty();
 	        	var output ="<tr><td>예약 된 공지사항 명</td></tr>";
+	        	if(jsonObj.flag){
+	        		
 	        	$.each(jsonObj.list,function(i,jsonTemp){
 	        		output+="<tr><td>"+jsonTemp.title+"</td></tr>";
 	        	})
+	        	}else{
+	        		output+="<tr><td>예약 된 공지사항이 없습니다.</td></tr>";
+	        		
+	        	}
 	        	$("#resvNotice").html(output);
 	        	
 	        }

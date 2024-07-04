@@ -3,7 +3,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<style>
+th,td,tr{font-size: 12px; text-align: center;}
+.cursor{cursor: progress;}
 
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +39,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -83,6 +87,13 @@
                                     </a>
                                 </li>
                                     </c:if>
+                                    <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -100,14 +111,11 @@
              <!-- row -->
          <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <!-- 아이디 정보 -->
-                <div>
-                
-                </div>
-                <!-- 아이디 권한 정보  -->
                 <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
                 </div>
@@ -128,10 +136,13 @@
               </div>
                             <div style="text-align: center;"  class="mb-3" style="margin-top: 30px;" >
                             <table class="table table-hover" style=" width:95%; text-align: center;">
-                            <tr>
-  							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="image" name ="image"></td>
-                            </tr>
+              <tr><td style="vertical-align: middle;">강사 이미지</td>
+					<td>
+					 <input class="form-control" type="file" id="image" name="image" onchange="readURL(this);"/>	
+					<div class="card" style="width: 400px;height: 400px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                           <img id ="preview" class="card-img-top" alt="...">
+                            </div>
+					</td></tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 아이디</td>
                 <td><input type="text" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
@@ -180,6 +191,11 @@
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function() {
+	  var adminId = '<%= session.getAttribute("adminid") %>';
+      
+      if (adminId == '' || adminId == 'null') {
+          location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+      }
     function checknull() {
         let isValid = true;
         $('#frm input[type="text"], #frm input[type="file"]').each(function() {
@@ -198,6 +214,7 @@
     });
 
     $("#btnSubmit").click(function() {
+    	$("body").addClass("cursor");
         var file = $("#image").val();
         var selectedExt = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
 
@@ -218,6 +235,7 @@
 
         if (checknull()) {
             $("#frm").submit();
+            $("#btnSubmit").attr("disabled", true);
         }
     });
 
@@ -234,6 +252,17 @@
         }
     });
   });
+  function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('preview').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('preview').src = "";
+	  }
+	}
 </script>
 
     <!-- https://getbootstrap.com/ -->

@@ -2,7 +2,6 @@ package kr.co.sist.aak.module.admin.qnaManagement.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,9 +33,9 @@ public class QnaManagementController {
 	
 	
 	@GetMapping("/manage_qna_details.do")
-	public String searchDetaleQna(QnaManagementDomain qnaDomain, Model model, String qna_no) {
+	public String searchDetaleQna(QnaManagementDomain qnaDomain, Model model, String qna_no, String status) {
 		
-		qnaDomain = qms.searchDetaleQna(qna_no);
+		qnaDomain = qms.searchDetaleQna(qna_no,status);
 		model.addAttribute("qnaDomain", qnaDomain);
 		
 		
@@ -45,7 +44,6 @@ public class QnaManagementController {
 	
 	@PostMapping("/manage_qna_modyify.do")
 	public String modyifyQnaAnswer(QnaManagementVO qnaVO, Model model) {
-		
 		int cnt =0;
 		
 		cnt=qms.modyifyQnaAnswer(qnaVO);
@@ -70,18 +68,30 @@ public class QnaManagementController {
 		return "/admin/manage_qna/manage_qna_details";
 	}
 	
+	
+	@GetMapping("/manage_qna_reason.do")
+	public String reasonQna() {
+	
+		return "/admin/manage_qna/manage_qna_reason";
+	}
+	
+	
+	
+	
 	@PostMapping("/manage_qna_delete.do")
 	public String deleteQna(QnaManagementVO qnaVO, Model model) {
 		
-		int cnt =0;
+		  int cnt =0;
+		  System.out.println(qnaVO);
+		  cnt=qms.deleteQna(qnaVO); 
+		  model.addAttribute("cnt",cnt);
+		  model.addAttribute("qna_no",qnaVO.getQna_no());
+		 
 		
-		cnt=qms.deleteQna(qnaVO);
-		model.addAttribute("cnt",cnt);
-		model.addAttribute("qna_no",qnaVO.getQna_no());
-
-		
-		return "/admin/manage_qna/manage_qna_details";
+		return "/admin/manage_qna/manage_qna_reason";
 	}
 	
 	
 }
+
+

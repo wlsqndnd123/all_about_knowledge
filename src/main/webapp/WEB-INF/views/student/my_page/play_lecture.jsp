@@ -7,6 +7,7 @@ Desc : 사용자(학생)의 마이페이지 강의 재생
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"
     info = "" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,7 +25,10 @@ Desc : 사용자(학생)의 마이페이지 강의 재생
 
 		<script type = "text/javascript">
 			$(function() {
-		
+				$('video').on('loadeddata', function() {
+	                $('.ui.active.inverted.dimmer').removeClass('active').addClass('disabled');
+	                $('.ui.large.text.loader').removeClass('active').addClass('disabled');
+	            });
 			}); // ready
 		</script>
 	</head>
@@ -49,8 +53,13 @@ Desc : 사용자(학생)의 마이페이지 강의 재생
 				  <div class="active section">강의재생</div>
 				</div>
 				<div class="ui segment center aligned">
+				
+				  <div class="ui active inverted dimmer">
+				    <div class="ui large text loader">Loading</div>
+				  </div>
+				
 				<!-- 세션에 SUB_CODE랑 LEC_CODE 저장된 상태, fileName 쿼리 detail_lecture_mapper -->
-					<video src="http://localhost/all_about_knowledge/front/student/video/sample.mp4" controls></video>
+					<video src="http://localhost/all_about_knowledge/upload/${fileName}" controls> </video>
 				</div>
 			</div>
 		</article>

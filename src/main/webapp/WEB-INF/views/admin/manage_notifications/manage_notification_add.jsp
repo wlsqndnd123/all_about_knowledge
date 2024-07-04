@@ -3,7 +3,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+th,td,tr{font-size: 13px;}
+a {text-decoration: none;}
+.cursor{cursor: progress;}
+</style>
 <head>
 
     <meta charset="UTF-8">
@@ -40,7 +44,7 @@ font-size: 9px;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -88,6 +92,13 @@ font-size: 9px;
                                     </a>
                                 </li>
                                 </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -109,12 +120,10 @@ font-size: 9px;
                <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
-                <!-- 아이디 권한 정보  -->
-                <div></div>
-                
-                
                 <!-- 공지사항 정보 로드 -->
                 <div>
                 <table class="table table-hover">
@@ -172,6 +181,11 @@ font-size: 9px;
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function(){
+	  var adminId = '<%= session.getAttribute("adminid") %>';
+      
+      if (adminId == '' || adminId == 'null') {
+          location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+      }
 	  $.ajax({
 			url: "manage_notifi_recent.do",
 	        type: "GET",
@@ -198,7 +212,7 @@ font-size: 9px;
 		  history.back();
 	  })
   $("#btnwrite").click(function(){
-
+	  $("body").addClass("cursor");
 			// 이미지만 업로드하도록 설정
 			var file = $("#image").val();
 			var selectedExt = file.substring(file.lastIndexOf(".")+1);
@@ -219,6 +233,7 @@ font-size: 9px;
 			} // end if
 			
 			$("#frm").submit();
+			 $("#btnwrite").attr("disabled", true);
 			}); // click
   })
   function readURL(input) {

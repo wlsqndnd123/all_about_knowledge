@@ -1,5 +1,7 @@
 package kr.co.sist.aak.module.instructor.lectureManage.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,14 +17,18 @@ public class LectureController {
 	@Autowired(required = false)
 	private LectureService lecs;
 	
+	//강의관리 리스트
 	@GetMapping("/instructor/lectureManage/lectureList.do")
 	public String allLectureList(Model model) {
-		model.addAttribute("lecList",lecs);
 		
+		List<LectureDomain> list=lecs.lectureAll();
+		
+		model.addAttribute("lecList",list);
+		//System.out.println("----------------------------------"+list);
 		return "instructor/lectureManage/lectureList";
 	}
 	
-	
+	//강의관리 상세
 	@GetMapping("/instructor/lectureManage/lectureList_detail.do")
 	public String lectureList_detail(LectureDomain lecd, @RequestParam(defaultValue="LEC_000001") String lec_code, Model model) {
 		

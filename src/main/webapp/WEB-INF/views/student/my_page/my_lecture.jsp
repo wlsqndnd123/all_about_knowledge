@@ -18,6 +18,11 @@
 	    initializeTabs();
 	    loadDataForTab('first');
 	    bindEnterButton();
+	    
+	    $('table').on('loadeddata', function() {
+	        $('.ui.active.inverted.dimmer').removeClass('active').addClass('disabled');
+	        $('.ui.large.text.loader').removeClass('active').addClass('disabled');
+	    });
 	});
 	
 	function initializeTabs() {
@@ -43,9 +48,10 @@
 	    })
 	    .then(data => {
 	        updateTabContent(tabPath, data);
+	        $('table').trigger('loadeddata');
 	    })
 	    .catch(error => {
-	        alert('데이터를 로드 실패!');
+	        alert('데이터 로드 실패!');
 	    });
 	}
 	
@@ -81,7 +87,7 @@
 		                <button class="ui basic tiny button">문의</button>
 		            </td>
 		            <td class="single line">
-		                <button class="ui right labeled icon green basic button enter-button" data-subcode="\${lecture.subCode}" data-subtitle ="\${lecture.subTitle}">
+		                <button class="ui right labeled icon green basic button enter-button" data-percent="\${lecture.percent}" data-subcode="\${lecture.subCode}" data-subtitle ="\${lecture.subTitle}">
 		                    <i class="right arrow icon"></i> 입장
 		                </button>
 		            </td>
@@ -93,7 +99,8 @@
 	    $(document).off('click', '.enter-button').on('click', '.enter-button', function() {
 	        var subCode = $(this).data('subcode');
 	        var subTitle = $(this).data('subtitle');
-	        saveData({ subCode: subCode, subTitle: subTitle });
+	        var percent = $(this).data('percent');
+	        saveData({ subCode: subCode, subTitle: subTitle, percent: percent });
 	    });
 	}
 
@@ -120,6 +127,10 @@
     <a class="section">나의강의실</a>
     <i class="right chevron icon divider"></i>
     <div class="active section">나의강의</div>
+</div>
+
+<div class="ui active inverted dimmer">
+  <div class="ui large text loader">Loading</div>
 </div>
 
 <div class="ui top attached tabular menu">

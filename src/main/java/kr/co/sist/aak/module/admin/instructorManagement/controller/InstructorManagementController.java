@@ -10,6 +10,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -100,7 +102,10 @@ public class InstructorManagementController {
 		InstructorManagementVO imVO = new InstructorManagementVO();
 		imVO.setEducation(mr.getParameter("education"));
 		imVO.setEmail(mr.getParameter("email"));
-		
+		String key = "bys190";
+		String salt ="19911031";
+		TextEncryptor te = Encryptors.text(key, salt);
+		imVO.setPassword(te.encrypt(mr.getParameter("inst_id")));
 		imVO.setImage(fsName);
 		imVO.setInst_id(mr.getParameter("inst_id"));
 		imVO.setIntroduction(mr.getParameter("introduction"));
@@ -109,6 +114,8 @@ public class InstructorManagementController {
 		imVO.setPhone(mr.getParameter("phone"));
 		
 		ims.addInstructor(imVO);
+		InstructorManagementDomain imd = ims.instructorDetail(mr.getParameter("inst_id"));
+		model.addAttribute("imd", imd);
 
 	    String imageUrl = "all_about_knowledge/upload/" + fsName;
 	    boolean isImageAvailable = false;
@@ -150,7 +157,6 @@ public class InstructorManagementController {
 	public String searchInstructorList(Model model,HttpServletRequest request) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		String[] del_yn =  request.getParameterValues("del_yn");
-		System.out.println("===================================="+del_yn);
 		map.put("del_yns", del_yn);
 		List<InstructorManagementDomain> list = ims.searchAllInstructors(map);
 		model.addAttribute("instList", list);

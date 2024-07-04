@@ -50,6 +50,18 @@ public class QnaManagementDAO {
 		
 	}
 	
+	public QnaManagementDomain selectDetalDeletedQna(String qna_no)throws PersistenceException{
+		QnaManagementDomain qnaDomain = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		qnaDomain = ss.selectOne("kr.co.sist.aak.admin6.selectDetalDeletedQna", qna_no);
+		mbDAO.closeHanlder(ss);
+		
+		return qnaDomain;
+		
+		
+	}
+	
 
 	
 	public int updateQnaAnswer(QnaManagementVO qnaVO){
@@ -85,12 +97,10 @@ public class QnaManagementDAO {
 	public int deleteQna(QnaManagementVO qnaVO){
 		int cnt = 0;
 		
-
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAnswerAdmin",qnaVO);
+		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAdmin",qnaVO);
 		
-
 		mbDAO.closeHanlder(ss);
 
 		return cnt;
@@ -98,5 +108,17 @@ public class QnaManagementDAO {
 		
 	}
 	
-	
+	public int insertQnaDelete(QnaManagementVO qnaVO ){
+		int cnt = 0;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(true);
+		cnt = ss.insert("kr.co.sist.aak.admin6.insertQnaDeleteAdmin",qnaVO);
+		
+		mbDAO.closeHanlder(ss);
+
+		return cnt;
+		
+		
+	}
 }

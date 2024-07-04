@@ -4,6 +4,7 @@
 <html lang="en">
 <style>
 th,td,tr{font-size: 12px; text-align: center;}
+.pointer      { cursor: pointer; }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -85,6 +86,13 @@ th,td,tr{font-size: 12px; text-align: center;}
                                     </a>
                                 </li>
                                     </c:if>
+                                    <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -103,16 +111,14 @@ th,td,tr{font-size: 12px; text-align: center;}
              <div class="container" style="padding: 1rem">
              
              <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
-                <!-- 아이디 정보 -->
-                <div>
-                
-                </div>
-                <!-- 아이디 권한 정보  -->
-                <div>
+               <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
+                <hr  class="border border-primary border-1 opacity-50">
                 <!-- 퇴사|재직중인 강사 -->
                 <div>
                 <table class ="table table-hover">
@@ -152,14 +158,13 @@ th,td,tr{font-size: 12px; text-align: center;}
                     <div>
                     <form action="manage_instructor.do" id ="YorN" method="get">
                     <div class="form-check form-check-inline">
-  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  name="del_yn" value="N">
+  <input  style="zoom:0.7;" class="form-check-input" type="checkbox" id="N" name="del_yn" value="N">
   <label class="form-check-label" for="inlineCheckbox1">재직중</label>
 </div>
 <div class="form-check form-check-inline">
-  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  name="del_yn" value="Y">
+  <input  style="zoom:0.7;" class="form-check-input" type="checkbox"  id="Y" name="del_yn" value="Y">
   <label class="form-check-label" for="inlineCheckbox2"> 퇴사</label>
 </div>
-			<input type="submit" value="검색"/>
                     </form>
                     <table id="instructor" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
                     <thead>
@@ -171,7 +176,7 @@ th,td,tr{font-size: 12px; text-align: center;}
                     </thead>
                     <tbody>
                     <c:forEach var="list" items="${requestScope.instList }" varStatus="i">
-                    <tr onclick="changeUrl('${list.inst_id}')">
+                    <tr onclick="changeUrl('${list.inst_id}')" class="pointer">
                     <td><c:out value="${list.inst_id}"/> </td>
                     <td>${list.name}</td>
                     <td  style="text-align: center;"><c:out value="${list.subject_count }"/></td>
@@ -192,6 +197,17 @@ th,td,tr{font-size: 12px; text-align: center;}
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
  $(function(){
+	 var adminId = '<%= session.getAttribute("adminid") %>';
+     
+     if (adminId == '' || adminId == 'null') {
+         location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+     }
+     $("#N").change(function(){
+    	 $("#YorN").submit();
+     })
+     $("#Y").change(function(){
+    	 $("#YorN").submit();
+     })
 	    $.ajax({
 	        url: "manage_inst_subPercentage.do", 
 	        type: "GET",
@@ -256,6 +272,17 @@ th,td,tr{font-size: 12px; text-align: center;}
 		var url=url;
 		window.location.href='manage_instructor_details.do?inst_id='+url;
 	}
+
+ var urlParams = new URLSearchParams(window.location.search);
+ var del_yn_values = urlParams.getAll('del_yn');
+
+ // Set checkbox states based on query parameters
+ $('input:checkbox[name="del_yn"]').each(function() {
+     if (del_yn_values.indexOf(this.value) > -1) {
+         $(this).prop('checked', true);
+     }
+ });
+ 
  </script>
 </body>
 

@@ -11,6 +11,7 @@ vertical-align: middle;
 font-size: 11px;
 text-align: center;
 }
+th,td,tr{font-size: 12px; text-align: center;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -42,7 +43,7 @@ text-align: center;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -89,6 +90,13 @@ text-align: center;
                                     </a>
                                 </li>
                                 </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -107,6 +115,14 @@ text-align: center;
              <!-- row -->
         <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
+                <div>
+                <table class ="table table-hover">
+                <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
+                </table>
+                </div>
+                <hr  class="border border-primary border-1 opacity-50">
                 <div>
                 <table class ="table table-hover side">
                 <tbody id ="catSubCnt">
@@ -149,8 +165,12 @@ text-align: center;
  <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
         $(function() {
-        	
-        	 /* $("#catbtn").click(function() { */
+        	 var adminId = '<%= session.getAttribute("adminid") %>';
+             
+             if (adminId == '' || adminId == 'null') {
+                 location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+             }
+         
                 
                  $.ajax({
                      url: "manage_edu_cat_list.do",

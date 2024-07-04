@@ -35,7 +35,7 @@ th,td,tr{font-size: 12px; text-align: center;}
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -83,6 +83,13 @@ th,td,tr{font-size: 12px; text-align: center;}
                                     </a>
                                 </li>
                                     </c:if>
+                                    <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -101,12 +108,10 @@ th,td,tr{font-size: 12px; text-align: center;}
          <div class="container" style="padding: 1rem">
                 <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <div>
-                <!-- 아이디 정보 -->
-                </div>
-                <!-- 아이디 권한 정보  -->
-                <div>
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
                 </div>
                 </div>
@@ -125,48 +130,50 @@ th,td,tr{font-size: 12px; text-align: center;}
               <div style="text-align: center; margin-top: 50px;" >
                          <h2 class="tm-block-title d-inline-block">강사 추가 완료</h2>
                             </div>
-                            <div style="text-align: center;"  class="mb-3" >
-                            <table class="table table-hover" style=" width:95%; text-align: center;">
+                           <div style="text-align: center; margin: auto;">
+                            <div class="card" style="width: 200px;height: 200px; margin: auto; margin-bottom: 50px; margin-top: 50px;">
+                            <img src="http://localhost/all_about_knowledge/upload/${ imd.image }" class="card-img-top" alt="..."/>
+                            </div>
+                            </div>
+                            <div>
+                            <table class="table table-hover">
                             <tr>
-  							<td style="vertical-align: middle;">강사 이미지</td>
-  				<td><input class="form-control" type="file" id="image" name ="image"></td>
+                            <td>이름</td>
+                            <td><c:out value="${ imd.name }"/> </td>
                             </tr>
                             <tr>
-                            <td style="vertical-align: middle;">강사 아이디</td>
-                <td><input type="email" readonly="readonly" class="form-control" id="inst_id" value ="${requestScope.inst_id }" name ="inst_id"/></td>
+                            <td>강사아이디</td>
+                            <td><c:out value="${ imd.inst_id }"/></td>
                             </tr>
                             <tr>
-                            <td style="vertical-align: middle;">이름</td>
-                 <td><input type="email" class="form-control" id="name" name ="name"/></td>
+                            <td>자기소개</td>
+                            <td><c:out value="${ imd.introduction }"/></td>
                             </tr>
                             <tr>
-                            <td style="vertical-align: middle;">연락처</td>
-                    <td><input type="email" class="form-control" id="phone" name ="phone" maxlength="11"/></td>
+                            <td>연락처</td>
+                            <td><c:out value="${ imd.phone }"/></td>
                             </tr>
                             <tr>
-                            <td style="vertical-align: middle;">이메일</td>
-                   <td><input type="email" class="form-control" id="email" name ="email"></td>
-                             </tr>
-                            <tr>
-                            <td style="vertical-align: middle;">강사 학력사항</td>
-                <td><input type="email" class="form-control" id="education" name ="education"></td>
+                            <td>이메일</td>
+                            <td><c:out value="${ imd.email }"/></td>
                             </tr>
                             <tr>
-                            <td style="vertical-align: middle;">주력 과목</td>
-                   <td><input type="email" class="form-control" id="major_subject" name ="major_subject"></td>
+                            <td>강사 학력사항</td>
+                            <td><c:out value="${ imd.education }"/></td>
                             </tr>
                             <tr>
-                            <td style="vertical-align: middle;">자기소개</td>
-                   <td><input type="email" class="form-control" id="introduction" name ="introduction"></td>
+                            <td>주력 과목</td>
+                            <td><c:out value="${ imd.major_subject }"/></td>
                             </tr>
-                            
                             </table>
                             </div>
                             <div style="text-align: center;">
                             <input type="button" id ="btnSubmit" value="강사추가" class="btn btn-info btn-sm ">
                             </div>
                             <div>
+                            <a href="manage_instructor.do">
 	<input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
+                            </a>
 	</div>
 	</div>
 	</div>
@@ -179,60 +186,15 @@ th,td,tr{font-size: 12px; text-align: center;}
    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
   <script type="text/javascript">
   $(function() {
-    function checknull() {
-        let isValid = true;
-        $('#frm input[type="email"], #frm input[type="file"]').each(function() {
-            if ($(this).val().trim() === '') {
-                isValid = false;
-                alert($(this).attr('name') + ' 입력값이 비어 있습니다.');
-                $(this).focus();
-                return false;
-            }
-        });
-        return isValid;
-    }
-
+	  var adminId = '<%= session.getAttribute("adminid") %>';
+      
+      if (adminId == '' || adminId == 'null') {
+          location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+      }
+  }
     $("#btnback").click(function() {
         history.back();
     });
-
-    $("#btnSubmit").click(function() {
-        var file = $("#image").val();
-        var selectedExt = file.substring(file.lastIndexOf(".") + 1).toLowerCase();
-
-        var extArr = ["png", "jpg", "gif", "jpeg", "bmp"];
-        var flag = false;
-
-        for (var i = 0; i < extArr.length; i++) {
-            if (selectedExt === extArr[i]) {
-                flag = true;
-                break;
-            }
-        }
-
-        if (!flag) {
-            alert(selectedExt + "는 업로드 가능한 파일의 확장자가 아닙니다.");
-            return;
-        }
-
-        if (checknull()) {
-            $("#frm").submit();
-        }
-    });
-
-    $('#frm input').on('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            let inputs = $('#frm input[type="email"], #frm input[type="file"]');
-            let idx = inputs.index(this);
-            if (idx < inputs.length - 1) {
-                inputs[idx + 1].focus();
-            } else {
-                inputs[0].focus();
-            }
-        }
-    });
-  });
 </script>
 
     <!-- https://getbootstrap.com/ -->

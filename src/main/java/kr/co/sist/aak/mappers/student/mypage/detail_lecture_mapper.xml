@@ -18,13 +18,12 @@
 		WHERE l.SUB_CODE = #{subCode} AND l.LEC_CODE = #{lecCode}
     </select>
 	
-<!-- 	<select id="selectDeailLectureInfo" parameterType="map" resultType="DetailLectureVO">
-	  SELECT s.INTRO , s.GOAL , s.IMAGE , ii.NAME , ii.INTRODUCTION , ii.IMAGE , l.TITLE , l.LEC_CODE , ls.STATUS 
+	<select id="selectDeailLectureInfo" parameterType="String" resultType="DetailLectureVO">
+	  SELECT s.INTRO , s.GOAL , s.IMAGE , ii.NAME , ii.INTRODUCTION , ii.IMAGE, sc.SUB_TITLE as subTitle
 	  FROM SUBJECT s
-	  JOIN SUB_INSTRUCTOR si ON s.SUB_CODE = si.SUB_CODE 
+	  JOIN SUB_INSTRUCTOR si ON s.SUB_CODE = si.SUB_CODE
+	  JOIN SUBJECT_CODE sc ON sc.SUB_CODE = s.SUB_CODE 
 	  JOIN INST_INFO ii ON si.INST_ID = ii.INST_ID 
-	  JOIN LECTURE l ON si.SUB_CODE = l.SUB_CODE 
-	  JOIN LEC_STATUS ls ON l.SUB_CODE = ls.SUB_CODE
-	  WHERE s.SUB_CODE = #{subCode} AND ls.STD_ID = #{stdId}
-	</select> -->
+	  WHERE s.SUB_CODE = #{subCode}
+	</select>
 </mapper>
