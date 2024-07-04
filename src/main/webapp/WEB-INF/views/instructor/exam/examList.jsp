@@ -326,13 +326,25 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- main -->
+<!-- main -->
 <div>
     <c:catch var="e">
         <form>
             <div id="test">
-            
-                과목:<input type="text" name="SUB_CODE" class="sub" id="sub" value="SUB_000001"  readonly/>
-             
+                <!-- Dropdown for SUB_CODE selection -->
+                <label for="subCode">Select Subject:</label>
+                <select id="subCode" name="SUB_CODE">
+                    <option value="SUB_000001">Java 왕기초 4주 단기완성</option>
+                    <option value="SUB_000002">C언어 기초문법</option>
+                    <option value="SUB_000003">파이썬 공부하자</option>
+                    <option value="SUB_000004">벼락치기 JavaScript</option>
+                    <option value="SUB_000005">운영체제의 종류</option>
+                    <option value="SUB_000006">C var 수현</option>
+                    <option value="SUB_000007">진C화로</option>
+                </select>
+                <button type="submit">조회</button> <!-- Submit button to fetch exams -->
+                
+                <!-- Display exam details -->
                 <c:choose>
                     <c:when test="${empty examlist}">
                         <p>문제가 없습니다.</p>
@@ -340,16 +352,15 @@
                     <c:otherwise>
                         <c:forEach var="exam" items="${examlist}">
                             <div class="test-box">
-                            <textarea >${exam.CONTENT }</textarea><br>
-                            1번 보기 <input type="text" value="${exam.EX_1}"/><input type="radio" name="SOLUTION1" /><br>
-        2번 보기 <input type="text" value="${exam.EX_2}"/><input type="radio" name="SOLUTION1" /><br>
-        3번 보기 <input type="text" value="${exam.EX_3}"/><input type="radio" name="SOLUTION1" /><br>
-        4번 보기 <input type="text" value="${exam.EX_4}"/><input type="radio" name="SOLUTION1" /><br>
-        정답: <input type="text" value="${exam.SOLUTION}"/><br>
-        번호: <input type="text" value="${exam.q_NO}"/><br> 
-    </div>
+                                <textarea>${exam.CONTENT}</textarea><br>
+                                1번 보기 <input type="text" value="${exam.EX_1}"/><input type="radio" name="SOLUTION1" /><br>
+                                2번 보기 <input type="text" value="${exam.EX_2}"/><input type="radio" name="SOLUTION1" /><br>
+                                3번 보기 <input type="text" value="${exam.EX_3}"/><input type="radio" name="SOLUTION1" /><br>
+                                4번 보기 <input type="text" value="${exam.EX_4}"/><input type="radio" name="SOLUTION1" /><br>
+                                정답: <input type="text" value="${exam.SOLUTION}"/><br>
+                                번호: <input type="text" value="${exam.q_NO}"/><br> 
+                            </div>
                         </c:forEach>
-                      
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -358,10 +369,10 @@
     <c:if test="${not empty e}">
         조회 중 오류가 발생했습니다.
     </c:if>
-    
 </div>
 <a href="exam_write.do"><button class="btn btn-dark btn-sm">문제작성</button></a>
 <a href="exam_update.do"><button>문제수정</button></a>
+<!-- /main -->
 <!-- /main -->
                
 

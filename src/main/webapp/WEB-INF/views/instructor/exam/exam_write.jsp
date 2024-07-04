@@ -55,28 +55,38 @@
 </style>
 <script type="text/javascript">
     $(function() {
-    	 var questionCount = 1; // Start with 1 because one question is already present in the HTML
-
-    	    $(document).on("click", "#btn-add", function() {
-    	        // Check if the maximum limit (3 questions) is reached
-    	        if (questionCount >= 3) {
-    	            alert("최대 3개의 문제까지 추가할 수 있습니다.");
-    	            return;
-    	        }
-
-    	        var clonedBox = $(".test-box").first().clone(); // Clone the first .test-box
-    	        clonedBox.find("textarea, input[type='text']").val(""); // Clear input values in the cloned box
-    	        $("#test").append(clonedBox); // Append the cloned box to the #test section
-
-    	        // Increment the question count
-    	        questionCount++;
-    	    });
-
-        $(document).on("click", "#btn-end", function() {
-        	alert("작성완료")
-            $("#frm").attr("action", "exam_write_pr.do");
-            $("#frm").submit();
+        // Q_NO 자동 증가를 위한 초기값 설정
+        var startQNo = ${requestScope.Q_NO};
+        
+        // 페이지 로드 시 Q_NO 자동 설정
+        $("input[name='Q_NO[]']").each(function(index) {
+            $(this).val(startQNo + index);
         });
+
+        // 작성완료 버튼 클릭 이벤트
+        $(document).on("click", "#btn-end", function() {
+            // 폼 데이터 유효성 검사
+            if (validateForm()) {
+                alert("작성완료");
+                $("#frm").attr("action", "exam_write_pr.do");
+                $("#frm").submit();
+            }
+        });
+
+        // 폼 유효성 검사 함수
+        function validateForm() {
+            var isValid = true;
+            $(".test-box").each(function(index) {
+                var content = $(this).find("textarea[name='CONTENT[]']").val();
+                var solution = $(this).find("input[name^='SOLUTION']:checked").val();
+                if (!content || !solution) {
+                    alert((index + 1) + "번 문제의 내용과 정답을 모두 입력해주세요.");
+                    isValid = false;
+                    return false;
+                }
+            });
+            return isValid;
+        }
     });
 </script>
 </head>
@@ -342,23 +352,42 @@
 <div class="container">
     <section class="box">
         <div class="box-contents">
-            <form action="exam.write_pr.do" id="frm" method="post">
+            <form action="exam_write_pr.do" id="frm" method="post">
                 <div id="test">
                     <h3>시험출제</h3>
-                   
                     <input type="hidden" name="SUB_CODE" value="SUB_000001">
+                    
+                    <!-- 첫 번째 문제 -->
                     <div class="test-box">
-                      번호 <input type="text" value="${requestScope.Q_NO }" name="Q_NO"/><br>
-                        문제 : <textarea name="CONTENT" placeholder="문제를 입력하세요"></textarea> <br>
-                        1번 보기 <input type="text" name="EX_1" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="1" /><br>
-                        2번 보기 <input type="text" name="EX_2" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="2" /><br>
-                        3번 보기 <input type="text" name="EX_3" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="3" /><br>
-                        4번 보기 <input type="text" name="EX_4" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION" value="4" /><br>
+                        번호 <input type="text" name="Q_NO[]" readonly/><br>
+                        문제 : <textarea name="CONTENT[]" placeholder="문제를 입력하세요"></textarea> <br>
+                        1번 보기 <input type="text" name="EX_1[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[0]" value="1" /><br>
+                        2번 보기 <input type="text" name="EX_2[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[0]" value="2" /><br>
+                        3번 보기 <input type="text" name="EX_3[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[0]" value="3" /><br>
+                        4번 보기 <input type="text" name="EX_4[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[0]" value="4" /><br>
                     </div>
-                   
+                    
+                    <!-- 두 번째 문제 -->
+                    <div class="test-box">
+                        번호 <input type="text" name="Q_NO[]" readonly/><br>
+                        문제 : <textarea name="CONTENT[]" placeholder="문제를 입력하세요"></textarea> <br>
+                        1번 보기 <input type="text" name="EX_1[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[1]" value="1" /><br>
+                        2번 보기 <input type="text" name="EX_2[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[1]" value="2" /><br>
+                        3번 보기 <input type="text" name="EX_3[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[1]" value="3" /><br>
+                        4번 보기 <input type="text" name="EX_4[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[1]" value="4" /><br>
+                    </div>
+                    
+                    <!-- 세 번째 문제 -->
+                    <div class="test-box">
+                        번호 <input type="text" name="Q_NO[]" readonly/><br>
+                        문제 : <textarea name="CONTENT[]" placeholder="문제를 입력하세요"></textarea> <br>
+                        1번 보기 <input type="text" name="EX_1[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[2]" value="1" /><br>
+                        2번 보기 <input type="text" name="EX_2[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[2]" value="2" /><br>
+                        3번 보기 <input type="text" name="EX_3[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[2]" value="3" /><br>
+                        4번 보기 <input type="text" name="EX_4[]" placeholder="보기를 입력하세요"/> <input type="radio" name="SOLUTION[2]" value="4" /><br>
+                    </div>
                 </div>
                 <div class="text-end">
-                    <input type="button" id="btn-add" value="문제추가" class="btn btn-sm btn-info"/>
                     <input type="button" id="btn-end" value="작성완료" class="btn btn-info btn-sm"/>
                 </div>
             </form>
