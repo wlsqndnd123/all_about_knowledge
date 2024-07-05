@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.student.mypage.my_lecture">
     <!-- 진행 중인 강의 -->
     <select id="selectProcessLectureList" parameterType="String" resultType="MyLectureVO">
-		SELECT cc.CAT_NAME as catName, 
+		SELECT DISTINCT cc.CAT_NAME as catName, 
 		       sc.SUB_TITLE as subTitle, 
 		       ii.NAME, 
 		       ss.SUB_CODE as subCode,
@@ -29,7 +29,7 @@
     
     <!-- 완료된 강의 -->
     <select id="selectCompleteLectureList" parameterType="String" resultType="MyLectureVO">
-		SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.SUB_CODE as subCode,
+		SELECT DISTINCT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.SUB_CODE as subCode,
 		    (COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 		    CASE 
 		        WHEN s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
