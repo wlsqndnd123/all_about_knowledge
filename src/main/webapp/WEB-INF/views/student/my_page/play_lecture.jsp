@@ -38,12 +38,6 @@ Desc : 사용자(학생)의 마이페이지 강의 재생
                 url: '/all_about_knowledge/mypage/lecture_play.do',
                 data: {
                     time: currentTime
-                },
-                success: function(response) {
-                    console.log('비디오 재생 정보 전송 성공');
-                },
-                error: function(xhr, status, error) {
-                    console.error('비디오 재생 정보 전송 실패:', error);
                 }
             });
         });
