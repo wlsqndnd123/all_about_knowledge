@@ -36,13 +36,23 @@ Desc : 사용자(학생)의 정보를 수정하는 페이지
 				          }]
 				      },
 				      
-/* 				      regex: {
-				        identifier  : 'name',
+				      tel: {
+				        identifier  : 'tel',
 				        rules: [{
-				            type   : 'regExp[/^[ㄱ-ㅎ|가-힣]{2,10}$/]',
-				            prompt : '이름은 한글 2-10자 이내로 입력가능합니다'
+				            type   : 'regExp[/^[0-9]{11}$/]',
+				            prompt : '전화번호는 숫자만 11자리로 입력가능합니다.'
 				          }]
-				      } */
+				      },
+				      
+				      match: {
+				          identifier  : 'confirmPass',
+				          rules: [
+				            {
+				              type   : 'match[password]',
+				              prompt : '비밀번호 확인 불일치'
+				            }
+				          ]
+				        },
 				    }
 				  });
 				

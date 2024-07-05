@@ -39,6 +39,7 @@
  <typeAlias alias="MyExamVO" type="kr.co.sist.aak.domain.student.vo.MyExamVO"/>
  <typeAlias alias="DetailLectureVO" type="kr.co.sist.aak.domain.student.vo.DetailLectureVO"/>
  <typeAlias alias="WithdrawalVO" type="kr.co.sist.aak.domain.student.vo.WithdrawalVO"/>
+ <typeAlias alias="PlayLectureVO" type="kr.co.sist.aak.domain.student.vo.PlayLectureVO"/>
  
  <typeAlias type="kr.co.sist.aak.domain.student.UserNoticeDomain" alias="UserNoticeDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.UserLectureDomain" alias="UserLectureDomain"/>
@@ -111,6 +112,7 @@
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/interest_lecture_mapper.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/my_lecture_mapper.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/detail_lecture_mapper.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/student/mypage/play_lecture_mapper.xml"/>
     
     <mapper resource="kr/co/sist/aak/mappers/student_mapper.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student_mapper3.xml"/>

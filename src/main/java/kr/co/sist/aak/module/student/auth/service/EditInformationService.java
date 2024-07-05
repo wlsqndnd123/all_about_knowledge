@@ -22,7 +22,11 @@ public class EditInformationService {
 	public void updateInformation(String stdId, String password, String tel, String email) {
         JoinVO joinVO = new JoinVO();
         joinVO.setStdId(stdId);
-        joinVO.setPassword(passwordEncoder.encode(password));
+        if (password != null && !password.isEmpty()) {
+            joinVO.setPassword(passwordEncoder.encode(password));
+        } else {
+            joinVO.setPassword(null);
+        }
         joinVO.setTel(tel);
         joinVO.setEmail(email);
         editInformationRepository.updateInformation(joinVO);
