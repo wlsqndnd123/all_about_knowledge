@@ -16,7 +16,6 @@ import kr.co.sist.aak.domain.instructor.vo.LectureLessonVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
 import kr.co.sist.aak.domain.student.domain.InstructorDomain;
 import kr.co.sist.aak.util.MybatisDAO;
-import oracle.net.aso.m;
 
 @Repository
 public class LectureDAO {
@@ -88,7 +87,7 @@ public class LectureDAO {
 	}
 
 	//강의목차
-	public LectureLessonVO lectureLesson(String sub_code, String lec_code)   {
+	public LectureLessonVO lectureLesson(String sub_code)   {
 		
 		LectureLessonVO leclessVO=null;
 		

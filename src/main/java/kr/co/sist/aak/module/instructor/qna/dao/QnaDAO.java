@@ -1,13 +1,14 @@
 package kr.co.sist.aak.module.instructor.qna.dao;
 
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
-import kr.co.sist.aak.domain.instructor.LectureDomain;
 import kr.co.sist.aak.domain.instructor.QnaDomain;
 import kr.co.sist.aak.domain.instructor.vo.QnaVO;
 import kr.co.sist.aak.util.MybatisDAO;
@@ -47,13 +48,14 @@ public class QnaDAO {
 	
 	
 	//문의답변
-	public int updateAnswer(String qna_no){
+	public int updateAnswer(QnaVO qVO){
 		int cnt = 0;
 		
 		MybatisDAO mbDao=MybatisDAO.getInstance();
-		SqlSession ss= mbDao.getMyBatisHandler(false);
+		SqlSession ss= mbDao.getMyBatisHandler(true);
 		
-		cnt=ss.update("kr.co.sist.aak.instructor.answerQna",qna_no);
+		System.out.println("======updateAnswer======"+qVO);
+		cnt=ss.update("kr.co.sist.aak.instructor.answerQna",qVO);
 		
 		mbDao.closeHanlder(ss);
 		

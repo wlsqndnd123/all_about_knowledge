@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.SubjectManagementDomain;
+import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
 import kr.co.sist.aak.domain.admin.vo.SubjectManagementVO;
 import kr.co.sist.aak.module.admin.lectureManagement.service.LectureManagementService;
 
@@ -47,20 +49,38 @@ public class LectureManagementController {
 		
 		int cnt=0;	
 
-		cnt=lms.modyifyMember(smVO);
+		cnt=lms.modyifySubject(smVO);
 		model.addAttribute("cnt",cnt);
 		model.addAttribute("sub_code",smVO.getSub_code());
 		
-		return "/admin/manage_lecture/manage_member_details";
+		return "/admin/manage_lecture/manage_lecture_details";
 	}
 	
 	
+	@GetMapping("/manage_lecture_reason.do")
+	public String reasonSubject() {
+	
+		return "/admin/manage_lecture/manage_lecture_reason";
+	}
+	
+	@PostMapping("/manage_lecture_refuse.do")
+	public String refuseSubject(SubjectManagementVO smVO, Model model) {
+		
+		  int cnt =0;
+		 
+		  cnt=lms.refuseSubject(smVO); 
+		  model.addAttribute("cnt",cnt);
+		 
+
+		return "/admin/manage_qna/manage_qna_reason";
+	}
 	
 	
+	@GetMapping("/manage_lecture_video.do")
+	public String lectureVideo() {
 	
-	
-	
-	
+		return "/admin/manage_lecture/manage_lecture_video";
+	}
 	
 	
 	

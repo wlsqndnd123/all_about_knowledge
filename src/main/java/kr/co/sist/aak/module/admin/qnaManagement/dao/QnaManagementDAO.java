@@ -64,7 +64,7 @@ public class QnaManagementDAO {
 	
 
 	
-	public int updateQnaAnswer(QnaManagementVO qnaVO){
+	public int updateQnaAnswer(QnaManagementVO qnaVO)throws PersistenceException{
 		int cnt = 0;
 
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
@@ -78,7 +78,7 @@ public class QnaManagementDAO {
 		
 	}
 	
-	public int insertQnaAnswer(QnaManagementVO qnaVO){
+	public int insertQnaAnswer(QnaManagementVO qnaVO)throws PersistenceException{
 		int cnt = 0;
 		int cnt2 = 0;
 
@@ -94,12 +94,12 @@ public class QnaManagementDAO {
 		
 	}
 	
-	public int deleteQna(QnaManagementVO qnaVO){
+	public int deleteQna(QnaManagementVO qnaVO)throws PersistenceException{
 		int cnt = 0;
 		
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
 		SqlSession ss = mbDAO.getMyBatisHandler(true);
-		cnt = ss.insert("kr.co.sist.aak.admin6.deleteQnaAdmin",qnaVO);
+		cnt = ss.update("kr.co.sist.aak.admin6.deleteQnaAdmin",qnaVO);
 		
 		mbDAO.closeHanlder(ss);
 
@@ -108,7 +108,7 @@ public class QnaManagementDAO {
 		
 	}
 	
-	public int insertQnaDelete(QnaManagementVO qnaVO ){
+	public int insertQnaDelete(QnaManagementVO qnaVO )throws PersistenceException{
 		int cnt = 0;
 		
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
@@ -118,7 +118,23 @@ public class QnaManagementDAO {
 		mbDAO.closeHanlder(ss);
 
 		return cnt;
-		
-		
+
 	}
+	
+	public int selectNewQna() throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.selectOne("kr.co.sist.aak.admin6.selectNewQna");
+		mbDAO.closeHanlder(ss);
+		
+		
+		return cnt;
+	}
+	
+	
+	
+	
+	
 }

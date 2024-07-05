@@ -16,7 +16,7 @@ public class DashBoardService {
 	
 
 	public DashBoardDomain searchDataCount(){
-		DashBoardDomain dbDomain = null;
+		DashBoardDomain dbDomain = new DashBoardDomain();
 		try {
 			dbDomain.setAllmember_count(dmDAO.selectCountAllMember());
 			dbDomain.setAllInstructor_count(dmDAO.selectCountAllInstructor());

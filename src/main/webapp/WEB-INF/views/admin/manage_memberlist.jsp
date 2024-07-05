@@ -13,6 +13,31 @@ width: 15vw;height: auto;
 width: 15vw;height: auto;
 }
 </style>
+
+<style>
+        .notification-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        .notification-container {
+            position: relative;
+        }
+        .blinking {
+            animation: blinking 1s infinite;
+        }
+        @keyframes blinking {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,21 +66,22 @@ width: 15vw;height: auto;
 </head>
 
 <body id="reportsPage">
-    <div class="" id="home">
+   <div class="" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
                         <a class="navbar-brand" href="adminindex.do">
-                            <h3 class="tm-site-title mb-0">All About Knowledge</h3>
+                            <h2 class="tm-site-title mb-0">All About Knowledge</h2>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto">
-	<c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
+                               <c:if test="${sessionScope.adminPermission.category_management == 'Y'}">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#void" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">교육과목관리
@@ -66,38 +92,47 @@ width: 15vw;height: auto;
                                         <a class="dropdown-item" href="manage_lecture.do">강의신청리스트</a>
                                     </div>
                                 </li>
-	</c:if>
-	<c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
-                                <li class="nav-item ">
-                                    <a class="nav-link active" href="manage_memberlist.do">
-                                        회원 관리
-                                    </a>
+                                </c:if>
+                                	<c:if test="${sessionScope.adminPermission.member_management == 'Y'}">
+                             <li class="nav-item active" >
+                                    <a class="nav-link " href="manage_memberlist.do">회원 관리
+                                        </a>
+                                        
                                 </li>
-                                    </c:if>
+                                </c:if>
                                 <c:if test="${sessionScope.adminPermission.instructor_management == 'Y'}">
-                                <li class="nav-item" >
+                                <li class="nav-item " >
                                     <a class="nav-link " href="manage_instructor.do">강사 관리
                                         </a>
                                 </li>
-                                        </c:if>
-
-                                  <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
-                                <li class="nav-item ">
+								</c:if>
+								<c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_qna.do" >문의 관리
+                                    </a>
                                     
-                                    <a class="nav-link " href="manage_qna.do">문의 관리</a>
                                 </li>
-                                    </c:if>
-                                  <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
+                                </c:if>
+                                <c:if test="${sessionScope.adminPermission.notice_management == 'Y'}">
+                                
                                 <li class="nav-item ">
                                     <a class="nav-link " href="manage_notification.do">
                                         공지사항 관리
                                     </a>
                                 </li>
-                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.auth == 'SUPER'}">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="manage_admin.do">
+                                        관리자 관리
+                                    </a>
+                                </li>
+                                </c:if>
                             </ul>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex" href="admin_index.do">
+                                    <a class="nav-link d-flex" href="admin_index_logout.do">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
                                         <span>Logout</span>
                                     </a>
@@ -116,12 +151,14 @@ width: 15vw;height: auto;
               <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <!-- 아이디 정보 -->
                 <div>
-                
-                </div>
                 <!-- 아이디 권한 정보  -->
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
+                
+                </div>
                 <div></div>
                 <!-- 회원 -->
                 <div>
@@ -134,10 +171,18 @@ width: 15vw;height: auto;
                 </div>
                 <hr  class="border border-primary border-1 opacity-50">
                 
-        		<p id="newUsersCount">Loading...</p>
-               <%--  <div class="myChart">
-                <canvas id ="myChart"></canvas>
-                </div> --%>
+                <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                <!-- -----알람 view------ -->
+        		<div class="notification-container">
+                <table class="table table-hover">
+                    <tbody id="newQna"></tbody>
+                </table>
+            	</div>
+                </c:if>
+              
+              
+              
+              
              </div>
              
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
@@ -167,7 +212,7 @@ width: 15vw;height: auto;
                     </thead>
                     <tbody>
                     <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
-                    <tr onclick="changeUrl('${mmd.std_id}')">
+                    <tr onclick="changeUrl('${mmd.std_id},${mmd.del_yn}')">
                     <td style="text-align: center;"><c:out value="${mmd.std_id}"/> </td>
                     <td style="text-align: center;"><c:out value="${mmd.name}"/></td>
                      <c:choose>
@@ -196,10 +241,19 @@ width: 15vw;height: auto;
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
  
+ <!-- -----알람 메소드------ -->
  $(document).ready(function() {
-	    /* function fetchMemberCounts() {
+	    let previousQnaCount = null;
+	    let fetchCount = 0; // 요청 횟수를 추적하는 변수
+	    const maxFetchCount = 10; // 최대 요청 횟수
+
+	    function fetchQnaCounts() {
+	        if (fetchCount >= maxFetchCount) {
+	            clearInterval(fetchInterval); // 최대 요청 횟수에 도달하면 간격 타이머를 중지
+	            return;
+	        }
 	        $.ajax({
-	            url: "manage_member_pre.do",
+	            url: "manage_qna_new.do",
 	            type: "GET",
 	            dataType: "json",
 	            error: function(xhr, status, error) {
@@ -207,23 +261,37 @@ width: 15vw;height: auto;
 	            },
 	            success: function(jsonObj) {
 	                console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
-	                $("#preMember").empty();
-	                if (jsonObj && jsonObj.p !== undefined && jsonObj.n !== undefined) { // 응답이 유효한지 확인
-	                    var output = "<tr><td>현재 회원 수: " + jsonObj.p + "</td></tr>";
-	                    output += "<tr><td>탈퇴 한 회원 수: " + jsonObj.n + "</td></tr>";
-	                    $("#preMember").html(output);
+	                $("#newQna").empty();
+	                if (jsonObj.cnt !== undefined) { // 응답이 유효한지 확인
+	                    var output = "<tr><td>오늘의 문의: " + jsonObj.cnt + "</td></tr>"; 
+	                    $("#newQna").html(output);
+	                    
+	                    // 이전 데이터와 비교하여 알림 표시
+	                    if (previousQnaCount !== null && previousQnaCount !== jsonObj.cnt) {
+	                        showNotification();
+	                    }
+	                    previousQnaCount = jsonObj.cnt; // 이전 데이터를 현재 데이터로 갱신
 	                } else {
 	                    console.error('Invalid JSON response');
 	                }
+	                fetchCount++; // 요청 횟수 증가
 	            }
 	        });
 	    }
 
-	    // 초기 데이터 로드
-	    fetchMemberCounts();
+	    function showNotification() {
+	        let notificationDot = $('<div class="notification-dot blinking"></div>');
+	        $("#newQna").append(notificationDot);
+	        setTimeout(function() {
+	            notificationDot.remove();
+	        }, 5000); // 5초 후에 알림 제거
+	    }
 
-	    // (10초)마다 데이터 갱신
-	    setInterval(fetchMemberCounts, 10000); */
+	    // 초기 데이터 로드
+	    fetchQnaCounts();
+
+	    // (60초)마다 데이터 갱신
+	    const fetchInterval = setInterval(fetchQnaCounts, 60000);
 	});
  
  
@@ -247,37 +315,9 @@ width: 15vw;height: auto;
 	            }
 	        }
 	    }); 
-	    
-	    $.ajax({
-	        url: "manage_member_pre.do",
-	        type: "GET",
-	        dataType: "json",
-	        error: function(xhr, status, error) {
-	            console.error('AJAX request failed:', xhr.status, xhr.responseText);
-	        },
-	        success: function(jsonObj) {
-	            console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
-	            $("#preMember").empty();
-	            if (jsonObj && jsonObj.p !== undefined && jsonObj.n !== undefined) { // 응답이 유효한지 확인
-	                var output = "<tr><td>현재 회원 수: " + jsonObj.p + "</td></tr>";
-	                output += "<tr><td>탈퇴 한 회원 수: " + jsonObj.n + "</td></tr>";
-	                $("#preMember").html(output);
-	            } else {
-	                console.error('Invalid JSON response');
-	            }
-	        }
-	    }); 
 
-	    /* var selectedValue = localStorage.getItem('selectedStatus');
-	    if (selectedValue) {
-	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
-	    }
 
-	    $("input[name='status']").change(function() {
-	        var selectedValue = $(this).val();
-	        localStorage.setItem('selectedStatus', selectedValue);  
-	        $("#YorN").submit(); 
-	    }); */
+	   
 
 	    $("#member").DataTable({
 	    	language: {
@@ -293,169 +333,28 @@ width: 15vw;height: auto;
 	    
 	});
  });
- function changeUrl(url){
-		var url=url;
-		window.location.href='manage_member_details.do?flag=0&std_id='+url;
+ function changeUrl(data){
+	 	var parts = data.split(',');
+		var std_id = parts[0];
+	 	var del_yn = parts[1];
+		
+		if(del_yn == 'N'){
+		window.location.href='manage_member_details.do?flag=0&std_id='+std_id;
+		}
+		else if(del_yn == 'Y'){
+			 var popupWidth = 400;
+			    var popupHeight = 300;
+			    var left = (screen.width - popupWidth) / 2;
+			    var top = (screen.height - popupHeight) / 2;
+			var popup = window.open('manage_member_reason.do?std_id=' + std_id, "VideoPopup", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
+		}
+		
+		
+		
 	}
  </script>
              
-             
-             
-                <%-- <div class="bg-white tm-block col-12" style="  margin-left: 25%; width:auto" >
-              
-                       <div class="col-12">
-          <div class="col-12">
-          
-                    <table  id="memberTable" class="table table-hover"   style="width: 100%;margin: auto; text-align: center;">
-                    <thead>
-                    <tr>
-                   
-                    <th class="custom-font-size">사용자ID</th>
-                    <th class="custom-font-size">이름</th>
-                    <th class="custom-font-size" id="signupStatusHeader" style="cursor:pointer;" >상태</th>
-                    <th class="custom-font-size" id="signupDateHeader" style="cursor:pointer;">가입일</th>
-                    
-                    </tr>
-                    </thead>
-                    
-                    <tbody>
-                    <c:forEach var="mmd" items="${requestScope.memberList }" varStatus="i">
-                    <tr>
-                    
-                    <td class="custom-font-size"><c:out value="${mmd.std_id }"/></td>                 
-                    <td class="custom-font-size"><a href="manage_member_details.do?std_id=${mmd.std_id }&flag=0"><c:out value="${mmd.name }"/></a></td> 
-                    <c:choose>
-                    <c:when test="${mmd.del_yn eq 'N'}">         
-                    <td class="custom-font-size">회원</td>
-                  	</c:when>
-                     <c:otherwise>
-                     <td class="custom-font-size">탈퇴</td>
-                     </c:otherwise>
-                    </c:choose>
-                    <td class="custom-font-size"><c:out value="${mmd.signup_date}"/></td>
-  
-                    </tr>
-                    </c:forEach>
-                    </tbody>
-                    
-                    </table>
-                    
-                    
-                </div>
-         
-           
-    </div>
-        <footer class="row tm-mt-small">
-         
-        </footer>
-    </div>
-     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value ="/resources/js/bootstrap.min.js"/>"></script>
-    
-    <script>
-    function fetchNewUsersCount() {
-        $.ajax({
-            url: "manage_admin_side.do",
-            type: "GET",
-            dataType: "JSON",
-            error: function(xhr) {
-                console.log(xhr.status + " : " + xhr.statusText);
-                alert("서버 오류 발생");
-            },
-            success: function(response) {
-                $("#newUsersCount").text("가입 수: " + response.count);
-            }
-        });
-    }
 
-        // 페이지 로드 시 및 1분마다 데이터를 가져옴
-        window.onload = function() {
-            fetchNewUsersCount();
-            setInterval(fetchNewUsersCount, 600000);
-        };
-    </script>
-    
-    
-    
-    
-    
-     <script>
-     
-     
-     
-        // 테이블 정렬 함수 가입일
-        var filterActive = false;
-var sortOrder = 'asc'; // 기본 정렬 순서: 오름차순
-
-function sortTableByDate() {
-    var rows = $('#memberTable tbody tr').get();
-
-    rows.sort(function(a, b) {
-        var A = new Date($(a).children('td').eq(3).text());
-        var B = new Date($(b).children('td').eq(3).text());
-
-        if (sortOrder === 'asc') {
-            if (A < B) return -1;
-            if (A > B) return 1;
-        } else {
-            if (A < B) return 1;
-            if (A > B) return -1;
-        }
-        return 0;
-    });
-
-    $.each(rows, function(index, row) {
-        $('#memberTable').children('tbody').append(row);
-    });
-
-    // 정렬 순서를 토글
-    sortOrder = (sortOrder === 'asc') ? 'desc' : 'asc';
-}
-        
-        
-        
-		// 테이블 정렬 함수 상태
-        var filterActive2 = false;
-        function filterTableByStatus() {
-            var rows = $('#memberTable tbody tr').get();
-
-            if (filterActive2) {
-                rows.forEach(function(row) {
-                    $(row).show();
-                });
-                filterActive2 = false;
-            } else {
-                rows.forEach(function(row) {
-                    var status = $(row).children('td').eq(3).text();
-                    if (status !== "탈퇴") {
-                        $(row).hide();
-                    } else {
-                        $(row).show();
-                    }
-                });
-                filterActive2 = true;
-            }
-        }
-        
-        $(document).ready(function() {
-            // 가입일 클릭 이벤트 바인딩
-            $('#signupDateHeader').click(function() {
-            	
-                sortTableByDate();
-            });
-         // 상태 클릭 이벤트 바인딩
- 			$('#signupStatusHeader').click(function() {
-            	
- 				filterTableByStatus();
-            });
-            
-            
-        });
-    </script>
-    
-    
-     --%>
-   
     
     
 

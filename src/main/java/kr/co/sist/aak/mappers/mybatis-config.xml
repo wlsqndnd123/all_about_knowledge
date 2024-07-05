@@ -51,6 +51,7 @@
  <typeAlias type="kr.co.sist.aak.domain.instructor.vo.OpenRequestVO" alias="openRequestVO"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.vo.QnaVO" alias="qnaVO"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.vo.LectureVO" alias="lectureVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.vo.instructorLoginVO" alias="instructorLoginVO"/>
  
  <typeAlias type="kr.co.sist.aak.domain.instructor.InstructorInfoDomain" alias="instructorInfoDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.LectureLessonDomain" alias="lectureLessonDomain"/>
@@ -58,6 +59,9 @@
  <typeAlias type="kr.co.sist.aak.domain.instructor.OpenRequestDomain" alias="openRequestDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.QnaDomain" alias="qnaDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.RejectDomain" alias="rejectDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.instructor.InstructorLoginDomain" alias="instructorLoginDomain"/>
+ 
+ 
  <typeAlias type="kr.co.sist.aak.domain.instructor.NoticeDomain" alias="NoticeDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.StudentListDomain" alias="StudentListDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.instructor.ExamDomain" alias="ExamDomain"/>

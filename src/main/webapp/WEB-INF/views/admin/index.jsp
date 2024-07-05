@@ -105,32 +105,39 @@
             </div>
             <!-- row -->
             <div class="row tm-content-row tm-mt-big">
-                <div class="tm-col tm-col-big">
+            
+               <div class="tm-col tm-col-small" style="margin: auto;">
+          	  <div class="bg-white tm-block h-100">
+         	   <div class="container">
+      		 	 총 강의 수
+      		  <div class="display-4" id="counter">0</div>
+  			  </div>
+            	</div>
+              </div>
+                
+
+                
+				<div class="tm-col tm-col-big"  style="margin: auto;">
                     <div class="bg-white tm-block h-100">
                         <h2 class="tm-block-title">월별 회원 추이</h2>
-                       <canvas id="lineChart" width="329" height="164" style="display: block; width: 329px; height: 164px;" class="chartjs-render-monitor"></canvas>
+                       <canvas id="lineChart" class="chartjs-render-monitor"></canvas>
                     </div>
                 </div>
                 
 
                 
-                <div class="tm-col tm-col-big">
+                <div class="tm-col tm-col-big" style="margin: auto;">
                     <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Performance</h2>
+                        <h2 class="tm-block-title">데이터 변경방법을 알았어!</h2>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
-                <div class="tm-col tm-col-small">
-                    <div class="bg-white tm-block h-100">
-                        <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
-                    </div>
-                </div>
 
-             
-            </div>
-            <footer class="row tm-mt-small">
-               
-            </footer>
+
+
+
+
+           </div>
         </div>
     </div>
     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
@@ -141,32 +148,123 @@
     <script type="text/javascript" src="<c:url value ="/resources/js/tooplate-scripts.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/utils.js"/>"></script>
     <script>
-        let ctxLine,
-            ctxBar,
-            ctxPie,
-            optionsLine,
-            optionsBar,
-            optionsPie,
-            configLine,
-            configBar,
-            configPie,
-            lineChart;
-        barChart, pieChart;
-        // DOM is ready
-        $(function () {
-            updateChartOptions();
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            drawPieChart(); // Pie Chart
-            drawCalendar(); // Calendar
+    $(document).ready(function() {
+        function animateCounter(element, start, end, duration) {
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let timer = setInterval(function() {
+                current += increment;
+                $(element).text(current);
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+        
+        var data = '<%= request.getAttribute("dbDomain.setAllmember_count")%>'; 
+       
+        // 총 인원 수 예제: 0에서 150까지 3초 동안 증가
+        animateCounter("#counter", 0, 10, 3000); 	
+    });
+    
+    
+    let ctxLine,
+        ctxBar,
+        ctxPie,
+        optionsLine,
+        optionsBar,
+        optionsPie,
+        configLine,
+        configBar,
+        configPie,
+        lineChart,
+        barChart,
+        pieChart;
 
-            $(window).resize(function () {
-                updateChartOptions();
-                updateLineChart();
-                updateBarChart();
-                reloadPage();
-            });
-        })
-    </script>
+    // DOM이 준비되었을 때 실행할 함수
+    $(function () {
+        updateChartOptions();
+        drawLineChart(); // Line Chart
+        drawBarChart(); // Bar Chart
+
+
+        $(window).resize(function () {
+            updateChartOptions();
+            updateLineChart();
+            updateBarChart();
+            reloadPage();
+        });
+    });
+
+    // 차트 옵션 업데이트 함수
+    function updateChartOptions() {
+        optionsLine = { scales: { y: { beginAtZero: true } } };
+        optionsBar = { scales: { y: { beginAtZero: true } } };
+
+    }
+
+    // Line 차트 그리기 함수
+    function drawLineChart() {
+        ctxLine = document.getElementById('lineChart').getContext('2d');
+        configLine = {
+            type: 'line',
+            data: {
+                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                datasets: [{
+                    label: '월별 데이터',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: optionsLine
+        };
+        lineChart = new Chart(ctxLine, configLine);
+    }
+
+    // Bar 차트 그리기 함수
+    function drawBarChart() {
+        ctxBar = document.getElementById('barChart').getContext('2d');
+        configBar = {
+            type: 'bar',
+            data: {
+                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                datasets: [{
+                    label: '월별 데이터',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: optionsBar
+        };
+        barChart = new Chart(ctxBar, configBar);
+    }
+
+   
+
+    // Line 차트 업데이트 함수
+    function updateLineChart() {
+        lineChart.options = optionsLine;
+        lineChart.update();
+    }
+
+    // Bar 차트 업데이트 함수
+    function updateBarChart() {
+        barChart.options = optionsBar;
+        barChart.update();
+    }
+
+    // 페이지 새로고침 함수
+    function reloadPage() {
+        location.reload();
+    }
+
+
+</script>
 </body>
 </html>

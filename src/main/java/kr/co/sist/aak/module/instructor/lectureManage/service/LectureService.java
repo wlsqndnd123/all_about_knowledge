@@ -131,11 +131,11 @@ public class LectureService {
 	}
 	
 	//강의목차
-	public LectureLessonVO lecLesson(String sub_code, String lec_code) {
+	public LectureLessonVO lecLesson(String sub_code) {
 		LectureLessonVO lecLessVO=null;
 		
 		try {
-			lecLessVO=ltDAO.lectureLesson(sub_code, lec_code);
+			lecLessVO=ltDAO.lectureLesson(sub_code);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 			

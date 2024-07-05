@@ -3,7 +3,7 @@ package kr.co.sist.aak.module.admin.qnaManagement.service;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
-
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,5 +86,25 @@ public class QnaManagementService {
 
 		return cnt;
 	}
+	
+	public String searchNewQna() {
+        int cnt = 0;
+        JSONObject jsonObj = new JSONObject();
+        try {
+        	cnt = qmDAO.selectNewQna();
+
+            jsonObj.put("cnt", cnt);
+  
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        return jsonObj.toJSONString();
+    }
+	
+	
+	
+	
+	
+	
 	
 }

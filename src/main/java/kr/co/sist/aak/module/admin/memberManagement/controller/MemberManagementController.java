@@ -46,10 +46,6 @@ public class MemberManagementController {
 	}
 	
 	
-	
-	
-	
-	
 	@GetMapping("manage_member_modyify.do")
 	public String modyifyMember(MemberManagementVO mmVO,Model model) {
 		
@@ -63,6 +59,20 @@ public class MemberManagementController {
 	}
 	
 	
+	
+	@GetMapping("/manage_member_reason.do")
+	public String searchMemberReason(MemberManagementDomain mmDomain, Model model, String std_id) {
+		System.out.println(std_id);
+		mmDomain = mms.searchMemberReason(std_id);
+		model.addAttribute("mmDomain",mmDomain);
+		System.out.println(mmDomain);
+		return "/admin/manage_member/manage_member_reason";
+	}
+	
+	
+	
+	
+	
 
 	@ResponseBody
     @RequestMapping(value = "manage_member_pre.do", method = RequestMethod.GET, 
@@ -70,4 +80,13 @@ public class MemberManagementController {
     public String searchMembers() {
         return mms.searchMembers();
     }
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

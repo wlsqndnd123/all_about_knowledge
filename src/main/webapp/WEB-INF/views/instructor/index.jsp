@@ -46,7 +46,7 @@
 				<!-- http://localhost/all_about_knowledge/resources/img/profile.jpg" -->
 				    <div id="img" style="padding-right: 20px;">
 				       <img class="rounded-circle" src="http://localhost/all_about_knowledge/upload/${instd.image }">
-				   		<label><strong><c:out value="${sessionScope.login_id }"/></strong></label>
+				   		<label><strong><c:out value="${sessionScope.inst_id }"/></strong></label>
 				   </div>
 				   <div id="introduce" class="d-flex flex-column" style="padding-left: 20px;">
 				   <%-- <label><c:out value="${instd.inst_id}"/></label> --%>
