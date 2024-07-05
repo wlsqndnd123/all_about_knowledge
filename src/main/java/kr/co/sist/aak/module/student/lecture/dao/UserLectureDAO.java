@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import kr.co.sist.aak.domain.student.UserLectureDomain;
+import kr.co.sist.aak.domain.student.UserNoticeDomain;
 import kr.co.sist.aak.util.MybatisDAO;
 
 @Component
@@ -29,6 +30,108 @@ public class UserLectureDAO {
 		mbDAO.closeHanlder(ss);
 		return list;
 	}
+	
+	
+	/**
+	 * 강의 상세
+	 * @param sub_title
+	 * @return
+	 */
+	public UserLectureDomain selectOneUserLecture(String sub_code){
+		UserLectureDomain ulDomain = null;
+		
+		MybatisDAO mbDAO=MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		try {
+			ulDomain=ss.selectOne("kr.co.sist.aak.student3.selectOneUserLecture", sub_code);
+		}finally {
+			mbDAO.closeHanlder(ss);
+		}
+		return ulDomain;
+	}
+	
+	/**
+	 * 강사 공지 리스트
+	 * @param title
+	 * @return
+	 */
+	public List<UserLectureDomain> selectAllInstNotice(String sub_code){
+		List<UserLectureDomain> list = null;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.student3.selectAllInstNotice", sub_code);
+		mbDAO.closeHanlder(ss);
+		return list;
+		
+	}//selectAllInstNotice
+	
+	
+	/**
+	 * 강의 목차 리스트
+	 * @param sub_code
+	 * @return
+	 */
+	public List<UserLectureDomain> selectAllLecture(String sub_code){
+		List<UserLectureDomain> list = null;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.student3.selectAllLecture", sub_code);
+		mbDAO.closeHanlder(ss);
+		return list;
+		
+	}//selectAllLecture
+	
+	/**
+	 * 강의 qna 리스트
+	 * @param sub_code
+	 * @return
+	 */
+	public List<UserLectureDomain> selectAllLecQna(String sub_code){
+		List<UserLectureDomain> list = null;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.student3.selectAllLecQna", sub_code);
+		mbDAO.closeHanlder(ss);
+		return list;
+	}//selectAllLecture
+	
+	
+	/**
+	 * 인기강좌 상위 5개
+	 * @param sub_code
+	 * @return
+	 */
+	public List<UserLectureDomain> selectPopLecture(){
+		List<UserLectureDomain> list = null;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.student3.selectSubcodePop");
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
+	
+	
+	public List<UserLectureDomain> selectCatLecture(String cat_code){
+		List<UserLectureDomain> list = null;
+		
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		list = ss.selectList("kr.co.sist.aak.student3.selectCatLecture", cat_code);
+		mbDAO.closeHanlder(ss);
+		return list;
+		
+	}//selectAllLecture
+	
 	
 	
 }//class

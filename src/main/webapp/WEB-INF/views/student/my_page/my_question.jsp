@@ -6,6 +6,7 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,26 +20,11 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 	crossorigin="anonymous"></script>
 <script src="/all_about_knowledge/front/student/js/semantic.js"></script>
 <style type="text/css">
-.content.ui.tab.active,
-        .content.ui.tab {
-            width: 85%;
-        }
-.content-box {
-	border: 1px solid #ddd;
-	padding: 10px;
-	border-radius: 5px;
-	background-color: #f9f9f9;
-	margin-bottom: 20px;
-}
-
-.divider {
-	border-top: 1px solid #ddd;
-	margin: 20px 0;
-}
 </style>
 <script type="text/javascript">
 	$(function() {
 		$('.tabular.menu .item').tab();
+		/* initializeTabs(); */
 
 		$(".clickable-row").click(function() {
 			var title = $(this).data('title');
@@ -61,6 +47,13 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 		});
 
 	}); // ready
+	/* function initializeTabs() {
+		$('.tabular.menu .item').tab({
+			onVisible : function(tabPath) {
+				loadDataForTab(tabPath);
+			}
+		});
+	} */
 </script>
 </head>
 <body class="mypage">
@@ -80,14 +73,62 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 			</div>
 
 			<!-- menu tab 표시 -->
-			<div class="ui tabular menu div_margin">
-				<a class="item active" data-tab="강의 문의"> 강의 문의 </a> <a class="item"
-					data-tab="AAK 문의"> AAK 문의 </a>
+			<div class="ui top attached tabular menu">
+				<a class="item active" data-tab="first"> 강의 문의 </a> <a class="item"
+					data-tab="second"> AAK 문의 </a>
+			</div>
+
+			<div class="ui bottom attached tab segment active" data-tab="first">
+				<table class="ui celled padded table center aligned">
+					<thead>
+						<tr>
+							<th class="center-aligned narrow-column">번호</th>
+							<th class="center-aligned">제목</th>
+							<th class="center-aligned narrow-column">작성자</th>
+							<th class="center-aligned narrow-column">작성일</th>
+							<th class="center-aligned narrow-column">답변상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="list" items="${requestScope.list }" varStatus="i">
+							<tr class="clickable-row" data-href="site_qna_detail.do">
+								<!-- <td class="center-aligned"></td>
+								<td class="center-aligned"></td>
+								<td class="center-aligned"></td>
+								<td class="center-aligned"></td>
+								<td class="center-aligned"></td> -->
+								<td class="center-aligned"><c:out value="${i.count }" /></td>
+								<td class="left-aligned"><c:out value="${list.title}" /></td>
+								<td class="center-aligned"><c:out value="${list.std_id}" /></td>
+								<td class="center-aligned"><fmt:formatDate pattern="yyyy-MM-dd" value="${list.q_date }" /></td>
+								<td class="center-aligned">완료</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="ui bottom attached tab segment" data-tab="second">
+				<table class="ui celled padded table center aligned">
+					<thead>
+						<tr>
+							<th class="one wide">번호</th>
+							<th class="single line">제목</th>
+							<!-- <th class="one wide">시험</th>
+							<th class="three wide">진도율</th> -->
+							<th class="one wide">작성자</th>
+							<th class="one wide">작성일</th>
+							<th class="one wide">답변상태</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 
 			<!-- 문의사항 테이블  active -->
-			<div class="div_margin">
-				<!-- 강의 문의 테이블 -->
+			<!-- <div class="div_margin">
+				강의 문의 테이블
 				<div class="content ui tab active" data-tab="강의 문의" item="first">
 					<h5>*강의와 관련된 문의는 문의하고 싶은 강의의 상세 페이지에서 작성해주세요</h5>
 					<table class="ui celled selectable very basic table">
@@ -189,7 +230,7 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 						</tbody>
 					</table>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- 문의사항 상세보기 모달창 -->
 			<div class="ui modal" id="myModal">
