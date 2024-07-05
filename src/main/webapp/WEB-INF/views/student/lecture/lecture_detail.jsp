@@ -44,8 +44,6 @@
 	width: 300px;
 	height: 200px;
 }
-
-
 </style>
 
 <script type="text/javascript">
@@ -85,7 +83,7 @@
 	<!-- 헤더 -->
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
-	<div class="ui main container">
+	<div class="ui main container" style="padding-bottom:300px">
 		<!-- <h1 class="ui header"></h1> -->
 
 
@@ -101,10 +99,14 @@
 						<a class="section">개발/프로그래밍</a> <i
 							class="right chevron icon divider"></i> <a class="active section">C</a>
 					</div>
-					<h2>이것이 C인가?</h2>
+					<h2>
+						<c:out value="${uld.sub_title}" />
+					</h2>
 					<br>
 					<h5>00명의 수강생</h5>
-					<h5>곽우신</h5>
+					<h5>
+						<c:out value="${uld.inst_id}" />
+					</h5>
 					</p>
 				</div>
 			</div>
@@ -118,75 +120,51 @@
 		</div>
 
 		<div class="ui grid">
-			<div class="eleven wide column">
+			<div class="eleven wide column" style="padding-top:50px">
 				<div id="강의소개" class="content">
-					<p>강의 소개 내용</p>
+					<c:out value="${uld.intro}" />
 				</div>
 				<div id="강의목차" class="content hidden">
 					<!-- <p>강의 목차 내용</p> -->
 					<table class="ui basic table">
 						<thead>
 							<tr>
-								<th>No</th>
-								<th>Title</th>
-								<th>Time</th>
+								<th>목차</th>
+								<th>제목</th>
+								<th>시간</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>클래스와 데이터</td>
-								<td>07:00</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>기본형과 참조형</td>
-								<td>10:00</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>객체 지향 프로그래밍</td>
-								<td>30:00</td>
-							</tr>
+							<c:forEach var="uld4" items="${requestScope.uld4 }" varStatus="i">
+								<tr>
+									<td><c:out value="${i.count }" /></td>
+									<td><c:out value="${uld4.lec_title }" /></td>
+									<td><c:out value="${uld4.time }" /></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div id="수료기준" class="content hidden">
-					<p>수료 기준 내용</p>
+					<p>수료 기준</p>
+					<p>고정 - 모든 강의 수료 기준 동일</p>
 				</div>
 				<div id="강의공지" class="content hidden">
-					<!-- <p>강의 공지 내용</p> -->
+						<c:forEach var="uld3" items="${requestScope.uld3 }" varStatus="i">
 					<div class="ui segment">
-						<div>
-							<h2>[AAK 공지사항] 공지 제목입니다.</h2>
-							<h5 style="color: #999;">작성자: admin | 작성일: 2024-06-08</h5>
-						</div>
-						<hr>
-						<p>Page Font A site can specify styles for page content.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Etiam vel tincidunt eros, nec venenatis ipsum. Nulla hendrerit
-							urna ex, id sagittis mi scelerisque vitae. Vestibulum posuere
-							rutrum interdum. Sed ut ullamcorper odio, non pharetra eros.
-							Aenean sed lacus sed enim ornare vestibulum quis a felis. Sed
-							cursus nunc sit amet mauris sodales tempus. Nullam mattis, dolor
-							non posuere commodo, sapien ligula hendrerit orci, non placerat
-							erat felis vel dui. Cras vulputate ligula ut ex tincidunt
-							tincidunt. Maecenas eget gravida lorem. Nunc nec facilisis risus.
-							Mauris congue elit sit amet elit varius mattis. Praesent
-							convallis placerat magna, a bibendum nibh lacinia non.</p>
-						<p>Fusce mollis sagittis elit ut maximus. Nullam blandit lacus
-							sit amet luctus euismod. Duis luctus leo vel consectetur
-							consequat. Phasellus ex ligula, pellentesque et neque vitae,
-							elementum placerat eros. Proin eleifend odio nec velit lacinia
-							suscipit. Morbi mollis ante nec dapibus gravida. In tincidunt
-							augue eu elit porta, vel condimentum purus posuere. Maecenas
-							tincidunt, erat sed elementum sagittis, tortor erat faucibus
-							tellus, nec molestie mi purus sit amet tellus. Pellentesque
-							habitant morbi tristique senectus et netus et malesuada fames ac
-							turpis egestas. Mauris a tincidunt metus. Fusce congue metus
-							aliquam ex auctor eleifend.</p>
-
+							<div>
+								<h2>
+									<c:out value="${uld3.title}" />
+								</h2>
+								<h5 style="color: #999;">
+									작성자:<c:out value="${uld3.inst_id}" />
+									| 작성일:<c:out value="${uld3.write_date}" />
+								</h5>
+							</div>
+							<hr>
+							<c:out value="${uld3.content}" />
 					</div>
+						</c:forEach>
 				</div>
 				<div id="강의문의" class="content hidden">
 					<div style="text-align: right;">
@@ -216,21 +194,27 @@
 							<div class="ui positive button">전송</div>
 						</div>
 					</div>
+					<c:forEach var="uld5" items="${requestScope.uld5 }" varStatus="i">
+					<div id="qnalist">
 					<div class="box" style="height: auto;">
 						<h5>
-							질문 제목 <span style="float: right; color: #999;">작성자:dddd
-								|작성일: 2024-06-08</span>
+							<c:out value="${uld5.question_title}" />
+							<span style="float: right; color: #999;">작성자:<c:out value="${uld5.q_std_id}" />
+								|작성일: <c:out value="${uld5.q_date}" /></span>
 						</h5>
 						<div class="ui divider"></div>
-						<p>질문 내용</p>
+						<p><c:out value="${uld5.q_content}" /></p>
 					</div>
 					<div class="box inline"
 						style="height: 80px; margin: 0; background-color: #f5f5f5;">
-						<p>강사 답변 내용</p>
+						<p><c:out value="${uld5.ans_content}" /></p>
 					</div>
+					</div>
+					</c:forEach>
+					
 				</div>
 			</div>
-			<div class="five wide column">
+			<div class="five wide column" style="padding-top:50px">
 				<div class="box inline">
 					<h3></h3>
 					<h3 class="ui center aligned header">무료강의</h3>
@@ -261,7 +245,7 @@
 
 	<!-- 푸터 -->
 	<jsp:include page="../site/main_footer.jsp"></jsp:include>
-	
+
 </body>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

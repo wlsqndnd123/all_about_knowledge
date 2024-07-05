@@ -43,6 +43,9 @@
  
  <typeAlias type="kr.co.sist.aak.domain.student.UserNoticeDomain" alias="UserNoticeDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.UserLectureDomain" alias="UserLectureDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.student.UserQnaDomain" alias="UserQnaDomain"/>
+ <typeAlias type="kr.co.sist.aak.domain.student.vo.UserQnaVO" alias="UserQnaVO"/>
+ 
  
  <!-- student typeAlias 종료 --> 
 
@@ -115,6 +118,7 @@
     <mapper resource="kr/co/sist/aak/mappers/student/mypage/play_lecture_mapper.xml"/>
     
     <mapper resource="kr/co/sist/aak/mappers/student_mapper.xml"/>
+    <mapper resource="kr/co/sist/aak/mappers/student_mapper2.xml"/>
     <mapper resource="kr/co/sist/aak/mappers/student_mapper3.xml"/>
     <!-- student mapper 종료 -->
     
