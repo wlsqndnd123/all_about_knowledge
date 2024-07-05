@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
 <!--bootstrap 시작-->
 <link href="http://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="http://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -34,17 +35,21 @@
 
 	<!-- 동적인 행 추가  -->
 	<script type="text/javascript">
-	var cnt = 0;
 	$(function () {
-		
+
 		$("#add").click(function(){
 			var lesson=$("#lesson").val();
 			var title=$("#title").val();
 			var explain=$("#explain").val();
-			var fileNm=$("#fileNm").val();
+			var fileNm=$("#upfile").val();
+			
+			if(fileNm) {  
+			    fileNm = fileNm.substring(fileNm.lastIndexOf("\\")+1);
+			   
+			} 
 			
 			var ext=$("#lectureImage").val();
-			var ext2=$("#fileNm").val();
+			var ext2=$("#upfile").val();
 			
 			if(ext==""){
 				alert("파일을 선택해주세요")
@@ -76,14 +81,15 @@
 				return;
 			}
 			
-			fileNm=fileNm.substring( fileNm.lastIndexOf("\\")+1);
+	/* 		fileNm=fileNm.substring( fileNm.lastIndexOf("\\")+1);  */
+	
 			var output="<tr><td>"+ lesson+" </td><td>"+title+"</td><td>"+explain+"</td><td>"+fileNm+"</td></tr>";
 			$("#tab > tbody").append(output);	//더 명확한 selector의 사용
 			
 			var lesson=$("#lesson").val("");
 			var title=$("#title").val("");
 			var explain=$("#explain").val("");
-			var fileNm=$("#fileNm").val("");
+			var fileNm=$("#upfile").val(""); 
 		});
 		
 		$("#delete").click(function(){
@@ -107,25 +113,30 @@
 		$("#applyBtn").click(function(){
 			$.ajax({
 		    	url:"http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do",
-				type:"GET",
-				dataType:"JSON",
+				type:"POST",
+				contentType: false,
+				processData: false,
+				data: formData,
+				dataType:"JSON",  
 				error:function( xhr ){
 					console.log(xhr.status);
 					alert("다시 시도해주세요");
 				},
 				success : function( jsonObj ){
-				  	var output="응답결과<br>";
+				  	/* var output="응답결과<br>";
 					output+= jsonObj.msg+"<br/>";
-					output+= jsonObj.msg2+"<br/>";  
+					output+= jsonObj.msg2+"<br/>";   */
 					
 					$("#output").html( output );
 			 		
-					var sel=$("#sel")[0];
+					/* var sel=$("#sel")[0];
 					sel.options[1]=new Option(jsonObj.msg, jsonObj.msg);
-					sel.options[2]=new Option(jsonObj.msg2, jsonObj.msg2);  
+					sel.options[2]=new Option(jsonObj.msg2, jsonObj.msg2); */  
+				
 				}//success
 			});//ajax
 		});//click
+		
 	});//ready
 	</script>
 
@@ -169,8 +180,6 @@
 	            
 		           <ul class="dropdown-menu" id="division1"> <!-- 과목명 -->
 		               <li><a class="dropdown-item" href="#">CS</a></li>
-		           </ul>
-		           <ul class="dropdown-menu" id="division2">
 		               <li id="sub1"><a class="dropdown-item" href="#">Java</a></li>
 		               <li id="sub2"><a class="dropdown-item" href="#">JavaScript</a></li>
 		               <li id="sub3"><a class="dropdown-item" href="#">C</a></li>
@@ -190,17 +199,17 @@
 		            <!-- 강의명 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="lectureName"  style="width: 150px; margin-right: 20px;">강의명</label>
-		                <input type="text" id="lectureName" class="form-control" placeholder="강의명을 입력해주세요" aria-describedby="lectureName">
+		                <input type="text" id="lecNm" class="form-control" placeholder="강의명을 입력해주세요" aria-describedby="lectureName">
 		            </div>
 		            <!-- 학습개요 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="studyOverview"  style="width: 150px; margin-right: 20px;">학습개요</label>
-		                <input type="text" id="studyOverview" class="form-control" placeholder="학습개요를 입력해주세요" aria-describedby="studyOverview">
+		                <input type="text" id="intro" class="form-control" placeholder="학습개요를 입력해주세요" aria-describedby="studyOverview">
 		            </div>
 		            <!-- 학습목표 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="studyGoal"  style="width: 150px; margin-right: 20px;">학습목표</label>
-		                <input type="text" id="studyGoal" class="form-control" placeholder="학습목표를 입력해주세요" aria-describedby="studyGoal">
+		                <input type="text" id="goal" class="form-control" placeholder="학습목표를 입력해주세요" aria-describedby="studyGoal">
 		            </div>
 		            <!-- 강의이미지 -->
 		            <div class="form-group d-flex align-items-center mb-3">
@@ -210,14 +219,16 @@
 		            <!-- 총 차시 수 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="totalSessions" style="width: 150px; margin-right: 20px;">총 차시 수</label>
-		                <input type="text" id="totalSessions" class="form-control" value="8개" readonly aria-describedby="totalSessions">
+		                <input type="text" id="totalSession" class="form-control" value="8개" readonly aria-describedby="totalSessions">
 		            </div>
 		            <!-- 개설일자 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="openDate"  style="width: 150px; margin-right: 20px;">개설일자</label>
-		                <input type="datetime-local" id="openDate" class="form-control" aria-describedby="openDate">
+		                <input type="datetime-local" id="createDate" class="form-control" aria-describedby="openDate">
 		            </div>
-		            
+		            <div>
+		            <input type="button" value="추가" class="align-items-center btn btn-dark btn-sm ml-2" id="addBtn1"/>
+		            </div>
 		    <!-- 강의 차시 -->
 		    <label style=" margin-top:10px; margin-bottom: 20px;">강의목차</label>
 		    
@@ -243,7 +254,7 @@
 		            </div>
 		            <!-- 버튼 -->
 		            <div style="text-align: center;">
-		                <input type="button" value="추가" class="btn btn-dark btn-sm ml-2" id="add">
+		                <input type="button" value="추가" class="btn btn-dark btn-sm ml-2" id="addBtn2">
 		                <input type="button" value="삭제" class="btn btn-light btn-sm ml-2" id="delete">
 		            </div>
 		        </div>
@@ -257,11 +268,6 @@
 				                <th scope="col" style="width:150px">첨부파일</th>
 				            </tr>
 				        </thead>
-				        <tbody>
-				        	
-				        </tbody>
-				        <tbody>
-				        </tbody>
 				        
 				    </table>
 				</div>

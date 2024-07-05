@@ -13,7 +13,7 @@ from qna_sub_q
 <!-- 문의상세 -->
 <select id="qnaDetail" resultType="qnaDomain">
 select qna_no,sub_code,(select sub_title from subject_code where subject_code.sub_code=qna_sub_q.sub_code) sub_title, title,std_id,content,
-q_date,(select cat_name
+q_date, ans_date,ANS_CONTENT,(select cat_name
 from cat_code
 where cat_code=( select cat_code from subject_code where sub_code=qna_sub_q.sub_code)) subject
 from qna_sub_q
@@ -26,10 +26,10 @@ set inst_id=#{inst_id}
 where status='Y' -->
 
 <!-- 문의답변 -->
-<update id="answerQna" parameterType="String">
+<update id="answerQna" parameterType="qnaVO">
 update qna_sub_q
-set ans_content=#{ans_content}, ans_date=#{ans_date}, inst_id=#{inst_id}
-where status='Y'
+set ans_content=#{ans_content}, ans_date=sysdate, inst_id=#{inst_id}, status='Y'
+where qna_no=#{qna_no}
 </update>
 
 <!-- 제목 검색 -->

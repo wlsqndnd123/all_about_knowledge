@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -40,6 +40,7 @@
 </script>
 </head>
 <body>
+--%>
 	<div>
 		<footer class="sticky-footer bg-white">
 			<div class="container my-auto">
@@ -55,5 +56,5 @@ const _year = _date.getFullYear();
 const thisYear = document.getElementById('thisYear');
 thisYear.innerText = _year;
 </script>
-</body>
-</html>
+<!-- </body>
+</html> -->
