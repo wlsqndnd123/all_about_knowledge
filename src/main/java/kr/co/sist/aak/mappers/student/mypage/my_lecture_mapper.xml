@@ -12,8 +12,8 @@
 		       (COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 		       CASE 
 		           WHEN s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
-		           THEN '응시' 
-		           ELSE '미응시' 
+		           THEN '응시가능' 
+		           ELSE '응시불가' 
 		       END AS examStatus
 		FROM CAT_CODE cc
 		JOIN SUBJECT_CODE sc ON cc.CAT_CODE = sc.CAT_CODE
@@ -33,8 +33,8 @@
 		    (COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 		    CASE 
 		        WHEN s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
-		        THEN '응시' 
-		        ELSE '미응시' 
+		        THEN '응시가능' 
+		        ELSE '응시불가' 
 		    END AS examStatus
 		FROM CAT_CODE cc
 		JOIN SUBJECT_CODE sc ON cc.CAT_CODE = sc.CAT_CODE

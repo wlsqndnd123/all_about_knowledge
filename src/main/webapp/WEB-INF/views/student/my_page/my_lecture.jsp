@@ -67,7 +67,7 @@
 	}
 	
 	function createLectureRow(lecture, index) {
-	    const examStatusClass = lecture.examStatus === '응시' ? 'green' : 'red';
+	    const examStatusClass = lecture.examStatus === '응시가능' ? 'green' : 'red';
 	    const progressColor = lecture.percent === 0 ? 'red' : 'yellow';
 	    return `
 		        <tr>
