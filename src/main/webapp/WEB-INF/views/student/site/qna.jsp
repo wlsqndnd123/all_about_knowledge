@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +48,10 @@
 			var textLength = $(this).val().length;
 			$('#charCount').text(textLength + '/300자');
 		});
+		$("#btnWrite").click(function() {
+			$("#frm").submit();
+
+		})
 	});
 </script>
 </head>
@@ -54,83 +61,84 @@
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
 
-	<div class="ui main container">
+	<div class="ui main container"
+		style="padding-top: 20px; padding-bottom: 700px">
 		<h1 class="ui header">문의사항</h1>
+		<!-- 로그인한 회원만 문의 작성 버튼 보여줌 -->
+		<%-- <sec:authorize ifAllGranted="ROLE_USER"> --%>
+		<!-- <div style="text-align: right;">
+			<button id="openModalBtn" class="ui button" id="btnwrite">문의 작성</button>
+		</div> -->
 		<div style="text-align: right;">
-			<button id="openModalBtn" class="ui button">문의 작성</button>
+			<button id="openModalBtn" class="ui button" id="btnwrite">문의
+				작성</button>
 		</div>
+
+		<%-- </sec:authorize> --%>
+		<!-- 문의사항 작성 -->
 		<div class="ui modal" id="myModal">
 			<i class="close icon"></i>
 			<div class="header">문의사항 작성</div>
 			<div class="content">
 				<div class="ui form">
-					<div class="field">
-						<label>작성자: userId | 작성일: 2024-06-18</label>
-					</div>
-					<div class="field">
-						<label>제목</label> <input type="text" name="title"
-							placeholder="제목을 입력하세요">
-					</div>
-					<div class="field">
-						<label>내용</label>
-						<textarea rows="5" name="content" id="content"
-							placeholder="문의사항을 입력하세요"></textarea>
-						<div class="ui message" id="charCount">0/300자</div>
-					</div>
+					<form id="frm" action="site_qna_write_process.do" method="post">
+						<div class="field">
+							<label>작성자: <sec:authentication property='name' /> <%--| 
+						  작성일: <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"></span> --%></label>
+						</div>
+						<div class="field">
+							<label>제목</label> <input type="text" name="title" id="title"
+								placeholder="제목을 입력하세요">
+						</div>
+						<div class="field">
+							<label>내용</label>
+							<textarea rows="5" name="q_content" id="q_content"
+								placeholder="문의사항을 입력하세요"></textarea>
+							<div class="ui message" id="charCount">0/300자</div>
+						</div>
 				</div>
 			</div>
-			<div class="actions">
+			<!-- <div class="actions">
 				<div class="ui positive button">전송</div>
-			</div>
-		</div>
-		<div class="search-container">
-			<div class="ui icon input">
-				<input type="text" placeholder="Search..."> <i
-					class="search icon"></i>
+			</div> -->
+			<div class="actions">
+				<input type="button" class="ui positive button" value="작성"
+					id="btnWrite">
+				</button>
+				<input type="hidden" name="std_id"
+					value="<sec:authentication property='name'/>">
+				</form>
 			</div>
 		</div>
 
-		<table class="ui celled selectable very basic table">
+		<!-- 문의사항 리스트 -->
+		<table class="ui celled selectable table" id="qna">
 			<thead>
 				<tr>
-					<th>숫자</th>
-					<th>제목</th>
-					<th>작성일</th>
-					<th>답변</th>
+					<th class="center-aligned narrow-column">번호</th>
+					<th class="center-aligned">제목</th>
+					<th class="center-aligned narrow-column">작성자</th>
+					<th class="center-aligned narrow-column">작성일</th>
+					<th class="center-aligned narrow-column">답변상태</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="clickable-row" data-href="site_qna_detail.do">
-					<td>1</td>
-					<td>문의사항 제목 1</td>
-					<td>2024-06-08</td>
-					<td class="red-text">답변완료</td>
-				</tr>
-				<tr class="clickable-row" data-href="site_qna_detail.do">
-					<td>2</td>
-					<td>문의사항 제목 2</td>
-					<td>2024-06-07</td>
-					<td>대기</td>
-				</tr>
-				<tr class="clickable-row" data-href="site_qna_detail.do">
-					<td>3</td>
-					<td>문의사항 제목 3</td>
-					<td>2024-06-06</td>
-					<td>대기</td>
-				</tr>
+				<c:forEach var="list" items="${requestScope.list }" varStatus="i">
+					<tr class="clickable-row">
+						<td class="center-aligned"><c:out value="${i.count }" /></td>
+						<td class="left-aligned"><a
+							href="site_qna_detail.do?qna_no=${list.qna_no}"> <c:out
+									value="${list.title}" />
+						</a></td>
+						<td class="center-aligned"><c:out value="${list.std_id}" /></td>
+						<td class="center-aligned"><fmt:formatDate
+								pattern="yyyy-MM-dd" value="${list.q_date }" /></td>
+						<td class="center-aligned">완료</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
-		<div class="ui container">
-			<div class="pagination-container">
-				<div class="ui pagination menu">
-					<a class="active item"> 1 </a>
-					<div class="disabled item">...</div>
-					<a class="item"> 10 </a> <a class="item"> 11 </a> <a class="item">
-						12 </a>
-				</div>
-			</div>
 
-		</div>
 	</div>
 
 	<!-- 푸터 -->

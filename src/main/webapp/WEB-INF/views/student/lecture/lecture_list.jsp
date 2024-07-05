@@ -27,7 +27,7 @@
 <!-- Semantic UI CSS -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-
+ <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
 <style type="text/css">
 .search-container {
 	display: flex;
@@ -52,18 +52,80 @@
 </style>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		// Semantic UI dropdown initialization
-		$('.ui.dropdown').dropdown();
-		$('.ui.rating')
-		  .rating({
-			initialRating: 0,
-		    maxRating: 1
-		  });
-	});
-	$('#goHome').click(function() {
-		window.location.href = '${pageContext.request.contextPath}/index.do';
-	});
+$(document).ready(function() {
+    $('.ui.rating').rating({
+        initialRating : 0,
+        maxRating : 1
+    });
+    $('.ui.pointing.dropdown.link.item').dropdown();
+    // 드롭다운 초기화
+    /* $('.ui.pointing.dropdown.link.item').dropdown({
+        on: 'hover',
+        onChange: function(value, text, $choice) {
+            if (text === '컴퓨터공학') {
+                $('.ui.dropdown.item .menu .item').hide();
+                $('.ui.dropdown.item .menu .item[data-value="0"], .ui.dropdown.item .menu .item[data-value="1"]').show();
+                // 자료구조와 운영체제를 보여줄 경우
+                fetchLectures(0);
+            } else if (text === '프로그래밍 언어') {
+                $('.ui.dropdown.item .menu .item').hide();
+                $('.ui.dropdown.item .menu .item[data-value="2"], .ui.dropdown.item .menu .item[data-value="3"]').show();
+                // JAVA와 C를 보여줄 경우
+                fetchLectures(1);
+            }
+        }
+    }); */
+
+    // 각 항목 클릭 시 강의 데이터 요청
+    $('.ui.dropdown.item.category .menu .item').on('click', function() {
+        var cat_code = $(this).data('value');
+        fetchLectures(cat_code);
+    });
+
+    function fetchLectures(cat_code) {
+        $.ajax({
+            url : "cat_code_lecture.do",
+            type : "GET",
+            dataType: "JSON",
+            data : {cat_code: cat_code},
+            success : function(jsonObj) {
+                // 성공적으로 데이터를 받아온 경우
+                var lectures = jsonObj.list;
+
+                // 기존 강좌 카드들 삭제
+                $('#lectureCards').empty();
+
+                // 새로운 강좌 카드들 생성하여 추가
+                $.each(lectures, function(index, lecture) {
+                    var cardHtml = '<div class="card">';
+                    cardHtml += '<a href="user_lecture_detail.do?sub_code=' + lecture.sub_code + '" class="image">';
+                    cardHtml += '<img src="' + lecture.image + '">';
+                    cardHtml += '</a>';
+                    cardHtml += '<div class="content">';
+                    cardHtml += '<div class="header">' + lecture.sub_title + '</div>';
+                    cardHtml += '<div class="meta">';
+                    cardHtml += '<a>' + lecture.inst_id + '</a>';
+                    cardHtml += '</div>';
+                    cardHtml += '</div>';
+                    cardHtml += '<div class="extra content">';
+                    cardHtml += '<span class="right floated">';
+                    cardHtml += '<div class="ui heart rating"></div> 17 likes';
+                    cardHtml += '</span>';
+                    cardHtml += '<span><i class="user icon"></i> +100명</span>';
+                    cardHtml += '</div>';
+                    cardHtml += '</div>';
+
+                    $('#lectureCards').append(cardHtml);
+                });
+            },
+            error : function(xhr) {
+                console.log(xhr.status + " : " + xhr.statusText);
+                alert("서버 오류");
+            }
+        });
+    } 
+
+});
 </script>
 
 </head>
@@ -72,31 +134,42 @@
 	<!-- 헤더 -->
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
-	<div class="ui main container" style="padding: 50px">
+	<div class="ui main container" style="padding-top: 20px; padding-bottom:300px">
 		<h1 class="ui header">개설강좌</h1>
 
-		<div class="ui horizontal menu">
-			<div class="ui dropdown item">
-				카테고리 <i class="dropdown icon"></i>
-				<div class="menu">
-					<a class="item">개발/프로그래밍</a> <a class="item">데이터사이언스</a>
+		<div class="ui menu">
+		<!-- <form action="cat_code_lecture.do" id="frmCatCode"> -->
+			<div class="ui pointing dropdown link item">
+				<span class="text">카테고리</span> <i class="dropdown icon"></i>
+				
+				<div class="menu" name="cat_code" id="cat_code">
+					<div class="item" data-value="0">
+						<i class="dropdown icon"></i> <span class="text">컴퓨터공학</span>
+						<div class="menu">
+							<div class="item" value="0">자료구조</div>
+							<div class="item" value="1">운영체제</div>
+						</div>
+					</div>
+					<div class="item" data-value="1">
+						<i class="dropdown icon"></i> <span class="text">프로그래밍 언어</span>
+						<div class="menu">
+							<div class="item" value="2">JAVA</div>
+							<div class="item" value="3">C</div>
+						</div>
+					</div>
 				</div>
+				
 			</div>
-			<div class="ui dropdown item">
-				과목 <i class="dropdown icon"></i>
-				<div class="menu">
-					<a class="item">JAVA</a> <a class="item">C</a> <a class="item">파이썬</a>
-					<a class="item">JavaScript</a> <a class="item">딥러닝</a> <a
-						class="item">데이터엔지니어링</a>
+			<!-- </form> -->
+			<div class="search-container">
+				<div class="ui icon input">
+					<input type="text" placeholder="Search..."> <i
+						class="search icon"></i>
 				</div>
 			</div>
 		</div>
-		<div class="search-container">
-			<div class="ui icon input">
-				<input type="text" placeholder="Search..."> <i
-					class="search icon"></i>
-			</div>
-		</div>
+
+
 		<div
 			style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; margin-bottom: 10px;">
 			<div></div>
@@ -108,190 +181,57 @@
 				<option value="인기순">인기순</option>
 			</select>
 		</div>
-		<%-- <table class="ui celled selectable very basic table">
-			<thead>
-				<tr>
-					<th>코드</th>
-					<th>제목</th>
-					<th>작성자</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="listLecture" items="${ requestScope.listLecture }" varStatus="i">
-					<tr>
-						<td><c:out value="${listLecture.sub_code}" /></td>
-						<td><c:out value="${listLecture.intro}" /></td>
-						<td><c:out value="${listLecture.goal}" /></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table> --%>
-		<div class="ui three stackable link cards">
-    <c:forEach var="listLecture" items="${requestScope.listLecture }" varStatus="i">
-        <div class="card">
-            <a href="user_lecture_detail.do" class="image">
-                <img src="${pageContext.request.contextPath}/front/student/images/java.png">
-            </a>
-            <div class="content">
-                <div class="header">
-                    <c:out value="${listLecture.sub_title}" />
-                </div>
-                <div class="meta">
-                    <a><c:out value="${listLecture.inst_id}" /></a>
-                </div>
-            </div>
-            <div class="extra content">
-                <span class="right floated">
-                    <div class="ui heart rating"></div> 17 likes
-                </span>
-                <span>
-                    <i class="user icon"></i> +100명
-                </span>
-            </div>
-        </div>
-    </c:forEach>
-</div>
-	</div>
-	<%-- <div class="card">
-				<a href="user_lecture_detail.do" class="image"> <img
-					src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</a>
-				<div class="content">
-					<div class="header">JAVA 초급 과정</div>
-					<div class="meta">
-						<!-- <span class="date">곽우신</span> -->
-						<a>곽우신</a>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> <i
-						class="heart outline like icon"></i> 17 likes
-					</span> <span> <i class="user icon"></i> +100명
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<a href="user_lecture_detail.do" class="image"> <img
-					src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</a>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>곽우신</a>>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> <i
-						class="heart outline like icon"></i> 17 likes
-					</span> <span> <i class="user icon"></i> +100명
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<a href="user_lecture_detail.do" class="image"> <img
-					src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</a>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>Coworker</a>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> <i
-						class="heart outline like icon"></i> 17 likes
-					</span> <span> <i class="user icon"></i> +100명
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img
+		<div class="ui three stackable link cards" id="lectureCards">
+			<c:forEach var="listLecture" items="${requestScope.listLecture }"
+				varStatus="i">
+				<div class="card" id="card">
+					<a href="user_lecture_detail.do?sub_code=${listLecture.sub_code}"
+						class="image"> <img
 						src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</div>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>Coworker</a>
+					</a>
+					<div class="content">
+						<div class="header">
+							<c:out value="${listLecture.sub_title}" />
+						</div>
+						<div class="meta">
+							<a><c:out value="${listLecture.inst_id}" /></a>
+						</div>
+					</div>
+					<div class="extra content">
+						<span class="right floated">
+							<div class="ui heart rating"></div> 17 likes
+						</span> <span> <i class="user icon"></i> +100명
+						</span>
 					</div>
 				</div>
-				<div class="extra content">
-					<span class="right floated"> <i
-						class="heart outline like icon"></i> 17 likes
-					</span> <span> <i class="user icon"></i> +100명
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img
+			</c:forEach>
+		</div>
+		<%-- <div class="ui three stackable link cards" id="lectureCards">
+			<c:forEach var="listLecture" items="${requestScope.listLecture }"
+				varStatus="i">
+				<div class="card" id="card">
+					<a href="user_lecture_detail.do?sub_code=${listLecture.sub_code}"
+						class="image"> <img
 						src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</div>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>Coworker</a>
+					</a>
+					<div class="content">
+						<div class="header">
+							<c:out value="${listLecture.sub_title}" />
+						</div>
+						<div class="meta">
+							<a><c:out value="${listLecture.inst_id}" /></a>
+						</div>
+					</div>
+					<div class="extra content">
+						<span class="right floated">
+							<div class="ui heart rating"></div> 17 likes
+						</span> <span> <i class="user icon"></i> +<c:out value="${listLecture.cnt}" />명
+						</span>
 					</div>
 				</div>
-				<div class="extra content">
-					<span class="right floated"> <i
-						class="heart outline like icon"></i> 17 likes
-					</span> <span> <i class="user icon"></i> 151 Friends
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img
-						src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</div>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>Coworker</a>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> Joined in 2014 </span> <span> <i
-						class="user icon"></i> 151 Friends
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img
-						src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</div>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>Coworker</a>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> Joined in 2014 </span> <span> <i
-						class="user icon"></i> 151 Friends
-					</span>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img
-						src="${pageContext.request.contextPath}/front/student/images/java.png">
-				</div>
-				<div class="content">
-					<div class="header">파이썬 단기완성</div>
-					<div class="meta">
-						<a>Coworker</a>
-					</div>
-				</div>
-				<div class="extra content">
-					<span class="right floated"> Joined in 2014 </span> <span> <i
-						class="user icon"></i> 151 Friends
-					</span>
-				</div>
-			</div>
+			</c:forEach>
 		</div> --%>
+	</div>
 
 
 	<!-- 푸터 -->
