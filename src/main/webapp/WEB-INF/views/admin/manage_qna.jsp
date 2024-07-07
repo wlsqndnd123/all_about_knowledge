@@ -13,6 +13,30 @@ width: 15vw;height: auto;
 width: 15vw;height: auto;
 }
 </style>
+
+<style>
+        .notification-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        .notification-container {
+            position: relative;
+        }
+        .blinking {
+            animation: blinking 1s infinite;
+        }
+        @keyframes blinking {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,35 +149,32 @@ width: 15vw;height: auto;
               <div class="bg-white tm-block col-12" style="width: 20vw;border: 2px solid skyblue;position: fixed;height: 85%;padding-bottom: 20px;padding-top: 20px;" >
                 <!-- 아이디 정보 -->
                 <div>
-                
-                </div>
                 <!-- 아이디 권한 정보  -->
                 <table class ="table table-hover">
                 <tr><td>${ adminid }님, 환영합니다 !</td></tr>
+                <tr><td>현재 권한</td><tr>
+                <tr><td style="font-size: 11px;">${permission}</td></tr>
                 </table>
+                
+                </div>
                 <div></div>
-                <!-- 퇴사|재직중인 강사 -->
-                <div>
-                <table class ="table table-hover">
-                <tbody id ="preMember">
+                <!-- 회원 -->
                 
-                </tbody>
-                </table>
-                
-                </div>
                 <hr  class="border border-primary border-1 opacity-50">
-                <!--강사들의 주력과목 -->
-                <div>
-                <table class ="table table-hover">
-                <tbody id ="instSubject">
                 
-                </tbody>
+                <c:if test="${sessionScope.adminPermission.qna_management == 'Y'}">
+                <!-- -----알람 view------ -->
+        		<div class="notification-container">
+                <table class="table table-hover">
+                    <tbody id="newQna"></tbody>
                 </table>
-                </div>
-        		<p id="newUsersCount">Loading...</p>
-               <%--  <div class="myChart">
-                <canvas id ="myChart"></canvas>
-                </div> --%>
+            	</div>
+                </c:if>
+              
+              
+              
+              
+           
              </div>
              
               <div class="bg-white tm-block col-12" style="overflow:scroll;margin-left: 21vw;width: 62vw;position: fixed;height: 85%">
@@ -217,51 +238,61 @@ width: 15vw;height: auto;
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
  $(function(){
-	    /*  $.ajax({
-	        url: "manage_inst_subPercentage.do", 
-	        type: "GET",
-	        dataType: "JSON",
-	        error: function(xhr) {
-	            console.error('AJAX request failed:', xhr);
-	        },
-	        success: function(jsonObj) {
-	        	$("#instSubject").empty();
-	            	var output ="<tr><td  colspan='2'>강사들의 주력과목</td></tr>";
-	            $.each(jsonObj.list,function(i,jsonTemp) {
-	            	output+="<tr><td>과목명: "+jsonTemp.major_subject+"</td><td> 비율:"+jsonTemp.percentage+"% </td></tr>";
-	            })
-	            $("#instSubject").html(output);
-	            }
+	 <!-- -----알람 메소드------ -->
+	 $(document).ready(function() {
+		    let previousQnaCount = null;
+		    let fetchCount = 0; // 요청 횟수를 추적하는 변수
+		    const maxFetchCount = 10; // 최대 요청 횟수
 
-	    }); */
-	   /*  $.ajax({
-	        url: "manage_memeber_pre.do", 
-	        type: "GET",
-	        dataType: "JSON",
-	        error: function(xhr) {
-	            console.error('AJAX request failed:', xhr);
-	        },
-	        success: function(jsonObj) {
-	        	$("#preMember").empty();
-	          
-	            	var output="<tr><td>현재 회원 수: "+jsonObj.p+"</td></tr>";
-	            	output+="<tr><td>탈퇴 한 회원 수:"+jsonObj.n+"</td></tr>";
-	            
-	            $("#preMember").html(output);
-	            }
+		    function fetchQnaCounts() {
+		        if (fetchCount >= maxFetchCount) {
+		            clearInterval(fetchInterval); // 최대 요청 횟수에 도달하면 간격 타이머를 중지
+		            return;
+		        }
+		        $.ajax({
+		            url: "manage_qna_new.do",
+		            type: "GET",
+		            dataType: "json",
+		            error: function(xhr, status, error) {
+		                console.error('AJAX request failed:', xhr.status, xhr.responseText);
+		            },
+		            success: function(jsonObj) {
+		                console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
+		                $("#newQna").empty();
+		                if (jsonObj.cnt !== undefined) { // 응답이 유효한지 확인
+		                    var output = "<tr><td>오늘의 문의: " + jsonObj.cnt + "</td></tr>"; 
+		                    $("#newQna").html(output);
+		                    
+		                    // 이전 데이터와 비교하여 알림 표시
+		                    if (previousQnaCount !== null && previousQnaCount !== jsonObj.cnt) {
+		                        showNotification();
+		                    }
+		                    previousQnaCount = jsonObj.cnt; // 이전 데이터를 현재 데이터로 갱신
+		                } else {
+		                    console.error('Invalid JSON response');
+		                }
+		                fetchCount++; // 요청 횟수 증가
+		            }
+		        });
+		    }
 
-	    }); */
+		    function showNotification() {
+		        let notificationDot = $('<div class="notification-dot blinking"></div>');
+		        $("#newQna").append(notificationDot);
+		        setTimeout(function() {
+		            notificationDot.remove();
+		        }, 5000); // 5초 후에 알림 제거
+		    }
 
-	    /* var selectedValue = localStorage.getItem('selectedStatus');
-	    if (selectedValue) {
-	        $("input[name='status'][value='" + selectedValue + "']").prop('checked', true);
-	    }
+		    // 초기 데이터 로드
+		    fetchQnaCounts();
 
-	    $("input[name='status']").change(function() {
-	        var selectedValue = $(this).val();
-	        localStorage.setItem('selectedStatus', selectedValue);  
-	        $("#YorN").submit(); 
-	    }); */
+		    // (60초)마다 데이터 갱신
+		    const fetchInterval = setInterval(fetchQnaCounts, 60000);
+		});
+	 
+	 
+
 
 	     $("#qna").DataTable({
 	    	language: {

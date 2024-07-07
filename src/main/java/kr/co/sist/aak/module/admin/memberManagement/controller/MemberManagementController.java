@@ -62,10 +62,10 @@ public class MemberManagementController {
 	
 	@GetMapping("/manage_member_reason.do")
 	public String searchMemberReason(MemberManagementDomain mmDomain, Model model, String std_id) {
-		System.out.println(std_id);
+		
 		mmDomain = mms.searchMemberReason(std_id);
 		model.addAttribute("mmDomain",mmDomain);
-		System.out.println(mmDomain);
+		
 		return "/admin/manage_member/manage_member_reason";
 	}
 	

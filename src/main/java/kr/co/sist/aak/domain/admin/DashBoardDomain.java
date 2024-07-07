@@ -1,71 +1,136 @@
 package kr.co.sist.aak.domain.admin;
 
-
-
-
+import java.sql.Date;
 
 public class DashBoardDomain {
 	
 	private int 
-	NeedChkQuestion_count,
-	NeedChkSubject_count,
-	ExitMember_count,
-	AllInstructor_count,
-	Allmember_count;
-
+	allInstructor_count,
+	exitMember_count,
+	allMember_count,
+	newMember_count,
+	allSubject_count,
+	needChkSubject_count,
+	needChkQuestion_count,
+	signupMebmer_count,
+	mostSubject,
+	mostSubject_member_count
+	
+	
+	
+	;
+	
+	Date memberDay;
+	
 	public DashBoardDomain() {
 		
 	}
 
-	public DashBoardDomain(int needChkQuestion_count, int needChkSubject_count, int exitMember_count,
-			int allInstructor_count, int allmember_count) {
+	public DashBoardDomain(int allInstructor_count, int exitMember_count, int allMember_count, int newMember_count,
+			int allSubject_count, int needChkSubject_count, int needChkQuestion_count, int signupMebmer_count,
+			int mostSubject, int mostSubject_member_count, Date memberDay) {
 		super();
-		NeedChkQuestion_count = needChkQuestion_count;
-		NeedChkSubject_count = needChkSubject_count;
-		ExitMember_count = exitMember_count;
-		AllInstructor_count = allInstructor_count;
-		Allmember_count = allmember_count;
-	}
-
-	public int getNeedChkQuestion_count() {
-		return NeedChkQuestion_count;
-	}
-
-	public void setNeedChkQuestion_count(int needChkQuestion_count) {
-		NeedChkQuestion_count = needChkQuestion_count;
-	}
-
-	public int getNeedChkSubject_count() {
-		return NeedChkSubject_count;
-	}
-
-	public void setNeedChkSubject_count(int needChkSubject_count) {
-		NeedChkSubject_count = needChkSubject_count;
-	}
-
-	public int getExitMember_count() {
-		return ExitMember_count;
-	}
-
-	public void setExitMember_count(int exitMember_count) {
-		ExitMember_count = exitMember_count;
+		this.allInstructor_count = allInstructor_count;
+		this.exitMember_count = exitMember_count;
+		this.allMember_count = allMember_count;
+		this.newMember_count = newMember_count;
+		this.allSubject_count = allSubject_count;
+		this.needChkSubject_count = needChkSubject_count;
+		this.needChkQuestion_count = needChkQuestion_count;
+		this.signupMebmer_count = signupMebmer_count;
+		this.mostSubject = mostSubject;
+		this.mostSubject_member_count = mostSubject_member_count;
+		this.memberDay = memberDay;
 	}
 
 	public int getAllInstructor_count() {
-		return AllInstructor_count;
+		return allInstructor_count;
 	}
 
 	public void setAllInstructor_count(int allInstructor_count) {
-		AllInstructor_count = allInstructor_count;
+		this.allInstructor_count = allInstructor_count;
 	}
 
-	public int getAllmember_count() {
-		return Allmember_count;
+	public int getExitMember_count() {
+		return exitMember_count;
 	}
 
-	public void setAllmember_count(int allmember_count) {
-		Allmember_count = allmember_count;
+	public void setExitMember_count(int exitMember_count) {
+		this.exitMember_count = exitMember_count;
 	}
+
+	public int getAllMember_count() {
+		return allMember_count;
+	}
+
+	public void setAllMember_count(int allMember_count) {
+		this.allMember_count = allMember_count;
+	}
+
+	public int getNewMember_count() {
+		return newMember_count;
+	}
+
+	public void setNewMember_count(int newMember_count) {
+		this.newMember_count = newMember_count;
+	}
+
+	public int getAllSubject_count() {
+		return allSubject_count;
+	}
+
+	public void setAllSubject_count(int allSubject_count) {
+		this.allSubject_count = allSubject_count;
+	}
+
+	public int getNeedChkSubject_count() {
+		return needChkSubject_count;
+	}
+
+	public void setNeedChkSubject_count(int needChkSubject_count) {
+		this.needChkSubject_count = needChkSubject_count;
+	}
+
+	public int getNeedChkQuestion_count() {
+		return needChkQuestion_count;
+	}
+
+	public void setNeedChkQuestion_count(int needChkQuestion_count) {
+		this.needChkQuestion_count = needChkQuestion_count;
+	}
+
+	public int getSignupMebmer_count() {
+		return signupMebmer_count;
+	}
+
+	public void setSignupMebmer_count(int signupMebmer_count) {
+		this.signupMebmer_count = signupMebmer_count;
+	}
+
+	public int getMostSubject() {
+		return mostSubject;
+	}
+
+	public void setMostSubject(int mostSubject) {
+		this.mostSubject = mostSubject;
+	}
+
+	public int getMostSubject_member_count() {
+		return mostSubject_member_count;
+	}
+
+	public void setMostSubject_member_count(int mostSubject_member_count) {
+		this.mostSubject_member_count = mostSubject_member_count;
+	}
+
+	public Date getMemberDay() {
+		return memberDay;
+	}
+
+	public void setMemberDay(Date memberDay) {
+		this.memberDay = memberDay;
+	}
+
 	
 	
 }

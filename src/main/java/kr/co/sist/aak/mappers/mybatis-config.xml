@@ -29,6 +29,7 @@
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.LectureManagementVO" alias="LectureManagementVO"/>
    <typeAlias type="kr.co.sist.aak.domain.admin.SubjectManagementDomain" alias="SubjectManagementDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.admin.vo.SubjectManagementVO" alias="SubjectManagementVO"/>
+  <typeAlias type="kr.co.sist.aak.domain.admin.DashBoardDomain" alias="DashBoardDomain"/>
  
  
  <!-- student typeAlias 시작 -->
