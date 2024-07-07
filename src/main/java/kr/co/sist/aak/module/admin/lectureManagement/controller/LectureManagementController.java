@@ -1,100 +1,91 @@
-package kr.co.sist.aak.domain.admin;
+package kr.co.sist.aak.module.admin.lectureManagement.controller;
 
-import java.sql.Date;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-public class LectureManagementDomain {
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import kr.co.sist.aak.domain.admin.LectureManagementDomain;
+import kr.co.sist.aak.domain.admin.SubjectManagementDomain;
+import kr.co.sist.aak.domain.admin.vo.QnaManagementVO;
+import kr.co.sist.aak.domain.admin.vo.SubjectManagementVO;
+import kr.co.sist.aak.module.admin.lectureManagement.service.LectureManagementService;
+
+
+
+@Controller
+public class LectureManagementController {
 	
-	private String 
-	sub_code
-	,lec_code
-	,title
-	,f_name
-	,lec_explain;
+	@Autowired(required = false)
+	private LectureManagementService lms;
 	
-
-	private int  time;
-
-
-	public LectureManagementDomain() {
+	@GetMapping("/manage_lecture.do")
+	public String searchSubject(Model model) {
+		List<SubjectManagementDomain> list = lms.searchSubject();
+		model.addAttribute("list",list);
+		return "/admin/manage_lecture";
+	}
 	
+	
+	
+	@GetMapping("/manage_lecture_details.do")
+	public String searchDetaleSubject( SubjectManagementDomain smDomain, Model model, String sub_code) {
+		List<LectureManagementDomain> lecList = lms.searchLecture(sub_code);
+		smDomain = lms.searchDetaleSubject(sub_code);
+		model.addAttribute("smDomain",smDomain);
+		model.addAttribute("lecList",lecList);
+		
+		
+		return "/admin/manage_lecture/manage_lecture_details";
 	}
+	
+	@GetMapping("/manage_lecture_modyify.do")
+	public String modyifySubject(SubjectManagementVO smVO,Model model) {
+		
+		int cnt=0;	
 
-
-	public LectureManagementDomain(String sub_code, String lec_code, String title, String f_name, String lec_explain,
-			int time) {
-		super();
-		this.sub_code = sub_code;
-		this.lec_code = lec_code;
-		this.title = title;
-		this.f_name = f_name;
-		this.lec_explain = lec_explain;
-		this.time = time;
+		cnt=lms.modyifySubject(smVO);
+		model.addAttribute("cnt",cnt);
+		model.addAttribute("sub_code",smVO.getSub_code());
+		
+		return "/admin/manage_lecture/manage_lecture_details";
 	}
-
-
-	public String getSub_code() {
-		return sub_code;
+	
+	
+	@GetMapping("/manage_lecture_reason.do")
+	public String reasonSubject() {
+	
+		return "/admin/manage_lecture/manage_lecture_reason";
 	}
+	
+	@PostMapping("/manage_lecture_refuse.do")
+	public String refuseSubject(SubjectManagementVO smVO, Model model) {
+		
+		  int cnt =0;
+		 
+		  cnt=lms.refuseSubject(smVO); 
+		  model.addAttribute("cnt",cnt);
+		 
 
-
-	public void setSub_code(String sub_code) {
-		this.sub_code = sub_code;
+		return "/admin/manage_qna/manage_qna_reason";
 	}
-
-
-	public String getLec_code() {
-		return lec_code;
+	
+	
+	@GetMapping("/manage_lecture_video.do")
+	public String lectureVideo() {
+	
+		return "/admin/manage_lecture/manage_lecture_video";
 	}
-
-
-	public void setLec_code(String lec_code) {
-		this.lec_code = lec_code;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public String getF_name() {
-		return f_name;
-	}
-
-
-	public void setF_name(String f_name) {
-		this.f_name = f_name;
-	}
-
-
-	public String getLec_explain() {
-		return lec_explain;
-	}
-
-
-	public void setLec_explain(String lec_explain) {
-		this.lec_explain = lec_explain;
-	}
-
-
-	public int getTime() {
-		return time;
-	}
-
-
-	public void setTime(int time) {
-		this.time = time;
-	}
+	
+	
+	
+	
+	
 	
 	
 	
