@@ -23,11 +23,11 @@ public class SessionController {
 		
 	}
 	
-	//~´Ô ¾È³çÇÏ¼¼¿ä
+	//~Â´Ã” Â¾ÃˆÂ³Ã§Ã‡ÃÂ¼Â¼Â¿Ã¤
 	@GetMapping("/instructor/loginProcess.do")
 	public String getSession(HttpServletRequest request, HttpSession session, Model model) {
 		session.getAttribute("aakSession");
-		System.out.println(model.getAttribute("login_id")+"´Ô");
+		System.out.println(model.getAttribute("login_id")+"Â´Ã”");
 		
 		return "instructor/instructor_home";
 	}
