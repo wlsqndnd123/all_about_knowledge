@@ -5,22 +5,22 @@
 <mapper namespace="kr.co.sist.aak.student.mypage.my_lecture">
     <!-- 진행 중인 강의 -->
     <select id="selectProcessLectureList" parameterType="String" resultType="MyLectureVO">
-		SELECT cc.CAT_NAME as catName, 
+		SELECT DISTINCT cc.CAT_NAME as catName, 
 		       sc.SUB_TITLE as subTitle, 
 		       ii.NAME, 
 		       ss.SUB_CODE as subCode,
 		       (COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 		       CASE 
 		           WHEN s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
-		           THEN '응시' 
-		           ELSE '미응시' 
+		           THEN '응시가능' 
+		           ELSE '응시불가' 
 		       END AS examStatus
 		FROM CAT_CODE cc
 		JOIN SUBJECT_CODE sc ON cc.CAT_CODE = sc.CAT_CODE
 		JOIN STD_SUBJECT ss ON ss.SUB_CODE = sc.SUB_CODE
 		JOIN SUB_INSTRUCTOR si ON si.SUB_CODE = sc.SUB_CODE
 		JOIN INST_INFO ii ON ii.INST_ID = si.INST_ID
-		JOIN LEC_STATUS ls ON ls.SUB_CODE = sc.SUB_CODE
+		LEFT JOIN LEC_STATUS ls ON ls.SUB_CODE = sc.SUB_CODE
 		JOIN SUBJECT s ON s.SUB_CODE = sc.SUB_CODE
 		WHERE ss.STD_ID = #{stdId} 
 		  AND ss.APPLY = 'P'
@@ -29,19 +29,19 @@
     
     <!-- 완료된 강의 -->
     <select id="selectCompleteLectureList" parameterType="String" resultType="MyLectureVO">
-		SELECT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.SUB_CODE as subCode,
+		SELECT DISTINCT cc.CAT_NAME as catName, sc.SUB_TITLE as subTitle, ii.NAME, ss.SUB_CODE as subCode,
 		    (COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) / NULLIF(s.TOTAL_NO, 0)) * 100 AS percent,
 		    CASE 
 		        WHEN s.TOTAL_NO = COUNT(CASE WHEN ls.STATUS = 'C' THEN 1 END) 
-		        THEN '응시' 
-		        ELSE '미응시' 
+		        THEN '응시가능' 
+		        ELSE '응시불가' 
 		    END AS examStatus
 		FROM CAT_CODE cc
 		JOIN SUBJECT_CODE sc ON cc.CAT_CODE = sc.CAT_CODE
 		JOIN STD_SUBJECT ss ON ss.SUB_CODE = sc.SUB_CODE
 		JOIN SUB_INSTRUCTOR si ON si.SUB_CODE = sc.SUB_CODE
 		JOIN INST_INFO ii ON ii.INST_ID = si.INST_ID
-		JOIN LEC_STATUS ls ON ls.SUB_CODE = sc.SUB_CODE
+		LEFT JOIN LEC_STATUS ls ON ls.SUB_CODE = sc.SUB_CODE
 		JOIN SUBJECT s ON s.SUB_CODE = sc.SUB_CODE
 		WHERE ss.STD_ID = #{stdId} AND ss.APPLY = 'C'
 		GROUP BY cc.CAT_NAME, sc.SUB_TITLE, ii.NAME, s.TOTAL_NO, ss.SUB_CODE

@@ -4,54 +4,35 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.student">
 
-	<!-- 사이트 공지사항 게시글 검색 -->
-	<!-- <select id="selectUserNoticeList" resultType="UserNoticeDomain" parameterType="searchVO">
-		select NOTI_NO, TITLE, ID, WRITE_DATE, STATUS, rnum
-		from (select
-		NOTI_NO, TITLE, ID, WRITE_DATE, STATUS,
-		row_number() over(order by WRITE_DATE desc) rnum
-		from NOTICE
-		<where>
-			<if test="keyword neq null and keyword neq ''">
-				instr(
-				<choose>
-					<when test="field eq 0">
-						title
-					</when>
-					<when test="field eq 1">
-						content
-					</when>
-					<otherwise>
-						id
-					</otherwise>
-				</choose>
-				,#{keyword} ) > 0
-			</if>
-		</where>
-
-		) where rnum between #{startNum} and #{endNum}
-	</select> -->
+	
 	<!-- 사이트 공지사항 리스트 -->
 	<select id="selectAllUserNotice" resultType="UserNoticeDomain">
-    select * from NOTICE order by NOTI_NO desc
-    <!-- SELECT NOTI_NO, TITLE, ID, WRITE_DATE
-    FROM NOTICE -->
-    <!-- WHERE STATUS = 'POST' -->
-    <!-- ORDER BY WRITE_DATE DESC -->
+    select * from NOTICE
+	where STATUS = 'POST'
+	order by WRITE_DATE desc
+	</select>
+
+	<!-- 사이트 공지사항 게시글 검색 -->
+	<select id="searchNoticeTitle" resultType="UserNoticeDomain" parameterType="String">
+	select * from NOTICE
+	where STATUS = 'POST'
+	and title like '%'||#{title}||'%'
+	order by WRITE_DATE desc
 	</select>
 
 	<!-- 사이트 공지사항 상세보기 -->
-	<!-- <select id="selectOneUserNotice" resultType="UserNoticeDomain" parameterType="String">
+	<select id="selectOneUserNotice" resultType="UserNoticeDomain" parameterType="String">
 		select TITLE, ID, WRITE_DATE, CONTENT
 		from NOTICE
-		where NOTI_NO=#{NOTI_NO}
-	</select> -->
+		where TITLE=#{TITLE}
+	</select>
 	
-	<!-- 강의 공지사항 리스트 -->
-	<!-- <select id="selectInstNoticeList" resultType="">
-	select NOTI_NO, INST_ID, TITLE, WRITE_DATE, CONTENT
-	from  INST_NOTICE
-	where SUB_CODE=#{SUB_CODE}
-	</select> -->
-	<!-- 강의 공지사항 상세보기 -->
+	<!--  공지사항 제목으로 검색 -->
+	<select id="searchNotificationTitle" resultType="UserNoticeDomain" parameterType="String">
+	select * 
+	from NOTICE
+	where title like '%'||#{title}||'%'
+	order by NOTI_NO desc 
+	</select>
+	
 </mapper>
