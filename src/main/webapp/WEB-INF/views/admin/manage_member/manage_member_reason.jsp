@@ -24,9 +24,8 @@
 <body onclick="closePopupOnClick()">
     <h2>탈퇴 사유</h2>
     <label for="reason">Reason:</label><br>
-    <textarea id="reason" name="reason" readonly="readonly" rows="4" cols="50"><c:out value="${mmDomain.reason}"/></textarea><br><br>
+    <textarea id="reason" name="reason" readonly="readonly" rows="4" cols="50" ><c:out value="${mmDomain.reason}"/></textarea><br><br>
  
- 
-    <c:out value="${mmDomain.reason}"/>
+
 </body>
 </html>

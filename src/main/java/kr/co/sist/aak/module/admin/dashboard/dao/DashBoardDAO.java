@@ -1,9 +1,11 @@
 package kr.co.sist.aak.module.admin.dashboard.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-
+import kr.co.sist.aak.domain.admin.DashBoardDomain;
 import kr.co.sist.aak.util.MybatisDAO;
 
 @Component
@@ -63,5 +65,33 @@ public class DashBoardDAO {
 		
 		return cnt;
 	}
+	
+	public List<DashBoardDomain> selectCountSignupMebmer() {
+		List<DashBoardDomain> list = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		list = ss.selectList("kr.co.sist.aak.admin8.selectCountSignupMebmer");
+		
+		return list;
+	}
+	
+	public int selectCountNewSignupMebmer() {
+		int cnt = 0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt = ss.selectOne("kr.co.sist.aak.admin8.selectCountNewSignupMebmer");
+		
+		return cnt;
+	}
+	
+	public int selectCountAllsubject() {
+		int cnt = 0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		cnt = ss.selectOne("kr.co.sist.aak.admin8.selectCountAllsubject");
+		
+		return cnt;
+	}
+	
 	
 }
