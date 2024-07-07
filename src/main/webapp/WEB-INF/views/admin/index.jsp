@@ -104,41 +104,136 @@
                 </div>
             </div>
             <!-- row -->
-            <div class="row tm-content-row tm-mt-big">
             
-               <div class="tm-col tm-col-small" style="margin: auto;">
-          	  <div class="bg-white tm-block h-100">
-         	   <div class="container">
-      		 	 총 강의 수
-      		  <div class="display-4" id="counter">0</div>
+             <div class="row">
+                <div class="col-12">
+            
+            <div class="row tm-content-row tm-mt-big" style="margin-left: 0vw; float:left; fixed;height: 70%; position: fixed; width: 25%">
+            
+            <div class="bg-white tm-block col-12" >
+            
+              <div >
+          	
+          	  <h2 class="tm-block-title">오늘 회원 수치</h2>
+         	   <div>
+         	   
+         	   <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">전체 회원 수 : </p>
+      		  <p class="display-5" id="counterAllMember" style="float:left; margin: auto;">0</p>
+      		  <p style=" margin: auto;">명</p>
+         	   </div>
+         	   
+         	   <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">신규 회원 수 : </p>
+      		  <p class="display-5" id="counterNewMember" style="float:left; margin: auto;">0</p>
+      		  <p style=" margin: auto;">명</p>
+      		  </div>
+      		  
+      		  <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">탈퇴 회원 수 : </p>
+      		  <p class="display-5" id="counterOutMember" style="float:left; margin: auto;">0</p>
+      		  <p style=" margin: auto;">명</p>
+      		  </div>
   			  </div>
-            	</div>
+  			  
+  			  <hr>
+            	
               </div>
-                
-
-                
-				<div class="tm-col tm-col-big"  style="margin: auto;">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">월별 회원 추이</h2>
+                    <div style="margin:auto;">
+                        <h2 class="tm-block-title">이번달 회원 추이</h2>
                        <canvas id="lineChart" class="chartjs-render-monitor"></canvas>
                     </div>
-                </div>
+           </div>
+              
+            
+           </div>
+           
+   
+              
+           <div class="row tm-content-row tm-mt-big" style="margin-left: 29.2vw; float:left; fixed;height: 70%; position: fixed; width: 25%">
+            <div class="bg-white tm-block col-12" > 
+            
+            <h2 class="tm-block-title">강사 및 강의</h2>
+         	   <div class="allMemberCount">
+           
+              <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">총 강사 수 : </p>
+      		  <p class="display-5" id="counterAllInstructor" style="float:left; margin: auto;">0</p>
+      		  <p style=" margin: auto;">명</p>
+      		  </div>  
+                 
                 
-
                 
-                <div class="tm-col tm-col-big" style="margin: auto;">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">데이터 변경방법을 알았어!</h2>
+                
+              <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">총 강의 수 : </p>
+      		  <p class="display-5" id="counterAllSubject" style="float:left; margin: auto;">0</p>
+      		  <p style=" margin: auto;">개</p>
+      		  </div> 
+      		  
+      		  <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">개설 신청 강의 : </p>
+      		  <p class="display-5" id="counterNeedChkSubject" style="float:left; margin: auto;">0</p>
+      		  <p style=" margin: auto;">건</p>
+      		  </div> 
+          	  
+       	 <hr>
+        
+              <div>
+                    <div style="margin:auto;">
+                        <h2 class="tm-block-title">월별 강의 수</h2>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
+              </div>
+			</div>
+        </div>       
+          
+          
+                <div class="row tm-content-row tm-mt-big" style="margin-left: 58.4vw; float:left; fixed;height: 70%; position: fixed; width: 25%">
+            <div class="bg-white tm-block col-12" > 
+            <div >
+          	
+          	  <h2 class="tm-block-title">문의 사항</h2>
+         	   <div>
+         	   
+         	   <div style="margin-top: 10px;">
+      		  <p style="float:left; margin: auto;">미확인 문의 사항 : </p>
+      		  <p class="display-5" id="counterAllMember" style="float:left; margin: auto;">1</p>
+      		  <p style=" margin: auto;">건</p>
+         	   </div>
+         	   
+         	   
+  			  </div>
+  			  
+  			  <hr>
+  			  
+            	<div >
+            	<h2 class="tm-block-title">문의 사항</h2>
+            	<table class ="table table-hover">
+            	
+            	<tr><td>1. 내 문의사항 문의 할께요.</tr></td>
+            	</table>
+            	
+            	
+            	</div>
+            	
+            	
+              </div>
+           
+       
 
+			
+        
+       
+   		 
+   		 
+   		 
+   		 
+   		</div> 
+	</div>
+</div>
 
-
-
-
-           </div>
-        </div>
     </div>
     <script type="text/javascript" src="<c:url value ="/resources/js/jquery-3.3.1.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/moment.min.js"/>"></script>
@@ -148,7 +243,34 @@
     <script type="text/javascript" src="<c:url value ="/resources/js/tooplate-scripts.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/utils.js"/>"></script>
     <script>
+    
+        var allMemberCount = <c:out value="${dbDomain.allMember_count}" />;
+        var newMemberCount = <c:out value="${dbDomain.newMember_count}" />;
+        var allInstructorCount = <c:out value="${dbDomain.allInstructor_count}" />;
+        var exitMemberCount = <c:out value="${dbDomain.exitMember_count}" />;
+        var allSubjectCount = <c:out value="${dbDomain.allSubject_count}" />;
+        
+        var needChkQuestionCount = <c:out value="${dbDomain.needChkQuestion_count}" />;
+        var needChkSubjectCount = <c:out value="${dbDomain.needChkSubject_count}" />;
+        
+        
+   		var value1 = exitMemberCount;
+        var value2 = 50;
+        var value3 = 60;
+        var max1 = <c:out value="${dbDomain.allMember_count}" />;
+    
+    
+    
     $(document).ready(function() {
+    	
+    	 // Gauge Bar 1 설정
+        $('#gaugeBar1').css('width', (value1 / max1 * 100) + '%').attr('aria-valuenow', value1).text(value1 + '명');
+        // Gauge Bar 2 설정
+        $('#gaugeBar2').css('width', value2 + '%').attr('aria-valuenow', value2).text(value2 + '%');
+        // Gauge Bar 3 설정
+        $('#gaugeBar3').css('width', value3 + '%').attr('aria-valuenow', value3).text(value3 + '%');
+    	
+    	
         function animateCounter(element, start, end, duration) {
             let range = end - start;
             let current = start;
@@ -162,11 +284,15 @@
                 }
             }, stepTime);
         }
-        
-        var data = '<%= request.getAttribute("dbDomain.setAllmember_count")%>'; 
-       
-        // 총 인원 수 예제: 0에서 150까지 3초 동안 증가
-        animateCounter("#counter", 0, 10, 3000); 	
+        // 카운트
+        animateCounter("#counterAllMember", 0, allMemberCount, 1000); 	 //전체 회원 수
+        animateCounter("#counterNewMembern", 0, newMemberCount, 1500); 	//신규 회원 수
+        animateCounter("#counterOutMember", 0, exitMemberCount, 1000); 		//탈퇴 회원 수
+        animateCounter("#counterAllInstructor", 0, allInstructorCount, 1500); 	//총 강사 수
+        animateCounter("#counterAllSubject", 0, allSubjectCount, 1500); 			//총 강의 수
+        animateCounter("#counterNeedChkSubject", 0, needChkSubjectCount, 1500); 	//개설 신청 강의 수
+     		
+        animateCounter("#counterNewMembernter", 0, needChkSubjectCount, 1500); 	//확인이 필요한 문의 수 
     });
     
     
@@ -211,10 +337,10 @@
         configLine = {
             type: 'line',
             data: {
-                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+            	labels: ['1일', '2일', '3일', '4일'],
                 datasets: [{
-                    label: '월별 데이터',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '회원 추이',
+                    data: [4,6,10,7],
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
@@ -231,10 +357,10 @@
         configBar = {
             type: 'bar',
             data: {
-                labels: ['1월', '2월', '3월', '4월', '5월', '6월'],
+                labels: ['','6월', '7월',''],
                 datasets: [{
-                    label: '월별 데이터',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '개설 강의',
+                    data: [0, 2, 3,0],
                     backgroundColor: 'rgba(153, 102, 255, 0.2)',
                     borderColor: 'rgba(153, 102, 255, 1)',
                     borderWidth: 1

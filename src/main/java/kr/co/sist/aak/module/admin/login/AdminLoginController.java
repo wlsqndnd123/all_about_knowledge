@@ -1,5 +1,7 @@
 package kr.co.sist.aak.module.admin.login;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +32,26 @@ public String login(@ModelAttribute AdminLoginVO alVO,HttpSession session,Model 
 	session.setAttribute("permission", ald.getPermissions());
 	session.setAttribute("auth",adls.searchAuth(alVO) );
 	
+	
+	
 	DashBoardDomain dbDomain = new DashBoardDomain();
+	List<DashBoardDomain> singup_list=null;
 	dbDomain = dbs.searchDataCount();
+	singup_list= dbs.searchCountSignupMebmer();
 	model.addAttribute("dbDomain",dbDomain);
+	model.addAttribute("singup_list",singup_list);
 	
 		return "/admin/index";
+		
 	}else {
 		session.setAttribute("errorpage", true);
 		
 	}
 		return "/admin/login";
 }
+	
+	
+	
 	
 	@GetMapping("admin_index_logout.do")
 	public String logout(HttpSession session) {
