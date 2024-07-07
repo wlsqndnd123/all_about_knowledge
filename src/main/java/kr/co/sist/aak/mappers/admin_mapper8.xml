@@ -32,10 +32,32 @@
 	<select id="selectCountNeedChkQuestion" resultType ="int">
 	select count(qna_no)
 	from QNA_GEN_Q
-	where status = 'Y'
+	where status = 'N'
 	</select>
 	
 	
+	<select id="selectCountNewSignupMebmer" resultType ="int">
+	select count(std_id)
+	from STUDENT
+	where del_yn = 'N' and TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')  
+	</select>
+	
+	<select id="selectCountAllsubject" resultType ="int">
+	select count(sub_code)
+	from  SUBJECT
+	where status= 'Y'
+	</select>
+	
+	
+	
+	
+	<select id="selectCountSignupMebmer" resultType ="DashBoardDomain">
+	SELECT TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD') AS day, COUNT(qna_no) AS count
+	FROM STUDENT
+	WHERE TO_CHAR(SIGNUP_DATE, 'YYYY-MM') = TO_CHAR(SYSDATE, 'YYYY-MM')
+	GROUP BY TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD')
+	ORDER BY day
+	</select>
 
 	
 	
