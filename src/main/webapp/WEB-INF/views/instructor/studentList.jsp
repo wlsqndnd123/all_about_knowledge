@@ -304,11 +304,7 @@ document.getElementById('searchInput').addEventListener('keypress', function(e) 
                                          
                                     </tr>
                                 </c:forEach>
-                               <%--  <c:if test="${empty lectureList}">
-                                    <tr>
-                                        <td colspan="6" style="text-align:center;">강의가 없습니다.</td>
-                                    </tr>
-                                </c:if> --%>
+                              
                             </c:catch>
                             <c:if test="${not empty exception}">
                                 <tr>
@@ -320,7 +316,6 @@ document.getElementById('searchInput').addEventListener('keypress', function(e) 
   
 
 <!-- /main -->
-               
 
             </div>
             <div class="container-fluid">
