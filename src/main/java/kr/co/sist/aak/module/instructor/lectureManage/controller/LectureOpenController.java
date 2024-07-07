@@ -69,7 +69,7 @@ public class LectureOpenController {
 		
 		JSONObject jsonObj= new JSONObject();
 		
-		jsonObj.put("lecNm", );	//강의명
+		jsonObj.put("lecNm", jsonObj );	//강의명
 		jsonObj.put("intro", jsonObj);	//학습개요
 		jsonObj.put("goal", jsonObj);	//학습목표
 		jsonObj.put("lectureImage", jsonObj);	//강의썸네일

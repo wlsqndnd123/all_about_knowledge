@@ -7,7 +7,13 @@
 	<select id="select_exam" resultType="ExamDomain">
 	select SUB_CODE,Q_NO,CONTENT,EX_1,EX_2,EX_3,EX_4,SOLUTION
 	from INST_EXAM
-	where SUB_CODE = #{SUB_CODE}
+
+	</select>
+	
+	<select id="select_exam_subcode" parameterType="string" resultType="ExamDomain">
+	select SUB_CODE,Q_NO,CONTENT,EX_1,EX_2,EX_3,EX_4,SOLUTION
+	from INST_EXAM
+	WHERE SUB_CODE = #{SUB_CODE, jdbcType=VARCHAR}
 
 	</select>
 	
@@ -25,7 +31,7 @@
         EX_3 = #{EX_3, jdbcType=VARCHAR},
         EX_4 = #{EX_4, jdbcType=VARCHAR},
         SOLUTION = #{SOLUTION, jdbcType=VARCHAR}
-    WHERE Q_NO = #{Q_NO}
+    WHERE Q_NO = #{Q_NO, jdbcType=VARCHAR}
 </update>
 
 	<select id="countQNO" resultType="int">
@@ -33,6 +39,12 @@
     from INST_EXAM
 	</select>
 	
+	<select id="select_exam1" resultType="ExamDomain">
+	select SUB_CODE,Q_NO,CONTENT,EX_1,EX_2,EX_3,EX_4,SOLUTION
+	from INST_EXAM
+	
+
+	</select>
 	
 	
 </mapper>

@@ -24,6 +24,20 @@ public class StudentListService {
 		return list;
 	}
 	
+	
+	 public List<StudentListDomain> searchById(String STD_ID) throws PersistenceException {
+	        return slDAO.searchid(STD_ID);
+	    }
+
+	    public List<StudentListDomain> searchBySubCode(String SUB_TITLE) throws PersistenceException {
+	        return slDAO.searchsubcode(SUB_TITLE);
+	    }
+	   
+	   public List<StudentListDomain> searchByname(String NAME)throws PersistenceException{
+		   return slDAO.searchname(NAME);
+	   }
+	
+	
 
 
 }

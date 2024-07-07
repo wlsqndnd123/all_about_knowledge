@@ -27,14 +27,16 @@ public class ExamController {
 	private ExamService es;
 	
 	@GetMapping("/examList.do")
-	public String exam( Model model) {
-		 String SUB_CODE = "SUB_000001"; //SUB_000001로 고정값으로 받는중
-		List<ExamDomain> list = es.searchList(SUB_CODE);
-	    model.addAttribute("examlist", list);
-	    System.out.println("컨트롤러:" + list);
-	    return "/instructor/exam/examList";
-	}
-	
+    public String examList(@RequestParam(value = "SUB_CODE", required = false) String subCode, Model model) {
+        List<ExamDomain> examList;
+        if (subCode != null && !subCode.isEmpty()) {
+            examList = es.getExamsBySubCode(subCode);
+        } else {
+            examList = es.getAllExams();
+        }
+        model.addAttribute("examlist", examList);
+        return "/instructor/exam/examList";
+    }
 	
 	@GetMapping("/exam_write.do")
 	public String exam_writeFrm(Model model) {
@@ -50,47 +52,56 @@ public class ExamController {
 	@PostMapping("/exam_write_pr.do")
 	public String exam_write(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
 	    request.setCharacterEncoding("UTF-8");
-	    
+
 	    String SUB_CODE = request.getParameter("SUB_CODE");
-	    String CONTENT = request.getParameter("CONTENT");
-	    String EX_1 = request.getParameter("EX_1");
-	    String EX_2 = request.getParameter("EX_2");
-	    String EX_3 = request.getParameter("EX_3");
-	    String EX_4 = request.getParameter("EX_4");
-	    String SOLUTION = request.getParameter("SOLUTION");
-	    
-	    ExamVO eVO = new ExamVO();
-	    eVO.setSUB_CODE(SUB_CODE);
-	    eVO.setCONTENT(CONTENT);
-	    eVO.setEX_1(EX_1);
-	    eVO.setEX_2(EX_2);
-	    eVO.setEX_3(EX_3);
-	    eVO.setEX_4(EX_4);
-	    eVO.setSOLUTION(SOLUTION);
-	    
-	    int nextQNo = es.searchQNo();
-	    eVO.setQ_NO(nextQNo);
-	  
+	    String[] Q_NO = request.getParameterValues("Q_NO[]");
+	    String[] CONTENT = request.getParameterValues("CONTENT[]");
+	    String[] EX_1 = request.getParameterValues("EX_1[]");
+	    String[] EX_2 = request.getParameterValues("EX_2[]");
+	    String[] EX_3 = request.getParameterValues("EX_3[]");
+	    String[] EX_4 = request.getParameterValues("EX_4[]");
+	    String[] SOLUTION = request.getParameterValues("SOLUTION[]");
+
 	    try {
-	        int cnt = es.insertExam(eVO);
-	        if (cnt == 1) {
-	            model.addAttribute("eVO", eVO);
-	            model.addAttribute("Q_NO", nextQNo);
-	        } else {
-	            // Handle the case when cnt is not 1
+	        for (int i = 0; i < Q_NO.length; i++) {
+	            ExamVO eVO = new ExamVO();
+	            eVO.setSUB_CODE(SUB_CODE);
+	            eVO.setQ_NO(Integer.parseInt(Q_NO[i]));
+	            eVO.setCONTENT(CONTENT[i]);
+	            eVO.setEX_1(EX_1[i]);
+	            eVO.setEX_2(EX_2[i]);
+	            eVO.setEX_3(EX_3[i]);
+	            eVO.setEX_4(EX_4[i]);
+
+	            // SOLUTION 처리
+	            if (SOLUTION != null && SOLUTION.length > i) {
+	                eVO.setSOLUTION(SOLUTION[i]);
+	            } else {
+	                // SOLUTION이 null이거나 길이가 충분하지 않은 경우 처리
+	                // 예: 유효성 검사에서 모든 문제에 대해 정답을 선택하도록 확인
+	                // 여기서는 예외 처리 또는 기본값 설정 등을 고려
+	                eVO.setSOLUTION(null); // 예시로 null 설정
+	            }
+
+	            int cnt = es.insertExam(eVO);
+	            if (cnt == 1) {
+	                model.addAttribute("eVO", eVO);
+	            } else {
+	                // 처리 실패 시 예외 처리
+	            }
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
+	        // 예외 처리
 	    }
-	    
-	    System.out.println(eVO.toString());
+
 	    return "/instructor/exam/exam_write_result";
 	}
 
 	@GetMapping("/exam_update.do")
-	public String exam_updateFrm(Model model, @RequestParam("SUB_CODE") String SUB_CODE) {
+	public String exam_updateFrm(Model model) {
 		
-		List<ExamDomain> list=es.searchList1(SUB_CODE);
+		List<ExamDomain> list=es.searchList1();
 		model.addAttribute("examlist",list);
 		System.out.println("update쪽 리스트"+list);
 		
