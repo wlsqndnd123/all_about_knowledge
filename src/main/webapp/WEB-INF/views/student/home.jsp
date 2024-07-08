@@ -285,6 +285,31 @@
 				<div class="ui secondary pointing menu">
 					<a class="active item"> 컴퓨터 공학 </a> <a class="item"> 프로그래밍 언어 </a>
 				</div>
+				<div class="ui three stackable link cards" id="lectureCards">
+			<c:forEach var="listLecture2" items="${requestScope.listLecture2 }"
+				varStatus="i">
+				<div class="card" id="card">
+					<a href="user_lecture_detail.do?sub_code=${listLecture2.sub_code}"
+						class="image"> <img
+						src="${pageContext.request.contextPath}/front/student/images/java.png">
+					</a>
+					<div class="content">
+						<div class="header">
+							<c:out value="${listLecture2.sub_title}" />
+						</div>
+						<div class="meta">
+							<a><c:out value="${listLecture2.inst_id}" /></a>
+						</div>
+					</div>
+					<div class="extra content">
+						<span class="right floated">
+							<div class="ui heart rating"></div> 17 likes
+						</span> <span> <i class="user icon"></i> +<c:out value="${listLecture2.cnt}" />명
+						</span>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
 			</div>
 
 		</div>

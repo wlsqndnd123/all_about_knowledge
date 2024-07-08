@@ -98,9 +98,6 @@
 						</div>
 				</div>
 			</div>
-			<!-- <div class="actions">
-				<div class="ui positive button">전송</div>
-			</div> -->
 			<div class="actions">
 				<input type="button" class="ui positive button" value="작성"
 					id="btnWrite">

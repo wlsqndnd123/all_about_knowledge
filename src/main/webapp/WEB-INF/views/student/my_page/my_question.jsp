@@ -78,6 +78,7 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 					data-tab="second"> AAK 문의 </a>
 			</div>
 
+			<!-- 강의 문의 -->
 			<div class="ui bottom attached tab segment active" data-tab="first">
 				<table class="ui celled padded table center aligned">
 					<thead>
@@ -91,16 +92,16 @@ Desc : 사용자(학생)의 마이페이지 나의문의 화면
 					</thead>
 					<tbody>
 						<c:forEach var="list" items="${requestScope.list }" varStatus="i">
-							<tr class="clickable-row" data-href="site_qna_detail.do">
+							<tr class="clickable-row" data-href="my_question.do">
 								<!-- <td class="center-aligned"></td>
 								<td class="center-aligned"></td>
 								<td class="center-aligned"></td>
 								<td class="center-aligned"></td>
 								<td class="center-aligned"></td> -->
 								<td class="center-aligned"><c:out value="${i.count }" /></td>
-								<td class="left-aligned"><c:out value="${list.title}" /></td>
-								<td class="center-aligned"><c:out value="${list.std_id}" /></td>
-								<td class="center-aligned"><fmt:formatDate pattern="yyyy-MM-dd" value="${list.q_date }" /></td>
+								<td class="left-aligned"><c:out value="${list.question_title}" /></td>
+								<td class="center-aligned"><c:out value="${list.q_std_id}" /></td>
+								<td class="center-aligned"><fmt:formatDate pattern="yyyy-MM-dd" value="${list.q_date}" /></td>
 								<td class="center-aligned">완료</td>
 							</tr>
 						</c:forEach>

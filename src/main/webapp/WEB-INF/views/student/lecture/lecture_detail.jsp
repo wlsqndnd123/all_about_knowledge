@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +68,7 @@
 			$('#charCount').text(textLength + '/300자');
 		});
 		// 수강 신청 버튼 클릭 시 동작
-		$('#enrollButton').on('click', function() {
+		$('#btnApply').on('click', function() {
 			alert('수강신청이 완료되었습니다.');
 			$(this).text('수강 중인 강좌입니다.');
 		});
@@ -74,6 +76,9 @@
 		// 관심 강의 버튼 클릭 시 동작
 		$('#likeButton').on('click', function() {
 			$(this).toggleClass('active');
+		});
+		$("#btnApply").click(function() {
+			$("#frm").submit();
 		});
 	});
 </script>
@@ -124,8 +129,8 @@
 				<div id="강의소개" class="content">
 					<c:out value="${uld.intro}" />
 				</div>
+				<!-- 강의목차 -->
 				<div id="강의목차" class="content hidden">
-					<!-- <p>강의 목차 내용</p> -->
 					<table class="ui basic table">
 						<thead>
 							<tr>
@@ -145,10 +150,12 @@
 						</tbody>
 					</table>
 				</div>
+				<!-- 수료기준 -->
 				<div id="수료기준" class="content hidden">
 					<p>수료 기준</p>
 					<p>고정 - 모든 강의 수료 기준 동일</p>
 				</div>
+				<!-- 강의공지 -->
 				<div id="강의공지" class="content hidden">
 						<c:forEach var="uld3" items="${requestScope.uld3 }" varStatus="i">
 					<div class="ui segment">
@@ -166,6 +173,7 @@
 					</div>
 						</c:forEach>
 				</div>
+				<!-- 강의문의 -->
 				<div id="강의문의" class="content hidden">
 					<div style="text-align: right;">
 						<button id="openModalBtn" class="ui button">문의 작성</button>
@@ -214,29 +222,31 @@
 					
 				</div>
 			</div>
+			<!-- 강의신청 폼 -->
 			<div class="five wide column" style="padding-top:50px">
+				<form id="frm" action="apply_subject.do" method="post">
 				<div class="box inline">
 					<h3></h3>
 					<h3 class="ui center aligned header">무료강의</h3>
 					<div class="ui center aligned buttons"
 						style="display: flex; flex-direction: column;">
-						<!-- <button class="positive ui button" style="margin-bottom: 10px;">수강
-							신청</button>
-						<button class="ui icon button">
-							<i class="heart icon"></i> 관심 강의
-						</button> -->
-						<button id="enrollButton" class="positive ui button"
-							style="margin-bottom: 10px;">수강 신청</button>
-						<button id="likeButton" class="ui icon button">
-							<i id="heartIcon" class="heart icon"></i> 관심 강의
-						</button>
+						
+						<input type="button" id="btnApply" class="positive ui button"
+							style="margin-bottom: 10px;" value="수강신청">수강 신청
+						<input type="hidden" name="std_id" value="<sec:authentication property='name'/>">
+						<input type="hidden" name="sub_code" value="${uld.sub_code}">
+						
+						 <button type="button" id="likeButton" class="ui icon button">
+                    <i id="heartIcon" class="heart icon"></i> 관심 강의
+                </button>
 					</div>
 				</div>
+					</form>
 				<div class="box inline" style="height: 80px; margin: 0;">
 					<ul
 						style="padding: 0; text-align: center; list-style-type: none; margin: 0;">
-						<li>● 총 00개의 수업 (10시간 30분)</li>
-						<li>● 0명이 관심강의로 선택했어요</li>
+						<li>● 총 10개의 수업 (1시간 30분)</li>
+						<li>● 3명이 관심강의로 선택했어요</li>
 					</ul>
 				</div>
 			</div>

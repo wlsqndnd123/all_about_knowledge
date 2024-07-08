@@ -46,6 +46,7 @@
  <typeAlias type="kr.co.sist.aak.domain.student.UserLectureDomain" alias="UserLectureDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.UserQnaDomain" alias="UserQnaDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.vo.UserQnaVO" alias="UserQnaVO"/>
+ <typeAlias type="kr.co.sist.aak.domain.student.vo.UserApplySubVO" alias="UserApplySubVO"/>
  
  
  <!-- student typeAlias 종료 --> 

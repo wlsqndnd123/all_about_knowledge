@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.student.UserLectureDomain;
 import kr.co.sist.aak.domain.student.UserNoticeDomain;
+import kr.co.sist.aak.domain.student.vo.UserApplySubVO;
+import kr.co.sist.aak.domain.student.vo.UserQnaVO;
 import kr.co.sist.aak.module.student.lecture.dao.UserLectureDAO;
 
 @Service
@@ -30,6 +32,7 @@ public class UserLectureService {
 		}
 		return list;
 	}//searchUserLecture
+	
 	
 	public UserLectureDomain searchUserLectureDetail(String sub_code){
 		UserLectureDomain uld = null;
@@ -80,6 +83,27 @@ public class UserLectureService {
 		}
 		return list;
 	}//searchInstNotice
+	
+	public List<UserLectureDomain> searchLatestLecture(){
+		List<UserLectureDomain> list = null;
+		try {
+			list=ulDAO.selectLatestLecture();
+		} catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return list;
+	}//searchInstNotice
+	
+	public int addApplySub(UserApplySubVO uaVO) {
+		int cnt = 0;
+        try {
+        	cnt = ulDAO.insertApplySubject(uaVO);
+        } catch (PersistenceException Pe) {
+        	Pe.printStackTrace();
+        }
+//        System.out.println("==============================uaVO======================="+uaVO);
+        return cnt;
+	}
 	
 	public String searchCatLecture(String cat_code){
 		List<UserLectureDomain> list = null;
