@@ -4,22 +4,8 @@ package kr.co.sist.aak.domain.instructor;
 
 public class StudentListDomain {
 	
-	private String sub_code,STD_ID,name,status;
-	private int score,TRY_COUNT;
-	
-	public StudentListDomain(String sub_code, String sTD_ID, String name, String status, int score, int tRY_COUNT) {
-		super();
-		this.sub_code = sub_code;
-		this.STD_ID = sTD_ID;
-		this.name = name;
-		this.status = status;
-		this.score = score;
-		this.TRY_COUNT = tRY_COUNT;
-	}
-	public StudentListDomain() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private String sub_code,STD_ID,name,status,SUB_TITLE;
+	private int score;
 	public String getSub_code() {
 		return sub_code;
 	}
@@ -44,23 +30,37 @@ public class StudentListDomain {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getSUB_TITLE() {
+		return SUB_TITLE;
+	}
+	public void setSUB_TITLE(String sUB_TITLE) {
+		this.SUB_TITLE = sUB_TITLE;
+	}
 	public int getScore() {
 		return score;
 	}
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public int getTRY_COUNT() {
-		return TRY_COUNT;
+	public StudentListDomain(String sub_code, String sTD_ID, String name, String status, String sUB_TITLE, int score) {
+		super();
+		this.sub_code = sub_code;
+		this.STD_ID = sTD_ID;
+		this.name = name;
+		this.status = status;
+		this.SUB_TITLE = sUB_TITLE;
+		this.score = score;
 	}
-	public void setTRY_COUNT(int tRY_COUNT) {
-		this.TRY_COUNT = tRY_COUNT;
+	public StudentListDomain() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
 		return "StudentListDomain [sub_code=" + sub_code + ", STD_ID=" + STD_ID + ", name=" + name + ", status="
-				+ status + ", score=" + score + ", TRY_COUNT=" + TRY_COUNT + "]";
+				+ status + ", SUB_TITLE=" + SUB_TITLE + ", score=" + score + "]";
 	}
+	
 	
 	
 	

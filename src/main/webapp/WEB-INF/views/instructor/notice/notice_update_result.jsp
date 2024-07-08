@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-  <!--bootstrap 시작-->
+    <!--bootstrap 시작-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -113,7 +113,7 @@ $(document).ready(function(){
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <!-- Sidebar -->
+   <!-- Sidebar -->
 		   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
@@ -285,12 +285,12 @@ $(document).ready(function(){
                 <!-- End of Topbar -->
 <!-- main -->
 <div class="main">
-    <h3>공지사항 작성완료!</h3>
+    <h3>공지사항 수정완료!</h3>
     
         
           
          <a href="notice.do"><button>목록으로</button></a>
-  
+   
 </div>
 <!-- /main -->
                
@@ -301,7 +301,7 @@ $(document).ready(function(){
            <jsp:include page="../common/instructor_footer.jsp"></jsp:include>
 
         </div>
-     
+    
 
    	<!-- Bootstrap core JavaScript-->
 			<script

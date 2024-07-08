@@ -72,9 +72,11 @@ public class NoticeController {
 	    NoticeVO nVO = new NoticeVO();
 	    nVO.setNOTI_NO(noti_no);
 	    nVO.setTitle(title);
-	    nVO.setCONTENT(content);
+	    nVO.setContent(content);
 	    nVO.setStatus("Y");
-	    nVO.setSub_code(SUB_CODE);
+	    nVO.setSUB_CODE(SUB_CODE);
+	    nVO.setINST_ID(INST_ID);
+	    
 
 	    try {
 	        int cnt = ns.insertNotice(nVO);
@@ -104,13 +106,13 @@ public class NoticeController {
         NoticeVO nVO = new NoticeVO();
         nVO.setNOTI_NO(noti_no);
         nVO.setTitle(title);
-        nVO.setCONTENT(content);
+        nVO.setContent(content);
 
         int cnt = ns.modifyNotice(nVO);
         model.addAttribute("cnt", cnt);
         model.addAttribute("noti_no", noti_no);
 
-        return "/instructor/notice/notice_detail";
+        return "/instructor/notice/notice_update_result";
     }
 	
 }
