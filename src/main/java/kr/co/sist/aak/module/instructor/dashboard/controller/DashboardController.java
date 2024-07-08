@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.sist.aak.domain.instructor.InstructorInfoDomain;
 import kr.co.sist.aak.domain.instructor.RejectDomain;
+import kr.co.sist.aak.domain.instructor.vo.InstructorInfoVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
+import kr.co.sist.aak.domain.instructor.vo.QnaVO;
 import kr.co.sist.aak.module.instructor.dashboard.service.DashboardService;
 import kr.co.sist.aak.module.instructor.lectureManage.service.LectureService;
 
@@ -59,14 +62,25 @@ public class DashboardController {
 	}
 	
 	//반려리스트 상세버튼
-	@GetMapping("/lectureManage/rejectList.do")
+	@GetMapping("/instructor/lectureManage/rejectList.do")
 	public String rejectList(Model model) {
 		
 		
-		return "lectureManage/rejectList";
+		return "instructor/lectureManage/rejectList";
 	}
 	
-	
+	//강사 개인정보 수정
+	@PostMapping("/instructor/instructorInfoProcess.do")
+	public String instInfoProcess(InstructorInfoVO iiVO, Model model) {
+//		System.out.println("-------qnaAnswerProcess-------"+qVO);
+		String inst_id=(String)model.getAttribute("inst_id");
+		
+		iiVO.getInst_id();
+		dbs.instInfo(iiVO);
+		//model.addAttribute("qnd", qnd);
+		
+		return "forward:/instructor/instructorInfo"; 
+	}  
 	
 	
 

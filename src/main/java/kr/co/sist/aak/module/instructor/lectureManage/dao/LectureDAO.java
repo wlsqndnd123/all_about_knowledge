@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
 import kr.co.sist.aak.domain.instructor.InstructorInfoDomain;
 import kr.co.sist.aak.domain.instructor.LectureDomain;
+import kr.co.sist.aak.domain.instructor.NoticeDomain;
 import kr.co.sist.aak.domain.instructor.RejectDomain;
 import kr.co.sist.aak.domain.instructor.vo.InstructorInfoVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureLessonVO;
@@ -35,15 +36,15 @@ public class LectureDAO {
 	
 	//강의상세
 	public LectureDomain lectureDetail(String sub_code) throws PersistenceException{
-		LectureDomain ltd=null;
+		LectureDomain list=null;
 		
 		MybatisDAO mbDAO=MybatisDAO.getInstance();
 		SqlSession ss= mbDAO.getMyBatisHandler(false);
 		
-		ltd=ss.selectOne("kr.co.sist.aak.instructor.lectureDetail",sub_code);
+		list=ss.selectOne("kr.co.sist.aak.instructor.lectureDetail",sub_code);
 		mbDAO.closeHanlder(ss);
 		
-		return ltd;
+		return list;
 	}
 	
 	//승인여부로 글 분류
@@ -100,5 +101,18 @@ public class LectureDAO {
 		return leclessVO;
 	}
 
+	//과목 공지사항
+	public NoticeDomain selectNotice(String sub_code)   {
+		
+		NoticeDomain ntd=null;
+		
+		MybatisDAO mbDAO=MybatisDAO.getInstance();
+		SqlSession ss= mbDAO.getMyBatisHandler(false);
+		
+		ntd=ss.selectOne("kr.co.sist.aak.instructor.searchNotice",sub_code);
+		
+		mbDAO.closeHanlder(ss);
+		return ntd;
+	}
 }
 

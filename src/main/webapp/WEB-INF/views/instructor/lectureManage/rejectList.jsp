@@ -62,13 +62,13 @@
 							</ul>
 						</div> -->
 
-						<div class="col">
+<!-- 						<div class="col">
 							<div class="input-group mb-2" >
 								<input type="text" class="form-control" style="max-width: 350px;" > 
 								<input type="button" class="input-group-text" value="🔍">
 							</div>
 
-						</div>
+						</div> -->
 					</div>
 					<div class="container-fluid">
 						<!-- 리스트 -->
@@ -82,7 +82,7 @@
 							<tbody>
 							<c:forEach var="rejectList" items="{}" varStatus="i">
 								<tr>
-									<th scope="row">java 왕기초 4주 단기완성</a></th>
+									<th scope="row" >java 왕기초 4주 단기완성</a></th>
 									<td>반려사유1</td>
 								</tr>
 								<tr>

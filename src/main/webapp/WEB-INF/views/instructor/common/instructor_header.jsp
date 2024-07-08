@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="icon"
-	href="http://192.168.10.225/spring_mvc/common/favicon.ico" />
+	href="http://211.63.98.143/spring_mvc/common/favicon.ico" />
 <!--bootstrap 시작-->
 <link
 	href="http://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -19,8 +19,8 @@
 	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 	crossorigin="anonymous"></script>
 <!--bootstrap 끝-->
-<link rel="stylesheet" href="http://192.168.10.225/spring_mvc/common/css/main.css" type="text/css" media="all" />
-<link rel="stylesheet" href="http://192.168.10.225/spring_mvc/common/css/board.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://211.63.98.143/spring_mvc/common/css/main.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://211.63.98.143/spring_mvc/common/css/board.css" type="text/css" media="all" />
 
 <!--jQuery CDN 시작-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js">
@@ -33,6 +33,10 @@
 	$(function() {
 
 	});//ready
+	
+	function logout() {
+		window.location.href = "0;http://localhost/all_about_knowledge/instructor/loginProcess.do";
+	}
 </script>
 </head>
 <body>
@@ -106,10 +110,10 @@
 									<i class="fas fa-donate text-white"></i>
 								</div>
 							</div>
-							<div>
+						 	<div>
 								<div class="small text-gray-500">December 7, 2019</div>
 								$290.29 has been deposited into your account!
-							</div>
+							</div> 
 						</a> <a class="dropdown-item d-flex align-items-center" href="#">
 							<div class="mr-3">
 								<div class="icon-circle bg-warning">
@@ -132,13 +136,17 @@
 				<li class="nav-item dropdown no-arrow">
 				<a class="nav-link dropdown-toggle d-flex align-items-center" href="http://localhost/all_about_knowledge/instructor_index.do"
 					id="userDropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
-					<c:if test="${instd.image }.equals('')">
+					<%-- <c:if test="${instd.image }.equals('')"> --%>
 					
 					<img class="img-profile rounded-circle"
 						src="http://localhost/all_about_knowledge/upload/${instd.image }"
-						style="margin-right: 10px;"> 
-					</c:if>  
-						<span class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-size: 15px">Logout</span>
+						style="margin-right: 10px;" onclick="return logout();"> 
+						
+					<strong style="color: black; margin-right:20px;"><c:out value="${sessionScope.inst_id }"/>님</strong>
+					<%-- </c:if>  --%> 
+						<!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-size: 15px" onclick="return logout();">
+						Logout
+						</span> -->
 				</a></li>
 
 				<!-- 오른쪽 상단 이미지 클릭 메뉴 -->

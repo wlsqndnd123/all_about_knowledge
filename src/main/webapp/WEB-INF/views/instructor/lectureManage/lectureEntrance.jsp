@@ -28,8 +28,6 @@
 <!--jQuery CDN 끝-->
 
 <title>AAK</title>
-
-	type="text/css">
 <link
 	href="http://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
@@ -326,11 +324,14 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label" style="font-size: 18px">학습개요</label> <br> <label
-												class="form-label" style="font-size: 18px">학습개요입니다라람쥐</label>
+												class="form-label" style="font-size: 18px">
+												JAVA 강의영상은 JAVA 프로그래밍 언어의 기본 개념과 핵심 원리를 학습하는 데 중점을 두고 있습니다.</label>
 										</div>
 										<div class="mb-3">
 											<label class="form-label" style="font-size: 18px">학습목표</label> <br> <label
-												class="form-label" style="font-size: 18px">학습목표입니다</label>
+												class="form-label" style="font-size: 18px">
+												해당강의를 통해 JAVA 프로그래밍의 기본 구조와 문법을 이해하고, 객체지향 프로그래밍의 기본 원리를 습득합니다.
+												</label>
 										</div>
 							</div>
 							</div>
