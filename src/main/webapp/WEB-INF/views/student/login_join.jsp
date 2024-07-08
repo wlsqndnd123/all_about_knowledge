@@ -16,6 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="http://localhost/all_about_knowledge/front/student/js/login.js"></script>
+
+<script>
+	function openPopup(url, title, w, h) {
+	    var left = (screen.width / 2) - (w / 2);
+	    var top = (screen.height / 2) - (h / 2);
+	    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+	}
+</script>
+
 </head>
 <body>
 <div class="container">
@@ -59,8 +68,8 @@
                   <div class="CTA">
                      <input type="submit" value="로그인">
                      <a href="#" class="switch">회원가입</a>
-                     <a href="#" class="switch-a">ID찾기</a>
-                     <a href="#" class="switch-a">비밀번호찾기</a>
+                     <a href="javascript:void(0);" class="switch-a" onclick="openPopup('/all_about_knowledge/find_id_popup.do', '아이디 찾기', 600, 400);">ID찾기</a>
+                     <a href="javascript:void(0);" class="switch-a" onclick="openPopup('/all_about_knowledge/find_password_popup.do', '비밀번호 찾기', 600, 400);">비밀번호찾기</a>
                   </div>
 					<c:if test="${loginError}">
 						<script type="text/javascript">
