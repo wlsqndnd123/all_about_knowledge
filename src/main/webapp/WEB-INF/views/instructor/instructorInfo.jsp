@@ -75,7 +75,7 @@ $(function () {
     <div id="apply_info" class="d-flex flex-column mt-3"> <!-- apply_info -->
     <!-- 강사 개인정보수정 -->
     <div id="" class="d-flex flex-row justify-content-center">
-        <div id="" style="flex-direction: column;">
+        <form action="instructorInfoProcess.do" method="post" id="instInfoFrm" style="flex-direction: column;">
             <!-- 강의명 -->
             <div class="form-group d-flex align-items-center mb-3">
                 <label for="lectureName"  style="width: 150px; margin-right: 20px;">이름</label>
@@ -111,7 +111,7 @@ $(function () {
 	    
 
 	    <div style="text-align: center;">
-		    <input type="submit" value="수정" class="btn btn-dark btn-sm" id="updateBtn"/>
+		    <input type="button" value="수정" class="btn btn-dark btn-sm" id="updateBtn"/>
 		    <input type="button" value="취소" class="btn btn-light btn-sm" id="cancleBtn" onclick="history.back()"/>
 	    </div>
 	</div>

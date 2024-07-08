@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
 import kr.co.sist.aak.domain.instructor.InstructorInfoDomain;
 import kr.co.sist.aak.domain.instructor.LectureDomain;
+import kr.co.sist.aak.domain.instructor.NoticeDomain;
 import kr.co.sist.aak.domain.instructor.vo.LectureLessonVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
 import kr.co.sist.aak.domain.student.domain.InstructorDomain;
@@ -107,15 +108,18 @@ public class LectureService {
 	
 	//강의관리 상세
 	public LectureDomain lectureDetail(String sub_code) {
-		LectureDomain lecd=null;
+		LectureDomain list=null;
 		
 		try {
-			lecd=ltDAO.lectureDetail(sub_code);
+			list=ltDAO.lectureDetail(sub_code);
+//			if(sub_code == "") {
+//				sub_code="SUB_000005";
+//			}
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
 		
-		return lecd;
+		return list;
 	}
 
 	//강의 상세정보
@@ -143,4 +147,16 @@ public class LectureService {
 		return lecLessVO;
 	}
 	
+	//과목공지사항
+	public NoticeDomain noticeone(String sub_code) {
+		NoticeDomain ntd=null;
+		
+		try {
+			ntd=ltDAO.selectNotice(sub_code);
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+			
+		}
+		return ntd;
+	}
 }

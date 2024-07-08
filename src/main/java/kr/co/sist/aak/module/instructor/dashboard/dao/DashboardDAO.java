@@ -11,8 +11,10 @@ import kr.co.sist.aak.domain.instructor.InstructorInfoDomain;
 import kr.co.sist.aak.domain.instructor.LectureDomain;
 import kr.co.sist.aak.domain.instructor.OpenRequestDomain;
 import kr.co.sist.aak.domain.instructor.RejectDomain;
+import kr.co.sist.aak.domain.instructor.vo.InstructorInfoVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
 import kr.co.sist.aak.domain.instructor.vo.OpenRequestVO;
+import kr.co.sist.aak.domain.instructor.vo.QnaVO;
 import kr.co.sist.aak.domain.student.domain.InstructorDomain;
 import kr.co.sist.aak.util.MybatisDAO;
 
@@ -91,7 +93,20 @@ public class DashboardDAO {
 		return totalCnt;
 	}
 	
-	
+	//강사 개인정보
+	public int updateInstrucInfo(InstructorInfoVO iiVO) throws PersistenceException{
+		int cnt = 0;
+		
+		MybatisDAO mbDao=MybatisDAO.getInstance();
+		SqlSession ss= mbDao.getMyBatisHandler(true);
+		
+//		System.out.println("======updateAnswer======"+qVO);
+		cnt=ss.update("kr.co.sist.aak.instructor.modifyInfo",iiVO);
+		mbDao.closeHanlder(ss);
+		
+		return cnt;
+		
+	}
 	
 
 }

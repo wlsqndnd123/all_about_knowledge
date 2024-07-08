@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.sist.aak.domain.instructor.LectureDomain;
+import kr.co.sist.aak.domain.instructor.NoticeDomain;
 import kr.co.sist.aak.module.instructor.lectureManage.service.LectureService;
 
 @Controller
@@ -30,13 +31,27 @@ public class LectureController {
 	
 	//강의관리 상세
 	@GetMapping("/instructor/lectureManage/lectureList_detail.do")
-	public String lectureList_detail(LectureDomain lecd, @RequestParam(defaultValue="LEC_000001") String lec_code, Model model) {
+	public String lectureList_detail(LectureDomain lecd,  String sub_code, Model model) {
+		System.out.println("--------------------------"+ sub_code);
+		LectureDomain list= lecs.lectureDetail(sub_code);
+		System.out.println("--------------------------"+ list);
+		model.addAttribute("lecDetail",list);
 		
-		lecd=lecs.lectureDetail(lec_code);
-		model.addAttribute("lecd",lecd);
-		
+		NoticeDomain ntd= lecs.noticeone(sub_code);
+		model.addAttribute("ntd",ntd);
 		
 		return "instructor/lectureManage/lectureList_detail";
 	}
+
+//	//과목 공지사항
+//	@GetMapping("/instructor/lectureManage/lectureList.do")
+//	public String noticeList(Model model,String sub_code) {
+//		
+//		NoticeDomain ntd= lecs.noticeone(sub_code);
+//		model.addAttribute("ntd",ntd);
+//		
+//		return "instructor/lectureManage/lectureList";
+//	}
+	
 	
 }

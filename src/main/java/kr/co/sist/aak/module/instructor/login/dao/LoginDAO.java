@@ -32,12 +32,13 @@ public class LoginDAO {
 //	}
 	
 	public InstructorLoginDomain selectInstructor(instructorLoginVO ilVO) throws PersistenceException{
+		System.out.println("DAO id : " + ilVO.getInst_id());
 		
 		InstructorLoginDomain ild=null;
 		
 		MybatisDAO mbDAO=MybatisDAO.getInstance();
 		SqlSession ss= mbDAO.getMyBatisHandler(false);
-		ild= ss.selectOne("kr.co.sist.instructor.loginProcess",ilVO.getId());
+		ild= ss.selectOne("kr.co.sist.aak.instructor.loginInstructor", ilVO.getInst_id());
 		
 		return ild;
 	}

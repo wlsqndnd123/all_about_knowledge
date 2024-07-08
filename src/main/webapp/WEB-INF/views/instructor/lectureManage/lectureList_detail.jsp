@@ -54,31 +54,40 @@
     <div class="bg-white tm-block" style="width: 100% ">
   <div class="mb-3 d-flex align-items-center justify-content-center" style="width: 100%;">
     <div style="flex: 1; text-align: center;">
-        <img src="http://localhost/all_about_knowledge/resources/img/%EA%B0%95%EC%9D%98%EC%8D%B8%EB%84%A4%EC%9D%BC.png" style="max-width: 200px;">
+    <%-- http://localhost/all_about_knowledge/upload/${instd.image } --%>
+       <%--  <img src="http://localhost/all_about_knowledge/upload/${lecDetail.image }"> --%>
+       <img src="http://localhost/all_about_knowledge/upload/%EA%B0%95%EC%9D%98%EC%8D%B8%EB%84%A4%EC%9D%BC.png"/>
     </div>
     <div id="lec_info" class="d-flex flex-column" style="flex: 1;">
         <div class="mb-3">
-        <input type="hidden" value="${lecd.lec_code}" name="lec_code" />
-            <label class="form-label" style="font-size: 18px"><c:out value="${lecd.sub_title}"/></label>
+        <input type="hidden" value="${lecDetail.lec_code}" name="lec_code" />
+            <label class="form-label" style="font-size: 18px">강의명      <c:out value="${lecDetail.title}"/></label>
             <a href="http://localhost/all_about_knowledge/instructor/lectureManage/lectureEntrance.do">
                 <input type="button" value="강의실 입장" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px">
             </a>
         </div>
         <div class="mb-3">
-            <label class="form-label" style="font-size: 18px">총 강의시간 | 800분</label>
+            <label class="form-label" style="font-size: 18px"><!-- 총 강의시간 | 800분 -->
+            총 시간        <c:out value="${lecDetail.total_time }"/></label> 
             <input type="button" value="문의관리" class="btn btn-light btn-sm" style="margin-left:20px; font-size: 18px">
         </div>
         <div class="mb-3">
-            <label class="form-label" style="font-size: 18px">총 강의 수 | 20개</label>
+            <label class="form-label" style="font-size: 18px">
+             총 차시수      <c:out value="${lecDetail.total_no }"/></label> 
             <input type="button" value="뒤로가기" class="btn btn-light btn-sm" onclick="history.back()" style="margin-left:20px; font-size: 18px">
         </div>
     
     <!-- 진도현황 -->
-    <div class="mb-3">
-        <label for="customRange1" class="form-label" style="font-size: 18px">진도현황</label>
-        <input type="range" class="form-range" disabled >
-        <strong style="margin-left:20px; font-size: 18px"><label> 75 %</label></strong>
-    </div>
+   <div class="mb-3">
+    <label for="customRange1" class="form-label" style="font-size: 18px">진도현황</label>
+    <span style="display: flex; align-items: center;">
+        <input type="range" class="form-range" disabled style="width: 150px; margin-right: 10px;">
+        <strong style="font-size: 18px; display: inline;">75 %</strong>
+    </span>
+</div>
+
+
+
     
     <!-- 성적현황 -->
     <div class="mb-3">
@@ -107,12 +116,25 @@
                 </tr>
             </thead> 
             <tbody>
-            
+            <c:choose>
+            <c:when test="${ not empty ntd }">
                 <tr>
-                    <td>1</td>
-                    <td>4차시 강의해설 오탈자 수정</td>
-                    <td>2024-05-25</td>
+                    <td><c:out value="${ntd.notice_no}"/></td>
+                    <td><c:out value="${ntd.title }"/></td>
+                    <td><c:out value="${ntd.write_date }"/></td>
                 </tr>
+            </c:when>
+            <c:otherwise>
+                <tr>
+                    <td colspan="3"> 
+                     	<c:if test="${empty qna_no}">
+				       공지사항이 존재하지 않습니다.
+				   		</c:if>
+                    </td>
+                </tr>
+            </c:otherwise>
+                
+                </c:choose>
              </tbody>
              </table> 
 		</div>
@@ -120,7 +142,7 @@
 				</div>
 				</div>
 				</div>
-					<jsp:include page="../common/instructor_footer.jsp"></jsp:include>	
+				<jsp:include page="../common/instructor_footer.jsp"></jsp:include>	
 	
 	<!-- Bootstrap core JavaScript-->
     <script src="http://localhost/all_about_knowledge/resources/vendor/jquery/jquery.min.js"></script>

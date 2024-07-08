@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="icon"
-	href="http://192.168.10.225/spring_mvc/common/favicon.ico" />
+	href="http://211.63.98.143/spring_mvc/common/favicon.ico" />
 <!--bootstrap 시작-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -20,10 +20,10 @@
 	crossorigin="anonymous"></script>
 <!--bootstrap 끝-->
 <link rel="stylesheet"
-	href="http://192.168.10.225/spring_mvc/common/css/main.css"
+	href="http://211.63.98.143/spring_mvc/common/css/main.css"
 	type="text/css" media="all" />
 <link rel="stylesheet"
-	href="http://192.168.10.225/spring_mvc/common/css/board.css"
+	href="http://211.63.98.143/spring_mvc/common/css/board.css"
 	type="text/css" media="all" />
 
 <!--jQuery CDN 시작-->

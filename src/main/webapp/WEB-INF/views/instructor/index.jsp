@@ -46,10 +46,14 @@
 				<!-- http://localhost/all_about_knowledge/resources/img/profile.jpg" -->
 				    <div id="img" style="padding-right: 20px;">
 				       <img class="rounded-circle" src="http://localhost/all_about_knowledge/upload/${instd.image }">
-				   		<label><strong><c:out value="${sessionScope.inst_id }"/></strong></label>
+				   		<%-- <strong><c:out value="${sessionScope.inst_id }"/></strong> --%>
 				   </div>
 				   <div id="introduce" class="d-flex flex-column" style="padding-left: 20px;">
 				   <%-- <label><c:out value="${instd.inst_id}"/></label> --%>
+				       <%-- <div>
+				           <label>아이디</label>
+				           <h5><c:out value="${SessionScope.inst_id }"/></h5>
+				       </div> --%>
 				       <span>
 				           <label>이름</label>
 				           <!-- <input type="text" value="곽우신" /> -->
@@ -128,7 +132,7 @@
                             <tr class="table-secondary">
                                 <td colspan="3">
                                     반려
-                                    <a href="instructor/lectureManage/returnLectureList.do">
+                                    <a href="lectureManage/rejectList.do">
                                         <input type="button" value="상세" style="float:right;background-color: #444; color: white;">
                                     </a>
                                 </td>
