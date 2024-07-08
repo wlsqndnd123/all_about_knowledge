@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class NoticeDomain {
 	
-	private String noti_no,title,INST_ID,content,status,sub_code;
+	private String noti_no,title,INST_ID,content,status,sub_code,SUB_TITLE;
 	private Date write_date;
 	public NoticeDomain(String noti_no, String title, String iNST_ID, String content, String status, String sub_code,
-			Date write_date) {
+			String sUB_TITLE, Date write_date) {
 		super();
 		this.noti_no = noti_no;
 		this.title = title;
@@ -15,6 +15,7 @@ public class NoticeDomain {
 		this.content = content;
 		this.status = status;
 		this.sub_code = sub_code;
+		this.SUB_TITLE = sUB_TITLE;
 		this.write_date = write_date;
 	}
 	public NoticeDomain() {
@@ -57,6 +58,12 @@ public class NoticeDomain {
 	public void setSub_code(String sub_code) {
 		this.sub_code = sub_code;
 	}
+	public String getSUB_TITLE() {
+		return SUB_TITLE;
+	}
+	public void setSUB_TITLE(String sUB_TITLE) {
+		this.SUB_TITLE = sUB_TITLE;
+	}
 	public Date getWrite_date() {
 		return write_date;
 	}
@@ -66,8 +73,11 @@ public class NoticeDomain {
 	@Override
 	public String toString() {
 		return "NoticeDomain [noti_no=" + noti_no + ", title=" + title + ", INST_ID=" + INST_ID + ", content=" + content
-				+ ", status=" + status + ", sub_code=" + sub_code + ", write_date=" + write_date + "]";
+				+ ", status=" + status + ", sub_code=" + sub_code + ", SUB_TITLE=" + SUB_TITLE + ", write_date="
+				+ write_date + "]";
 	}
+	
+	
 	
 	
 

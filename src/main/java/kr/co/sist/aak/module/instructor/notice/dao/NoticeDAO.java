@@ -39,6 +39,10 @@ public class NoticeDAO {
 		return list;
 	}
 	
+	
+	
+	
+	
 	public NoticeDomain selectNoticeDetail(String noti_no)throws PersistenceException{
 		
 		NoticeDomain NDomain = null;

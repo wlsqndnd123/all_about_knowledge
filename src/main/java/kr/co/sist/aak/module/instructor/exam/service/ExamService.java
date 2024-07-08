@@ -1,5 +1,6 @@
 package kr.co.sist.aak.module.instructor.exam.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -17,17 +18,23 @@ public class ExamService {
 	@Autowired
 	private ExamDAO eDAO;
 	
-	public List<ExamDomain> searchList(String SUB_CODE) {
-	    List<ExamDomain> list = null;
-	    try {
-	        list = eDAO.selectList(SUB_CODE);
-	        System.out.println("서비스쪽:" + list);
-	    } catch (PersistenceException pe) {
-	        pe.printStackTrace();
-	    }
-	    return list;
-	}
+	public List<ExamDomain> getAllExams() {
+        try {
+            return eDAO.selectAllExams();
+        } catch (PersistenceException pe) {
+            pe.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 
+    public List<ExamDomain> getExamsBySubCode(String subCode) {
+        try {
+            return eDAO.selectExamsBySubCode(subCode);
+        } catch (PersistenceException pe) {
+            pe.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 	
 	public int insertExam(ExamVO eVO) {
 		int cnt=0;
@@ -41,10 +48,14 @@ public class ExamService {
 		
 	}
 	
-	
-	
-	
-	
+	@Transactional
+	public int insertExams(List<ExamVO> examList) {
+	    int result = 0;
+	    for (ExamVO exam : examList) {
+	        result += eDAO.insertExam(exam);
+	    }
+	    return result;
+	}
 	
 	
 	public int searchQNo() {
@@ -60,17 +71,17 @@ public class ExamService {
 	
 	@Transactional
 	 public int modifyExam(List<ExamVO> examList) {
-        int result = 0;
-        for (ExamVO exam : examList) {
-            result += eDAO.updateExam(exam);
-        }
-        return result;
-    }
+       int result = 0;
+       for (ExamVO exam : examList) {
+           result += eDAO.updateExam(exam);
+       }
+       return result;
+   }
 	
-	public List<ExamDomain>searchList1(String SUB_CODE){
+	public List<ExamDomain>searchList1(){
 		List<ExamDomain>list=null;
 		try {
-			list=eDAO.selectList(SUB_CODE);
+			list=eDAO.selectList1();
 			System.out.println(list);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();

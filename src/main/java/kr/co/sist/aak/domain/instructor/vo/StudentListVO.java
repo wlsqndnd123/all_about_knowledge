@@ -4,16 +4,16 @@ package kr.co.sist.aak.domain.instructor.vo;
 
 public class StudentListVO {
 	
-	private String sub_code,STD_ID,name,status;
-	private int score,TRY_COUNT;
-	public StudentListVO(String sub_code, String sTD_ID, String name, String status, int score, int tRY_COUNT) {
+	private String sub_code,STD_ID,name,status,SUB_TITLE;
+	private int score;
+	public StudentListVO(String sub_code, String sTD_ID, String name, String status, String sUB_TITLE, int score) {
 		super();
 		this.sub_code = sub_code;
 		this.STD_ID = sTD_ID;
 		this.name = name;
 		this.status = status;
+		this.SUB_TITLE = sUB_TITLE;
 		this.score = score;
-		this.TRY_COUNT = tRY_COUNT;
 	}
 	public StudentListVO() {
 		super();
@@ -43,22 +43,22 @@ public class StudentListVO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getSUB_TITLE() {
+		return SUB_TITLE;
+	}
+	public void setSUB_TITLE(String sUB_TITLE) {
+		this.SUB_TITLE = sUB_TITLE;
+	}
 	public int getScore() {
 		return score;
 	}
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public int getTRY_COUNT() {
-		return TRY_COUNT;
-	}
-	public void setTRY_COUNT(int tRY_COUNT) {
-		this.TRY_COUNT = tRY_COUNT;
-	}
 	@Override
 	public String toString() {
 		return "StudentListVO [sub_code=" + sub_code + ", STD_ID=" + STD_ID + ", name=" + name + ", status=" + status
-				+ ", score=" + score + ", TRY_COUNT=" + TRY_COUNT + "]";
+				+ ", SUB_TITLE=" + SUB_TITLE + ", score=" + score + "]";
 	}
 	
 

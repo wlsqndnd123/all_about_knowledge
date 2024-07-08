@@ -38,5 +38,34 @@ public class StudentListDAO {
 	}
 	
 
-
+	public List<StudentListDomain> searchid(String STD_ID)throws PersistenceException{
+		List<StudentListDomain>list=null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss=mbDAO.getMyBatisHandler(false);
+		list=ss.selectList("kr.co.sist.aak.instructor2.searchid",STD_ID);
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
+	 
+	public List<StudentListDomain> searchsubcode(String SUB_TITLE)throws PersistenceException{
+		List<StudentListDomain>list=null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss=mbDAO.getMyBatisHandler(false);
+		list=ss.selectList("kr.co.sist.aak.instructor2.searchsubcode",SUB_TITLE);
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
+	
+	
+	public List<StudentListDomain> searchname(String NAME)throws PersistenceException{
+		List<StudentListDomain>list=null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss=mbDAO.getMyBatisHandler(false);
+		list=ss.selectList("kr.co.sist.aak.instructor2.searchname",NAME);
+		mbDAO.closeHanlder(ss);
+		return list;
+	}
+	
+	
+	
 }
