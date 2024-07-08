@@ -22,6 +22,7 @@ public class HomeController {
 	@GetMapping("/index.do")
 	public String main(Model model){
 		model.addAttribute("listLecture",uls.searchPopLecture());
+		model.addAttribute("listLecture2",uls.searchLatestLecture());
 		
 		return "student/home";
 	}

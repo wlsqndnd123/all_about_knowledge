@@ -4,15 +4,6 @@
     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <script type = "text/javascript">
 	$(function() {
-		/* 
-		$("#btnHome").click(function() {
-			$("#frmGet")[0].action="mypage_home.do";
-			$("#frmGet").submit();
-		}); // click
-		$("#btnLecture").click(function() {
-			$("#frmGet")[0].action="lecture_list.do";
-			$("#frmGet").submit();
-		}); // click */
 		$("#logout").click(function() {
             var form = document.createElement('form');
             form.method = 'post';
@@ -38,13 +29,6 @@
 <div class="header item">
     <img src="/all_about_knowledge/front/student/icon/title.svg" class="nav_logo_svg" id="home"/>
 </div>
-  <!-- <div class="right menu">
-  <a class="item" id="btnHome" href="http://localhost/all_about_knowledge/mypage/mypage_home.do">마이페이지</a>
-  <a class="item" id="btnLecture" href="http://localhost/all_about_knowledge/lecture_list.do">개설강좌</a>
-  <a class="item" id="login">로그인</a>
-  <a class="item" id="logout">로그아웃</a>
-  </div> -->
-  
   <div class="right menu">
     <a class="item" id="btnHome" href="http://localhost/all_about_knowledge/mypage/mypage_home.do">마이페이지</a>
     <a class="item" id="btnLecture" href="http://localhost/all_about_knowledge/lecture_list.do">개설강좌</a>
@@ -56,10 +40,10 @@
             <div class="header"><sec:authentication property="name" /></div>
             <div class="menu">님 환영합니다.</div>
         </div>
-    </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
         <a class="item" id="logout">로그아웃</a>
     </sec:authorize>
+    <%-- <sec:authorize access="isAuthenticated()"> --%>
+    <%-- </sec:authorize> --%>
 </div>
   
 </nav>
