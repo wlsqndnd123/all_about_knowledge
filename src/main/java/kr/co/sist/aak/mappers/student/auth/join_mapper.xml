@@ -6,8 +6,8 @@
 <mapper namespace="kr.co.sist.aak.student.auth.join">
 	<!-- STUDENT -->
     <insert id="insertStudent" parameterType="JoinVO">
-        INSERT INTO student (std_id, password, pre_pass, change_date, del_yn)
-        VALUES (#{stdId}, #{password}, NULL, sysdate, 'N')
+        INSERT INTO student (std_id, password, del_yn)
+        VALUES (#{stdId}, #{password}, 'N')
     </insert>
 
     <!-- STD_INFO -->

@@ -112,7 +112,7 @@
 	    
 		$("#applyBtn").click(function(){
 			$.ajax({
-		    	url:"http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do",
+		    	url:"", /* http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do */
 				type:"POST",
 				contentType: false,
 				processData: false,
