@@ -91,8 +91,9 @@
             </thead>
             <tbody>
             <c:forEach var="lectureList" items="${ requestScope.lecList}" varStatus="i">
+            
                 <tr>
-                    <th scope="row"><a href="lectureList_detail.do">
+                    <th scope="row"><a href="lectureList_detail.do?sub_code=${ lectureList.sub_code }">
                     <c:out value="${lectureList.sub_title}"/></a></th>
                     <td><c:out value="${lectureList.total_no}"/></td>
                     <td><c:out value="${lectureList.status}"/></td>

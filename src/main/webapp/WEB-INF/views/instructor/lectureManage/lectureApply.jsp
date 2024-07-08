@@ -37,7 +37,7 @@
 	<script type="text/javascript">
 	$(function () {
 
-		$("#add").click(function(){
+		$("#addBtn2").click(function(){
 			var lesson=$("#lesson").val();
 			var title=$("#title").val();
 			var explain=$("#explain").val();
@@ -219,14 +219,14 @@
 		            <!-- 총 차시 수 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="totalSessions" style="width: 150px; margin-right: 20px;">총 차시 수</label>
-		                <input type="text" id="totalSession" class="form-control" value="8개" readonly aria-describedby="totalSessions">
+		                <input type="text" id="totalSession" class="form-control"  aria-describedby="totalSessions">
 		            </div>
 		            <!-- 개설일자 -->
 		            <div class="form-group d-flex align-items-center mb-3">
 		                <label for="openDate"  style="width: 150px; margin-right: 20px;">개설일자</label>
 		                <input type="datetime-local" id="createDate" class="form-control" aria-describedby="openDate">
 		            </div>
-		            <div>
+		            <div  style="text-align: center;">
 		            <input type="button" value="추가" class="align-items-center btn btn-dark btn-sm ml-2" id="addBtn1"/>
 		            </div>
 		    <!-- 강의 차시 -->

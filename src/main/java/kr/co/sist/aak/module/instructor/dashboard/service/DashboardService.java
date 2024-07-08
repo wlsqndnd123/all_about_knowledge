@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import kr.co.sist.aak.domain.instructor.InstructorInfoDomain;
 import kr.co.sist.aak.domain.instructor.LectureDomain;
 import kr.co.sist.aak.domain.instructor.RejectDomain;
+import kr.co.sist.aak.domain.instructor.vo.InstructorInfoVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
 import kr.co.sist.aak.domain.instructor.vo.OpenRequestVO;
+import kr.co.sist.aak.domain.instructor.vo.QnaVO;
 import kr.co.sist.aak.domain.student.domain.InstructorDomain;
 import kr.co.sist.aak.module.instructor.dashboard.dao.DashboardDAO;
 
@@ -85,5 +87,18 @@ public class DashboardService {
 		}
 		
 		return openCnt; 
+	}
+	
+	//강사 개인정보
+	public int instInfo(InstructorInfoVO iiVO) {
+		int cnt=0;
+		
+		try {
+			cnt=dbDAO.updateInstrucInfo(iiVO);
+						
+		}catch(PersistenceException pe){
+			pe.printStackTrace();
+		}
+		return cnt;
 	}
 }

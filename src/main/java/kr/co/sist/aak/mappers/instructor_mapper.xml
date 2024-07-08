@@ -50,15 +50,14 @@
 	</select>
 
 	<!-- 로그인 -->
-	<select id="loginInstructor" resultType="instructorInfoDomain"
-		parameterType="String">
-		SELECT i.inst_id, i.password, i.image, ini.*
+	<select id="loginInstructor" resultType="InstructorLoginDomain"
+		parameterType="instructorLoginVO">
+		SELECT i.inst_id inst_id , i.password password
 		FROM
 		instructor i
 		JOIN inst_info ini ON i.inst_id = ini.inst_id
 		WHERE
 		i.inst_id = #{inst_id}
-		AND i.password = #{password}
 		AND i.del_yn = 'N'
 	</select>
 	<!-- 임시 비밀번호 -->

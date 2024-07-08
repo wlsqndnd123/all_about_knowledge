@@ -21,23 +21,17 @@ public class LoginService {
 	@Autowired(required = false)
 	private LoginDAO loginDAO;
 	
-	public boolean validateLogin(instructorLoginVO ilVO) {
+	public InstructorLoginDomain selectLogin(instructorLoginVO ilVO) {
 		InstructorLoginDomain ild=null;
-		String plain="";
-		
+		System.out.println("Service id : " + ilVO.getInst_id());
 		try {
-			String key = "smn489";
-			String salt = "20010901";
-			TextEncryptor te = Encryptors.text(key, salt);
-			ild = loginDAO.selectInstructor(ilVO);
-			plain =te.decrypt(ild.getPassword());
-		}catch(PersistenceException pe) {
+			ild= loginDAO.selectInstructor(ilVO);
+		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}
-		
-		return ild!= null&& plain.equals(ilVO.getPassword());
-	}
 	
+		return ild;
 	
+	}	
 	
 }

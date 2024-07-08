@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="icon"
-	href="http://192.168.10.225/spring_mvc/common/favicon.ico" />
+	href="http://211.63.98.143/spring_mvc/common/favicon.ico" />
 <!--bootstrap 시작-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -20,10 +20,10 @@
 	crossorigin="anonymous"></script>
 <!--bootstrap 끝-->
 <link rel="stylesheet"
-	href="http://192.168.10.225/spring_mvc/common/css/main.css"
+	href="http://211.63.98.143/spring_mvc/common/css/main.css"
 	type="text/css" media="all" />
 <link rel="stylesheet"
-	href="http://192.168.10.225/spring_mvc/common/css/board.css"
+	href="http://211.63.98.143/spring_mvc/common/css/board.css"
 	type="text/css" media="all" />
 
 <!--jQuery CDN 시작-->
@@ -70,22 +70,18 @@
 					</div>
 					<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 						<form action="http://localhost/all_about_knowledge/instructor/loginProcess.do" method="post" id="loginForm">
-							<c:out value="${sessionScope.aakSession }"/>
 							
-							<!-- Email input -->
+							<!-- ID input -->
 							<div data-mdb-input-init class="form-outline mb-4">
-								<input type="text" id="form3Example3" name="id"
+								<input type="text" id="inst_id" name="inst_id"
 									class="form-control form-control-lg"
-									placeholder="Enter a valid email address" /> <label
-									class="form-label" for="form3Example3">아이디를 입력해주세요</label>
+									placeholder="아이디를 입력해주세요" /> 
 							</div>
 
 							<!-- Password input -->
 							<div data-mdb-input-init class="form-outline mb-3">
-								<input type="password" id="form3Example4" name="password"
-									class="form-control form-control-lg"
-									placeholder="Enter password" /> <label class="form-label"
-									for="form3Example4">비밀번호를 입력해주세요</label>
+								<input type="password" id="password" name="password"
+									class="form-control form-control-lg" placeholder="비밀번호를 입력해주세요" /> 
 							</div>
 
 							<div class="d-flex justify-content-between align-items-center">
@@ -121,5 +117,12 @@
 			</div>
 		</section>
 	</div>
+	
+	
+	<c:if test="${ not empty error }">
+		<script type="text/javascript">
+			alert("${ error }");
+		</script>
+	</c:if>
 </body>
 </html>
