@@ -142,7 +142,7 @@ $(document).ready(function() {
 			<div class="ui pointing dropdown link item">
 				<span class="text">카테고리</span> <i class="dropdown icon"></i>
 				
-				<div class="menu" name="cat_code" id="cat_code">
+				<!-- <div class="menu" name="cat_code" id="cat_code">
 					<div class="item" data-value="0">
 						<i class="dropdown icon"></i> <span class="text">컴퓨터공학</span>
 						<div class="menu">
@@ -157,6 +157,24 @@ $(document).ready(function() {
 							<div class="item" value="3">C</div>
 						</div>
 					</div>
+				</div> -->
+				<div class="menu" name="cat_code" id="cat_code">
+				<!-- <form action="" class="search-form" method="get"> -->
+					<div class="item">
+						<i class="dropdown icon"></i> <span class="text">컴퓨터공학</span>
+						<div class="menu">
+							<div class="item">자료구조</div>
+							<div class="item">운영체제</div>
+						</div>
+					</div>
+					<div class="item">
+						<i class="dropdown icon"></i> <span class="text">프로그래밍 언어</span>
+						<div class="menu">
+							<div class="item">JAVA</div>
+							<div class="item">C</div>
+						</div>
+					</div>
+					<!-- </form> -->
 				</div>
 				
 			</div>
@@ -186,21 +204,22 @@ $(document).ready(function() {
 				varStatus="i">
 				<div class="card" id="card">
 					<a href="user_lecture_detail.do?sub_code=${listLecture.sub_code}"
-						class="image"> <img
-						src="${pageContext.request.contextPath}/front/student/images/java.png">
+						class="image"> 
+						<%-- <img src="${pageContext.request.contextPath}/front/student/images/java.png"> --%>
+						<img src="http://localhost/all_about_knowledge/upload/${ listLecture.image }"  class="card-img-top" alt="...">
 					</a>
 					<div class="content">
 						<div class="header">
 							<c:out value="${listLecture.sub_title}" />
 						</div>
 						<div class="meta">
-							<a><c:out value="${listLecture.inst_id}" /></a>
+							<a><c:out value="${listLecture.inst_id}" /></a> 강사님
 						</div>
 					</div>
 					<div class="extra content">
 						<span class="right floated">
-							<div class="ui heart rating"></div> 17 likes
-						</span> <span> <i class="user icon"></i> +100명
+							<div class="ui heart rating"></div>
+						</span> <span> <i class="user icon"></i> +<c:out value="${listLecture.cnt}" />명 수강중
 						</span>
 					</div>
 				</div>

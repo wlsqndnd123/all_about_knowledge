@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.sist.aak.student3">
 
 	<!-- 강의 리스트 -->
-	<select id="selectAllUserLecture" resultType="UserLectureDomain">
+	<!-- <select id="selectAllUserLecture" resultType="UserLectureDomain">
 		select SUB_CODE,
 		STATUS, IMAGE, SUB_TITLE, CAT_CODE, INST_ID
 		from ( select
@@ -15,6 +15,23 @@
 		where
 		(s.SUB_CODE=sc.SUB_CODE and s.SUB_CODE=si.SUB_CODE)
 		)
+	</select> -->
+	<select id="selectAllUserLecture" resultType="UserLectureDomain">
+		select
+	s.SUB_CODE,s.STATUS,s.IMAGE,sc.SUB_TITLE,sc.CAT_CODE,si.INST_ID,(
+	select count(*) as cnt
+	from STD_SUBJECT
+	where sub_code=s.sub_code ) cnt
+	from
+	SUBJECT s, SUBJECT_CODE sc, SUB_INSTRUCTOR si
+	where
+	(s.SUB_CODE=sc.SUB_CODE and s.SUB_CODE=si.SUB_CODE)
+	and s.sub_code in (select sub_code
+	from (select SUB_CODE,count(*) as cnt
+	from STD_SUBJECT
+	group by sub_code
+	)
+	)
 	</select>
 
 	<!-- 강의 상세 -->
@@ -99,10 +116,14 @@
 	</select>
 
 	<!-- 수강 신청 -->
-
+	<select id="insertApplySub" resultType="UserApplySubVO">
+	insert into  STD_SUBJECT(STD_ID, SUB_CODE, APPLY, INTEREST)
+	values(#{std_id},#{sub_code},'P',null)
+	</select>
+	
 	<!-- 관심강의 추가 -->
 
-	<!-- 인기강의 리스트-->
+	<!-- 인기강의 순 리스트-->
 	<select id="selectSubcodePop" resultType="UserLectureDomain">
 	select
 	s.SUB_CODE,s.STATUS,s.IMAGE,sc.SUB_TITLE,sc.CAT_CODE,si.INST_ID,(
@@ -120,6 +141,26 @@
 	order by cnt desc)
 	where cnt between 1 and 5)
 	order by cnt desc
+	</select>
+	
+	<!-- 신규강의 순 리스트-->
+	<select id="selectLatestSub" resultType="UserLectureDomain">
+	 select
+	s.SUB_CODE,s.STATUS,s.IMAGE,sc.SUB_TITLE,sc.CAT_CODE,si.INST_ID,s.create_date,(
+	select count(*) as cnt
+	from STD_SUBJECT
+	where sub_code=s.sub_code ) cnt
+	from
+	SUBJECT s, SUBJECT_CODE sc, SUB_INSTRUCTOR si
+	where
+	(s.SUB_CODE=sc.SUB_CODE and s.SUB_CODE=si.SUB_CODE)
+	and s.sub_code in (select sub_code
+	from (select SUB_CODE,count(*) as cnt
+	from STD_SUBJECT
+	group by sub_code
+	order by cnt desc)
+	where cnt between 1 and 3)
+	order by create_date desc
 	</select>
 
 
