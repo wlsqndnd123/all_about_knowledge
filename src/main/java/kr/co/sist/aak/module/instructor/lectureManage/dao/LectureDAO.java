@@ -1,21 +1,16 @@
 package kr.co.sist.aak.module.instructor.lectureManage.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import kr.co.sist.aak.domain.admin.NoticeManagementDomain;
-import kr.co.sist.aak.domain.instructor.InstructorInfoDomain;
 import kr.co.sist.aak.domain.instructor.LectureDomain;
 import kr.co.sist.aak.domain.instructor.NoticeDomain;
-import kr.co.sist.aak.domain.instructor.RejectDomain;
-import kr.co.sist.aak.domain.instructor.vo.InstructorInfoVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureLessonVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
-import kr.co.sist.aak.domain.student.domain.InstructorDomain;
 import kr.co.sist.aak.util.MybatisDAO;
 
 @Repository
@@ -28,6 +23,19 @@ public class LectureDAO {
 		SqlSession ss= mbDAO.getMyBatisHandler(false);
 		
 		list=ss.selectList("kr.co.sist.aak.instructor.lectureList");
+		mbDAO.closeHanlder(ss);
+		
+		return list;
+		
+	}
+	//과목 코오드
+	public List<LectureDomain> selectSubtitle(String subCode)throws PersistenceException{
+		List<LectureDomain> list=null;
+		
+		MybatisDAO mbDAO= MybatisDAO.getInstance();
+		SqlSession ss= mbDAO.getMyBatisHandler(false);
+		
+		list=ss.selectList("kr.co.sist.aak.instructor.subtitle",subCode);
 		mbDAO.closeHanlder(ss);
 		
 		return list;
@@ -113,6 +121,20 @@ public class LectureDAO {
 		
 		mbDAO.closeHanlder(ss);
 		return ntd;
+	}
+	
+	//상위카테고리
+	public List<LectureDomain> selectCategory() {
+		List<LectureDomain> list=null;
+		
+		MybatisDAO mbDao=MybatisDAO.getInstance();
+		SqlSession ss= mbDao.getMyBatisHandler(false);
+		
+		list=ss.selectList("kr.co.sist.aak.instructor.selectCategory");
+		
+		mbDao.closeHanlder(ss);
+		
+		return list;
 	}
 }
 
