@@ -75,9 +75,20 @@ public String login(@ModelAttribute AdminLoginVO alVO,HttpSession session,Model 
 	@GetMapping("admin_main.do")
 	public String toMain(Model model) {
 		
+
 		DashBoardDomain dbDomain = new DashBoardDomain();
+		List<DashBoardDomain> singup_list=null;
+		List<DashBoardDomain> sub_List= null;
+		List<QnaManagementDomain> qna_list= null;
 		dbDomain = dbs.searchDataCount();
+		singup_list= dbs.searchCountSignupMebmer();
+		sub_List=dbs.searchCountNewSubjectCount();
+		qna_list=qms.searchNewQnaTitle();
 		model.addAttribute("dbDomain",dbDomain);
+		model.addAttribute("singup_list",singup_list);
+		model.addAttribute("qnaList",qna_list);
+		model.addAttribute("sub_List",sub_List);
+		
 		
 		return "/admin/index";
 	}

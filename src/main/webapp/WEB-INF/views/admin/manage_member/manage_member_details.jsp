@@ -215,7 +215,22 @@ $(function(){
 
          input.value = value;
      }
-	 
+	 function validateEmail(event) {
+	        const emailInput = event.target;
+	        const emailValue = emailInput.value;
+	        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	        const emailError = document.getElementById('emailError');
+	        if (!emailPattern.test(emailValue)) {
+	            emailError.style.display = 'inline';
+	        } else {
+	            emailError.style.display = 'none';
+	        }
+	    }
+	 function validateNameLength(event) {
+	        if (event.target.value.length > 10) {
+	            event.target.value = event.target.value.substring(0, 10);
+	        }
+	    }
 	 
 </script>
 
@@ -229,7 +244,7 @@ $(function(){
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h2 class="tm-site-title mb-0">All About Knowledge</h2>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -356,89 +371,85 @@ $(function(){
           	<form action="manage_member_details.do" method="get" id ="frmGet" style="width: 1100px;margin-inline: auto;">
                        <div class="col-12">
          		 <div class="col-12">
-                     <table class="table table-hover"   style="width: 100%;margin: auto; text-align: center;">
-    
-                    <tbody >
-
-                    <tr >
-                    <th style="font-size: 18px;">아이디</th>
-                    <td style="font-size: 18px;">
-            		<c:out value="${mmDomain.std_id }"/>
-            		<input type="hidden" name="std_id" value="${mmDomain.std_id }"readonly>
-            		
-                    </td>
-                    </tr>
-                    <tr >
-                    <th style="font-size: 18px;" >이름</th>
-                     <td  style="text-align: center; font-size: 18px;">
-            		<c:choose>
-            		 <c:when test="${requestScope.flag eq '0'}">
-            		 <c:out value="${mmDomain.name }"/>
-            		<input  type="hidden" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
-            		</c:when>
+         		 
+         		 
+         		 
+         		 
+         		 
+         		 <table class="table table-hover" style="width: 100%; margin: auto; text-align: center;">
+    <tbody>
+        <tr>
+            <th style="font-size: 18px;">아이디</th>
+            <td style="font-size: 18px;">
+                <c:out value="${mmDomain.std_id}"/>
+                <input type="hidden" name="std_id" value="${mmDomain.std_id}" readonly>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 18px;">이름</th>
+            <td style="text-align: center; font-size: 18px;">
+                <c:choose>
+                    <c:when test="${requestScope.flag eq '0'}">
+                        <c:out value="${mmDomain.name}"/>
+                        <input type="hidden" name="name" value="<c:out value='${mmDomain.name}'/>" readonly>
+                    </c:when>
                     <c:otherwise>
-                     <input type="text" name="name" value="<c:out value="${mmDomain.name }"/>" style="text-align: center;" onkeypress="validateInput(event)">
-                     </c:otherwise>
-                    </c:choose>
-                    </td>
-                    </tr>
-                 
-                    <tr >
-                    <th style="font-size: 18px;">연락처</th>
-                   <td style="text-align: center; font-size: 18px;">
-            		<c:choose>
-            		 <c:when test="${requestScope.flag eq '0'}">
-            		  <c:out  value="${mmDomain.tel }"/>
-            		<input type="hidden" name="tel" value="${mmDomain.tel }"readonly>
-            		</c:when>
+                        <input type="text" name="name" value="<c:out value='${mmDomain.name}'/>" style="text-align: center;" onkeypress="validateInput(event)" oninput="validateNameLength(event)">
+                    </c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 18px;">연락처</th>
+            <td style="text-align: center; font-size: 18px;">
+                <c:choose>
+                    <c:when test="${requestScope.flag eq '0'}">
+                        <c:out value="${mmDomain.tel}"/>
+                        <input type="hidden" name="tel" value="${mmDomain.tel}" readonly>
+                    </c:when>
                     <c:otherwise>
-                    <input type="text" name="tel" value="${mmDomain.tel}" style="text-align: center;" oninput="formatTelInput(event)">
-                     </c:otherwise>
-                    </c:choose>
-                    </td>
-                    </tr>
-                    
-
-                    <tr>
-                    <th style="font-size: 18px;">이메일</th>
-                    <td style="text-align: center; font-size: 18px;">
-            		<c:choose>
-            		 <c:when test="${requestScope.flag eq '0'}">
-            		  <c:out value="${mmDomain.email }"/>
-            		<input type="hidden" name="email" value="${mmDomain.email }"readonly>
-            		</c:when>
+                        <input type="text" name="tel" value="${mmDomain.tel}" style="text-align: center;" oninput="formatTelInput(event)">
+                    </c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 18px;">이메일</th>
+            <td style="text-align: center; font-size: 18px;">
+                <c:choose>
+                    <c:when test="${requestScope.flag eq '0'}">
+                        <c:out value="${mmDomain.email}"/>
+                        <input type="hidden" name="email" value="${mmDomain.email}" readonly>
+                    </c:when>
                     <c:otherwise>
-                    <input type="email" name="email" value="${mmDomain.email }" style="text-align: center;">
-                     </c:otherwise>
-                    </c:choose>
-                    </td>
-                    </tr>
-
-                    
-                    <tr>
-                    <th style="font-size: 18px;">생년월일</th>
-      				  <td style="text-align: center; font-size: 18px;">
-       				     <c:choose>
-       				         <c:when test="${requestScope.flag eq '0'}">
-       				           <c:out value="${mmDomain.birth}"/>
-        				            <input type="hidden" name="birth" value="${mmDomain.birth}"readonly>
-       				         </c:when>
-       				         <c:otherwise>
-       				             <input type="text" name="birth" value="${mmDomain.birth}" style="text-align: center;" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-       				         </c:otherwise>
-     				       </c:choose>
-    				    </td>
- 				   </tr>
-                    <tr>
-                    <th>
-                    </th>
-                    <td>
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                    
-                    
+                        <input type="email" name="email" value="${mmDomain.email}" style="text-align: center;" oninput="validateEmail(event)">
+                        <span id="emailError" style="display: none; color: red; font-size: 12px;">이메일 형식으로 적어주세요</span>
+                    </c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 18px;">생년월일</th>
+            <td style="text-align: center; font-size: 18px;">
+                <c:choose>
+                    <c:when test="${requestScope.flag eq '0'}">
+                        <c:out value="${mmDomain.birth}"/>
+                        <input type="hidden" name="birth" value="${mmDomain.birth}" readonly>
+                    </c:when>
+                    <c:otherwise>
+                        <input type="date" name="birth" value="${mmDomain.birth}" style="text-align: center;">
+                    </c:otherwise>
+                </c:choose>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+         		 
+  
                 </div>
          <c:if test="${requestScope.flag eq '0' }">
                     <input type="hidden" name="flag" value="1">
@@ -463,126 +474,6 @@ $(function(){
 	</div>
 </body>
               
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-                        <%-- <div class="col-12" style="height: 600px;border-right-width: 50px;padding-right: 120px;padding-left: 120px;" >
-                        
-                        
-                    <form action="manage_member_details.do" method="get" id ="frmGet" style="width: 1100px;margin-inline: auto;">
-                    
-                            <h2 class="tm-block-title d-inline-block">사용자 상세</h2>
-                    <div class="mb-3">
-                    
-  					<div>
-                    <table class="table table-hover"  style="width: 100%;margin: auto; text-align: center;">
-    
-                    <tbody >
-
-                    <tr style="height: 73px;" >
-                    <th style="width: 500px;">아이디</th>
-                     <td >
-            		<c:out value="${mmDomain.std_id }"/>
-            		<input type="hidden" name="std_id" value="${mmDomain.std_id }"readonly>
-            		
-                    </td>
-                    </tr>
-                    <tr style="height: 73px;" >
-                    <th style="width: 500px;">이름</th>
-                     <td>
-            		<c:choose>
-            		 <c:when test="${requestScope.flag eq '0'}">
-            		 <c:out value="${mmDomain.name }"/>
-            		<input type="hidden" name="name" value="<c:out value="${mmDomain.name }"/>"readonly>
-            		</c:when>
-                    <c:otherwise>
-                    <input type="text" name="name" value="<c:out value="${mmDomain.name }"/>" style="text-align: center;">
-                     </c:otherwise>
-                    </c:choose>
-                    </td>
-                    </tr>
-                 
-                    <tr style="height: 73px;" >
-                    <th style="width: 500px;">연락처</th>
-                   <td>
-            		<c:choose>
-            		 <c:when test="${requestScope.flag eq '0'}">
-            		  <c:out value="${mmDomain.tel }"/>
-            		<input type="hidden" name="tel" value="${mmDomain.tel }"readonly>
-            		</c:when>
-                    <c:otherwise>
-                    <input type="text" name="tel" value="${mmDomain.tel }" style="text-align: center;">
-                     </c:otherwise>
-                    </c:choose>
-                    </td>
-                    </tr>
-                    
-
-                    <tr style="height: 73px;" >
-                    <th style="width: 500px;">이메일</th>
-                    <td>
-            		<c:choose>
-            		 <c:when test="${requestScope.flag eq '0'}">
-            		  <c:out value="${mmDomain.email }"/>
-            		<input type="hidden" name="email" value="${mmDomain.email }"readonly>
-            		</c:when>
-                    <c:otherwise>
-                    <input type="text" name="email" value="${mmDomain.email }" style="text-align: center;">
-                     </c:otherwise>
-                    </c:choose>
-                    </td>
-                    </tr>
-
-                    
-                    <tr style="height: 73px;" >
-                    <th style="width: 500px;">생년월일</th>
-      				  <td >
-       				     <c:choose>
-       				         <c:when test="${requestScope.flag eq '0'}">
-       				           <c:out value="${mmDomain.birth}"/>
-        				            <input type="hidden" name="birth" value="${mmDomain.birth}"readonly>
-       				         </c:when>
-       				         <c:otherwise>
-       				             <input type="text" name="birth" value="${mmDomain.birth}" style="text-align: center;">
-       				         </c:otherwise>
-     				       </c:choose>
-    				    </td>
- 				   </tr>
-                    <tr>
-                    <th>
-                    </th>
-                    <td>
-                    </td>
-                    </tr>
-  					
-  
-                    </tbody>
-                    </table>
-                    </div>
-                    
-                    <c:if test="${requestScope.flag eq '0' }">
-                    <input type="hidden" name="flag" value="1">
-                    <input type="button" class="btn btn-light btn-sm me-md-2" value="수정" id="updateSubmit"  style=" margin-top: 50px; float: right;"/>
-					</c:if>
-					
-                  	<c:if test="${requestScope.flag eq '1' }" >
-					<input type="button" class="btn btn btn-sm me-md-2 " value="완료" id ="saveSubmit" style="margin-top: 50px; float: right; "/>
-					</c:if>
-                   	
-                   
-                   
-                    
-					</div>
-					</form> 
-					
-                        </div> --%>
 
         
 
