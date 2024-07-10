@@ -1,6 +1,7 @@
 package kr.co.sist.aak.module.instructor.lectureManage.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -36,6 +37,31 @@ public class LectureService {
 		}
 		
 		return list;
+	}
+	//강의관리 리스트 
+	public String selectSubtitle(String subCode){
+		
+		List<LectureDomain> list=null;
+		
+		JSONObject jsonObject=new JSONObject();
+		try {
+			list=ltDAO.selectSubtitle(subCode);
+			JSONArray jsonArray=new JSONArray();
+			JSONObject jsonTemp=null;
+			for( LectureDomain ld :  list ) {
+				jsonTemp=new JSONObject();
+				jsonTemp.put("sub_code", ld.getSub_code());
+				jsonTemp.put("sub_title",ld.getSub_title());
+				
+				jsonArray.add(jsonTemp);
+			}
+			jsonObject.put("data", jsonArray);
+			
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return jsonObject.toJSONString();
 	}
 	
 	//승인여부에 따른 검색결과
@@ -158,5 +184,17 @@ public class LectureService {
 			
 		}
 		return ntd;
+	}
+	
+	//상위카테고리
+	public List<LectureDomain> selectCategory(){
+		List<LectureDomain> list= null;
+		
+		try {
+			list=ltDAO.selectCategory();
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return list;
 	}
 }
