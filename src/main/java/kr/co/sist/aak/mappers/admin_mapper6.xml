@@ -50,10 +50,10 @@
 	
 	
 	
-	<!-- qna 답번 수정 쿼리 -->
+	<!-- qna 답번 입력 및 수정 쿼리 -->
 	<update id="updateQnaAnswerAdmin" parameterType="QnaManagementVO">
 	update qna_gen_a 
-	set content = #{content_answer}, id = #{id}
+	set content = #{content_answer}, id = #{id}, ans_date = sysdate
 	where qna_no = #{qna_no}
 	</update>
 	

@@ -28,6 +28,18 @@ public class QnaManagementService {
 		return list;
 	}
 	
+	public List<QnaManagementDomain> searchNewQnaTitle(){
+		List<QnaManagementDomain> list = null;
+		try {
+			list=qmDAO.selectNewQnaTitle();
+			
+		}catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 	
 	public QnaManagementDomain searchDetaleQna ( String qna_no, String status) {
 		QnaManagementDomain qnaDomain = null;

@@ -130,9 +130,12 @@
       		  </div>
       		  
       		  <div style="margin-top: 10px;">
+      		  
       		  <p style="float:left; margin: auto;">탈퇴 회원 수 : </p>
       		  <p class="display-5" id="counterOutMember" style="float:left; margin: auto;">0</p>
       		  <p style=" margin: auto;">명</p>
+      		  
+      		  
       		  </div>
   			  </div>
   			  
@@ -140,7 +143,7 @@
             	
               </div>
                     <div style="margin:auto;">
-                        <h2 class="tm-block-title">이번달 회원 추이</h2>
+                        <h2 class="tm-block-title">일별 신규회원</h2>
                        <canvas id="lineChart" class="chartjs-render-monitor"></canvas>
                     </div>
            </div>
@@ -181,7 +184,7 @@
         
               <div>
                     <div style="margin:auto;">
-                        <h2 class="tm-block-title">월별 강의 수</h2>
+                        <h2 class="tm-block-title">월별 신규 강의 수</h2>
                         <canvas id="barChart"></canvas>
                     </div>
                 </div>
@@ -199,7 +202,7 @@
          	   
          	   <div style="margin-top: 10px;">
       		  <p style="float:left; margin: auto;">미확인 문의 사항 : </p>
-      		  <p class="display-5" id="counterAllMember" style="float:left; margin: auto;">1</p>
+      		  <p class="display-5" id="needChkQuestionCount" style="float:left; margin: auto;">0</p>
       		  <p style=" margin: auto;">건</p>
          	   </div>
          	   
@@ -209,12 +212,35 @@
   			  <hr>
   			  
             	<div >
-            	<h2 class="tm-block-title">문의 사항</h2>
-            	<table class ="table table-hover">
-            	
-            	<tr><td>1. 내 문의사항 문의 할께요.</tr></td>
+            	<h2 class="tm-block-title">오늘 들어온 문의 사항</h2>
+            	<c:choose>
+                <c:when test="${not empty requestScope.qnaList}">
+            	<table class ="table table-hover"style="overflow: auto;">
+                    <thead>
+                    <tr>
+                  	<th>no</th>
+                    <th>문의 제목</th>
+                    
+                    </tr>
+                    </thead>
+                    <tbody>
+                 
+                    <c:forEach var="qmd" items="${requestScope.qnaList }" varStatus="i">
+					<tr>
+					<td><c:out value="${i.index + 1}"/></td>
+                    <td><c:out value="${qmd.title }"/></td>
+					</tr>
+                    </c:forEach>
+                    </tbody>
+				
             	</table>
-            	
+                    </c:when>
+                    <c:otherwise>
+                    <p style="float:left; margin: auto;">문의가 없습니다.</p>
+                    </c:otherwise>
+                    
+                    
+            	</c:choose>
             	
             	</div>
             	
@@ -229,7 +255,7 @@
    		 
    		 
    		 
-   		 
+   		 </div>
    		</div> 
 	</div>
 </div>
@@ -244,6 +270,21 @@
     <script type="text/javascript" src="<c:url value ="/resources/js/utils.js"/>"></script>
     <script>
     
+
+    
+   	 	var line_dates = [];
+   	 	var line_datas = [];
+   	    <c:forEach var="ddm" items="${requestScope.singup_list }" varStatus="i">
+   	 	<c:if test="${ddm.count != 0}">
+   	 		line_dates.push(<c:out value="${ddm.day}"/>+"일");
+   			line_datas.push(<c:out value="${ddm.count}"/>);
+   	 	</c:if>
+		</c:forEach>
+		
+		
+		
+
+
         var allMemberCount = <c:out value="${dbDomain.allMember_count}" />;
         var newMemberCount = <c:out value="${dbDomain.newMember_count}" />;
         var allInstructorCount = <c:out value="${dbDomain.allInstructor_count}" />;
@@ -254,27 +295,14 @@
         var needChkSubjectCount = <c:out value="${dbDomain.needChkSubject_count}" />;
         
         
-   		var value1 = exitMemberCount;
-        var value2 = 50;
-        var value3 = 60;
-        var max1 = <c:out value="${dbDomain.allMember_count}" />;
-    
-    
+    	
     
     $(document).ready(function() {
-    	
-    	 // Gauge Bar 1 설정
-        $('#gaugeBar1').css('width', (value1 / max1 * 100) + '%').attr('aria-valuenow', value1).text(value1 + '명');
-        // Gauge Bar 2 설정
-        $('#gaugeBar2').css('width', value2 + '%').attr('aria-valuenow', value2).text(value2 + '%');
-        // Gauge Bar 3 설정
-        $('#gaugeBar3').css('width', value3 + '%').attr('aria-valuenow', value3).text(value3 + '%');
-    	
     	
         function animateCounter(element, start, end, duration) {
             let range = end - start;
             let current = start;
-            let increment = end > start ? 1 : -1;
+            let increment = end > start ? 1 : 0;
             let stepTime = Math.abs(Math.floor(duration / range));
             let timer = setInterval(function() {
                 current += increment;
@@ -286,13 +314,13 @@
         }
         // 카운트
         animateCounter("#counterAllMember", 0, allMemberCount, 1000); 	 //전체 회원 수
-        animateCounter("#counterNewMembern", 0, newMemberCount, 1500); 	//신규 회원 수
+        animateCounter("#counterNewMember", 0, newMemberCount, 1500); 	//신규 회원 수
         animateCounter("#counterOutMember", 0, exitMemberCount, 1000); 		//탈퇴 회원 수
         animateCounter("#counterAllInstructor", 0, allInstructorCount, 1500); 	//총 강사 수
         animateCounter("#counterAllSubject", 0, allSubjectCount, 1500); 			//총 강의 수
         animateCounter("#counterNeedChkSubject", 0, needChkSubjectCount, 1500); 	//개설 신청 강의 수
-     		
-        animateCounter("#counterNewMembernter", 0, needChkSubjectCount, 1500); 	//확인이 필요한 문의 수 
+        animateCounter("#needChkQuestionCount", 0, needChkQuestionCount, 1500);	//확인이 필요한 문의 수 
+
     });
     
     
@@ -337,13 +365,13 @@
         configLine = {
             type: 'line',
             data: {
-            	labels: ['1일', '2일', '3일', '4일'],
-                datasets: [{
-                    label: '회원 추이',
-                    data: [4,6,10,7],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+            	  labels: line_dates,
+                  datasets: [{
+                      label: '회원 추이',
+                      data: line_datas,
+                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                      borderColor: 'rgba(75, 192, 192, 1)',
+                      borderWidth: 1
                 }]
             },
             options: optionsLine
