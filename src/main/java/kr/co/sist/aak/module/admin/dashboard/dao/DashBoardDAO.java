@@ -74,6 +74,14 @@ public class DashBoardDAO {
 		
 		return list;
 	}
+	public List<DashBoardDomain> selectCountNewSubjectCount() {
+		List<DashBoardDomain> list = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		list = ss.selectList("kr.co.sist.aak.admin8.selectCountNewSubjectCount");
+		
+		return list;
+	}
 	
 	public int selectCountNewSignupMebmer() {
 		int cnt = 0;

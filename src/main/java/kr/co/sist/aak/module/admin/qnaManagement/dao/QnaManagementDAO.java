@@ -37,6 +37,17 @@ public class QnaManagementDAO {
 		
 		
 	}
+	public List<QnaManagementDomain> selectNewQnaTitle()throws PersistenceException{
+		List<QnaManagementDomain> list = null;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		list = ss.selectList("kr.co.sist.aak.admin8.selectNewQnaTitle");
+		mbDAO.closeHanlder(ss);
+		
+		return list;
+		
+		
+	}
 	
 	public QnaManagementDomain selectDetalQna(String qna_no)throws PersistenceException{
 		QnaManagementDomain qnaDomain = null;
