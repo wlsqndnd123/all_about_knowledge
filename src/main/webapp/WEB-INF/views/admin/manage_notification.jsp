@@ -47,7 +47,7 @@ font-size: 7px;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="brand-logo" href="adminindex.do">
+                        <a class="brand-logo" href="admin_main.do">
                             <!-- <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i> -->
                             <h3 class="tm-site-title mb-0">All About Knowledge</h3>
                         </a>
