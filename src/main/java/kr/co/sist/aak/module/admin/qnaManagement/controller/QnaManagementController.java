@@ -101,6 +101,14 @@ public class QnaManagementController {
         return qms.searchNewQna();
     }
 	
+	@ResponseBody
+    @RequestMapping(value = "manage_qna_pre.do", method = RequestMethod.GET, 
+                    produces = "application/json;charset=UTF-8")
+    public String searchMembers() {
+        return qms.searchPreQna();
+    }
+	
+	
 }
 
 

@@ -158,7 +158,15 @@ width: 15vw;height: auto;
                 
                 </div>
                 <div></div>
-                <!-- 회원 -->
+                
+                <div>
+                <table class ="table table-hover">
+                <tbody id ="preQna">
+                
+                </tbody>
+                </table>
+                
+                </div>
                 
                 <hr  class="border border-primary border-1 opacity-50">
                 
@@ -196,7 +204,7 @@ width: 15vw;height: auto;
                     <table id="qna" class="table table-hover"  style="width: 100%;margin: auto;text-align: center; padding-left: 10px;padding-right: 10px;">
                     <thead>
                     <tr>
-                  
+                    <th style="text-align: center;">문의 코드</th>
                     <th style="text-align: center;">문의 제목</th>
                     <th style="text-align: center;">아이디</th>
                     <th style="text-align: center;">문의 날짜</th>
@@ -210,7 +218,7 @@ width: 15vw;height: auto;
                   
                    <tr onclick="changeUrl('${qmd.qna_no}&status=' + '${qmd.status}')">
                   
-                    
+                    <td style="text-align: center;"><c:out value="${qmd.qna_no }"/></td>
                     <td style="text-align: center;"><c:out value="${qmd.title }"/></td>
                     <td style="text-align: center;"><c:out value="${qmd.std_id }"/></td> 
                     <td style="text-align: center;"><c:out value="${qmd.q_date}"/></td> 
@@ -237,9 +245,16 @@ width: 15vw;height: auto;
    <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
  <script type="text/javascript">
- $(function(){
+
 	 <!-- -----알람 메소드------ -->
 	 $(document).ready(function() {
+		 var adminId = '<%= session.getAttribute("adminid") %>';
+         
+         if (adminId == '' || adminId == 'null') {
+             location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+         }
+		 
+		 
 		    let previousQnaCount = null;
 		    let fetchCount = 0; // 요청 횟수를 추적하는 변수
 		    const maxFetchCount = 10; // 최대 요청 횟수
@@ -291,8 +306,29 @@ width: 15vw;height: auto;
 		    const fetchInterval = setInterval(fetchQnaCounts, 60000);
 		});
 	 
+	 $(function(){
+		 $.ajax({
+		        url: "manage_qna_pre.do",
+		        type: "GET",
+		        dataType: "json",
+		        error: function(xhr, status, error) {
+		            console.error('AJAX request failed:', xhr.status, xhr.responseText);
+		        },
+		        success: function(jsonObj) {
+		            console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
+		            $("#preQna").empty();
+		            if (jsonObj && jsonObj.n !== undefined && jsonObj.y !== undefined && jsonObj.d !== undefined) { // 응답이 유효한지 확인
+		                var output = "<tr><td>미확인 문의 수: "+ jsonObj.n  +"</td></tr>";
+		                output += "<tr><td>답한 문의 수: "+ jsonObj.y  +"</td></tr>";
+		                output += "<tr><td>삭제 문의 수: "+ jsonObj.d  +"</td></tr>";
+		                $("#preQna").html(output);
+		            } else {
+		                console.error('Invalid JSON response');
+		            }
+		        }
+		    }); 
+	
 	 
-
 
 	     $("#qna").DataTable({
 	    	language: {

@@ -80,6 +80,26 @@
 	</insert>
 	
 	
+	<select id="selectPreNQna" resultType ="int">
+	select count(qna_no)
+	from qna_gen_q 
+	where status = 'N'
+	</select>
+	
+	<select id="selectPreYQna" resultType ="int">
+	select count(qna_no)
+	from qna_gen_q
+	where status = 'Y'
+	</select>
+	
+	<select id="selectPreDQna" resultType ="int">
+	select count(qna_no)
+	from qna_gen_q
+	where status = 'D'
+	</select>
+	
+	
+	
 	<select id="selectNewQna" resultType ="int">
 	select count(qna_no)
     from qna_gen_q

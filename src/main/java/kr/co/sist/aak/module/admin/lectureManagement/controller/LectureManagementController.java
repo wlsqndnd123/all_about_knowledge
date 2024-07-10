@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.sist.aak.domain.admin.LectureManagementDomain;
 import kr.co.sist.aak.domain.admin.SubjectManagementDomain;
@@ -83,7 +86,12 @@ public class LectureManagementController {
 	
 	
 	
-	
+	@ResponseBody
+    @RequestMapping(value = "manage_lecture_pre.do", method = RequestMethod.GET, 
+                    produces = "application/json;charset=UTF-8")
+    public String searchMembers() {
+        return lms.searchPreSubject();
+    }
 	
 	
 	

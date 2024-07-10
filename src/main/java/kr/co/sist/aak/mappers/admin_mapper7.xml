@@ -83,6 +83,25 @@
 	values(#{sub_code}, #{reason})
 	</insert>
 	
+	<select id="selectPreNSubject" resultType ="int">
+	select count(sub_code)
+	from subject
+	where status = 'N'
+	</select>
+	
+	
+	<select id="selectPreYSubject" resultType ="int">
+	select count(sub_code)
+	from subject
+	where status = 'Y'
+	</select>
+	
+	<select id="selectPreDSubject" resultType ="int">
+	select count(sub_code)
+	from subject
+	where status = 'D'
+	</select>
+	
 	
 	
 </mapper>

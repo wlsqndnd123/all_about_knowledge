@@ -151,8 +151,16 @@ width: 15vw;height: auto;
                 </table>
                 
                 </div>
-                <div></div>
-                <!-- 회원 -->
+               <div></div>
+                
+                <div>
+                <table class ="table table-hover">
+                <tbody id ="preQna">
+                
+                </tbody>
+                </table>
+                
+                </div>
                 
                 <hr  class="border border-primary border-1 opacity-50">
                 
@@ -240,8 +248,89 @@ width: 15vw;height: auto;
     <script type="text/javascript" src="<c:url value ="/resources/js/Chart.min.js"/>"></script>
     
     <script type="text/javascript">
-   	 <!-- -----알람 메소드------ -->
+    <!-- -----알람 메소드------ -->
+	 $(document).ready(function() {
+		 
+		 var adminId = '<%= session.getAttribute("adminid") %>';
+         
+         if (adminId == '' || adminId == 'null') {
+             location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+         }
+		 
+		    let previousQnaCount = null;
+		    let fetchCount = 0; // 요청 횟수를 추적하는 변수
+		    const maxFetchCount = 10; // 최대 요청 횟수
 
+		    function fetchQnaCounts() {
+		        if (fetchCount >= maxFetchCount) {
+		            clearInterval(fetchInterval); // 최대 요청 횟수에 도달하면 간격 타이머를 중지
+		            return;
+		        }
+		        $.ajax({
+		            url: "manage_qna_new.do",
+		            type: "GET",
+		            dataType: "json",
+		            error: function(xhr, status, error) {
+		                console.error('AJAX request failed:', xhr.status, xhr.responseText);
+		            },
+		            success: function(jsonObj) {
+		                console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
+		                $("#newQna").empty();
+		                if (jsonObj.cnt !== undefined) { // 응답이 유효한지 확인
+		                    var output = "<tr><td>오늘의 문의: " + jsonObj.cnt + "</td></tr>"; 
+		                    $("#newQna").html(output);
+		                    
+		                    // 이전 데이터와 비교하여 알림 표시
+		                    if (previousQnaCount !== null && previousQnaCount !== jsonObj.cnt) {
+		                        showNotification();
+		                    }
+		                    previousQnaCount = jsonObj.cnt; // 이전 데이터를 현재 데이터로 갱신
+		                } else {
+		                    console.error('Invalid JSON response');
+		                }
+		                fetchCount++; // 요청 횟수 증가
+		            }
+		        });
+		    }
+
+		    function showNotification() {
+		        let notificationDot = $('<div class="notification-dot blinking"></div>');
+		        $("#newQna").append(notificationDot);
+		        setTimeout(function() {
+		            notificationDot.remove();
+		        }, 5000); // 5초 후에 알림 제거
+		    }
+
+		    // 초기 데이터 로드
+		    fetchQnaCounts();
+
+		    // (60초)마다 데이터 갱신
+		    const fetchInterval = setInterval(fetchQnaCounts, 60000);
+		});
+
+	 
+	 $(function(){
+		 $.ajax({
+		        url: "manage_qna_pre.do",
+		        type: "GET",
+		        dataType: "json",
+		        error: function(xhr, status, error) {
+		            console.error('AJAX request failed:', xhr.status, xhr.responseText);
+		        },
+		        success: function(jsonObj) {
+		            console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
+		            $("#preQna").empty();
+		            if (jsonObj && jsonObj.n !== undefined && jsonObj.y !== undefined && jsonObj.d !== undefined) { // 응답이 유효한지 확인
+		                var output = "<tr><td>미확인 문의 수: "+ jsonObj.n  +"</td></tr>";
+		                output += "<tr><td>답한 문의 수: "+ jsonObj.y  +"</td></tr>";
+		                output += "<tr><td>삭제 문의 수: "+ jsonObj.d  +"</td></tr>";
+		                $("#preQna").html(output);
+		            } else {
+		                console.error('Invalid JSON response');
+		            }
+		        }
+		    }); 
+	 }); 
     
         $('#content_answer').keyup(function (e) {
             let content = $(this).val();

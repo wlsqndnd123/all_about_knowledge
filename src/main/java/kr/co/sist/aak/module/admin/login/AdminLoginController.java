@@ -50,6 +50,7 @@ public String login(@ModelAttribute AdminLoginVO alVO,HttpSession session,Model 
 	model.addAttribute("singup_list",singup_list);
 	model.addAttribute("qnaList",qna_list);
 	model.addAttribute("sub_List",sub_List);
+
 	
 	
 		return "/admin/index";

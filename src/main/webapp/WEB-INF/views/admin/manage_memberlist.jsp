@@ -243,6 +243,13 @@ width: 15vw;height: auto;
  
  <!-- -----알람 메소드------ -->
  $(document).ready(function() {
+	 
+	 var adminId = '<%= session.getAttribute("adminid") %>';
+     
+     if (adminId == '' || adminId == 'null') {
+         location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+     }
+	 
 	    let previousQnaCount = null;
 	    let fetchCount = 0; // 요청 횟수를 추적하는 변수
 	    const maxFetchCount = 10; // 최대 요청 횟수

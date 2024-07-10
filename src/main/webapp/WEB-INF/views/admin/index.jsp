@@ -281,9 +281,20 @@
    	 	</c:if>
 		</c:forEach>
 		
-		
-		
+		var bar_dates = [""];
+	    var bar_datas = [0];
 
+	    <c:forEach var="ddm" items="${requestScope.sub_List }" varStatus="i">
+	        <c:if test="${ddm.count != 0}">
+	            bar_dates.push("<c:out value='${ddm.day}'/>월");
+	            bar_datas.push(<c:out value="${ddm.count}"/>);
+	        </c:if>
+	    </c:forEach>
+
+	    bar_dates.push("");
+	    bar_datas.push(0);
+
+		
 
         var allMemberCount = <c:out value="${dbDomain.allMember_count}" />;
         var newMemberCount = <c:out value="${dbDomain.newMember_count}" />;
@@ -298,6 +309,12 @@
     	
     
     $(document).ready(function() {
+    	
+    	var adminId = '<%= session.getAttribute("adminid") %>';
+        
+        if (adminId == '' || adminId == 'null') {
+            location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+        }
     	
         function animateCounter(element, start, end, duration) {
             let range = end - start;
@@ -385,10 +402,10 @@
         configBar = {
             type: 'bar',
             data: {
-                labels: ['','6월', '7월',''],
+                labels: bar_dates,
                 datasets: [{
                     label: '개설 강의',
-                    data: [0, 2, 3,0],
+                    data: bar_datas,
                     backgroundColor: 'rgba(153, 102, 255, 0.2)',
                     borderColor: 'rgba(153, 102, 255, 1)',
                     borderWidth: 1
