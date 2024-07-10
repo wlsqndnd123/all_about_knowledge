@@ -151,7 +151,7 @@ font-weight: normal;
                     <table  class="table table-hover">
                     <tr><td>상위 카테고리명</td><td><input type="text" class="form-control" name ="prime_cat_code" value="${pCatCode}" readonly="readonly"></td></tr>
                     <tr><td>추가하는 카테고리 코드</td><td><input type="text" class="form-control" name ="cat_code" value="${maxValue}" readonly="readonly"></td></tr>
-                    <tr><td>추가하는 카테고리명</td><td><input type="text" class="form-control" name ="cat_name" value="${prime_cat_code}"></td></tr>
+                    <tr><td>추가하는 카테고리명</td><td><input type="text" class="form-control" name ="cat_name" value="${prime_cat_code}" maxlength="20"></td></tr>
                     </table>
                     <div style=" width:400px; padding-left:200px;text-align: center; float: left;">
                      <input type="button" class="btn btn-link" value="&lt; 뒤로" id="btnback"/>
