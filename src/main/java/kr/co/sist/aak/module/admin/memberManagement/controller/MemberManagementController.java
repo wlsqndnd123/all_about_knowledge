@@ -65,7 +65,8 @@ public class MemberManagementController {
 		
 		mmDomain = mms.searchMemberReason(std_id);
 		model.addAttribute("mmDomain",mmDomain);
-		
+		System.out.println(mmDomain);
+
 		return "/admin/manage_member/manage_member_reason";
 	}
 	

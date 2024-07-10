@@ -22,10 +22,17 @@
     </script>
 </head>
 <body onclick="closePopupOnClick()">
-    <h2>탈퇴 사유</h2>
-    <label for="reason">Reason:</label><br>
-    <textarea id="reason" name="reason" readonly="readonly" rows="4" cols="50" ><c:out value="${mmDomain.reason}"/></textarea><br><br>
- 
+    <h2>탈퇴 사유</h2>탈퇴 아이디: <c:out value="${mmDomain.std_id}"/><br>
+  
+                      
+  					<c:choose>
+                    	<c:when test="${not empty mmDomain.reason}">
+                        <textarea id="reason" name="reason" readonly="readonly" rows="4" cols="50" ><c:out value="${mmDomain.reason}"/></textarea><br><br>
+                    	</c:when>  
+                    	<c:otherwise>
+                        <textarea id="reason" name="reason" readonly="readonly" rows="4" cols="50" >탈퇴원이 사유를 작성하지 않았습니다.</textarea><br><br>
+                        </c:otherwise>	
+                     </c:choose>
 
 </body>
 </html>
