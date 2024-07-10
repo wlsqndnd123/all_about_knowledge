@@ -68,6 +68,7 @@ public class LectureManagementService{
 	}
 	
 	public int refuseSubject(SubjectManagementVO smVO) {
+		
 		int cnt =0 ;
 		int cnt1 =0 ;
 		int cnt2 = 0;

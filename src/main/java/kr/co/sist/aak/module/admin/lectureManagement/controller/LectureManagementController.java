@@ -44,7 +44,7 @@ public class LectureManagementController {
 		return "/admin/manage_lecture/manage_lecture_details";
 	}
 	
-	@GetMapping("/manage_lecture_modyify.do")
+	@GetMapping("/manage_lecture_modify.do")
 	public String modyifySubject(SubjectManagementVO smVO,Model model) {
 		
 		int cnt=0;	
@@ -65,14 +65,13 @@ public class LectureManagementController {
 	
 	@PostMapping("/manage_lecture_refuse.do")
 	public String refuseSubject(SubjectManagementVO smVO, Model model) {
-		
 		  int cnt =0;
 		 
 		  cnt=lms.refuseSubject(smVO); 
 		  model.addAttribute("cnt",cnt);
 		 
 
-		return "/admin/manage_qna/manage_qna_reason";
+		return "/admin/manage_lecture/manage_lecture_reason";
 	}
 	
 	

@@ -47,6 +47,21 @@ public class DashBoardService {
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
+		
+	
+		return list;
+	}
+	
+	public List<DashBoardDomain> searchCountNewSubjectCount(){
+		List<DashBoardDomain> list =null;
+		try {
+			list = dmDAO.selectCountNewSubjectCount();
+			
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		
 		return list;
 	}
 	
