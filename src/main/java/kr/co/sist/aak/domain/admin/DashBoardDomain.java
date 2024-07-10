@@ -1,8 +1,11 @@
 package kr.co.sist.aak.domain.admin;
 
-import java.sql.Date;
 
 public class DashBoardDomain {
+	
+	private String day;
+	private String count;
+	
 	
 	private int 
 	allInstructor_count,
@@ -14,13 +17,13 @@ public class DashBoardDomain {
 	needChkQuestion_count,
 	signupMebmer_count,
 	mostSubject,
-	mostSubject_member_count
+	mostSubject_member_count;
 	
 	
 	
 	;
 	
-	Date memberDay;
+	
 	
 	public DashBoardDomain() {
 		
@@ -28,7 +31,7 @@ public class DashBoardDomain {
 
 	public DashBoardDomain(int allInstructor_count, int exitMember_count, int allMember_count, int newMember_count,
 			int allSubject_count, int needChkSubject_count, int needChkQuestion_count, int signupMebmer_count,
-			int mostSubject, int mostSubject_member_count, Date memberDay) {
+			int mostSubject, int mostSubject_member_count, String day, String count) {
 		super();
 		this.allInstructor_count = allInstructor_count;
 		this.exitMember_count = exitMember_count;
@@ -40,7 +43,8 @@ public class DashBoardDomain {
 		this.signupMebmer_count = signupMebmer_count;
 		this.mostSubject = mostSubject;
 		this.mostSubject_member_count = mostSubject_member_count;
-		this.memberDay = memberDay;
+		this.day = day;
+		this.count = count;
 	}
 
 	public int getAllInstructor_count() {
@@ -123,12 +127,29 @@ public class DashBoardDomain {
 		this.mostSubject_member_count = mostSubject_member_count;
 	}
 
-	public Date getMemberDay() {
-		return memberDay;
+	public String getDay() {
+		return day;
 	}
 
-	public void setMemberDay(Date memberDay) {
-		this.memberDay = memberDay;
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public String getCount() {
+		return count;
+	}
+	
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+	@Override
+	public String toString() {
+		return "DashBoardDomain [day=" + day + ", count=" + count + ", allInstructor_count=" + allInstructor_count
+				+ ", exitMember_count=" + exitMember_count + ", allMember_count=" + allMember_count
+				+ ", newMember_count=" + newMember_count + ", allSubject_count=" + allSubject_count
+				+ ", needChkSubject_count=" + needChkSubject_count + ", needChkQuestion_count=" + needChkQuestion_count
+				+ ", signupMebmer_count=" + signupMebmer_count + ", mostSubject=" + mostSubject
+				+ ", mostSubject_member_count=" + mostSubject_member_count + "]";
 	}
 
 	

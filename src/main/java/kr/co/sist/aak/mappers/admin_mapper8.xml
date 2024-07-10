@@ -18,9 +18,10 @@
 	</select>
 	
 	<select id="selectCountExitMember" resultType ="int">
-	select count(std_id)
-	from student
-	where del_yn = 'Y'
+	select count(s.std_id)
+	FROM student s
+	JOIN WITHDRAWAL w ON w.std_id = s.std_id
+	WHERE s.del_yn = 'Y' AND TO_CHAR(w.exit_date, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 	</select>
 	
 	<select id="selectCountNeedChkSubject" resultType ="int">
@@ -52,12 +53,30 @@
 	
 	
 	<select id="selectCountSignupMebmer" resultType ="DashBoardDomain">
-	SELECT TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD') AS day, COUNT(qna_no) AS count
+	SELECT TO_CHAR(SIGNUP_DATE, 'DD') AS day, COUNT(std_id) AS count
 	FROM STUDENT
 	WHERE TO_CHAR(SIGNUP_DATE, 'YYYY-MM') = TO_CHAR(SYSDATE, 'YYYY-MM')
-	GROUP BY TO_CHAR(SIGNUP_DATE, 'YYYY-MM-DD')
+	GROUP BY TO_CHAR(SIGNUP_DATE, 'DD')
 	ORDER BY day
 	</select>
+
+
+	<select id="selectCountNewSubjectCount" resultType ="DashBoardDomain">
+	SELECT TO_CHAR(CREATE_DATE, 'MM') AS day, COUNT(SUB_CODE) AS count
+	FROM SUBJECT
+	where status = 'Y'
+	GROUP BY TO_CHAR(CREATE_DATE, 'MM')
+	ORDER BY day
+	</select>
+
+
+
+	<select id="selectNewQnaTitle" resultType ="QnaManagementDomain">
+	select qna_no, title, std_id, content as content_question, q_date, status
+	from QNA_GEN_Q
+	where q_date = sysdate
+	</select>
+
 
 	
 	
