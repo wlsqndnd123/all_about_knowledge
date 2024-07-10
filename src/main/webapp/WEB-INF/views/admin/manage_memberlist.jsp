@@ -71,7 +71,7 @@ width: 15vw;height: auto;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h2 class="tm-site-title mb-0">All About Knowledge</h2>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -243,6 +243,13 @@ width: 15vw;height: auto;
  
  <!-- -----알람 메소드------ -->
  $(document).ready(function() {
+	 
+	 var adminId = '<%= session.getAttribute("adminid") %>';
+     
+     if (adminId == '' || adminId == 'null') {
+         location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+     }
+	 
 	    let previousQnaCount = null;
 	    let fetchCount = 0; // 요청 횟수를 추적하는 변수
 	    const maxFetchCount = 10; // 최대 요청 횟수

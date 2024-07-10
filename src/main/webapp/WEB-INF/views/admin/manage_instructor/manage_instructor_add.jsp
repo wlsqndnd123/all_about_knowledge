@@ -149,7 +149,7 @@ th,td,tr{font-size: 12px; text-align: center;}
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">이름</td>
-                 <td><input type="text" class="form-control" id="name" name ="name"/></td>
+                 <td><input type="text" class="form-control" id="name" name ="name" maxlength="5"/></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">연락처</td>
@@ -161,15 +161,15 @@ th,td,tr{font-size: 12px; text-align: center;}
                              </tr>
                             <tr>
                             <td style="vertical-align: middle;">강사 학력사항</td>
-                <td><input type="text" class="form-control" id="education" name ="education"></td>
+                <td><input type="text" class="form-control" id="education" name ="education" maxlength="20"></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">주력 과목</td>
-                   <td><input type="text" class="form-control" id="major_subject" name ="major_subject"></td>
+                   <td><input type="text" class="form-control" id="major_subject" name ="major_subject" maxlength="20"></td>
                             </tr>
                             <tr>
                             <td style="vertical-align: middle;">자기소개</td>
-                   <td><input type="text" class="form-control" id="introduction" name ="introduction"></td>
+                   <td><input type="text" class="form-control" id="introduction" name ="introduction" maxlength="100"></td>
                             </tr>
                             
                             </table>

@@ -125,8 +125,8 @@ public class MemberManagementDomain {
 		this.signup_date = signup_date;
 	}
 	
-	public Date getReason() {
-		return signup_date;
+	public String getReason() {
+		return reason;
 	}
 	
 	public void setReason(String reason) {

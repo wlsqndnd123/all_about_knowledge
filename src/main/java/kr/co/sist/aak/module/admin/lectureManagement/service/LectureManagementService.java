@@ -3,6 +3,7 @@ package kr.co.sist.aak.module.admin.lectureManagement.service;
 import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,5 +81,26 @@ public class LectureManagementService{
 		return cnt;
 	}	
 		
+	public String searchPreSubject() {
+        int n = 0;
+        int y = 0;
+        int d = 0;
+        JSONObject jsonObj = new JSONObject();
+        try {
+            n = lmDAO.selectPreNSubject();
+            y = lmDAO.selectPreYSubject();
+            d = lmDAO.selectPreDSubject();
+            jsonObj.put("n", n);
+            jsonObj.put("y", y);
+            jsonObj.put("d", d);
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        return jsonObj.toJSONString();
+    }
+	
+	
+	
+	
 	
 }

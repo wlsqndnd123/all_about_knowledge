@@ -104,8 +104,36 @@ public class LectureManagementDAO {
 			
 		}
 	
-	
-	
+	 public int selectPreNSubject()throws PersistenceException{
+			int cnt =0;
+			MybatisDAO mbDAO = MybatisDAO.getInstance();
+			SqlSession ss = mbDAO.getMyBatisHandler(false);
+			
+			cnt = ss.selectOne("kr.co.sist.aak.admin7.selectPreNSubject");
+			mbDAO.closeHanlder(ss);
+			return cnt;
+			
+		}
+	 public int selectPreYSubject()throws PersistenceException{
+			int cnt =0;
+			MybatisDAO mbDAO = MybatisDAO.getInstance();
+			SqlSession ss = mbDAO.getMyBatisHandler(false);
+			
+			cnt = ss.selectOne("kr.co.sist.aak.admin7.selectPreYSubject");
+			mbDAO.closeHanlder(ss);
+			return cnt;
+			
+		}
+	 public int selectPreDSubject()throws PersistenceException{
+			int cnt =0;
+			MybatisDAO mbDAO = MybatisDAO.getInstance();
+			SqlSession ss = mbDAO.getMyBatisHandler(false);
+			
+			cnt = ss.selectOne("kr.co.sist.aak.admin7.selectPreDSubject");
+			mbDAO.closeHanlder(ss);
+			return cnt;
+			
+		}
 	
 	
 }

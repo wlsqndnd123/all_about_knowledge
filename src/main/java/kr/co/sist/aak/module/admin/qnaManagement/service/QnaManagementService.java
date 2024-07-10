@@ -114,7 +114,23 @@ public class QnaManagementService {
     }
 	
 	
-	
+	public String searchPreQna() {
+        int n = 0;
+        int y = 0;
+        int d = 0;
+        JSONObject jsonObj = new JSONObject();
+        try {
+            n = qmDAO.selectPreNQna();
+            y = qmDAO.selectPreYQna();
+            d = qmDAO.selectPreDQna();
+            jsonObj.put("n", n);
+            jsonObj.put("y", y);
+            jsonObj.put("d", d);
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        return jsonObj.toJSONString();
+    }
 	
 	
 	

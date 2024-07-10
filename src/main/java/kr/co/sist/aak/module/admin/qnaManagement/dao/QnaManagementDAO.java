@@ -144,7 +144,39 @@ public class QnaManagementDAO {
 		return cnt;
 	}
 	
-	
+	public int selectPreNQna() throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.selectOne("kr.co.sist.aak.admin6.selectPreNQna");
+		mbDAO.closeHanlder(ss);
+		
+		
+		return cnt;
+	}
+	public int selectPreYQna() throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.selectOne("kr.co.sist.aak.admin6.selectPreYQna");
+		mbDAO.closeHanlder(ss);
+		
+		
+		return cnt;
+	}
+	public int selectPreDQna() throws PersistenceException{
+		int cnt =0;
+		MybatisDAO mbDAO = MybatisDAO.getInstance();
+		SqlSession ss = mbDAO.getMyBatisHandler(false);
+		
+		cnt = ss.selectOne("kr.co.sist.aak.admin6.selectPreDQna");
+		mbDAO.closeHanlder(ss);
+		
+		
+		return cnt;
+	}
 	
 	
 	

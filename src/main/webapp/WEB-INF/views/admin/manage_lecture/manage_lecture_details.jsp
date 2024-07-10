@@ -91,7 +91,7 @@ width: 15vw;height: auto;
             <div class="row">
                 <div class="col-12">
                     <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                        <a class="navbar-brand" href="adminindex.do">
+                        <a class="navbar-brand" href="admin_main.do">
                             <h2 class="tm-site-title mb-0">All About Knowledge</h2>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -183,7 +183,7 @@ width: 15vw;height: auto;
                 <!-- 회원 -->
                 <div>
                 <table class ="table table-hover">
-                <tbody id ="preMember">
+                <tbody id ="preSubject">
                 
                 </tbody>
                 </table>
@@ -298,6 +298,12 @@ width: 15vw;height: auto;
 	<script type="text/javascript">
 		 <!-- -----알람 메소드------ -->
 		 $(document).ready(function() {
+			var adminId = '<%= session.getAttribute("adminid") %>';
+             
+             if (adminId == '' || adminId == 'null') {
+                 location.href = 'http://localhost/all_about_knowledge/admin_index.do';
+             }
+			 
 			    let previousQnaCount = null;
 			    let fetchCount = 0; // 요청 횟수를 추적하는 변수
 			    const maxFetchCount = 10; // 최대 요청 횟수
@@ -352,7 +358,7 @@ width: 15vw;height: auto;
 		 
 		 $(function(){
 			 $.ajax({
-			        url: "manage_member_pre.do",
+			        url: "manage_lecture_pre.do",
 			        type: "GET",
 			        dataType: "json",
 			        error: function(xhr, status, error) {
@@ -360,11 +366,12 @@ width: 15vw;height: auto;
 			        },
 			        success: function(jsonObj) {
 			            console.log('AJAX request succeeded:', jsonObj); // 응답 내용을 로그에 출력
-			            $("#preMember").empty();
-			            if (jsonObj && jsonObj.p !== undefined && jsonObj.n !== undefined) { // 응답이 유효한지 확인
-			                var output = "<tr><td>현재 회원 수: " + jsonObj.p + "</td></tr>";
-			                output += "<tr><td>탈퇴 한 회원 수: " + jsonObj.n + "</td></tr>";
-			                $("#preMember").html(output);
+			            $("#preSubject").empty();
+			            if (jsonObj && jsonObj.n !== undefined && jsonObj.y !== undefined && jsonObj.d !== undefined) { // 응답이 유효한지 확인
+			                var output = "<tr><td>대기 강의 수: "+ jsonObj.n  +"</td></tr>";
+			                output += "<tr><td>개설 강의 수: "+ jsonObj.y  +"</td></tr>";
+			                output += "<tr><td>반려 강의 수: "+ jsonObj.d  +"</td></tr>";
+			                $("#preSubject").html(output);
 			            } else {
 			                console.error('Invalid JSON response');
 			            }
