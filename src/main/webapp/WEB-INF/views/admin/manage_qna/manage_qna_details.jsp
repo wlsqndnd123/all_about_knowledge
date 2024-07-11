@@ -217,14 +217,14 @@ width: 15vw;height: auto;
                      <c:choose>
                     	<c:when test="${param.status eq 'D'}">
                         <label for="content_answer" class="form-label">삭제 사유</label>
-                        <textarea class="form-control h-25"  readonly  id="content_answer" rows="13" style= "resize: none;" name="content_answer" maxlength="100"><c:out value="${qnaDomain.reaseon}"/></textarea>
+                        <textarea class="form-control h-25"  readonly  id="content_answer" rows="13" style= "resize: none;" name="content_answer" maxlength="2000"><c:out value="${qnaDomain.reaseon}"/></textarea>
                     	</c:when>  
                     	<c:otherwise>
                         <label for="content_answer" class="form-label">문의 답변</label>
-                        <textarea class="form-control h-25" id="content_answer" rows="13" style= "resize: none;" name="content_answer" maxlength="100"><c:out value="${qnaDomain.content_answer}"/></textarea>
+                        <textarea class="form-control h-25" id="content_answer" rows="13" style= "resize: none;" name="content_answer" maxlength="2000"><c:out value="${qnaDomain.content_answer}"/></textarea>
                         </c:otherwise>	
                      </c:choose>
-                        <div class="textCount" id="charCount" >0</div>/100자
+                        <div class="textCount" id="charCount" >0</div>/2000자
                     </div>
                 </div>
                 <div class="right">
@@ -343,10 +343,10 @@ width: 15vw;height: auto;
             
             // 글자수 제한
             if (content.length > 100) {
-                // 100자 부터는 타이핑 되지 않도록
-                $(this).val($(this).val().substring(0, 100));
-                // 100자 넘으면 알림창 뜨도록
-                alert('글자수는 100자까지 입력 가능합니다.');
+                // 2000자 부터는 타이핑 되지 않도록
+                $(this).val($(this).val().substring(0, 2000));
+                // 2000자 넘으면 알림창 뜨도록
+                alert('글자수는 2000자까지 입력 가능합니다.');
             }
         });
 
@@ -358,22 +358,26 @@ width: 15vw;height: auto;
 
             /* 답변내용변경 */
             $("#submitA").click(function(){
+            	 if (validateForm()){
                 if(!confirm("답변내용을 수정 하시겠습니까?")){
                     return;
                 } else {
                     $("#frmPost").attr("action", "manage_qna_modyify.do");
                     $("#frmPost").submit();
                 }
+            }
             });
 
             /* 답변내용입력 */
             $("#checkA").click(function(){
+            	 if (validateForm()){
                 if(!confirm("답변내용을 입력 하시겠습니까?")){
                     return;
                 } else {
                     $("#frmPost").attr("action", "manage_qna_add.do");
                     $("#frmPost").submit();
                 }
+            }
             });
 
             var cnt = "${cnt}";
@@ -453,8 +457,8 @@ width: 15vw;height: auto;
         // 삭제 팝업창
         function openDeletePopup() {
             // 팝업창 크기
-            var popupWidth = 400;
-            var popupHeight = 300;
+            var popupWidth = 450;
+            var popupHeight = 400;
 
             // 부모창 크기
             var screenWidth = window.innerWidth;
@@ -491,6 +495,45 @@ width: 15vw;height: auto;
                 }
             }, 100);
         }
+        
+        function validateInput(input) {
+            // 허용할 문자의 정규식 패턴 (알파벳, 숫자, 공백, 한글, ?, ., ,, !, ', ")
+            const pattern = /^[a-zA-Z0-9\s\u3131-\uD79D?.!,'"-]*$/;
+            return pattern.test(input);
+        }
+
+        document.getElementById('content_answer').addEventListener('input', function(event) {
+            const isValid = validateInput(event.target.value);
+            if (!isValid) {
+                alert('허용되지 않은 특수 문자가 입력되었습니다.');
+                event.target.value = event.target.value.replace(/[^a-zA-Z0-9\s\u3131-\uD79D?.!,'"-]/g, '');
+            }
+        });
+  
+        function validateForm() {
+            let isValid = true;
+            let errorMessage = '';
+
+            const contentAnswer = document.getElementById('content_answer').value.trim();
+
+            if (contentAnswer === '') {
+                isValid = false;
+                errorMessage += '내용을 입력해주세요.\n';
+            }
+
+            if (!isValid) {
+                alert(errorMessage);
+            }
+
+            return isValid;
+        }
+        
+        
+        
+        
+        
+        
+        
     </script>
         
    
