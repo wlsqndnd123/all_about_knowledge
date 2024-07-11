@@ -61,6 +61,47 @@ width: 15vw;height: auto;
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	
 <script type ="text/javascript">
+function validateForm() {
+    let isValid = true;
+    let errorMessage = '';
+
+    const name = document.querySelector('input[name="name"]').value.trim();
+    const tel = document.querySelector('input[name="tel"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const birth = document.querySelector('input[name="birth"]').value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (name === '') {
+        isValid = false;
+        errorMessage += '이름을 입력해주세요.\n';
+    }
+    if (tel === '') {
+        isValid = false;
+        errorMessage += '연락처를 입력해주세요.\n';
+    }
+    if (email === '') {
+        isValid = false;
+        errorMessage += '이메일을 입력해주세요.\n';
+    } else if (!emailPattern.test(email)) {
+        isValid = false;
+        errorMessage += '올바른 이메일 형식으로 입력해주세요.\n';
+    }
+    if (birth === '') {
+        isValid = false;
+        errorMessage += '생년월일을 입력해주세요.\n';
+    }
+
+    if (!isValid) {
+        alert(errorMessage);
+    }
+
+    return isValid;
+}
+
+
+
+
 <!-- -----알람 메소드------ -->
 $(document).ready(function() {
 	
@@ -155,15 +196,15 @@ $(function(){
 
          
          $("#saveSubmit").click(function(){
-
-        	 if(!confirm("변경내용을 저장 하시겠습니까?")){
+        	 if (validateForm()) {
+        		 if(!confirm("변경내용을 저장 하시겠습니까?")){
          	    
-         	}else{
-             $("#frmGet").attr("action", "manage_member_modyify.do");
-             $("#frmGet").submit();
+         		}else{
+            	 $("#frmGet").attr("action", "manage_member_modyify.do");
+            	 $("#frmGet").submit();
          	    
-         	}
-        	 
+         		}
+        	 }
          });
 
          var cnt = "${cnt}";
@@ -422,7 +463,7 @@ $(function(){
                         <input type="hidden" name="email" value="${mmDomain.email}" readonly>
                     </c:when>
                     <c:otherwise>
-                        <input type="email" name="email" value="${mmDomain.email}" style="text-align: center;" oninput="validateEmail(event)">
+                        <input type="email" name="email" value="${mmDomain.email}" style="text-align: center;" oninput="validateEmail(event)"><br>
                         <span id="emailError" style="display: none; color: red; font-size: 12px;">이메일 형식으로 적어주세요</span>
                     </c:otherwise>
                 </c:choose>
