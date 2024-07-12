@@ -24,9 +24,9 @@ public class FindInfoController {
     public String findId(@RequestParam("email") String email, Model model) {
         String username = findInfoService.findIdByEmail(email);
         if (username != null) {
-            model.addAttribute("message", "°¡ÀÔµÈ ¾ÆÀÌµğ : " + username);
+            model.addAttribute("message", "ê°€ì…ëœ ì•„ì´ë”” : " + username);
         } else {
-            model.addAttribute("error", "ÇØ´ç ÀÌ¸ŞÀÏ ÁÖ¼Ò·Î °¡ÀÔµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
+            model.addAttribute("error", "í•´ë‹¹ ì´ë©”ì¼ ì£¼ì†Œë¡œ ê°€ì…ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
         }
         return "student/find_id_result";
     }
@@ -40,9 +40,9 @@ public class FindInfoController {
     public String findPassword(@RequestParam("email") String email, Model model) {
         String tempPassword = findInfoService.resetPassword(email);
         if (tempPassword != null) {
-            model.addAttribute("message", "ÀÓ½Ã ºñ¹Ğ¹øÈ£ : " + tempPassword);
+            model.addAttribute("message", "ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ : " + tempPassword);
         } else {
-            model.addAttribute("error", "ÇØ´ç ÀÌ¸ŞÀÏ ÁÖ¼Ò·Î °¡ÀÔµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
+            model.addAttribute("error", "í•´ë‹¹ ì´ë©”ì¼ ì£¼ì†Œë¡œ ê°€ì…ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
         }
         return "student/find_password_result";
     }
