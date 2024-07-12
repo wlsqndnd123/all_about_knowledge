@@ -3,13 +3,17 @@ package kr.co.sist.aak.module.student.lecture.service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import kr.co.sist.aak.domain.admin.EduCategoryManagementDomain;
+import kr.co.sist.aak.domain.instructor.LectureDomain;
 import kr.co.sist.aak.domain.student.UserLectureDomain;
 import kr.co.sist.aak.domain.student.UserNoticeDomain;
 import kr.co.sist.aak.domain.student.vo.UserApplySubVO;
@@ -44,6 +48,27 @@ public class UserLectureService {
 		return uld;
 	}//searchUserLectureDetail
 	
+	
+	public UserLectureDomain searchUserCnt(String sub_code){
+		UserLectureDomain uld = null;
+		try {
+			uld=ulDAO.selectStdCnt(sub_code);
+		} catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return uld;
+	}//searchUserLectureDetail
+	
+	public UserLectureDomain searchCatSubName(String sub_code){
+		UserLectureDomain uld = null;
+		try {
+			uld=ulDAO.selectCatSubName(sub_code);
+		} catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return uld;
+	}//searchUserLectureDetail
+	
 	public List<UserLectureDomain> searchInstNotice(String sub_code){
 		List<UserLectureDomain> list = null;
 		try {
@@ -64,6 +89,11 @@ public class UserLectureService {
 		return list;
 	}//searchInstNotice
 	
+	/**
+	 * 강의 문의 리스트
+	 * @param sub_code
+	 * @return
+	 */
 	public List<UserLectureDomain> searchLecQna(String sub_code){
 		List<UserLectureDomain> list = null;
 		try {
@@ -73,6 +103,66 @@ public class UserLectureService {
 		}
 		return list;
 	}//searchInstNotice
+	
+	/**
+	 * 나의 문의 리스트
+	 * @param Q_std_id
+	 * @return
+	 */
+	public List<UserLectureDomain> searchMyLecQna(){
+		List<UserLectureDomain> list = null;
+		String loggedInUserId =SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		try {
+			list=ulDAO.selectMyLecQna(loggedInUserId);
+			
+			for(UserLectureDomain item : list) {
+				if ("Y".equals(item.getQ_status())) {
+	                item.setQ_status("완료");
+	            } else if ("N".equals(item.getQ_status())) {
+	                item.setQ_status("대기중");
+	            }
+			}
+		} catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return list;
+	}//searchInstNotice
+	
+	
+	/**
+	 * 최대 넘버
+	 * @return
+	 */
+	public String searchMaxQVal() {
+		String maxVal="";
+		StringBuffer pre = new StringBuffer("Q_SUB");
+		try {
+			maxVal=ulDAO.selectMaxValue();
+			int num=Integer.parseInt(maxVal.substring(6))+1;
+			String nextVal=String.format("%05d", num);
+			pre.append(nextVal);
+		} catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return pre.toString();
+	}
+	
+	/**
+	 * 강의 문의 작성
+	 * @param uqVO
+	 * @return
+	 */
+	public int addSubQ(UserQnaVO uqVO) {
+		int cnt = 0;
+        try {
+        	cnt = ulDAO.insertSubQuestion(uqVO);
+        } catch (PersistenceException Pe) {
+        	Pe.printStackTrace();
+        }
+        return cnt;
+	}
+	
 	
 	public List<UserLectureDomain> searchPopLecture(){
 		List<UserLectureDomain> list = null;
@@ -105,41 +195,74 @@ public class UserLectureService {
         return cnt;
 	}
 	
-	public String searchCatLecture(String cat_code){
+	public int applyBtnControl(Map<String, String> info) {
+	    int cnt = 0;
+	    try {
+	        cnt = ulDAO.selectRegCourse(info);
+	    } catch (PersistenceException Pe) {
+	        Pe.printStackTrace();
+	    }
+	    return cnt;
+	}
+	
+	
+	/**
+	 * 모든 카테고리
+	 * @return
+	 */
+	public String searchCategoryList() {
 		List<UserLectureDomain> list = null;
 		JSONObject jsonObj = new JSONObject();
 		try {
-			list=ulDAO.selectAllLecture(cat_code);
-			
-		} catch (PersistenceException pe) {
-		} finally {
+			list = ulDAO.selectAllCategory();
+
 			JSONArray jsonArr = new JSONArray();
 			JSONObject jsonTemp = null;
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			
-			for (UserLectureDomain temp:list) {
+			for (UserLectureDomain temp : list) {
 				jsonTemp = new JSONObject();
-				jsonTemp.put("sub_title", temp.getSub_title());
-				jsonTemp.put("inst_id", temp.getInst_id());
-				jsonTemp.put("image", temp.getImage());
-				
-				String cat = temp.getCat_code();
-				if(cat.equals("CAT_000003")) {
-					cat = "자료구조";
-				} else if(cat.equals("CAT_000004")) {
-					cat = "운영체제";
-				} else if(cat.equals("CAT_000005")) {
-					cat = "JAVA";
-				} else if(cat.equals("CAT_000006")) {
-					cat = "C";
-				}
-				jsonTemp.put("cat_code", cat);
+				jsonTemp.put("cat_code", temp.getCat_code());
+				jsonTemp.put("cat_name", temp.getCat_name());
+				jsonArr.add(jsonTemp);
+
+			}
+			jsonObj.put("list", jsonArr);
+
+		} catch (PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		return jsonObj.toJSONString();
+
+	}
+	
+	/**
+	 * 하위 카테고리
+	 * @param cat_code
+	 * @return
+	 */
+	public String searchSubCategoryList(String cat_code) {
+		List<UserLectureDomain> list = null;
+		JSONObject jsonObj = new JSONObject();
+		try {
+			list = ulDAO.selectSubCategory(cat_code);
+			JSONArray jsonArr = new JSONArray();
+			JSONObject jsonTemp = null;
+			for (UserLectureDomain temp : list) {
+				jsonTemp = new JSONObject();
+				jsonTemp.put("cat_code", temp.getCat_code());
+				jsonTemp.put("cat_name", temp.getCat_name());
 				jsonArr.add(jsonTemp);
 			}
 			jsonObj.put("list", jsonArr);
+		} catch (PersistenceException pe) {
+			pe.printStackTrace();
 		}
 		return jsonObj.toJSONString();
-	}//searchInstNotice
+
+	}
+
+	
+	
+	
 	
 	
 	

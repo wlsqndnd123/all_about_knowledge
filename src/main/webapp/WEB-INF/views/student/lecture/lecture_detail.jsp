@@ -67,24 +67,44 @@
 			var textLength = $(this).val().length;
 			$('#charCount').text(textLength + '/300자');
 		});
-		// 수강 신청 버튼 클릭 시 동작
+		
+		//수강신청
 		$('#btnApply').on('click', function() {
-			alert('수강신청이 완료되었습니다.');
-			$(this).text('수강 중인 강좌입니다.');
+		    $.ajax({
+		        url: '/all_about_knowledge/apply_subject.do',
+		        type: 'POST',
+		        data: $("#frm").serialize(),
+		        success: function(response) {
+		            alert(response.message);  // 서버에서 전달된 message를 alert로 출력
+		        },
+		        error: function() {
+		            alert("수강 신청 중 오류가 발생했습니다.");
+		        }
+		    });
 		});
 
 		// 관심 강의 버튼 클릭 시 동작
 		$('#likeButton').on('click', function() {
 			$(this).toggleClass('active');
 		});
-		$("#btnApply").click(function() {
-			$("#frm").submit();
+		
+		/* // 모달 열기 버튼 클릭 이벤트
+		$('#openModalBtn').click(function() {
+			$('#myModal').modal('show'); // 모달을 보이도록 설정
+		}); */
+		// 글자 수 세기
+		$('#content').on('input', function() {
+			var textLength = $(this).val().length;
+			$('#charCount').text(textLength + '/300자');
 		});
+		$("#btnWriteQ").click(function() {
+			$("#frmq").submit();
+		});
+
 	});
 </script>
 </head>
 <body>
-
 	<!-- 헤더 -->
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
@@ -101,14 +121,20 @@
 				<div class="ten wide column">
 					<p>
 					<div class="ui small breadcrumb">
-						<a class="section">개발/프로그래밍</a> <i
-							class="right chevron icon divider"></i> <a class="active section">C</a>
+						<a class="section"><!-- 상위 카테고리 -->
+						<c:out value="${uld7.cat2}" />
+						</a>
+						
+						<i class="right chevron icon divider"></i> 
+						<a class="active section">
+						<c:out value="${uld7.cat_name}" />
+						</a>
 					</div>
 					<h2>
 						<c:out value="${uld.sub_title}" />
 					</h2>
 					<br>
-					<h5>00명의 수강생</h5>
+					<h5><c:out value="${uld6.cnt}" />명의 수강생</h5>
 					<h5>
 						<c:out value="${uld.inst_id}" />
 					</h5>
@@ -178,30 +204,42 @@
 					<div style="text-align: right;">
 						<button id="openModalBtn" class="ui button">문의 작성</button>
 					</div>
+					
+					
+<!-- /////////////////////////////////////강의문의 모달폼/////////////////////////////////////////////////// -->
 					<div class="ui modal" id="myModal">
 						<i class="close icon"></i>
 						<div class="header">문의사항 작성</div>
 						<div class="content">
 							<div class="ui form">
-								<div class="field">
-									<label>작성자: userId | 작성일: 2024-06-18</label>
-								</div>
-								<div class="field">
-									<label>제목</label> <input type="text" name="title"
-										placeholder="제목을 입력하세요">
-								</div>
-								<div class="field">
-									<label>내용</label>
-									<textarea rows="5" name="content" id="content"
-										placeholder="문의사항을 입력하세요"></textarea>
-									<div class="ui message" id="charCount">0/300자</div>
-								</div>
+								<form id="frmq" action="/all_about_knowledge/sub_qna_write_process.do" method="post">
+									<div class="field">
+										<label>작성자: <sec:authentication property='name' /> <%--| 
+									  작성일: <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"></span> --%></label>
+									</div>
+									<div class="field">
+										<label>제목</label> <input type="text" name="s_title" id="s_title"
+											placeholder="제목을 입력하세요">
+									</div>
+									<div class="field">
+										<label>내용</label>
+										<textarea rows="5" name="s_content" id="s_content"
+											placeholder="문의사항을 입력하세요"></textarea>
+										<div class="ui message" id="charCount">0/300자</div>
+									</div>
 							</div>
 						</div>
 						<div class="actions">
-							<div class="ui positive button">전송</div>
+							<input type="button" class="ui positive button" value="작성"
+								id="btnWriteQ">
+							<input type="hidden" name="s_stdId"
+								value="<sec:authentication property='name'/>">
+							<input type="hidden" name="s_subCode" value="<c:out value="${uld.sub_code}" />">
+							</form>
 						</div>
 					</div>
+					
+<!-- /////////////////////////////////////강의문의리스트/////////////////////////////////////////////////// -->
 					<c:forEach var="uld5" items="${requestScope.uld5 }" varStatus="i">
 					<div id="qnalist">
 					<div class="box" style="height: auto;">
@@ -224,7 +262,7 @@
 			</div>
 			<!-- 강의신청 폼 -->
 			<div class="five wide column" style="padding-top:50px">
-				<form id="frm" action="apply_subject.do" method="post">
+				<form id="frm" action="/all_about_knowledge/apply_subject.do" method="post">
 				<div class="box inline">
 					<h3></h3>
 					<h3 class="ui center aligned header">무료강의</h3>
