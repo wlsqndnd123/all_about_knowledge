@@ -36,19 +36,19 @@ public class AdminLoginService {
 			ald = adlDAO.selectAdminPermission(alVO);
 			StringBuilder sb = new StringBuilder();
 			if(ald.getInstructor_management().equals("Y")) {
-				sb.append(" 강사 관리 <br/>");
+				sb.append("<br/>");
 			}
 			if(ald.getNotice_management().equals("Y")) {
-				sb.append(" 공지사항 관리 <br/>");
+				sb.append("<br/>");
 			}
 			if(ald.getMember_management().equals("Y")) {
-				sb.append(" 회원 관리 <br/>");
+				sb.append("<br/>");
 			}
 			if(ald.getCategory_management().equals("Y")) {
-				sb.append(" 교육 과목 관리 <br/>");
+				sb.append(" <br/>");
 			}
 			if(ald.getQna_management().equals("Y")) {
-				sb.append(" 문의 관리 <br/>");
+				sb.append("<br/>");
 			}
 			sb.deleteCharAt(sb.lastIndexOf(" <br/> "));
 			ald.setPermissions(sb.toString());

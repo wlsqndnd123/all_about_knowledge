@@ -57,14 +57,15 @@ public class LectureOpenController {
 		return jsonObj;
 	}// lectureSubtitle
 
+
 	@ResponseBody
 	@RequestMapping(value = "/instructor/lectureManage/leclesson.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String lectureLesson(LectureLessonVO llVO, @RequestParam(name = "lecCode", defaultValue = "LEC_000001") String lecCode) {
 		String jsonObj = lts.lecLesson(llVO);
-		
-		
+
 		return jsonObj;
 	}// lectureLesson
+
 	
 	@ResponseBody
 	@PostMapping("/instructor/lectureManage/lectureApply_result.do")

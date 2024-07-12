@@ -66,8 +66,6 @@ public class NoticeDAO {
 		cnt=ss.update("kr.co.sist.aak.instructor3.updateNotice",nVO);
 		mbDAO.closeHanlder(ss);
 		
-		 System.out.println("NoticeVO in DAO: " + nVO.toString());
-		
 		return cnt;
 	
 	}

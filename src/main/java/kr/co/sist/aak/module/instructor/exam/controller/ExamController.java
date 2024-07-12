@@ -72,25 +72,23 @@ public class ExamController {
 	            eVO.setEX_2(EX_2[i]);
 	            eVO.setEX_3(EX_3[i]);
 	            eVO.setEX_4(EX_4[i]);
-
-	           
+	            
 	            if (SOLUTION != null && SOLUTION.length > i) {
 	                eVO.setSOLUTION(SOLUTION[i]);
 	            } else {
-	                
-	                eVO.setSOLUTION(null);
+	                eVO.setSOLUTION(null); 
+
 	            }
 
 	            int cnt = es.insertExam(eVO);
 	            if (cnt == 1) {
 	                model.addAttribute("eVO", eVO);
 	            } else {
-	                
+
 	            }
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	       
 	    }
 
 	    return "/instructor/exam/exam_write_result";
@@ -101,6 +99,7 @@ public class ExamController {
 		
 		List<ExamDomain> list=es.searchList1();
 		model.addAttribute("examlist",list);
+
 		System.out.println("update쪽 리스트"+list);
 		
 		return "/instructor/exam/exam_update";

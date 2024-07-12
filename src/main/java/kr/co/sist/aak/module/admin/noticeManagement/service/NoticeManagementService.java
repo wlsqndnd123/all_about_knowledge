@@ -18,7 +18,6 @@ public class NoticeManagementService {
 	private NoticeManagementDAO nmDAO;
 
 	/**
-	 * ¼±ÅÃ ÇÑ °øÁö»çÇ×ÀÇ »ó¼¼ Á¤º¸¸¦ Ãâ·ÂÇÏ´Â method. ÀÛ¼ºÀÚ: ±èÀÏ½Å
 	 * 
 	 * @param noti_no
 	 * @return
@@ -35,7 +34,6 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * ¼¿·ºÆ®°ª¿¡ µû¶ó Ãâ·ÂµÇ´Â °á°úÀÇ °ªÀÌ ´Ù¸§ status 0: ¿¹¾à 1: °Ô½Ã 2:»èÁ¦ 3:ÀüÃ¼ °Ô½Ã±Û Á¶È¸. ÀÛ¼ºÀÚ: ±èÀÏ½Å
 	 * 
 	 * @param status
 	 * @return
@@ -62,11 +60,11 @@ public class NoticeManagementService {
 
 				String status1 = temp.getStatus();
 				if (status1.equals("RESV")) {
-					status1 = "¿¹¾à";
+					status1 = "ï¿½ï¿½ï¿½ï¿½";
 				} else if (status1.equals("DELT")) {
-					status1 = "»èÁ¦";
+					status1 = "ï¿½ï¿½ï¿½ï¿½";
 				} else {
-					status1 = "°Ô½Ã";
+					status1 = "ï¿½Ô½ï¿½";
 				}
 
 				jsonTemp.put("status", status1);
@@ -79,7 +77,7 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * °øÁö»çÇ×ÀÇ Á¦¸ñÀ» °Ë»öÇÏ´Â method. titleÀÌ nullÀÌ¶ó¸é ÀüÃ¼ °øÁö»çÇ×ÀÌ °Ë»öµÇµµ·Ï ¼³Á¤ÇÔ. ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï´ï¿½ method. titleï¿½ï¿½ nullï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * 
 	 * @param title
 	 * @return
@@ -100,12 +98,12 @@ public class NoticeManagementService {
 		} finally {
 			for (NoticeManagementDomain temp : list) {
 				if (temp.getStatus().equals("RESV")) {
-					temp.setStatus("¿¹¾à");
+					temp.setStatus("ï¿½ï¿½ï¿½ï¿½");
 				} else if (temp.getStatus().equals("DELT")) {
-					temp.setStatus("»èÁ¦");
+					temp.setStatus("ï¿½ï¿½ï¿½ï¿½");
 
 				} else {
-					temp.setStatus("°Ô½Ã");
+					temp.setStatus("ï¿½Ô½ï¿½");
 
 				}
 			}
@@ -117,8 +115,8 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * ¸ðµç °øÁö»çÇ×ÀÇ ¸®½ºÆ®¸¦ Ãâ·ÂÇÏ´Â method. °øÁö»çÇ×ÀÇ status°¡ RESV: ¿¹¾à. °øÁö»çÇ×ÀÇ status°¡ DELT: »èÁ¦.
-	 * ³ª¸ÓÁö :°Ô½Ã. ·Î º¯È¯ÇÏ¿© Ãâ·ÂÇÑ´Ù. ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ statusï¿½ï¿½ RESV: ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ statusï¿½ï¿½ DELT: ï¿½ï¿½ï¿½ï¿½.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :ï¿½Ô½ï¿½. ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * 
 	 * @return
 	 */
@@ -131,12 +129,12 @@ public class NoticeManagementService {
 		} finally {
 			for (NoticeManagementDomain temp : list) {
 				if (temp.getStatus().equals("RESV")) {
-					temp.setStatus("¿¹¾à");
+					temp.setStatus("ï¿½ï¿½ï¿½ï¿½");
 				} else if (temp.getStatus().equals("DELT")) {
-					temp.setStatus("»èÁ¦");
+					temp.setStatus("ï¿½ï¿½ï¿½ï¿½");
 
 				} else {
-					temp.setStatus("°Ô½Ã");
+					temp.setStatus("ï¿½Ô½ï¿½");
 
 				}
 			}
@@ -145,8 +143,8 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * °øÁö»çÇ× ÀÛ¼º ½Ã °øÁö»çÇ× ¹øÈ£ÀÇ ÃÖ°í°ªÀ» °¡Á®¿Í +1ÇÏ¿© ¹ÝÈ¯ÇÏ´Â method.
-	 *  ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ +1ï¿½Ï¿ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ method.
+	 *  ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * 
 	 * @return
 	 */
@@ -167,7 +165,7 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * °øÁö»çÇ×À» ¾÷·Îµå ÇÏ´Â method
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½Ï´ï¿½ method
 	 * 
 	 * @param nVO
 	 * @return
@@ -183,8 +181,8 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * ¼±ÅÃÇÑ °øÁö»çÇ×ÀÇ Á¦¸ñ, ÀÌ¹ÌÁö, ³»¿ëÀ» ¼öÁ¤ÇÏ´Â method.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¹ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param nVO
 	 * @return
 	 */
@@ -200,8 +198,8 @@ public class NoticeManagementService {
 	}
 
 	/**
-	 * ¼±ÅÃÈù °øÁö»çÇ×À» Áö¿ì´Â method.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param noti_no
 	 * @return
 	 */
@@ -247,7 +245,7 @@ public class NoticeManagementService {
 	NoticeManagementDomain nm =null;
 	JSONObject jsonObj = new JSONObject();
 	try {
-		//ÀÛ¼º°ü¸®ÀÚ ID,³¯Â¥,Á¦¸ñ, ³»¿ë
+		//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID,ï¿½ï¿½Â¥,ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 		nm =nmDAO.selectRecentNotice();
 		JSONArray jsonArr = new JSONArray();
 		JSONObject jsonTemp = null;

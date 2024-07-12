@@ -46,7 +46,7 @@ public class DashboardService {
 		
 		return list;
 	}
-	
+
 	public int noreply(String inst_id) {
 		int noReplyCnt=0;
 		

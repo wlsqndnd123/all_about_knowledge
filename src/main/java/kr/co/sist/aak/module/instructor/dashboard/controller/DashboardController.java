@@ -29,6 +29,7 @@ public class DashboardController {
 	//@GetMapping("/instructor/instructorInfo.do")
 	@RequestMapping(value="/instructor/instructor_home.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String instructorInfo( Model model) {
+
 		String inst_id=(String)model.getAttribute("inst_id");
 		
 		inst_id="INST_00005";
@@ -51,15 +52,12 @@ public class DashboardController {
 		return "instructor/index";
 	}//instructorInfo
 	
-	
-	//���� �������� ������ư
 	@GetMapping("/instructor/instructorInfo.do")
 	public String modifyInstInfo(String inst_id, Model model) {
 
 		return "instructor/instructorInfo";
 	}
 	
-	//�ݷ�����Ʈ �󼼹�ư
 	@GetMapping("/instructor/lectureManage/rejectList.do")
 	public String rejectList(Model model) {
 		

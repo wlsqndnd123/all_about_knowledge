@@ -24,6 +24,7 @@ public class LectureService {
 
 	@Autowired(required = false)
 	private LectureDAO ltDAO;
+
 	public List<LectureDomain> lectureAll(){
 		
 		List<LectureDomain> list=null;
@@ -37,7 +38,7 @@ public class LectureService {
 		
 		return list;
 	}
-	
+
 	public String selectSubtitle(String subCode){
 		
 		List<LectureDomain> list=null;
@@ -63,6 +64,7 @@ public class LectureService {
 		return jsonObject.toJSONString();
 	}
 	
+
 	public String lecInfo(LectureVO lecVO) {
 
 		JSONObject jsonObj= new JSONObject();
@@ -95,6 +97,7 @@ public class LectureService {
 		return jsonObj.toJSONString();
 	}
 	
+
 	public String searchQnaStatus(int status) {
 		List<LectureDomain> list = null;
 		JSONObject jsonObj = new JSONObject();
@@ -118,9 +121,11 @@ public class LectureService {
 
 				String status1 = temp.getStatus();
 				if (status1.equals("Y")) {
+
 					status1 = "답변완료";
 				}else {
 					status1 = "미답변";
+
 				}
 
 				jsonTemp.put("status", status1);
@@ -132,7 +137,7 @@ public class LectureService {
 
 	}
 	
-	
+
 	public List<LectureDomain> searchLectureTitle(String sub_title) {
 		List<LectureDomain> list = null;
 
@@ -149,9 +154,11 @@ public class LectureService {
 		} finally {
 			for (LectureDomain temp : list) {
 				if (temp.getStatus().equals("Y")) {
+
 					temp.setStatus("승인완료");
 				} else {
 					temp.setStatus("반려");
+
 
 				}
 			}
@@ -177,6 +184,7 @@ public class LectureService {
 		return list;
 	}
 
+
 	public LectureVO lectureInfo(String sub_code) {
 		LectureVO lecVO=null;
 		
@@ -188,7 +196,9 @@ public class LectureService {
 		return lecVO;
 	}
 	
+
 	public LectureLessonVO lecLesson(String lec_code) {
+
 		LectureLessonVO lecLessVO=null;
 		
 		try {
@@ -200,6 +210,7 @@ public class LectureService {
 		return lecLessVO;
 	}
 	
+
 	public NoticeDomain noticeone(String sub_code) {
 		NoticeDomain ntd=null;
 		
