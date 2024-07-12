@@ -275,10 +275,10 @@
    	 	var line_dates = [];
    	 	var line_datas = [];
    	    <c:forEach var="ddm" items="${requestScope.singup_list }" varStatus="i">
-   	 	<c:if test="${ddm.count != 0}">
+   	 	
    	 		line_dates.push(<c:out value="${ddm.day}"/>+"일");
    			line_datas.push(<c:out value="${ddm.count}"/>);
-   	 	</c:if>
+   	 	
 		</c:forEach>
 		
 		var bar_dates = [""];

@@ -35,9 +35,7 @@ public class MemberManagementService {
 			mmDomain = mmDAO.selectDetaleMember(std_id);
 			
 			StringBuilder tel = new StringBuilder(mmDomain.getTel());
-			tel.insert(3, '-');
-			tel.insert(8, '-');
-			
+
 			mmDomain.setTel(tel.toString());
 			
 			
@@ -55,7 +53,7 @@ public class MemberManagementService {
 		String birth = mmVO.getBirth().replaceAll("\\s+", "");
 		String name = mmVO.getName().replaceAll("\\s+", "");
 		String email = mmVO.getEmail().replaceAll("\\s+", "");
-		String tel = mmVO.getTel().replaceAll("[\\s-]+", "");
+		String tel = mmVO.getTel().replaceAll("[\\s]+", "");
 		
 		if(	birth.isEmpty() || name.isEmpty() || email.isEmpty() || tel.isEmpty() ) {
 			cnt=2;
