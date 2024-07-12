@@ -15,7 +15,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 
 @Component
 public class QnaDAO {
-	//문의리스트 조회
+
 	public List<QnaDomain> selectQna() throws PersistenceException{
 		List<QnaDomain> list= null;
 		
@@ -28,7 +28,7 @@ public class QnaDAO {
 		return list;
 	}
 	
-	//문의리스트 상세
+
 	public QnaDomain detailQna(String qna_no) throws PersistenceException{
 		QnaDomain qnd= null;
 		
@@ -47,7 +47,7 @@ public class QnaDAO {
 	}
 	
 	
-	//문의답변
+
 	public int updateAnswer(QnaVO qVO){
 		int cnt = 0;
 		
@@ -64,7 +64,7 @@ public class QnaDAO {
 		
 	}
 	
-	//답변여부로 글 분류
+
 //		public List<QnaDomain> selectqnaStatus(int status) throws PersistenceException {
 //			List<QnaDomain> list = null;
 //
@@ -76,7 +76,7 @@ public class QnaDAO {
 //			return list;
 //		}
 //		
-//		//제목검색
+
 //		public List<LectureDomain> selectLectureTitle(String sub_title) throws PersistenceException {
 //			List<LectureDomain> list = null;
 //			

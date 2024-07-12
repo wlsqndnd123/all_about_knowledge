@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.exceptions.PersistenceException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,6 +27,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.sist.aak.domain.instructor.LectureDomain;
+import kr.co.sist.aak.domain.instructor.LectureLessonDomain;
+import kr.co.sist.aak.domain.instructor.vo.LectureLessonVO;
 import kr.co.sist.aak.domain.instructor.vo.LectureVO;
 import kr.co.sist.aak.module.instructor.lectureManage.service.LectureService;
 
@@ -37,93 +40,119 @@ public class LectureOpenController {
 
 	@GetMapping("/instructor/lectureManage/lectureApply.do")
 	public String lecturApply(Model model) {
-		List<LectureDomain> list=lts.selectCategory();
-		
-		System.out.println("----------------"+list);
-		model.addAttribute("catList",list);
 
+		List<LectureDomain> list = lts.selectCategory();
+		model.addAttribute("catList", list);
+		
+		
 		return "instructor/lectureManage/lectureApply";
 	}// lecturApply
-	
+
 	@ResponseBody
-	@RequestMapping(value="/instructor/lectureManage/subtitle.do",method=RequestMethod.GET,produces="application/json;charset=UTF-8")
-	public String lecturSubtitle(@RequestParam(name = "subCode",defaultValue = "CAT_000001")String subCode) {
-		System.out.println("---------subCode-----------"+ subCode );
-		String jsonObj=lts.selectSubtitle(subCode);
-		System.out.println( "----------subCode----------"+jsonObj );
-		return jsonObj ;
-	}// lecturApply
-	               //instructor/lectureManage/lectureApply_result.do
+	@RequestMapping(value = "/instructor/lectureManage/subtitle.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public String lectureSubtitle(@RequestParam(name = "subCode", defaultValue = "CAT_000001") String subCode) {
+		String jsonObj = lts.selectSubtitle(subCode);
+		
+
+		return jsonObj;
+	}// lectureSubtitle
+
+	@ResponseBody
+	@RequestMapping(value = "/instructor/lectureManage/leclesson.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public String lectureLesson(LectureLessonVO llVO, @RequestParam(name = "lecCode", defaultValue = "LEC_000001") String lecCode) {
+		String jsonObj = lts.lecLesson(llVO);
+		
+		
+		return jsonObj;
+	}// lectureLesson
 	
 	@ResponseBody
 	@PostMapping("/instructor/lectureManage/lectureApply_result.do")
-	public String openFrm(HttpServletRequest request, String temp, Model model) throws IOException{
+	 public String openFrm(LectureVO lecVO,HttpServletRequest request, Model model) throws IOException {
 
-		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
+	        String saveDir = "C:/dev/workspace/all_about_knowledge/src/main/webapp/upload";
+	        File dir = new File(saveDir);
+	        if (!dir.exists()) {
+	            dir.mkdirs();
+	        }
 
-		int tempSize = 100 * 1024 * 1024;
-		System.out.println(request.getParameter(temp));
+	        int tempSize = 100 * 1024 * 1024;
+	        MultipartRequest mr = new MultipartRequest(request, saveDir, tempSize, "UTF-8", new DefaultFileRenamePolicy());
 
-		MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath(), tempSize, "UTF-8",
-				new DefaultFileRenamePolicy());
-		
-		
-		String fsName = mr.getFilesystemName("upfile");
-		String oriName = mr.getOriginalFileName("upfile");
+	        String lecNm = mr.getParameter("lecNm");
+	        String intro = mr.getParameter("intro");
+	        String goal = mr.getParameter("goal");
+	        String totalSession = mr.getParameter("totalSession");
 
-		int maxSize = 10 * 1024 * 1024 * 1024;
+	        String fsName = mr.getFilesystemName("lectureImage");
+	        String oriName = mr.getOriginalFileName("lectureImage");
 
-		File tempFile = new File(saveDir.getAbsolutePath() + "/" + fsName);
+	        File tempFile = new File(saveDir + "/" + fsName);
+	        int maxSize = 10 * 1024 * 1024;
+	        boolean uploadFlag = false;
+	        if (tempFile.length() > maxSize) {
+	            tempFile.delete();
+	            uploadFlag = true;
+	        }
 
-		boolean uploadFlag = false;
-		if (tempFile.length() > maxSize) {// ¾÷·Îµå Á¦ÇÑ
-			tempFile.delete();
-			uploadFlag = true;
-		} // end if
+	        model.addAttribute("fileName", oriName);
+	        model.addAttribute("uploadFlag", !uploadFlag);
 
-		
-		model.addAttribute("fileName", oriName);
-		model.addAttribute("uploadFlag", !uploadFlag);
-		
-		JSONObject jsonObj= new JSONObject();
-		
-//		jsonObj.put("lecNm",jsonObj );	//°­ÀÇ¸í
-//		jsonObj.put("intro", jsonObj);	//ÇÐ½À°³¿ä
-//		jsonObj.put("goal", jsonObj);	//ÇÐ½À¸ñÇ¥
-//		jsonObj.put("lectureImage", jsonObj);	//°­ÀÇ½æ³×ÀÏ
-//		jsonObj.put("totalSession", jsonObj);	//ÃÑ Â÷½Ã¼ö
-//		jsonObj.put("createDate", jsonObj);	//°³¼³ÀÏÀÚ
-//		
-
-		return "instructor/lectureManage/lectureApply_result"; //¸®ÅÏ°ªÀ¸·Î json
-
-	}
+	        // JSON 
+	        JSONObject jsonObj = new JSONObject();
+	        jsonObj.put("fsName", fsName);   
+	        
+	        
+	        return jsonObj.toJSONString(); 
+	        
+	        
+	    }
+	
+		/*
+		 * @ResponseBody
+		 * 
+		 * @PostMapping("/instructor/lectureManage/lectureApply_result.do") public
+		 * String uploadVideo(LectureLessonVO llVO, HttpServletRequest request, Model
+		 * model) throws IOException{
+		 * 
+		 * String saveDir =
+		 * "C:/dev/workspace/all_about_knowledge/src/main/webapp/upload"; File dir = new
+		 * File(saveDir); if (!dir.exists()) { dir.mkdirs(); }
+		 * 
+		 * int tempSize = 100 * 1024 * 1024; MultipartRequest mr = new
+		 * MultipartRequest(request, saveDir, tempSize, "UTF-8", new
+		 * DefaultFileRenamePolicy());
+		 * 
+		 * 
+		 * //String lesson= mr.getParameter("lesson"); String title=
+		 * mr.getParameter("title"); String explain= mr.getParameter("explain");
+		 * 
+		 * String fsName = mr.getFilesystemName("upfile"); String oriName =
+		 * mr.getOriginalFileName("upfile");
+		 * 
+		 * File tempFile = new File(saveDir + "/" + fsName); int maxSize = 10 * 1024 *
+		 * 1024; boolean uploadFlag = false; if (tempFile.length() > maxSize) {
+		 * tempFile.delete(); uploadFlag = true; }
+		 * 
+		 * model.addAttribute("fileName", oriName); model.addAttribute("uploadFlag",
+		 * !uploadFlag);
+		 * 
+		 * // JSON ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½È¯ JSONObject jsonObj=new JSONObject(); jsonObj.put("fsName",
+		 * fsName); // ï¿½ï¿½ï¿½Ç¸ï¿½
+		 * 
+		 * return jsonObj.toJSONString(); }
+		 */
+	
 	
 	@ResponseBody
-    public String addLecture(@RequestParam("sub_title") String sub_title,
-                             @RequestParam("intro") String intro,
-                             @RequestParam("goal") String goal,
-                             @RequestParam("image") MultipartFile image,
-                             @RequestParam("total_no") int total_no,
-                             @RequestParam("create_date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date createDate, String sub_code) {
-        LectureVO lecVO = new LectureVO();
-        lecVO.setSub_title(sub_title);
-        lecVO.setIntro(intro);
-        lecVO.setGoal(goal);
-        try {
-            lecVO.setImage(new String(image.getBytes()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "Error: " + e.getMessage();
-        }
-        lecVO.setTotal_no(total_no);
-        lecVO.setCreate_date(createDate);
+	@RequestMapping(value = "/instructor/lectureManage/lecInfo.do",method = { RequestMethod.GET,RequestMethod.POST }, produces = "application/json;charset=UTF-8")
+	 public String openFrm(LectureVO lecVO) {
+		
+		
+		String json =lts.lecInfo(lecVO);
+		System.out.println("====lecVO========="+json);
+        return json; 
+	}
+	
 
-        lts.lectureInfo(sub_code);
-        return "instructor/lectureManage/lectureApply_result";
-    }
-	
-	
-	
-	
 }

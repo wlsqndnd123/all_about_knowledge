@@ -14,7 +14,7 @@ import lombok.ToString;
 
 public class LectureVO {
 
-	private String sub_code, intro, goal, image, sub_title,status;
+	private String sub_code, intro, goal, image, sub_title,status,cat_code,cat_name;
 	private int total_no, total_time, comp_time;
 	private Date create_date;
 }
