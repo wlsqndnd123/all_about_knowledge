@@ -69,7 +69,7 @@ a {text-decoration: none;}
     <form action="manage_qna_reason.do" id="deleteForm" method="post" >
         <input type="hidden" name="qna_no" value="${param.qna_no}">
         <label for="reason">Reason:</label><br>
-        <textarea id="reaseon" name="reaseon" rows="4" cols="50" style="height: 185px; width: 414px;"></textarea><br><br>
+        <textarea id="reaseon" name="reaseon" rows="4" cols="50"maxlength="100" style="height: 185px; width: 414px;"></textarea><br><br>
         <button type="button" id="submitForm">확인</button>
         <button type="button" onclick="window.close()">취소</button>
     </form>
