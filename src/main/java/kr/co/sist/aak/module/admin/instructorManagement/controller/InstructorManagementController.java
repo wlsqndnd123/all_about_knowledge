@@ -36,8 +36,8 @@ public class InstructorManagementController {
 	private InstructorManagementService ims;
 
 	/**
-	 * ÇØ´çÇÏ´Â »ç¹øÀÇ »ó¼¼Á¤º¸¸¦ Á¶È¸ÇÏ´Â method.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å
+	 * ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param imd
 	 * @param model
 	 * @param inst_id
@@ -54,9 +54,9 @@ public class InstructorManagementController {
 	}
 
 	/**
-	 * °­»ç Ãß°¡ È­¸éÀ¸·Î ÀÌµ¿ÇÏ´Â method.
-	 * ÇØ´ç ÆäÀÌÁö¿¡¼­ °­»ç »ç¹øÀÇ ÃÖ°÷°ª+1ÀÌ °è»êµÇ¾î ¸®ÅÏµÈ´Ù.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ method.
+	 * ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½+1ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ÏµÈ´ï¿½.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param model
 	 * @return
 	 */
@@ -69,8 +69,7 @@ public class InstructorManagementController {
 	}
 	
 	/**
-	 * °­»ç Ãß°¡ È­¸é¿¡¼­ ¹Þ¾Æ¿Â °ªµéÀ» µ¥ÀÌÅÍº£ÀÌ½º·Î ³Ñ±â´Â method.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å
+	
 	 * @param request
 	 * @param temp
 	 * @param model
@@ -81,17 +80,17 @@ public class InstructorManagementController {
 	public String instructorFormProcess(HttpServletRequest request,String temp, Model model) throws IOException {
 		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
 		int tempSize =100*1024*1024;
-		//2. ÆÄÀÏ ¾÷·Îµå Å¬·¡½º »ý¼º.
+		//2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath()
 				,tempSize,"UTF-8", new DefaultFileRenamePolicy());
-		//¾÷·Î´õ ¸í (web parameter)
+		//ï¿½ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ (web parameter)
 		String oriName = mr.getOriginalFileName("image");
 		String fsName = mr.getFilesystemName("image");
-		//ÃÖ´ëÅ©±â 10mbyte
+		//ï¿½Ö´ï¿½Å©ï¿½ï¿½ 10mbyte
 		File tempFile = new File(saveDir.getAbsolutePath()+"/"+fsName);
 		int maxSize = 10*1024*1024;
 		System.out.println(System.getProperty("user.dir"));
-		//¾÷·Îµå Å©±â Á¦ÇÑ
+		//ï¿½ï¿½ï¿½Îµï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		boolean uploadflag =false;
 		if(tempFile.length()>maxSize) {
 			tempFile.delete();
@@ -127,7 +126,7 @@ public class InstructorManagementController {
 	            break;
 	        }
 	        try {
-	            Thread.sleep(500); // 0.5ÃÊ ´ë±â
+	            Thread.sleep(500); // 0.5ï¿½ï¿½ ï¿½ï¿½ï¿½
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }
@@ -135,7 +134,7 @@ public class InstructorManagementController {
 	    }
 	    
 	    if (!isImageAvailable) {
-	        model.addAttribute("imageError", "ÀÌ¹ÌÁö ¾÷·Îµå¿¡ ½ÇÆÐÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.");
+	        model.addAttribute("imageError", "ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµå¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 	    }
 
 		
@@ -146,9 +145,9 @@ public class InstructorManagementController {
 	}
 
 	/**
-	 * Åð»çÇÑ °­»ç/ÀçÁ÷ÁßÀÎ °­»ç¸¦ º¸¿©ÁÖ´Â method.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å.
-	 * ¼öÁ¤µÉ ¼ö ÀÖÀ½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ç¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ï½ï¿½.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param model
 	 * @param status
 	 * @return
@@ -165,8 +164,8 @@ public class InstructorManagementController {
 	
 	
 	/**
-	 * °­»ç Á¤º¸ ¼öÁ¤ÆäÀÌÁö¿¡¼­ ¹ÞÀº °ªµéÀ» µ¥ÀÌÅÍº£ÀÌ½º¿¡ ³Ö´Â method.
-	 * ÀÛ¼ºÀÚ : ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param request
 	 * @param temp
 	 * @param model
@@ -219,7 +218,7 @@ public class InstructorManagementController {
 	            break;
 	        }
 	        try {
-	            Thread.sleep(500); // 0.5ÃÊ ´ë±â
+	            Thread.sleep(500); // 0.5ï¿½ï¿½ ï¿½ï¿½ï¿½
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }
@@ -227,7 +226,7 @@ public class InstructorManagementController {
 	    }
 	    
 	    if (!isImageAvailable) {
-	        model.addAttribute("imageError", "ÀÌ¹ÌÁö ¾÷·Îµå¿¡ ½ÇÆÐÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.");
+	        model.addAttribute("imageError", "ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµå¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 	    }
 
 	    return "/admin/manage_instructor/manage_instructor_modify_result";

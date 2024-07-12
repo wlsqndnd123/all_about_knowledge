@@ -15,6 +15,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 
 @Repository
 public class LectureDAO {
+
 	public List<LectureDomain> selectAllLecture()throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -27,6 +28,7 @@ public class LectureDAO {
 		return list;
 		
 	}
+
 	public List<LectureDomain> selectSubtitle(String subCode)throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -42,6 +44,7 @@ public class LectureDAO {
 		
 	}
 	
+
 	public String insertLecture(LectureVO lecVO) throws PersistenceException{
 		
 		MybatisDAO mbDAO=MybatisDAO.getInstance();
@@ -88,7 +91,7 @@ public class LectureDAO {
 		
 		return lec_code;
 	}
-	
+
 	public LectureDomain lectureDetail(String sub_code) throws PersistenceException{
 		LectureDomain list=null;
 		
@@ -101,6 +104,7 @@ public class LectureDAO {
 		return list;
 	}
 	
+
 	public List<LectureDomain> selectLectureStatus(int status) throws PersistenceException {
 		List<LectureDomain> list = null;
 
@@ -112,6 +116,7 @@ public class LectureDAO {
 		return list;
 	}
 	
+
 	public List<LectureDomain> selectLectureTitle(String sub_title) throws PersistenceException {
 		List<LectureDomain> list = null;
 		
@@ -124,6 +129,7 @@ public class LectureDAO {
 		return list;
 	}
 	
+
 	public LectureVO insertLecture(String sub_code)   {
 		LectureVO lecVO=null;
 		
@@ -136,6 +142,7 @@ public class LectureDAO {
 		return lecVO;
 		
 	}
+
 
 	public LectureLessonVO lectureLesson(String sub_code)   {
 		
@@ -162,7 +169,7 @@ public class LectureDAO {
 		mbDAO.closeHanlder(ss);
 		return ntd;
 	}
-	
+
 	public List<LectureDomain> selectCategory() {
 		List<LectureDomain> list=null;
 		

@@ -21,6 +21,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 @Repository
 public class DashboardDAO {
 
+
 	public InstructorInfoDomain instInfo(String inst_id) throws PersistenceException {
 		InstructorInfoDomain instd = null;
 
@@ -62,7 +63,6 @@ public class DashboardDAO {
 		return openCnt;
 	}
 	
-
 	public List<RejectDomain> selectRejectList(String inst_id) throws PersistenceException {
 		List<RejectDomain> list = null;
 
@@ -74,7 +74,7 @@ public class DashboardDAO {
 		
 		return list;
 	}
-	
+
 	public int noreplyCount(String inst_id) throws PersistenceException{
 		int totalCnt=0;
 		

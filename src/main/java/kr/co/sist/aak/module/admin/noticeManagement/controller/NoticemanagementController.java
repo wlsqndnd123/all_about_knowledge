@@ -56,17 +56,17 @@ public class NoticemanagementController {
 	public String addNoticeFormProcess(HttpServletRequest request, String temp, Model model) throws IOException {
 		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
 		int tempSize = 100 * 1024 * 1024;
-		// 2. ÆÄÀÏ ¾÷·Îµå Å¬·¡½º »ý¼º.
+		// 2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath(), tempSize, "UTF-8",
 				new DefaultFileRenamePolicy());
-		// ¾÷·Î´õ ¸í (web parameter)
+		// ï¿½ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ (web parameter)
 		String oriName = mr.getOriginalFileName("image");
 		String fsName = mr.getFilesystemName("image");
-		// ÃÖ´ëÅ©±â 10mbyte
+		// ï¿½Ö´ï¿½Å©ï¿½ï¿½ 10mbyte
 		File tempFile = new File(saveDir.getAbsolutePath() + "/" + fsName);
 		int maxSize = 10 * 1024 * 1024;
 		System.out.println(System.getProperty("user.dir"));
-		// ¾÷·Îµå Å©±â Á¦ÇÑ
+		// ï¿½ï¿½ï¿½Îµï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		boolean uploadflag = false;
 		if (tempFile.length() > maxSize) {
 			tempFile.delete();
@@ -99,7 +99,7 @@ public class NoticemanagementController {
 	            break;
 	        }
 	        try {
-	            Thread.sleep(500); // 0.5ÃÊ ´ë±â
+	            Thread.sleep(500); // 0.5ï¿½ï¿½ ï¿½ï¿½ï¿½
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }
@@ -107,7 +107,7 @@ public class NoticemanagementController {
 	    }
 	    
 	    if (!isImageAvailable) {
-	        model.addAttribute("imageError", "ÀÌ¹ÌÁö ¾÷·Îµå¿¡ ½ÇÆÐÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.");
+	        model.addAttribute("imageError", "ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµå¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 	    }
 
 		return "/admin/manage_notifications/manage_notification_add_result";
@@ -132,17 +132,16 @@ public class NoticemanagementController {
 		
 		File saveDir = new File("C:/dev/workspace/all_about_knowledge/src/main/webapp/upload");
 		int tempSize = 100 * 1024 * 1024;
-		// 2. ÆÄÀÏ ¾÷·Îµå Å¬·¡½º »ý¼º.
+		// 2.
 		MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath(), tempSize, "UTF-8",
 				new DefaultFileRenamePolicy());
-		// ¾÷·Î´õ ¸í (web parameter)
+		// (web parameter)
 		String oriName = mr.getOriginalFileName("image");
 		String fsName = mr.getFilesystemName("image");
-		// ÃÖ´ëÅ©±â 10mbyte
+		// 10mbyte
 		File tempFile = new File(saveDir.getAbsolutePath() + "/" + fsName);
 		int maxSize = 10 * 1024 * 1024;
 		System.out.println(System.getProperty("user.dir"));
-		// ¾÷·Îµå Å©±â Á¦ÇÑ
 		boolean uploadflag = false;
 		if (tempFile.length() > maxSize) {
 			tempFile.delete();
@@ -178,7 +177,7 @@ public class NoticemanagementController {
 	            break;
 	        }
 	        try {
-	            Thread.sleep(500); // 0.5ÃÊ ´ë±â
+	            Thread.sleep(500); // 0.5ï¿½ï¿½ ï¿½ï¿½ï¿½
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }
@@ -186,7 +185,7 @@ public class NoticemanagementController {
 	    }
 	    
 	    if (!isImageAvailable) {
-	        model.addAttribute("imageError", "ÀÌ¹ÌÁö ¾÷·Îµå¿¡ ½ÇÆÐÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.");
+	        model.addAttribute("imageError", "ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµå¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½.");
 	    }
 
 		

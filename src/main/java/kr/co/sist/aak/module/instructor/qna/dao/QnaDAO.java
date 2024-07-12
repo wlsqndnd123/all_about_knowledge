@@ -28,7 +28,6 @@ public class QnaDAO {
 		return list;
 	}
 	
-
 	public QnaDomain detailQna(String qna_no) throws PersistenceException{
 		QnaDomain qnd= null;
 		
