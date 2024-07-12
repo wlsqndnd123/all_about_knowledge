@@ -16,7 +16,7 @@
     
     <update id="updateLecturePlayTime" parameterType="PlayLectureVO">
 	    UPDATE LEC_STATUS
-	    SET "TIME" = #{time, jdbcType=DOUBLE}, STATUS = 'P'
+	    SET "TIME" = #{time, jdbcType=DOUBLE}, STATUS = 'P', VIEW_DATE = SYSDATE
 	    WHERE SUB_CODE = #{subCode} AND LEC_CODE = #{lecCode} AND STD_ID = #{stdId}
 	</update>
 </mapper>
