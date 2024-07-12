@@ -41,14 +41,13 @@
  <typeAlias alias="DetailLectureVO" type="kr.co.sist.aak.domain.student.vo.DetailLectureVO"/>
  <typeAlias alias="WithdrawalVO" type="kr.co.sist.aak.domain.student.vo.WithdrawalVO"/>
  <typeAlias alias="PlayLectureVO" type="kr.co.sist.aak.domain.student.vo.PlayLectureVO"/>
+ <typeAlias alias="LectureNoticeVO" type="kr.co.sist.aak.domain.student.vo.LectureNoticeVO"/>
  
  <typeAlias type="kr.co.sist.aak.domain.student.UserNoticeDomain" alias="UserNoticeDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.UserLectureDomain" alias="UserLectureDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.UserQnaDomain" alias="UserQnaDomain"/>
  <typeAlias type="kr.co.sist.aak.domain.student.vo.UserQnaVO" alias="UserQnaVO"/>
  <typeAlias type="kr.co.sist.aak.domain.student.vo.UserApplySubVO" alias="UserApplySubVO"/>
- 
- 
  <!-- student typeAlias 종료 --> 
 
 <!-- 강사 typeAlias -->

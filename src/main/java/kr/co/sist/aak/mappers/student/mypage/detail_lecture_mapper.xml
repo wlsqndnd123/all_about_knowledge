@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.student.mypage.detail_lecture">
 	<select id="selectDeailLecture" parameterType="map" resultType="DetailLectureVO">
-		SELECT l.SUB_CODE, l.LEC_CODE, l.TITLE, NVL(ls.STATUS, 'N') AS STATUS
+		SELECT l.SUB_CODE as subCode, l.LEC_CODE as lecCode, l.TITLE, NVL(ls.STATUS, 'N') AS STATUS
 		FROM LECTURE l
 		LEFT JOIN LEC_STATUS ls
 		ON l.SUB_CODE = ls.SUB_CODE AND l.LEC_CODE = ls.LEC_CODE AND ls.STD_ID = #{stdId}
