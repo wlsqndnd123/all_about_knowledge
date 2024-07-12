@@ -24,5 +24,7 @@
         FROM STD_SUBJECT
         WHERE std_id = #{stdId} and apply = 'C'
     </select>
+    
+    <!-- 강의 공지사항 -->
 
 </mapper>
