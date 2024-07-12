@@ -48,4 +48,5 @@ public class FindInfoController {
         }
         return "student/find_password_result";
     }
+
 }

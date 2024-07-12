@@ -9,7 +9,7 @@
 		JOIN SUBJECT s ON s.SUB_CODE = l.SUB_CODE 
 		left JOIN LEC_STATUS ls ON l.SUB_CODE = ls.SUB_CODE
 	    WHERE s.SUB_CODE = #{subCode}
-		ORDER BY l.LEC_CODE desc
+		ORDER BY l.LEC_CODE asc
 	</select>
 	
     <select id="selectLecturePlay" parameterType="map" resultType="String">
@@ -19,7 +19,7 @@
     </select>
 	
 	<select id="selectDeailLectureInfo" parameterType="String" resultType="DetailLectureVO">
-	  SELECT s.INTRO , s.GOAL , s.IMAGE , ii.NAME , ii.INTRODUCTION , ii.IMAGE, sc.SUB_TITLE as subTitle
+	  SELECT s.INTRO , s.GOAL , s.IMAGE as subImage , ii.NAME , ii.INTRODUCTION , ii.IMAGE as instImage, sc.SUB_TITLE as subTitle
 	  FROM SUBJECT s
 	  JOIN SUB_INSTRUCTOR si ON s.SUB_CODE = si.SUB_CODE
 	  JOIN SUBJECT_CODE sc ON sc.SUB_CODE = s.SUB_CODE 

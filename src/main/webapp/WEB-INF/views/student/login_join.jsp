@@ -18,6 +18,65 @@
 <script src="http://localhost/all_about_knowledge/front/student/js/login.js"></script>
 
 <script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const birthInput = document.getElementById('birth');
+		const telInput = document.getElementById('tel');
+
+		birthInput.addEventListener('input', function (event) {
+			let value = this.value.replace(/\D/g, '');
+			if (value.length > 8) {
+				value = value.substring(0, 8);
+			}
+			const formattedValue = formatDateString(value);
+			this.value = formattedValue;
+		});
+		
+		telInput.addEventListener('input', function (event) {
+			let value = this.value.replace(/\D/g, '');
+			if (value.length > 11) {
+				value = value.substring(0, 11);
+			}
+			const formattedValue = formatTelString(value);
+			this.value = formattedValue;
+		});
+
+		function formatDateString(value) {
+			const year = value.substring(0, 4);
+			const month = value.substring(4, 6);
+			const day = value.substring(6, 8);
+
+			let formatted = '';
+			if (year) {
+				formatted += year;
+			}
+			if (month) {
+				formatted += '-' + month;
+			}
+			if (day) {
+				formatted += '-' + day;
+			}
+			return formatted;
+		}
+		
+		function formatTelString(value) {
+			const first = value.substring(0, 3);
+			const middle = value.substring(3, 7);
+			const last = value.substring(7, 11);
+
+			let formatted = '';
+			if (first) {
+				formatted += first;
+			}
+			if (middle) {
+				formatted += '-' + middle;
+			}
+			if (last) {
+				formatted += '-' + last;
+			}
+			return formatted;
+		}
+	});
+
 	function openPopup(url, title, w, h) {
 	    var left = (screen.width / 2) - (w / 2);
 	    var top = (screen.height / 2) - (h / 2);
@@ -98,8 +157,8 @@
                   </div>
                   
                   <div class="form-group">
-                     <label for="birth">생년월일</label>
-                     <input type="text" name="birth" id="birth" class="birth">
+                     <label for="birth">생년월일(yyyy-mm-dd)</label>
+                     <input type=text name="birth" id="birth" class="birth">
                      <span class="error"></span>
                   </div>
 
