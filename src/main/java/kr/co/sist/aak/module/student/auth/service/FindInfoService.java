@@ -1,13 +1,14 @@
 package kr.co.sist.aak.module.student.auth.service;
 
+import java.util.UUID;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.sist.aak.domain.student.vo.JoinVO;
 import kr.co.sist.aak.module.student.auth.repository.FindInfoRepository;
 import lombok.RequiredArgsConstructor;
-
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -20,6 +21,7 @@ public class FindInfoService {
         return findInfoRepository.findIdByEmail(email);
     }
 
+    @Transactional
     public String resetPassword(String email) {
         JoinVO student = findInfoRepository.findByEmail(email);
         if (student != null) {
