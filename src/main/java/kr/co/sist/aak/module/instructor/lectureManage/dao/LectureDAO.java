@@ -15,7 +15,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 
 @Repository
 public class LectureDAO {
-	//���Ǹ���Ʈ
+
 	public List<LectureDomain> selectAllLecture()throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -28,7 +28,7 @@ public class LectureDAO {
 		return list;
 		
 	}
-	//���� �ڿ���
+
 	public List<LectureDomain> selectSubtitle(String subCode)throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -36,13 +36,62 @@ public class LectureDAO {
 		SqlSession ss= mbDAO.getMyBatisHandler(false);
 		
 		list=ss.selectList("kr.co.sist.aak.instructor.subtitle",subCode);
+		
+		System.out.println("=====selectSubtitle============="+list);
 		mbDAO.closeHanlder(ss);
 		
 		return list;
 		
 	}
 	
-	//���ǻ�
+
+	public String insertLecture(LectureVO lecVO) throws PersistenceException{
+		
+		MybatisDAO mbDAO=MybatisDAO.getInstance();
+		SqlSession ss= mbDAO.getMyBatisHandler(true);
+		
+		System.out.println("====insertLecture=============="+lecVO);
+		System.out.println("====cat_code=============="+lecVO.getCat_code());
+		
+		//select sub_code T
+		String sub_code=ss.selectOne("kr.co.sist.aak.instructor.maxCode"); 
+		
+		lecVO.setSub_code( sub_code );
+		
+		//insert subject_code T
+		ss.insert("kr.co.sist.aak.instructor.subjectCodeT",lecVO);
+		//insert subject T		
+		ss.insert("kr.co.sist.aak.instructor.insertLecture",lecVO);
+		
+		ss.commit();
+		
+		mbDAO.closeHanlder(ss);
+	
+		return sub_code;
+	}
+	
+	public String addLesson(LectureLessonVO llVO) throws PersistenceException{
+		
+		MybatisDAO mbDAO=MybatisDAO.getInstance();
+		SqlSession ss= mbDAO.getMyBatisHandler(true);
+		
+		System.out.println("====insertLecture=============="+llVO);
+		
+		//select sub_code T
+		String lec_code=ss.selectOne("kr.co.sist.aak.instructor.maxLecCode"); 
+		
+		llVO.setLec_code( lec_code );
+		ss.insert("kr.co.sist.aak.instructor.lectureLesson",llVO);
+		
+		//ss.insert("kr.co.sist.aak.instructor.subjectCodeT",lecVO);
+		
+		ss.commit();
+		
+		mbDAO.closeHanlder(ss);
+		
+		return lec_code;
+	}
+
 	public LectureDomain lectureDetail(String sub_code) throws PersistenceException{
 		LectureDomain list=null;
 		
@@ -55,7 +104,7 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//���ο��η� �� �з�
+
 	public List<LectureDomain> selectLectureStatus(int status) throws PersistenceException {
 		List<LectureDomain> list = null;
 
@@ -67,7 +116,7 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//����˻�
+
 	public List<LectureDomain> selectLectureTitle(String sub_title) throws PersistenceException {
 		List<LectureDomain> list = null;
 		
@@ -80,8 +129,7 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//���� ������û �߰���ư������ AJAX�� ������ LECTURE
-	//���� ������
+
 	public LectureVO insertLecture(String sub_code)   {
 		LectureVO lecVO=null;
 		
@@ -95,7 +143,7 @@ public class LectureDAO {
 		
 	}
 
-	//���Ǹ���
+
 	public LectureLessonVO lectureLesson(String sub_code)   {
 		
 		LectureLessonVO leclessVO=null;

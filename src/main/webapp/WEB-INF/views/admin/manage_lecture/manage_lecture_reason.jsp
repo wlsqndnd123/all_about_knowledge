@@ -75,7 +75,7 @@ a {text-decoration: none;}
     <form action="manage_lecture_reason.do" id="refuseForm" method="post" >
     <input type="hidden" name="sub_code" value="${param.sub_code}">
         <label for="reason">Reason:</label><br>
-        <textarea id="reaseon" name="reason" rows="4" cols="50" style="height: 185px; width: 414px;"></textarea><br><br>
+        <textarea id="reaseon" name="reason" rows="4" cols="50" maxlength="100" style="height: 185px; width: 414px;"></textarea><br><br>
         <button type="button" id="submitForm">확인</button>
         <button type="button" onclick="window.close()">취소</button>
     </form>

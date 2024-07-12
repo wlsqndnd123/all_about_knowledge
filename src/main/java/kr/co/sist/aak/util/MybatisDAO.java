@@ -35,9 +35,9 @@ public class MybatisDAO {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			}// static
 		}
-	}// static �쁺�뿭
+	}
 
 	public SqlSession getMyBatisHandler(boolean autoCommit) {
 		return ssf.openSession(autoCommit);

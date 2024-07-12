@@ -25,6 +25,8 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 		$('#enterNeedExam').click(function(){
             window.location.href = '${pageContext.request.contextPath}/mypage/my_lecture_detail.do';
         });
+		
+		
 	}); // ready
 </script>
 </head>
@@ -76,7 +78,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 
 <!-- 강의 정보 -->
 <div class="ui segment div_margin">
-<div class="ui three cards trim_width">
+<div class="ui two cards trim_width">
   <div class="card">
     <div class="content">
   	<a class="ui red ribbon label">시험 응시가 필요한 강의</a>
@@ -156,34 +158,13 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
 	</tr>
   </thead>
   <tbody>
-    <tr>
-      <td class="center aligned">
-        4
-      </td>
-      <td>뭐요</td>
-      <td class="collapsing">2024-06-12</td>
-    </tr>
-    <tr>
-      <td class="center aligned">
-        3
-      </td>
-      <td>이것은</td>
-      <td>2024-06-12</td>
-    </tr>
-    <tr>
-      <td class="center aligned">
-        2
-      </td>
-      <td>공지사항</td>
-      <td>2024-06-12</td>
-    </tr>
-    <tr>
-      <td class="center aligned">
-        1
-      </td>
-      <td>테이블</td>
-      <td>2024-06-12</td>
-    </tr>
+    <c:forEach var="notice" items="${lastNotice}" varStatus="status">
+	    <tr>
+	        <td class="center aligned">${status.index + 1}</td>
+	        <td>${notice.title}</td>
+	        <td class="collapsing">${notice.writeDate}</td>
+	    </tr>
+	</c:forEach>
   </tbody>
 </table>
 </div>
@@ -194,63 +175,7 @@ Desc : 사용자(학생)의 마이페이지 홈(대시보드) 화면
     </div>
   </div>
   
-  <div class="card">
-    <div class="content">
-    	<a class="ui olive ribbon label">새로 업로드 된 강의</a>
-      <div class="header header_align_top">자바였던 것
-      <div class="ui ribon gray label align_right">완료</div>
-      </div>
-      <div class="description">
-        진시바
-      </div>
-    </div>
-    <div class="content">
-    <table class="ui celled striped table">
-  <thead>
-  	<tr>
-  	<th class="collapsing">번호</th>
-  	<th>제목</th>
-	<th class="center aligned">날짜</th>
-	</tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="center aligned">
-        4
-      </td>
-      <td>뭐요</td>
-      <td class="collapsing">2024-06-12</td>
-    </tr>
-    <tr>
-      <td class="center aligned">
-        3
-      </td>
-      <td>이것은</td>
-      <td>2024-06-12</td>
-    </tr>
-    <tr>
-      <td class="center aligned">
-        2
-      </td>
-      <td>공지사항</td>
-      <td>2024-06-12</td>
-    </tr>
-    <tr>
-      <td class="center aligned">
-        1
-      </td>
-      <td>테이블</td>
-      <td>2024-06-12</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-    
-    <div class="ui bottom attached button black">
-      <i class="angle double right icon"></i>
-      강의실 입장
-    </div>
-  </div>
+  
 </div>
 </div>
 </div>

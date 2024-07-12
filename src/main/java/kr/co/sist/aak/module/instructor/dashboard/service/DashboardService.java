@@ -23,7 +23,6 @@ public class DashboardService {
 	private DashboardDAO dbDAO;
 	
 	
-	//����Ұ�
 	public InstructorInfoDomain lectureInfo(String inst_id) {
 		InstructorInfoDomain instd=null;
 		
@@ -36,7 +35,6 @@ public class DashboardService {
 		return instd;
 	}
 	
-	//�ݷ�����Ʈ
 	public List<RejectDomain> rejectList(String inst_id){
 		List<RejectDomain> list=null;
 		
@@ -48,8 +46,7 @@ public class DashboardService {
 		
 		return list;
 	}
-	
-	//�̴亯 ���Ǽ�
+
 	public int noreply(String inst_id) {
 		int noReplyCnt=0;
 		
@@ -62,7 +59,6 @@ public class DashboardService {
 		return noReplyCnt;
 	}
 	
-	//���� �ѽ�û��Ȳ
 	public int totalCnt(String inst_id) {
 		int totalCnt=0;
 		
@@ -75,7 +71,6 @@ public class DashboardService {
 		return totalCnt;
 	}
 
-	//���� ������Ȳ
 	public int openCnt(String inst_id) {
 		
 		int openCnt=0;

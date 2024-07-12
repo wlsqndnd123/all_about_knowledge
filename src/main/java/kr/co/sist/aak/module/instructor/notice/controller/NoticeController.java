@@ -87,8 +87,10 @@ public class NoticeController {
 	          
 	        }
 	    } catch (Exception e) {
+
 	        model.addAttribute("error", "An error occurred: " + e.getMessage());
 	    }
+
 
 	    return "/instructor/notice/notice_write_result";
 	}

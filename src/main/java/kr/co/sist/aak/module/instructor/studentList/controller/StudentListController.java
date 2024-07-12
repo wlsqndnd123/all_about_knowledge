@@ -30,12 +30,14 @@ public class StudentListController {
 	    List<StudentListDomain> list;
 	    
 	    try {
-	        if ("���̵�".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+
+	        if ("아이디".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
 	            list = sls.searchById(searchKeyword); 
-	        } else if ("����".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
-	            list = sls.searchBySubCode(searchKeyword);
-	        } else if ("�̸�".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
-	            list = sls.searchByname(searchKeyword); 
+	        } else if ("과목".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+	            list = sls.searchBySubCode(searchKeyword); 
+	        } else if ("이름".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+	            list = sls.searchByname(searchKeyword);
+
 	        } else {
 	            list = sls.searchList(); 
 	        }
@@ -44,10 +46,11 @@ public class StudentListController {
 	        model.addAttribute("searchType", searchType);
 	        model.addAttribute("searchKeyword", searchKeyword);
 	    } catch (PersistenceException e) {
-	        model.addAttribute("error", "" + e.getMessage());
+
+	        model.addAttribute("error", "검색 중 오류가 발생했습니다.: " + e.getMessage());
 	        list = new ArrayList<>();
 	    }
-	    
+
 	    return "/instructor/studentList";
 	}
 

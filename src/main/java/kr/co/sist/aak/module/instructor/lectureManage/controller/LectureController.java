@@ -18,7 +18,7 @@ public class LectureController {
 	@Autowired(required = false)
 	private LectureService lecs;
 	
-	
+
 	@GetMapping("/instructor/lectureManage/lectureList.do")
 	public String allLectureList(Model model) {
 		

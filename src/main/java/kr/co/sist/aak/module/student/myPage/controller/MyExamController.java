@@ -37,7 +37,6 @@ public class MyExamController {
 	    return "student/my_page/exam_confirm";
 	}
 	
-	// 학생 마이페이지 --- 나의 강의 -- 시험 -- 응시
 	@GetMapping("/mypage/exam.do")
 	public String exam(Model model){
 		List<MyExamVO> examList = myExamService.getExam();

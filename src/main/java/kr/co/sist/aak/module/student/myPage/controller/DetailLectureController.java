@@ -22,7 +22,6 @@ public class DetailLectureController {
     @Autowired
     private DetailLectureService detailLectureService;
 
-    // 학생 마이페이지 --- 나의 강의 -- 상세
     @GetMapping("/mypage/my_lecture_detail.do")
     public String lectureDetail(Principal principal, HttpSession session, Model model) {
         String subCode = (String) session.getAttribute("sub_code");

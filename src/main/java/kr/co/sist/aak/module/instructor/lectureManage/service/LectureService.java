@@ -24,7 +24,7 @@ public class LectureService {
 
 	@Autowired(required = false)
 	private LectureDAO ltDAO;
-	//���ǰ��� ����Ʈ 
+
 	public List<LectureDomain> lectureAll(){
 		
 		List<LectureDomain> list=null;
@@ -38,7 +38,7 @@ public class LectureService {
 		
 		return list;
 	}
-	//���ǰ��� ����Ʈ 
+
 	public String selectSubtitle(String subCode){
 		
 		List<LectureDomain> list=null;
@@ -50,8 +50,8 @@ public class LectureService {
 			JSONObject jsonTemp=null;
 			for( LectureDomain ld :  list ) {
 				jsonTemp=new JSONObject();
-				jsonTemp.put("sub_code", ld.getSub_code());
-				jsonTemp.put("sub_title",ld.getSub_title());
+				jsonTemp.put("cat_code", ld.getCat_code());
+				jsonTemp.put("cat_name",ld.getCat_name());
 				
 				jsonArray.add(jsonTemp);
 			}
@@ -64,7 +64,40 @@ public class LectureService {
 		return jsonObject.toJSONString();
 	}
 	
-	//���ο��ο� ���� �˻����
+
+	public String lecInfo(LectureVO lecVO) {
+
+		JSONObject jsonObj= new JSONObject();
+		
+		try {
+			String sub_code=ltDAO.insertLecture(lecVO);
+			
+	        jsonObj.put("sub_code", sub_code);
+			
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return jsonObj.toJSONString();
+	}
+	
+	public String lecLesson(LectureLessonVO llVO) {
+		
+		JSONObject jsonObj= new JSONObject();
+		
+		try {
+			String lec_code=ltDAO.addLesson(llVO);
+			
+			jsonObj.put("lec_code", lec_code);
+			
+		}catch(PersistenceException pe) {
+			pe.printStackTrace();
+		}
+		
+		return jsonObj.toJSONString();
+	}
+	
+
 	public String searchQnaStatus(int status) {
 		List<LectureDomain> list = null;
 		JSONObject jsonObj = new JSONObject();
@@ -88,9 +121,11 @@ public class LectureService {
 
 				String status1 = temp.getStatus();
 				if (status1.equals("Y")) {
-					status1 = "����";
+
+					status1 = "답변완료";
 				}else {
-					status1 = "�ݷ�";
+					status1 = "미답변";
+
 				}
 
 				jsonTemp.put("status", status1);
@@ -102,7 +137,7 @@ public class LectureService {
 
 	}
 	
-	//���� ���� �˻����
+
 	public List<LectureDomain> searchLectureTitle(String sub_title) {
 		List<LectureDomain> list = null;
 
@@ -119,9 +154,11 @@ public class LectureService {
 		} finally {
 			for (LectureDomain temp : list) {
 				if (temp.getStatus().equals("Y")) {
-					temp.setStatus("����");
+
+					temp.setStatus("승인완료");
 				} else {
-					temp.setStatus("�ݷ�");
+					temp.setStatus("반려");
+
 
 				}
 			}
@@ -132,7 +169,6 @@ public class LectureService {
 
 	}
 	
-	//���ǰ��� ��
 	public LectureDomain lectureDetail(String sub_code) {
 		LectureDomain list=null;
 		
@@ -148,7 +184,7 @@ public class LectureService {
 		return list;
 	}
 
-	//���� ������
+
 	public LectureVO lectureInfo(String sub_code) {
 		LectureVO lecVO=null;
 		
@@ -160,12 +196,13 @@ public class LectureService {
 		return lecVO;
 	}
 	
-	//���Ǹ���
-	public LectureLessonVO lecLesson(String sub_code) {
+
+	public LectureLessonVO lecLesson(String lec_code) {
+
 		LectureLessonVO lecLessVO=null;
 		
 		try {
-			lecLessVO=ltDAO.lectureLesson(sub_code);
+			lecLessVO=ltDAO.lectureLesson(lec_code);
 		}catch(PersistenceException pe) {
 			pe.printStackTrace();
 			
@@ -173,7 +210,7 @@ public class LectureService {
 		return lecLessVO;
 	}
 	
-	//�����������
+
 	public NoticeDomain noticeone(String sub_code) {
 		NoticeDomain ntd=null;
 		

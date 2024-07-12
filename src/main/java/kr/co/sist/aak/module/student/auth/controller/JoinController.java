@@ -26,7 +26,6 @@ public class JoinController {
     	JoinVO joinVo = joinService.create(stdId, name, birth, password, tel, email);
     	String result = "";
     	
-    	// TODO : 수정필요
     	if(joinVo != null) {
     		result = "/student/login_join";
     	}else {

@@ -52,14 +52,12 @@ public class DashboardController {
 		return "instructor/index";
 	}//instructorInfo
 	
-
 	@GetMapping("/instructor/instructorInfo.do")
 	public String modifyInstInfo(String inst_id, Model model) {
 
 		return "instructor/instructorInfo";
 	}
 	
-
 	@GetMapping("/instructor/lectureManage/rejectList.do")
 	public String rejectList(Model model) {
 		
@@ -67,7 +65,6 @@ public class DashboardController {
 		return "instructor/lectureManage/rejectList";
 	}
 	
-
 	@PostMapping("/instructor/instructorInfoProcess.do")
 	public String instInfoProcess(InstructorInfoVO iiVO, Model model) {
 //		System.out.println("-------qnaAnswerProcess-------"+qVO);

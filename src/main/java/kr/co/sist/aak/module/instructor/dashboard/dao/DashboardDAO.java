@@ -21,7 +21,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 @Repository
 public class DashboardDAO {
 
-	// 
+
 	public InstructorInfoDomain instInfo(String inst_id) throws PersistenceException {
 		InstructorInfoDomain instd = null;
 
@@ -34,7 +34,6 @@ public class DashboardDAO {
 		return instd;
 	}
 
-	// ���� ������û��Ȳ
 	public int selectTotalCnt(String inst_id) throws PersistenceException {
 
 		int totalCnt=0;
@@ -50,7 +49,6 @@ public class DashboardDAO {
 		return totalCnt;
 	}
 	
-	// ���� ������Ȳ
 	public int selectOpenCnt(String inst_id) throws PersistenceException {
 		
 		int openCnt=0;
@@ -65,8 +63,6 @@ public class DashboardDAO {
 		return openCnt;
 	}
 	
-
-	// �ݷ�����Ʈ
 	public List<RejectDomain> selectRejectList(String inst_id) throws PersistenceException {
 		List<RejectDomain> list = null;
 
@@ -78,8 +74,7 @@ public class DashboardDAO {
 		
 		return list;
 	}
-	
-	//�̴亯 ���Ǽ�
+
 	public int noreplyCount(String inst_id) throws PersistenceException{
 		int totalCnt=0;
 		
@@ -93,7 +88,6 @@ public class DashboardDAO {
 		return totalCnt;
 	}
 	
-	//���� ��������
 	public int updateInstrucInfo(InstructorInfoVO iiVO) throws PersistenceException{
 		int cnt = 0;
 		

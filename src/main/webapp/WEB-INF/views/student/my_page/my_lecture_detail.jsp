@@ -29,6 +29,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
 	    flex-grow: 1;
 	    margin-left: 10px;
 	}
+	
 </style>
 <script type = "text/javascript">
 	$(function() {
@@ -83,7 +84,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
   <div class="ui grid">
   <div class = "three wide column">
     <div class="ui fluid image">
-      <img src="/all_about_knowledge/front/student/images/java.png">
+      <img src="/all_about_knowledge/upload/${ lectureInfo.subImage }">
     </div>
   </div>
   
@@ -119,7 +120,7 @@ Desc : 사용자(학생)의 마이페이지 나의 강의 상세 페이지
     
      <div class="four wide column">
      <div class="ui fluid image">
-      <img src="/all_about_knowledge/front/student/images/inst_sample.jpeg">
+      <img src="/all_about_knowledge/upload/${ lectureInfo.instImage }">
     </div>
     </div>
 
