@@ -14,8 +14,6 @@ import kr.co.sist.aak.util.MybatisDAO;
 public class EduCategoryManagementDAO {
 
 	/**
-	 * »óÀ§ Ä«Å×°í¸®¸¦ Á¶È¸ÇÏ´Â method
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -32,8 +30,8 @@ public class EduCategoryManagementDAO {
 	}
 
 	/**
-	 * ÇØ´çÇÏ´Â »óÀ§ Ä«Å×°í¸®¿¡ ÇØ´çÇÏ´Â ¼­ºêÄ«Å×°í¸®¸¦ Á¶È¸ÇÏ´Â method
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
+	 * ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ï´ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ :ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param cat_code
 	 * @return
 	 * @throws PersistenceException
@@ -51,8 +49,8 @@ public class EduCategoryManagementDAO {
 	}
 
 	/**
-	 * µ¥ÀÌÅÍº£ÀÌ½º¿¡ Ä«Å×°í¸®¸¦ Ãß°¡ÇÏ´Â method.
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ :ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param emVO
 	 * @return
 	 * @throws PersistenceException
@@ -73,8 +71,8 @@ public class EduCategoryManagementDAO {
 	}
 
 	/**
-	 * DB³»¿¡¼­ Ä«Å×°í¸® ÄÚµåÀÇ ÃÖ´ñ°ªÀ» ±¸ÇØ¿À´Â method.
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
+	 * DBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ :ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @return
 	 * @throws PersistenceException
 	 */

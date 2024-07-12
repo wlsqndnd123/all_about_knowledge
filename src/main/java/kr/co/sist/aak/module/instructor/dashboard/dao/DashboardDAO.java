@@ -21,7 +21,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 @Repository
 public class DashboardDAO {
 
-	// °­»çÁ¤º¸
+	// 
 	public InstructorInfoDomain instInfo(String inst_id) throws PersistenceException {
 		InstructorInfoDomain instd = null;
 
@@ -34,7 +34,7 @@ public class DashboardDAO {
 		return instd;
 	}
 
-	// °­ÀÇ °³¼³½ÅÃ»ÇöÈ²
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½È²
 	public int selectTotalCnt(String inst_id) throws PersistenceException {
 
 		int totalCnt=0;
@@ -50,7 +50,7 @@ public class DashboardDAO {
 		return totalCnt;
 	}
 	
-	// °­ÀÇ ¿ÀÇÂÇöÈ²
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²
 	public int selectOpenCnt(String inst_id) throws PersistenceException {
 		
 		int openCnt=0;
@@ -66,7 +66,7 @@ public class DashboardDAO {
 	}
 	
 
-	// ¹Ý·Á¸®½ºÆ®
+	// ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<RejectDomain> selectRejectList(String inst_id) throws PersistenceException {
 		List<RejectDomain> list = null;
 
@@ -79,7 +79,7 @@ public class DashboardDAO {
 		return list;
 	}
 	
-	//¹Ì´äº¯ ¹®ÀÇ¼ö
+	//ï¿½Ì´äº¯ ï¿½ï¿½ï¿½Ç¼ï¿½
 	public int noreplyCount(String inst_id) throws PersistenceException{
 		int totalCnt=0;
 		
@@ -93,7 +93,7 @@ public class DashboardDAO {
 		return totalCnt;
 	}
 	
-	//°­»ç °³ÀÎÁ¤º¸
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int updateInstrucInfo(InstructorInfoVO iiVO) throws PersistenceException{
 		int cnt = 0;
 		

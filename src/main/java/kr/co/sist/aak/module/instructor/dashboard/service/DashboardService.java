@@ -23,7 +23,7 @@ public class DashboardService {
 	private DashboardDAO dbDAO;
 	
 	
-	//°­»ç¼Ò°³
+	//ï¿½ï¿½ï¿½ï¿½Ò°ï¿½
 	public InstructorInfoDomain lectureInfo(String inst_id) {
 		InstructorInfoDomain instd=null;
 		
@@ -36,7 +36,7 @@ public class DashboardService {
 		return instd;
 	}
 	
-	//¹Ý·Á¸®½ºÆ®
+	//ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<RejectDomain> rejectList(String inst_id){
 		List<RejectDomain> list=null;
 		
@@ -49,7 +49,7 @@ public class DashboardService {
 		return list;
 	}
 	
-	//¹Ì´äº¯ ¹®ÀÇ¼ö
+	//ï¿½Ì´äº¯ ï¿½ï¿½ï¿½Ç¼ï¿½
 	public int noreply(String inst_id) {
 		int noReplyCnt=0;
 		
@@ -62,7 +62,7 @@ public class DashboardService {
 		return noReplyCnt;
 	}
 	
-	//°­ÀÇ ÃÑ½ÅÃ»ÇöÈ²
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ½ï¿½Ã»ï¿½ï¿½È²
 	public int totalCnt(String inst_id) {
 		int totalCnt=0;
 		
@@ -75,7 +75,7 @@ public class DashboardService {
 		return totalCnt;
 	}
 
-	//°­ÀÇ °³¼³ÇöÈ²
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²
 	public int openCnt(String inst_id) {
 		
 		int openCnt=0;
@@ -89,7 +89,6 @@ public class DashboardService {
 		return openCnt; 
 	}
 	
-	//°­»ç °³ÀÎÁ¤º¸
 	public int instInfo(InstructorInfoVO iiVO) {
 		int cnt=0;
 		

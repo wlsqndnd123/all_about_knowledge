@@ -26,23 +26,22 @@ public class DashboardController {
 	private DashboardService dbs;
 
 	
-	//강사소개
 	//@GetMapping("/instructor/instructorInfo.do")
 	@RequestMapping(value="/instructor/instructor_home.do",method = {RequestMethod.GET, RequestMethod.POST})
 	public String instructorInfo( Model model) {
-		//세션에 있는 아이디를 꺼내온다.
+
 		String inst_id=(String)model.getAttribute("inst_id");
 		
 		inst_id="INST_00005";
 		
 		System.out.println("---------"+inst_id);
-		InstructorInfoDomain instd=dbs.lectureInfo(inst_id); //강사정보
+		InstructorInfoDomain instd=dbs.lectureInfo(inst_id); 
 		
 		System.out.println("-=---------------------------"+instd);
-		int noReplyCnt=dbs.noreply(inst_id);//미답변 문의수
-		int totalCnt=dbs.totalCnt(inst_id);//강의 총개수
-		int openCnt=dbs.openCnt(inst_id);//강의 개설개수
-		List<RejectDomain> recList= dbs.rejectList(inst_id);//반려리스트
+		int noReplyCnt=dbs.noreply(inst_id);
+		int totalCnt=dbs.totalCnt(inst_id);
+		int openCnt=dbs.openCnt(inst_id);
+		List<RejectDomain> recList= dbs.rejectList(inst_id);
 		
 		model.addAttribute("instd", instd);
 		model.addAttribute("noReplyCnt", noReplyCnt);
@@ -53,15 +52,14 @@ public class DashboardController {
 		return "instructor/index";
 	}//instructorInfo
 	
-	
-	//강사 개인정보 수정버튼
+
 	@GetMapping("/instructor/instructorInfo.do")
 	public String modifyInstInfo(String inst_id, Model model) {
 
 		return "instructor/instructorInfo";
 	}
 	
-	//반려리스트 상세버튼
+
 	@GetMapping("/instructor/lectureManage/rejectList.do")
 	public String rejectList(Model model) {
 		
@@ -69,7 +67,7 @@ public class DashboardController {
 		return "instructor/lectureManage/rejectList";
 	}
 	
-	//강사 개인정보 수정
+
 	@PostMapping("/instructor/instructorInfoProcess.do")
 	public String instInfoProcess(InstructorInfoVO iiVO, Model model) {
 //		System.out.println("-------qnaAnswerProcess-------"+qVO);

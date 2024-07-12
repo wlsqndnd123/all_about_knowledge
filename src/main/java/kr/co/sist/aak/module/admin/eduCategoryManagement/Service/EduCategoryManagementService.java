@@ -19,8 +19,8 @@ public class EduCategoryManagementService {
 
 	
 	/**
-	 * ±³À° Ä«Å×°í¸®Áß »óÀ§ Ä«Å×°í¸®ÀÇ ¸®½ºÆ®¸¦ ¹ÝÈ¯ÇÏ´Â method.
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ :ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @return
 	 */
 	public String searchCategoryList() {
@@ -47,12 +47,7 @@ public class EduCategoryManagementService {
 
 	}
 
-	/**
-	 * »óÀ§ Ä«Å×°í¸®¿¡ ¼ÓÇÑ ÇÏÀ§ Ä«Å×°í¸®¸¦ °Ë»öÇÏ´Â method.
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
-	 * @param prime_cat_code
-	 * @return
-	 */
+	
 	public String searchSubCategoryList(String cat_code) {
 		List<EduCategoryManagementDomain> list = null;
 		JSONObject jsonObj = new JSONObject();
@@ -75,7 +70,7 @@ public class EduCategoryManagementService {
 	}
 
 	/**
-	 * Ä«Å×°í¸®¸¦ Ãß°¡ÇÏ´Â method
+	 * Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ method
 	 * @param emVO
 	 * @return
 	 */
@@ -89,8 +84,8 @@ public class EduCategoryManagementService {
 	}
 
 	/**
-	 * µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ÀÇ °¡Á®¿Â ÃÖ´ñ°ª¿¡ +1À» ´õÇØ »ç¿ëÇÒ ¼ö ÀÖ´Â Ä«Å×°í¸®ÄÚµå·Î ¸®ÅÏÇÏ´Â method.
-	 * ÀÛ¼ºÀÚ :±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ñ°ª¿ï¿½ +1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method.
+	 * ï¿½Û¼ï¿½ï¿½ï¿½ :ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @return
 	 */
 	public String searchMaxvalue() {

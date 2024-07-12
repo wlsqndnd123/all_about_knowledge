@@ -76,7 +76,7 @@ public class LectureOpenController {
 		File tempFile = new File(saveDir.getAbsolutePath() + "/" + fsName);
 
 		boolean uploadFlag = false;
-		if (tempFile.length() > maxSize) {// 업로드 제한
+		if (tempFile.length() > maxSize) {
 			tempFile.delete();
 			uploadFlag = true;
 		} // end if
@@ -87,15 +87,9 @@ public class LectureOpenController {
 		
 		JSONObject jsonObj= new JSONObject();
 		
-//		jsonObj.put("lecNm",jsonObj );	//강의명
-//		jsonObj.put("intro", jsonObj);	//학습개요
-//		jsonObj.put("goal", jsonObj);	//학습목표
-//		jsonObj.put("lectureImage", jsonObj);	//강의썸네일
-//		jsonObj.put("totalSession", jsonObj);	//총 차시수
-//		jsonObj.put("createDate", jsonObj);	//개설일자
-//		
 
-		return "instructor/lectureManage/lectureApply_result"; //리턴값으로 json
+
+		return "instructor/lectureManage/lectureApply_result"; 
 
 	}
 	

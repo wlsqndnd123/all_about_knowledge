@@ -30,28 +30,23 @@ public class StudentListController {
 	    List<StudentListDomain> list;
 	    
 	    try {
-	        if ("¾ÆÀÌµð".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
-	            list = sls.searchById(searchKeyword); // ¾ÆÀÌµð·Î °Ë»ö
-	        } else if ("°ú¸ñ".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
-	            list = sls.searchBySubCode(searchKeyword); // °ú¸ñ ÄÚµå·Î °Ë»ö
-	        } else if ("ÀÌ¸§".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
-	            list = sls.searchByname(searchKeyword); // ÀÌ¸§À¸·Î °Ë»ö
+	        if ("ï¿½ï¿½ï¿½Ìµï¿½".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+	            list = sls.searchById(searchKeyword); 
+	        } else if ("ï¿½ï¿½ï¿½ï¿½".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+	            list = sls.searchBySubCode(searchKeyword);
+	        } else if ("ï¿½Ì¸ï¿½".equals(searchType) && searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+	            list = sls.searchByname(searchKeyword); 
 	        } else {
-	            list = sls.searchList(); // ±âº»ÀûÀ¸·Î ÀüÃ¼ ¸ñ·Ï Á¶È¸
+	            list = sls.searchList(); 
 	        }
 	        
 	        model.addAttribute("listStudent", list);
 	        model.addAttribute("searchType", searchType);
 	        model.addAttribute("searchKeyword", searchKeyword);
 	    } catch (PersistenceException e) {
-	        model.addAttribute("error", "°Ë»ö Áß ¿À·ù°¡ ¹ß»ýÇß½À´Ï´Ù: " + e.getMessage());
+	        model.addAttribute("error", "" + e.getMessage());
 	        list = new ArrayList<>();
 	    }
-	    
-	    // µð¹ö±ëÀ» À§ÇÑ ·Î±× Ãß°¡
-	    System.out.println("°Ë»ö À¯Çü: " + searchType);
-	    System.out.println("°Ë»ö¾î: " + searchKeyword);
-	    System.out.println("°á°ú °³¼ö: " + (list != null ? list.size() : 0));
 	    
 	    return "/instructor/studentList";
 	}

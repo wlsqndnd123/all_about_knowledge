@@ -15,7 +15,6 @@ import kr.co.sist.aak.util.MybatisDAO;
 
 @Component
 public class QnaDAO {
-	//¹®ÀÇ¸®½ºÆ® Á¶È¸
 	public List<QnaDomain> selectQna() throws PersistenceException{
 		List<QnaDomain> list= null;
 		
@@ -28,7 +27,7 @@ public class QnaDAO {
 		return list;
 	}
 	
-	//¹®ÀÇ¸®½ºÆ® »ó¼¼
+	//ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½Æ® ï¿½ï¿½
 	public QnaDomain detailQna(String qna_no) throws PersistenceException{
 		QnaDomain qnd= null;
 		
@@ -47,7 +46,7 @@ public class QnaDAO {
 	}
 	
 	
-	//¹®ÀÇ´äº¯
+	//ï¿½ï¿½ï¿½Ç´äº¯
 	public int updateAnswer(QnaVO qVO){
 		int cnt = 0;
 		
@@ -64,7 +63,7 @@ public class QnaDAO {
 		
 	}
 	
-	//´äº¯¿©ºÎ·Î ±Û ºÐ·ù
+	//ï¿½äº¯ï¿½ï¿½ï¿½Î·ï¿½ ï¿½ï¿½ ï¿½Ð·ï¿½
 //		public List<QnaDomain> selectqnaStatus(int status) throws PersistenceException {
 //			List<QnaDomain> list = null;
 //
@@ -76,7 +75,7 @@ public class QnaDAO {
 //			return list;
 //		}
 //		
-//		//Á¦¸ñ°Ë»ö
+//		//ï¿½ï¿½ï¿½ï¿½Ë»ï¿½
 //		public List<LectureDomain> selectLectureTitle(String sub_title) throws PersistenceException {
 //			List<LectureDomain> list = null;
 //			

@@ -15,7 +15,7 @@ import kr.co.sist.aak.util.MybatisDAO;
 
 @Repository
 public class LectureDAO {
-	//°­ÀÇ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½Æ®
 	public List<LectureDomain> selectAllLecture()throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -28,7 +28,7 @@ public class LectureDAO {
 		return list;
 		
 	}
-	//°ú¸ñ ÄÚ¿Àµå
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½
 	public List<LectureDomain> selectSubtitle(String subCode)throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -42,7 +42,7 @@ public class LectureDAO {
 		
 	}
 	
-	//°­ÀÇ»ó¼¼
+	//ï¿½ï¿½ï¿½Ç»ï¿½
 	public LectureDomain lectureDetail(String sub_code) throws PersistenceException{
 		LectureDomain list=null;
 		
@@ -55,7 +55,7 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//½ÂÀÎ¿©ºÎ·Î ±Û ºÐ·ù
+	//ï¿½ï¿½ï¿½Î¿ï¿½ï¿½Î·ï¿½ ï¿½ï¿½ ï¿½Ð·ï¿½
 	public List<LectureDomain> selectLectureStatus(int status) throws PersistenceException {
 		List<LectureDomain> list = null;
 
@@ -67,7 +67,7 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//Á¦¸ñ°Ë»ö
+	//ï¿½ï¿½ï¿½ï¿½Ë»ï¿½
 	public List<LectureDomain> selectLectureTitle(String sub_title) throws PersistenceException {
 		List<LectureDomain> list = null;
 		
@@ -80,8 +80,8 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//°­ÀÇ °³¼³½ÅÃ» Ãß°¡¹öÆ°´©¸£¸é AJAX·Î ³¯¸®¸é LECTURE
-	//°­ÀÇ »ó¼¼Á¤º¸
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ß°ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ AJAXï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ LECTURE
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public LectureVO insertLecture(String sub_code)   {
 		LectureVO lecVO=null;
 		
@@ -95,7 +95,7 @@ public class LectureDAO {
 		
 	}
 
-	//°­ÀÇ¸ñÂ÷
+	//ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½
 	public LectureLessonVO lectureLesson(String sub_code)   {
 		
 		LectureLessonVO leclessVO=null;
@@ -109,7 +109,6 @@ public class LectureDAO {
 		return leclessVO;
 	}
 
-	//°ú¸ñ °øÁö»çÇ×
 	public NoticeDomain selectNotice(String sub_code)   {
 		
 		NoticeDomain ntd=null;
@@ -122,8 +121,7 @@ public class LectureDAO {
 		mbDAO.closeHanlder(ss);
 		return ntd;
 	}
-	
-	//»óÀ§Ä«Å×°í¸®
+
 	public List<LectureDomain> selectCategory() {
 		List<LectureDomain> list=null;
 		
