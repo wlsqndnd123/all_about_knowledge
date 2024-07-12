@@ -21,7 +21,7 @@ public class InstructorManagementDAO {
 	}
 
 	/**
-	 * »èÁ¦ ÇÃ·¡±×°¡ NÀÎ °­»çÀÇ ¸®½ºÆ®¸¦ Ãâ·ÂÇÏ´Â method
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½×°ï¿½ Nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -42,11 +42,7 @@ public class InstructorManagementDAO {
 		return list;
 	}
 
-	/**
-	 * »èÁ¦ÇÃ·¡±×°¡ YÀÎ °­»çÀÇ ¸®½ºÆ®¸¦ Ãâ·ÂÇÏ´Â method
-	 * @return
-	 * @throws PersistenceException
-	 */
+	
 	public List<InstructorManagementDomain> selectAllYInstructor() throws PersistenceException {
 		List<InstructorManagementDomain> list = null;
 		MybatisDAO mbDAO = MybatisDAO.getInstance();
@@ -57,7 +53,7 @@ public class InstructorManagementDAO {
 	}
 
 	/**
-	 * ¼±ÅÃÇÑ °­»çÀÇ ¼¼ºÎ»çÇ×À» Ãâ·ÂÇÏ´Â method
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method
 	 * @param inst_id
 	 * @return
 	 * @throws PersistenceException
@@ -72,7 +68,7 @@ public class InstructorManagementDAO {
 	}
 
 	/**
-	 * ÀÔ·ÂÇÑ °­»çÀÇ Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º ¾È¿¡ ÀúÀåÇÏ´Â method.
+	 * ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method.
 	 * @param iVO
 	 * @return
 	 */
@@ -184,6 +180,6 @@ public class InstructorManagementDAO {
 //		String id1 = String.format("%05d",idSub);
 //		
 //		System.out.println(id1);
-//	new InstructorManagementDAO().selectInstructorName("Áø½Ã¹Ù");
+//	new InstructorManagementDAO().selectInstructorName("ï¿½ï¿½ï¿½Ã¹ï¿½");
 	//}
 }

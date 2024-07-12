@@ -22,19 +22,19 @@ public class AdminManagementService {
 			for(AdminPermissionDomain temp :list) {
 				StringBuilder sb = new StringBuilder();
 				if(temp.getInstructor_management().equals("Y")) {
-					sb.append("°­»ç °ü¸®, ");
+					sb.append("ê°•ì‚¬ê´€ë¦¬, ");
 				}
 				if(temp.getNotice_management().equals("Y")) {
-					sb.append("°øÁö»çÇ× °ü¸®, ");
+					sb.append("ê³µì§€ì‚¬í•­ê´€ë¦¬, ");
 				}
 				if(temp.getMember_management().equals("Y")) {
-					sb.append("È¸¿ø °ü¸®, ");
+					sb.append("íšŒì›ê´€ë¦¬, ");
 				}
 				if(temp.getCategory_management().equals("Y")) {
-					sb.append("±³À° °ú¸ñ °ü¸®, ");
+					sb.append("êµìš±ê³¼ëª© ê´€ë¦¬, ");
 				}
 				if(temp.getQna_management().equals("Y")) {
-					sb.append("¹®ÀÇ °ü¸®, ");
+					sb.append("ë¬¸ì˜ ê´€ë¦¬, ");
 				}
 				sb.deleteCharAt(sb.lastIndexOf(","));
 				temp.setPermissions(sb.toString());

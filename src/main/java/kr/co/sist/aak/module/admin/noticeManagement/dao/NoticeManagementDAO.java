@@ -16,8 +16,6 @@ public class NoticeManagementDAO {
 
 	}
 	/**
-	 * °øÁö»çÇ× ¸®½ºÆ®¸¦ Ãâ·ÂÇÏ´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -33,9 +31,9 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * °øÁö»çÇ× status·Î ±Û ºÐ·ùÇÏ´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
-	 * @param status 0: ¿¹¾à 1: °Ô½Ã ³ª¸ÓÁö :»èÁ¦
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ statusï¿½ï¿½ ï¿½ï¿½ ï¿½Ð·ï¿½ï¿½Ï´ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
+	 * @param status 0: ï¿½ï¿½ï¿½ï¿½ 1: ï¿½Ô½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -51,9 +49,9 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * ¼±ÅÃÇÑ °øÁö»çÇ×ÀÇ »ó¼¼ Á¤º¸¸¦ °¡Á®¿À´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
-	 * @param noti_num °øÁö»çÇ× ¹øÈ£
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
+	 * @param noti_num ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -69,8 +67,8 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * °øÁö»çÇ× Å×ÀÌºíÀÇ °øÁö»çÇ× ¹øÈ£ÀÇ ÃÖ°í°ªÀ» °¡Á®¿À´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @return
 	 * @throws PersistenceException
 	 */
@@ -86,8 +84,8 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * °øÁö»çÇ× Å×ÀÌºí¿¡ »õ·Î¿î °øÁö»çÇ×À» ÀÔ·ÂÇÏ´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï´ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param nVO
 	 * @return
 	 * @throws PersistenceException
@@ -105,8 +103,8 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * °Ô½Ã±ÛÀ» º¯°æÇÏ´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param nVO
 	 * @return
 	 */
@@ -123,8 +121,8 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * °Ô½Ã±ÛÀ» »èÁ¦ÇÏ´Â method
-	 * ÀÛ¼ºÀÚ: ±èÀÏ½Å
+	 * ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ method
+	 * ï¿½Û¼ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½Ï½ï¿½
 	 * @param noti_no
 	 * @return
 	 */
@@ -141,7 +139,7 @@ public class NoticeManagementDAO {
 	}
 
 	/**
-	 * ÀÔ·ÂÇÑ Á¦¸ñÀ» Æ÷ÇÔÇÑ °Ô½Ã±ÛÀ» °Ë»öÇÏ´Â method
+	 * ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï´ï¿½ method
 	 * @param title
 	 * @return
 	 * @throws PersistenceException

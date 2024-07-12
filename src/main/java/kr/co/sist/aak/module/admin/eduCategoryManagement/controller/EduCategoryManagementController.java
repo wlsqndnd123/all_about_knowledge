@@ -21,22 +21,12 @@ public class EduCategoryManagementController {
 	@Autowired(required = false)
 	private EduCategoryManagementService ems;
 
-	/**
-	 * 카테고리 관리 창을 연결하는 method.
-	 * 작성자 김일신
-	 * @param model
-	 * @return
-	 */
 	@GetMapping("manage_edu_cat.do")
 	public String categoryListMain() {
 		return "/admin/manage_edu_cat";
 	}
 
-	/**
-	 * 상위 카테고리를 검색하여 출력하는 method.
-	 * 작성자 김일신
-	 * @return
-	 */
+
 	@ResponseBody
 	@RequestMapping(value = "manage_edu_cat_list.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String searchCategoryList() {
@@ -44,13 +34,7 @@ public class EduCategoryManagementController {
 		return ems.searchCategoryList();
 	}
 	
-	/**
-	 * 상위 카테고리에 속한 하위 카테고리를 출력하는 method
-	 * 작성자 김일신
-	 * @param model
-	 * @param cat_code
-	 * @return
-	 */
+	
 	@ResponseBody
 	@RequestMapping(value = "manage_edu_subcat_list.do", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String searchSubCategoryList(String cat_code) {
@@ -59,14 +43,7 @@ public class EduCategoryManagementController {
 
 	}
 	
-	/**
-	 * 카테고리를 추가하는 method
-	 * 작성자 김일신
-	 * @param model
-	 * @param cat_code
-	 * @param prime_cat_code
-	 * @return
-	 */
+	
 	@GetMapping("manage_edu_cat_add.do")
 	public String addCategoryForm(Model model,@RequestParam(defaultValue = "CAT_000001") String cat_code
 			,@RequestParam(defaultValue = "") String prime_cat_code) {
@@ -84,13 +61,7 @@ public class EduCategoryManagementController {
 		return "/admin/manage_educategory/manage_category_add";
 	}
 	
-	/**
-	 * 카테고리를 추가하고, 결과창을 리턴하는 method
-	 * 작성자 김일신
-	 * @param model
-	 * @param emVO
-	 * @return
-	 */
+	
 	@GetMapping("add_cat_process.do")
 	public String addCategoryProcess(Model model,EduCategoryManagementVO emVO) {
 		ems.addCategory(emVO);
