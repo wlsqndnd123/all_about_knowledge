@@ -18,7 +18,6 @@ public class LectureController {
 	@Autowired(required = false)
 	private LectureService lecs;
 	
-	//강의관리 리스트
 	@GetMapping("/instructor/lectureManage/lectureList.do")
 	public String allLectureList(Model model) {
 		
@@ -29,7 +28,6 @@ public class LectureController {
 		return "instructor/lectureManage/lectureList";
 	}
 	
-	//강의관리 상세
 	@GetMapping("/instructor/lectureManage/lectureList_detail.do")
 	public String lectureList_detail(LectureDomain lecd,  String sub_code, Model model) {
 		System.out.println("--------------------------"+ sub_code);
@@ -43,7 +41,6 @@ public class LectureController {
 		return "instructor/lectureManage/lectureList_detail";
 	}
 
-//	//과목 공지사항
 //	@GetMapping("/instructor/lectureManage/lectureList.do")
 //	public String noticeList(Model model,String sub_code) {
 //		
