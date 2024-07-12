@@ -51,7 +51,7 @@
 		$("#btnWrite").click(function() {
 			$("#frm").submit();
 
-		})
+		});
 	});
 </script>
 </head>
@@ -64,11 +64,6 @@
 	<div class="ui main container"
 		style="padding-top: 20px; padding-bottom: 700px">
 		<h1 class="ui header">문의사항</h1>
-		<!-- 로그인한 회원만 문의 작성 버튼 보여줌 -->
-		<%-- <sec:authorize ifAllGranted="ROLE_USER"> --%>
-		<!-- <div style="text-align: right;">
-			<button id="openModalBtn" class="ui button" id="btnwrite">문의 작성</button>
-		</div> -->
 		<div style="text-align: right;">
 			<button id="openModalBtn" class="ui button" id="btnwrite">문의
 				작성</button>
@@ -130,7 +125,7 @@
 						<td class="center-aligned"><c:out value="${list.std_id}" /></td>
 						<td class="center-aligned"><fmt:formatDate
 								pattern="yyyy-MM-dd" value="${list.q_date }" /></td>
-						<td class="center-aligned">완료</td>
+						<td class="center-aligned"><c:out value="${list.status}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>

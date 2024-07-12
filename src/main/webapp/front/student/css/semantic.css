@@ -38867,3 +38867,5 @@ add2
 .ui.inverted.header{
 	color: #000000 !important;
 }
+.ui.menu:not(.vertical) .item {
+  display: inline-flex;

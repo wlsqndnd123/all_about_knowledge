@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.sist.aak.student2">
-	<!-- 사이트 qna 리스트 -->
-	<select id="selectSiteNoticeQnaList" resultType="UserQnaDomain">
+	<!-- 나의 사이트 qna 리스트 -->
+	<select id="selectSiteNoticeQnaList" resultType="UserQnaDomain" parameterType="String">
 		select QNA_NO,
 		TITLE, STD_ID, Q_DATE, STATUS
 		from QNA_GEN_Q
-		<!-- where STD_ID=#{std_id} -->
+		where STD_ID=#{std_id}
 		ORDER BY Q_DATE DESC
 	</select>
 
@@ -42,6 +42,7 @@
 	insert into QNA_GEN_Q(QNA_NO, TITLE, STD_ID, CONTENT, Q_DATE, STATUS)
     values (#{qna_no}, #{title}, #{std_id}, #{q_content}, sysdate, 'N')
 	</insert>
+	
 	<!-- 답변에 넘버 추가 -->
 	<insert id="insertSiteAnsNo" parameterType="UserQnaVO">
 	insert into QNA_GEN_A(QNA_NO, ID, CONTENT, ANS_DATE)
@@ -51,10 +52,11 @@
 
 
 	<!-- 사이트 문의 수정 -->
-	<update id="updateSiteQ" parameterType="UserQnaVO">
-	update QNA_GEN_Q
-	set
-	where QNA_NO=#{QNA_NO}
+	<update id="updateSiteQuestion" parameterType="UserQnaVO">
+    UPDATE QNA_GEN_Q
+    SET TITLE = #{title},
+        CONTENT = #{q_content}
+    WHERE QNA_NO = #{qna_no}
 	</update>
 	
 	<!-- 사이트 문의 삭제 -->

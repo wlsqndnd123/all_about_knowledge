@@ -14,10 +14,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class UserQnaVO {
-	//사이트 공지
+	//사이트 문의
 	private String qna_no, title, std_id, q_content, status;//content as q_content
 	private String id, a_content;//content as a_content
 	private Date q_date, ans_date;
+	
+	//강의 문의
+	private String s_qna_no, s_title, s_stdId, s_content, s_subCode, s_lecCode,s_status,
+				s_ansContent, s_instId;
+	private Date s_date,s_ansDate;
 	
 	// 각 필드에 대한 getter와 setter 추가
     public String getQna_no() {
