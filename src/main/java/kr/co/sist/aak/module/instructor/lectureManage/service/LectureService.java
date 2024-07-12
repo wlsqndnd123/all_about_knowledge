@@ -118,9 +118,9 @@ public class LectureService {
 
 				String status1 = temp.getStatus();
 				if (status1.equals("Y")) {
-					status1 = "����";
+					status1 = "답변완료";
 				}else {
-					status1 = "�ݷ�";
+					status1 = "미답변";
 				}
 
 				jsonTemp.put("status", status1);
@@ -149,9 +149,9 @@ public class LectureService {
 		} finally {
 			for (LectureDomain temp : list) {
 				if (temp.getStatus().equals("Y")) {
-					temp.setStatus("����");
+					temp.setStatus("승인완료");
 				} else {
-					temp.setStatus("�ݷ�");
+					temp.setStatus("반려");
 
 				}
 			}
