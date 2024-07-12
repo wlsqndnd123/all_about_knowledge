@@ -2,6 +2,7 @@
 Desc : 사용자(학생)의 마이페이지 시험 응시 화면
 작성자 : 고한별
 작성일 : 2024.06.21
+수정일 : 2024.07.12
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"

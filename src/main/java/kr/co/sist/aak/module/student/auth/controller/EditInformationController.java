@@ -18,13 +18,11 @@ public class EditInformationController {
 	@Autowired
 	private EditInformationService editInformationService;
 	
-	// 학생 마이페이지 --- 개인정보수정 -- 사용자 검증 모달
 	@GetMapping("/mypage/edit_information.do")
 	public String information(){
 		return "student/my_page/edit_information";
 	}
 	
-	// 학생 마이페이지 --- 개인정보수정 페이지 표시
 	@GetMapping("/mypage/edit_profile.do")
 	public String editProfile(Principal principal, Model model) {
 		String stdId = principal.getName();
@@ -33,7 +31,6 @@ public class EditInformationController {
 		return "student/my_page/edit_profile";
 	}
 	
-	// 학생 마이페이지 --- 개인정보수정 처리
     @PostMapping("/mypage/update_profile.do")
     public String updateProfile( Principal principal, @RequestParam String password,
                                 @RequestParam String tel, @RequestParam String email, Model model) {

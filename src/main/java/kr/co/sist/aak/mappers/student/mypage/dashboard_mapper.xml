@@ -30,6 +30,7 @@
 	    SELECT TITLE , TO_CHAR(WRITE_DATE,'YYYY-MM-DD') AS writeDate
 		FROM INST_NOTICE
 		WHERE SUB_CODE = #{subCode}
+		ORDER BY WRITE_DATE DESC
 	</select>
 	
 	<!-- 마지막으로 수강한 강의 코드 찾기 -->
