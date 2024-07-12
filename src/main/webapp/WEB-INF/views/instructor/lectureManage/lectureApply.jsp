@@ -50,90 +50,243 @@
 
 <!-- 동적인 행 추가  -->
  <script>
-        $(document).ready(function () {
-            // 카테고리 선택 시 과목명 변경
-            $('#category').change(function () {
-                var selectCategory = $(this).val();
-                var param={ "subCode":selectCategory }
-                $.ajax({
-                    url: "http://localhost/all_about_knowledge/instructor/lectureManage/subtitle.do",
-                    type: "GET",
-                    data: param,
-                    dataType: "json",
-                    error: function(xhr) {
-                        console.log(xhr.status);
-                        alert("다시 시도해주세요");
-                    },
-                    success: function(jsonObj) {
-                        
-                    	var sel=$("#subject")[0];
-                    	sel.length=0;
-                    	$.each(jsonObj.data,function( i, jsonTemp){
-                    		sel.options[i]=new Option(jsonTemp.sub_title,jsonTemp.sub_code);	
-                    	});
-                    	
-                    }
-                });
-               
-            });
+ $(document).ready(function () {
+     // 카테고리 선택 시 과목명 변경
+     $('#category').change(function () {
+         var selectCategory = $(this).val();
+         $('#cat_code').val(selectCategory);
+         var param = { "subCode": selectCategory };
+         $.ajax({
+             url: "http://localhost/all_about_knowledge/instructor/lectureManage/subtitle.do",
+             type: "GET",
+             data: param,
+             dataType: "json",
+             error: function(xhr) {
+                 console.log(xhr.status);
+                 alert("다시 시도해주세요");
+             },
+             success: function(jsonObj) {
+                 var sel = $("#cat_code")[0];
+                 sel.length = 0;
+                 $.each(jsonObj.data, function(i, jsonTemp) {
+                     sel.options[i] = new Option(jsonTemp.cat_name, jsonTemp.cat_code);
+                 });
+             }
+         });
+     });
 
-            // 차시 추가 버튼
-            $("#addBtn2").click(function(){
-                var lesson = $("#lesson").val();
-                var title = $("#title").val();
-                var explain = $("#explain").val();
-                var fileNm = $("#upfile").val();
+     $('#subject').change(function() {
+         var selectSubject = $(this).val();
+         $('#sub_code').val(selectSubject);
+     });
 
-                if (fileNm) {  
-                    fileNm = fileNm.substring(fileNm.lastIndexOf("\\") + 1);
-                }
+     $("#addBtn1").click(function () {
+    	 var frm=$("#addLectureForm")[0];
+         var formData = new FormData(frm);
+       /*   formData.append("lecNm", $("#lecNm").val());
+         formData.append("intro", $("#intro").val());
+         formData.append("goal", $("#goal").val());
+         formData.append("lectureImage", $("#lectureImage")[0].files[0]);
+         formData.append("totalSession", $("#totalSession").val()); */
 
-                if ($("#lectureImage").val() === "" || $("#upfile").val() === "") {
-                    alert("파일을 선택해주세요");
-                    return;
-                }
+         var imageName="";
+         //강의썸네일 전송
+         $.ajax({
+             url: "http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do",
+             type: "POST",
+             contentType: false,
+             processData: false,
+             data: formData,
+             async: false,
+             dataType: "json",
+             success: function (json) {
+                 alert("강의이미지가 업로드 되었습니다.");
+                 imageName=json.fsName;
+                 
+                 if ($("#lectureImage").val() === "") {
+                     alert("파일을 선택해주세요");
+                     return;
+                 } 
+             },
+             error: function (xhr) {
+                 console.log(xhr.status);
+                 alert("다시 시도해주세요");
+             }
+         });
+          
+         var cat_code=$('#subject').val();
+         var subTitle=$('#lecNm').val();
+         var cat_code=$('#cat_code').val();
+         var intro=$('#intro').val();
+         var goal=$('#goal').val();
+         
+         var param = { 
+        		 "cat_code": cat_code,
+        		 "sub_title": subTitle,
+        	 	 "cat_code": cat_code,
+        		 "intro": intro,
+        		 "goal": goal,
+        		 "total_no": totalSession,
+        		 "image":imageName
+         };
+         
+        
+	 	 // 강의 상세 내용만 보내기
+         $.ajax({
+             url: "http://localhost/all_about_knowledge/instructor/lectureManage/lecInfo.do",
+             type: "post",
+             data: param,
+             dataType: "json",
+             success: function(jsonObj) {
+            	 $("#sub_code").val(jsonObj.sub_code);
+                 alert("강의상세가 입력되었습니다."+jsonObj.sub_code);
+                 //jsonObject에 들어있는 sub_code를 input type=hidden에 넣어준다.
+                 
+             },
+             error: function(xhr) {
+                 console.log(xhr.status);
+                 alert("다시 시도해주세요"+ xhr.status+", "+ xhr.statusText);
+             }
+         });
+     });
+/* 
+     // 차시 추가 버튼
+     $("#addBtn2").click(function(){
+         var lesson = $("#lesson").val();
+         var title = $("#title").val();
+         var explain = $("#explain").val();
+         var fileNm = $("#upfile").val();
 
-                if (lesson === "" || title === "" || explain === "") {
-                    alert("모든 필드를 입력해주세요");
-                    return;
-                }
+         if (fileNm) {
+             fileNm = fileNm.substring(fileNm.lastIndexOf("\\") + 1);
+         }
 
-                var output = "<tr><td>" + lesson + "</td><td>" + title + "</td><td>" + explain + "</td><td>" + fileNm + "</td></tr>";
-                $("#tab > tbody").append(output);
+         if ($("#lectureImage").val() === "" || $("#upfile").val() === "") {
+             alert("파일을 선택해주세요");
+             return;
+         }
 
-                $("#lesson").val("");
-                $("#title").val("");
-                $("#explain").val("");
-                $("#upfile").val(""); 
-            });
+         if (lesson === "" || title === "" || explain === "") {
+             alert("모든 필드를 입력해주세요");
+             return;
+         }
 
-            $("#delete").click(function(){
-                $("#tab > tbody > tr:last").remove();
-            });
+         var output = "<tr><td>" + lesson + "</td><td>" + title + "</td><td>" + explain + "</td><td>" + fileNm + "</td></tr>";
+         $("#tab > tbody").append(output);
 
-            $('#addLectureForm').on('submit', function (event) {
-                event.preventDefault();
-                var formData = new FormData(this);
+         $("#lesson").val("");
+         $("#title").val("");
+         $("#explain").val("");
+         $("#upfile").val(""); 
+     });
+ */
+ 
+ 
+ $("#addBtn2").click(function () {
+	 var frm=$("#addLectureForm")[0];
+     var formData = new FormData(frm);
+  
+     var videoName="";
+     
+     //강의파일 전송
+     $.ajax({
+         url: "http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do",
+         type: "POST",
+         contentType: false,
+         processData: false,
+         data: formData,
+         async: false,
+         dataType: "json",
+         success: function (json) {
+             alert("강의영상이 업로드 되었습니다.");
+             videoName=json.fsName2;
+         },
+         error: function (xhr) {
+             console.log(xhr.status);
+             alert("다시 시도해주세요");
+         }
+     });
+      
+     /* var lesson=$('#lesson').val(); */
+     var title=$('#title').val();
+     var lec_explain=$('#explain').val();
+     
+     var param = { 
+    		 "cat_code": cat_code,
+    		 "lec_code": lec_code,
+    	 	 "title": title,
+    		 /* "time": */
+    		 "f_name":videoName
+    		 "lec_explain":lec_explain
+     };
+   //  #{sub_code},#{lec_code},#{title},#{time},#{status},#{f_name},#{lec_explain}
+    
+ 	 // 강의 상세 내용만 보내기
+     $.ajax({
+         url: "http://localhost/all_about_knowledge/instructor/lectureManage/leclesson.do",
+         type: "post",
+         data: param,
+         dataType: "json",
+         success: function(jsonObj) {
+        	 
+            // alert("강의목차가 추가되었습니다."+jsonObj.sub_code());
+             // 테이블에 행 추가
+             var fileNm = $("#upfile").val();
+             if (fileNm) {
+                 fileNm = fileNm.substring(fileNm.lastIndexOf("\\") + 1);
+             }
 
-                $.ajax({
-                    url: "http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do",
-                    type: "POST",
-                    contentType: false,
-                    processData: false,
-                    data: formData,
-                    dataType: "json",
-                    error: function(xhr) {
-                        console.log(xhr.status);
-                        alert("다시 시도해주세요");
-                    },
-                    success: function(response) {
-                        alert("해당 강의가 추가되었습니다.");
-                    }
-                });
-            });
-            
-            
-        });
+             var output = "<tr><td>" + lesson + "</td><td>" + title + "</td><td>" + explain + "</td><td>" + fileNm + "</td></tr>";
+             $("#tab > tbody").append(output);
+
+             // 필수 입력 필드 검증
+             if ($("#upfile").val() === "") {
+                 alert("파일을 선택해주세요");
+                 return;
+             } 
+
+             if (lesson === "" || title === "" || explain === "") {
+                 alert("모든 필드를 입력해주세요");
+                 return;
+             }
+
+             
+             
+         },
+         error: function(xhr) {
+             console.log(xhr.status);
+             alert("다시 시도해주세요"+ xhr.status+", "+ xhr.statusText);
+         }
+     });
+ 	
+ });
+ 
+ 
+     $("#delete").click(function(){
+         $("#tab > tbody > tr:last").remove();
+     });
+
+     $('#addLectureForm').on('submit', function (event) {
+         event.preventDefault();
+         var formData = new FormData(this);
+
+         $.ajax({
+             url: "http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do",
+             type: "POST",
+             contentType: false,
+             processData: false,
+             data: formData,
+             dataType: "json",
+             error: function(xhr) {
+                 console.log(xhr.status);
+                 alert("다시 시도해주세요");
+             },
+             success: function(response) {
+                 alert("해당 강의가 추가되었습니다.");
+             }
+         });
+     });
+ });
     </script>
 
 </head>
@@ -163,13 +316,13 @@
 							<div class="dropdown me-2">
 								<select id="category" class="form-control" name="category">
 							<c:forEach var="list" items="${ requestScope.catList }" varStatus="i">
-									<option value="${list.cat_code }"><c:out value="${ list.cat_name }"/></option>
+								<option value="${list.cat_code }"><c:out value="${ list.cat_name }"/></option>
 							</c:forEach>	
 								</select>
 							</div>
 
 							<div class="dropdown me-2">
-								<select id="subject" class="form-control" name="subject">
+								<select id="cat_code" class="form-control" name="cat_code">
 									<option value="" disabled selected><strong>과목명</strong></option>
 									<option value="JAVA">JAVA</option>
 									<option value="JavaScript">JavaScript</option>
@@ -183,12 +336,12 @@
 							</div>
 						</div>
 
-						<form action="http://localhost/all_about_knowledge/instructor/lectureManage/lectureApply_result.do"
-							id="addLectureForm" method="post" enctype="multipart/form-data">
-							<input type="hidden" id="cat_code" name="cat_code" />
 							
 							<div id="apply_info" class="d-flex flex-column mt-3">
 
+						<form id="addLectureForm" method="post" enctype="multipart/form-data">
+							<input type="hidden" id="cat_code" name="cat_code" value="${cat_code }"/>
+				
 								<!-- apply_info -->
 								<!-- 강의 상세내용 -->
 								<div id="label_group"
@@ -198,35 +351,37 @@
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="lectureName"
 												style="width: 150px; margin-right: 20px;">강의명</label> <input
-												type="text" id="lecNm" class="form-control"
+												type="text" id="lecNm" name="lecNm" class="form-control"
 												placeholder="강의명을 입력해주세요" aria-describedby="lectureName">
 										</div>
 										<!-- 학습개요 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="studyOverview"
 												style="width: 150px; margin-right: 20px;">학습개요</label> <input
-												type="text" id="intro" class="form-control"
+												type="text" id="intro" name="intro" class="form-control"
 												placeholder="학습개요를 입력해주세요" aria-describedby="studyOverview">
 										</div>
 										<!-- 학습목표 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="studyGoal"
 												style="width: 150px; margin-right: 20px;">학습목표</label> <input
-												type="text" id="goal" class="form-control"
+												type="text" id="goal" name="goal" class="form-control"
 												placeholder="학습목표를 입력해주세요" aria-describedby="studyGoal">
 										</div>
 										<!-- 강의이미지 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="lectureImage"
 												style="width: 150px; margin-right: 20px;">강의이미지</label> <input
-												type="file" id="lectureImage" class="form-control"
+												type="file" id="lectureImage" name="lectureImage" class="form-control"
 												aria-describedby="lectureImage">
+											<!-- 	<input type="button" value="추가" class="align-items-center btn btn-dark btn-sm ml-2" id="lectureImgBtn" />
+												<input type="hidden" id="lectureImage2" /> -->
 										</div>
 										<!-- 총 차시 수 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="totalSessions"
 												style="width: 150px; margin-right: 20px;">총 차시 수</label> <input
-												type="text" id="totalSession" class="form-control"
+												type="text" id="totalSession" name="totalSession" class="form-control"
 												aria-describedby="totalSessions">
 										</div>
 										<!-- 개설일자 -->
@@ -237,30 +392,32 @@
 												aria-describedby="openDate">
 										</div> -->
 										<div style="text-align: center;">
-											<input type="button" value="추가"
-												class="align-items-center btn btn-dark btn-sm ml-2"
-												id="addBtn1" />
+											<input type="button" value="추가" class="align-items-center btn btn-dark btn-sm ml-2" id="addBtn1" />
 										</div>
+									</form>
+									
+									<form id="lectureLessonForm" method="post" enctype="multipart/form-data">
+										<input type="hidden" id="sub_code" name="sub_code" />
 										<!-- 강의 차시 -->
 										<label style="margin-top: 10px; margin-bottom: 20px;">강의목차</label>
 
 										<!-- 차시 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="lesson" style="width: 150px; margin-right: 20px;">차시</label>
-											<input type="text" id="lesson" class="form-control"
+											<input type="text" id="lesson" name="lesson" class="form-control"
 												placeholder="차시" aria-describedby="lesson">
 										</div>
 										<!-- 제목 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="title" style="width: 150px; margin-right: 20px;">제목</label>
-											<input type="text" id="title" class="form-control"
+											<input type="text" id="title" name="title" class="form-control"
 												placeholder="제목" aria-describedby="title">
 										</div>
 										<!-- 설명 -->
 										<div class="form-group d-flex align-items-center mb-3">
 											<label for="explain"
 												style="width: 150px; margin-right: 20px;">설명</label> <input
-												type="text" id="explain" class="form-control"
+												type="text" id="explain" name="explain" class="form-control"
 												placeholder="설명" aria-describedby="explain">
 										</div>
 										<!-- 파일 -->
@@ -271,11 +428,10 @@
 										</div>
 										<!-- 버튼 -->
 										<div style="text-align: center;">
-											<input type="button" value="추가"
-												class="btn btn-dark btn-sm ml-2" id="addBtn2"> <input
-												type="button" value="삭제" class="btn btn-light btn-sm ml-2"
-												id="delete">
+											<input type="button" value="추가" class="btn btn-dark btn-sm ml-2" id="addBtn2"> 
+											<input type="button" value="삭제" class="btn btn-light btn-sm ml-2" id="delete">
 										</div>
+										</form>
 									</div>
 									<div>
 										<table id="tab" class="table" style="margin-left: 25px">
@@ -291,13 +447,12 @@
 										</table>
 									</div>
 								</div>
-						</form>
+				
 
 						<div
 							style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
-							<input type="submit" value="신청" class="btn btn-dark btn-sm"
-								id="applyBtn"> <input type="button" value="취소"
-								class="btn btn-light btn-sm" id="cancelBtn">
+							<input type="button" value="신청" class="btn btn-dark btn-sm" id="applyBtn"> 
+								<input type="button" value="취소" class="btn btn-light btn-sm" id="cancelBtn">
 						</div>
 					</div>
 				</div>

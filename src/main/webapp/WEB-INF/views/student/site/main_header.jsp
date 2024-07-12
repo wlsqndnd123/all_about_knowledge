@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info = "" %>
-    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <script type = "text/javascript">
 	$(function() {
-		$("#logout").click(function() {
+        $("#logout").click(function() {
             var form = document.createElement('form');
             form.method = 'post';
             form.action = '<c:url value="/logout" />';
@@ -33,7 +34,7 @@
     <a class="item" id="btnHome" href="http://localhost/all_about_knowledge/mypage/mypage_home.do">마이페이지</a>
     <a class="item" id="btnLecture" href="http://localhost/all_about_knowledge/lecture_list.do">개설강좌</a>
     <sec:authorize access="isAnonymous()">
-        <a class="item" id="login">로그인</a>
+        <a class="item" id="login" href="http://localhost/all_about_knowledge/student/login.do">로그인</a>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
         <div class="item">

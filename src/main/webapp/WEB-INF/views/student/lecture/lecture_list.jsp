@@ -21,13 +21,12 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<!-- Site Properties -->
-<title>Fixed Menu Example - Semantic</title>
 
 <!-- Semantic UI CSS -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
- <script type="text/javascript" src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
+<script type="text/javascript"
+	src="<c:url value ="/resources/js/datatables.min.js"/>"></script>
 <style type="text/css">
 .search-container {
 	display: flex;
@@ -50,82 +49,75 @@
 	text-align: center; /* 텍스트 가운데 정렬 */
 }
 </style>
-
 <script type="text/javascript">
 $(document).ready(function() {
+    // Semantic UI rating 초기화
     $('.ui.rating').rating({
         initialRating : 0,
         maxRating : 1
     });
-    $('.ui.pointing.dropdown.link.item').dropdown();
-    // 드롭다운 초기화
-    /* $('.ui.pointing.dropdown.link.item').dropdown({
-        on: 'hover',
-        onChange: function(value, text, $choice) {
-            if (text === '컴퓨터공학') {
-                $('.ui.dropdown.item .menu .item').hide();
-                $('.ui.dropdown.item .menu .item[data-value="0"], .ui.dropdown.item .menu .item[data-value="1"]').show();
-                // 자료구조와 운영체제를 보여줄 경우
-                fetchLectures(0);
-            } else if (text === '프로그래밍 언어') {
-                $('.ui.dropdown.item .menu .item').hide();
-                $('.ui.dropdown.item .menu .item[data-value="2"], .ui.dropdown.item .menu .item[data-value="3"]').show();
-                // JAVA와 C를 보여줄 경우
-                fetchLectures(1);
-            }
-        }
-    }); */
 
-    // 각 항목 클릭 시 강의 데이터 요청
-    $('.ui.dropdown.item.category .menu .item').on('click', function() {
-        var cat_code = $(this).data('value');
-        fetchLectures(cat_code);
+    // 카테고리 dropdown 초기화
+    $('#category').dropdown({
+        
     });
 
-    function fetchLectures(cat_code) {
-        $.ajax({
-            url : "cat_code_lecture.do",
-            type : "GET",
-            dataType: "JSON",
-            data : {cat_code: cat_code},
-            success : function(jsonObj) {
-                // 성공적으로 데이터를 받아온 경우
-                var lectures = jsonObj.list;
 
-                // 기존 강좌 카드들 삭제
-                $('#lectureCards').empty();
+    // AJAX로 카테고리 목록을 받아와서 동적으로 추가하는 부분
+    $.ajax({
+        url: "edu_cat_list.do",
+        type: "GET",
+        dataType: "JSON",
+        error: function(xhr) {
+            console.log(xhr.status + " : " + xhr.statusText);
+            alert("서버 오류 발생");
+        },
+        success: function(jsonObj) {
+            var output = "<ul>";
 
-                // 새로운 강좌 카드들 생성하여 추가
-                $.each(lectures, function(index, lecture) {
-                    var cardHtml = '<div class="card">';
-                    cardHtml += '<a href="user_lecture_detail.do?sub_code=' + lecture.sub_code + '" class="image">';
-                    cardHtml += '<img src="' + lecture.image + '">';
-                    cardHtml += '</a>';
-                    cardHtml += '<div class="content">';
-                    cardHtml += '<div class="header">' + lecture.sub_title + '</div>';
-                    cardHtml += '<div class="meta">';
-                    cardHtml += '<a>' + lecture.inst_id + '</a>';
-                    cardHtml += '</div>';
-                    cardHtml += '</div>';
-                    cardHtml += '<div class="extra content">';
-                    cardHtml += '<span class="right floated">';
-                    cardHtml += '<div class="ui heart rating"></div> 17 likes';
-                    cardHtml += '</span>';
-                    cardHtml += '<span><i class="user icon"></i> +100명</span>';
-                    cardHtml += '</div>';
-                    cardHtml += '</div>';
+            $.each(jsonObj.list, function(i, jsonTemp) {
+                var outputId = 'edusubOutput' + i;
+                output += "<li class='item' onclick='searchSubcat(\"" + jsonTemp.cat_code + "\", \"" + outputId + "\")'>";
+                output += jsonTemp.cat_name;
+                output += "</li>";
+              	//output += "<li id='" + outputId + "' style='display: none;'></li>";
+            });
 
-                    $('#lectureCards').append(cardHtml);
-                });
-            },
-            error : function(xhr) {
-                console.log(xhr.status + " : " + xhr.statusText);
-                alert("서버 오류");
-            }
+            output += "</ul>";
+            $("#educatOutput").html(output).show(); // 카테고리 정보를 표시하고 출력
+        }
+    });//ajax
+    
+});//ready
+	
+	
+function searchSubcat(cat_code, outputId) {
+    var cat_code = cat_code;
+    $.ajax({
+        url: "edu_subcat_list.do",
+        type: "GET",
+        dataType: "JSON",
+        data: { cat_code: cat_code },
+        error: function(xhr) {
+            console.log(xhr.status + " : " + xhr.statusText);
+            alert("서버 오류 발생");
+        },
+        success: function(jsonObj) {
+            var output = "<ul>";
+
+            $.each(jsonObj.list, function(i, jsonTemp) {
+                output += "<div class='item'>";
+                output += jsonTemp.subcat_name;
+                output += "</div>";
+            });
+
+            output += "</ul>";
+            $("#" + outputId).html(output).show(); // 데이터를 불러온 후에 표시
+        }
         });
-    } 
-
-});
+		
+		
+	}
 </script>
 
 </head>
@@ -134,64 +126,54 @@ $(document).ready(function() {
 	<!-- 헤더 -->
 	<jsp:include page="../site/main_header.jsp"></jsp:include>
 
-	<div class="ui main container" style="padding-top: 20px; padding-bottom:300px">
+	<div class="ui main container"
+		style="padding-top: 20px; padding-bottom: 300px">
 		<h1 class="ui header">개설강좌</h1>
 
+		<!-- 카테고리 섹션 -->
 		<div class="ui menu">
-		<!-- <form action="cat_code_lecture.do" id="frmCatCode"> -->
-			<div class="ui pointing dropdown link item">
-				<span class="text">카테고리</span> <i class="dropdown icon"></i>
-				
-				<!-- <div class="menu" name="cat_code" id="cat_code">
-					<div class="item" data-value="0">
-						<i class="dropdown icon"></i> <span class="text">컴퓨터공학</span>
-						<div class="menu">
-							<div class="item" value="0">자료구조</div>
-							<div class="item" value="1">운영체제</div>
-						</div>
-					</div>
-					<div class="item" data-value="1">
-						<i class="dropdown icon"></i> <span class="text">프로그래밍 언어</span>
-						<div class="menu">
-							<div class="item" value="2">JAVA</div>
-							<div class="item" value="3">C</div>
-						</div>
-					</div>
-				</div> -->
-				<div class="menu" name="cat_code" id="cat_code">
-				<!-- <form action="" class="search-form" method="get"> -->
-					<div class="item">
-						<i class="dropdown icon"></i> <span class="text">컴퓨터공학</span>
-						<div class="menu">
-							<div class="item">자료구조</div>
-							<div class="item">운영체제</div>
-						</div>
-					</div>
-					<div class="item">
-						<i class="dropdown icon"></i> <span class="text">프로그래밍 언어</span>
-						<div class="menu">
-							<div class="item">JAVA</div>
-							<div class="item">C</div>
-						</div>
-					</div>
-					<!-- </form> -->
+			<!-- 상위카테고리 -->
+			<div class="ui pointing dropdown link item" id="category">
+				<span class="text" id ="catbtn">카테고리</span> <i class="dropdown icon"></i>
+				<div id="educatOutput" class="menu">
+					<!-- 동적 쿼리 들어감 -->
+					<!-- <ul>
+						<li class="item">하위 카테고리</li>
+						<li class="item">하위 카테고리</li>
+						<li class="item">하위 카테고리</li>
+						<li class="item">하위 카테고리</li>
+					</ul> -->
 				</div>
-				
 			</div>
-			<!-- </form> -->
-			<div class="search-container">
-				<div class="ui icon input">
-					<input type="text" placeholder="Search..."> <i
-						class="search icon"></i>
+			
+			<!-- 하위카테고리 -->
+			<div class="ui pointing dropdown link item" id="category">
+				<span class="text">과목분류</span> <i class="dropdown icon"></i>
+				<div id="edusubOutput" class="menu">
+					<!-- 동적 쿼리 들어감 -->
+					<!--  <ul>
+						<li class="item">하위 카테고리</li>
+						<li class="item">하위 카테고리</li>
+						<li class="item">하위 카테고리</li>
+						<li class="item">하위 카테고리</li>
+					</ul> -->
 				</div>
 			</div>
 		</div>
 
 
+		<!-- 검색 -->
+		<div class="search-container">
+			<div class="ui icon input">
+				<input type="text" placeholder="Search..."> <i
+					class="search icon"></i>
+			</div>
+		</div>
+
+		<!-- 정렬 -->
 		<div
 			style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; margin-bottom: 10px;">
 			<div></div>
-			<!-- 왼쪽 여백을 조절하기 위한 빈 div -->
 			<select class="ui search dropdown">
 				<option value="이름순">이름순</option>
 				<option value="최신순">최신순</option>
@@ -199,14 +181,16 @@ $(document).ready(function() {
 				<option value="인기순">인기순</option>
 			</select>
 		</div>
+
+		<!-- 강의 카드 -->
 		<div class="ui three stackable link cards" id="lectureCards">
 			<c:forEach var="listLecture" items="${requestScope.listLecture }"
 				varStatus="i">
 				<div class="card" id="card">
 					<a href="user_lecture_detail.do?sub_code=${listLecture.sub_code}"
-						class="image"> 
-						<%-- <img src="${pageContext.request.contextPath}/front/student/images/java.png"> --%>
-						<img src="http://localhost/all_about_knowledge/upload/${ listLecture.image }"  class="card-img-top" alt="...">
+						class="image"> <img
+						src="http://localhost/all_about_knowledge/upload/${ listLecture.image }"
+						class="card-img-top" alt="...">
 					</a>
 					<div class="content">
 						<div class="header">
@@ -219,37 +203,14 @@ $(document).ready(function() {
 					<div class="extra content">
 						<span class="right floated">
 							<div class="ui heart rating"></div>
-						</span> <span> <i class="user icon"></i> +<c:out value="${listLecture.cnt}" />명 수강중
+						</span> <span> <i class="user icon"></i> +<c:out
+								value="${listLecture.cnt}" />명 수강중
 						</span>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
-		<%-- <div class="ui three stackable link cards" id="lectureCards">
-			<c:forEach var="listLecture" items="${requestScope.listLecture }"
-				varStatus="i">
-				<div class="card" id="card">
-					<a href="user_lecture_detail.do?sub_code=${listLecture.sub_code}"
-						class="image"> <img
-						src="${pageContext.request.contextPath}/front/student/images/java.png">
-					</a>
-					<div class="content">
-						<div class="header">
-							<c:out value="${listLecture.sub_title}" />
-						</div>
-						<div class="meta">
-							<a><c:out value="${listLecture.inst_id}" /></a>
-						</div>
-					</div>
-					<div class="extra content">
-						<span class="right floated">
-							<div class="ui heart rating"></div> 17 likes
-						</span> <span> <i class="user icon"></i> +<c:out value="${listLecture.cnt}" />명
-						</span>
-					</div>
-				</div>
-			</c:forEach>
-		</div> --%>
+
 	</div>
 
 

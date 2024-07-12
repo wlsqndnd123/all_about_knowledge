@@ -23,7 +23,6 @@ public class DashboardService {
 	private DashboardDAO dbDAO;
 	
 	
-	//강사소개
 	public InstructorInfoDomain lectureInfo(String inst_id) {
 		InstructorInfoDomain instd=null;
 		
@@ -36,7 +35,6 @@ public class DashboardService {
 		return instd;
 	}
 	
-	//반려리스트
 	public List<RejectDomain> rejectList(String inst_id){
 		List<RejectDomain> list=null;
 		
@@ -49,7 +47,6 @@ public class DashboardService {
 		return list;
 	}
 	
-	//미답변 문의수
 	public int noreply(String inst_id) {
 		int noReplyCnt=0;
 		
@@ -62,7 +59,6 @@ public class DashboardService {
 		return noReplyCnt;
 	}
 	
-	//강의 총신청현황
 	public int totalCnt(String inst_id) {
 		int totalCnt=0;
 		
@@ -75,7 +71,6 @@ public class DashboardService {
 		return totalCnt;
 	}
 
-	//강의 개설현황
 	public int openCnt(String inst_id) {
 		
 		int openCnt=0;
@@ -89,7 +84,6 @@ public class DashboardService {
 		return openCnt; 
 	}
 	
-	//강사 개인정보
 	public int instInfo(InstructorInfoVO iiVO) {
 		int cnt=0;
 		

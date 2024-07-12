@@ -15,7 +15,6 @@ import kr.co.sist.aak.util.MybatisDAO;
 
 @Repository
 public class LectureDAO {
-	//강의리스트
 	public List<LectureDomain> selectAllLecture()throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -28,7 +27,6 @@ public class LectureDAO {
 		return list;
 		
 	}
-	//과목 코오드
 	public List<LectureDomain> selectSubtitle(String subCode)throws PersistenceException{
 		List<LectureDomain> list=null;
 		
@@ -36,13 +34,61 @@ public class LectureDAO {
 		SqlSession ss= mbDAO.getMyBatisHandler(false);
 		
 		list=ss.selectList("kr.co.sist.aak.instructor.subtitle",subCode);
+		
+		System.out.println("=====selectSubtitle============="+list);
 		mbDAO.closeHanlder(ss);
 		
 		return list;
 		
 	}
 	
-	//강의상세
+	public String insertLecture(LectureVO lecVO) throws PersistenceException{
+		
+		MybatisDAO mbDAO=MybatisDAO.getInstance();
+		SqlSession ss= mbDAO.getMyBatisHandler(true);
+		
+		System.out.println("====insertLecture=============="+lecVO);
+		System.out.println("====cat_code=============="+lecVO.getCat_code());
+		
+		//select sub_code T
+		String sub_code=ss.selectOne("kr.co.sist.aak.instructor.maxCode"); 
+		
+		lecVO.setSub_code( sub_code );
+		
+		//insert subject_code T
+		ss.insert("kr.co.sist.aak.instructor.subjectCodeT",lecVO);
+		//insert subject T		
+		ss.insert("kr.co.sist.aak.instructor.insertLecture",lecVO);
+		
+		ss.commit();
+		
+		mbDAO.closeHanlder(ss);
+	
+		return sub_code;
+	}
+	
+	public String addLesson(LectureLessonVO llVO) throws PersistenceException{
+		
+		MybatisDAO mbDAO=MybatisDAO.getInstance();
+		SqlSession ss= mbDAO.getMyBatisHandler(true);
+		
+		System.out.println("====insertLecture=============="+llVO);
+		
+		//select sub_code T
+		String lec_code=ss.selectOne("kr.co.sist.aak.instructor.maxLecCode"); 
+		
+		llVO.setLec_code( lec_code );
+		ss.insert("kr.co.sist.aak.instructor.lectureLesson",llVO);
+		
+		//ss.insert("kr.co.sist.aak.instructor.subjectCodeT",lecVO);
+		
+		ss.commit();
+		
+		mbDAO.closeHanlder(ss);
+		
+		return lec_code;
+	}
+	
 	public LectureDomain lectureDetail(String sub_code) throws PersistenceException{
 		LectureDomain list=null;
 		
@@ -55,7 +101,6 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//승인여부로 글 분류
 	public List<LectureDomain> selectLectureStatus(int status) throws PersistenceException {
 		List<LectureDomain> list = null;
 
@@ -67,7 +112,6 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//제목검색
 	public List<LectureDomain> selectLectureTitle(String sub_title) throws PersistenceException {
 		List<LectureDomain> list = null;
 		
@@ -80,8 +124,6 @@ public class LectureDAO {
 		return list;
 	}
 	
-	//강의 개설신청 추가버튼누르면 AJAX로 날리면 LECTURE
-	//강의 상세정보
 	public LectureVO insertLecture(String sub_code)   {
 		LectureVO lecVO=null;
 		
@@ -95,7 +137,6 @@ public class LectureDAO {
 		
 	}
 
-	//강의목차
 	public LectureLessonVO lectureLesson(String sub_code)   {
 		
 		LectureLessonVO leclessVO=null;
@@ -109,7 +150,6 @@ public class LectureDAO {
 		return leclessVO;
 	}
 
-	//과목 공지사항
 	public NoticeDomain selectNotice(String sub_code)   {
 		
 		NoticeDomain ntd=null;
@@ -123,7 +163,6 @@ public class LectureDAO {
 		return ntd;
 	}
 	
-	//상위카테고리
 	public List<LectureDomain> selectCategory() {
 		List<LectureDomain> list=null;
 		

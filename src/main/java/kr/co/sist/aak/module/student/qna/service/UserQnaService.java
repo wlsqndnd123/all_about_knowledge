@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import kr.co.sist.aak.domain.student.UserQnaDomain;
@@ -20,10 +21,31 @@ public class UserQnaService {
 	 * 사이트 문의사항 리스트
 	 * @return
 	 */
+//	public List<UserQnaDomain> searchSiteQna(){
+//		List<UserQnaDomain> list = null;
+//		try {
+//		list=uqDAO.selectAllSiteQna();
+//		} catch (PersistenceException pe) {
+//			pe.printStackTrace();
+//		}
+//		return list;
+//	}
 	public List<UserQnaDomain> searchSiteQna(){
 		List<UserQnaDomain> list = null;
+		String loggedInUserId =SecurityContextHolder.getContext().getAuthentication().getName();
+		
 		try {
-		list=uqDAO.selectAllSiteQna();
+			list=uqDAO.selectAllSiteQna(loggedInUserId);
+			
+			for (UserQnaDomain item : list) {
+	            if ("Y".equals(item.getStatus())) {
+	                item.setStatus("완료");
+	            } else if ("N".equals(item.getStatus())) {
+	                item.setStatus("대기중");
+	            }
+	            // 추가적인 상태 처리가 필요하다면 여기에 추가
+	        }
+			
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}
@@ -92,6 +114,22 @@ public class UserQnaService {
         	Pe.printStackTrace();
         }
         return cnt;
+	}
+	
+	
+	/**
+	 * 사이트 문의 수정
+	 * @param uqVO
+	 * @return
+	 */
+	public int modifySiteQ(UserQnaVO uqVO) {
+		int cnt = 0;
+		try {
+			cnt = uqDAO.updateSiteQuestion(uqVO);
+		} catch (PersistenceException Pe) {
+			Pe.printStackTrace();
+		}
+		return cnt;
 	}
 	
 	
