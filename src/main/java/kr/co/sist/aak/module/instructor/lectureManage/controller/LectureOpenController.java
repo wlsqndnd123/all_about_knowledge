@@ -98,12 +98,12 @@ public class LectureOpenController {
 	        model.addAttribute("fileName", oriName);
 	        model.addAttribute("uploadFlag", !uploadFlag);
 
-	        // JSON 
+	        // JSON 객체로 반환
 	        JSONObject jsonObj = new JSONObject();
-	        jsonObj.put("fsName", fsName);   
+	        jsonObj.put("fsName", fsName);   // 강의명
 	        
 	        
-	        return jsonObj.toJSONString(); 
+	        return jsonObj.toJSONString(); // 리턴값으로 json
 	        
 	        
 	    }
@@ -137,8 +137,8 @@ public class LectureOpenController {
 		 * model.addAttribute("fileName", oriName); model.addAttribute("uploadFlag",
 		 * !uploadFlag);
 		 * 
-		 * // JSON ��ü�� ��ȯ JSONObject jsonObj=new JSONObject(); jsonObj.put("fsName",
-		 * fsName); // ���Ǹ�
+		 * // JSON 객체로 반환 JSONObject jsonObj=new JSONObject(); jsonObj.put("fsName",
+		 * fsName); // 강의명
 		 * 
 		 * return jsonObj.toJSONString(); }
 		 */
@@ -149,9 +149,9 @@ public class LectureOpenController {
 	 public String openFrm(LectureVO lecVO) {
 		
 		
-		String json =lts.lecInfo(lecVO);
+		String json =lts.lecInfo(lecVO);// 강의명
 		System.out.println("====lecVO========="+json);
-        return json; 
+        return json; // 리턴값으로 json
 	}
 	
 
