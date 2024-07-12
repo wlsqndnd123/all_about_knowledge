@@ -1,7 +1,5 @@
 package kr.co.sist.aak.module.student.auth.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +24,9 @@ public class FindInfoController {
     public String findId(@RequestParam("email") String email, Model model) {
         String username = findInfoService.findIdByEmail(email);
         if (username != null) {
-            model.addAttribute("message", "ê°€ì…ëœ ì•„ì´ë”” : " + username);
+            model.addAttribute("message", "°¡ÀÔµÈ ¾ÆÀÌµğ : " + username);
         } else {
-            model.addAttribute("error", "í•´ë‹¹ ì´ë©”ì¼ ì£¼ì†Œë¡œ ê°€ì…ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
+            model.addAttribute("error", "ÇØ´ç ÀÌ¸ŞÀÏ ÁÖ¼Ò·Î °¡ÀÔµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
         }
         return "student/find_id_result";
     }
@@ -42,9 +40,9 @@ public class FindInfoController {
     public String findPassword(@RequestParam("email") String email, Model model) {
         String tempPassword = findInfoService.resetPassword(email);
         if (tempPassword != null) {
-            model.addAttribute("message", "ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ : " + tempPassword);
+            model.addAttribute("message", "ÀÓ½Ã ºñ¹Ğ¹øÈ£ : " + tempPassword);
         } else {
-            model.addAttribute("error", "í•´ë‹¹ ì´ë©”ì¼ ì£¼ì†Œë¡œ ê°€ì…ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
+            model.addAttribute("error", "ÇØ´ç ÀÌ¸ŞÀÏ ÁÖ¼Ò·Î °¡ÀÔµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
         }
         return "student/find_password_result";
     }

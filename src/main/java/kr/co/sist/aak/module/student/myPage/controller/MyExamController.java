@@ -30,14 +30,13 @@ public class MyExamController {
 
 	    boolean examTaken = myExamService.isExamTaken(stdId, subCode);
 	    if (examTaken) {
-	        redirectAttributes.addFlashAttribute("errorMessage", "ì´ë¯¸ ì‹œí—˜ì„ ì‘ì‹œí•œ ê³¼ëª©ì…ë‹ˆë‹¤.");
+	        redirectAttributes.addFlashAttribute("errorMessage", "ÀÌ¹Ì ½ÃÇèÀ» ÀÀ½ÃÇÑ °ú¸ñÀÔ´Ï´Ù.");
 	        return "redirect:/mypage/my_lecture_detail.do";
 	    }
 
 	    return "student/my_page/exam_confirm";
 	}
 	
-	// í•™ìƒ ë§ˆì´í˜ì´ì§€ --- ë‚˜ì˜ ê°•ì˜ -- ì‹œí—˜ -- ì‘ì‹œ
 	@GetMapping("/mypage/exam.do")
 	public String exam(Model model){
 		List<MyExamVO> examList = myExamService.getExam();
@@ -55,9 +54,9 @@ public class MyExamController {
             String subCode = (String) session.getAttribute("sub_code");
             int totalScore = myExamService.getTotalScore(stdId, subCode);
             model.addAttribute("totalScore", totalScore);
-            model.addAttribute("message", "ì‹œí—˜ ê²°ê³¼ê°€ ì„±ê³µì ìœ¼ë¡œ ì œì¶œë˜ì—ˆìŠµë‹ˆë‹¤.");
+            model.addAttribute("message", "½ÃÇè °á°ú°¡ ¼º°øÀûÀ¸·Î Á¦ÃâµÇ¾ú½À´Ï´Ù.");
 	    } else {
-	        model.addAttribute("message", "ì œì¶œëœ ì‹œí—˜ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
+	        model.addAttribute("message", "Á¦ÃâµÈ ½ÃÇè °á°ú°¡ ¾ø½À´Ï´Ù.");
 	    }
 	    return "student/my_page/exam_result";
 	}
