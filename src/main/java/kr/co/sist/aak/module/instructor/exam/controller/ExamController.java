@@ -73,7 +73,7 @@ public class ExamController {
 	            eVO.setEX_3(EX_3[i]);
 	            eVO.setEX_4(EX_4[i]);
 
-	            // SOLUTION ó��
+	           
 	            if (SOLUTION != null && SOLUTION.length > i) {
 	                eVO.setSOLUTION(SOLUTION[i]);
 	            } else {
