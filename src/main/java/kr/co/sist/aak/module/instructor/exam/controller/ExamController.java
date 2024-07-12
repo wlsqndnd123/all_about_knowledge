@@ -73,26 +73,24 @@ public class ExamController {
 	            eVO.setEX_3(EX_3[i]);
 	            eVO.setEX_4(EX_4[i]);
 
-	            // SOLUTION Ã³¸®
+	            // SOLUTION Ã³ï¿½ï¿½
 	            if (SOLUTION != null && SOLUTION.length > i) {
 	                eVO.setSOLUTION(SOLUTION[i]);
 	            } else {
-	                // SOLUTIONÀÌ nullÀÌ°Å³ª ±æÀÌ°¡ ÃæºÐÇÏÁö ¾ÊÀº °æ¿ì Ã³¸®
-	                // ¿¹: À¯È¿¼º °Ë»ç¿¡¼­ ¸ðµç ¹®Á¦¿¡ ´ëÇØ Á¤´äÀ» ¼±ÅÃÇÏµµ·Ï È®ÀÎ
-	                // ¿©±â¼­´Â ¿¹¿Ü Ã³¸® ¶Ç´Â ±âº»°ª ¼³Á¤ µîÀ» °í·Á
-	                eVO.setSOLUTION(null); // ¿¹½Ã·Î null ¼³Á¤
+	                
+	                eVO.setSOLUTION(null);
 	            }
 
 	            int cnt = es.insertExam(eVO);
 	            if (cnt == 1) {
 	                model.addAttribute("eVO", eVO);
 	            } else {
-	                // Ã³¸® ½ÇÆÐ ½Ã ¿¹¿Ü Ã³¸®
+	                
 	            }
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        // ¿¹¿Ü Ã³¸®
+	       
 	    }
 
 	    return "/instructor/exam/exam_write_result";
@@ -103,7 +101,7 @@ public class ExamController {
 		
 		List<ExamDomain> list=es.searchList1();
 		model.addAttribute("examlist",list);
-		System.out.println("updateÂÊ ¸®½ºÆ®"+list);
+		System.out.println("updateìª½ ë¦¬ìŠ¤íŠ¸"+list);
 		
 		return "/instructor/exam/exam_update";
 	}
