@@ -9,9 +9,9 @@
   <properties>
     <java-version>11</java-version>
     <org.springframework-version>5.3.23</org.springframework-version>
-    <org.aspectj-version>1.6.10</org.aspectj-version>
-    <org.slf4j-version>1.7.32</org.slf4j-version> <!-- SLF4J 버전을 최신으로 업데이트 -->
-    <spring.security.version>5.2.5.RELEASE</spring.security.version>
+    <org.aspectj-version>1.9.7</org.aspectj-version>
+    <org.slf4j-version>1.7.32</org.slf4j-version>
+    <spring.security.version>5.5.3</spring.security.version>
   </properties>
   <dependencies>
     <!-- MyBatis -->
@@ -48,7 +48,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      
+      <version>${org.slf4j-version}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -100,7 +100,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.7</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
     <!-- Lombok -->
@@ -116,85 +116,78 @@
       <artifactId>ojdbc11</artifactId>
       <version>23.4.0.24.05</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/servlets.com/cos -->
-<dependency>
-    <groupId>servlets.com</groupId>
-    <artifactId>cos</artifactId>
-    <version>05Nov2002</version>
-</dependency>
-    <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
-	<dependency>
-    <groupId>com.googlecode.json-simple</groupId>
-    <artifactId>json-simple</artifactId>
-    <version>1.1.1</version>
-	</dependency>
-	<!-- spring security -->
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-core</artifactId>
-		<version>${spring.security.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-web</artifactId>
-		<version>${spring.security.version}</version>
-	</dependency>
-		
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-config</artifactId>
-		<version>${spring.security.version}</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-taglibs</artifactId>
-		<version>${spring.security.version}</version>
-	</dependency>
-	
-	<!-- //spring security -->
-	
-	<!-- Spring JDBC -->
-    <dependency> 
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jdbc</artifactId>
-        <version>5.2.1.RELEASE</version>
+    <!-- Commons FileUpload -->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.4</version>
     </dependency>
-    
+    <!-- JSON Simple -->
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <!-- Spring Security -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>${spring.security.version}</version>
+    </dependency>
+    <!-- Spring JDBC -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
     <!-- Jackson -->
     <dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-databind</artifactId>
-	    <version>2.12.3</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-core</artifactId>
-	    <version>2.12.3</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-annotations</artifactId>
-	    <version>2.12.3</version>
-	</dependency>
-	<!-- email -->
-	<dependency>
-	    <groupId>javax.mail</groupId>
-	    <artifactId>javax.mail-api</artifactId>
-	    <version>1.6.2</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.sun.mail</groupId>
-	    <artifactId>smtp</artifactId>
-	    <version>1.6.2</version>
-	</dependency>
-  <dependency>
-    <groupId>com.oracle.database.security</groupId>
-    <artifactId>oraclepki</artifactId>
-    <version>23.4.0.24.05</version>
-</dependency>
-
-
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.12.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.12.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.12.3</version>
+    </dependency>
+    <!-- Email -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>javax.mail-api</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>smtp</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <!-- Oracle Security -->
+    <dependency>
+      <groupId>com.oracle.database.security</groupId>
+      <artifactId>oraclepki</artifactId>
+      <version>23.4.0.24.05</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -213,58 +206,50 @@
         </configuration>
       </plugin>
       <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.5.1</version>
-            <configuration>
-                <encoding>UTF-8</encoding>
-                <source>11</source>
-                <target>11</target>
-                <compilerArgument>-Xlint:all</compilerArgument>
-                <showWarnings>true</showWarnings>
-                <showDeprecation>true</showDeprecation>
-            </configuration>
-        </plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>11</source>
+          <target>11</target>
+          <compilerArgument>-Xlint:all</compilerArgument>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>1.6.0</version>
         <configuration>
           <mainClass>org.test.int1.Main</mainClass>
         </configuration>
       </plugin>
     </plugins>
   </build>
-
-
   <dependencyManagement>
-  
-
     <dependencies>
-
       <dependency>
-          <groupId>com.oracle.database.jdbc</groupId>
-          <artifactId>ojdbc11</artifactId>
-          <version>23.4.0.24.05</version>
+        <groupId>com.oracle.database.jdbc</groupId>
+        <artifactId>ojdbc11</artifactId>
+        <version>23.4.0.24.05</version>
       </dependency>
-
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.25</version>
+        <version>${org.slf4j-version}</version>
       </dependency>
-
-        <dependency>
-    <groupId>com.oracle.database.security</groupId>
-    <artifactId>osdt_core</artifactId>
-    <version>23.4.0.24.05</version>
-</dependency>
-<dependency>
-    <groupId>com.oracle.database.security</groupId>
-    <artifactId>osdt_cert</artifactId>
-    <version>23.4.0.24.05</version>
-</dependency>
+      <dependency>
+        <groupId>com.oracle.database.security</groupId>
+        <artifactId>osdt_core</artifactId>
+        <version>23.4.0.24.05</version>
+      </dependency>
+      <dependency>
+        <groupId>com.oracle.database.security</groupId>
+        <artifactId>osdt_cert</artifactId>
+        <version>23.4.0.24.05</version>
+      </dependency>
     </dependencies>
-
   </dependencyManagement>
 </project>
