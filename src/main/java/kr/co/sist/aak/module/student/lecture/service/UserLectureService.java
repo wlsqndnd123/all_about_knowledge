@@ -111,10 +111,10 @@ public class UserLectureService {
 	 */
 	public List<UserLectureDomain> searchMyLecQna(){
 		List<UserLectureDomain> list = null;
-		String loggedInUserId =SecurityContextHolder.getContext().getAuthentication().getName();
+		String loggedInUserId2 =SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		try {
-			list=ulDAO.selectMyLecQna(loggedInUserId);
+			list=ulDAO.selectMyLecQna(loggedInUserId2);
 			
 			for(UserLectureDomain item : list) {
 				if ("Y".equals(item.getQ_status())) {
@@ -126,6 +126,7 @@ public class UserLectureService {
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 		}
+//		System.out.println("=======================listservice=================="+list);
 		return list;
 	}//searchInstNotice
 	
@@ -136,16 +137,16 @@ public class UserLectureService {
 	 */
 	public String searchMaxQVal() {
 		String maxVal="";
-		StringBuffer pre = new StringBuffer("Q_SUB");
+		StringBuffer pret = new StringBuffer("Q_SUB");
 		try {
 			maxVal=ulDAO.selectMaxValue();
 			int num=Integer.parseInt(maxVal.substring(6))+1;
 			String nextVal=String.format("%05d", num);
-			pre.append(nextVal);
+			pret.append(nextVal);
 		} catch(PersistenceException pe) {
 			pe.printStackTrace();
 		}
-		return pre.toString();
+		return pret.toString();
 	}
 	
 	/**
@@ -153,13 +154,14 @@ public class UserLectureService {
 	 * @param uqVO
 	 * @return
 	 */
-	public int addSubQ(UserQnaVO uqVO) {
+	public int addSubQ(UserApplySubVO uqVO) {
 		int cnt = 0;
         try {
         	cnt = ulDAO.insertSubQuestion(uqVO);
         } catch (PersistenceException Pe) {
         	Pe.printStackTrace();
         }
+//        System.out.println("=========================cnt====================="+cnt);
         return cnt;
 	}
 	
